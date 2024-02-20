@@ -26,7 +26,11 @@ nomex <- "Utile"
 brk  <- c(-15,-5,0,8, 10)
 nnn <- c( 5,10,20, 10)
 samp <- genera_dati(brk = brk,nnn = nnn,n = n)
+<<<<<<< HEAD
 k <- length(brk)-1
+=======
+
+>>>>>>> d27be86ccf6313ab28287987fd854a92db8e5c14
 ls2e(stat_base(samp,brk))
 ```
 

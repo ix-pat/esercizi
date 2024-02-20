@@ -7,8 +7,12 @@ editor_options:
 source("intro.R")
 s2=1
  
+<<<<<<< HEAD
 i2 <- 0
 i1 <- 1
+=======
+
+>>>>>>> d27be86ccf6313ab28287987fd854a92db8e5c14
 ```
 
 \part{Esercizi per argomento}
@@ -33,7 +37,11 @@ k <- length(brk)-1
 br1  <- brk[-(k+1)]
 br2  <- brk[-1]
 nomex <- "fenomeno-x"
+<<<<<<< HEAD
 ls2e(stat_base(samp,brk))
+=======
+ls2e(stat_base(samp,brk)))
+>>>>>>> d27be86ccf6313ab28287987fd854a92db8e5c14
 ```
 
 Sono stati analizzati `r n` individui per investigare su `r nomex`. É riportata qui di seguito la distribuzione in classi espressa in frequenza relativa.
@@ -120,7 +128,11 @@ k <- length(brk)-1
 br1  <- brk[-(k+1)]
 br2  <- brk[-1]
 nomex <- "dati-x"
+<<<<<<< HEAD
 ls2e(stat_base(samp,brk))
+=======
+ls2e(stat_base(samp,brk)))
+>>>>>>> d27be86ccf6313ab28287987fd854a92db8e5c14
 ```
 
 `r i1 <- i1+1; i2 <- 0`   Sono stati analizzati `r n` individui per investigare su `r nomex`. È riportata qui di seguito la distribuzione in classi espressa in frequenza assoluta.
@@ -217,7 +229,11 @@ k <- length(brk)-1
 br1  <- brk[-(k+1)]
 br2  <- brk[-1]
 nomex <- "dati-x"
+<<<<<<< HEAD
 ls2e(stat_base(samp,brk))
+=======
+ls2e(stat_base(samp,brk)))
+>>>>>>> d27be86ccf6313ab28287987fd854a92db8e5c14
 
 sper <- paste("$x_{",round(dat2$Fj[-k],2),"}=",br2[-k],"$",sep="")
 
@@ -360,7 +376,11 @@ nomex <- "Numero Addetti"
 
 names(samp) <- nomex
 
+<<<<<<< HEAD
 ls2e(stat_base(samp,brk))
+=======
+ls2e(stat_base(samp,brk)))
+>>>>>>> d27be86ccf6313ab28287987fd854a92db8e5c14
 dat3$`$f_{j\\%}$` <- dat3$`$f_j$`*100
 # kable((dat3[1:(k+1),c(1:2,7)])) %>%
 # 
@@ -539,7 +559,11 @@ nomex <- "Numero Addetti"
 
 names(samp) <- nomex
 
+<<<<<<< HEAD
 ls2e(stat_base(samp,brk))
+=======
+ls2e(stat_base(samp,brk)))
+>>>>>>> d27be86ccf6313ab28287987fd854a92db8e5c14
 dat3$`$f_{j\\%}$` <- dat3$`$f_j$`*100
 # kable((dat3[1:(k+1),c(1:2,7)])) %>%
 # 
