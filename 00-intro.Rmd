@@ -1,0 +1,114 @@
+--- 
+title: "Eserciziario di Statistica"
+subtitle: "CLEAM AA 23/24"
+author: "Patrizio Frederic"
+date: "Aggiornato al `r format(Sys.Date(),'%d-%m-%Y')`"
+documentclass: book
+site: bookdown::bookdown_site
+biblio-style: apalike
+link-citations: yes
+description: "Appunti sparsi"
+geometry: "left=2.5cm, right=2.5cm, top=4.5cm, bottom=4.5cm, showframe=false, showcrop=true"
+fontsize: 11pt
+output:
+   bookdown::pdf_book:
+     keep_tex: true
+     highlight: default
+     fig_caption: true
+     # fig_width: 4
+     # fig_height: 3
+   bookdown::gitbook:
+     fig_caption: true
+     # fig_width: 12
+     # fig_height: 8
+#documentclass: book
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+library(knitr)
+library(kableExtra)
+library(pBrackets)
+library(bookdown)
+library(bookdownplus)
+library(magick)
+library(plotrix)
+library(colorspace)
+library(haven)
+library(png)
+library(webshot)
+
+rm(list=ls())
+source("../src/main-functions.R")
+source(src_("intro.R"))
+
+```
+
+
+```{r,results='asis', echo=FALSE}
+
+if (html) cat("
+<style>
+/* Selettore per l'ambiente theorem */
+.example {
+  /* Stili CSS per l'ambiente theorem */
+  background-color: #F0F0F0; /* Colore di sfondo desiderato */
+  border: 1px solid #CCCCCC; /* Colore del bordo desiderato */
+  padding: 10px; /* Spaziatura interna desiderata */
+}
+/* Selettore per il nome del teorema */
+.example .name {
+  /* Stili CSS per il nome del teorema */
+  color: blue; /* Colore del nome del teorema */
+}
+/* Selettore per l'enunciato del teorema */
+.example .example-body {
+  /* Stili CSS per l'enunciato del teorema */
+  color: red; /* Colore dell'enunciato del teorema */
+}
+</style>"
+)
+```
+
+# Avvertenza {-}
+
+\large
+
+Questo lavoro è un work in progress, questa non è la versione definitiva, sconsiglio di stampare tutto. 
+
+\normalsize
+
+
+Eserciziario di Statistica © 2024 di Patrizio Frederic è distribuito
+sotto licenza CC BY-NC-ND 4.0
+https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+You are free to:
+Share — copy and redistribute the material in any medium or format
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+Under the following terms:
+Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+NonCommercial — You may not use the material for commercial purposes.
+
+NoDerivatives — If you remix, transform, or build upon the material, you may not distribute the modified material.
+
+No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+
+
+
+
+# Introduzione {-}
+
+Qui si trovano le esercitazioni e i compiti passati del corso di Statistica 
+in formato html fruibili direttamente dal mio server. 
+Il pdf e il formato epub sono è scaricabili cliccando in alto.
+
+Nel prossimo futuro, aggiungerò altri esercizi non presenti nei compiti solo a titolo
+di esercitazione. 
+
+Patrizio Frederic
+
+Bologna, il `r format(Sys.Date(),"%d/%m/%Y")`.
