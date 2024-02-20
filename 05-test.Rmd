@@ -5,12 +5,7 @@ editor_options:
 ---
 
 ```{r test}
-rm(list=ls())
-source("../src/main-functions.R")
-source(src_("intro.R"))
-#options(digits=4,nsmall=4,family=4)
-source("../src/main-functions.R")
-
+source("intro.R")
 ```
 
 # Esercizi su Test e Intervalli di Confidenza

@@ -5,9 +5,9 @@ editor_options:
 ---
 ```{r regr}
 rm(list=ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
-source(src_("main.R"))
-source(src_("intro.R"))
+
+
+source("intro.R")
 fig.def(2.5,3.5)
 
 i1 <- 1; 
@@ -32,6 +32,229 @@ i2 <- 1
 
 # Esericizi sulla Regressione
 
+## Esercizio (Dati maternità USA)
+
+### I dati
+
+Il dataset di dimensioni $n = 51$ è relativo ai 50 stati e al Distretto di Columbia negli Stati Uniti. Le variabili sono 
+
+- $y =$ _il tasso di natalità dell'anno 2002 per 1000 femmine di età compresa tra 15 e 17 anni_  
+- $x =$ _il tasso di povertà, che rappresenta la percentuale della popolazione dello stato che vive in famiglie con redditi al di sotto della soglia di povertà definita dal governo federale._ 
+
+(Fonte dei dati: Mind On Statistics, 3a edizione, Utts and Heckard).
+
+### La matrice dei dati
+
+
+```{r}
+dat <- read.csv('poverty.txt')
+
+tabl(cbind(1:51,dat[,1:3]),col.names = c("$i$", "Stato","Tasso di povertà","Tasso di natalità 15-17"))
+```
+
+### La rappresentazione dei dati
+
+```{r}
+
+x <- dat$PovPct
+y <- dat$Brth15to17
+
+df <- data.frame(state = dat$Location, poverty_rate = dat$PovPct, birth_rate = dat$Brth15to17)
+data_poverty <- df
+
+if (html){
+library(plotly)
+
+# Crea un grafico di dispersione interattivo
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state, type = "scatter", mode = "markers") %>%
+  layout(title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+         xaxis = list(title = "Tasso di povertà"),
+         yaxis = list(title = "Tasso di natalità 15-17"))
+} else {
+plot(x,y,axes=F,title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",xlab="Tasso di povertà",ylab="Tasso di natalità 15-17")
+  axis(1)
+  axis(2)
+  }
+
+# plot(x,y,axes=F,title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",xlab="Tasso di povertà",ylab="Tasso di natalità 15-17") 
+
+n <- length(x)
+
+mx <- mean(x)
+vx <- mean(x^2)-mean(x)^2
+
+my <- mean(y)
+vy <- mean(y^2)-mean(y)^2
+
+co <- mean(x*y) - mx*my
+r  <- co/sqrt(vy*vx)
+b1 <- co/vx
+b0 <- my - b1*mx
+
+ys <- b0 + b1 * x
+es <- y - ys
+rg <- ys - my
+
+se2 <- (n/(n-2))*vy*(1-r^2) 
+vb0 <- se2 * (1/n+mx^2/(n*vx)) 
+vb1 <- se2 / (n*vx) 
+
+ls2e(regr(x,y))
+```
+
+ Tutta l'informazione sul modello di regressione lineare semplice è contenuta nelle
+seguenti statistiche
+\[\sum_{i=1}^n x_i=      `r format(sum(x  ),nsmall = 2,scientific = F,big.mark = "~")`,
+~~\sum_{i=1}^n y_i=      `r format(sum(y  ),nsmall = 2,scientific = F,big.mark = "~")`,
+~~\sum_{i=1}^n x_i^2=    `r format(sum(x^2),nsmall = 2,scientific = F,big.mark = "~")`,
+~~\sum_{i=1}^ny_i^2=     `r format(sum(y^2),nsmall = 2,scientific = F,big.mark = "~")`,
+~~ \sum_{i=1}^n x_i y_i= `r format(sum(y*x),nsmall = 2,scientific = F,big.mark = "~")`\]
+o, equivalentemente, le medie
+\[\frac{1}{51}\sum_{i=1}^n x_i=      `r format(mean(x  ),nsmall = 4,scientific = F,big.mark = "~")`,
+~~\frac{1}{51}\sum_{i=1}^n y_i=      `r format(mean(y  ),nsmall = 4,scientific = F,big.mark = "~")`,
+~~\frac{1}{51}\sum_{i=1}^n x_i^2=    `r format(mean(x^2),nsmall = 4,scientific = F,big.mark = "~")`,
+~~\frac{1}{51}\sum_{i=1}^ny_i^2=     `r format(mean(y^2),nsmall = 4,scientific = F,big.mark = "~")`,
+~~ \frac{1}{51}\sum_{i=1}^n x_i y_i= `r format(mean(y*x),nsmall = 4,scientific = F,big.mark = "~")`\]
+
+
+\begin{alignat*}{3}
+ \bar x & =  \frac 1 n \sum_{i=1}^n x_i  = `r mx` &
+\hat\sigma_X^2 & =  \frac 1 n \sum_{i=1}^n x_i^2 - \bar x^2  = `r vx` &\\
+ \bar y & =  \frac 1 n \sum_{i=1}^n y_i   = `r my` &
+\hat\sigma_Y^2 & =  \frac 1 n \sum_{i=1}^n y_i^2 - \bar y^2  = `r vy` &\\
+ \text{cov}(x,y) & = \frac 1 n \sum_{i=1}^n x_iy_i -\bar x\bar y  = `r co` & 
+r & = \frac{\text{cov}(x,y)}{\hat\sigma_X \hat\sigma_Y }  = `r r` &\\
+\hat\beta_1 & = \frac{\text{cov}(x,y)}{\hat\sigma_X^2} = `r b1` & 
+\hat\beta_0 & = \bar y  - \hat\beta_1\bar x = `r b0`. &\\
+\hat\sigma_\varepsilon^2 & = \hat\sigma_Y^2(1-r^2)=`r vy*(1-r^2)` &
+S_\varepsilon^2 & = \frac{n}{n-2}\hat\sigma_\varepsilon^2 = `r se2`\\
+\hat\sigma_\varepsilon & = \hat\sigma_Y\sqrt{(1-r^2)}=`r sqrt(vy*(1-r^2))` & \qquad
+S_\varepsilon & = \sqrt{\frac{n}{n-2}}\hat\sigma_\varepsilon = `r sqrt(se2)`\\
+\end{alignat*}
+
+```{r}
+
+#reg <- data.frame(pov = df$poverty_rate, est = b0+b1*df$poverty_rate)
+# Crea un grafico di dispersione interattivo
+# plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state, type = "scatter", mode = "markers") %>%
+#   layout(title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+#          xaxis = list(title = "Tasso di povertà"),
+#          yaxis = list(title = "Tasso di natalità")) %>%
+#   add_lines( x= reg$pov, y= reg$est)
+#   
+
+plot(dat[,2],dat[,3],xlab="Tasso di povertà",ylab="Tasso di natalità 15-17",axes=F,xlim=c(0,25),ylim=c(0,40),pch=16,col="blue2")
+axis(1,pos = 0)
+axis(2,pos = 0)
+
+abline(b0,b1,col="red3",lwd=2)
+axis(2,at=b0,labels = expression(beta[0]==4.27),col.axis=2,las=1,pos=0)
+segments(0,b0,1,b0,lty=2)
+segments(1,b0,1,b0+b1,lty=2)
+text(1.1,4.5,expression(beta[1]==1.37),pos=4)
+axis(1,1,pos=0)
+```
+
+______________________________
+
+Valutare la bontà di adattamento del modello precedente.
+
+:::{.sol data-latex=""}
+
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-R2()
+cat(res,sep="\n")
+```
+
+:::
+______________________________
+
+:::{.sol data-latex=""}
+
+Fornire una interpretazione dei parametri della retta di regressione.
+
+__Soluzione__
+
+I parametri della retta di regressione sono $\beta_{0}$ e $\beta_{1}$.
+Il primo, $\beta_{0},$ rappresenta l'intercetta della retta,
+ovvero il punto in cui la retta interseca l'asse delle ordinate.
+Il secondo parametro, $\beta_{1}$, rappresenta la pendenza della
+retta (chiamato anche coefficiente angolare), ovvero l'incremento
+verticale corrispondente a un incremento orizzontale unitario e
+coincide, perciò, con la tangente dell'angolo compreso fra la
+retta e l'asse delle ascisse.
+
+In questo caso, la variazione percentuale della pressione sistolica,
+secondo il modello stimato, è dato da
+$$Y= `r b0` + `r b1` X$$
+
+ossia, è composto da un quantitativo fisso di $`r b0`$ di tasso di natalità delle minorenni in un ipotetico
+stato a povertà zero ($x=0$), a cui si aggiunge un incremento di $`r b1`$ per ogni incremento unitario del tasso di povertà.
+
+:::
+
+______________________________
+
+:::{.sol data-latex=""}
+
+Determinare il residuo per lo stato del Colorado $i=6$
+uguale 6, ossia per $x=6$.
+
+
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+j <- 6
+res <-residuo(x[j],y[j])
+cat(res,sep="\n")
+```
+
+:::
+______________________________
+
+Verificare al livello di significatività dell'1% ($\alpha=0.05$)
+l'ipotesi che l'intercetta della retta di regressione sia uguale a
+zero contro l'alternativa che sia diversa da zero.
+
+:::{.sol data-latex=""}
+
+```{r,results='asis',warning=FALSE,message=FALSE}
+res <- se_beta0(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq",alpha = 0.05)
+cat(res,sep="\n")
+```
+
+:::
+______________________________
+
+
+Verificare al livello di significatività del 5% ($\alpha=0.01$)
+l'ipotesi che la pendenza della retta di regressione sia uguale a 0
+contro l'alternativa che sia diversa da 0.
+
+:::{.sol data-latex=""}
+
+```{r,results='asis',warning=FALSE,message=FALSE}
+res <- se_beta1(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 1,bj0 = 0,h1 = ">",alpha = 0.01)
+cat(res,sep="\n")
+```
+
+:::
+___________________________________
+
+
+Un software professionale restituisce un output del genere
+
+```{r,echo=TRUE,results='markup'}
+modello <- lm(formula = birth_rate ~ poverty_rate,data = data_poverty)
+summary(modello)
+```
+
+
+
 ## Esercizio 1
 
 Si sono raccolti i seguenti valori per la variabile indipendente
@@ -50,7 +273,7 @@ y <- dati$y
 
 names(dati) <- c("$i$","$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 
 fig.def(width = 5)
 ```
@@ -247,7 +470,7 @@ res <- se_beta0(x,y)
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.01)
 cat(res,sep="\n")
-detach(regr(x,y))
+
 ```
 :::
 
@@ -269,7 +492,7 @@ y <- dati$y
 
 names(dati) <- c("$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 ```
 
 `r item(T)`   Calcolare i parametri $\beta_{0}$ e $\beta_{1}$
@@ -280,7 +503,7 @@ $\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
 :::{.sol data-latex=""}
 
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-calcolo_beta(semplice = T)
 cat(res,sep="\n")
 ```
@@ -291,7 +514,7 @@ cat(res,sep="\n")
 :::{.sol data-latex=""}
 
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-R2()
 cat(res,sep="\n")
 ```
@@ -312,7 +535,7 @@ regressione si stima la coordinata corrispondente:
 
 
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-previsione(10)
 cat(res,sep="\n")
 fig.def(3,5)
@@ -397,7 +620,7 @@ res <- se_beta0(x,y)
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq",alpha = 0.05)
 cat(res,sep="\n")
-detach(regr(x,y))
+
 i2 <- 1
 ```
 :::
@@ -423,7 +646,7 @@ y <- dati$y
 
 names(dati) <- c("$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 ```
 
 
@@ -434,7 +657,7 @@ $\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-calcolo_beta(T)
 cat(res,sep="\n")
 ```
@@ -444,7 +667,7 @@ cat(res,sep="\n")
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-R2()
 cat(res,sep="\n")
 ```
@@ -463,7 +686,7 @@ corrispondente:
 
 
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-previsione(35)
 cat(res,sep="\n")
 x0 <- mx
@@ -512,7 +735,7 @@ di previsione commesso.
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-previsione(30)
 cat(res,sep="\n")
 ```
@@ -549,7 +772,7 @@ res <- se_beta0(x,y)
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.05)
 cat(res,sep="\n")
-detach(regr(x,y))
+
 i2 <- 1
 ```
 :::
@@ -574,7 +797,7 @@ y <- dati$y
 
 names(dati) <- c("$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 ```
 
 
@@ -585,7 +808,7 @@ $\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-calcolo_beta(T)
 cat(res,sep="\n")
 ```
@@ -595,7 +818,7 @@ cat(res,sep="\n")
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-R2()
 cat(res,sep="\n")
 ```
@@ -614,7 +837,7 @@ Tramite l'equazione della retta di regressione si stima la coordinata
 corrispondente:
 
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-previsione(40)
 cat(res,sep="\n")
 x0 <- 40
@@ -690,7 +913,7 @@ res <- se_beta0(x,y)
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.05)
 cat(res,sep="\n")
-detach(regr(x,y))
+
 i2 <- 1
 ```
 :::
@@ -712,7 +935,7 @@ y <- dati$y
 
 names(dati) <- c("$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 ```
 
 
@@ -723,7 +946,7 @@ $\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-calcolo_beta(T)
 cat(res,sep="\n")
 ```
@@ -733,7 +956,7 @@ cat(res,sep="\n")
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-R2()
 cat(res,sep="\n")
 ```
@@ -753,7 +976,7 @@ res <- se_beta0(x,y)
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.05)
 cat(res,sep="\n")
-detach(regr(x,y))
+
 ```
 :::
 
@@ -774,7 +997,7 @@ y <- dati$y
 
 names(dati) <- c("$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 ```
 \normalsize
 
@@ -785,7 +1008,7 @@ $\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-calcolo_beta(T)
 cat(res,sep="\n")
 ```
@@ -795,7 +1018,7 @@ cat(res,sep="\n")
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-R2()
 cat(res,sep="\n")
 ```
@@ -806,7 +1029,7 @@ dalla previsione, calcolata con il modello di regressione in $x=54.3$.
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 j <- which(x==54.3)
 res <-residuo(x[j],y[j])
 cat(res,sep="\n")
@@ -826,7 +1049,7 @@ res <- se_beta1(x,y)
 cat(res,sep="\n")
 res <- ttest_beta(cof = 1,bj0 = 0,h1 = ">",alpha = 0.05)
 cat(res,sep="\n")
-detach(regr(x,y))
+
 ```
 :::
 
@@ -886,12 +1109,11 @@ stat2 <- list(
 )
 
 rg <- regr(stat2=stat2)
-attach(rg)
+ls2e(rg)
 res <- se_beta0(x,y)
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq",alpha = 0.05)
 cat(res,sep="\n")
-detach(rg)
 ```
 :::
 
@@ -907,7 +1129,7 @@ x <- c(5, 6, 7, 8, 4)
 y <- c(6, 7, 6, 9, 5)
 
 rg <- regr(x,y)
-attach(rg)
+ls2e(rg)
 
 # h <- 1/n + (x-mx)^2/(n*vx)
 # ss <- sy*sqrt(1-r^2)*sqrt(1-h)
@@ -934,7 +1156,7 @@ tabl(prn,row.names = F)%>%
 ```
 
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-calcolo_beta()
 cat(res,sep="\n")
 ```
@@ -944,7 +1166,7 @@ cat(res,sep="\n")
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 res <-R2()
 cat(res,sep="\n")
 ```
@@ -978,7 +1200,7 @@ uguale 6, ossia per $x=6$.
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-#detach(regr(x,y))
+#
 j <- which(x==6)
 res <-residuo(x[j],y[j])
 cat(res,sep="\n")

@@ -1,21 +1,10 @@
 ```{r prob_0, include=FALSE}
-source("../src/main-functions.R")
-source(src_("intro.R"))
-knitr::opts_chunk$set(echo = FALSE)
+
+source("intro.R")
 options(digits=5)
-opts_knit$set(global.par = TRUE)
-par(cex=cex)
+
 s2=1
-
-
-
 n <-1
-
-i1 <- 1
-i2 <- 0
-item <- function(){
-it <- (paste(i2,".",sep=""))
-return(it)}
 
 ```
 
