@@ -29,21 +29,9 @@ editor_options:
 ---
 
 ```{r, include=FALSE}
-library(knitr)
-library(kableExtra)
-library(pBrackets)
-library(bookdown)
-library(bookdownplus)
-library(magick)
-library(plotrix)
-library(colorspace)
-library(haven)
-library(png)
-library(webshot)
 
-source("../src/main-functions.R")
-source(src_("intro.R"))
-opts_knit$set(echo=FALSE)
+source("intro.R")
+
 
 ```
 

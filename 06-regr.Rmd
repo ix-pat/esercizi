@@ -5,9 +5,9 @@ editor_options:
 ---
 ```{r regr}
 rm(list=ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
-source(src_("main.R"))
-source(src_("intro.R"))
+
+
+source("intro.R")
 fig.def(2.5,3.5)
 
 i1 <- 1; 
@@ -50,7 +50,7 @@ y <- dati$y
 
 names(dati) <- c("$i$","$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 
 fig.def(width = 5)
 ```
@@ -269,7 +269,7 @@ y <- dati$y
 
 names(dati) <- c("$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 ```
 
 `r item(T)`   Calcolare i parametri $\beta_{0}$ e $\beta_{1}$
@@ -423,7 +423,7 @@ y <- dati$y
 
 names(dati) <- c("$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 ```
 
 
@@ -574,7 +574,7 @@ y <- dati$y
 
 names(dati) <- c("$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 ```
 
 
@@ -712,7 +712,7 @@ y <- dati$y
 
 names(dati) <- c("$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 ```
 
 
@@ -774,7 +774,7 @@ y <- dati$y
 
 names(dati) <- c("$x$","$y$")
 tabl(t(dati),row.names = T)
-attach(regr(x,y))
+ls2e(regr(x,y))
 ```
 \normalsize
 

@@ -6,9 +6,9 @@
 ```{r,echo=FALSE,message=FALSE}
 #detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
-source(src_("main.R"))
-source(src_("intro.R"))
+
+
+source("intro.R")
 fig.def(2.5,3.5)
 
 i1 <- 1; 
@@ -29,7 +29,7 @@ nnn  <- c( 20,110,100, 10)
 nnn  <- round(nnn/sum(nnn)*n)
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 
 ```
 
@@ -205,7 +205,7 @@ x <- x/60
 y <- y/10
 
 RGX <- regr(x,y,semp = T)
-attach(RGX)
+ls2e(RGX)
 ```
 
 In uno studio sul potere d'acquisto delle famiglie è stato selezionato un campione di 150 nuclei familiari 
@@ -249,7 +249,7 @@ abline(h=0,lty=2)
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -268,7 +268,7 @@ nnn  <- round(nnn/sum(nnn)*n)
 nomex <- "Investimento"
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 
 ```
 
@@ -438,7 +438,7 @@ x <- x/60
 y <- y/10
 
 RGX <- regr(x,y,semp = T)
-attach(RGX)
+ls2e(RGX)
 ```
 
 In uno studio sul potere d'acquisto delle famiglie è stato selezionato un campione di 150 nuclei familiari 
@@ -485,7 +485,7 @@ abline(h=0,lty=2)
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -505,7 +505,7 @@ nomex <- "Investimento"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stato rilevato l'investimento annuo in prodotti finanziari (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
@@ -680,7 +680,7 @@ x <- x/10
 y <- y/10
 
 RGX <- regr(x,y,semp = T,ax=1)
-attach(RGX)
+ls2e(RGX)
 ```
 
 In uno studio sul potere d'acquisto delle famiglie è stato selezionato un campione di 150 nuclei familiari 
@@ -725,7 +725,7 @@ abline(h=0,lty=2)
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -745,7 +745,7 @@ nomex <- "Investimento"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ imprese della provincia di Modena è stato rilevato l'utile dell'ultimo trimestre (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze assolute:
@@ -926,7 +926,7 @@ eps <- rnorm(n,0,.1*x/6+.01)
 y <- 10-log(x*15)+eps
 
 RGX <- regr(x,y)
-attach(RGX)
+ls2e(RGX)
 ```
 
 In uno studio sull'adeguamento alle direttive europee sul green si sono analizzate `r n` aziende, sono stati analizzati l'investimento in green ($X$ espresso in decine migliaia di euro/anno) e l'impatto l'abbattimento di CO2 (misurata in opportuna scala). Qui di seguito le statistiche:
@@ -974,7 +974,7 @@ abline(h=0,lty=2)
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -995,7 +995,7 @@ nnn  <- rev(c( 20,100,110, 10))
 nnn  <- round(nnn/sum(nnn)*n)
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 
 ```
 
@@ -1161,7 +1161,7 @@ eps <- rnorm(n,0,.25*(6-x)/6)
 y <- 10+exp(x)/100+eps
 
 RGX <- regr(x,y)
-attach(RGX)
+ls2e(RGX)
 ```
 
 In uno studio sull'adeguamento alle direttive europee sul green si sono analizzate `r n` aziende, sono stati analizzati l'investimento in green ($X$ espresso in decine migliaia di euro/anno) e i risparmi globali $Y$ (espresso in decine migliaia di euro/anno). Qui di seguito le statistiche:
@@ -1211,7 +1211,7 @@ abline(h=0,lty=2)
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -1231,7 +1231,7 @@ nomex <- "Investimento"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 ```{r}
@@ -1250,7 +1250,7 @@ nomex <- "Investimento"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ imprese della provincia di Modena è stato rilevato l'utile dell'ultimo trimestre (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
@@ -1435,7 +1435,7 @@ eps <- rnorm(n,0,.25*(6-x)/6)
 y <- 10+exp(x)/100+eps
 
 RGX <- regr(x,y)
-attach(RGX)
+ls2e(RGX)
 ```
 
 In uno studio sull'adeguamento alle direttive europee sul green si sono analizzate `r n` aziende, sono stati analizzati l'investimento in green ($X$ espresso in decine migliaia di euro/anno) e le agevolazioni fiscali $Y$ (espressa in decine migliaia di euro/anno). Qui di seguito le statistiche:
@@ -1482,7 +1482,7 @@ abline(v=0,lty=2)
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -1500,7 +1500,7 @@ hhh  <- c( 20,110,100, 5)       # aspetto presunto istogramma
 nomex <- "Nome della X"
 samp <- genera_dati(brk = brk,hhh = hhh,n = n)
 
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stata rilevata la spesa annua dedicata alle vacanze, espressa in migliaia di euro. Qui di seguito la distribuzione delle frequenze assolute:
@@ -1609,7 +1609,7 @@ set.seed(12)
 n <- 50
 x <- runif(n,0,30)
 y <- abs(.5*x + rnorm(n,0,2+x*.1))
-RGX <- regr(x,y); attach(RGX)
+RGX <- regr(x,y); ls2e(RGX)
 ```
 
 In uno studio sull'efficacia dell'investimento pubblicitario sono stati rilevati, per $n=50$ aziende si sono rilevati l'incremento di spesa in
@@ -1665,7 +1665,7 @@ abline(h=0,lty=2)
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -1683,7 +1683,7 @@ hhh  <- rev(c( 20,110,100, 5))       # aspetto presunto istogramma
 nomex <- "Nome della X"
 samp <- genera_dati(brk = brk,hhh = hhh,n = n)
 
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stata rilevata la spesa annua dedicata alle vacanze, espressa in migliaia di euro. Qui di seguito la distribuzione delle frequenze assolute:
@@ -1841,7 +1841,7 @@ set.seed(12)
 n <- 50
 x <- runif(n,0,30)
 y <- abs(.5*x + rnorm(n,0,2+(x-15)^4*.0005))
-RGX <- regr(x,y); attach(RGX)
+RGX <- regr(x,y); ls2e(RGX)
 ```
 
 In uno studio sull'efficacia dell'investimento pubblicitario sono stati rilevati, per $n=50$ aziende si sono rilevati l'incremento di spesa in
@@ -1902,7 +1902,7 @@ w_i = \beta_0'+\beta_1'x_i+\epsilon_i'
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -1920,7 +1920,7 @@ hhh  <- c( 10,30,50, 30,10)       # aspetto presunto istogramma
 nomex <- "Nome della X"
 samp <- genera_dati(brk = brk,hhh = hhh,n = n)
 
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stata rilevata la spesa annua dedicata alle vacanze, espressa in migliaia di euro. Qui di seguito la distribuzione delle frequenze cumulate:
@@ -2075,7 +2075,7 @@ set.seed(12)
 n <- 50
 x <- runif(n,0,30)
 y <- abs(.5*x + rnorm(n,0,2+(15^2-(x-15)^2)*.005))
-RGX <- regr(x,y); attach(RGX)
+RGX <- regr(x,y); ls2e(RGX)
 ```
 
 In uno studio sull'efficacia dell'investimento pubblicitario sono stati rilevati, per $n=50$ aziende si sono rilevati l'incremento di spesa in
@@ -2133,7 +2133,7 @@ y_i = \beta_0'+\beta_1'w_i+\epsilon_i'
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -2153,7 +2153,7 @@ hhh  <- c( 20,120,100, 50,10)       # aspetto presunto istogramma
 nomex <- "Spesa"
 samp <- genera_dati(brk = brk,hhh = hhh,n = n)
 
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stato rilevata la spesa mensile in telecomunicazioni (in euro), qui di seguito 
@@ -2313,7 +2313,7 @@ x <- runif(n,0,1.5)
 y <- log(x)+rnorm(n,0,.25)
 y <- y-min(y)
 #plot(x,y)
-RGX <- regr(x,y); attach(RGX)
+RGX <- regr(x,y); ls2e(RGX)
 ```
 
 In uno studio sull'efficacia del marketing sul web si sono analizzate `r n` aziende
@@ -2362,7 +2362,7 @@ abline(h=0,lty=2)
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -2381,7 +2381,7 @@ hhh  <- rev(c( 20,120,100, 50,10))       # aspetto presunto istogramma
 nomex <- "Spesa"
 samp <- genera_dati(brk = brk,hhh = hhh,n = n)
 
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ piccole imprese della provincia di Modena è stato rilevata la spesa mensile in telecomunicazioni (in euro), qui di seguito 
@@ -2539,7 +2539,7 @@ x <- runif(n,0,1.5)
 y <- -log(x)+rnorm(n,0,.25)
 y <- y-min(y)
 # plot(x,y)
-RGX <- regr(x,y); attach(RGX)
+RGX <- regr(x,y); ls2e(RGX)
 ```
 
 In uno studio sull'efficacia del marketing sul web si sono analizzate `r n` aziende
@@ -2586,7 +2586,7 @@ abline(h=0,lty=2)
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -2605,7 +2605,7 @@ hhh  <- c( 10,13,9, 4,0.5)       # aspetto presunto istogramma
 nomex <- "Spesa"
 samp <- genera_dati(brk = brk,hhh = hhh,n = n)
 
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ piccole imprese della provincia di Modena è stato rilevata la spesa mensile in telecomunicazioni (in euro), qui di seguito 
@@ -2757,7 +2757,7 @@ y <- -log(x)+rnorm(n,0,.25)
 y <- round(y-min(y),2)
 x <- round(x,2)
 # plot(x,y)
-RGX <- regr(x,y); attach(RGX)
+RGX <- regr(x,y); ls2e(RGX)
 ```
 
 In uno studio sull'efficacia del marketing sul web si sono analizzate `r n` aziende
@@ -2817,7 +2817,7 @@ hhh  <- c( 2,4,10, .5)       # aspetto presunto istogramma
 nomex <- "Bilancio"
 samp <- genera_dati(brk = brk,hhh = hhh,n = n)
 
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ di piccole e medie  aziende  della provincia di Modena è stato rilevato l'utile netto (espresso in centinaia di migliaia di euro) durante il periodo del covid. Qui di seguito la distribuzione delle frequenze assolute:
@@ -3083,7 +3083,7 @@ source(src_("stat-base.R"))      # crea il data set e la tabella dat3
 nomex <- "Spesa per vacanze"
 samp <- genera_dati(brk = brk,hhh = hhh,n = n)
 
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stata rilevata la quantità mensile di ore dedicate all'utilizzo di servizi di streaming. Di seguito è riportata la distribuzione delle frequenze percentuali:

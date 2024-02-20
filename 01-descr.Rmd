@@ -4,17 +4,9 @@ editor_options:
   chunk_output_type: console
 ---
 ```{r , include=FALSE}
-rm(list = ls())
-source("../src/main-functions.R")
-source(src_("main.R"))
-source(src_("intro.R"))
+source("intro.R")
 s2=1
  
-i1 <- 1
-i2 <- 0
-item <- function(){
-it <- (paste(letters[i2],".",sep = ""))
-return(it)}
 
 ```
 
@@ -40,7 +32,7 @@ k <- length(brk)-1
 br1  <- brk[-(k+1)]
 br2  <- brk[-1]
 nomex <- "fenomeno-x"
-source("../src/stat-base.R")
+ls2e(stat_base(samp,brk)))
 ```
 
 Sono stati analizzati `r n` individui per investigare su `r nomex`. É riportata qui di seguito la distribuzione in classi espressa in frequenza relativa.
@@ -127,7 +119,7 @@ k <- length(brk)-1
 br1  <- brk[-(k+1)]
 br2  <- brk[-1]
 nomex <- "dati-x"
-source("../src/stat-base.R")
+ls2e(stat_base(samp,brk)))
 ```
 
 `r i1 <- i1+1; i2 <- 0`   Sono stati analizzati `r n` individui per investigare su `r nomex`. È riportata qui di seguito la distribuzione in classi espressa in frequenza assoluta.
@@ -224,7 +216,7 @@ k <- length(brk)-1
 br1  <- brk[-(k+1)]
 br2  <- brk[-1]
 nomex <- "dati-x"
-source("../src/stat-base.R")
+ls2e(stat_base(samp,brk)))
 
 sper <- paste("$x_{",round(dat2$Fj[-k],2),"}=",br2[-k],"$",sep="")
 
@@ -367,7 +359,7 @@ nomex <- "Numero Addetti"
 
 names(samp) <- nomex
 
-source("../src/stat-base.R")
+ls2e(stat_base(samp,brk)))
 dat3$`$f_{j\\%}$` <- dat3$`$f_j$`*100
 # kable((dat3[1:(k+1),c(1:2,7)])) %>%
 # 
@@ -546,7 +538,7 @@ nomex <- "Numero Addetti"
 
 names(samp) <- nomex
 
-source("../src/stat-base.R")
+ls2e(stat_base(samp,brk)))
 dat3$`$f_{j\\%}$` <- dat3$`$f_j$`*100
 # kable((dat3[1:(k+1),c(1:2,7)])) %>%
 # 

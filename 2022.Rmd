@@ -11,8 +11,8 @@ editor_options:
 ```{r, echo=FALSE}
 #detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
-source(src_("intro.R"))
+
+source("intro.R")
 fig.def(2.5,3.5)
 
 i1 <- 1; 
@@ -32,7 +32,7 @@ nnn  <- round(nnn/sum(nnn)*n)
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
@@ -265,7 +265,7 @@ y <- 900-200*x + rnorm(n,0,40)
 y <- y/1000
 
 RGX <- regr(x,y,semp = T)
-attach(RGX)
+ls2e(RGX)
 ```
 
 In uno studio sul potere d'acquisto delle famiglie è stato selezionato un campione di 150 nuclei familiari 
@@ -321,7 +321,7 @@ nnn  <- c( 20,110,100, 50)
 nnn  <- round(nnn/sum(nnn)*n)
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito i dati raccolti in classe e le densità di frequenza percentuali
@@ -474,7 +474,7 @@ y <- 900-200*x + rnorm(n,0,40)
 y <- y/1000
 
 RGX <- regr(x,y)
-attach(RGX)
+ls2e(RGX)
 
 ```
 
@@ -534,7 +534,7 @@ il modello in cui $W$ viene spiegata da $X$, quanto varranno $\beta_0'$ e $\beta
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -559,7 +559,7 @@ nomex <- "Spesa"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito i dati raccolti in classe e le frequenze assolute
@@ -707,7 +707,7 @@ y <- 900-200*x + rnorm(n,0,40)
 y <- y/1000
 
 RGX <- regr(x,y)
-attach(RGX)
+ls2e(RGX)
 ```
 
 In uno studio sul potere d'acquisto delle famiglie è stato selezionato un campione di 150 nuclei familiari 
@@ -768,7 +768,7 @@ quanto varranno $\beta_0'$ e $\beta_1'$?
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -788,7 +788,7 @@ nnn  <- round(nnn/sum(nnn)*n)
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ imprese energivore della provincia di Bologna è stato 
@@ -1016,7 +1016,7 @@ eps <- rnorm(n,0,3)
 y <- -5+x + eps
 
 RGX <- regr(x,y)
-attach(RGX)
+ls2e(RGX)
 ```
 
 Sono stati analizzati `r n` comuni della provincia di Modena e su ogni comune è stato rilevato
@@ -1064,7 +1064,7 @@ il modello in cui $W$ viene spiegata da $X$, quanto varranno $\beta_0'$ e $\beta
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -1088,7 +1088,7 @@ nomex <- "Spesa in investimenti Green"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ imprese energivora della provincia di Bologna è stato 
@@ -1271,7 +1271,7 @@ eps <- rnorm(n,0,3)
 y <- -5+x + eps
 
 RGX <-regr(x,y)
-attach(RGX)
+ls2e(RGX)
 ```
 
 Sono stati analizzati `r n` comuni della provincia di Modena e su ogni comune è stato rilevato
@@ -1320,7 +1320,7 @@ il modello in cui $W$ viene spiegata da $V$, quanto varranno $\beta_0'$ e $\beta
 ```{r}
 detach(RGX)
 rm(list = ls())
-source("/home/pat/OneDrive/Stat/src/main-functions.R")
+
 
 i1 <- 1; 
 i2 <- 0
@@ -1342,7 +1342,7 @@ nomex <- "Spesa in investimenti Green"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
   
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 
 ```
 
@@ -1526,7 +1526,7 @@ eps <- rnorm(n,0,3)
 y <- -5+x + eps
 
 RGX <- regr(x,y)
-attach(RGX)
+ls2e(RGX)
 ```
 
 Sono stati analizzati `r n` comuni della provincia di Modena e su ogni comune è stato rilevato
@@ -1595,7 +1595,7 @@ nnn  <- round(nnn/sum(nnn)*n)
 nomex <- "Bilancio 2020"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ imprese della provincia di Milano è stato 
@@ -1828,7 +1828,7 @@ eps <- rnorm(n,0,1)
 y <- round(5+x + eps,1)
 
 RGX <-regr(x,y)
-attach(RGX)
+ls2e(RGX)
 ```
 
 Sono stati analizzati `r n` comuni della provincia di Bologna e su ogni comune è stato rilevato
@@ -1894,7 +1894,7 @@ nnn  <- round(nnn/sum(nnn)*n)
 nomex <- "Bilancio 2020"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ imprese della provincia di Milano è stato 
@@ -2101,7 +2101,7 @@ eps <- rnorm(n,0,1)
 y <- round(5+x + eps,1)
 
 RGX <-regr(x,y)
-attach(RGX)
+ls2e(RGX)
 ```
 
 Sono stati analizzati `r n` comuni della provincia di Bologna e su ogni comune è stato rilevato
@@ -2165,7 +2165,7 @@ nnn  <- round(nnn/sum(nnn)*n)
 nomex <- "Bilancio 2020"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
-source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ imprese della provincia di Milano è stato 
@@ -2357,7 +2357,7 @@ eps <- rnorm(n,0,1)
 y <- round(6+1.1*x + eps,1)
 
 RGX <- regr(x,y)
-attach(RGX)
+ls2e(RGX)
 ```
 
 Sono stati analizzati `r n` comuni della provincia di Bologna e su ogni comune è stato rilevato
