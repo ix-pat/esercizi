@@ -1,0 +1,1065 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+```{r , include=FALSE}
+rm(list = ls())
+source("../src/main-functions.R")
+source(src_("main.R"))
+source(src_("intro.R"))
+s2=1
+ 
+i1 <- 1
+i2 <- 0
+item <- function(){
+it <- (paste(letters[i2],".",sep = ""))
+return(it)}
+
+```
+
+\part{Esercizi per argomento}
+
+# Esercizi di Statistica Descrittiva
+
+## Versione senza contesto
+
+### Variante A
+
+```{r 1}
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 383      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+source("../src/stat-base.R")
+```
+
+Sono stati analizzati `r n` individui per investigare su `r nomex`. É riportata qui di seguito la distribuzione in classi espressa in frequenza relativa.
+
+```{r 2}
+kable((dat3[1:(k+1),c(1:2,4)]),booktabs=T,escape = F,linesep="")
+```
+
+`r i2 <- i2+1;item()` Disegnare l'istogramma di densità percentuale.
+
+:::{.sol data-latex=""}
+Ricordando che: 
+
+- $n_j=f_j\cdot n$, 
+- $b_j=x_{j+1}-x_{j}$, 
+- $h_j=f_j/b_j\times 100$, 
+
+si consiglia di mettere i dati in tabella:
+
+```{r 3}
+tabl(dat3[1:(k+1),c(1:7)])
+```
+
+```{r 4}
+histp()
+axis(1,brk)
+axis(2)
+```
+:::
+
+`r p=0.65; X<-dat2`
+`r i2 <- i2+1;item()`   calcolare il valore approssimato del percentile  $`r p*100`$-esimo, e tracciarlo nell'istogramma.
+
+:::{.sol data-latex=""}
+```{r 5,results='asis'}
+cat(percentile(p = p))
+```
+
+```{r 6}
+histp()
+axis(1,brk,las=2)
+axis(2)
+h.int(x1 = 0,x2 = Q.int(p),col=4,density=10)
+axis(1,round(Q.int(p),4),las=2,col.axis=2)
+text((min(brk)+Q.int(p))/2,2.5,paste(p*100,"%"),cex=3)
+text((max(brk)+Q.int(p))/2,2.5,paste((1-p)*100,"%"),cex=3)
+```
+:::
+
+`r i2 <- i2+1;item()` Qual è il numero di individui con `r nomex` superiore a 5.2?
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+  \#(X>5.2) &=&  (f_4+f_5)\times n\\
+            &=& (`r dat2$fj[4]`+`r dat2$fj[4]`)\times `r n`\\
+            &=& `r sum(dat2$fj[4:5])*n`,\text{ o alternativamente}\\
+            &=& (1-F_3)\times n\\
+            &=& (1-`r dat2$Fj[3]`)\times `r n`\\
+            &=& `r (1-dat2$Fj[3])*n`
+\end{eqnarray*}
+:::  
+
+`r i2 <- i2+1;item()`   Analizzare la relazione tra media, mediana e moda alla luce del istogramma di densità.
+
+:::{.sol data-latex=""}
+È presente un'evidente asimmetria positiva (coda lunga a dx) e quindi
+
+\[Moda>x_{0.5}>\bar x\]
+:::
+
+### Variante B 
+
+```{r 7}
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 250      # ampiezza campionaria
+a <- 4
+b <- 1
+k <- 4
+L <- 10
+samp <- (rbeta(n,a,b)*L)
+brk  <- round(L*qbeta((0:k)/(k),a,b),0)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "dati-x"
+source("../src/stat-base.R")
+```
+
+`r i1 <- i1+1; i2 <- 0`   Sono stati analizzati `r n` individui per investigare su `r nomex`. È riportata qui di seguito la distribuzione in classi espressa in frequenza assoluta.
+
+```{r}
+tabl((dat3[1:(k+1),c(1:3)]))
+```
+
+`r i2 <- i2+1;item()`   Disegnare l'istogramma di densità percentuale.
+
+:::{.sol data-latex=""}
+Ricordando che: 
+
+- $f_j=n_j/n$, 
+- $b_j=x_{j+1}-x_{j}$, 
+- $h_j=f_j/b_j\times 100$, 
+
+si consiglia di mettere i dati in tabella:
+
+```{r}
+tabl((dat3[1:(k+1),c(1:7)]))
+```
+:::
+
+`r p=0.25; X<-dat2`
+`r i2 <- i2+1;item()`   calcolare il valore approssimato del percentile  $`r p*100`$-esimo, e tracciarlo nell'istogramma.
+
+:::{.sol data-latex=""}
+```{r,results='asis'}
+cat(percentile(p = p))
+```
+
+```{r}
+histp()
+axis(1,brk,las=2)
+axis(2)
+h.int(x1 = 0,x2 = Q.int(p),col=4,density=10)
+axis(1,round(Q.int(p),4),las=2,col.axis=2)
+text((min(brk)+Q.int(p))/2,2.5,paste(p*100,"%"),cex=3)
+text((max(brk)+Q.int(p))/2,2.5,paste((1-p)*100,"%"),cex=3)
+```
+:::
+
+`r i2 <- i2+1;item()`  Calcolare il numero di individui maggiori del 75-esimo percentile, $x_{0.75}$
+
+:::{.sol data-latex=""}
+Per definizione
+\[
+\%(X\le x_{0.75})=75\%
+\]
+e quindi
+\[
+\%(X> x_{0.75}) = 25%
+\]
+calcoliamo il 25% di $n=`r n`$ e otteniamo
+\[
+\#(X>x_{0.75})=`r n`\times 0.25=`r n*.25`
+\]
+:::
+
+`r i2 <- i2+1;item()`   calcolare il valore approssimato della media aritmetica  $\bar x$ e della varianza $\sigma^2$.
+
+:::{.sol data-latex=""}
+Calcoliamo i valori medi delle classi $\bar x_j$, il loro quadrato $\bar x_j^2$ e li pesiamo con gli $n_j$
+```{r 8}
+tabl((dat3[1:(k+1),c(1:4,8:9)]))
+```
+
+e quindi
+\[
+\bar x= \frac 1n\sum_{j=1}^k\bar x_jn_j=\frac{`r sum(dat2$xn)`}{`r n`}=`r sum(dat2$xn)/n`
+\]
+
+e quindi
+\[
+\sigma^2= \frac 1n\sum_{j=1}^k\bar x_j^2n_j-\bar x^2=\frac{`r sum(dat2$x2n)`}{`r n`}-(`r sum(dat2$xn)/n`)^2=`r sum(dat2$x2n)/n-(sum(dat2$xn)/n)^2`
+\]
+:::
+
+### Variante C
+
+```{r,include=FALSE}
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 200      # ampiezza campionaria
+a <- 1
+b <- 3
+k <- 5
+L <- 150
+nomex <- "dati-x"
+samp <- (rbeta(n,a,b)*L)
+brk  <- round(L*qbeta((0:k)/(k),a,b),0)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "dati-x"
+source("../src/stat-base.R")
+
+sper <- paste("$x_{",round(dat2$Fj[-k],2),"}=",br2[-k],"$",sep="")
+
+```
+
+`r i1 <- i1+1; i2 <- 0`   Sono stati analizzati `r n` individui per investigare su `r nomex`. Sono noti i percentili
+`r sper`, il minimo è `r min(brk)`, il massimo è `r max(brk)`.
+
+`r i2 <- i2+1;item()`   Disegnare l'istogramma di densità percentuale.
+
+:::{.sol data-latex=""}
+Ricordando che: 
+
+- $f_1=F_1$, $f_2=F_2-F_1$,...,$f_j = F_j-F_{j-1}$, 
+- $b_j=x_{j+1}-x_{j}$, 
+- $h_j=f_j/b_j\times 100$, 
+
+si consiglia di mettere i dati in tabella:
+
+```{r}
+tabl((dat3[1:(k+1),c(1:2,4:7)]),digits = c(0,0,3,0,4,2))
+```
+
+e infine disegnare il grafico
+
+```{r}
+histp()
+axis(1,brk,las=2)
+axis(2)
+```
+:::
+
+`r i2 <- i2+1;item()`   Calcolare le frequenze assolute
+
+:::{.sol data-latex=""}
+Ricordando che: 
+\[
+n_j=f_j\times n
+\]
+
+e mettendo in tabella, otteniamo
+
+```{r}
+tabl((dat3[1:(k+1),c(1:2,4:3)]))
+```
+:::
+
+`r i2 <- i2+1;item()`   Calcolare la percentuale approssimata di individui con `r nomex` inferiore a 45 
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+\%(X<45)   &\approx&  \%(X<39)+(45-39)\times h_4\\
+&=& F_3\times 100+(45-39)\times `r dat2$hj[4]`\\
+&=& `r dat2$Fj[3]`\times 100 + 6\times `r dat2$hj[4]`\\
+&=& `r dat2$Fj[3]*100 + 6*dat2$hj[4]`\%
+\end{eqnarray*}
+
+graficamente
+
+```{r}
+histp()
+axis(1,brk,las=2)
+axis(2)
+h.int(x1 = 0,x2 = 45,col=4,density=10)
+axis(1,45,las=2,col.axis=2)
+text((min(brk)+45)/2,.4,paste(round(F.int(45),2)*100,"%"),cex=3)
+text((max(brk)+45)/2,0.1,paste((1-round(F.int(45),2))*100,"%"),cex=3)
+```
+:::
+
+
+`r i2 <- i2+1;item()`   Calcolare la percentuale approssimata di individui con `r nomex` compresa tra 45 e il 90-esimo percentile, $x_{0.90}$.
+
+:::{.sol data-latex=""}
+Per calcolare
+\[
+\%(45< X < x_{0.90})
+\]
+non c'è bisogno di calcolare $x_{0.90}$, infatti dal punto precedente sappiamo che
+
+\begin{eqnarray*}
+\%(X<45)   &\approx&  \%(X<39)+(45-39)\times h_4\\
+&=& F_3+(45-39)\times `r dat2$hj[4]`\\
+&=& `r dat2$Fj[3]`\times 100 + 6\times `r dat2$hj[4]`\\
+&=& `r dat2$Fj[3]*100 + 6*dat2$hj[4]`\%
+\end{eqnarray*}
+dalla teoria sappiamo che
+\[
+\%(X<x_{0.90})=90\%
+\]
+e quindi
+\begin{eqnarray*}
+\%(45< X < x_{0.90}) &=& 90\%-`r dat2$Fj[3]*100 + 6*dat2$hj[4]`\%\\
+                     &=& `r 90-(dat2$Fj[3]*100 + 6*dat2$hj[4])`\%
+\end{eqnarray*}
+
+graficamente
+
+```{r}
+histp()
+axis(1,brk,las=2)
+axis(2)
+h.int(x1 = 0,x2 = Q.int(.9),col="grey")
+h.int(x1 = 0,x2 = 45,col=4,density=10)
+axis(1,45,las=2,col.axis=2)
+axis(1,Q.int(.9),expression(x[0.90]),col.axis=2)
+text((min(brk)+45)/2,.1,paste(round(F.int(45),2)*100,"%"),cex=3)
+text((Q.int(.9)+45)/2,.1,paste(90-round(F.int(45),2)*100,"%"),cex=3)
+text((Q.int(.9)+max(brk))/2,.1,paste(10,"%"),cex=3)
+```
+:::
+
+## Varianti con contesto (eserciziario)
+
+```{r}
+# Basic settings
+set.seed(12)   # per ottenere sempre la stessa simulazione
+n <- 200      # ampiezza campionaria
+a <- 5
+b <- 1
+
+brk  <- c(-.5,9.5,19.5,49.5, 99.5,249.5)
+nnn  <- c( 40,60,50, 30,20)
+nnn  <- round(nnn/sum(nnn)*n)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+vunif <- function(nnn, brk){
+  k <- length(brk)-1
+  br1  <- brk[-(k+1)]
+  br2  <- brk[-1]
+  xi   <- runif(nnn[1],br1[1],br2[1])
+  for (i in 2:k)
+    xi <- c(xi,runif(nnn[i],br1[i],br2[i]))
+  return(xi)
+}
+
+samp <- round(vunif(nnn,brk),2)
+nomex <- "Numero Addetti"
+
+names(samp) <- nomex
+
+source("../src/stat-base.R")
+dat3$`$f_{j\\%}$` <- dat3$`$f_j$`*100
+# kable((dat3[1:(k+1),c(1:2,7)])) %>%
+# 
+n <- length(samp)
+```
+
+### Esercizio: Conteggi 
+
+`r i1 <- i1+1; i2 <- 0`
+
+La figura seguente riporta l'istogramma relativo a un campione
+di 200 imprese classificate sulla base del numero di addetti
+secondo le classi: $0-9$ addetti, $10-19$ addetti, $20-49$ addetti,
+$50-99$ addetti, $100-249$ addetti.
+Si noti che sull'asse delle ordinate è riportata la densità
+percentuale. 
+
+_Si noti che, a causa dell'ampiezza della scala dei valori, i dettagli dell'istogramma **non si leggono** sul grafico e, pertanto, non sono stati riportati gli estremi delle classi sull'asse delle ascisse, $X$, e i dati si evincono dal testo_
+
+```{r}
+ plot(range(brk),range(c(0,dat3$`$h_j$`),na.rm = T),type="n",axes=F,xlab = nomex,ylab = "Denistà percentuale")
+ rect(xleft = br1,ybottom = 0,xright = br2,ytop = dat3$`$h_j$`)
+  axis(1,brk+.5,las=2)
+ axis(2,round(dat3$`$h_j$`,3),las=2)
+# kable((dat3[1:(k),c(1:2,6)])) %>%
+#  
+segments(0,dat2$hj,dat2$xinf,dat2$hj,lty=2)
+```
+
+:::{.sol data-latex=""}
+Il testo fornisce una rappresentazione grafica.
+Per rispondere alle domande successive occorre partire dalla
+rappresentazione in una tabella di frequenze (relative o, come
+conviene in questo caso, percentuali).
+Si devono determinare, quindi, le aree dei rettangoli per ottenere
+le percentuali di unità statistiche contenute nelle varie classi.
+Si procede come segue:
+
+Area Classi disgiunte | Ampiezza Classi congiunte | $\times$densità| frequenze perc.
+-----------------|-------------------|----------------|--------------------
+$A(  0- 9)$  |$=[  9,5 -(-0,5)]$ | $\times 2$ | $= 20\%$
+$A( 10- 19)$ |$=[ 19,5 -  9,5)]$ | $\times 3$ | $= 30\%$
+$A( 20- 49)$ |$=[ 49,5 - 19,5)]$ | $\times 0.833$ | $= 25\%$
+$A( 50- 99)$ |$=[ 99,5 - 49,5)]$ | $\times 0.3$ | $= 15\%$
+$A(100-249)$ |$=[249,5 - 99,5)]$ | $\times 0.066$ | $= 10\%$
+
+A questo punto è possibile costruire la tabella della
+distribuzione delle frequenze percentuali della $X$, numero
+di addetti delle imprese.
+
+```{r}
+tabl((dat3[1:(k),c(1:7)]))
+```
+
+La funzione di ripartizione è utile quando si devono determinare
+la mediana (o la classe che la contiene) e/o la classe che contiene
+un determinato percentile.
+Un'altra definizione di percentile, infatti, utilizza la
+funzione cumulata delle frequenze percentuali, $F_{\%; j}$.
+Il percentile $p$-esimo è il "primo" valore della $x$,
+indicato con $x_{p}$, nel quale la $F_{\%; j}(x_{p})$ è uguale
+o supera il $(100 \times p)$%.
+:::
+
+`r i2 <- i2+1;item()` Qual è l'intervallo con il maggior numero di imprese?
+
+:::{.sol data-latex=""}
+L'intervallo $[10;\ 19]$.
+:::
+
+`r i2 <- i2+1;item()` Qual è il numero di imprese che hanno addetti
+nella classe $[0,\, 9]$?
+
+:::{.sol data-latex=""}
+$f\left( 0 \vdash 10 \right) = \frac{10 \,\times\, 2} {100}\ 200 = 40$ (circa).
+:::
+
+`r i2 <- i2+1;item()` In quale classe si trova il 15$^{o}$ percentile?
+
+:::{.sol data-latex=""}
+Il 15$^{o}$ percentile si trova nella classe $[0;\, 9]$.
+:::
+
+`r i2 <- i2+1;item()` Qual è l'intervallo che contiene la mediana?
+
+:::{.sol data-latex=""}
+Il 50\% delle imprese è contenuto esattamente nelle prime due classi.
+La mediana si trova dunque tra la fine dell'intervallo
+$[10;\, 19]$ e l'inizio dell'intervallo $[20;\, 49]$.
+Si potrebbe, quindi, dire che la mediana è 20?
+No, perché non è noto come sono distribuite le imprese nella classe
+$[20;\, 49]$; infatti, ipoteticamente, tutte le imprese della classe
+potrebbero avere 49 addetti e, in tal caso la mediana sarebbe 49 o
+la media tra 49 e 19.
+:::
+
+`r i2 <- i2+1;item()` In quale classe si trova il 75$^{o}$ percentile?
+
+:::{.sol data-latex=""}
+Il 75$^{o}$ percentile si trova nella classe $[50;\, 99]$.
+
+NB: il 75\% della frequenza cumulata si trova proprio nella terza
+classe $[20;\, 49]$; perciò un valore successivo potrebbe essere
+il 75$^{o}$ percentile, per esempio 50.
+Non si sa, come già detto per la mediana, se tra i dati vi sia
+una impresa con 50 addetti e, dunque, si può solo dire che la
+classe contenente il 75$^{o}$ percentile è la successiva.
+:::
+
+
+`r i2 <- i2+1;item()` Quale relazione ci si deve attendere
+fra media e mediana per i dati proposti?
+
+:::{.sol data-latex=""}
+L'esame del grafico mostra che vi è una asimmetria a destra
+(o positiva); pertanto, risulta (media$>$mediana); infatti, in
+base ai dati dell'istogramma, eseguendo i calcoli si trova che
+$\bar{x}=43$ e $x_{0,5}=20$.
+:::
+
+`r i2 <- i2+1;item()` Determinare il valore approssimato della mediana,
+assumendo la distribuzione uniforme dei casi contenuti nella classe
+che contiene la mediana.
+
+:::{.sol data-latex=""}
+`r p=0.5; X<-dat2`
+
+```{r,results='asis'}
+cat(percentile(p = p))
+```
+:::
+
+`r i2 <- i2+1;item()` Definizione formale di percentile.
+
+:::{.sol data-latex=""}
+Il $p$-esimo percentile ($0 \le p\le 1$) del carattere $X$
+è quel valore di $X$, indicato con $x_{p}$, tale che
+
+
+\begin{eqnarray*}
+p       &=& F(x_{p}) \\
+p       &=& A(X < x_{p})      \qquad \mbox{Area\ totale\ uguale\ 1} \\
+p \times 100 &=& \%(X < x_{p}) \qquad \mbox{Area\ totale\ uguale\ 100} 
+\end{eqnarray*}
+:::
+
+### Esercizio Dati Continui
+
+`r i1 <- i1+1; i2 <- 0`
+
+```{r}
+# Basic settings
+set.seed(12)   # per ottenere sempre la stessa simulazione
+n <- 3000      # ampiezza campionaria
+a <- 5
+b <- 1
+
+brk  <- c(400,800,1200,1600,2000,3500)
+nnn  <- c( 240,1110,930,600,120)
+nnn  <- round(nnn/sum(nnn)*n)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+vunif <- function(nnn, brk){
+  k <- length(brk)-1
+  br1  <- brk[-(k+1)]
+  br2  <- brk[-1]
+  xi   <- runif(nnn[1],br1[1],br2[1])
+  for (i in 2:k)
+    xi <- c(xi,runif(nnn[i],br1[i],br2[i]))
+  return(xi)
+}
+
+samp <- round(vunif(nnn,brk),2)
+nomex <- "Numero Addetti"
+
+names(samp) <- nomex
+
+source("../src/stat-base.R")
+dat3$`$f_{j\\%}$` <- dat3$`$f_j$`*100
+# kable((dat3[1:(k+1),c(1:2,7)])) %>%
+# 
+n <- length(samp)
+```
+
+L'istogramma seguente mostra la distribuzione per
+classi di cilindrata delle autovetture iscritte al Pubblico
+Registro Automobilistico (dati aggiornati al 31/12/99;
+fonte www.aci.it).
+Il numero di autovetture censite è pari a 32027945; ma,
+per comodità nei calcoli, il numero totale, $n$, è stato
+posto pari a 3000.
+Sopra ogni rettangolo è indicato il valore delle
+densità di frequenza percentuale.
+
+```{r}
+ plot(c(0,range(brk)[2]),range(c(0,dat3$`$h_j$`),na.rm = T),type="n",axes=F,xlab = nomex,ylab = "Denistà percentuale")
+ rect(xleft = br1,ybottom = 0,xright = br2,ytop = dat3$`$h_j$`)
+ axis(1,c(0,brk))
+ axis(2,round(dat3$`$h_j$`,3),las=2)
+# kable((dat3[1:(k),c(1:2,6)])) %>%
+#  
+segments(0,dat2$hj,dat2$xinf,dat2$hj,lty=2)
+
+```
+
+`r i2 <- i2+1;item()` Qual è la percentuale di autovetture comprese nella seconda classe?
+
+:::{.sol data-latex=""} 
+La seconda classe ha ampiezza pari a $1200 - 800 = 400$.
+La densità percentuale è pari a 0.0925 e, quindi, la
+percentuale di autoveicoli con cilindrata compresa in tale
+intervallo è $0.0925 \times 400 = 37\%$. 
+:::
+
+`r i2 <- i2+1;item()` In quale classe cade la mediana?
+
+:::{.sol data-latex=""} 
+La percentuale di autoveicoli nella prima classe è
+$0.02 \,\times\, 400 = 8\%$.
+La percentuale di autoveicoli nella seconda classe è $37\%$.
+La percentuale di autoveicoli nella terza classe è
+$0.0775 \,\times\, 400 = 31\%$.
+Dal momento che $8\% +37\% < 50\%$, mentre
+$8\% +37\% +31\% > 50\%$, la mediana appartiene
+alla terza classe, ovvero è compresa fra 1200cc e 1600cc. 
+:::
+
+`r i2 <- i2+1;item()` Determinare il valore approssimato della mediana,
+assumendo la distribuzione uniforme dei casi contenuti
+nella classe che contiene la mediana.
+
+:::{.sol data-latex=""} 
+Sia $m$ il numero della classe contenente la mediana: `r X<-dat2;p<-.5`
+
+```{r,results='asis'}
+cat(percentile(p = p))
+```
+:::
+
+`r i2 <- i2+1;item()` Qual è la "classe modale" ?
+
+:::{.sol data-latex=""} 
+La "classe modale" è quella con la massima densità di frequenza
+(il rettangolo con l'altezza maggiore) e corrisponde alla classe
+800--1200 con una percentuale (seconda classe) pari a $37\%$.
+In questo caso è anche la classe con la percentuale di più
+alta; infatti, la percentuale di autoveicoli nella terza classe
+è $0.0775 \,\times\, 400 = 31\%$.
+Le altre classi hanno una percentuale inferiore, come si può
+osservare considerando le unità di misura del grafico e i
+relativi valori. 
+:::
+
+`r i2 <- i2+1;item()` Giulio ha una macchina con cilindrata pari a 625cc. Indicare la risposta corretta:
+
+- $\Box \;$ l'auto di Giulio è molto potente, infatti meno del 9\% delle auto ha cilindrata inferiore 
+- $\Box \;$ l'auto di Giulio è molto potente, infatti più del 90\% delle auto ha cilindrata inferiore 
+- $\Box \;$ l'auto di Giulio è poco potente, infatti meno del 9\% delle auto ha cilindrata inferiore 
+- $\Box \;$ l'auto di Giulio è poco potente, infatti più del 9\% delle auto ha cilindrata inferiore 
+
+:::{.sol data-latex=""} 
+l'auto di Giulio è poco potente, infatti meno del 9\% delle auto ha cilindrata inferiore 
+:::
+
+### Esercizio (variante 1) 
+
+`r i1 <- i1+1; i2 <- 0`
+
+La distribuzione delle frequenze assolute della cilindrata
+delle autovetture iscritte al Pubblico Registro Automobilistico
+(dati aggiornati al 31/12/99; fonte www.aci.it) è riportata
+nella tabella seguente.
+Il numero di autovetture censite, per comodità è stato posto
+pari a 3000 (decine di migliaia, si veda l'esercizio precedente).
+
+```{r}
+kable((dat3[1:(k),1:3]),booktabs=T,escape = F,linesep="")
+```
+
+`r i2 <- i2+1;item()` Qual è la percentuale di autovetture comprese nella seconda classe?
+
+:::{.sol data-latex=""} 
+$f_{\%;\, 2} = 100 \,\times\, 1110/3000 = 37\%$. 
+:::
+
+`r i2 <- i2+1;item()` In quale classe cade la mediana?
+
+:::{.sol data-latex=""} 
+Per individuare la classe che contiene la mediana,
+si cumulano le percentuali a partire dalla prima
+classe e ci si arresta appena si supera il 50\%.
+Per completezza e comodità si riporta la seguente
+tabella che contiene le frequenze percentuali e le
+frequenze percentuali cumulate, $F_{\%;\, j}$.
+
+```{r}
+kable((dat3[1:(k),c(1:4,7)]),booktabs=T,escape = F,linesep="")
+```
+
+La classe che contiene la mediana è 120-160 perché in questa
+la frequenza percentuale cumulata ha superato il 50%.
+
+Si noti che un modo diverso di fornire i dati è riportare
+nel grafico: le densità percentuali, $h_{\%;\, j}$, oppure
+le densità di frequenza relativa, $h_{j}$; si ricordi che:
+
+\begin{displaymath}
+h_{j}       = \frac{f_{j}}  {x_{j+1} - x_{j}},  \qquad\qquad
+h_{\%;\, j} = 100\ \frac{f_{j}}  {x_{j+1} - x_{j}}
+            = \frac{f_{\%;\, j}} {x_{j+1} - x_{j}}\, .
+\end{displaymath}
+
+Si noti che in casi come questi, in cui si riportano le
+frequenze assolute, $n_{j}$, occorre esaminare con attenzione
+la leggenda dell'asse delle ordinate perché può capitare
+che le $n_{j}$ si riportino direttamente sull'asse delle
+ordinate.
+:::
+
+### Esercizio (variante 2)
+
+`r i1 <- i1+1; i2 <- 0`
+
+La distribuzione delle frequenze relative della cilindrata
+delle autovetture iscritte al Pubblico Registro Automobilistico
+(dati aggiornati al 31/12/99; fonte www.aci.it) è riportata
+nella tabella seguente.
+Il numero di autovetture censite è pari a 320.27 centinaia
+di migliaia ($10^{5}$).
+
+```{r}
+kable((dat3[1:(k),c(1:2,4)]),booktabs=T,escape = F,linesep="")
+```
+
+`r i2 <- i2+1;item()` Disegnare l'istogramma (delle densità relative) della
+distribuzione della cilindrata delle auto in circolazione.
+
+:::{.sol data-latex=""} 
+Per disegnare l'istogramma occorrono le altezze, $h_{i}$,
+dei rettangoli da disegnare per ogni classe: i calcoli sono
+riportati di séguito:
+
+
+\begin{eqnarray*}
+h_{j} &=& \frac{f_{j}} {b_{j+1} - b_{j}}                \\
+h_{1} &=& \frac{0.08} { 800 -  400} =  0.0002   \\
+h_{2} &=& \frac{0.37} {1200 -  800} =  0.000925 \\
+h_{3} &=& \frac{0.31} {1600 - 1200} =  0.000775 \\
+h_{4} &=& \frac{0.20} {2000 - 1600} =  0.000500 \\
+h_{5} &=& \frac{0.04} {3500 - 2000} =  0.00002\bar{6} \, .
+\end{eqnarray*}
+
+
+Queste sono le altezze per disegnare i rettangoli nel grafico
+sopra riportato.
+
+Le altre domande possono essere simili alle precedenti.
+:::
+
+### Esercizio (variante 3) 
+
+`r i1 <- i1+1; i2 <- 0`
+
+L'esame della distribuzione della cilindrata delle autovetture
+iscritte al Pubblico Registro Automobilistico (dati aggiornati
+al 31/12/99; fonte www.aci.it) ha fornito i seguenti dati:
+
+-  l'$8^{o}$  percentile è  800cc,
+- il $45^{o}$ percentile è 1200cc,
+- il $76^{o}$ percentile è 1600cc,
+- il $96^{o}$ percentile è 2000cc.
+
+Il valore minino della cilindrata è 400cc e
+il valore massimo è 3500cc.
+Il numero di autovetture censite è pari a 3000
+(dato di comodo, come detto in precedenza). 
+
+Si noti che nel compito di esame i percentili sono spesso
+espressi in simboli, come segue, dove, per semplificare,
+si sono omesse le unità di misura e altre indicazioni
+perché la corrispondenza tra i simboli e le espressioni
+verbali sembra ovvia: 
+
+- $x_{0.08}= 800$,
+- $x_{0.45}= 1200$,
+- $x_{0.76}= 1600$,
+- $x_{0.96}= 2000$.
+
+Il minimo e il massimo sono, rispettivamente,
+$x_{\min}=$ 400 e $x_{\max}= 3500$.
+
+`r i2 <- i2+1;item()` Disegnare l'istogramma (delle densità percentuali) della
+distribuzione della cilindrata delle auto in circolazione.
+
+:::{.sol data-latex=""} 
+Per disegnare l'istogramma occorrono le altezze, $h_{j}$,
+dei rettangoli da disegnare per ogni classe.
+Per ottenere le altezze occorre determinare le percentuali di
+autovetture in circolazione che appartengono alle corrispondenti
+classi di cilindrata.
+I dati del problema forniscono tutti i percentili, dai quali si
+può ricavare le percentuali di ogni classe: perché si possa
+procedere compiutamente occorre conoscere il minimo e il massimo
+del carattere in oggetto.
+
+- La prima classe va, dal minimo, $x_{(1)}$, all'$8^{o}$ percentile;
+ossia, è  400-800cc. 
+- La seconda classe va, dall'$8^{o}$ percentile al $45^{o}$ percentile;
+ossia, è  800-1200cc. 
+- La terza classe va, dal $45^{o}$ percentile al $76^{o}$ percentile;
+ossia, è  1200-1600cc. 
+- La quarta classe va, dal $76^{o}$ percentile al $96^{o}$ percentile;
+ossia, è  1600-2000cc. 
+- La quinta classe va, dal $96^{o}$ percentile al massimo, $x_{(n)}$;
+- La settima classe va, dal $99^{o}$ percentile al massimo, $x_{(n)}$;
+ossia, è  2000-3500cc. 
+
+Per eseguire i calcoli si noti, poi, che il percentile rappresenta
+la percentuale cumulata dei soggetti; per conoscere, quindi, la
+percentuale di una classe occorre sottrarre al percentile
+"corrente" il valore di quello della classe precedente:
+\fbox{$f_{\%;\, j} = 100\, (F_{j} - F_{j-1})$}$\,$ oppure
+\fbox{$f_{\%;\, j} = F_{\%;\, j} - F_{\%;\, j-1}$}$\,$ oppure ancora
+\fbox{$f_{\%;\, j} = 100\, (p_{j} - p_{j-1})$}$\,$.
+Le densità sono:
+
+\begin{eqnarray*}
+h_{j} &=& \frac{100\ (F_{j} - F_{j-1})} {b_{j+1} - b_{j}}
+       =  \frac{f_{\%;\, j}} {b_{j+1} - b_{j}} \\
+h_{\%;\, 1} &=& \frac{  8 -  0} { 800 -  400} =  0.0200     \\
+h_{\%;\, 2} &=& \frac{ 45 -  8} {1200 -  800} =  0.0925     \\
+h_{\%;\, 3} &=& \frac{ 76 - 45} {1600 - 1200} =  0.0775     \\
+h_{\%;\, 4} &=& \frac{ 96 - 76} {2000 - 1600} =  0.0500     \\
+h_{\%;\, 5} &=& \frac{100 - 96} {3500 - 2000} =  0.002\bar{6} \, .
+\end{eqnarray*}
+
+Queste sono le altezze per disegnare i rettangoli nel grafico
+sopra riportato.
+Si noti che nel calcolo delle percentuali di classe $f_{0}=0$
+e $f_{J}=100$, dove $J$ è l'indice dell'ultima classe e,
+quindi, il percentile di $x_{(n)}$ (il massimo).
+In tabella:
+
+```{r}
+tabl((dat3[1:(k),c(1:2,7,4,5,6)]))
+```
+
+e di cosegeunza otteniamo
+
+```{r}
+ plot(c(0,range(brk)[2]),range(c(0,dat3$`$h_j$`),na.rm = T),type="n",axes=F,xlab = nomex,ylab = "Denistà percentuale")
+ rect(xleft = br1,ybottom = 0,xright = br2,ytop = dat3$`$h_j$`)
+ axis(1,c(0,brk))
+ axis(2,round(dat3$`$h_j$`,3),las=2)
+# kable((dat3[1:(k),c(1:2,6)])) %>%
+#  
+segments(0,dat2$hj,dat2$xinf,dat2$hj,lty=2)
+
+```
+:::
+
+### Esercizio Dati non ordinati
+
+`r i1 <- i1+1; i2 <- 0`
+
+Con riferimento a molti processi industriali, si usa il
+termine "Work-In-Process" (spesso abbreviato con WIP).
+Negli impianti di produzione dei libri, il WIP rappresenta
+il tempo necessario per piegare, riunire, cucire, e rilegare
+i fogli che provengono da una pressa.
+I dati che seguono sono relativi ai tempi di lavorazione
+(tempo, in giorni, che intercorre tra quando i libri vengono
+stampati e quando sono impacchettati nei cartoni) per due
+campioni di 20 libri estratti da due impianti di produzione
+(D. M. Levine _et al_., 2000, _Business Statistics:
+A First Course_, 2.nd Edition, Prentice-Hall. Tr. it. (2002),
+_Statistica_, Apogeo, Milano, p. 126).
+
+```{r}
+I1 <- c( 5.62  , 5.29  ,16.25  ,10.92  ,11.46  ,21.62  , 8.45  , 8.58  , 5.41  ,11.42 ,
+11.62  , 7.29  , 7.50  , 7.96  , 4.42  ,10.50  , 7.58  , 9.29  , 7.54  , 8.92 )
+
+I2 <- c(9.54  ,11.46  ,16.62  ,12.62  ,25.75  ,15.41  ,14.29  ,13.13  ,13.71  ,10.04,
+ 5.75  ,12.46  , 9.17  ,13.21  , 6.00  , 2.33  ,14.25  , 5.37  , 6.25  , 9.71)
+
+
+stp <- (rbind(rbind(I1[1:10],I1[11:20]),rbind(I2[1:10],I2[11:20])))
+row.names(stp)<- c("Impianto 1","","Impianto 2","")
+kable(stp,booktabs=T,escape = F,linesep="",row.names = T)
+
+```
+
+Determinare:             
+
+`r i2 <- i2+1;item()`  il campo di variazione,
+`r i2 <- i2+1;item()` la mediana,
+`r i2 <- i2+1;item()`  la media sapendo che la somma è pari a 187.64 per l'impianto A e 227.07 per l'impianto B.
+
+:::{.sol data-latex=""} 
+Per rispondere alle tre domande conviene ordinare prima i dati, come
+riportato nella tabella seguente.
+
+```{r}
+I1 <- sort(I1)
+
+I2 <- sort(I2)
+
+stp <- (rbind(rbind(I1[1:10],I1[11:20]),rbind(I2[1:10],I2[11:20])))
+row.names(stp)<- c("Impianto 1","","Impianto 2","")
+kable(stp,booktabs=T,escape = F,linesep="",row.names = T)
+
+```
+
+Il campo di variazione è dato dalla differenza tra il massimo osservato
+e il minimo.
+
+
+\begin{eqnarray*}
+\mbox{CdV}(A) &=& x_{A;\, (n)} - x_{A;\, (1)} = 21.62 - 4.42 = 17.2 \,. \\
+\mbox{CdV}(B) &=& x_{B;\, (n)} - x_{B;\, (1)} = 25.75 - 2.33 = 23.42 \,.
+\end{eqnarray*}
+
+
+a. Il campo di variazione dell'impianto A è più piccolo di quello di B.
+Se le distribuzioni dei due insiemi di dati sono simili, allora ciò
+comporta un minore variabilità dei dati (o della prestazione)
+dell'impianto A.
+
+b. La mediana per un numero di osservazioni pari è data da:
+
+
+\begin{eqnarray*}
+x_{A;\, 0.5} &=& \frac{1} {2}\ \left( x_{A;\, (n/2)} + x_{A;\, (n/2)+1} \right)
+              =  \frac{8.45 + 8.58} {2} = 8.515 \,. \\
+x_{B;\, 0.5} &=& \frac{1} {2}\ \left( x_{B;\, (n/2)} + x_{B;\, (n/2)+1} \right)
+              =  \frac{11.46 + 12.46} {2} = 11.96 \,.
+\end{eqnarray*}
+
+
+La mediana dell'impianto A è inferiore a quella dell'impianto B,
+che comporta presumibilmente una diversa dislocazione (o non
+sovrapponibilità) dei due istogrammi.
+
+c. La media è data da:
+
+
+\begin{eqnarray*}
+\bar{x}_{A} &=& \frac{187.64} {20} = 9.38 \,. \\
+\bar{x}_{B} &=& \frac{227.07} {20} = 11.35 \,.
+\end{eqnarray*}
+
+
+Idem, come sopra: la media dell'impianto A è inferiore a quella
+dell'impianto B, che comporta una diversa dislocazione (o non
+sovrapponibilità) dei due istogrammi.
+Tale esito mostra anche che l'impianto A è pi\'u efficiente
+dell'impianto B perché A produce in un tempo medio inferiore
+a quello di B. 
+:::
+
+`r i2 <- i2+1;item()`  $\,$il primo quartile,
+`r i2 <- i2+1;item()`  $\,$il terzo quartile,
+`r i2 <- i2+1;item()`  $\,$la differenza interquartile.
+
+:::{.sol data-latex=""} 
+Si ragiona sui dati ordinati sopra riportati. 
+
+d.  Il primo quartile è dato dal valore della $X$ relativa
+al soggetto nella posizione successiva a $\lfloor n\, p \rfloor =
+\lfloor 20 \,\times\, 0.25 \rfloor = 5$, ossia $x_{A;\, 0.25} =
+x_{A;\ (\lfloor n\, p \rfloor + 1)} = x_{A;\ (6)} = \textbf{7.50}$
+e $x_{B;\, 0.25} = x_{B;\ (\lfloor n\, p \rfloor + 1)} =
+x_{B;\ (6)} = \textbf{9.17}$.
+Si noti che il simbolo $\lfloor \cdot \rfloor$ indica la parte
+intera dell'argomento.
+Tale regola è una approssimazione, adottata per semplificare
+il procedimento; tuttavia, in questo caso, si può ottenere un
+risultato pi\'u preciso.
+Si tratta, infatti, di un numero divisibile per 4; pertanto, il
+primo quartile sarà dato dalla media dei valori corrispondenti
+ai soggetti 5.o e 6.o in graduatoria in modo da avere a sinistra
+esattamente 5 soggetti (il 25\%) e a destra 15 soggetti (il 75\%):
+
+
+\begin{eqnarray*}
+x_{A;\, 0.25} &=& \frac{1} {2}\ \left( x_{A;\, (n/4)} + x_{A;\, (n/4)+1} \right)
+               =  \frac{7.29 + 7.50} {2} = 7.395 \,. \\
+x_{B;\, 0.25} &=& \frac{1} {2}\ \left( x_{B;\, (n/4)} + x_{B;\, (n/4)+1} \right)
+               =  \frac{6.25 + 9.17} {2} = 7.71 \,.
+\end{eqnarray*}
+
+e.  Il terzo quartile è dato dal valore della $X$ relativa
+al soggetto nella posizione successiva a $\lfloor n\, p \rfloor =
+\lfloor 20 \,\times\, 0.75 \rfloor = 15$, ossia $x_{A;\, 0.75} =
+x_{A;\ (\lfloor n\, p \rfloor + 1)} = x_{A;\ (16)} = \textbf{11.42}$
+e $x_{B;\, 0.75} = x_{B;\ (\lfloor n\, p \rfloor + 1)} =
+x_{B;\ (16)} = \textbf{14.25}$.
+L'approssimazione è stata adottata, come già detto, per semplificare
+il procedimento, ma, in questo caso, si può ottenere un risultato pi\'u
+preciso perché si tratta di un numero divisibile per 4; pertanto, il terzo
+quartile sarà dato dalla media dei valori corrispondenti ai soggetti 15.o
+e 16.o in graduatoria in modo da avere a sinistra esattamente 15 soggetti
+(il 75\%) e a destra 5 soggetti (il 15\%):
+
+
+\begin{eqnarray*}
+x_{A;\, 0.75} &=& \frac{1} {2}\ \left( x_{A;\, (3n/4)} + x_{A;\, (3n/4)+1} \right)
+               =  \frac{10.92 + 11.42} {2} = 11.17 \,. \\
+x_{B;\, 0.75} &=& \frac{1} {2}\ \left( x_{B;\, (3n/4)} + x_{B;\, (3n/4)+1} \right)
+               =  \frac{13.71 + 14.25} {2} = 13.98 \,.
+\end{eqnarray*}
+
+f.  La differenza interquartile è data da:
+
+
+\begin{eqnarray*}
+DI_{A} &=& x_{A;\, 0.75} - x_{A;\, 0.25} = 11.17 - 7.395 = 3.775 \,. \\
+DI_{B} &=& x_{B;\, 0.75} - x_{B;\, 0.25} = 13.98 - 7.71  = 6.27 \,.
+\end{eqnarray*}
+:::
+
+`r i2 <- i2+1;item()` Calcolare la varianza, sapendo che
+$\sum_{i=1}^{20} x_{A;\, i}^{2} = 2064.08$ e
+$\sum_{i=1}^{20} x_{B;\, i}^{2} = 3077.31$. 
+`r i2 <- i2+1;item()` Calcolare la deviazione standard.
+
+:::{.sol data-latex=""} 
+
+g.  Per determinare la varianza, che è il quadrato della deviazione
+standard, si utilizza la formula che consente di ridurre gli errori
+di arrotondamento.
+
+
+\begin{eqnarray*}
+\sigma_{A}^{2} &=& \frac{1} {n}\ \sum_{i=1}^{n} x_{i}^{2} - \bar{x}^{2}
+                =  \frac{1} {20}\ 2064.08 - (9.38)^{2} = 15.18 \,. \\
+\sigma_{B}^{2} &=& \frac{1} {n}\ \sum_{i=1}^{n} x_{i}^{2} - \bar{x}^{2}
+                =  \frac{1} {20}\ 3077.31 - (11.35)^{2} = 24.96 \,.
+\end{eqnarray*}
+
+h.  Per la deviazione standard si ha:
+
+
+\begin{eqnarray*}
+\sigma_{A} &=& \sqrt{ \frac{1} {n}\ \sum_{i=1}^{n} x_{i}^{2} - \bar{x}^{2} }
+            =  \sqrt{ \frac{1} {20}\ 2064.08 - (9.38)^{2} } = 3.90 \,. \\
+\sigma_{B} &=& \sqrt{ \frac{1} {n}\ \sum_{i=1}^{n} x_{i}^{2} - \bar{x}^{2} }
+            =  \sqrt{ \frac{1} {20}\ 3077.31 - (11.35)^{2} } = 5.00 \,.
+\end{eqnarray*}
+
+
+Idem, come sopra: la variabilità dei dati dell'impianto A è
+inferiore a quella dell'impianto B, che comporta una maggiore
+concentrazione dell'istogramma rafforzando le differenze (tra i
+due impianti) già evidenziate. 
+:::
+
+`r i2 <- i2+1;item()`   La distribuzione è asimmetrica?
+Se sì, di quale tipo di asimmetria si tratta?
+`r i2 <- i2+1;item()`  Dalle risposte date, emergono differenze tra i due impianti?
+
+:::{.sol data-latex=""} 
+i.  La distribuzione dell'impianto A presenta una pronunciata
+asimmetria a destra (obliqua a destra o positiva), mentre quella
+dell'impianto B una minore asimmetria a sinistra (obliqua a sinistra
+o negativa).
+Per verificare numericamente questa affermazione si devono
+confrontare le media e la mediana:
+
+
+\begin{eqnarray*}
+x_{A;\, 0.5} &=& 8.515\ <\ \bar{x}_{A}= 9.38 \quad\Rightarrow\quad
+                 \mbox{obliqua (o asimmetrica) a destra} \\
+x_{B;\, 0.5} &=& 11.96\ >\ \bar{x}_{B}= 11.35 \quad\Rightarrow\quad
+                 \mbox{obliqua (o asimmetrica) a sinistra}\, .
+\end{eqnarray*}
+
+
+Si noti, tuttavia, che l'asimmetria a sinistra è poco evidente
+perché lo scarto tra i due valori è solo di circa mezzo decimo
+dell'unità, equivalente a circa il 5\% del valore della media.
+
+j. Dalle risposte date si evincono alcune differenze:             
+
+- la media dell'impianto A è inferiore di circa 2 punti;
+- la variabilità dell'impianto A è inferiore di quella di B;
+- l'asimmetria dell'impianto A è più pronunciata di quella di B.
+
+Si può concludere che l'impianto A è più efficiente
+dell'impianto B di circa due giorni e risulta anche più
+"costante" nella produzione perché il tempo di produzione
+presenta una variabilità inferiore.  
+:::
+

@@ -1,0 +1,1000 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+```{r regr}
+rm(list=ls())
+source("/home/pat/OneDrive/Stat/src/main-functions.R")
+source(src_("main.R"))
+source(src_("intro.R"))
+fig.def(2.5,3.5)
+
+i1 <- 1; 
+i2 <- 0
+item <- function(new=F){
+  if (new) assign("i2",1, envir = .GlobalEnv) else assign("i2",i2 + 1, envir = .GlobalEnv)
+  it <- (paste(letters[i2],".",sep = ""))
+return(it)}
+
+
+item2 <- function(new=F,start=F){
+  if (start) assign("i1",0, envir = .GlobalEnv)
+  if (new)   assign("i1",i1 + 1, envir = .GlobalEnv)
+  if (new)   assign("i2",1, envir = .GlobalEnv) else assign("i2",i2 + 1, envir = .GlobalEnv)
+  it <- (paste(i1,".",letters[i2],sep = ""))
+return(it)}
+
+
+i2 <- 1
+
+```
+
+# Esericizi sulla Regressione
+
+## Esercizio 1
+
+Si sono raccolti i seguenti valori per la variabile indipendente
+$X$, indice delle importazioni, e la variabile dipendente $Y$,
+indice della produzione industriale (dati artificiali).
+
+\small
+```{r,warning=FALSE,message=FALSE}
+dati <- data.frame(
+i = c(1    ,2    ,3    ,4    ,5    ,6    ,7    ,8    ,9    ,10   ,11   ,12   ,13   ,14   ,15   ,16),
+x = c(102  ,105  ,107  ,108  ,109  ,109  ,110  ,112  ,113  ,115  ,116  ,118  ,119  ,120  ,121  ,122 ),
+y = c(107  ,108  ,109  ,110  ,111  ,112  ,112  ,116  ,118  ,121  ,123  ,126  ,128  ,130  ,131  ,133 )
+)
+x <- dati$x
+y <- dati$y
+
+names(dati) <- c("$i$","$x$","$y$")
+tabl(t(dati),row.names = T)
+attach(regr(x,y))
+
+fig.def(width = 5)
+```
+\normalsize
+
+`r item(T)`  Calcolare i parametri $\beta_{0}$ e $\beta_{1}$ della
+retta di regressione in cui $Y$ è spiegata attraverso $X$.
+
+(Suggerimento: $\bar{x} = 112.875~~`r mx`$; $\sigma_{X} = 5.89359~~`r sx`$;
+$\bar{y} = 118.4375$;  $\sigma_{Y} = 8.74620$; $\text{cov}(X,Y)= 50.74219$).
+NB: ora si danno le somme, le somme dei quadrati e dei prodotti:
+$\sum_{i=1}^{n} x_{i}$, $\sum_{i=1}^{n} x_{i}^{2}$,
+$\sum_{i=1}^{n} y_{i}$, $\sum_{i=1}^{n} y_{i}^{2}$,
+$\sum_{i=1}^{n} x_{i}\, y_{i}$.
+
+:::{.sol data-latex=""}
+
+\begin{eqnarray*}
+\widehat{\beta}_{1} &=& r \frac{\sigma_{Y}} {\sigma_{X}}
+                     =  \frac{\text{cov}(X,Y)} {\sigma_{X}^{2}}
+                     =  \frac{`r co`} {(`r sx`)^{2}} = `r b1`  \\
+\widehat{\beta}_{0} &=& \overline{y} - \widehat{\beta}_{1} \overline{x}
+                     =  `r my` - `r b1` \times `r mx` = `r b0`.
+\end{eqnarray*}
+:::
+
+
+`r item()`   Valutare la bontà di adattamento del modello precedente.
+ 
+:::{.sol data-latex=""}
+
+\begin{eqnarray*}
+r     &=& \frac{\text{cov}(X,Y)} {\sigma_{X}\ \sigma_{Y}}
+       =  \frac{`r co`} {`r sx` \times `r sy`} = `r r`\\
+r^{2} &=& (`r r`)^{2} = `r r^2`
+\end{eqnarray*}
+ 
+L'adattamento del modello ai dati è soddisfacente.
+:::
+
+`r item()`    Rappresentare nel diagramma di dispersione la retta di regressione.
+
+:::{.sol data-latex=""}
+Per disegnare velocemente la retta si individuano nel grafico due punti:
+(1)il punto medio $(\bar{x},\, \bar{y})$, che è già noto; e un solo
+punto "estremo" nel grafico, che può essere $x=100$ o $x=120$
+(i numeri "tondi" facilitano il calcolo e il disegno).
+Tramite l'equazione della retta di regressione si stima
+la coordinata corrispondente:
+
+
+```{r}
+plot(x,y,axes=F,xlim=c(100,125),ylim=c(95,135))
+axis(2,c(b0+b1*100,b0+b1*120),round(c(b0+b1*100,b0+b1*120),3),las=2)
+axis(1)
+segments(c(100,120),0,c(100,120),c(b0+b1*100,b0+b1*120),lty = 2)
+segments(0,c(b0+b1*100,b0+b1*120),c(100,120),c(b0+b1*100,b0+b1*120),lty = 2)
+abline(b0,b1,col=ared)
+```
+ 
+\begin{eqnarray*}
+\widehat{y} &=& -46.457 + 1.461 \,\times\, 100 = 99.629
+                \qquad \mbox{per $x=100$} \qquad OY= 99.629 \\
+\widehat{y} &=& -46.457 + 1.461 \,\times\, 120 = 128.846
+                \qquad \mbox{per $x=120$} \qquad OY= 128.846\, .
+\end{eqnarray*}
+ 
+La "piccola" scala degli assi può portare a disegnare una retta
+non appropriata; l'ispezione visiva aiuta, in questi casi, meglio
+di quella numerica a disegnare una "buona" retta di regressione.
+:::
+
+
+
+`r item()`  Fornire una interpretazione dei parametri della retta di regressione.
+ 
+:::{.sol data-latex=""}
+I parametri della retta di regressione sono $\beta_{0}$ e $\beta_{1}$.
+Il primo, $\beta_{0},$ rappresenta l'intercetta della retta, ovvero il
+punto in cui la retta interseca l'asse delle ordinate.
+Il secondo parametro, $\beta_{1}$, rappresenta la pendenza della retta
+(chiamato anche coefficiente angolare), ovvero l'incremento verticale
+corrispondente a un incremento orizzontale unitario e coincide, perciò,
+con la tangente dell'angolo compreso fra la retta e l'asse delle ascisse.
+
+Quando si chiede di fornire una interpretazione dei parametri della retta
+di regressione, tuttavia, si intende che il candidato interpreti anche
+i valori numerici di $\beta_{0}$ e $\beta_{1}$ effettivamente calcolati
+in precedenza, alla luce del fenomeno descritto da $X$ e $Y$.
+In questo caso, l'indice della produzione industriale, secondo il modello
+stimato, è dato da
+$$y= `r b0` + `r b1` x$$
+ossia, è composto da un quantitativo fisso di $`r b0`$ quando l'indice
+delle importazione è zero ($X=0$), un caso molto raro (ma impossibile
+nel mondo attuale), a cui si aggiungono `r b1` per ogni unità in più
+dell'indice delle importazioni.
+:::
+
+`r item()`   Calcolare un indicatore che sintetizzi l'ordine
+di grandezza dei residui della retta di regressione.
+ 
+:::{.sol data-latex=""}
+La media quadratica dei residui della retta di regressione coincide con
+il RMSE e rappresenta una sintesi della dispersione dei residui intorno
+alla retta di regressione. Si calcola con la formula:
+ 
+\begin{displaymath}
+\hat\sigma_\varepsilon
+= \sigma_{Y}\ \sqrt{1- r^2_{XY}} = `r sy`(1-`r r`^2) = `r seh`
+\end{displaymath}
+::: 
+
+`r item()`   Prevedere il valore dell'indice industriale per un valore
+dell'indice delle importazioni pari a 120, ossia $x=120$.
+ 
+:::{.sol data-latex=""}
+Si determina il valore previsto tramite la retta di regressione:
+ 
+\begin{eqnarray*}
+\widehat{Y}_{i}     &=& `r b0` + `r b1`\times 120 \\
+\widehat{y}_{x=120} &=& `r b0+b1*120`
+\end{eqnarray*}
+:::
+
+`r item()`   Dal diagramma di dispersione sotto riportato,
+spiegare se la retta di regressione è adeguata o no a
+rappresentare il fenomeno.
+
+```{r}
+fig.def(2.8,4.5)
+```
+ 
+```{r}
+plot(x,es,axes=F,ylab=expression(hat(epsilon[i])))
+axis(1)
+axis(2)
+```
+
+:::{.sol data-latex=""}
+L'ispezione visiva dei dati potrebbe suggerire anche l'esistenza
+di una certa NON linearità.
+Non vi sono punti leva; in ogni caso, la non linearità impone
+di modellarla prima di cercare i punti leva.
+:::
+
+`r item()`   Si consideri il diagramma dei residui sotto riportato.
+Tracciare la retta dei residui.
+Commentare la loro forma e spiegare se sono indipendenti o presentano
+ancora una "struttura", un andamento peculiare.
+
+
+:::{.sol data-latex=""}
+La retta dei residui è parallela all'asse delle $X$, ossia coincide con esso.
+Il grafico dei residui evidenzia ancora la supposta la NON linearità;
+infatti, i residui mostrano un andamento "V", tipica indicazione di
+non linearità.
+
+```{r}
+fig.def(2.8,4.5)
+```
+
+```{r}
+plot(x,es,axes=F,ylab=expression(hat(epsilon[i])))
+axis(1)
+axis(2)
+abline(h=0,lty=2)
+lines(predict(smooth.spline(x,es,df = 6),seq(min(x),max(x),length=101)),col=ared)
+```
+:::
+
+`r item()`  
+Verificare al livello di significatività dell'1% ($\alpha=0.01$)
+l'ipotesi che la pendenza della retta di regressione sia uguale a
+1 contro l'alternativa che sia maggiore di 1
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+res <- se_beta1(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 1,bj0 = 1,h1 = ">",alpha = 0.01)
+cat(res,sep="\n")
+```
+:::
+
+`r item()`   Verificare al livello di significatività
+di $\alpha=0.01$ l'ipotesi che l'intercetta della retta di
+regressione sia uguale a zero contro l'alternativa che sia
+minore di zero.
+ 
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+
+res <- se_beta0(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.01)
+cat(res,sep="\n")
+detach(regr(x,y))
+```
+:::
+
+
+## Esercizio 2
+
+Nella tabella seguente sono riportati i valori del seguente
+esperimento: numero di ore dopo l'assunzione di un dato farmaco
+($X$) e incremento percentuale della pressione sistolica ($Y$).
+
+
+```{r,warning=FALSE,message=FALSE}
+dati <- data.frame(
+x = c(0.00  ,1.00  , 2.00  ,3.00  ,4.00  ,5.00  ,6.00  ,7.00  ,8.00  ,9.00  ,10.00 ),
+y = c(10.00 ,1.42  ,-0.53  ,2.60  ,4.02  ,4.49  ,5.72  ,6.54  ,8.91  ,8.74  , 0.00 )
+)
+x <- dati$x
+y <- dati$y
+
+names(dati) <- c("$x$","$y$")
+tabl(t(dati),row.names = T)
+attach(regr(x,y))
+```
+
+`r item(T)`   Calcolare i parametri $\beta_{0}$ e $\beta_{1}$
+della retta di regressione in cui $Y$ è spiegata attraverso $X$.
+(Suggerimento $\bar{x} = `r mx`$; $\hat\sigma_{X} = `r sx`$;
+$\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
+
+:::{.sol data-latex=""}
+
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-calcolo_beta(semplice = T)
+cat(res,sep="\n")
+```
+:::
+
+`r item()`   Valutare la bontà di adattamento del modello precedente.
+
+:::{.sol data-latex=""}
+
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-R2()
+cat(res,sep="\n")
+```
+:::
+
+`r item()`   Rappresentare nel diagramma di dispersione la retta di regressione.
+
+:::{.sol data-latex=""}
+Per disegnare velocemente la retta si individuano nel grafico
+due punti: (1)il punto medio $(\bar{x},\, \bar{y})$, che è già
+noto; e un solo punto "estremo" nel grafico, che può essere $x=0$
+o $x=10$ (i numeri "tondi" facilitano il calcolo e il disegno).
+Qui, però, l'asse delle $X$ presenta l'origine, ossia,
+il valore $x=0$ che ha come ordinata il valore di
+$\widehat{\beta_{0}}=`r b0`$ già calcolato!
+Diversamente, tramite l'equazione della retta di
+regressione si stima la coordinata corrispondente:
+
+
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-previsione(10)
+cat(res,sep="\n")
+fig.def(3,5)
+```
+
+```{r}
+plot(x,y,axes=F)
+axis(2,c(b0,b0+b1*10),round(c(b0,b0+b1*10),3),las=2)
+axis(1)
+segments(c(0,10),0,c(0,10),c(b0,b0+b1*10),lty = 2)
+segments(0,c(b0,b0+b1*10),c(0,10),c(b0,b0+b1*10),lty = 2)
+abline(b0,b1,col=ared)
+```
+:::
+
+`r item()`  Fornire una interpretazione dei parametri della retta di regressione.
+
+:::{.sol data-latex=""} 
+I parametri della retta di regressione sono $\beta_{0}$ e $\beta_{1}$.
+Il primo, $\beta_{0},$ rappresenta l'intercetta della retta,
+ovvero il punto in cui la retta interseca l'asse delle ordinate.
+Il secondo parametro, $\beta_{1}$, rappresenta la pendenza della
+retta (chiamato anche coefficiente angolare), ovvero l'incremento
+verticale corrispondente a un incremento orizzontale unitario e
+coincide, perciò, con la tangente dell'angolo compreso fra la
+retta e l'asse delle ascisse.
+
+In questo caso, la variazione percentuale della pressione sistolica,
+secondo il modello stimato, è dato da
+$$Y= `r b0` + `r b1` X$$
+ossia, è composta da un quantitativo fisso di $`r b0`$ che si ottiene
+immediatamente dopo l'assunzione del farmaco ($X=0$), che non è privo
+di significato, a cui si aggiunge un incremento di $`r b1`$ per ogni ora
+aggiuntiva.
+:::
+
+`r item()`  Prevedere il valore relativo a $x=5$
+(notando che $\bar{x}=5$, con opportune giustificazioni, si
+può rispondere senza fare necessariamente i conti)
+
+:::{.sol data-latex=""}
+Dalle proprietà della retta di regressione si ha che:
+$\widehat{y}_{x=\bar{x}}=\bar{y}=`r my`$. 
+Ovvero: la retta di regressione passa per il punto $(\bar{x},\bar{y})$
+:::
+
+`r item()`  Calcolare l'ordine di grandezza dell'errore di previsione.
+
+:::{.sol data-latex=""}
+L'ordine di grandezza dell'errore di previsione commesso è dato
+da RMSE che rappresenta una sintesi della dispersione dei residui
+intorno alla retta di regressione.
+\begin{displaymath}
+\sigma_{\epsilon} = \sigma_{Y}\ \sqrt{1-r^2} = `r sy` \sqrt{1-`r r^2`}
+= `r sqrt(sh2)`
+\end{displaymath}
+:::
+
+`r item()`  Verificare al livello di significatività del 5% ($\alpha=0.05$)
+l'ipotesi che la pendenza della retta di regressione sia uguale a
+0 contro l'alternativa che sia diversa da 0
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+
+res <- se_beta1(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 1,bj0 = 0,h1 = "\\neq",alpha = 0.05)
+cat(res,sep="\n")
+```
+:::
+
+`r item()` 
+Verificare al livello di significatività
+di $\alpha=0.05$ l'ipotesi che l'intercetta della retta di
+regressione sia uguale a zero contro l'alternativa che sia
+diversa da zero
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+res <- se_beta0(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq",alpha = 0.05)
+cat(res,sep="\n")
+detach(regr(x,y))
+i2 <- 1
+```
+:::
+
+## Esercizio 3
+
+
+L'incasso settimanale di un negozio sia rappresentato dalla
+variabile (casuale) $X$ (in migliaia di euro).
+L'uscita di cassa settimanale sia rappresentata dalla variabile
+(casuale) $Y$ (in migliaia di euro).
+I dati rilevati per 4 mesi sono riportati di séguito.
+
+```{r,warning=FALSE,message=FALSE}
+dati <- data.frame(
+x = c(12  , 21  , 25  , 31  , 13  , 15  , 10  , 18  , 19  , 24  , 28  , 32  , 33  , 22  , 24  , 35),
+y = c(6   , 11  , 15  , 17  , 7   , 8   , 7   , 9   , 10  , 14  , 16  , 20  , 19  , 11  , 14  , 21
+ )
+)
+
+x <- dati$x
+y <- dati$y
+
+names(dati) <- c("$x$","$y$")
+tabl(t(dati),row.names = T)
+attach(regr(x,y))
+```
+
+
+`r item(T)`   Calcolare i parametri $\beta_{0}$ e $\beta_{1}$
+della retta di regressione in cui $Y$ è spiegata attraverso $X$.
+(Suggerimento $\bar{x} = `r mx`$; $\hat\sigma_{X} = `r sx`$;
+$\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-calcolo_beta(T)
+cat(res,sep="\n")
+```
+:::
+
+`r item()`   Valutare la bontà di adattamento del modello precedente.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-R2()
+cat(res,sep="\n")
+```
+:::
+
+`r item()`   Rappresentare nel diagramma di dispersione la retta di regressione.
+
+:::{.sol data-latex=""}
+Per disegnare velocemente la retta si individuano nel grafico
+due punti: (1)il punto medio $(\bar{x},\, \bar{y})$, che è già
+noto; e un solo punto "estremo" nel grafico, e un solo punto "estremo" nel grafico, che può essere $x=5$ o
+$x=35$ (i numeri "tondi" facilitano il calcolo e il disegno, ma
+qui $x=0$ non funziona perché la Y diventa negativa). Tramite
+l'equazione della retta di regressione si stima la coordinata
+corrispondente:
+
+
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-previsione(35)
+cat(res,sep="\n")
+x0 <- mx
+x1 <- 35
+fig.def(3,5)
+```
+ 
+
+```{r}
+plot(x,y,axes=F,xlim=c(min(x0,min(x)),max(x1,max(x))))
+axis(2,c(b0+b1*x0,b0+b1*x1),round(c(b0+b1*x0,b0+b1*x1),3),las=2)
+axis(1)
+axis(1,mx,round(mx,3),las=2)
+segments(c(x0,x1),0,c(x0,x1),c(b0+b1*x0,b0+b1*x1),lty = 2)
+segments(0,c(b0+b1*x0,b0+b1*x1),c(x0,x1),c(b0+b1*x0,b0+b1*x1),lty = 2)
+abline(b0,b1,col=ared)
+```
+:::
+
+`r item()`  Fornire una interpretazione dei parametri della retta di regressione.
+
+:::{.sol data-latex=""} 
+I parametri della retta di regressione sono $\beta_{0}$ e $\beta_{1}$.
+Il primo, $\beta_{0},$ rappresenta l'intercetta della retta,
+ovvero il punto in cui la retta interseca l'asse delle ordinate.
+Il secondo parametro, $\beta_{1}$, rappresenta la pendenza della
+retta (chiamato anche coefficiente angolare), ovvero l'incremento
+verticale corrispondente a un incremento orizzontale unitario e
+coincide, perciò, con la tangente dell'angolo compreso fra la
+retta e l'asse delle ascisse.
+
+In questo caso, la variazione percentuale della pressione sistolica,
+secondo il modello stimato, è dato da
+$$Y= `r b0` + `r b1` X$$
+
+ossia, è composta da un quantitativo fisso di $`r b0`$ (migliaia
+di euro) quando l'uscita di cassa è zero ($X=0$), a cui si
+aggiungono $`r b1`$ migliaia di euro per ogni unità (in migliaia di
+euro) di incasso aggiunto.
+:::
+
+`r item()`  
+Prevedere il valore dell'uscita per
+un incasso di 30 migliaia di euro, ossia $x=30$ e fornire l'ordine di grandezza dell'errore
+di previsione commesso.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-previsione(30)
+cat(res,sep="\n")
+```
+
+\[
+\hat\sigma_{\varepsilon}=\hat\sigma_Y\sqrt{1-r^2}=
+`r sy`\sqrt{1-`r r^2`}=`r sqrt(sh2)`
+\]
+:::
+
+`r item()`  Verificare al livello di significatività del 5% ($\alpha=0.05$)
+l'ipotesi che la pendenza della retta di regressione sia uguale a
+1/2 contro l'alternativa che sia diversa da 1/2.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+
+res <- se_beta1(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 1,bj0 = 1/2,h1 = "\\neq",alpha = 0.05)
+cat(res,sep="\n")
+```
+:::
+
+`r item()` 
+Verificare al livello di significatività
+di $\alpha=0.05$ l'ipotesi che l'intercetta della retta di
+regressione sia uguale a zero contro l'alternativa che sia
+minore di zero.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+res <- se_beta0(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.05)
+cat(res,sep="\n")
+detach(regr(x,y))
+i2 <- 1
+```
+:::
+
+## Esercizio 4
+
+Si esaminano 15 aziende e si rileva, per ognuna di esse,
+il numero di addetti ($X$) e il fatturato ($Y$ in unità
+convenzionali).
+I risultati sono riportati nella tabella seguente.
+
+
+
+```{r,warning=FALSE,message=FALSE}
+dati <- data.frame(
+x = c(20  , 30  , 40  , 50  , 60  , 70  , 80  , 90  , 100 , 110 , 120 , 130 , 140 , 150 , 160),
+y = c(25  , 40  , 50  , 64  , 75  , 85  , 100 , 105 , 120 , 145 , 178 , 210 , 260 , 315 , 380)
+)
+
+x <- dati$x
+y <- dati$y
+
+names(dati) <- c("$x$","$y$")
+tabl(t(dati),row.names = T)
+attach(regr(x,y))
+```
+
+
+`r item(T)`   Calcolare i parametri $\beta_{0}$ e $\beta_{1}$
+della retta di regressione in cui $Y$ è spiegata attraverso $X$.
+(Suggerimento $\bar{x} = `r mx`$; $\hat\sigma_{X} = `r sx`$;
+$\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-calcolo_beta(T)
+cat(res,sep="\n")
+```
+:::
+
+`r item()`   Valutare la bontà di adattamento del modello precedente.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-R2()
+cat(res,sep="\n")
+```
+:::
+
+`r item()`   Rappresentare nel diagramma di dispersione la retta di regressione.
+
+:::{.sol data-latex=""}
+Per disegnare velocemente la retta si individuano nel grafico
+due punti: (1)il punto medio $(\bar{x},\, \bar{y})$, che è già
+noto; e un solo punto "estremo" nel grafico, e un solo punto "estremo" nel 
+ nel grafico, che può essere $x=160$
+o $x=40$ (un numero inferiore dà un $y$ negativo).
+Quest'ultimo NON conviene perché "esce" dagli assi.
+Tramite l'equazione della retta di regressione si stima la coordinata
+corrispondente:
+
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-previsione(40)
+cat(res,sep="\n")
+x0 <- 40
+x1 <- mx
+fig.def(3,5)
+```
+
+```{r}
+plot(x,y,axes=F,xlim=c(min(x0,min(x)),max(x1,max(x))))
+axis(2,c(b0+b1*x0,b0+b1*x1),round(c(b0+b1*x0,b0+b1*x1),3),las=2)
+axis(1)
+axis(1,mx,round(mx,3),las=2)
+segments(c(x0,x1),0,c(x0,x1),c(b0+b1*x0,b0+b1*x1),lty = 2)
+segments(0,c(b0+b1*x0,b0+b1*x1),c(x0,x1),c(b0+b1*x0,b0+b1*x1),lty = 2)
+abline(b0,b1,col=ared)
+```
+:::
+
+`r item()`  Fornire una interpretazione dei parametri della retta di regressione.
+
+:::{.sol data-latex=""} 
+I parametri della retta di regressione sono $\beta_{0}$ e $\beta_{1}$.
+Il primo, $\beta_{0},$ rappresenta l'intercetta della retta,
+ovvero il punto in cui la retta interseca l'asse delle ordinate.
+Il secondo parametro, $\beta_{1}$, rappresenta la pendenza della
+retta (chiamato anche coefficiente angolare), ovvero l'incremento
+verticale corrispondente a un incremento orizzontale unitario e
+coincide, perciò, con la tangente dell'angolo compreso fra la
+retta e l'asse delle ascisse.
+
+In questo caso, il numero di addetti, secondo il modello stimato,
+è dato da
+$$y= `r b0` + `r b1` x$$
+ossia, è composto da un quantitativo fisso di $`r b0`$
+di fatturato quando il numero degli addetti è è zero ($X=0$)
+che corrisponde al costo di una impresa senza addetti, a cui
+si aggiungono `r b1` per ogni unità di lavoro aggiuntiva.
+:::
+
+`r item()`  Prevedere il valore del fatturato per un numero
+di addetti pari a 75 unità, ossia per $x=75$.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+res <-previsione(75)
+cat(res,sep="\n")
+```
+:::
+
+`r item()`  Verificare al livello di significatività del 5% ($\alpha=0.05$)
+l'ipotesi che la pendenza della retta di regressione sia uguale a
+2 contro l'alternativa che sia maggiore di 2, sapendo che
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+
+res <- se_beta1(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 1,bj0 = 2,h1 = ">",alpha = 0.05)
+cat(res,sep="\n")
+```
+:::
+
+`r item()` 
+Verificare al livello di significatività
+di $\alpha=0.05$ l'ipotesi che l'intercetta della retta di
+regressione sia uguale a zero contro l'alternativa che sia
+minore di zero.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+res <- se_beta0(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.05)
+cat(res,sep="\n")
+detach(regr(x,y))
+i2 <- 1
+```
+:::
+
+## Esercizio 5
+
+Nel maggio del 1973 per 15 giorni consecutivi si sono osservati i valori
+di concentrazione di ozono (espressa in parti per milione) a New York $Y$
+e temperatura a terra, $X$ (espressa in gradi Fahrenheit), come espresso
+nella seguente tabella.
+
+```{r,warning=FALSE,message=FALSE}
+dati <- data.frame(
+x = c(20  , 30  , 40  , 50  , 60  , 70  , 80  , 90  , 100 , 110 , 120 , 130 , 140 , 150 , 160),
+y = c(25  , 40  , 50  , 64  , 75  , 85  , 100 , 105 , 120 , 145 , 178 , 210 , 260 , 315 , 380)
+)
+x <- dati$x
+y <- dati$y
+
+names(dati) <- c("$x$","$y$")
+tabl(t(dati),row.names = T)
+attach(regr(x,y))
+```
+
+
+`r item(T)`   Calcolare i parametri $\beta_{0}$ e $\beta_{1}$
+della retta di regressione in cui $Y$ è spiegata attraverso $X$.
+(Suggerimento $\bar{x} = `r mx`$; $\hat\sigma_{X} = `r sx`$;
+$\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-calcolo_beta(T)
+cat(res,sep="\n")
+```
+:::
+
+`r item()`   Valutare la bontà di adattamento del modello precedente.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-R2()
+cat(res,sep="\n")
+```
+:::
+
+__Nota__ altre domande simili alle precedenti non vengono riportate
+
+`r item()` 
+Verificare al livello di significatività
+di $\alpha=0.05$ l'ipotesi che l'intercetta della retta di
+regressione sia uguale a zero contro l'alternativa che sia
+minore di zero.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+res <- se_beta0(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.05)
+cat(res,sep="\n")
+detach(regr(x,y))
+```
+:::
+
+## Esercizio 6
+
+Il reddito pro capite, in migliaia di euro, relativo a 16 aree
+amministrative rilevato nell'anno 1989, $X$, e rilevato nell'anno
+1999, $Y$, sono riportati nella tabella seguente.
+
+\footnotesize
+```{r,warning=FALSE,message=FALSE}
+dati <- data.frame(
+x = c(47.8 , 27.9 , 36.6 , 54.2 , 41.9 , 44.4 , 54.3 , 42.3 , 41.5 , 43.2 , 56.3 , 63.3 , 46.8 , 45.2 , 38.7  , 36.3 ),
+y = c(63.0 , 33.4 , 42.0 , 72.8 , 52.0 , 54.0 , 63.4 , 60.7 , 54.4 , 55.5 , 74.0 , 79.2 , 53.1 , 59.6 , 52.00 , 47.2)
+)
+x <- dati$x
+y <- dati$y
+
+names(dati) <- c("$x$","$y$")
+tabl(t(dati),row.names = T)
+attach(regr(x,y))
+```
+\normalsize
+
+`r item(T)`   Calcolare i parametri $\beta_{0}$ e $\beta_{1}$
+della retta di regressione in cui $Y$ è spiegata attraverso $X$.
+(Suggerimento $\bar{x} = `r mx`$; $\hat\sigma_{X} = `r sx`$;
+$\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-calcolo_beta(T)
+cat(res,sep="\n")
+```
+:::
+
+`r item()`   Valutare la bontà di adattamento del modello precedente.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-R2()
+cat(res,sep="\n")
+```
+:::
+
+`r item()`  Determinare il residuo (o l'errore) derivante
+dalla previsione, calcolata con il modello di regressione in $x=54.3$.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+j <- which(x==54.3)
+res <-residuo(x[j],y[j])
+cat(res,sep="\n")
+```
+:::
+
+__Nota__ altre domande simili alle precedenti non vengono riportate
+
+`r item()` 
+Verificare al livello di significatività del 5% ($\alpha=0.05$)
+l'ipotesi che la pendenza della retta di regressione sia uguale a 0
+contro l'alternativa che sia maggiore di 0.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+res <- se_beta1(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 1,bj0 = 0,h1 = ">",alpha = 0.05)
+cat(res,sep="\n")
+detach(regr(x,y))
+```
+:::
+
+## Esercizio 7
+
+Si esaminano 15 aziende e si rileva, per ognuna di esse, il
+costo ($X$) e il fatturato ($Y$) (in unità convenzionali).
+I risultati sono i seguenti:
+$$y_{i} = -17.418 + 4.093 x_{i} + \epsilon_{i}$$
+con $r=0.9845$.
+
+`r item()` Qual è l'incremento di fatturato, che
+ci si può attendere con un aumento del costo di una unità?
+Qual è la quantità di fatturato che ci si può attendere sia
+ottenute da una azienda senza costi?
+
+:::{.sol data-latex=""} 
+\begin{eqnarray*}
+r         &=& \frac{\text{cov}(X,Y)} {\hat\sigma_X\cdot\hat\sigma_Y} = 0.9845 \\
+\beta_{1} &=& \frac{\text{cov}(X,Y)} {\hat\sigma_X^{2}}
+           =  r \frac{\hat\sigma_Y} {\hat\sigma_X} = 4.093         \\
+\beta_{0} &=& \overline{y} - \beta_{1} \cdot \overline{x} = -17.418.
+\end{eqnarray*}
+:::
+
+`r item(T)` 
+Mostrare che la deviazione standard della $Y$ è pari a 44.803 sapendo che 
+$\bar{x} = 26$; $\widehat{\sigma}_{X} = 10.7765$.
+
+:::{.sol data-latex=""} 
+\begin{eqnarray*}
+\beta_{1}  &=& r\ \frac{\widehat{\sigma}_{Y}} {\widehat{\sigma}_{X}}
+               \qquad\Rightarrow \\
+\sigma_{Y} &=& \frac{\beta_{1} \widehat{\sigma}_{X}} {r}
+            =  \frac{4.093 \times 10.7765} {0.9845}  = 44.803.
+\end{eqnarray*}
+:::
+
+`r item()`
+Verificare al livello di significatività
+di $\alpha=0.05$ l'ipotesi che l'intercetta della retta di
+regressione sia uguale a zero contro l'alternativa che sia
+diversa da zero
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+
+stat2 <- list(
+  mx = 26,
+  bb0 = -17.418,
+  bb1 = 4.093,
+  my = -17.418+4.093*26,
+  vx = 10.7765^2,
+  vy = 44.803^2,
+  co = 10.7765*44.803*0.9845,
+  n = 15
+)
+
+rg <- regr(stat2=stat2)
+attach(rg)
+res <- se_beta0(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq",alpha = 0.05)
+cat(res,sep="\n")
+detach(rg)
+```
+:::
+
+## Esercizio 8
+
+Sia $X$ il voto in matematica (in decimi) e sia $Y$ il voto in
+statistica (in decimi).
+Si sono eseguite 5 osservazioni e i risultati ottenuti sono i seguenti.
+
+```{r regr_end}
+
+x <- c(5, 6, 7, 8, 4)
+y <- c(6, 7, 6, 9, 5)
+
+rg <- regr(x,y)
+attach(rg)
+
+# h <- 1/n + (x-mx)^2/(n*vx)
+# ss <- sy*sqrt(1-r^2)*sqrt(1-h)
+# 
+# Dato <- c(1:n,"Totale","Totale/n")
+# prn <- data.frame(Dato,x=c(x,0,0),y=c(y,0,0),x2 = c(x^2,0,0),y2 = c(y^2,0,0),w=c(x*y,0,0))
+# prn[n+1,2:6] <- colSums(prn[1:n,2:6])
+# prn[n+2,2:6] <- colMeans(prn[1:n,2:6])
+
+# names(prn)<-c("$i$","$x_i$","$y_i$","$x_i^2$","$y_i^2$","$x_i\\cdot y_i$") 
+
+tabl(prn[1:n,1:3],row.names = F)
+```
+
+
+
+`r item(T)` Calcolare i parametri $\beta_{0}$ e $\beta_{1}$ della retta
+di regressione in cui $Y$ è spiegata attraverso $X$.
+
+:::{.sol data-latex=""}
+```{r}
+tabl(prn,row.names = F)%>%
+  row_spec(n,hline_after = T)
+```
+
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-calcolo_beta()
+cat(res,sep="\n")
+```
+:::
+
+`r item()`   Valutare la bontà di adattamento del modello precedente.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+res <-R2()
+cat(res,sep="\n")
+```
+:::
+
+`r item()`  Fornire una interpretazione dei parametri della retta di regressione.
+
+:::{.sol data-latex=""}
+I parametri della retta di regressione sono $\beta_{0}$ e $\beta_{1}$.
+Il primo, $\beta_{0},$ rappresenta l'intercetta della retta,
+ovvero il punto in cui la retta interseca l'asse delle ordinate.
+Il secondo parametro, $\beta_{1}$, rappresenta la pendenza della
+retta (chiamato anche coefficiente angolare), ovvero l'incremento
+verticale corrispondente a un incremento orizzontale unitario e
+coincide, perciò, con la tangente dell'angolo compreso fra la
+retta e l'asse delle ascisse.
+
+In questo caso, la variazione percentuale della pressione sistolica,
+secondo il modello stimato, è dato da
+$$Y= `r b0` + `r b1` X$$
+
+ossia, è composto da un quantitativo fisso di $`r b0`$ di voto
+quando il voto di matematica è zero ($X=0$) che in linea
+generale non ha molto senso e quindi non è interpretabile
+chiaramente, a cui si aggiungono $`r b1`$ punti per ogni unità
+di voto di matematica aggiuntivo.
+:::
+
+`r item()` Determinare il residuo per un voto di matematica
+uguale 6, ossia per $x=6$.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+#detach(regr(x,y))
+j <- which(x==6)
+res <-residuo(x[j],y[j])
+cat(res,sep="\n")
+```
+:::
+
+`r item()`  
+Verificare al livello di significatività dell'1% ($\alpha=0.01$)
+l'ipotesi che la pendenza della retta di regressione sia uguale a
+zero contro l'alternativa che sia maggiore di zero.
+
+:::{.sol data-latex=""}
+```{r,results='asis',warning=FALSE,message=FALSE}
+res <- se_beta1(x,y)
+cat(res,sep="\n")
+res <- ttest_beta(cof = 1,bj0 = 0,h1 = "\\neq",alpha = 0.01)
+cat(res,sep="\n")
+```
+:::

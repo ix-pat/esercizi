@@ -1,0 +1,1007 @@
+```{r prob_0, include=FALSE}
+source("../src/main-functions.R")
+source(src_("intro.R"))
+knitr::opts_chunk$set(echo = FALSE)
+options(digits=5)
+opts_knit$set(global.par = TRUE)
+par(cex=cex)
+s2=1
+
+
+
+n <-1
+
+i1 <- 1
+i2 <- 0
+item <- function(){
+it <- (paste(i2,".",sep=""))
+return(it)}
+
+```
+
+# Esercizi di probabilità
+
+
+## Due urne
+
+Le scatole $A$ e $B$ contengono biglietti numerati.
+La scatola $A$ contiene un biglietto contrassegnato
+con il numero 1 e tre biglietti con il numero 0.
+La scatola $B$ contiene tre biglietti contrassegnati
+con il numero 1 e due con il numero 0.
+Si effettua una estrazione da ognuna delle due scatole.
+
+`r i2 <- i2+1;item()`  Calcolare la probabilità di ottenere due biglietti
+con il numero 1.
+
+:::{.sol data-latex=""}
+Indichiamo con
+
+- $A_0$ l'evento: esce 0 dall'urna $A$
+- $A_1$ l'evento: esce 1 dall'urna $A$
+- $B_0$ l'evento: esce 0 dall'urna $B$
+- $B_1$ l'evento: esce 1 dall'urna $B$
+
+Le due estrazioni danno origine a eventi tra loro
+indipendenti e quindi
+
+\begin{eqnarray*}
+    P(A_1\cap B_1)
+&=& P(A_1) P(B_1) \\
+&=& \frac{1}{4} \times \frac{3}{5} = \frac{3}{20}.
+\end{eqnarray*}
+:::
+
+
+`r i2 <- i2+1;item()` La probabilità che almeno uno dei biglietti sia
+contrassegnato con il numero 1.
+
+:::{.sol data-latex=""}
+Si applica la regola dell'unione per eventi qualunque e si ha
+
+\begin{eqnarray*}
+    P(A_1 \cup B_1)
+&=& P(A_1)+P(B_1)-P(A_1\cap B_1) \\
+&=& \frac{1}{4}+ \frac{3}{5}-\frac{3}{20}
+ =  \frac{14}{20}
+ =  \frac{7}{10}  .
+\end{eqnarray*}
+
+
+Altro tipo di ragionamento o possibile soluzione: si applica la
+regola del complementare all'evento C, _almeno uno dei biglietti sia contrassegnato con il numero 1_; 
+infatti, il complementare di
+C è _nessuno dei biglietti sia contrassegnato con il numero 1_.
+
+
+\begin{eqnarray*}
+    P(C)
+&=& 1 - P(\overline{C}) \\
+&=& 1 - \frac{3}{4}\ \frac{2}{5}
+ =  \frac{14}{20}
+ =  \frac{7}{10}  .
+\end{eqnarray*}
+
+
+Altro tipo di ragionamento (sconsigliato, in generale) è quello
+di considerare tutti gli eventi possibili, l'evento _almeno una estrazione con uno_ è data da: 
+
+- $C_{1}=A_1 \cap B_0$, unito a
+- $C_{2}=A_0 \cap B_1$, unito a 
+- $C_{3}=A_1 \cap B_1$.
+
+L'evento C, _almeno uno dei biglietti sia contrassegnato con il numero 1_ è dato dall'unione dei tre eventi, tra loro
+_incompatibili_
+
+
+\begin{eqnarray*}
+    P(C)
+&=& P(C_{1} \cup C_{2} \cup C_{3}) \\
+&=& P(C_{1}) + P(C_{2}) + P(C_{3}) \\
+&=& \frac{1}{4}\ \frac{2}{5} + \frac{3}{4}\ \frac{3}{5} +
+    \frac{1}{4}\ \frac{3}{5}
+ =  \frac{14}{20}
+ =  \frac{7}{10}  .
+\end{eqnarray*}
+:::
+
+`r i2 <- i2+1;item()`  La probabilità che la somma dei numeri riportati sui
+biglietti estratti sia 1.
+
+:::{.sol data-latex=""}
+L'evento \lq\lq la somma dei due biglietti è 1" può
+essere scritta come
+
+\begin{eqnarray*}
+(A_1 \cup B_0) \cup (A_0 \cap B_1)
+\end{eqnarray*}
+
+e si ha
+
+\begin{eqnarray*}
+& & P[(A_1\cap B_0)\cup(A_0\cap B_1)] \\
+&=& P(A_1\cap B_0) + P(A_0\cap B_1) \\
+&=& P(A_1) P(B_0) + P(A_0) P(B_1) \\
+&=& \frac{1}{4}\times \frac{2}{5} + \frac{3}{4}\times \frac{3}{5}
+ =  \frac{11}{20}.
+\end{eqnarray*}
+:::
+
+## Valigetta
+
+`r i2 <-0`
+La serratura a combinazione di una valigia è composta da tre cifre.
+Per aprire la valigia occorre scegliere un numero tra 1 e 9 per
+ciascuna cifra.
+Si ha a disposizione cinque soli tentativi, verificando l'apertura
+a ogni combinazione.
+
+
+`r i2 <- i2+1;item()`  Qual è la probabilità di trovare la combinazione giusta
+estraendo completamente a caso le tre cifre per un massimo di
+cinque volte?
+
+:::{.sol data-latex=""}
+Il numero di combinazioni possibili è pari a $9^{3}= 729$
+perché la stessa cifra si può ripetere nelle altre posizioni:
+_disposizioni con ripetizione_.
+
+$\#$  | tripletta
+------|----------
+ 1    | 1,1,1
+ 2    | 1,1,2
+ $\vdots$ | $\vdots$ 
+ 9    | 1,1,9
+ 10   | 1,2,1
+ $\vdots$ | $\vdots$ 
+ 81   | 1,9,9
+ 82   | 2,1,1
+$\vdots$ | $\vdots$ 
+729   | 9,9,9
+
+Per rispondere alla domanda si può costituire un'urna con
+729 combinazioni e immaginare di estrarre da essa la
+combinazione di ogni prova.
+
+La stessa combinazione si può ripetere nella prova successiva
+sicché l'esperimento è formato da estrazioni con reimmissione.
+Sia $C_{i}$ l'evento "aprire" nell'$i$-esimo tentativo.
+Sarà $\bar{C}_{i}$ l'evento complementare _non aprire_
+nell'$i$-esimo tentativo.
+
+Sia $B$ l'evento "aprire in almeno cinque prove".
+
+__Soluzione diretta (lunga).__ 
+L'evento $B$="aprire in almeno cinque prove" si può riscrivere come
+
+\[
+B=C_1\cup (\bar C_1\cap C_2)\cup (\bar C_1\cap \bar C_2\cap C_3) \cup (\bar C_1\cap \bar C_2\cap \bar C_3\cap C_4)\cup (\bar C_1\cap \bar C_2\cap \bar C_3\cap\bar C_4\cap C_5)
+\]
+
+che si legge: per aprire in almeno cinque tentativi:
+
+- apro al primo $C_1$, oppure $\cup$
+- non apro al primo e apro al secondo $(\bar C_1\cap C_2)$
+- ...
+- non apro al primo, non apro al secondo, ..., apro al quinto $(\bar C_1\cap \bar C_2\cap \bar C_3\cap\bar C_4\cap C_5)$
+
+e quindi
+
+\[\begin{array}{lll}
+P(B)   &=&  P\Big(C_1\cup (\bar C_1\cap C_2) \cup (\bar C_1\cap \bar C_2\cap C_3)\cup \\
+&& \qquad\cup(\bar C_1\cap \bar C_2\cap \bar C_3\cap C_4)\cup (\bar C_1\cap \bar C_2\cap \bar C_3\cap\bar C_4\cap C_5)\Big)\\
+&=& P(C_1)+P(\bar C_1\cap C_2)+P(\bar C_1\cap \bar C_2\cap C_3)+\\
+&&\qquad + P(\bar C_1\cap \bar C_2\cap \bar C_3\cap C_4)+P(\bar C_1\cap \bar C_2\cap \bar C_3\cap\bar C_4\cap C_5)\\
+&=& P(C_1)+P(\bar C_1) P( C_2)+P(\bar C_1) P( \bar C_2) P( C_3)+ \\
+&&\qquad+P(\bar C_1) P( \bar C_2) P( \bar C_3) P( C_4)+P(\bar C_1) P( \bar C_2) P( \bar C_3) P(\bar C_4) P( C_5)\\
+&=& \frac 1{729} + \frac {728}{729}\frac {1}{729} + \left(\frac {728}{729}\right)^2\frac {1}{729}
++ \left(\frac {728}{729}\right)^3\frac {1}{729}+ \left(\frac {728}{729}\right)^4\frac {1}{729}\\
+&=& `r sum((1/729)*(728/729)^(0:4))`
+\end{array}\]
+  
+__Soluzione indiretta (corta).__ 
+Il calcolo diventa facile se si applica la regola del complementare:
+si calcola la probabilità dell'evento $\bar{B}$, "non aprire nei
+cinque tentativi".
+
+\begin{eqnarray*}
+P(B)&=& 1 - P(\bar{B}) \\
+    &=& 1 - P(\bar{C}_{1} \cap \bar{C}_{2} \cap \bar{C}_{3} \cap
+              \bar{C}_{4} \cap \bar{C}_{5}) \\
+    &=& 1 - P(\bar{C}_{1}) P(\bar{C}_{2}) P(\bar{C}_{3}) 
+            P(\bar{C}_{4}) P(\bar{C}_{5}) \\
+    &=& 1 - \left( \frac{728} {729} \right)^{5}
+     =  1 - 0.99316 = 0.00684  .
+\end{eqnarray*}
+:::
+
+`r i2 <- i2+1;item()`  Qual è la probabilità di trovare la combinazione giusta
+estraendo completamente a caso le tre cifre per un massimo di
+cinque volte tenendo conto delle combinazioni già provate?
+
+:::{.sol data-latex=""}
+Il numero di combinazioni possibili è pari a $9^{3}= 729$ (v. sopra).
+Per rispondere alla domanda si costituisce sempre un'urna con 729
+combinazioni e si estrae da essa la combinazione di ogni prova,
+ma le combinazioni provate non vengono reimmesse nell'urna per
+non ripescarle nei tentativi successivi.
+
+Sia $C_{i}$ l'evento "aprire" nell'$i$-esimo tentativo.
+Sia $\bar{C}_{i}$ l'evento complementare "non aprire"
+nell'$i$-esimo tentativo.
+
+__Soluzione diretta (lunga).__ 
+L'evento $B$="aprire in almeno cinque prove" si può riscrivere come
+
+\[
+B=C_1\cup (\bar C_1\cap C_2)\cup (\bar C_1\cap \bar C_2\cap C_3)\cup (\bar C_1\cap \bar C_2\cap \bar C_3\cap C_4)\cup (\bar C_1\cap \bar C_2\cap \bar C_3\cap\bar C_4\cap C_5)
+\]
+
+che si legge: per aprire in almeno cinque tentativi:
+
+- apro al primo $C_1$, oppure $\cup$
+- non apro al primo e apro al secondo $(\bar C_1\cap C_2)$
+- ...
+- non apro al primo, non apro al secondo, ..., apro al quinto $(\bar C_1\cap \bar C_2\cap \bar C_3\cap\bar C_4\cap C_5)$
+
+e quindi
+
+\[\begin{array}{lll}
+P(B)   &=&  P\Big(C_1\cup (\bar C_1\cap C_2) \cup (\bar C_1\cap \bar C_2\cap C_3)\cup \\
+&& \qquad\cup(\bar C_1\cap \bar C_2\cap \bar C_3\cap C_4)\cup (\bar C_1\cap \bar C_2\cap \bar C_3\cap\bar C_4\cap C_5)\Big)\\
+&=& P(C_1)+P(\bar C_1\cap C_2)+P(\bar C_1\cap \bar C_2\cap C_3)+\\
+&&\qquad + P(\bar C_1\cap \bar C_2\cap \bar C_3\cap C_4)+P(\bar C_1\cap \bar C_2\cap \bar C_3\cap\bar C_4\cap C_5)\\
+&=& P(C_1)+P(\bar C_1) P( C_2|\bar C_1)+P(\bar C_1) P( \bar C_2|\bar C_1) P( C_3|\bar C_1\cap \bar C_2)+ \\
+&&\qquad+P(\bar C_1) P( \bar C_2|\bar C_1) P( C_3|\bar C_1\cap \bar C_2)P( C_4|\bar C_1\cap \bar C_2\cap\bar C_3)+\\
+&&\qquad+P(\bar C_1) P( \bar C_2|\bar C_1) P( C_3|\bar C_1\cap \bar C_2)P( C_4|\bar C_1\cap \bar C_2\cap\bar C_3)\cdot\\
+&&\qquad\quad\cdot P( C_5|\bar C_1\cap \bar C_2\cap\bar C_3\cap C_4)\\
+&=& \frac 1{729} + \frac {728}{729}\frac {1}{728} + \frac {728}{729}\frac {727}{728}\frac {1}{727}+\frac {728}{729}\frac {727}{728}\frac {726}{727}\frac {1}{726}+\\
+&&\qquad +\frac {728}{729}\frac {727}{728}\frac {726}{727}\frac {725}{726}\frac{1}{725}\\
+&=&\frac 5{729}\\
+&=& `r (5/729)`
+\end{array}\]
+
+__Soluzione indiretta (corta).__
+Sia B l'evento "aprire in almeno cinque prove".
+Il calcolo diventa facile se si applica la regola del complementare:
+si calcola la probabilità dell'evento $\bar{B}$, "non aprire nei
+cinque tentativi".
+
+\begin{eqnarray*}
+ P(B) &=& \\
+&=& 1 - P(\bar{B})
+ =  1 - P(\bar{C}_{1} \cap \bar{C}_{2} \cap \bar{C}_{3} \cap
+          \bar{C}_{4} \cap \bar{C}_{5}) \\
+&=& 1 - P(\bar{C}_{1}) P(\bar{C}_{2}  |  \bar{C}_{1})  
+        P(\bar{C}_{3}  |  \bar{C}_{1}, \bar{C}_{2})  
+        P(\bar{C}_{4}  |  \bar{C}_{1}, \bar{C}_{2}, \bar{C}_{3})  
+        P(\bar{C}_{5}  |  \bar{C}_{1}, \bar{C}_{2}, \bar{C}_{3}, \bar{C}_{4}) \\
+&=& 1 - \frac{728} {729}\ \frac{727} {728}\ \frac{726} {727}\ \frac{725} {726}\ \frac{724} {725}
+ =  1 - 0.99314 = 0.00686  .
+\end{eqnarray*}
+:::
+
+## Urna
+
+`r i2 <- 0`
+Si supponga di estrarre a caso e SENZA reimmissione (ESR) 2 palline
+da un'urna contenente 5 palline rosse e 10 palline gialle.
+Si considerino gli eventi seguenti: 
+
+- A={pallina rossa alla prima estrazione (colore qualsiasi alla seconda)},
+- B={pallina rossa alla seconda estrazione (colore qualsiasi alla prima)},
+- C={pallina gialla alla seconda estrazione (colore qualsiasi alla prima)}.
+
+`r i2 <- i2+1;item()`    Quali sono le coppie di palline che formano l'unione
+degli eventi A e B, ovvero $(A \cup B)$?
+
+
+- $\Box$ Coppie contenenti due palline gialle.
+- $\Box$ Coppie contenenti esattamente una pallina rossa.
+- $\Box$ Coppie contenenti almeno una pallina rossa.
+- $\Box$ Coppie contenenti due palline rosse.
+
+
+:::{.sol data-latex=""}
+Coppie contenenti almeno una pallina rossa
+:::
+
+`r i2 <- i2+1;item()`    Quali sono le coppie di palline che formano l'intersezione
+degli eventi A e B, ovvero (A $\cap$ B)? 
+
+- $\Box$ Coppie contenenti due palline gialle.
+- $\Box$ Coppie contenenti al più una pallina rossa.
+- $\Box$ Coppie contenenti almeno una pallina rossa.
+- $\Box$ Coppie contenenti due palline rosse.
+
+:::{.sol data-latex=""}
+Coppie contenenti due palline rosse
+:::
+
+`r i2 <- i2+1;item()`    Qual è il complementare di C?
+
+:::{.sol data-latex=""}
+$\overline{C}=B$
+:::
+
+`r i2 <- i2+1;item()`    Calcolare la probabilità di C condizionata all'evento A, $P(C|A).$
+
+:::{.sol data-latex=""}
+Noto che A si è verificato, nell'urna rimangono 14 palline di cui 4 sono rosse
+e 10 sono gialle: $P(C|A)= 10/14 = 0.714.$
+:::
+
+
+`r i2 <- 0`
+
+## Applicazione regole
+
+La probabilità dell'evento A è 1/3.
+La probabilità dell'evento B è 1/2.
+I due eventi sono indipendenti.
+
+`r i2 <- i2+1;item()`    Calcolare P($\overline{B}$).
+
+:::{.sol data-latex=""}
+P($\overline{B}$)= 1 - P(B)=1/2
+:::
+
+`r i2 <- i2+1;item()`    Calcolare  la probabilità che si verifichi B,
+dato che A si è verificato.
+
+:::{.sol data-latex=""}
+Dal momento che i due eventi sono indipendenti, la probabilità
+condizionata coincide con la probabilità semplice.
+In alternativa si può procedere al calcolo nel modo seguente: 
+
+\[P({B}|A)= \frac{P(B \cap A)}{P(A)} = \frac{P(B) \times P(A)}{P(A)} = P({B}) =1/2\]
+:::
+
+`r i2 <- i2+1;item()`    I due eventi sono incompatibili?
+
+:::{.sol data-latex=""}
+No, perché ${P(A \cap B)}$ = ${P(A) \times P(B)}$ =1/3 $\times$ 1/2 = 1/6 $\neq$ 0.
+:::
+
+`r i2 <- 0` 
+
+## Studente
+
+Uno studente arriva a un esame avendo studiato 20 dei 25
+argomenti del corso.
+L'insegnante gli pone 3 domande su argomenti diversi e
+l'esame è superato solo se tutte le risposte sono giuste.
+
+`r i2 <- i2+1;item()`    Qual è la probabilità che lo studente
+superi l'esame al primo appello?
+
+:::{.sol data-latex=""}
+Per superare l'esame lo studente deve conoscere tutte e
+tre gli argomenti richiesti.
+Tale problema equivale a estrarre tre palline da un'urna
+che ne contiene 25 (di cui 20 di colore verde -- argomenti noti --
+e 5 di colore rosso -- argomenti non studiati).
+Dal momento che si specifica che le tre domande sono relative a
+argomenti diversi, le estrazioni delle tre palline devono essere
+effettuate SENZA reimmissione.
+In questo caso lo studente deve estrarre
+tre palline verdi in tre estrazioni.
+La probabilità cercata è data da
+
+\[
+P(\mbox{conoscere tutte e tre le risposte})=
+\frac{20}{25} \times \frac{19}{24} \times \frac{18}{23} = 0.49565  .
+\]
+:::
+
+`r i2 <- i2+1;item()`    Qual è la probabilità che lo studente superi
+l'esame nella prima sessione (in cui ci sono tre appelli)?
+Si assuma che gli eventi "superamento dell'esame" siano
+indipendenti, anche se l'assunto non è realistico.
+
+:::{.sol data-latex=""}
+__Soluzione diretta (lunga).__
+Sia $A_{i}$ la probabilità di superare l'esame nell'$i$-esimo
+appello e $\bar{A}_{i}$ è la probabilità di non superarlo.
+L'evento $B$, superare entro il terzo appello, si può scomporre come
+
+\[B=A_1\cup(\bar A_1\cap A_2)\cup(\bar A_1\cap\bar A_2\cap A_3)\]
+
+e quindi
+
+\begin{eqnarray*}
+  P(B) &=& P(A_1\cup(\bar A_1\cap A_2)\cup(\bar A_1\cap\bar A_2\cap A_3))\\
+       &=& P(A_1)+P(\bar A_1\cap A_2)+P(\bar A_1\cap\bar A_2\cap A_3)\\
+       &=& P(A_1)+P(\bar A_1)P( A_2)+P(\bar A_1)P(\bar A_2)P( A_3)\\ 
+       &=& 0.49565+(1-0.49565)\times 0.49565 + (1-0.49565)^2\times 0.49565\\
+       &=& `r 0.49565+(1-0.49565)* 0.49565 + (1-0.49565)^2* 0.49565`
+\end{eqnarray*}
+
+__Soluzione indiretta (corta).__
+La probabilità di superare l'esame entro la sessione, evento $B$
+si calcola facilmente applicando la regola del complementare nel
+quale $\bar{B}$ è la probabilità di non superare l'esame nella
+sessione:
+
+\begin{eqnarray*}
+P(B) &=& 1- P(\bar{B})
+      =  1- P(\bar{A}_{1} \cap \bar{A}_{2} \cap \bar{A}_{3}) \\
+     &=& 1- P(\bar{A}_{1}) P(\bar{A}_{2}  |  \bar{A}_{1}) 
+            P(\bar{A}_{3}  |  \bar{A}_{1}, \bar{A}_{2}) \\
+     &=& 1- \left( 1-0.49565 \right)^{3} = 1 - 0.12829= 0.87171  .
+\end{eqnarray*}
+:::
+`r i2 <- 0`
+
+## Giulio e il treno
+
+Giulio deve prendere il treno, ma non ha molto tempo: per
+raggiungere la stazione decide di aspettare l'autobus che
+arriverà puntualmente (evento $A$) con probabilità pari a 0.7.
+Arrivato in stazione puntualmente, riuscirà a salire sul
+treno evitando la multa del controllore se non troverà
+coda alla biglietteria (evento $B$).
+Questo accade con probabilità pari a 0.5.
+
+`r i2 <- i2+1;item()`    Calcolare la probabilità che Giulio non debba pagare
+la multa (evento $C$).
+
+:::{.sol data-latex=""}
+Giulio sale sul treno senza prendere la multa solo se simultaneamente
+si verificano due eventi (indipendenti): l'autobus è puntuale
+(evento $A$) e non c'è coda in biglietteria (evento $B$).
+La probabilità cercata si ottiene allora applicando la regola del
+prodotto (per eventi indipendenti):
+
+\begin{eqnarray*}
+P(C) &=& P(A \cap B) = P(A) P(B) = 0.7 \times 0.5 = 0.35  .
+\end{eqnarray*}
+:::
+
+`r i2 <- i2+1;item()`    Calcolare la probabilità che Giulio in tre giorni
+diversi riesca a evitare almeno una multa (evento $D$).
+
+:::{.sol data-latex=""}
+La probabilità di evitare almeno una multa in tre giorni si
+può calcolare ricorrendo alla regola del complementare.
+L'evento $D$ si ottiene dalle diverse combinazioni dell'evento
+$C_{i}$ e $\bar{C}_{i}$ giornalieri.
+
+La probabilità di $C_{i}$ è stata calcolata in precedenza.
+Il complementare di $D$, è $\bar{D}$ che indica l'evento
+"paga sempre la multa", allora si ha
+
+\begin{eqnarray*}
+P(D) &=& 1 - P(\bar{D})
+      =  1 - P(\bar{C}_{1} \cap \bar{C}_{2} \cap \bar{C}_{3}) \\
+     &=& 1 - P(\bar{C}_{1}) P(\bar{C}_{2}) P(\bar{C}_{3})
+      =  1 - (1- 0.35) (1- 0.35) (1- 0.35) \\
+     &=& 1-0.274625 = 0.725375  .
+\end{eqnarray*}
+:::
+`r i2 <- 0`
+
+## Somma di due dadi
+
+Si lancia una coppia di dadi.
+
+`r i2 <- i2+1;item()`    Costruire il supporto.
+
+:::{.sol data-latex=""}
+Il supporto della coppia di VC, si ottiene con una tabella a
+doppia entrata, nella quale sulle righe si mettono i risultati
+del primo dado ($D1$) e sulle colonne si mettono i risultati
+del secondo dado ($D2$).
+
+```{r}
+out <- outer(1:6,1:6,function(x,y) paste("$\\fbox{",x,"},\\fbox{",y,"}$",sep=""))
+row.names(out) <- paste("$D_1=",1:6,"$",sep="")
+colnames(out) <- paste("$D_2=",1:6,"$",sep="")
+
+# kable(out,booktabs=T,escape = F,linesep="")
+# 
+# tw <- two_way(1:6,1:6,numeric(6)+1,numeric(6)+1,EV = F)
+
+```
+
+
+Lo spazio $\Omega$ consiste di 36 _combinazioni equiprobabili_.
+:::
+
+`r i2 <- i2+1;item()`    Determinare la probabilità di un
+punto del supporto.
+
+:::{.sol data-latex=""}
+Presa una qualunque coppia ($\fbox{4}$, $\fbox{2}$),
+i due eventi sono "fisicamente" _indipendenti_ sicché
+
+\[
+    P(\fbox{4}  ,\ \fbox{2})
+= P(\fbox{4}) P(\fbox{2}) = \frac{1} {6}  \times  \frac{1} {6}
+= \frac{1} {36}
+\]
+
+
+La risposta era anche intuitiva perché gli eventi di $\Omega$
+sono equiprobabili: 1/36.
+:::
+
+`r i2 <- i2+1;item()`    Qual è la probabilità che la somma dei punteggi sia 9?
+
+:::{.sol data-latex=""}
+Si può procedere al conteggio degli eventi che danno somma, $S$, pari a 9:
+
+\[
+P(S=9) = 4  \times  \frac{1} {36} = \frac{1} {9}
+\]
+
+Si noti che la probabilità di avere 3 è
+
+\begin{eqnarray*}
+    P(\text{un dado $\fbox{2}$ e un dado $\fbox{1}$})
+&=& P\left( (\lbrace \fbox{2}\rbrace \cap \lbrace \fbox{1}\rbrace) \cup
+            (\lbrace \fbox{1}\rbrace \cap \lbrace \fbox{2}\rbrace)
+    \right) \\
+&=& P(\fbox{2}\ \fbox{1}) + P(\fbox{1}\ \fbox{2}) = \frac{2} {36}   .
+\end{eqnarray*}
+
+Nell'evento non si è specificato l'ordine con cui devono uscire
+i due dadi $\Rightarrow$ bisogna considerare le diverse possibilità.
+Si noti, poi, che gli eventi $\{\fbox{2}\ \fbox{1}\}$ e
+$\{\fbox{1}\ \fbox{2}\}$ sono tra loro _incompatibili_:
+si verifica l'uno _o_ (esclusivo -- XOR) si verifica l'altro.
+:::
+
+`r i2 <- i2+1;item()`    Qual è la probabilità che la somma ($S$)
+dei punteggi di due dadi sia minore di quattro?
+
+:::{.sol data-latex=""}
+Si tratta della somma di eventi incompatibili: $\{S=2\}$ _e_ $\{ S=3 \})$:
+
+\begin{eqnarray*}
+P(S<4) &=& P(\{S=2\} \cup \{ S=3 \})
+        =  P(\{S=2\}) + P(\{ S=3 \}) \\
+       &=& \frac{1} {36} + \frac{2} {36} = \frac{1} {12}   .
+\end{eqnarray*}
+:::
+
+`r i2 <- i2+1;item()`    Calcolare la probabilità che la SOMMA ($S$)
+dei punteggi di due dadi sia pari a sette oppure
+uno dei dadi sia pari a sei ($U6$).
+
+:::{.sol data-latex=""}
+
+\begin{eqnarray*}
+P(S=7) &=& P(\{\fbox{1}\ \fbox{6}\} \cup  \cdots \cup \{\fbox{6}\ \fbox{1}\})
+        =  \frac{6} {36} \\
+P(U=6) &=& P(\{\fbox{1}\ \fbox{6}\} \cup  \cdots \cup \{\fbox{6}\ \fbox{1}\})
+        = \frac{11} {36} \\
+       &:& \{ S=7 \}\quad e \quad \{ U=6 \}\quad \mbox{non sono incompatibili}
+           \quad\rightarrow \\[0.2cm]
+           P(\{ S=7 \} \cup \{ U=6 \})
+       &=& P(\{ S=7 \}) +  P(\{ U=6 \}) - P(\{ S=7 \} \cap \{ U=6 \}) \\
+       &=& \frac{6} {36} + \frac{11} {36} - \frac{2} {36}
+        =  \frac{15} {36} \qquad \mbox{infatti} \quad\rightarrow    \\
+           P(\{ S=7 \} \cap \{ U=6 \})
+       &=& \{ \fbox{1}\ \fbox{6} \} \cup \{ \fbox{6}\ \fbox{1} \}
+           \qquad \mbox{tra loro incompatibili}   .
+\end{eqnarray*}
+
+Dati DUE eventi $A$ e $B$, la probabilità dell'UNIONE ($A\cup B$)
+è uguale alla somma delle probabilità dei singoli eventi, MENO
+la probabilità della loro intersezione
+
+\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)  .
+\]
+
+
+Se $A$ e $B$ sono incompatibili, allora
+$A \cap B = \emptyset \Rightarrow P(A \cap B)=P(\emptyset)=0$. \\
+:::
+`r i2 <- 0`
+
+## Scatola e biglietti
+
+La scatola $A$ contiene 4 biglietti numerati da 1 a 4.
+La scatola $B$ contiene 3 biglietti numerati da 2 a 4.
+Si estrae un biglietto da ognuna delle scatole e si indica
+con $A_{1}$ il valore del biglietto estratto dalla scatola $A$ e
+con $B_{1}$ quello della scatola $B$.
+
+`r i2 <- i2+1;item()`    Ricavare la distribuzione di probabilità di $X=A_{1}+B_{1}$.
+
+:::{.sol data-latex=""}
+Lo spazio campionario dell'esperimento considerato è costituito
+da $4\times 3=12$ coppie equiprobabili di biglietti:
+
+\begin{eqnarray*}
+\{(1,2); (1,3); (1,4); (2,2); (2,3); (2,4); (3,2); (3,3); (3,4); (4,2); (4,3); (4,4)\}.
+\end{eqnarray*}
+
+Sommando i due termini di ogni coppia si ricava facilmente
+che la distribuzione di probabilità di $X$ è
+
+```{r}
+out <- outer(1:4,2:4,function(x,y) paste("$",x+y,";\\frac 1{12}$",sep=""))
+row.names(out) <- paste("$A_1=",1:4,"$",sep="")
+colnames(out) <- paste("$B_2=",2:4,"$",sep="")
+
+kable(out,booktabs=T,escape = F,linesep="")
+```
+
+da cui la probabilità di $X$
+
+```{r}
+xy <- expand.grid(1:4,2:4)
+X <- cbind(rowSums(xy))
+X <- table(X)/12
+
+kable(X,booktabs=T,escape = F,linesep="")
+```
+:::
+
+`r i2 <- i2+1;item()`    Calcolare la probabilità dell'evento $\{A_{1}>B_{1}\}$.
+
+:::{.sol data-latex=""}
+Dallo spazio campionario presentato nel punto (a)
+si vede che il valore del primo biglietto è superiore
+a quello del secondo solo in $3$ delle $12$ coppie
+e quindi $P(A_{1}>B_{1})=1/4$.
+
+```{r}
+out <- outer(1:4,2:4,function(x,y) paste("$",(x>y)+0,";\\frac 1{12}$",sep=""))
+row.names(out) <- paste("$A_1=",1:4,"$",sep="")
+colnames(out) <- paste("$B_2=",2:4,"$",sep="")
+
+kable(out,booktabs=T,escape = F,linesep="") 
+```
+:::
+
+`r i2 <- i2+1;item()`    Si ripete l'esperimento 10 volte reinserendo i biglietti
+estratti nelle rispettive scatole dopo ogni estrazione.
+Calcolare la probabilità che il valore del biglietto della
+scatola $A$ sia superiore a quello della scatola $B$ in meno
+di 4 delle 10 estrazioni.
+
+:::{.sol data-latex=""}
+Ad ogni ripetizione dell'esperimento la probabilità che
+il biglietto estratto da $A$ riporti un valore superiore
+a quello del biglietto estratto da $B$ è 1/4.
+Il numero di volte che questo evento si verifica in 10
+replicazioni indipendenti dell'esperimento è un numero
+aleatorio $S$, distribuito secondo una binomiale,
+$S\sim \mbox{Bin}(10;  1/4)$; quindi, la probabilità
+cercata è
+
+\[
+P(S<4)
+= \sum_{i=0}^{3} \binom{10}{i} (0.25)^{i} (1-0.25)^{10-i}
+= 0.776  .
+\]
+:::
+
+
+## Urna con colori e lettere diverse
+
+Un'urna contiene 3 palline rosse timbrate con $\color{red}{\mbox{A}}$, 2 palline rosse timbrate con $\color{red}{\mbox{B}}$, 1 palline rossa timbrate con $\color{red}{\mbox{C}}$, 2 palline verdi timbrate con $\color{green}{\mbox{A}}$, una verde con $\color{green}{\mbox{B}}$, una verde con $\color{green}{\mbox{C}}$, una nera con $\color{black}{\mbox{A}}$ e una nera con $\mbox{C}$. 
+In tabella
+
+```{r}
+Y <- data.frame(v1 = c("Rosso","Verde","Nero","Tot"),A = c(3,2,1,6),B = c(2,1,0,3),C=c(1,1,1,3),Tot=c(6,4,2,12))
+
+
+kable(Y,booktabs = T, escape = F,linesep = "", digits = 4,col.names = c("","A","B","C","Tot"))%>%
+  column_spec(column = 1,border_right = T,bold = T)%>%
+  column_spec(column = 5,border_left =  T,bold = T)%>%
+  row_spec(row = 3,hline_after = T)%>%
+  row_spec(4,bold = T)
+
+```
+
+`r i2 <- 1;item() ` Calcolare la probabilità di estrarre una pallina Rossa
+
+:::{.sol data-latex=""}
+Sia 
+\[
+R = \text{estraggo Rosso}
+\]
+\[
+P(R)=\frac6{12}=0.5
+\]
+:::
+
+`r i2 <- i2 +1;item() ` Calcolare la probabilità di estrarre una pallina timbrata con $\mbox{A}$
+
+:::{.sol data-latex=""}
+Sia 
+\[
+A = \text{estraggo una pallina timbrata con $\mbox{A}$}
+\]
+\[
+P(A)=\frac6{12}=0.5
+\]
+:::
+
+`r i2 <- i2 +1;item() ` Gli eventi $A$ ed $R$ sono indipendenti?
+
+:::{.sol data-latex=""}
+Sì, in quanto
+\[
+P(A\cap R)=\frac1{4}=\frac12\cdot\frac12=P(A)P(R)
+\]
+e quindi
+\[
+P(A|R)=\frac{P(A\cap R)}{P(R)}=\frac{\frac{1}{4}}{\frac12}=\frac 12= P(A)
+\]
+e viceversa
+\[P(R|A)=\frac{P(A\cap R)}{P(A)}=\frac{\frac{1}{4}}{\frac12}=\frac 12= P(R)\]
+:::
+
+`r i2 <- i2 +1;item() ` Calcolare la probabilità di estrarre una pallina verde
+
+:::{.sol data-latex=""}
+Sia 
+\[
+V = \text{estraggo una pallina verde}
+\]
+\[
+P(V)=\frac4{12}=\frac13
+\]
+:::
+
+`r i2 <- i2 +1;item() ` Gli eventi $V$ ed $R$ sono indipendenti?
+
+:::{.sol data-latex=""}
+__NO__ $V$ e $R$ sono __incompatibili__, se la pallina è uscita verde __non__ può essere rossa
+
+\[
+P(V\cap R)=P(\emptyset)=0
+\]
+:::
+
+`r i2 <- i2 +1;item() ` Gli eventi $V$ ed $A$ sono indipendenti?
+
+:::{.sol data-latex=""}
+Sì, in quanto
+\[
+P(V\cap A)=\frac2{12}=\frac13\cdot\frac12=P(V)P(A)
+\]
+e quindi
+\[
+P(V|A)=\frac{P(V\cap A)}{P(A)}=\frac{\frac{1}{3}}{\frac12}=\frac 12= P(V)
+\]
+
+
+_Interpretazione_ Sapere se la pallina estratta è targata con A non cambia il nostro stato informativo 
+sul colore, viceversa, sapere il colore non cambia il nostro stato informativo sul fatto che sia timbrata A.
+:::
+
+`r i2 <- i2 +1;item() ` Calcolare $P(N)$ (probabilità di estrarre nera) e $P(B)$ (probabilità di estrarre una pallina timbrata con B)
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+P(N)   &=&  \frac2{12}=\frac16\\
+P(B)   &=& \frac3{12}
+\end{eqnarray*}
+:::
+
+`r i2 <- i2 +1;item() ` Gli eventi $B$ ed $N$ sono indipendenti?
+
+:::{.sol data-latex=""}
+__NO__ $B$ e $N$ sono __incompatibili__, se la pallina è uscita nera __non__ può essere timbrata con B
+
+\[P(B\cap N)=\frac0{12}=0\]
+:::
+
+`r i2 <- i2 +1;item() ` Gli eventi $C$ (estrarre una pallina con C) ed $N$ sono indipendenti?
+
+:::{.sol data-latex=""}
+__No__, in quanto
+\[
+P(C)=\frac3{12}=\frac14
+\]
+mentre
+\[
+P(C\cap N)=\frac1{12}\neq \frac{3}{12}\cdot\frac2{12}=P(C)P(N)
+\]
+e quindi
+\[
+P(C|N)=\frac12\neq\frac14=P(C)
+\]
+:::
+
+`r i2 <- i2 +1;item() ` Gli eventi $B$ ed $N$ sono incompatibili?
+
+:::{.sol data-latex=""}
+__No__, in quanto
+\[
+P(C\cap N)=\frac1{12}\neq 0
+\]
+:::
+
+## Urne che portano ad altre urne
+
+Si consideri il seguente gioco: si estrae una dall'urna $U$ che contiene 2 palline Rosse e una pallina Bianca:
+\small
+
+- __se__ esce Rossa si estrae da un'urna che ha 3 palline marcate con A e 1 pallina marcata con B
+- __se__ esce Bianca si estrae da un'urna che ha 1 pallina marcata con A e 1 pallina marcata con B
+
+\rm
+
+`r i2 <- 1;item()` Qual è la probabilità di osservare una pallina marcata con A?
+
+:::{.sol data-latex=""}
+Anzitutto osserviamo che
+\begin{eqnarray*}
+  P(R) &=&  \frac23\\
+  P(B) &=& \frac13
+\end{eqnarray*}
+
+e che
+  
+\begin{eqnarray*}
+  P(A|R) &=&  \frac34\\
+  P(A|B) &=& \frac12
+\end{eqnarray*}
+
+e quindi
+
+\begin{eqnarray*}
+  P(A) &=&  P(R)P(A|R)+P(B)P(A|B)\\
+   &=& \frac23\frac34+\frac13\frac12\\
+   &=& \frac23\\
+   &=& `r 2/3*3/4+1/3*1/2`
+\end{eqnarray*}
+:::
+
+`r i2 <- i2+1;item()` Sapendo che è uscita una pallina marcata con A, qual è la probabilità che all'inizio del gioco sia stata estratta la pallina Rossa?
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+  P(R|A)  &=&  \frac{P(A\cap R)}{P(A)}\\
+          &=&  \frac{P(R)P(A|R)}{P(A)}\\
+          &=&  \frac{\frac23\frac34}{\frac23}\\
+          &=&  \frac34\\
+          &=& `r (2/3*3/4)/(2/3)`
+\end{eqnarray*}
+:::
+
+## Estrazioni con e senza reintroduzione
+
+Un'urna contiene 3 palline Rosse, 2 Bianche e 5 Verdi, 
+
+`r i2 <- +1;item()` si estrae 3 volte __con__ reintroduzione.
+Calcolare la probabilità di aver 3 colori diversi
+
+:::{.sol data-latex=""}
+Anzitutto notiamo che l'evento
+\[
+E=\text{“tre colori diversi”}
+\]
+si scompone come
+\begin{eqnarray*}
+  E     &=&  (R\cap B\cap V)\cup(R\cap V\cap B)\cup\\
+        &=&  (B\cap E\cap V)\cup(B\cap V\cap R)\cup\\
+        &=&  (V\cap R\cap B)\cup(V\cap B\cap R)
+\end{eqnarray*}
+e quindi
+\begin{eqnarray*}
+  P(E)  &=& P(R\cap B\cap V)+P(R\cap V\cap B)+\\
+        &=& P(B\cap E\cap V)+P(B\cap V\cap R)+\\
+        &=& P(V\cap R\cap B)+P(V\cap B\cap R)
+\end{eqnarray*}
+
+notiamo che le estrazioni sono tra di loro __indipendenti__ e quindi
+
+\begin{eqnarray*}
+  P(E)  &=& P(R)P(B)P(V)+P(R)P(V)P(B)+\\
+        &=& P(B)P(R)P(V)+P(B)P(V)P(R)+\\
+        &=& P(V)P(R)P(B)+P(V)P(B)P(R)\\
+        &=& \frac2{10}\frac5{10}\frac3{10}+\frac2{10}\frac3{10}\frac5{10}+...\\
+        &=& 6 \cdot \frac2{10}\frac5{10}\frac3{10}\\
+        &=& `r 6*2*5*3/1000`
+\end{eqnarray*}
+
+:::: {.nota data-latex=""}
+$6=3!$ è il numero di modi in cui posso mescolare i tre colori
+::::
+:::
+
+`r i2 <- i2+1;item()` si estrae 3 volte __senza__ reintroduzione.
+Calcolare la probabilità di aver 3 colori diversi.
+
+:::{.sol data-latex=""}
+in questo caso le estrazioni __non__ sono tra di loro __indipendenti__ e quindi
+
+\begin{eqnarray*}
+  P(E)  &=& P(R)P(B|R)P(V|R\cap B)+P(R)P(V|R)P(B|R\cap V)+\\
+        &=& P(B)P(R|B)P(V|B\cap R)+P(B)P(V|B)P(R|B\cap V)+\\
+        &=& P(V)P(R|V)P(B|R\cap V)+P(V)P(B|V)P(R|V\cap B)\\
+        &=& \frac2{10}\frac5{9}\frac3{8}+\frac2{10}\frac3{9}\frac5{8}+...\\
+        &=& 6 \cdot \frac2{10}\frac5{9}\frac3{8}\\
+        &=& `r 6*2/10*5/9*3/8`
+\end{eqnarray*}
+
+:::: {.nota  data-latex=""}
+anche se sono tra di loro dipendenti ogni sequenza la stessa probabilità:
+::::
+
+\begin{eqnarray*}
+ P(R)P(B|R)P(V|R\cap B)&=&P(R)P(V|R)P(B|R\cap V)\\
+        &=& P(B)P(R|B)P(V|B\cap R)\\
+        &=& P(B)P(V|B)P(R|B\cap V)\\
+        &=& ...\\
+        &=& \frac2{10}\frac5{9}\frac3{8}\\
+        &=& `r 2/10*5/9*3/8`
+\end{eqnarray*}
+:::
+
+## Urne e palline numerate
+
+L'urna $A$ contiene una pallina col numero $\mbox{-1}$, due palline col numero $\mbox{0}$
+e una pallina col numero $\mbox{+1}$. 
+L'urna $B$ contiene una pallina col numero $\mbox{0}$, una col numero $\mbox{+1}$
+e una col numero $\mbox{+2}$.
+
+`r i2 <- 1;item()` Sia $S$ consideri la somma dei numeri estratti, calcolare la probabilità che
+$S=0$.
+
+:::{.sol data-latex=""}
+Si consideri la tabella
+```{r prob_n}
+a <- c(-1,0,1)
+pa <- c(1,2,1)/4
+b <- 0:2
+pb <- c(1,1,1)/3
+y <- cbind(paste("$",b,"$",sep=""), outer(a,b,FUN = function(x,y)paste("$",x+y,"$",sep="")))
+py <- outer(pa,pb)
+Y <- matrix(nrow = 3,ncol = 8)
+
+Y[,c(1,3,5,7)]<- y
+
+Pa <- paste("$\\color{blue}{",c(1,2,1),"/4","}$",sep="")
+Pb <- paste("$\\color{blue}{",c(1,1,1),"/3","}$",sep="")
+
+Pab <- matrix(paste("$\\color{red}{",outer(c(1,1,1),c(1,2,1)),"/{12}}$",sep=""),nrow = 3)
+
+Y[,2] <- Pb
+Y[,c(4,6,8)]<- Pab
+kable(Y,booktabs = T, escape = F,linesep = "", digits = 4,col.names = c("B $\\backslash$ A","","$-1$",Pa[1],"$0$",Pa[2],"$+1$",Pa[3]),align = "r")%>%
+  column_spec(column = 2,border_right = T)
+
+```
+
+per colonna leggiamo le possibili numerazioni dell'urna $A$, con le rispettive probabilità in blu,
+per riga leggiamo le possibili numerazioni dell'urna $B$, con le rispettive probabilità in blu,
+nella tabella leggiamo le possibili somme dell'urna $A$ e $B$, con le rispettive probabilità in rosso.
+Gli eventi che portano la somma ad essere zero sono due e quindi:
+
+\[
+P(S=0)=\frac 1{12}+\frac 2{12}=\frac 16
+\]
+:::
+
+`r i2 <- i2+1;item()` Calcolare la probabilità che dall'urna $A$ sia uscito $\mbox{+1}$, __dato__ che
+la somma fa 1
+
+:::{.sol data-latex=""}
+Anzitutto notiamo che
+\[
+P(S=1)=\frac1{12}+\frac2{12}+\frac1{12}=\frac13
+\]
+
+poi osserviamo che
+\[
+P(S=1\cap A=\mbox{+1})=\frac1{12}
+\]
+
+e quindi
+\[
+P(S=1|A=\mbox{+1})=\frac{P(S=1\cap A=\mbox{+1})}{P(S=1)}=\frac{\frac{1}{12}}{\frac13}=\frac14
+\]
+:::
+
+
+

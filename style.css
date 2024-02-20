@@ -1,0 +1,133 @@
+
+:root {
+  --iblue: rgba(6,72,122,1);
+  --ired: rgba(171,41,46);
+}
+
+h1 {
+  color: var(--iblue);
+}
+
+h2 {
+  color: var(--iblue);
+}
+
+h3 {
+  color: var(--iblue);
+}
+
+h4 {
+  color: var(--iblue);
+}
+
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+
+
+
+.info {
+  padding: 1em;
+  background: linear-gradient(0deg, rgba(186,210,224,.4) 0%, rgba(186,210,224,.2) 100%);
+  color: var(--iblue);
+/*  border: 1px solid var(--iblue); */
+  border-radius: 1px;
+  margin-bottom: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); 
+}
+.center {
+  text-align: center;
+}
+
+.minip {
+  padding: 1em;
+  border: 2px solid var(--iblue);
+  border-radius: 1px;
+  padding-top: 0px;
+  margin-bottom: 10px;
+}
+
+.nota {
+  padding: 1em;
+  border: 2px solid var(--iblue);
+  border-radius: 1px;
+  padding-top: 0px;
+  margin-bottom: 10px;
+}
+.nota::before {
+  content: " Nota";
+  color: white ;
+  background:  var(--iblue);
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-right: -16px;
+  margin-left: -16px;
+  padding: 5px;
+}
+
+.att {
+  padding: 1em;
+  border: 2px solid var(--ired);
+  border-radius: 1px;
+  padding-top: 0px;
+  margin-bottom: 10px;
+}
+
+.att::before {
+  content: " Attenzione";
+  color: white ;
+  background:  var(--ired);
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-right: -16px;
+  margin-left: -16px;
+  padding: 5px;
+}
+
+
+.sol {
+/*  display: none; */
+  padding: 1em;
+  border: 1px solid var(--iblue);
+  border-radius: 1px;
+  padding-top: 0px;
+  margin-bottom: 10px;
+}
+.sol::before {
+  content: " Soluzione";
+  color: white ;
+  background:  var(--iblue);
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-right: -16px;
+  margin-left: -16px;
+  padding: 0px;
+}
+
+.tit {
+  display: none; 
+}
+
+

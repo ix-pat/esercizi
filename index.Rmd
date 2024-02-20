@@ -1,0 +1,58 @@
+--- 
+title: "Eserciziario di Statistica"
+subtitle: "CLEAM AA 23/24"
+author: "Patrizio Frederic"
+date: "Aggiornato al `r format(Sys.Date(),'%d-%m-%Y')`"
+documentclass: book
+site: bookdown::bookdown_site
+biblio-style: apalike
+link-citations: yes
+description: "Appunti sparsi"
+geometry: "left=2.5cm, right=2.5cm, top=4.5cm, bottom=4.5cm, showframe=false, showcrop=true"
+fontsize: 11pt
+output:
+   bookdown::pdf_book:
+     keep_tex: true
+     highlight: default
+     fig_caption: true
+     fig_width:  3.5
+     fig_height: 2.5
+     number_sections: true
+   bookdown::gitbook:
+     fig_caption: true
+     number_sections: false     
+     # fig_width: 12
+     # fig_height: 8
+#documentclass: book
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+library(knitr)
+library(kableExtra)
+library(pBrackets)
+library(bookdown)
+library(bookdownplus)
+library(magick)
+library(plotrix)
+library(colorspace)
+library(haven)
+library(png)
+library(webshot)
+
+source("../src/main-functions.R")
+source(src_("intro.R"))
+opts_knit$set(echo=FALSE)
+
+```
+
+
+
+```{r,results='asis', echo=FALSE}
+if (html) {
+  cat("# Eserciziario {-}\n\n")
+  include_graphics("img/titolo.png",dpi=30)
+}
+```
+

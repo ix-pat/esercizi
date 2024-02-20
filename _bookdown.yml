@@ -1,0 +1,34 @@
+book_filename: "Esami_passati_con_soluzioni"
+#book_filename: "Test"
+delete_merged_file: true
+always_allow_html: true
+rmd_files: [
+"index.Rmd",
+#"SB.Rmd",
+ "00-intro.Rmd",
+ "01-descr.Rmd",
+ "02-prob.Rmd",
+ "03-VC.Rmd",
+ "04-tlc.Rmd",
+ "05-test.Rmd",
+ "05a-chi2.Rmd",
+ "06-regr.Rmd",
+ "2021.Rmd",
+ "2022.Rmd" ,
+ "2023.Rmd",
+]
+language:
+  ui:
+    chapter_name: " "
+  label:
+    exa: "Esempio "
+    exm: "Esempio "
+    Example: "Esempio "
+    fig: !expr function(x) ifelse(html,sprintf("<b>Figura </b>.**", x),sprintf("**Figura %s.**", x))
+    tab: !expr function(x) ifelse(html,sprintf("<b>Tabella </b>.**", x),sprintf("**Tabella %s.**", x)) 
+    prp: "Proprietà "
+    def: "Definizione "
+    thm: "Teorema "
+    proof: "Dimostrazione "
+    
+

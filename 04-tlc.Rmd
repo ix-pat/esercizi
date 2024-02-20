@@ -1,0 +1,386 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{r setuptlc, include=FALSE}
+rm(list=ls())
+source("../src/main-functions.R")
+source(src_("intro.R"))
+i1 <- NULL; i2 <- NULL 
+```
+
+# Esercizi sul TLC
+
+## Una VC qualunque: Somma, $S_{n}$
+
+Un collo è composto di 64 confezioni. Ogni confezione ha un peso, $X$,
+che si distribuisce secondo una VC che presenta $E(X_{i})= 2$kg e
+$V(X_{i})=0.1$. Calcolare la probabilità che il collo superi il peso di
+132kg.
+
+:::{.sol data-latex=""}
+
+<!-- # \begin{eqnarray*} -->
+<!-- # S_{n}        &=& X_{1} + \cdots + X_{64}                      \\ -->
+<!-- # E(S_{n})     &=& n\ E(X_{i}) = 64  \times  2   = 128        \\ -->
+<!-- # V(S_{n})     &=& n\ V(X_{i}) = 64  \times  0.1 = 6.4        \\ -->
+<!-- # S_{n}        & &\operatorname*{\sim}_{a} N(n\ \mu;\ n\ \sigma^{2}) -->
+<!-- #               \sim N(128;\ 6.4)                                  -->
+<!-- # \end{eqnarray*} -->
+
+```{r, results='asis'}
+x1 <- 132
+mm <- 64*2
+ss <- 64*0.1
+vnam <- "S_n"
+tlc(tipo = "somma",x1 = 132,verso = ">",mu = 2,s2 = 0.1,n = 64)
+```
+:::
+
+## Una VC qualunque: media, $\bar{X}$
+
+Un collo è composto di 64 confezioni. Ogni confezione ha un peso, $X$,
+che si distribuisce secondo una VC che presenta $E(X_{i})= 2$kg e
+$V(X_{i})=0.1$. Calcolare la probabilità che il peso medio delle
+confezioni sia compreso tra $1.9$kg e $2.1$kg.
+
+:::{.sol data-latex=""}
+<!-- \begin{eqnarray*} -->
+<!-- \bar{X}      &=& \frac{X_{1} + \cdots + X_{64}} {n}          \\ -->
+<!-- E(\bar{X})   &=& \mu = E(X_{i}) = 2                          \\ -->
+<!-- V(\bar{X})   &=& \frac{\sigma^{2}} {n} = \frac{V(X_{i})} {n} -->
+<!--               =  \frac{0.1} {64} = 0.0015625                 \\ -->
+<!-- \bar{X}      & &\operatorname*{\sim}_{a} N( \mu;\frac {\sigma^{2}} n) -->
+<!--               \sim  N(2;\ 0.0015625)                           -->
+<!-- \end{eqnarray*} -->
+
+```{r, results='asis'}
+x1 <- 1.9
+x2 <- 2.1
+mm <- 2
+ss <- 0.1/64
+vnam <- "S_n"
+#cat(norm_int(x1 = x1,x2=x2,verso = NULL,mm = mm,ss = ss,vnam = vnam,mu = "\\mu",sigma = "\\sigma/\\sqrt n"))
+tlc(tipo = "media",x1 = x1,x2 = x2,verso = NULL,mu = 2,s2 = 0.1,n = 64)
+```
+:::
+
+
+## Un'urna: somma, $S_{n}$
+
+Si abbia l'urna $\fbox{-2}\quad \fbox{2}\quad \fbox{3}\quad \fbox{3}\quad \fbox{4}$
+
+Si effettuano 100 estrazioni con reimmissione (ECR). Calcolare la
+probabilità che la somma delle 100 estrazioni sia compresa tra 195 e
+210.
+
+:::{.sol data-latex=""}
+```{r, results='asis'}
+urn <- c(-2,2,3,3,4)
+cat(stat_(urn,semp = T))
+cat(tlc("somma",x1 = 195,x2 = 210,verso = NULL,mu = mean(urn),s2 = s2c(urn),n = 100))
+```
+:::
+
+## Un'urna: media, $\bar{X}$
+
+Si abbia l'urna $\fbox{-2}\quad \fbox{2}\quad \fbox{3}\quad \fbox{3}\quad \fbox{4}$
+
+Si effettuano 100 estrazioni con reimmissione (ECR). Calcolare la
+probabilità che la media nelle 100 estrazioni sia maggiore di 2.2.
+
+:::{.sol data-latex=""}
+```{r, results='asis'}
+urn <- c(-2,2,3,3,4)
+cat(stat_(urn,semp = T))
+cat(tlc("media",x1 = 2.2,verso = ">",mu = mean(urn),s2 = s2c(urn),n = 100))
+```
+:::
+
+## 2 Urne: Somma, $S_{n}$
+
+Due urne sono così formate:
+
+-   l'urna A ${\fbox{-1} \fbox{1} \fbox{2}}$ e\
+-   l'urna B ${\fbox{0} \fbox{0} \fbox{1}}$.
+
+L'esperimento casuale consiste nell'estrarre con reimmissione un
+biglietto da ogni urna e sommare gli esiti. Sia $X$ la variabile casuale
+\`\`somma dei due esiti",
+
+$$X=X_{A} + X_{B}.$$
+
+Si ripete l'esperimento $n=81$ volte. Qual è la probabilità
+(approssimata) che la somma dei risultati degli 81 esperimenti sia
+maggiore di 90?
+
+:::{.sol data-latex=""}
+```{r,results='asis'}
+S_1 <- c(-1,1,2)
+S_2 <- c(0,1)
+num1 <- c(1,1,1)
+num2 <- c(2,1)
+res <- two_way(S_1 = S_1,S_2 = S_2,num1 = num1,num2 = num2,EV=T)
+urn <- res$urn
+cat("E in virtù del TLC\n\n")
+cat(tlc("somma",x1 = 90,x2 = 210,verso = ">",mu = mean(urn),s2 = s2c(urn),n = 81))
+```
+:::
+
+
+## 2 Urne: Media, $\bar{X}$
+
+Due urne sono così formate:
+
+-   l'urna A ${\fbox{-1} \fbox{1} \fbox{2}}$ e\
+-   l'urna B ${\fbox{0} \fbox{0} \fbox{1}}$.
+
+L'esperimento casuale consiste nell'estrarre con reimmissione un
+biglietto da ogni urna e sommare gli esiti. Sia $X$ la variabile casuale
+"somma dei due esiti",
+
+$$X=X_{A} + X_{B}.$$
+
+Si ripete l'esperimento $n=81$ volte. Siano $A=\{ \bar{X} < 1.2\}$ e
+$B=\{ \bar{X} > 0.8 \}$. Qual è la probabilità (approssimata) che che la
+media dei risultati degli 81 esperimenti sia $A$ e $B$?
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+   P(A\cap B)&=&  P(0.8<\bar X<1.2)
+\end{eqnarray*}
+  
+
+```{r,results='asis'}
+S_1 <- c(-1,1,2)
+S_2 <- c(0,1)
+num1 <- c(1,1,1)
+num2 <- c(2,1)
+res <- two_way(S_1 = S_1,S_2 = S_2,num1 = num1,num2 = num2,EV=T)
+urn <- res$urn
+cat("E in virtù del TLC\n\n")
+cat(tlc("media",x1 = 0.8,x2 = 1.2,verso = NULL,mu = mean(urn),s2 = s2c(urn),n = 81))
+```
+:::
+
+## 2 Urne: Media, $\bar{X}$
+
+Due urne sono così formate:
+
+-   l'urna A ${\fbox{-1} \fbox{1} \fbox{1} \fbox{2}}$ e
+-   l'urna B ${\fbox{0} \fbox{1}}$.\
+    L'esperimento casuale consiste nell'estrarre con reimmissione un
+    biglietto da ogni urna e sommare gli esiti. Sia $X$ la variabile
+    casuale "somma dei due esiti",
+
+$$X=X_{A} + X_{B}.$$
+
+Si ripete l'esperimento $n=92$ volte.
+
+Qual è la probabilità (approssimata) che che la media dei risultati
+    dei 92 esperimenti sia compresa tra 1 e 1.4?
+
+:::{.sol data-latex=""}
+```{r,results='asis'}
+S_1 <- c(-1,1,2)
+S_2 <- c(0,1)
+num1 <- c(1,2,1)
+num2 <- c(1,1)
+res <- two_way(S_1 = S_1,S_2 = S_2,num1 = num1,num2 = num2,EV=T)
+urn <- res$urn
+cat("E in virtù del TLC\n\n")
+cat(tlc("media",x1 = 1,x2 = 1.4,verso = NULL,mu = mean(urn),s2 = s2c(urn),n = 92))
+```
+:::
+
+## Bernoulli: Somma, $S_{n}$
+
+Si abbia l'urna
+
+$$4\text{ biglietti con } \fbox{0}, 6\text{ biglietti con } \fbox{1}$$
+
+Si effettuano 100 estrazioni con reimmissione (ECR). Calcolare la
+probabilità che la somma delle 100 estrazioni sia compresa tra 55 e 70.
+
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+X_{i}         &\sim& \mbox{Ber}(\pi)         \\
+              &\sim& \mbox{Ber}(0.6)        \\
+\pi           &=& P(X_{i} = 1) = \frac{6} {10} = 0.6       \\
+E(X_{i})      &=& \pi = 0.6                                \\
+V(X_{i})      &=& \pi (1-\pi) = 0.24                      
+\end{eqnarray*}
+
+
+```{r, results='asis'}
+cat(tlc("somma",x1 = 55,x2 = 70,verso = NULL,mu = .6,n = 100))
+```
+:::
+
+## Bernoulli: Proporzione, $\widehat{\pi}$
+
+Si abbia l'urna
+
+$$4\text{ biglietti con } \fbox{0}, 6\text{ biglietti con } \fbox{1}$$
+
+Si effettuano 81 estrazioni con reimmissione (ECR). Calcolare la
+probabilità che la proporzione di $\fbox{1}$, nelle 81 estrazioni, sia
+compresa tra 0.6 e 0.65.
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+X_{i}         &\sim& \mbox{Ber}(\pi)         \\
+              &\sim& \mbox{Ber}(0.6)        \\
+\pi           &=& P(X_{i} = 1) = \frac{6} {10} = 0.6       \\
+E(X_{i})      &=& \pi = 0.6                                \\
+V(X_{i})      &=& \pi (1-\pi) = 0.24                      
+\end{eqnarray*}
+
+```{r, results='asis'}
+cat(tlc("prop",x1 = 0.6,x2 = 0.65,verso = NULL,mu = .6,n = 81))
+```
+:::
+
+## 2 Urne: Proporzione, $\widehat{\pi}$
+
+Siano date due urne:
+
+-   l'urna A ${\fbox{-1} \fbox{1} \fbox{2}}$ e\
+-   l'urna B ${\fbox{0} \fbox{0} \fbox{1}}$.
+
+L'esperimento casuale consiste nell'estrarre con reimmissione un
+biglietto da ogni urna e sommare gli esiti. Sia $X_{i}$ la variabile
+casuale "somma dei due esiti",
+
+$$X_{i}=X_{A;  i} + X_{B;  i}.$$ Sia $Y_{i}$ la variabile casuale
+"CONTA gli esiti $X_{i}>0$". Si ripete l'esperimento $n=81$ volte:
+$i=1,\ldots, 81$.
+
+Qual è la probabilità (approssimata) che che la proporzione di numeri
+maggiori di 0 negli 81 esperimenti sia maggiore di 0.68?
+
+:::{.sol data-latex=""}
+```{r,results='asis'}
+S_1 <- c(-1,1,2)
+S_2 <- c(0,1)
+num1 <- c(1,1,1)
+num2 <- c(2,1)
+res <- two_way(S_1 = S_1,S_2 = S_2,num1 = num1,num2 = num2,EV=F)
+urn <- res$urn
+```
+
+\begin{displaymath}
+P(X_{i}>0) = \frac{2}{9} + \frac{3}{9} + \frac{1}{9}
+           = \frac{6} {9} = \frac{2} {3}
+           = P(Y_{i}=1) =\pi  .
+\end{displaymath}
+
+\begin{eqnarray*}
+E(Y) &=& \pi = \frac{2} {3}           \\
+V(Y) &=& \pi\ (1-\pi)
+      = \frac{2} {3}\ \left( 1- \frac{2} {3} \right)
+      = \frac{2} {9}   .
+\end{eqnarray*}
+
+Per il TLC si ha
+
+```{r,results='asis'}
+cat(tlc("prop",x1 = .68,verso = ">",mu = 2/3,n = 81))
+```
+:::
+
+
+## Poisson: Somma, $S_{n}$
+
+In una azienda, che lavora a ciclo continuo, si sono osservati 39
+problemi durante l'ultimo semestre. Si supponga che i problemi
+settimanali siano indipendenti tra loro e si distribuiscano secondo una
+Poisson$(\lambda)$. Calcolare la probabilità che il totale dei problemi
+rilevanti del prossimo anno sia compreso tra 75 e 80.
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+X_{i}    &\sim& \mbox{Poisson}(\lambda)                            \\
+E(X_{i})    &=& \lambda = \frac{\#\ \mbox{problemi semestre}}
+                {\#\ \mbox{settimane semestre}}
+             =  \frac{39} {26} = 1.5                               \\
+V(X_{i})    &=& \lambda = 1.5                                      
+\end{eqnarray*}
+
+```{r, results='asis'}
+#cat(norm_int(x1 = 75,x2 = 80,verso = NULL,mm = 78,ss = 78,vnam = "S_n",mu = "n\\lambda",sigma = "\\sqrt{n\\lambda}"))
+tlc(tipo = "pois_somma",x1 = 75,x2 = 80,verso = NULL,mu = 1.5,n = 52 )
+```
+:::
+
+## Poisson: Media, $\bar{X}$
+
+Siano $X_{1}, \ldots, X_{49}$ VC $iid$ secondo una Poisson(1.5).
+Calcolare la probabilità che la media delle 49 VC sia compresa tra 1.4 e
+2.
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+X_{i}    &\sim& \mbox{Poisson}(\lambda) \sim \mbox{Poisson}(1.5)  \\
+E(X_{i})    &=& \lambda = 1.5                                  \\
+V(X_{i})    &=& \lambda = 1.5                                  \\
+\end{eqnarray*}
+```{r, results='asis'}
+#cat(norm_int(x1 = 1.4,x2 = 2,verso = NULL,mm = 1.5,ss = 1.5/49,vnam = "\\bar X",mu = "\\lambda",sigma = "\\sqrt{\\lambda/n}"))
+tlc(tipo = "pois_somma",x1 = 1.4,x2 = 2,verso = NULL,mu = 1.5,n = 49 )
+```
+:::
+
+## Poisson: Somma, $S_{n}$
+
+**Esercizio particolare.** In Emilia-Romagna il numero di morti per
+incidenti sul lavoro per settimana è una VC $X \sim$ Poisson(2.3). Qual
+è la probabilità che il numero di morti in un anno sia minore di 100?
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+n           &=& 52 \quad\mbox{numero settimane in un anno}          \\
+S_{n}       &=& X_{1} + \cdots + X_{n}                              \\
+X_{i}    &\sim& \mbox{Poisson}(\lambda) \sim\mbox{Poisson}(2.3)       \\
+E(X_{i})    &=& \lambda = 2.3                                       \\
+V(X_{i})    &=& \lambda = 2.3                                       \\
+\end{eqnarray*}
+
+```{r, results='asis'}
+#cat(norm_int(x1 = 100,verso = "<",mm = 119.6,ss = 119.6,vnam = "S_n",mu = "n\\lambda",sigma = "\\sqrt{n\\lambda}"))
+tlc(tipo = "pois_somma",x1 = 100,verso = "<",mu = 2.3,n = 52)
+```
+:::
+
+## Proporzione -- Poisson, $\widehat{\pi}$
+
+**ESERCIZIO COMPLESSO**. Il numero di errori per foglio scritto è una
+VC, $EF_i$. Sia $EF_i \sim\text{Pois}(1)$ .
+
+In una tesi di 80 pagine, qual è la probabilità (approssimata) che la
+proporzione di pagine (facciate) SENZA ERRORI sia maggiore di 0.7?
+
+:::{.sol data-latex=""}
+La VC "numero di errori per pagina", $EP_i$, sarà $EP_{i}\ \sim\text{Pois}(0.5)$
+ per la proprietà riproduttiva. Sia $X_{i}$ la VC binaria $X_{i}=1$ se $EP_i=0$: $i=1.\ldots, 80$.
+
+\[
+P(EP_{i}=0) = \frac{(0.5)^{0}} {0!}\ e^{-0.5} = 0.6065
+               = P(X_{i}=1) =\pi  .
+\]
+
+\begin{eqnarray*}
+E(X_i) &=& \pi = 0.6065                                                            \\
+V(X_i) &=& \pi\ (1-\pi) = 0.6065 (1 - 0.6065) = 0.2387               
+\end{eqnarray*}
+
+```{r, results='asis'}
+#cat(norm_int(x1 = 0.7,verso = ">",mm = 0.6065,ss = 0.6065*(1-0.6065)/80,vnam = "\\hat\\pi",mu = "\\pi",sigma = "\\sqrt{\\pi(1-\\pi)/n}"))
+tlc(tipo = "prop",x1 = 0.7,verso = ">",mu = .6065,n = 80)
+```
+:::
