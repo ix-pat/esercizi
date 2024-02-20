@@ -3079,15 +3079,7 @@ hhh  <- c(50, 90, 60, 40, 10)    # aspetto presunto istogramma
 nomex <- "Utilizzo servizi di streaming"
 samp <- genera_dati(brk = brk, hhh = hhh, n = n)
 
-<<<<<<< HEAD
 ls2e(stat_base(samp,brk))      # crea il data set e la tabella dat3
-=======
-source(src_("stat-base.R"))      # crea il data set e la tabella dat3
-nomex <- "Spesa per vacanze"
-samp <- genera_dati(brk = brk,hhh = hhh,n = n)
-
-ls2e(stat_base(samp,brk))
->>>>>>> d27be86ccf6313ab28287987fd854a92db8e5c14
 ```
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stata rilevata la quantità mensile di ore dedicate all'utilizzo di servizi di streaming. Di seguito è riportata la distribuzione delle frequenze percentuali:
