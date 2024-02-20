@@ -120,7 +120,7 @@ k <- length(brk)-1
 br1  <- brk[-(k+1)]
 br2  <- brk[-1]
 nomex <- "dati-x"
-ls2e(stat_base(samp,brk)))
+ls2e(stat_base(samp,brk))
 ```
 
 `r i1 <- i1+1; i2 <- 0`   Sono stati analizzati `r n` individui per investigare su `r nomex`. È riportata qui di seguito la distribuzione in classi espressa in frequenza assoluta.
