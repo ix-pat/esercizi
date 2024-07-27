@@ -10,27 +10,21 @@ rm(list=ls())
 source("intro.R")
 fig.def(2.5,3.5)
 
-i1 <- 1; 
-i2 <- 0
-item <- function(new=F){
-  if (new) assign("i2",1, envir = .GlobalEnv) else assign("i2",i2 + 1, envir = .GlobalEnv)
-  it <- (paste(letters[i2],".",sep = ""))
-return(it)}
-
-
-item2 <- function(new=F,start=F){
-  if (start) assign("i1",0, envir = .GlobalEnv)
-  if (new)   assign("i1",i1 + 1, envir = .GlobalEnv)
-  if (new)   assign("i2",1, envir = .GlobalEnv) else assign("i2",i2 + 1, envir = .GlobalEnv)
-  it <- (paste(i1,".",letters[i2],sep = ""))
-return(it)}
-
-
+i1 <- 1; i2 <- 0
 i2 <- 1
 
 ```
 
+
+```{r}
+if (html) cat('')
+```
+  
 # Esericizi sulla Regressione
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio (Dati maternità USA)
 
@@ -170,11 +164,15 @@ cat(res,sep="\n")
 :::
 ______________________________
 
-:::{.sol data-latex=""}
 
 Fornire una interpretazione dei parametri della retta di regressione.
 
-__Soluzione__
+:::{.sol data-latex=""}
+
+```{r}
+x_name <- "tasso di povertà"
+y_name <- "tasso di natalità per le under 15"
+```
 
 I parametri della retta di regressione sono $\beta_{0}$ e $\beta_{1}$.
 Il primo, $\beta_{0},$ rappresenta l'intercetta della retta,
@@ -185,21 +183,20 @@ verticale corrispondente a un incremento orizzontale unitario e
 coincide, perciò, con la tangente dell'angolo compreso fra la
 retta e l'asse delle ascisse.
 
-In questo caso, la variazione percentuale della pressione sistolica,
+In questo caso, il `r y_name`,
 secondo il modello stimato, è dato da
 $$Y= `r b0` + `r b1` X$$
 
-ossia, è composto da un quantitativo fisso di $`r b0`$ di tasso di natalità delle minorenni in un ipotetico
-stato a povertà zero ($x=0$), a cui si aggiunge un incremento di $`r b1`$ per ogni incremento unitario del tasso di povertà.
+ossia, è composto da un quantitativo fisso di $`r b0`$ di `r y_name` in un ipotetico stato a con `r x_name` zero ($x=0$), a cui si aggiunge un incremento di $`r b1`$ per ogni incremento unitario del `r x_name`.
 
 :::
 
 ______________________________
 
-:::{.sol data-latex=""}
-
 Determinare il residuo per lo stato del Colorado $i=6$
 uguale 6, ossia per $x=6$.
+
+:::{.sol data-latex=""}
 
 
 ```{r,results='asis',warning=FALSE,message=FALSE}
@@ -212,16 +209,15 @@ cat(res,sep="\n")
 :::
 ______________________________
 
-Verificare al livello di significatività dell'1% ($\alpha=0.05$)
-l'ipotesi che l'intercetta della retta di regressione sia uguale a
+Verificare l'ipotesi che l'intercetta della retta di regressione sia uguale a
 zero contro l'alternativa che sia diversa da zero.
 
 :::{.sol data-latex=""}
 
 ```{r,results='asis',warning=FALSE,message=FALSE}
-res <- se_beta0(x,y)
+res <- se_beta0()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq",alpha = 0.05)
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq")
 cat(res,sep="\n")
 ```
 
@@ -229,16 +225,15 @@ cat(res,sep="\n")
 ______________________________
 
 
-Verificare al livello di significatività del 5% ($\alpha=0.01$)
-l'ipotesi che la pendenza della retta di regressione sia uguale a 0
+Verificare l'ipotesi che la pendenza della retta di regressione sia uguale a 0
 contro l'alternativa che sia diversa da 0.
 
 :::{.sol data-latex=""}
 
 ```{r,results='asis',warning=FALSE,message=FALSE}
-res <- se_beta1(x,y)
+res <- se_beta1()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 1,bj0 = 0,h1 = ">",alpha = 0.01)
+res <- ttest_beta(cof = 1,bj0 = 0,h1 = ">")
 cat(res,sep="\n")
 ```
 
@@ -249,11 +244,16 @@ ___________________________________
 Un software professionale restituisce un output del genere
 
 ```{r,echo=TRUE,results='markup'}
+head(data_poverty,n = 10)
 modello <- lm(formula = birth_rate ~ poverty_rate,data = data_poverty)
 summary(modello)
 ```
 
 
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 1
 
@@ -408,6 +408,7 @@ fig.def(2.8,4.5)
  
 ```{r}
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])))
+abline(h=0,lty=2,col="grey")
 axis(1)
 axis(2)
 ```
@@ -417,6 +418,22 @@ L'ispezione visiva dei dati potrebbe suggerire anche l'esistenza
 di una certa NON linearità.
 Non vi sono punti leva; in ogni caso, la non linearità impone
 di modellarla prima di cercare i punti leva.
+```{r}
+plot(x,es,axes=F,ylab=expression(hat(epsilon[i])))
+abline(h=0,lty=2,col="grey")
+fit <- smooth.spline(x, es)      # smooth.spline fit
+res <- (fit$yin - fit$y)/(1-fit$lev)      # jackknife residuals
+sigma <- sqrt(var(res))                     # estimate sd
+
+upper <- fit$y + 2.0*sigma*sqrt(fit$lev)   # upper 95% conf. band
+lower <- fit$y - 2.0*sigma*sqrt(fit$lev)   # lower 95% conf. band
+
+lines(predict(fit,seq(min(x),max(x),length=500)),col=ared,lwd=2)
+lines(fit$x,upper,lty=2)
+lines(fit$x,lower,lty=2)
+axis(1)
+axis(2)
+```
 :::
 
 `r item()`   Si consideri il diagramma dei residui sotto riportato.
@@ -445,35 +462,38 @@ lines(predict(smooth.spline(x,es,df = 6),seq(min(x),max(x),length=101)),col=ared
 :::
 
 `r item()`  
-Verificare al livello di significatività dell'1% ($\alpha=0.01$)
+Verificare 
 l'ipotesi che la pendenza della retta di regressione sia uguale a
 1 contro l'alternativa che sia maggiore di 1
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-res <- se_beta1(x,y)
-cat(res,sep="\n")
-res <- ttest_beta(cof = 1,bj0 = 1,h1 = ">",alpha = 0.01)
-cat(res,sep="\n")
+se_beta1()
+
+ttest_beta(cof = 1,bj0 = 1,h1 = ">")
+
 ```
 :::
 
-`r item()`   Verificare al livello di significatività
-di $\alpha=0.01$ l'ipotesi che l'intercetta della retta di
+`r item()`   Verificare l'ipotesi che l'intercetta della retta di
 regressione sia uguale a zero contro l'alternativa che sia
 minore di zero.
  
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
 
-res <- se_beta0(x,y)
+res <- se_beta0()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.01)
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<")
 cat(res,sep="\n")
 
 ```
 :::
 
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 2
 
@@ -594,36 +614,39 @@ intorno alla retta di regressione.
 \end{displaymath}
 :::
 
-`r item()`  Verificare al livello di significatività del 5% ($\alpha=0.05$)
+`r item()`  Verificare 
 l'ipotesi che la pendenza della retta di regressione sia uguale a
 0 contro l'alternativa che sia diversa da 0
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
 
-res <- se_beta1(x,y)
+res <- se_beta1()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 1,bj0 = 0,h1 = "\\neq",alpha = 0.05)
+res <- ttest_beta(cof = 1,bj0 = 0,h1 = "\\neq")
 cat(res,sep="\n")
 ```
 :::
 
 `r item()` 
-Verificare al livello di significatività
-di $\alpha=0.05$ l'ipotesi che l'intercetta della retta di
+Verificare  l'ipotesi che l'intercetta della retta di
 regressione sia uguale a zero contro l'alternativa che sia
 diversa da zero
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-res <- se_beta0(x,y)
+res <- se_beta0()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq",alpha = 0.05)
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq")
 cat(res,sep="\n")
 
 i2 <- 1
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 3
 
@@ -746,36 +769,39 @@ cat(res,sep="\n")
 \]
 :::
 
-`r item()`  Verificare al livello di significatività del 5% ($\alpha=0.05$)
+`r item()`  Verificare 
 l'ipotesi che la pendenza della retta di regressione sia uguale a
 1/2 contro l'alternativa che sia diversa da 1/2.
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
 
-res <- se_beta1(x,y)
+res <- se_beta1()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 1,bj0 = 1/2,h1 = "\\neq",alpha = 0.05)
+res <- ttest_beta(cof = 1,bj0 = 1/2,h1 = "\\neq")
 cat(res,sep="\n")
 ```
 :::
 
 `r item()` 
-Verificare al livello di significatività
-di $\alpha=0.05$ l'ipotesi che l'intercetta della retta di
+Verificare  l'ipotesi che l'intercetta della retta di
 regressione sia uguale a zero contro l'alternativa che sia
 minore di zero.
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-res <- se_beta0(x,y)
+res <- se_beta0()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.05)
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<")
 cat(res,sep="\n")
 
 i2 <- 1
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 4
 
@@ -887,36 +913,39 @@ cat(res,sep="\n")
 ```
 :::
 
-`r item()`  Verificare al livello di significatività del 5% ($\alpha=0.05$)
+`r item()`  Verificare 
 l'ipotesi che la pendenza della retta di regressione sia uguale a
 2 contro l'alternativa che sia maggiore di 2, sapendo che
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
 
-res <- se_beta1(x,y)
+res <- se_beta1()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 1,bj0 = 2,h1 = ">",alpha = 0.05)
+res <- ttest_beta(cof = 1,bj0 = 2,h1 = ">")
 cat(res,sep="\n")
 ```
 :::
 
 `r item()` 
-Verificare al livello di significatività
-di $\alpha=0.05$ l'ipotesi che l'intercetta della retta di
+Verificare l'ipotesi che l'intercetta della retta di
 regressione sia uguale a zero contro l'alternativa che sia
 minore di zero.
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-res <- se_beta0(x,y)
+res <- se_beta0()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.05)
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<")
 cat(res,sep="\n")
 
 i2 <- 1
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 5
 
@@ -965,20 +994,23 @@ cat(res,sep="\n")
 __Nota__ altre domande simili alle precedenti non vengono riportate
 
 `r item()` 
-Verificare al livello di significatività
-di $\alpha=0.05$ l'ipotesi che l'intercetta della retta di
+Verificare l'ipotesi che l'intercetta della retta di
 regressione sia uguale a zero contro l'alternativa che sia
 minore di zero.
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-res <- se_beta0(x,y)
+res <- se_beta0()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<",alpha = 0.05)
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<")
 cat(res,sep="\n")
 
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 6
 
@@ -1039,19 +1071,23 @@ cat(res,sep="\n")
 __Nota__ altre domande simili alle precedenti non vengono riportate
 
 `r item()` 
-Verificare al livello di significatività del 5% ($\alpha=0.05$)
+Verificare 
 l'ipotesi che la pendenza della retta di regressione sia uguale a 0
 contro l'alternativa che sia maggiore di 0.
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-res <- se_beta1(x,y)
+res <- se_beta1()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 1,bj0 = 0,h1 = ">",alpha = 0.05)
+res <- ttest_beta(cof = 1,bj0 = 0,h1 = ">")
 cat(res,sep="\n")
 
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 7
 
@@ -1089,8 +1125,7 @@ $\bar{x} = 26$; $\widehat{\sigma}_{X} = 10.7765$.
 :::
 
 `r item()`
-Verificare al livello di significatività
-di $\alpha=0.05$ l'ipotesi che l'intercetta della retta di
+Verificare  l'ipotesi che l'intercetta della retta di
 regressione sia uguale a zero contro l'alternativa che sia
 diversa da zero
 
@@ -1110,12 +1145,16 @@ stat2 <- list(
 
 rg <- regr(stat2=stat2)
 ls2e(rg)
-res <- se_beta0(x,y)
+res <- se_beta0()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq",alpha = 0.05)
+res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq")
 cat(res,sep="\n")
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 8
 
@@ -1208,15 +1247,15 @@ cat(res,sep="\n")
 :::
 
 `r item()`  
-Verificare al livello di significatività dell'1% ($\alpha=0.01$)
+Verificare 
 l'ipotesi che la pendenza della retta di regressione sia uguale a
 zero contro l'alternativa che sia maggiore di zero.
 
 :::{.sol data-latex=""}
 ```{r,results='asis',warning=FALSE,message=FALSE}
-res <- se_beta1(x,y)
+res <- se_beta1()
 cat(res,sep="\n")
-res <- ttest_beta(cof = 1,bj0 = 0,h1 = "\\neq",alpha = 0.01)
+res <- ttest_beta(cof = 1,bj0 = 0,h1 = "\\neq")
 cat(res,sep="\n")
 ```
 :::

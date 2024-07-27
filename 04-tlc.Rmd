@@ -11,7 +11,16 @@ source("intro.R")
 i1 <- NULL; i2 <- NULL 
 ```
 
+
+```{r}
+if (html) cat('')
+```
+  
 # Esercizi sul TLC
+
+
+
+<div class="button-container"></div>
 
 ## Una VC qualunque: Somma, $S_{n}$
 
@@ -38,6 +47,10 @@ vnam <- "S_n"
 tlc(tipo = "somma",x1 = 132,verso = ">",mu = 2,s2 = 0.1,n = 64)
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Una VC qualunque: media, $\bar{X}$
 
@@ -68,6 +81,10 @@ tlc(tipo = "media",x1 = x1,x2 = x2,verso = NULL,mu = 2,s2 = 0.1,n = 64)
 :::
 
 
+
+
+<div class="button-container"></div>
+
 ## Un'urna: somma, $S_{n}$
 
 Si abbia l'urna $\fbox{-2}\quad \fbox{2}\quad \fbox{3}\quad \fbox{3}\quad \fbox{4}$
@@ -84,6 +101,10 @@ cat(tlc("somma",x1 = 195,x2 = 210,verso = NULL,mu = mean(urn),s2 = s2c(urn),n = 
 ```
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Un'urna: media, $\bar{X}$
 
 Si abbia l'urna $\fbox{-2}\quad \fbox{2}\quad \fbox{3}\quad \fbox{3}\quad \fbox{4}$
@@ -98,6 +119,10 @@ cat(stat_(urn,semp = T))
 cat(tlc("media",x1 = 2.2,verso = ">",mu = mean(urn),s2 = s2c(urn),n = 100))
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## 2 Urne: Somma, $S_{n}$
 
@@ -129,6 +154,10 @@ cat(tlc("somma",x1 = 90,x2 = 210,verso = ">",mu = mean(urn),s2 = s2c(urn),n = 81
 ```
 :::
 
+
+
+
+<div class="button-container"></div>
 
 ## 2 Urne: Media, $\bar{X}$
 
@@ -165,6 +194,10 @@ cat(tlc("media",x1 = 0.8,x2 = 1.2,verso = NULL,mu = mean(urn),s2 = s2c(urn),n = 
 ```
 :::
 
+
+
+<div class="button-container"></div>
+
 ## 2 Urne: Media, $\bar{X}$
 
 Due urne sono così formate:
@@ -195,6 +228,10 @@ cat(tlc("media",x1 = 1,x2 = 1.4,verso = NULL,mu = mean(urn),s2 = s2c(urn),n = 92
 ```
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Bernoulli: Somma, $S_{n}$
 
 Si abbia l'urna
@@ -220,6 +257,10 @@ cat(tlc("somma",x1 = 55,x2 = 70,verso = NULL,mu = .6,n = 100))
 ```
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Bernoulli: Proporzione, $\widehat{\pi}$
 
 Si abbia l'urna
@@ -243,6 +284,10 @@ V(X_{i})      &=& \pi (1-\pi) = 0.24
 cat(tlc("prop",x1 = 0.6,x2 = 0.65,verso = NULL,mu = .6,n = 81))
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## 2 Urne: Proporzione, $\widehat{\pi}$
 
@@ -293,6 +338,10 @@ cat(tlc("prop",x1 = .68,verso = ">",mu = 2/3,n = 81))
 :::
 
 
+
+
+<div class="button-container"></div>
+
 ## Poisson: Somma, $S_{n}$
 
 In una azienda, che lavora a ciclo continuo, si sono osservati 39
@@ -316,6 +365,10 @@ tlc(tipo = "pois_somma",x1 = 75,x2 = 80,verso = NULL,mu = 1.5,n = 52 )
 ```
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Poisson: Media, $\bar{X}$
 
 Siano $X_{1}, \ldots, X_{49}$ VC $iid$ secondo una Poisson(1.5).
@@ -333,6 +386,10 @@ V(X_{i})    &=& \lambda = 1.5                                  \\
 tlc(tipo = "pois_somma",x1 = 1.4,x2 = 2,verso = NULL,mu = 1.5,n = 49 )
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Poisson: Somma, $S_{n}$
 
@@ -354,6 +411,10 @@ V(X_{i})    &=& \lambda = 2.3                                       \\
 tlc(tipo = "pois_somma",x1 = 100,verso = "<",mu = 2.3,n = 52)
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Proporzione -- Poisson, $\widehat{\pi}$
 

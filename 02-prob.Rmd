@@ -5,11 +5,23 @@ options(digits=5)
 
 s2=1
 n <-1
+i1 <- 1
+
 
 ```
 
+
+```{r}
+if (html) cat('')
+```
+  
+
 # Esercizi di probabilità
 
+
+
+
+<div class="button-container"></div>
 
 ## Due urne
 
@@ -20,7 +32,7 @@ La scatola $B$ contiene tre biglietti contrassegnati
 con il numero 1 e due con il numero 0.
 Si effettua una estrazione da ognuna delle due scatole.
 
-`r i2 <- i2+1;item()`  Calcolare la probabilità di ottenere due biglietti
+`r item()`  Calcolare la probabilità di ottenere due biglietti
 con il numero 1.
 
 :::{.sol data-latex=""}
@@ -42,7 +54,7 @@ indipendenti e quindi
 :::
 
 
-`r i2 <- i2+1;item()` La probabilità che almeno uno dei biglietti sia
+`r item()` La probabilità che almeno uno dei biglietti sia
 contrassegnato con il numero 1.
 
 :::{.sol data-latex=""}
@@ -94,7 +106,7 @@ _incompatibili_
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()`  La probabilità che la somma dei numeri riportati sui
+`r item(T)`  La probabilità che la somma dei numeri riportati sui
 biglietti estratti sia 1.
 
 :::{.sol data-latex=""}
@@ -116,6 +128,10 @@ e si ha
 \end{eqnarray*}
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Valigetta
 
 `r i2 <-0`
@@ -126,7 +142,7 @@ Si ha a disposizione cinque soli tentativi, verificando l'apertura
 a ogni combinazione.
 
 
-`r i2 <- i2+1;item()`  Qual è la probabilità di trovare la combinazione giusta
+`r item(T)`  Qual è la probabilità di trovare la combinazione giusta
 estraendo completamente a caso le tre cifre per un massimo di
 cinque volte?
 
@@ -204,7 +220,7 @@ P(B)&=& 1 - P(\bar{B}) \\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()`  Qual è la probabilità di trovare la combinazione giusta
+`r item()`  Qual è la probabilità di trovare la combinazione giusta
 estraendo completamente a caso le tre cifre per un massimo di
 cinque volte tenendo conto delle combinazioni già provate?
 
@@ -270,9 +286,13 @@ cinque tentativi".
 \end{eqnarray*}
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Urna
 
-`r i2 <- 0`
+
 Si supponga di estrarre a caso e SENZA reimmissione (ESR) 2 palline
 da un'urna contenente 5 palline rosse e 10 palline gialle.
 Si considerino gli eventi seguenti: 
@@ -281,7 +301,7 @@ Si considerino gli eventi seguenti:
 - B={pallina rossa alla seconda estrazione (colore qualsiasi alla prima)},
 - C={pallina gialla alla seconda estrazione (colore qualsiasi alla prima)}.
 
-`r i2 <- i2+1;item()`    Quali sono le coppie di palline che formano l'unione
+`r item(T)`    Quali sono le coppie di palline che formano l'unione
 degli eventi A e B, ovvero $(A \cup B)$?
 
 
@@ -295,7 +315,7 @@ degli eventi A e B, ovvero $(A \cup B)$?
 Coppie contenenti almeno una pallina rossa
 :::
 
-`r i2 <- i2+1;item()`    Quali sono le coppie di palline che formano l'intersezione
+`r item()`    Quali sono le coppie di palline che formano l'intersezione
 degli eventi A e B, ovvero (A $\cap$ B)? 
 
 - $\Box$ Coppie contenenti due palline gialle.
@@ -307,13 +327,13 @@ degli eventi A e B, ovvero (A $\cap$ B)?
 Coppie contenenti due palline rosse
 :::
 
-`r i2 <- i2+1;item()`    Qual è il complementare di C?
+`r item()`    Qual è il complementare di C?
 
 :::{.sol data-latex=""}
 $\overline{C}=B$
 :::
 
-`r i2 <- i2+1;item()`    Calcolare la probabilità di C condizionata all'evento A, $P(C|A).$
+`r item()`    Calcolare la probabilità di C condizionata all'evento A, $P(C|A).$
 
 :::{.sol data-latex=""}
 Noto che A si è verificato, nell'urna rimangono 14 palline di cui 4 sono rosse
@@ -321,7 +341,11 @@ e 10 sono gialle: $P(C|A)= 10/14 = 0.714.$
 :::
 
 
-`r i2 <- 0`
+
+
+
+
+<div class="button-container"></div>
 
 ## Applicazione regole
 
@@ -329,13 +353,13 @@ La probabilità dell'evento A è 1/3.
 La probabilità dell'evento B è 1/2.
 I due eventi sono indipendenti.
 
-`r i2 <- i2+1;item()`    Calcolare P($\overline{B}$).
+`r item(T)`    Calcolare P($\overline{B}$).
 
 :::{.sol data-latex=""}
 P($\overline{B}$)= 1 - P(B)=1/2
 :::
 
-`r i2 <- i2+1;item()`    Calcolare  la probabilità che si verifichi B,
+`r item()`    Calcolare  la probabilità che si verifichi B,
 dato che A si è verificato.
 
 :::{.sol data-latex=""}
@@ -346,13 +370,17 @@ In alternativa si può procedere al calcolo nel modo seguente:
 \[P({B}|A)= \frac{P(B \cap A)}{P(A)} = \frac{P(B) \times P(A)}{P(A)} = P({B}) =1/2\]
 :::
 
-`r i2 <- i2+1;item()`    I due eventi sono incompatibili?
+`r item()`    I due eventi sono incompatibili?
 
 :::{.sol data-latex=""}
 No, perché ${P(A \cap B)}$ = ${P(A) \times P(B)}$ =1/3 $\times$ 1/2 = 1/6 $\neq$ 0.
 :::
 
-`r i2 <- 0` 
+ 
+
+
+
+<div class="button-container"></div>
 
 ## Studente
 
@@ -361,7 +389,7 @@ argomenti del corso.
 L'insegnante gli pone 3 domande su argomenti diversi e
 l'esame è superato solo se tutte le risposte sono giuste.
 
-`r i2 <- i2+1;item()`    Qual è la probabilità che lo studente
+`r item(T)`    Qual è la probabilità che lo studente
 superi l'esame al primo appello?
 
 :::{.sol data-latex=""}
@@ -383,7 +411,7 @@ P(\mbox{conoscere tutte e tre le risposte})=
 \]
 :::
 
-`r i2 <- i2+1;item()`    Qual è la probabilità che lo studente superi
+`r item()`    Qual è la probabilità che lo studente superi
 l'esame nella prima sessione (in cui ci sono tre appelli)?
 Si assuma che gli eventi "superamento dell'esame" siano
 indipendenti, anche se l'assunto non è realistico.
@@ -420,7 +448,11 @@ P(B) &=& 1- P(\bar{B})
      &=& 1- \left( 1-0.49565 \right)^{3} = 1 - 0.12829= 0.87171  .
 \end{eqnarray*}
 :::
-`r i2 <- 0`
+
+
+
+
+<div class="button-container"></div>
 
 ## Giulio e il treno
 
@@ -432,7 +464,7 @@ treno evitando la multa del controllore se non troverà
 coda alla biglietteria (evento $B$).
 Questo accade con probabilità pari a 0.5.
 
-`r i2 <- i2+1;item()`    Calcolare la probabilità che Giulio non debba pagare
+`r item(T)`    Calcolare la probabilità che Giulio non debba pagare
 la multa (evento $C$).
 
 :::{.sol data-latex=""}
@@ -447,7 +479,7 @@ P(C) &=& P(A \cap B) = P(A) P(B) = 0.7 \times 0.5 = 0.35  .
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()`    Calcolare la probabilità che Giulio in tre giorni
+`r item()`    Calcolare la probabilità che Giulio in tre giorni
 diversi riesca a evitare almeno una multa (evento $D$).
 
 :::{.sol data-latex=""}
@@ -468,13 +500,17 @@ P(D) &=& 1 - P(\bar{D})
      &=& 1-0.274625 = 0.725375  .
 \end{eqnarray*}
 :::
-`r i2 <- 0`
+
+
+
+
+<div class="button-container"></div>
 
 ## Somma di due dadi
 
 Si lancia una coppia di dadi.
 
-`r i2 <- i2+1;item()`    Costruire il supporto.
+`r item(T)`    Costruire il supporto.
 
 :::{.sol data-latex=""}
 Il supporto della coppia di VC, si ottiene con una tabella a
@@ -497,7 +533,7 @@ colnames(out) <- paste("$D_2=",1:6,"$",sep="")
 Lo spazio $\Omega$ consiste di 36 _combinazioni equiprobabili_.
 :::
 
-`r i2 <- i2+1;item()`    Determinare la probabilità di un
+`r item()`    Determinare la probabilità di un
 punto del supporto.
 
 :::{.sol data-latex=""}
@@ -515,7 +551,7 @@ La risposta era anche intuitiva perché gli eventi di $\Omega$
 sono equiprobabili: 1/36.
 :::
 
-`r i2 <- i2+1;item()`    Qual è la probabilità che la somma dei punteggi sia 9?
+`r item()`    Qual è la probabilità che la somma dei punteggi sia 9?
 
 :::{.sol data-latex=""}
 Si può procedere al conteggio degli eventi che danno somma, $S$, pari a 9:
@@ -541,7 +577,7 @@ $\{\fbox{1}\ \fbox{2}\}$ sono tra loro _incompatibili_:
 si verifica l'uno _o_ (esclusivo -- XOR) si verifica l'altro.
 :::
 
-`r i2 <- i2+1;item()`    Qual è la probabilità che la somma ($S$)
+`r item()`    Qual è la probabilità che la somma ($S$)
 dei punteggi di due dadi sia minore di quattro?
 
 :::{.sol data-latex=""}
@@ -554,7 +590,7 @@ P(S<4) &=& P(\{S=2\} \cup \{ S=3 \})
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()`    Calcolare la probabilità che la SOMMA ($S$)
+`r item()`    Calcolare la probabilità che la SOMMA ($S$)
 dei punteggi di due dadi sia pari a sette oppure
 uno dei dadi sia pari a sei ($U6$).
 
@@ -588,7 +624,11 @@ P(A \cup B) = P(A) + P(B) - P(A \cap B)  .
 Se $A$ e $B$ sono incompatibili, allora
 $A \cap B = \emptyset \Rightarrow P(A \cap B)=P(\emptyset)=0$. \\
 :::
-`r i2 <- 0`
+
+
+
+
+<div class="button-container"></div>
 
 ## Scatola e biglietti
 
@@ -598,7 +638,7 @@ Si estrae un biglietto da ognuna delle scatole e si indica
 con $A_{1}$ il valore del biglietto estratto dalla scatola $A$ e
 con $B_{1}$ quello della scatola $B$.
 
-`r i2 <- i2+1;item()`    Ricavare la distribuzione di probabilità di $X=A_{1}+B_{1}$.
+`r item(T)`    Ricavare la distribuzione di probabilità di $X=A_{1}+B_{1}$.
 
 :::{.sol data-latex=""}
 Lo spazio campionario dell'esperimento considerato è costituito
@@ -630,7 +670,7 @@ kable(X,booktabs=T,escape = F,linesep="")
 ```
 :::
 
-`r i2 <- i2+1;item()`    Calcolare la probabilità dell'evento $\{A_{1}>B_{1}\}$.
+`r item()`    Calcolare la probabilità dell'evento $\{A_{1}>B_{1}\}$.
 
 :::{.sol data-latex=""}
 Dallo spazio campionario presentato nel punto (a)
@@ -647,7 +687,7 @@ kable(out,booktabs=T,escape = F,linesep="")
 ```
 :::
 
-`r i2 <- i2+1;item()`    Si ripete l'esperimento 10 volte reinserendo i biglietti
+`r item()`    Si ripete l'esperimento 10 volte reinserendo i biglietti
 estratti nelle rispettive scatole dopo ogni estrazione.
 Calcolare la probabilità che il valore del biglietto della
 scatola $A$ sia superiore a quello della scatola $B$ in meno
@@ -671,6 +711,10 @@ P(S<4)
 :::
 
 
+
+
+<div class="button-container"></div>
+
 ## Urna con colori e lettere diverse
 
 Un'urna contiene 3 palline rosse timbrate con $\color{red}{\mbox{A}}$, 2 palline rosse timbrate con $\color{red}{\mbox{B}}$, 1 palline rossa timbrate con $\color{red}{\mbox{C}}$, 2 palline verdi timbrate con $\color{green}{\mbox{A}}$, una verde con $\color{green}{\mbox{B}}$, una verde con $\color{green}{\mbox{C}}$, una nera con $\color{black}{\mbox{A}}$ e una nera con $\mbox{C}$. 
@@ -688,7 +732,7 @@ kable(Y,booktabs = T, escape = F,linesep = "", digits = 4,col.names = c("","A","
 
 ```
 
-`r i2 <- 1;item() ` Calcolare la probabilità di estrarre una pallina Rossa
+`r i2 <- 1;item(T) ` Calcolare la probabilità di estrarre una pallina Rossa
 
 :::{.sol data-latex=""}
 Sia 
@@ -700,7 +744,7 @@ P(R)=\frac6{12}=0.5
 \]
 :::
 
-`r i2 <- i2 +1;item() ` Calcolare la probabilità di estrarre una pallina timbrata con $\mbox{A}$
+`r item() ` Calcolare la probabilità di estrarre una pallina timbrata con $\mbox{A}$
 
 :::{.sol data-latex=""}
 Sia 
@@ -712,7 +756,7 @@ P(A)=\frac6{12}=0.5
 \]
 :::
 
-`r i2 <- i2 +1;item() ` Gli eventi $A$ ed $R$ sono indipendenti?
+`r item() ` Gli eventi $A$ ed $R$ sono indipendenti?
 
 :::{.sol data-latex=""}
 Sì, in quanto
@@ -727,7 +771,7 @@ e viceversa
 \[P(R|A)=\frac{P(A\cap R)}{P(A)}=\frac{\frac{1}{4}}{\frac12}=\frac 12= P(R)\]
 :::
 
-`r i2 <- i2 +1;item() ` Calcolare la probabilità di estrarre una pallina verde
+`r item() ` Calcolare la probabilità di estrarre una pallina verde
 
 :::{.sol data-latex=""}
 Sia 
@@ -739,7 +783,7 @@ P(V)=\frac4{12}=\frac13
 \]
 :::
 
-`r i2 <- i2 +1;item() ` Gli eventi $V$ ed $R$ sono indipendenti?
+`r item() ` Gli eventi $V$ ed $R$ sono indipendenti?
 
 :::{.sol data-latex=""}
 __NO__ $V$ e $R$ sono __incompatibili__, se la pallina è uscita verde __non__ può essere rossa
@@ -749,7 +793,7 @@ P(V\cap R)=P(\emptyset)=0
 \]
 :::
 
-`r i2 <- i2 +1;item() ` Gli eventi $V$ ed $A$ sono indipendenti?
+`r item() ` Gli eventi $V$ ed $A$ sono indipendenti?
 
 :::{.sol data-latex=""}
 Sì, in quanto
@@ -766,7 +810,7 @@ _Interpretazione_ Sapere se la pallina estratta è targata con A non cambia il n
 sul colore, viceversa, sapere il colore non cambia il nostro stato informativo sul fatto che sia timbrata A.
 :::
 
-`r i2 <- i2 +1;item() ` Calcolare $P(N)$ (probabilità di estrarre nera) e $P(B)$ (probabilità di estrarre una pallina timbrata con B)
+`r item() ` Calcolare $P(N)$ (probabilità di estrarre nera) e $P(B)$ (probabilità di estrarre una pallina timbrata con B)
 
 :::{.sol data-latex=""}
 \begin{eqnarray*}
@@ -775,7 +819,7 @@ P(B)   &=& \frac3{12}
 \end{eqnarray*}
 :::
 
-`r i2 <- i2 +1;item() ` Gli eventi $B$ ed $N$ sono indipendenti?
+`r item() ` Gli eventi $B$ ed $N$ sono indipendenti?
 
 :::{.sol data-latex=""}
 __NO__ $B$ e $N$ sono __incompatibili__, se la pallina è uscita nera __non__ può essere timbrata con B
@@ -783,7 +827,7 @@ __NO__ $B$ e $N$ sono __incompatibili__, se la pallina è uscita nera __non__ pu
 \[P(B\cap N)=\frac0{12}=0\]
 :::
 
-`r i2 <- i2 +1;item() ` Gli eventi $C$ (estrarre una pallina con C) ed $N$ sono indipendenti?
+`r item() ` Gli eventi $C$ (estrarre una pallina con C) ed $N$ sono indipendenti?
 
 :::{.sol data-latex=""}
 __No__, in quanto
@@ -800,7 +844,7 @@ P(C|N)=\frac12\neq\frac14=P(C)
 \]
 :::
 
-`r i2 <- i2 +1;item() ` Gli eventi $B$ ed $N$ sono incompatibili?
+`r item() ` Gli eventi $B$ ed $N$ sono incompatibili?
 
 :::{.sol data-latex=""}
 __No__, in quanto
@@ -808,6 +852,10 @@ __No__, in quanto
 P(C\cap N)=\frac1{12}\neq 0
 \]
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Urne che portano ad altre urne
 
@@ -845,7 +893,7 @@ e quindi
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` Sapendo che è uscita una pallina marcata con A, qual è la probabilità che all'inizio del gioco sia stata estratta la pallina Rossa?
+`r item(T)` Sapendo che è uscita una pallina marcata con A, qual è la probabilità che all'inizio del gioco sia stata estratta la pallina Rossa?
 
 :::{.sol data-latex=""}
 \begin{eqnarray*}
@@ -857,11 +905,15 @@ e quindi
 \end{eqnarray*}
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Estrazioni con e senza reintroduzione
 
 Un'urna contiene 3 palline Rosse, 2 Bianche e 5 Verdi, 
 
-`r i2 <- +1;item()` si estrae 3 volte __con__ reintroduzione.
+`r i2 <- +1;item(T)` si estrae 3 volte __con__ reintroduzione.
 Calcolare la probabilità di aver 3 colori diversi
 
 :::{.sol data-latex=""}
@@ -898,7 +950,7 @@ $6=3!$ è il numero di modi in cui posso mescolare i tre colori
 ::::
 :::
 
-`r i2 <- i2+1;item()` si estrae 3 volte __senza__ reintroduzione.
+`r item()` si estrae 3 volte __senza__ reintroduzione.
 Calcolare la probabilità di aver 3 colori diversi.
 
 :::{.sol data-latex=""}
@@ -926,6 +978,10 @@ anche se sono tra di loro dipendenti ogni sequenza la stessa probabilità:
         &=& `r 2/10*5/9*3/8`
 \end{eqnarray*}
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Urne e palline numerate
 
@@ -972,7 +1028,7 @@ P(S=0)=\frac 1{12}+\frac 2{12}=\frac 16
 \]
 :::
 
-`r i2 <- i2+1;item()` Calcolare la probabilità che dall'urna $A$ sia uscito $\mbox{+1}$, __dato__ che
+`r item(T)` Calcolare la probabilità che dall'urna $A$ sia uscito $\mbox{+1}$, __dato__ che
 la somma fa 1
 
 :::{.sol data-latex=""}

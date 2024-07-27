@@ -14,6 +14,10 @@ source("intro.R")
 
 # Test del Chi-quadro per indipendenza
 
+
+
+<div class="button-container"></div>
+
 ## Esercizio 1
 
 In uno studio sulle preferenze di gusti di gelato è stato chiesto ad un campione di 200 persone, divise tra 100 uomini e 100 donne, di esprimere la propria preferenza tra quattro gusti di gelato (Cioccolato, Fragola, Vaniglia e Limone).
@@ -27,20 +31,24 @@ dat <- matrix(c(25, 20, 15, 10, 30, 40, 40, 30), 2)
 nome_y <- c("Uomo", "Donna")
 nome_x <- c("Cioccolato", "Fragola", "Vaniglia", "Limone")
 
-dat_print <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[1]]
-dat <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[2]]
+dat_print <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[2]]
+dat <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[1]]
 
-tabl(dat, digits = 4) %>%
+tabl(dat_print, digits = 4) %>%
   column_spec(column = 1, bold = T)
 ```
 
-Testare al 5% l'ipotesi che vi sia indipendenza tra genere e preferenza tra le profumazioni.
+Testare l'ipotesi che vi sia indipendenza tra genere e preferenza tra le profumazioni.
 
 :::{.sol data-latex=""}
 ```{r}
-cat(chi_test(dat = dat,alpha = 0.05))
+cat(chi_test(dat = dat))
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 2
 
@@ -54,20 +62,24 @@ dat <- matrix(c(40, 30, 30, 25, 20, 35), 2)
 nome_y <- c("consuma frutta", "non consuma frutta")
 nome_x <- c("Acqua", "Succo d'arancia", "Bibita gassata")
 
-dat_print <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[1]]
-dat <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[2]]
+dat_print <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[2]]
+dat <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[1]]
 
-tabl(dat, digits = 4) %>%
+tabl(dat_print, digits = 4) %>%
   column_spec(column = 1, bold = T)
 ```
 
-Testare all'1% l'ipotesi che vi sia indipendenza tra consumo abituale di frutta e preferenza di bevande.
+Testare l'ipotesi che vi sia indipendenza tra consumo abituale di frutta e preferenza di bevande.
 
 :::{.sol data-latex=""}
 ```{r}
-cat(chi_test(dat = dat,alpha = 0.01))
+cat(chi_test(dat = dat))
 ```
 :::
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 3
 
@@ -82,22 +94,26 @@ dat <- matrix(c(40, 30, 10, 25, 35, 20), 2)
 nome_y <- c("Elettori di Destra", "Elettori di Sinistra")
 nome_x <- c("Sostenitore", "Neutrale", "Contrario")
 
-dat_print <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[1]]
-dat <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[2]]
+dat_print <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[2]]
+dat <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[1]]
 
-tabl(dat, digits = 4) %>%
+tabl(dat_print, digits = 4) %>%
   column_spec(column = 1, bold = T)
 
 ```
 
-Testare al 5% l'ipotesi che vi sia indipendenza tra l'opinione riguardo al tema "Matrimonio tra persone dello stesso sesso" e l'appartenenza ai gruppi "Elettori di Destra" e "Elettori di Sinistra".
+Testare l'ipotesi che vi sia indipendenza tra l'opinione riguardo al tema "Matrimonio tra persone dello stesso sesso" e l'appartenenza ai gruppi "Elettori di Destra" e "Elettori di Sinistra".
 
 :::{.sol data-latex=""}
 ```{r}
-cat(chi_test(dat = dat,alpha = 0.05))
+cat(chi_test(dat = dat))
 ```
 :::
 
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 4
 
@@ -113,24 +129,28 @@ dat <- matrix(c(50, 30, 20, 40, 60, 10, 20, 25, 40), 3)
 nome_y <- c("Giovani", "Adulti", "Anziani")
 nome_x <- c("Sport", "Lettura", "Arte")
 
-dat_print <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[1]]
-dat <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[2]]
+dat_print <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[2]]
+dat <- chi_print(dat, nome_x = nome_x, nome_y = nome_y)[[1]]
 
-tabl(dat, digits = 4) %>%
+tabl(dat_print, digits = 4) %>%
   column_spec(column = 1, bold = T)
 
 
 ```
 
-Testare al 5% l'ipotesi che vi sia indipendenza tra la preferenza per le attività ricreative e l'età.
+Testare l'ipotesi che vi sia indipendenza tra la preferenza per le attività ricreative e l'età.
 
 :::{.sol data-latex=""}
 ```{r}
-cat(chi_test(dat = dat,alpha = 0.05))
+cat(chi_test(dat = dat))
 ```
 :::
 
 # Test del Chi-quadro per conformità
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 1
 
@@ -153,10 +173,14 @@ Testare l'ipotesi che le preferenze dei clienti dei bar dell'Emilia Romagna per 
 
 :::{.sol data-latex=""}
 ```{r}
-cat(chi_conf(Freq_c = Freq_c,Freq_0 = Freq_0,X,Y,alpha = 0.05))
+cat(chi_conf(Freq_c = Freq_c,Freq_0 = Freq_0,X,Y))
 ```
 :::
 
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 2
 
@@ -183,6 +207,6 @@ Testare l'ipotesi che le preferenze dei clienti dei bar dell'Emilia Romagna per 
 
 :::{.sol data-latex=""}
 ```{r}
-cat(chi_conf(Freq_c = Freq_c,Freq_0 = Freq_0,X,Y,alpha = 0.05))
+cat(chi_conf(Freq_c = Freq_c,Freq_0 = Freq_0,X,Y))
 ```
 :::

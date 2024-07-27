@@ -4,13 +4,21 @@ source("intro.R")
 ```
 
 
+```{r}
+if (html) cat('')
+```
+  
 # Esercizi Di Probabilità e Variabili Casuali
+
+
+
+<div class="button-container"></div>
 
 ## Esercizio 1
   
 Il numero di veicoli al casello autostradale $C$ è la **somma** del numero di veicoli che provengono dalla strada $S_1$ e dalla strada $S_2$. All'ora di punta di un giorno feriale, il numero di veicoli $X_1$ sulla strada $S_1$ è descritto da un Poisson di parametro 4.3,  $X_1\sim\text{Pois}(4.3)$, mentre il numero di veicoli $X_2$ sulla strada $S_2$ è descritto da un Poisson di parametro 2.1,  $X_2\sim\text{Pois}(2.1)$, $X_1$ e $X_2$ sono assunte indipendenti.
 
-`r i2 <- i2+1;item()` (**Punti 14**) Calcolare la probabilità di avere al massimo 2 automobili al casello $C$.
+`r item(T)` (**Punti 14**) Calcolare la probabilità di avere al massimo 2 automobili al casello $C$.
 
 :::{.sol data-latex=""} 
 $X_1\sim\text{Pois}(4.3)$ e $X_2\sim\text{Pois}(2.1)$ e quindi
@@ -30,7 +38,7 @@ P(X\le 2) &=& P(X=0\ \cup X=1 \ \cup X=2) \\
 \end{eqnarray*}
 :::
 
-  `r i2 <- i2+1;item()` (**Punti 3**) Qual è la varianza della VC che conta il 
+  `r item()` (**Punti 3**) Qual è la varianza della VC che conta il 
   numero di automobili al casello $C$?
 
 :::{.sol data-latex=""} 
@@ -43,14 +51,14 @@ V(X)=6.4
 \]
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Se $X\sim\text{Binom}(15,0.3)$, qual è il supporto di $X$?
+`r item()` (**Punti 3**) Se $X\sim\text{Binom}(15,0.3)$, qual è il supporto di $X$?
 
 :::{.sol data-latex=""} 
 Se Se $X\sim\text{Binom}(15,0.3)$, il suo supporto è
 \[S_X=\{0,1,2,...,15\}\]
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Se $X\sim N(0,1)$ e $Y\sim \chi^2_5$, 
+`r item()` (**Punti 2**) Se $X\sim N(0,1)$ e $Y\sim \chi^2_5$, 
   $X$ e $Y$ indipendenti, come si distribuisce 
   \[W=\frac X {\sqrt{Y/5}} ~~~?\]
 
@@ -61,12 +69,16 @@ Se $X\sim N(0,1)$ e $Y\sim \chi^2_5$,
   \[W=\frac X {\sqrt{Y/5}} \sim t_5\]
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Esercizio 2
 
 ```{r}
 s1 <- 0.55
 s2 <- 0.85
-i2 <- 0
+
 ```
 
 Un portafoglio finanziario è composto da due titoli. Il rendimento del titolo $A$ è descritto da una normale $X_A\sim N(0.6,(`r s1`)^2)$, il rendimento del titolo $A$ è descritto da una normale $X_B\sim N(0.8,(`r s2`)^2)$, $X_A$ e $X_B$ sono considerate indipendenti. Il rendimento del portafoglio è dunque la somma dei rendimenti
@@ -74,7 +86,7 @@ Un portafoglio finanziario è composto da due titoli. Il rendimento del titolo $
 X=X_A+X_B
 \]
 
-`r i2 <- i2+1;item()` (**Punti 14**) Calcolare la probabilità di avere un rendimento negativo.
+`r item(T)` (**Punti 14**) Calcolare la probabilità di avere un rendimento negativo.
 
 
 :::{.sol data-latex=""} 
@@ -103,7 +115,7 @@ cat(norm_int(x1 = x0,verso = "<",mm = mm,ss = ss))
 :::
 
 
-  `r i2 <- i2+1;item()` (**Punti 3**) Sotto ipotesi di indipendenza tra gli anni, qual è la probabilità che il portafoglio abbia rendimento negativo per 3 anni di seguito?
+  `r item()` (**Punti 3**) Sotto ipotesi di indipendenza tra gli anni, qual è la probabilità che il portafoglio abbia rendimento negativo per 3 anni di seguito?
 
 
 :::{.sol data-latex=""} 
@@ -132,7 +144,7 @@ P(E)&=&P(N_1\cap N_2\cap N_3 )\\
 
 
 
-  `r i2 <- i2+1;item()` (**Punti 3**) Se $X\sim\text{Pois}(15.3)$, qual è la varianza di $X$?
+  `r item()` (**Punti 3**) Se $X\sim\text{Pois}(15.3)$, qual è la varianza di $X$?
 
 
   
@@ -142,7 +154,7 @@ Se Se $X\sim\text{Pois}(\lambda=15.3)$, allora
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 2**) Se $X_1\sim N(0,1)$, $X_2\sim N(0,1)$ e $X_2\sim N(0,1)$ 
+`r item()` (**Punti 2**) Se $X_1\sim N(0,1)$, $X_2\sim N(0,1)$ e $X_2\sim N(0,1)$ 
   $X_1$, $X_2$ e $X_3$ indipendenti, come si distribuisce 
   \[W=X_1^2+X_2^2+X_3^2 ~~~?\]
 
@@ -156,17 +168,21 @@ Se $X_1\sim N(0,1)$, $X_2\sim N(0,1)$ e $X_2\sim N(0,1)$
 :::
 
 
+
+
+<div class="button-container"></div>
+
 ## Esercizio 3
 
 ```{r}
 s1 <- 0.55
 s2 <- 0.85
-i2 <- 0
+
 ```
 
  L'urna $A$ contiene 3 bussolotti rossi e 7 blu. Si estrae $n=6$ volte con reintroduzione
 
-`r i2 <- i2+1;item()` (**Punti 14**) Qual è la probabilità di avere almeno 2 bussolotti rossi su 6 estrazioni?
+`r item(T)` (**Punti 14**) Qual è la probabilità di avere almeno 2 bussolotti rossi su 6 estrazioni?
 
 
 
@@ -189,7 +205,7 @@ P(X\ge 2)&=& 1- P(X<2)\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Quali sono valore atteso e varianza della VC che conta il numero di palline Rosse su 6 estrazioni con reintroduzione dall'urna $A$?
+`r item()` (**Punti 3**) Quali sono valore atteso e varianza della VC che conta il numero di palline Rosse su 6 estrazioni con reintroduzione dall'urna $A$?
 
 
 
@@ -206,7 +222,7 @@ E quindi
 \[E(X)=n\pi=6\cdot\frac 3{10}=1.8,\qquad V(X)=n\pi(1-\pi)=6\cdot\frac 3{10}\frac 7{10}=1.26\]
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Se $X\sim N(\mu_X,\sigma_X^2)$ e $Y\sim N(\mu_Y,\sigma_Y^2)$, come si distribuisce 
+`r item()` (**Punti 3**) Se $X\sim N(\mu_X,\sigma_X^2)$ e $Y\sim N(\mu_Y,\sigma_Y^2)$, come si distribuisce 
   \[W=X-Y ~~~?\]
 
 :::{.sol data-latex=""}
@@ -217,7 +233,7 @@ Se $X\sim N(\mu_X,\sigma_X^2)$, $Y\sim N(\mu_Y,\sigma_Y^2)$,  allora
 **se e solo se** $X$ e $Y$ sono indipendenti.
 :::
 
-  `r i2 <- i2+1;item()` (**Punti 2**) Si lancia una moneta perfetta ($P(T)=P(C)=\frac 12$).
+  `r item()` (**Punti 2**) Si lancia una moneta perfetta ($P(T)=P(C)=\frac 12$).
   Se esce Testa di estrae 1 volta con dall'urna $A$ che contiene contiene 3 bussolotti rossi e 7 blu. 
   Se esce Croce di estrae 1 volta con dall'urna $B$ che contiene contiene 2 bussolotti rossi e 8 blu. 
   Qual è la probabilità che alla fine dell'esperimento esca un bussolotto rosso?
@@ -247,16 +263,20 @@ P(\mbox{Rosso})&=&P((T~\cap~\mbox{Rosso})~\cup~ (C~\cap~\mbox{Rosso}))\\
 \end{eqnarray*}
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Esercizio 4
 
 ```{r}
-i2 <- 0
+
 ```
 
 
 L'urna $U$ contiene tre palline bianche, tre palline rosse e tre palline nere. 
 
-`r i2 <- 1;item()` (**Punti 14**) Si estrae $n=2$ volte __senza__ reintroduzione. Qual è la probabilità di ottenere due colori diversi in 2 estrazioni? (esempio: prima bianco poi rosso _oppure_ prima nero poi bianco oppure...)  
+`r i2 <- 1;item(T)` (**Punti 14**) Si estrae $n=2$ volte __senza__ reintroduzione. Qual è la probabilità di ottenere due colori diversi in 2 estrazioni? (esempio: prima bianco poi rosso _oppure_ prima nero poi bianco oppure...)  
 
 :::{.sol data-latex=""}
 L'evento 
@@ -284,7 +304,7 @@ P(E)&=& P(B_1\cap R_2)+P(R_1\cap B_2)+\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Si ricompone l'urna $U$ e si estrae una volta, si assegna 
+`r item()` (**Punti 3**) Si ricompone l'urna $U$ e si estrae una volta, si assegna 
 
 - 1 all'evento esce bianca  
 - 2 all'evento esce rossa
@@ -307,13 +327,13 @@ V(X)&=& 1^2\cdot\frac 13 +2^2\cdot\frac 13 +3^2\cdot\frac 13 - 2^2=`r mean((1:3)
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) La varianza di una VC $X$ può essere zero?
+`r item()` (**Punti 3**) La varianza di una VC $X$ può essere zero?
 
 :::{.sol data-latex=""}
 Sì, se e solo se $X$ assume un valore costante $x$ per certo, $P(X=x)=1$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Se $X\sim\text{Bin}(10;0.3)$ e $Y\sim\text{Pois}(3.23)$,
+`r item()` (**Punti 2**) Se $X\sim\text{Bin}(10;0.3)$ e $Y\sim\text{Pois}(3.23)$,
 $X$ e $Y$ indipendenti, quanto vale $V(X-Y)$?
 
 :::{.sol data-latex=""}
@@ -322,10 +342,14 @@ Siccome $X$ e $Y$ sono indipendenti
 V(X-Y)=V(X)+V(Y)=n\pi(1-\pi)+\lambda=10\times 0.3(1-0.3)+3.23=`r 10*.3*.7+3.23`
 \]
 :::
+
+
+<div class="button-container"></div>
+
 ## Esercizio sul Teorema di Bayes
 
 ```{r}
-i2 <- 0
+
 ```
 
 
@@ -343,7 +367,7 @@ con reintroduzione 3 volte dall'urna.
 
 Quando Sergio arriva Michele ha estratto da $U_2$ e ha ottenuto 2 palline vincenti su 3 estrazioni.
 
-`r i2 <- i2+1;item()` Qual è la probabilità di Sergio su $X=2$?
+`r item(T)` Qual è la probabilità di Sergio su $X=2$?
 
 
 :::{.sol data-latex=""}
@@ -374,7 +398,7 @@ $P(X=2)$
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` Qual è la probabilità di Sergio che dall'urna $U_1$ sia stata estratta la palline etichettata con 3?
+`r item()` Qual è la probabilità di Sergio che dall'urna $U_1$ sia stata estratta la palline etichettata con 3?
 
 :::{.sol data-latex=""}
 
@@ -398,7 +422,7 @@ P(\pi=0.5|X=2)   &=&  \frac{P(\pi=0.5)P(X=2|\pi=0.5)}{P(X=2)}\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` Qual è distribuzione aggiornata su $\pi$ in base al fatto che $X=2$?
+`r item()` Qual è distribuzione aggiornata su $\pi$ in base al fatto che $X=2$?
 
 :::{.sol data-latex=""}
 
@@ -421,7 +445,7 @@ P(\pi=1|X=2)   &=&  \frac{P(\pi=1)P(X=2|\pi=1)}{P(X=2)}\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` Costruire le distribuzioni condizionate di $X$ a $\pi$. 
+`r item()` Costruire le distribuzioni condizionate di $X$ a $\pi$. 
 
 :::{.sol data-latex=""}
 
@@ -449,7 +473,7 @@ kable(TTX,row.names = T,booktabs = T, escape = F,linesep = "", digits = 3)
 ```
 :::
 
-`r i2 <- i2+1;item()` Costruire la distribuzione doppia **congiunta** di tutte le possibili combinazioni e le relative probabilità.
+`r item()` Costruire la distribuzione doppia **congiunta** di tutte le possibili combinazioni e le relative probabilità.
 
 :::{.sol data-latex=""}
 Siccome 
@@ -484,7 +508,7 @@ Sommando per riga abbiamo la distribuzione di $\pi$, sommando per colonna abbiam
 quella di $X$.
 :::
 
-`r i2 <- i2+1;item()` Costruire le distribuzioni condizionate di $\pi$ ad $X$. 
+`r item()` Costruire le distribuzioni condizionate di $\pi$ ad $X$. 
 
 :::{.sol data-latex=""}
 
@@ -518,5 +542,5 @@ kable(TTX,row.names = T,booktabs = T, escape = F,linesep = "", digits = 4)
 ```
 :::
 
-<!-- `r i2 <- i2+1;item()` Ottenuto $X=2$ costruire la probabilità aggiornata di  -->
+<!-- `r item()` Ottenuto $X=2$ costruire la probabilità aggiornata di  -->
 

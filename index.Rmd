@@ -21,6 +21,8 @@ output:
    bookdown::gitbook:
      fig_caption: true
      number_sections: false     
+     includes:
+      in_header: "script.html" 
      # fig_width: 12
      # fig_height: 8
 #documentclass: book

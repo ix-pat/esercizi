@@ -1,22 +1,37 @@
 
 ```{r}
-rm(list = ls())
-
+rm(list = rm())
 source("intro.R")
-fig.def(2.5,3.5)
-
-i1 <- 1; 
-i2 <- 0
+if (html) cat('')
 ```
 
 
 \part{Compiti degli anni passati}
 
+
+```{r}
+if (html) cat('')
+```
+  
+
 # Anno 2021
+
+```{r}
+source("punti.R")
+punti_list <- punti_2021
+compito <- 0
+```
+
+<div class="button-container"></div>
 
 ## Prova di Statistica 2021/06/11-1
 
 ### Esercizio 1
+
+```{r}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
 
 ```{r}
 set.seed(121)   # per ottenere sempre la stessa simulazione
@@ -40,7 +55,7 @@ kable(dat3[1:(k),c(1:2,6)],booktabs=T,escape = F,linesep="") %>%
 
 ```
 
-`r i2 <- i2+1;item()` (**Punti 14**) Calcolare il valore approssimato della mediana.
+`r punti_p(start=T)` Calcolare il valore approssimato della mediana.
 
 ::: {.sol data-latex=""}
 Per individuare il 75-esimo percentile dobbiamo:
@@ -65,7 +80,7 @@ cat(percentile(p = 0.75))
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Qual è il numero di imprese con utile negativo?
+`r punti_p()` Qual è il numero di imprese con utile negativo?
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
@@ -73,7 +88,7 @@ cat(F_print(0,verso=">"))
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) (**Punti 2**) L'utile medio è pari a $\bar x=`r mean(samp)`$, e la sua standard deviation
+`r punti_p()` L'utile medio è pari a $\bar x=`r mean(samp)`$, e la sua standard deviation
 $\sigma_X=`r sc(samp)`$. Se l'utile $X$ viene trasformato in perdita $Y$,
 $$
 Y=-X,
@@ -91,14 +106,14 @@ $$
 :::
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 2
 
 
 Nel supermercato $S$ ci sono 4 casse $C_1$, $C_2$, $C_3$ e $C_4$. A mezzogiorno il numero di persone in fila ogni cassa è descritto da un Poisson di parametro 0.5, $C_i\sim\text{Pois}(0.5),~i=1,...,4$. Si assume l'indipendenza tra le variabili.
 
-`r i2 <- i2+1;item()` (**Punti 14**) Calcolare la probabilità che le persone **totali** ($C_1+...+C_4$) in fila al supermercato a mezzogiorno, siano almeno due.
+`r punti_p(nex = T)` Calcolare la probabilità che le persone **totali** ($C_1+...+C_4$) in fila al supermercato a mezzogiorno, siano almeno due.
 
 
 
@@ -116,24 +131,24 @@ P(X\ge 2)&=&1-P(X< 2)\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Qual è la probabilità di avere esattamente _due_ casse su _quattro_ senza fila?
+`r punti_p()` Qual è la probabilità di avere esattamente _due_ casse su _quattro_ senza fila?
 
 ::: {.sol data-latex=""}
-Posto `r p <- dpois(0,0.5)`
+Posto `r pp <- dpois(0,0.5)`
 $$
-\pi = P(C_i=0)=\frac {0.5}{0!}e^{-0.5}=`r p`
+\pi = P(C_i=0)=\frac {0.5}{0!}e^{-0.5}=`r pp`
 $$
 la VC $X$ che conta il numero di casse con zero persone in fila su 4
 $$
-X\sim\text{Binom}(4,`r p`)
+X\sim\text{Binom}(4,`r pp`)
 $$
 e quindi 
 $$
-P(X=2)={4\choose 2}`r p`^2(1-`r p`)^{4-2}=`r dbinom(2,4,p)`
+P(X=2)=\binom{4}{2}`r pp`^2(1-`r pp`)^{4-2}=`r dbinom(2,4,pp)`
 $$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Quando due eventi $A$ e $B$ si dicono _indipendenti_ e quando _incompatibili_?
+`r punti_p()` Quando due eventi $A$ e $B$ si dicono _indipendenti_ e quando _incompatibili_?
 
 ::: {.sol data-latex=""}
 Se $A$ e $B$ sono _incompatibili_ allora
@@ -147,7 +162,7 @@ $$
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 2**) Se $X_1\sim N(2,1)$, $X_2\sim N(1,1)$ e $X_3\sim N(1,1)$, 
+`r punti_p()` Se $X_1\sim N(2,1)$, $X_2\sim N(1,1)$ e $X_3\sim N(1,1)$, 
   $X_1$, $X_2$ e $X_3$ indipendenti, come si distribuisce 
   
 $$
@@ -158,11 +173,11 @@ $$
 $$Y\sim N(2-(1+1),1+1+1)\sim N(0,3)$$
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 3
 
-(**Punti 14**) Un'urna contiene $4$ bussolotti Rossi, $3$ bussolotti Blu e $5$ bussolotti Gialli. Si estrae 60 volte con reintroduzione; qual è la probabilità che il numero di rossi in 60 estrazioni sia maggiore di 21?
+`r punti_p(nex = T)` Un'urna contiene $4$ bussolotti Rossi, $3$ bussolotti Blu e $5$ bussolotti Gialli. Si estrae 60 volte con reintroduzione; qual è la probabilità che il numero di rossi in 60 estrazioni sia maggiore di 21?
 
 
 ::: {.sol data-latex=""}
@@ -172,11 +187,11 @@ cat(tlc(tipo = "somma",x1 = 21,verso = ">",mu = 1/3,n = 60))
 ```
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 4
 
-`r i2 <- i2+1;item()` (**Punti 3**) Sia $h$ uno stimatore per theta, tale che
+`r punti_p(nex = T)` Sia $h$ uno stimatore per theta, tale che
 $$
 E(h)=\theta+\frac\theta {\sqrt{ n}}
 $$
@@ -193,7 +208,7 @@ $$
 $$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Siano $h_1$ e $h_2$ due stimatori per $\theta$, tali che:
+`r punti_p()` Siano $h_1$ e $h_2$ due stimatori per $\theta$, tali che:
 \begin{eqnarray*}
 MSE(h_1) &=&   \frac\theta n\\
 MSE(h_2) &=&   \frac{2\theta} n
@@ -208,7 +223,7 @@ MSE(h_2) &=&   \frac{2\theta} n =2\cdot MSE(h_1)>MSE(h_1)
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Si sono osservati due gruppi di dati quantitativi e si è osservato, $\hat\mu_1=10.2$ e $\hat\mu_2=15.6$. Posto a test
+`r punti_p()` Si sono osservati due gruppi di dati quantitativi e si è osservato, $\hat\mu_1=10.2$ e $\hat\mu_2=15.6$. Posto a test
 $$
 \begin{cases}
 H_0:\mu_1=\mu_2\\
@@ -222,13 +237,13 @@ Il $p_\text{value}$ è maggiore di 0.05, la differenza **non è significativa** 
 :::
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 5
 
-(**Punti 14**) In uno studio comparato sui livelli di occupazione femminile, nel comune $A$ sono state intervistate 50 donne e 30 hanno dichiarato di avere un lavoro stabile; nel comune $B$ sono state intervistate 60 donne e 40 hanno dichiarato di avere un lavoro stabile.
+`r punti_p(nex = T)` In uno studio comparato sui livelli di occupazione femminile, nel comune $A$ sono state intervistate 50 donne e 30 hanno dichiarato di avere un lavoro stabile; nel comune $B$ sono state intervistate 60 donne e 40 hanno dichiarato di avere un lavoro stabile.
 
-Testare all'1% l'ipotesi che la proporzione di donne che hanno un lavoro stabile nel comune $A$ sia uguale a quelle del come $B$, contro l'alternativa che siano **diverse**.
+Testare l'ipotesi che la proporzione di donne che hanno un lavoro stabile nel comune $A$ sia uguale a quelle del come $B$, contro l'alternativa che siano **diverse**.
 
 ::: {.sol data-latex=""}
 ```{r, results='asis'}
@@ -242,11 +257,11 @@ alpha <- 0.01
 a <- "A"
 b <- "B"
 
-cat(ztest_2c_pi(s1 = s1,s2 = s2,n1 = n1,n2 = n2,h1 = h1,alpha = alpha,a = a,b = b))
+cat(ztest_2c_pi(s1 = s1,s2 = s2,n1 = n1,n2 = n2,h1 = h1,a = a,b = b))
 ```
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 6
 ```{r}
@@ -279,21 +294,17 @@ In uno studio sulle competenze scolastiche dei quindicenni si sono analizzati $n
 
 Si consideri il modello di regressione dove $Y$ viene spiegata da $X$
 
-  `r i2 <- i2+1;item()` (**Punti 14**) Prevedere il voto nel test di scienze per uno studente che ha ottenuto 6 nel test di matematica.
+  `r punti_p(nex = T)` Prevedere il voto nel test di scienze per uno studente che ha ottenuto 6 nel test di matematica.
   
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
-p <- function(x,ax=4){
-  p1 <- ifelse(x < 0,"(","")
-  p2 <- ifelse(x < 0,")","")
-  paste(p1,round(x,ax),p2)
-}
 
 cat(calcolo_beta())
+
 ```
 :::
   
-  `r i2 <- i2+1;item()` (**Punti 3**) Calcolare la percentuale di varianza spiegata dal modello.
+  `r punti_p()` Calcolare la percentuale di varianza spiegata dal modello.
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
@@ -303,7 +314,7 @@ cat(R2())
 :::
 
 
-  `r i2 <- i2+1;item()` (**Punti 3**) Discutere il qq-plot dei residui
+  `r punti_p()` Discutere il qq-plot dei residui
 ```{r,fig.asp=1}
 qqnorm(es/sd(es),asp=1,xlim=c(-3,3),ylim=c(-3,3))
 abline(0,1,lty=2)
@@ -313,26 +324,35 @@ abline(0,1,lty=2)
 I punti sono be allineati sulla bisettrice degli assi, l'ipotesi di normalità dei residui è rispettata.
 :::
 
- `r i2 <- i2+1;item()` (**Punti 2**) Cosa vuol dire che $r$ è un numero puro?
+ `r punti_p()` Cosa vuol dire che $r$ è un numero puro?
 
 ::: {.sol data-latex=""}
 Significa che è privo di unità di misura.
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Prova di Statistica 2021/06/11-2
 
 ```{r}
 
-rm(list = ls())
+
 
 source("intro.R")
 fig.def(2.5,3.5)
 
-i1 <- 1; 
-i2 <- 0
+
+
 ```
 
 ### Esercizio 1
+
+```{r}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
 ```{r}
 # Basic settings
 set.seed(120)   # per ottenere sempre la stessa simulazione
@@ -357,7 +377,7 @@ kbl((dat3[1:(k),c(1:2,6)]),booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
 
-`r i2 <- i2+1;item()` (**Punti 14**) Calcolare il valore approssimato del 25-esimo percentile.
+`r punti_p(start=T)` Calcolare il valore approssimato del 25-esimo percentile.
 
 ::: {.sol data-latex=""}
 Per individuare il 25-esimo percentile dobbiamo:
@@ -382,7 +402,7 @@ cat(percentile(p = 0.25))
 ```
 :::
  
-`r i2 <- i2+1;item()` (**Punti 3**) Analizzando l'istogramma, individuare il valore della media aritmetica e della mediana.
+`r punti_p()` Analizzando l'istogramma, individuare il valore della media aritmetica e della mediana.
 
 
 ::: {.sol data-latex=""}
@@ -393,7 +413,7 @@ $$
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 2**) Qual è la percentuale di dati compresa tra il 25-esimo e il 75-esimo percentile?
+`r punti_p()` Qual è la percentuale di dati compresa tra il 25-esimo e il 75-esimo percentile?
 
 ::: {.sol data-latex=""}
 Per definizione
@@ -405,7 +425,7 @@ Per definizione
 :::
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 2
   
@@ -420,7 +440,7 @@ La variazione di livello nella vasca è dunque data da:
 $$
 X_L=X_E-X_U.
 $$
-`r i2 <- i2+1;item()` (**Punti 14**) Calcolare la probabilità che la variazione di livello sia negativa ($X_L<0$).
+`r punti_p(nex = T)` Calcolare la probabilità che la variazione di livello sia negativa ($X_L<0$).
 
 ::: {.sol data-latex=""}
 La variazione di livello nella vasca si distribuisce
@@ -444,7 +464,7 @@ cat(norm_int(x1 = 0,verso = "<",mm = mm,ss = ss,vnam = "X_L"))
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 3**) Nell'ipotesi di indipendenza tra i giorni, calcolare la probabilità di avere esattamente _due_ giorni su _cinque_ con livello negativo.  `r p <- pnorm(0,mm,sqrt(ss))`
+`r punti_p()` Nell'ipotesi di indipendenza tra i giorni, calcolare la probabilità di avere esattamente _due_ giorni su _cinque_ con livello negativo.  `r pp <- pnorm(0,mm,sqrt(ss))`
 
 ::: {.sol data-latex=""}
 Posto
@@ -453,16 +473,18 @@ $$
 $$
 la VC $X$ che conta il numero di giorni con livello negativo in 5 giorni
 $$
-X\sim\text{Binom}(5,`r p`)
+X\sim\text{Binom}(5,`r pp`)
 $$
 e quindi 
-$$
-P(X=2)={5\choose 2}`r p`^2(1-`r p`)^{5-2}=`r dbinom(2,5,p)`
-$$
+
+```{r}
+bin_dis(2,5,pp,sing=T)
+```
+
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 3**) Se $P(A)=0.6$ e $P(B)=0.8$, $A$ e $B$ possono essere incompatibili?
+`r punti_p()` Se $P(A)=0.6$ e $P(B)=0.8$, $A$ e $B$ possono essere incompatibili?
 
 ::: {.sol data-latex=""}
 No, perché se fossero incompatibili allora
@@ -473,7 +495,7 @@ che è impossibile.
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 2**) Se $X\sim N(\mu_X,\sigma^2_X)$ come si distribuisce 
+`r punti_p()` Se $X\sim N(\mu_X,\sigma^2_X)$ come si distribuisce 
   $$Y=\left(\frac{X-\mu_X}{\sigma_X}\right)^2 ~~~?$$
   
 ::: {.sol data-latex=""}
@@ -487,11 +509,11 @@ Y=Z^2\sim\chi_1^2
 $$
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 3
   
-(**Punti 14**) Un'urna contiene $4$ bussolotti numerati con $\fbox{−1}$, $3$ numerati con $\fbox{0}$ e $4$ numerati con $\fbox{+1}$. Si estrae 60 volte con reintroduzione; qual è la probabilità che la media delle 60 estrazioni sia minore di 0.1?
+`r punti_p(nex = T)` Un'urna contiene $4$ bussolotti numerati con $\fbox{−1}$, $3$ numerati con $\fbox{0}$ e $4$ numerati con $\fbox{+1}$. Si estrae 60 volte con reintroduzione; qual è la probabilità che la media delle 60 estrazioni sia minore di 0.1?
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
@@ -501,11 +523,11 @@ cat(tlc(tipo = "media",x1 = .1,verso = "<",mu = mean(urn),s2 = s2c(urn),n = 60))
 ```
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 4
   
-`r i2 <- i2+1;item()` (**Punti 3**) Sia $h$ uno stimatore per $\theta$, tale che
+`r punti_p(nex = T)` Sia $h$ uno stimatore per $\theta$, tale che
 $$
 MSE(h)=\frac\theta {\sqrt{ n}}+\frac1n
 $$
@@ -518,7 +540,7 @@ $$
 $$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Siano $X_1,...,X_n$ $n$ VC IID, replicazioni di $X\sim \mathscr{L}(\theta)$ e sia $\hat\theta$ lo stimatore di massima verosimiglianza per $\theta$, 
+`r punti_p()` Siano $X_1,...,X_n$ $n$ VC IID, replicazioni di $X\sim \mathscr{L}(\theta)$ e sia $\hat\theta$ lo stimatore di massima verosimiglianza per $\theta$, 
 $\hat\theta$ è corretto?
 
 ::: {.sol data-latex=""}
@@ -536,7 +558,7 @@ $$
 $$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Definire la significatività e la potenza di un test.
+`r punti_p()` Definire la significatività e la potenza di un test.
 
 ::: {.sol data-latex=""}
 La probabilità di **significatività** è definita con $\alpha$ e rappresenta la probabilità di rifiutare $H_0$ quando è vera
@@ -548,7 +570,7 @@ $$1-\beta =P(\text{Decidere $H_1$}; H_1)$$
 Cioè la probabilità di scegliere $H_1$ quando $H_1$ è vera.
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 5
 
@@ -566,19 +588,19 @@ alpha <- 0.01
 ac <- alpha*100
 ```
 
-(**Punti 14**) In uno studio comparato sul reddito femminile, nel comune $`r a`$ sono state intervistate 15 donne e si è osservato un reddito medio pari a $\bar x_`r a`=`r mu1`$ mila euro lordi annui con una standard deviation pari a $\hat\sigma_`r a`=`r s1h`$; nel comune $`r b`$ sono state intervistate 18 donne e si è osservato un reddito medio pari a $\bar x_`r b`=`r mu2`$ mila euro lordi annui con una standard deviation pari a $\hat\sigma_`r b`=`r s2h`$.
+`r punti_p(nex = T)` In uno studio comparato sul reddito femminile, nel comune $`r a`$ sono state intervistate 15 donne e si è osservato un reddito medio pari a $\bar x_`r a`=`r mu1`$ mila euro lordi annui con una standard deviation pari a $\hat\sigma_`r a`=`r s1h`$; nel comune $`r b`$ sono state intervistate 18 donne e si è osservato un reddito medio pari a $\bar x_`r b`=`r mu2`$ mila euro lordi annui con una standard deviation pari a $\hat\sigma_`r b`=`r s2h`$.
 
-Sotto ipotesi di omogeneità, testare all'`r ac`% l'ipotesi che il reddito medio femminile nel comune $`r a`$ sia uguale a quello del comune $`r b`$, contro l'alternativa che siano **diversi**.
+Sotto ipotesi di omogeneità, testare l'ipotesi che il reddito medio femminile nel comune $`r a`$ sia uguale a quello del comune $`r b`$, contro l'alternativa che siano **diversi**.
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
-cat(ttest_2c_om(mu1 = mu1,mu2 = mu2,s1h = s1h,s2h = s2h,n1 = n1,n2 = n2,h1 = h1,alpha = alpha,a = a,b = b))
+cat(ttest_2c_om(mu1 = mu1,mu2 = mu2,s1h = s1h,s2h = s2h,n1 = n1,n2 = n2,h1 = h1,a = a,b = b))
 ```
 :::
 
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 6
 ```{r}
@@ -609,7 +631,7 @@ In uno studio sulle competenze scolastiche dei quindicenni si sono analizzati $n
 
 Si consideri il modello di regressione dove $Y$ viene spiegata da $X$
 
-  `r i2 <- i2+1;item()` (**Punti 14**) Si osservino le prime 5 coppie di dati
+  `r punti_p(nex = T)` Si osservino le prime 5 coppie di dati
 ```{r}
 kable(data.frame(i=1:5,Libri=x[1:5],Voto=y[1:5]),booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
@@ -618,24 +640,19 @@ Calcolare il residuo per il quarto dato.
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
-p <- function(x,ax=4){
-  p1 <- ifelse(x < 0,"(","")
-  p2 <- ifelse(x < 0,")","")
-  paste(p1,round(x,ax),p2)
-}
 
 cat(calcolo_beta())
 cat(residuo(x[4],y[4]))
 ```
 :::
 
-  `r i2 <- i2+1;item()` (**Punti 3**) Il modello si adatta bene ai dati?
+  `r punti_p()` Il modello si adatta bene ai dati?
 
 ::: {.sol data-latex=""}
 Il modello spiega il $r^2\times100=(`r r`)^2\times 100=`r r^2*100`\%>75\%$ della viarbilità totale di $Y$. Sì, il modello spiega bene i dati.
 :::
 
-  `r i2 <- i2+1;item()` (**Punti 3**) Discutere il diagramma dei residui
+  `r punti_p()` Discutere il diagramma dei residui
 ```{r}
 plot(x,y-ys,pch=16,axes=F,xlab="Libri",ylab=expression(hat(epsilon)),type="p")
 axis(1)
@@ -648,27 +665,36 @@ title("retta dei residui vs x")
 La variabilità dei residui cresce al crescere dalla x, l'ipotesi di omoschedasticità è chiaramente violata.
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Quando in un modello di regressione lineare un punto è considerato **influente**?
+`r punti_p()` Quando in un modello di regressione lineare un punto è considerato **influente**?
 
 ::: {.sol data-latex=""}
 La coppia $(x_i,y_i)$ è considerata _punto influente_ se il suo residuo studentizzato è maggiore di un livello soglia deciso sulle tavole della $t$ con $n-2$ gradi di libertà:
 $$|\tilde \varepsilon_i|>t_{n-2,0.05} $$
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Prova di Statistica 2021/06/30-1
 
 ```{r}
 
-rm(list = ls())
+
 
 source("intro.R")
 fig.def(2.5,3.5)
 
-i1 <- 1; 
-i2 <- 0
+
+
 ```
 
 ### Esercizio 1
+
+```{r}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
 ```{r}
 # Basic settings
 set.seed(121)   # per ottenere sempre la stessa simulazione
@@ -690,7 +716,7 @@ kable((dat3[1:(k),c(1:2,7)]),booktabs=T,escape = F,linesep="") %>%
 
 ```
 
-`r i2 <- i2+1;item()` (**Punti 14**) Individuare la classe modale.
+`r punti_p(start=T)` Individuare la classe modale.
 
 ::: {.sol data-latex=""}
 La classe modale è per definizione la classe cui compete densità maggiore e dunque dobbiamo calcolare
@@ -714,7 +740,7 @@ kable(dat3[,c(1,2,7,4,5,6)],booktabs=T,escape = F,linesep="") %>%
 e osservare che la classe $[5,8)$ è la classe modale perché è quella con densità maggiore.
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Calcolare la percentuale approssimata di aziende 
+`r punti_p()` Calcolare la percentuale approssimata di aziende 
 con spese maggiori di 10 mila euro.
 
 ::: {.sol data-latex=""}
@@ -723,7 +749,7 @@ cat(F_print(10,">"))
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Calcolare la percentuale approssimata di aziende 
+`r punti_p()` Calcolare la percentuale approssimata di aziende 
 con spese maggiori di 10 mila euro.
 
 ::: {.sol data-latex=""}
@@ -734,7 +760,7 @@ $$
 $$
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 2
   
@@ -744,7 +770,7 @@ L'urna $B$ contiene 3 palline numerate: $\fbox{0},\fbox{1},\fbox{2}$.
 
 Si estrae dall'urna $A$ e dall'urna $B$ e si *sommano* i due numeri
 
-`r i2 <- i2+1;item()` (**Punti 14**) Calcolare la probabilità che la somma dei numeri sia maggiore uguale a 2.
+`r punti_p(nex = T)` Calcolare la probabilità che la somma dei numeri sia maggiore uguale a 2.
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
@@ -755,7 +781,7 @@ P(S\ge 2)=3/12+1/12=4/12=1/3
 $$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Calcolare la probabilità che la somma sia maggiore uguale a 1 dato che dall'urna $A$ è uscito $\fbox{0}$.
+`r punti_p()` Calcolare la probabilità che la somma sia maggiore uguale a 1 dato che dall'urna $A$ è uscito $\fbox{0}$.
 
 ::: {.sol data-latex=""}
 Dalla definizione stessa di probabilità condizionata
@@ -767,7 +793,7 @@ P(X\geq 1|X_A=0)&=&\frac{P(\{X\geq 1\}\cap\{X_A=0\})}{P(\{X_A=0\})}\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Sia $X\sim \text{Pois}(10)$ e $Y\sim\text{Binom}(n,0.5)$.
+`r punti_p()` Sia $X\sim \text{Pois}(10)$ e $Y\sim\text{Binom}(n,0.5)$.
 Sia
 $$
 W=X-Y
@@ -789,7 +815,7 @@ V(W)&=&V(X)+V(Y),\qquad\text{se e solo se $X$ e $Y$ sono indipendenti}\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Siano $X_1,...,X_6$, $6$ variabili casuali IID,
+`r punti_p()` Siano $X_1,...,X_6$, $6$ variabili casuali IID,
 tali che
 $$
 X_i\sim N\left(2.5,3^2\right).
@@ -811,11 +837,11 @@ $$
 :::
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 3
   
-(**Punti 14**) Si lancia un dado perfetto, si vince se esce un numero maggiore o uguale a 5.
+`r punti_p(nex = T)` Si lancia un dado perfetto, si vince se esce un numero maggiore o uguale a 5.
 Si gioca $n=64$ volte, qual è la probabilità di vincere più di 23 volte su 64 giocate?
 
 
@@ -843,11 +869,11 @@ cat(tlc("somma",x1 = 23,verso = ">",mu = 1/3,n = 64))
 :::
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 4
   
-`r i2 <- i2+1;item()` (**Punti 3**) Sia $h$ uno stimatore per $\theta$, tale che
+`r punti_p(nex = T)` Sia $h$ uno stimatore per $\theta$, tale che
 \begin{eqnarray*}
 E(h)&=&\theta+\frac\theta {\sqrt{ n}}\\
 V(h)&=&\frac{\theta^2}{\sqrt n}
@@ -870,7 +896,7 @@ MSE(h)&=&V(h)+B^2(h)\\
 Quindi sì, $h$ è consistente.
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Definire la funzione di verosimiglianza.
+`r punti_p()` Definire la funzione di verosimiglianza.
 
 ::: {.sol data-latex=""}
 Siano $x_1,...,x_n$ $n$ osservazioni di $X\sim \mathscr{L}(\theta)$, $\theta\in\Theta$, si definisce la verosimiglianza $L$ di $\theta$ la funzione:
@@ -883,7 +909,7 @@ L(\theta) &\propto& P(X_1=x_1;\theta)\cdot...\cdot P(X_n=x_n;\theta) \\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Si sono osservati due gruppi di dati quantitativi e si è osservato, $\hat\mu_1=10.2$, $\hat\sigma_1=1.12$ e $\hat\mu_2=15.6$, $\hat\sigma_2=3.72$. Posto a test
+`r punti_p()` Si sono osservati due gruppi di dati quantitativi e si è osservato, $\hat\mu_1=10.2$, $\hat\sigma_1=1.12$ e $\hat\mu_2=15.6$, $\hat\sigma_2=3.72$. Posto a test
 $$
 \begin{cases}
 H_0:\sigma_1=\sigma_2\\
@@ -897,11 +923,11 @@ Il $p_\text{value}=0.0012$ ci indica che i dati supportano $H_1$, quindi i due g
 sono da considerarsi eterogenei.
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 5
 
-(**Punti 14**) In uno studio sui consumi sono stati intervistati $n=25$ individui 
+`r punti_p(nex = T)` In uno studio sui consumi sono stati intervistati $n=25$ individui 
 sui quali è stato rilevato il reddito mensile $X$ (in migliaia di euro), e il consumo $Y$ (in migliaia di euro). Il modello di regressione
 $$
 Y_i=\beta_0+\beta_1 x_i+\varepsilon_i
@@ -915,7 +941,7 @@ ha fornito i seguenti risultati
 \end{align*}
 
 
-Testare al 5% l'ipotesi che il consumo di sussistenza $\beta_0$ sia uguale 0.5 contro l'alternativa 
+Testare l'ipotesi che il consumo di sussistenza $\beta_0$ sia uguale 0.5 contro l'alternativa 
 che sia maggiore.
 
 ::: {.sol data-latex=""}
@@ -936,12 +962,12 @@ h1 <- ">"
 stat2 <- list(n=n,mx=mx,vx=vx,my=my,vy=vy,co=r*sqrt(vx*vy))
 ls2e(regr(stat2=stat2))
 cat(se_beta0())
-cat(ttest_beta(0,bj0 = .5,h1 = h1,alpha = 0.05))
+cat(ttest_beta(0,bj0 = .5,h1 = h1))
 ```
 :::
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 6
 ```{r}
@@ -983,7 +1009,7 @@ sui quali è stato rilevato il reddito mensile $X$ (in migliaia di euro), e il c
 
 Si consideri il modello di regressione dove $Y$ viene spiegata da $X$
 
-  `r i2 <- i2+1;item()` (**Punti 14**) Prevedere il consumo per un individuo che guadagna $x=`r mean(x)`$ e
+  `r punti_p(nex = T)` Prevedere il consumo per un individuo che guadagna $x=`r mean(x)`$ e
   per un individuo che guadagna $x=12.3$.
   
 ::: {.sol data-latex=""}
@@ -993,7 +1019,7 @@ cat(previsione(12.3))
 ```
 :::
 
-  `r i2 <- i2+1;item()` (**Punti 3**) Quale delle due previsioni, per $x=`r mean(x)`$ e per $x=12.3$,
+  `r punti_p()` Quale delle due previsioni, per $x=`r mean(x)`$ e per $x=12.3$,
   è più affidabile? Perché?
 
 ::: {.sol data-latex=""}
@@ -1007,7 +1033,7 @@ e si tratta di estrapolazione.
 La previsione per $x=`r mean(x)`$ è molto più affidabile che quella per $x=12.3$.
 :::
 
-  `r i2 <- i2+1;item()` (**Punti 3**) Calcolare le quantità $TSS$, $RSS$ e $ESS$.
+  `r punti_p()` Calcolare le quantità $TSS$, $RSS$ e $ESS$.
 
 ::: {.sol data-latex=""}
 Ricaviamo $R^2$
@@ -1018,7 +1044,7 @@ cat(TSS())
 ```
 :::
 
- `r i2 <- i2+1;item()` (**Punti 2**) Cosa vuol dire che $r$ è invariante ai cambiamenti di scala?
+ `r punti_p()` Cosa vuol dire che $r$ è invariante ai cambiamenti di scala?
 
 ::: {.sol data-latex=""}
 $$\text{se }W=a+bY,\text{allora }r_{X,W}=\text{sign}(b) r_{XY},\text{ dove la funzione sign}(b)=
@@ -1028,20 +1054,29 @@ $$\text{se }W=a+bY,\text{allora }r_{X,W}=\text{sign}(b) r_{XY},\text{ dove la fu
 :::
 
 
+
+
+<div class="button-container"></div>
+
 ## Prova di Statistica 2021/06/30-2
 
 ```{r}
 
-rm(list = ls())
+
 
 source("intro.R")
 fig.def(2.5,3.5)
 
-i1 <- 1; 
-i2 <- 0
+
+
 ```
 
 ### Esercizio 1
+
+```{r}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
 Su un campione di $12$ famiglie della provincia $Q$ è stato rilevato il reddito mensile, qui di seguito i dati **non ordinati** espressi in migliaia di euro al mese.
 
 ```{r}
@@ -1080,7 +1115,7 @@ x75 <- samp[i75]
 
 ```
 
-`r i2 <- i2+1;item()`  (**Punti 14**) Individuare il 25-esimo, 50-esimo e l'75-esimo percentile
+`r punti_p(start=T)` Individuare il 25-esimo, 50-esimo e l'75-esimo percentile
 
 ::: {.sol data-latex=""}
 Dobbiamo prima riordinare i dati
@@ -1124,7 +1159,7 @@ x_{0.75} &=& x_{(\lceil n\times0.75\rceil)}=x_{(`r i75`)}=`r x75`
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) La somma dei dati è `r sum(samp)`. Come dobbiamo aspettarci l'istogramma di densità?
+`r punti_p()` La somma dei dati è `r sum(samp)`. Come dobbiamo aspettarci l'istogramma di densità?
 
 ::: {.sol data-latex=""}
 La somma dei dati è `r sum(samp)` e quindi la media viene
@@ -1135,9 +1170,9 @@ $$
 siccome $\bar x>x_{0.5}$ allora l'istogramma avrà una coda lunga a dx.
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Cosa significa che la media aritmetica gode della proprietà di linearità?
+`r punti_p()` Cosa significa che la media aritmetica gode della proprietà di linearità?
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 2
 
@@ -1149,7 +1184,7 @@ Si vince se si estrae un numero maggiore o uguale a 6.
 
 Si estrae _con_ reintroduzione.
 
-`r i2 <- i2+1;item()` (**Punti 14**) Qual è la probabilità di vincere almeno 5 volte su 6 estrazioni?
+`r punti_p(nex = T)` Qual è la probabilità di vincere almeno 5 volte su 6 estrazioni?
 
 ::: {.sol data-latex=""}
 Sia $X$ la VC che conta il numero di di vittorie in 6 giocate,
@@ -1168,7 +1203,7 @@ cat(bin_dis(5,6,pp = 3/8,verso = ">"))
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Calcolare la probabilità di vincere la prima volta alla quarta estrazione.
+`r punti_p()` Calcolare la probabilità di vincere la prima volta alla quarta estrazione.
 
 ::: {.sol data-latex=""}
 Ogni singola giocata $X_i$ è una Bernoulli $X_i\sim\mbox{Ber}(\pi=3/8)$ e quindi 
@@ -1183,7 +1218,7 @@ P(E)&=&P(X_1=0~\cap~X_2=0~\cap~X_3=0~\cap~X_4=1)\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Se $A$ e $B$ sono due eventi tali che, $P(A)>0$, $P(B)>0$, $P(A\cap B)=0$. 
+`r punti_p()` Se $A$ e $B$ sono due eventi tali che, $P(A)>0$, $P(B)>0$, $P(A\cap B)=0$. 
 $A$ e $B$ possono essere indipendenti?
 
 ::: {.sol data-latex=""}
@@ -1191,7 +1226,7 @@ No, in quanto, se $A$ e $B$ sono indipendenti
 $$P(A\cap B)=P(A)P(B)\neq0$$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Sia $X\sim N(3.2,(1.1)^2)$ e sia $Y\sim\chi_{n-1}^2$, posto
+`r punti_p()` Sia $X\sim N(3.2,(1.1)^2)$ e sia $Y\sim\chi_{n-1}^2$, posto
 $$
 T=\frac{\left(\frac{X-3.2}{1.1}\right)}{\sqrt{\frac{Y}{n-1}}},
 $$
@@ -1208,11 +1243,11 @@ T=\frac{Z}{\sqrt{\frac{Y}{n-1}}}\sim t_{n-1}
 $$
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 3
 
-(**Punti 14**) Un'urna contiene un numero imprecisato di palline numerate. Si conoscono solo
+`r punti_p(nex = T)` Un'urna contiene un numero imprecisato di palline numerate. Si conoscono solo
 la media $\mu=12.3$ e la standard deviation $\sigma=1.1$ dei numeri delle sfere.
 
 Si estrae $n=81$ volte con reintroduzione, qual è la probabilità che la media delle 81 estrazioni sia compresa tra
@@ -1243,11 +1278,11 @@ cat(tlc(tipo = "media",x1 = x1,x2 = x2,verso = NULL,n = 81,mu = mm,s2 = 1.1^2))
 :::
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 4
   
-`r i2 <- i2+1;item()` (**Punti 3**) Sia $h$ uno stimatore per $\theta$, tale che
+`r punti_p(nex = T)` Sia $h$ uno stimatore per $\theta$, tale che
 \begin{eqnarray*}
 E(h)&=&\theta+\frac\theta {n^2},\\
 V(h)&=&\frac{\sqrt\theta}{ n}.
@@ -1263,7 +1298,7 @@ MSE(h)&=&V(h)+B^2(h)\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Scrivere la funzione di verosimiglianza di una Poisson.
+`r punti_p()` Scrivere la funzione di verosimiglianza di una Poisson.
 
 ::: {.sol data-latex=""}
 Siano $X_1,...,X_n$, $n$ VC IID, tali che, $X_i\sim\text{Pois}(\lambda)$
@@ -1274,7 +1309,7 @@ La verosimiglianza è
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Definire il $p_{\text{value}}$, la probabilità di significatività osservata.
+`r punti_p()` Definire il $p_{\text{value}}$, la probabilità di significatività osservata.
 
 ::: {.sol data-latex=""}
 La probabilità di significatività $p_{\text{value}}$ è
@@ -1285,11 +1320,11 @@ La probabilità di significatività osservata $p_\text{value}$ esprime la probab
 di trovare un campione ancora più in favore di $H_1$ di quello disponile
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 5
 
-(**Punti 14**) In uno studio sulle preferenze tra canali televisivi, vengono analizzati `r n<-92; n`
+`r punti_p(nex = T)` In uno studio sulle preferenze tra canali televisivi, vengono analizzati `r n<-92; n`
 individui, classificati canale preferito (RAI, Mediaset, La7) e per titolo di studio superiore (Laureato, Non Laureato)
 
 Qui di seguito i dati dello studio,
@@ -1320,12 +1355,12 @@ kable(dat,digits = 4,row.names = T,linesep="",booktabs=T,escape = F) %>%
   kable_styling(full_width = F, latex_options = "HOLD_position") %>%
   column_spec(column = 1,bold = T)
 
-cat(chi_test(dat = dat,alpha = 0.01))
+cat(chi_test(dat = dat))
 ```
 :::
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 6
 ```{r}
@@ -1350,7 +1385,7 @@ kable(prn[1:4,1:3],booktabs=T,escape = F,linesep="")%>%
   column_spec(1,background = "#E6E6E6",width = "3em")
 ```
 
-`r i2 <- i2+1;item()` (**Punti 14**) Stimare il modello di regressione dove la qualità della vita è spiegata dagli investimenti provinciali.
+`r punti_p(nex = T)` Stimare il modello di regressione dove la qualità della vita è spiegata dagli investimenti provinciali.
 
 ::: {.sol data-latex=""}
 Costruiamo le statistiche
@@ -1363,7 +1398,7 @@ cat(calcolo_beta())
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Calcolare la percentuale di varianza spiegata dal modello.
+`r punti_p()` Calcolare la percentuale di varianza spiegata dal modello.
 
 ::: {.sol data-latex=""}
 Ricaviamo $R^2$
@@ -1374,7 +1409,7 @@ Il modello si adatta molto bene ai dati, spiegando il `r r^2*100`% (>75%) della 
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 3**) Ricavare le quantità $TSS$, $RSS$ e $ESS$.
+`r punti_p()` Ricavare le quantità $TSS$, $RSS$ e $ESS$.
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
@@ -1382,7 +1417,7 @@ cat(TSS())
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Cosa significa che gli stimatori di massima dei minimi quadrati $\hat\beta_0$ e $\hat\beta_1$ sono _BLUE_?
+`r punti_p()` Cosa significa che gli stimatori di massima dei minimi quadrati $\hat\beta_0$ e $\hat\beta_1$ sono _BLUE_?
 
 ::: {.sol data-latex=""}
 Gli stimatori $\hat\beta_{0}$ e $\hat\beta_{1}$ di $\beta_{0}$ e $\beta_{1}$
@@ -1391,20 +1426,29 @@ sono, tra tutti gli stimatori lineari corretti per $\beta_0$ e $\beta_1$, _BLUE_
 Linear Estimators: stimatori lineari).
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Prova di Statistica 2021/07/22-1
 
 ```{r}
 
-rm(list = ls())
+
 
 source("intro.R")
 fig.def(2.5,3.5)
 
-i1 <- 1; 
-i2 <- 0
+
+
 ```
 
 ### Esercizio 1
+
+```{r}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
 ```{r}
 # Basic settings
 set.seed(12)   # per ottenere sempre la stessa simulazione
@@ -1431,7 +1475,7 @@ kable((dat3[1:(k),c(1:2,6)]),booktabs=T,escape = F,linesep="") %>%
 
 ```
 
-`r i2 <- i2+1;item()` (**Punti 14**) Calcolare il valore approssimato della mediana.
+`r punti_p(start=T)` Calcolare il valore approssimato della mediana.
 
 ::: {.sol data-latex=""}
 Per individuare la mediana dobbiamo costruire le basi:
@@ -1457,7 +1501,7 @@ cat(percentile())
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Che relazione dobbiamo aspettarci tra media e mediana?
+`r punti_p()` Che relazione dobbiamo aspettarci tra media e mediana?
 
 ::: {.sol data-latex=""}
 L'istogramma presenta una coda lunga a sinistra e quindi
@@ -1466,7 +1510,7 @@ $$
 $$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) La varianza dei dati è pari a $\sigma^2=`r s2c(samp)`$. Nell'ipotesi che i costi per metano aumentassero del 10%, quanto varrebbe la varianza?
+`r punti_p()` La varianza dei dati è pari a $\sigma^2=`r s2c(samp)`$. Nell'ipotesi che i costi per metano aumentassero del 10%, quanto varrebbe la varianza?
 
 ::: {.sol data-latex=""}
 Si tratta di una trasformazione lineare
@@ -1479,7 +1523,7 @@ $$
 $$
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 2
   
@@ -1492,7 +1536,7 @@ binario è descritto da una Poisson. In particolare
 
 Il numero di persone in transito su un binario è indipendente dal numero di persone in transito sugli altri binari.
 
-`r i2 <- i2+1;item()` (**Punti 14**) Calcolare la probabilità che il *totale* delle persone in transito nella stazione, in una data ora, sia maggiore o uguale a due.
+`r punti_p(nex = T)` Calcolare la probabilità che il *totale* delle persone in transito nella stazione, in una data ora, sia maggiore o uguale a due.
 
 ::: {.sol data-latex=""}
 Il totale di persone in transito è la somma delle tre Poisson
@@ -1505,7 +1549,7 @@ cat(pois_dis(2,1.1*2+.3,verso = "\\geq"))
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 3**) Calcolare la probabilità di osservare una persona su un binario, una persona su un altro binario e nessuna persona sul rimanetene.
+`r punti_p()` Calcolare la probabilità di osservare una persona su un binario, una persona su un altro binario e nessuna persona sul rimanetene.
 
 ::: {.sol data-latex=""}
 ```{r}
@@ -1550,7 +1594,7 @@ P(E) &=& \phantom{+} P(X_1=1\cap X_2=1\cap X_3=0)+\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Siano $X_1,...,X_n$, $n$ VC IID, tali che
+`r punti_p()` Siano $X_1,...,X_n$, $n$ VC IID, tali che
 $$
 X_i\sim N(0,1).
 $$
@@ -1566,7 +1610,7 @@ $$
 $$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Siano $X_1\sim \text{Binom}(5,0.3)$ e $X_2\sim \text{Binom}(3,0.3)$.
+`r punti_p()` Siano $X_1\sim \text{Binom}(5,0.3)$ e $X_2\sim \text{Binom}(3,0.3)$.
 Come si distribuisce,
 $$X_1+X_2\sim ~~?$$
 
@@ -1576,11 +1620,11 @@ $$X_1+X_2\sim \text{Binom}(8,0.3)$$
 **se e solo se** $X_1$ e $X_2$ sono indipendenti.
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 3
   
-(**Punti 14**) Un'urna contiene 4 palline numerate
+`r punti_p(nex = T)` Un'urna contiene 4 palline numerate
 $$\fbox{-1},\fbox{0},\fbox{2},\fbox{3}$$
 Si estrae $n=64$ volte con reintroduzione.
 
@@ -1607,11 +1651,11 @@ cat(tlc(tipo = "media",x1 = x1,x2 = x2,verso = NULL,mu = mu,s2 = s2,n = 64))
 ```
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 4
   
-`r i2 <- i2+1;item()` (**Punti 3**) Se $h$ è uno stimatore tale che la sua distorsione va a zero per $n$ che tende all'infinito:
+`r punti_p(nex = T)` Se $h$ è uno stimatore tale che la sua distorsione va a zero per $n$ che tende all'infinito:
 $$
 \lim_{n\to \infty}B(h)=0
 $$
@@ -1627,7 +1671,7 @@ B(h) &= E(h)-\theta&\text{e quindi}\\
 \end{align*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Definire la funzione di verosimiglianza della Bernoulli.
+`r punti_p()` Definire la funzione di verosimiglianza della Bernoulli.
 
 ::: {.sol data-latex=""}
 La verosimiglianza è
@@ -1637,7 +1681,7 @@ L(\pi)     &\propto& \prod_{i=1}^n \pi^{x_i}(1-\pi)^{1-x_i}\\
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Un dado, che non sappiamo se è perfetto oppure no, viene lanciato 40 volte.
+`r punti_p()` Un dado, che non sappiamo se è perfetto oppure no, viene lanciato 40 volte.
 Posto $\pi_i$ la probabilità che il dado mostri la faccia $i$, $i=1,...,6$, si è testato
 $$
 \begin{cases}
@@ -1650,14 +1694,14 @@ ed è risultato $p_\text{value}=0.21$. Possiamo concludere che il dado sia trucc
 Il $p_\text{value}=0.21>0.05$ non c'è motivo per rifiutare $H_0$, quindi il dado non è truccato.
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 5
 
 Una casa farmaceutica sta sperimentando un farmaco che lenisce il mal di testa in modo rapido. Osservati $n=15$ individui, si è registrato che il farmaco agisce in media $\bar x=26.2$ minuti, con  una sd corretta pari a
 $S=0.9$. 
 
-`r i2 <- i2+1;item()` (**Punti 10**) Costruire un intervallo di confidenza al 99% per il tempo medio di azione.
+`r punti_p(nex = T)` Costruire un intervallo di confidenza al 99% per il tempo medio di azione.
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
@@ -1665,8 +1709,8 @@ cat(idc(xm = 26.2,sd = 0.9,alpha = .01,n = 15,dist_ = "t"))
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 4**) È ben noto, da studi pregressi, che quella tipologia di farmaci ha un tempo medio 
-di azione pari a 29.3. Testare al livello di significatività dell'1% che il farmaco in sperimentazione agisca in modo uguale agli altri contro l'alternativa che abbia tempi di azione inferiori.
+`r punti_p()` È ben noto, da studi pregressi, che quella tipologia di farmaci ha un tempo medio 
+di azione pari a 29.3. Testare che il farmaco in sperimentazione agisca in modo uguale agli altri contro l'alternativa che abbia tempi di azione inferiori.
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
@@ -1676,11 +1720,11 @@ muh <- 26.2
 mu0 <- 29.3
 h1 <- "<"
 alpha <- 0.01
-cat(ttest_mu(muh = muh,sh = s,n = n,mu0 = mu0,h1 = h1,alpha = alpha))
+cat(ttest_mu(muh = muh,sh = s,n = n,mu0 = mu0,h1 = h1))
 ```
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 6
 
@@ -1711,7 +1755,7 @@ kable(prn[],format.args = list(big.mark = " "),digits = 4,booktabs=T,escape = F,
 ```
 
 
-  `r i2 <- i2+1;item()` (**Punti 14**) Stimare il modello di regressione dove il risparmio è funzione del reddito e quello in cui il reddito è funzione del risparmio.
+  `r punti_p(nex = T)` Stimare il modello di regressione dove il risparmio è funzione del reddito e quello in cui il reddito è funzione del risparmio.
   
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
@@ -1721,7 +1765,7 @@ cat(calcolo_beta(inv = T))
 :::
 
 
-  `r i2 <- i2+1;item()` (**Punti 3**) I due modelli si adattano bene ai dati?
+  `r punti_p()` I due modelli si adattano bene ai dati?
 
 ::: {.sol data-latex=""}
 $$
@@ -1731,7 +1775,7 @@ $$
 Sì, i modelli si adattano bene
 :::
 
-  `r i2 <- i2+1;item()` (**Punti 3**) Discutere il diagramma dei residui del modello di regressione dove $Y$ viene spiegata da $X$.
+  `r punti_p()` Discutere il diagramma dei residui del modello di regressione dove $Y$ viene spiegata da $X$.
 ```{r}
 plot(x,ml$residuals,xlab="Reddito",ylab = "residui",type = "p",pch=16)
 abline(h=0,lty=2)
@@ -1742,7 +1786,7 @@ abline(h=0,lty=2)
 C'è una non linearità evidente, l'assunto zero non è rispettato
 :::
 
- `r i2 <- i2+1;item()` (**Punti 2**) Se ogni individuo risparmiasse 10€ in più al mese, quanto varrebbe $r$?
+ `r punti_p()` Se ogni individuo risparmiasse 10€ in più al mese, quanto varrebbe $r$?
  
 ::: {.sol data-latex=""}
 Se ogni individuo risparmiasse 10€ in più al mese allora
@@ -1755,20 +1799,29 @@ r_{XW}=r_{XY}=`r r`
 $$
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Prova di Statistica 2021/07/22-2
 
 ```{r}
 
-rm(list = ls())
+
 
 source("intro.R")
 fig.def(2.5,3.5)
 
-i1 <- 1; 
-i2 <- 0
+
+
 ```
 
 ### Esercizio 1
+
+```{r}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
 ```{r}
 # Basic settings
 set.seed(12)   # per ottenere sempre la stessa simulazione
@@ -1790,7 +1843,7 @@ kable((dat3[1:(k),c(1:2,12)]),booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
 
-`r i2 <- i2+1;item()`  (**Punti 14**) Calcolare la colonna delle densità percentuali.
+`r punti_p(start=T)` Calcolare la colonna delle densità percentuali.
 
 ::: {.sol data-latex=""}
 ```{r}
@@ -1800,7 +1853,7 @@ histp(T)
 ```
 :::
 
-`r i2 <- i2+1;item()`  (**Punti 3**) Calcolare il numero approssimato di aziende con consumo di gas inferiore al 25-esimo percentile $x_{0.25}$. 
+ `r punti_p()` Calcolare il numero approssimato di aziende con consumo di gas inferiore al 25-esimo percentile $x_{0.25}$. 
 
 ::: {.sol data-latex=""}
 Per definizione
@@ -1813,14 +1866,14 @@ $$
 $$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) È vero che la media aritmetica minimizza la somma dei valori assoluti degli scarti? Perché?
+`r punti_p()` È vero che la media aritmetica minimizza la somma dei valori assoluti degli scarti? Perché?
 
 ::: {.sol data-latex=""}
 È la mediana che minimizza la somma dei valori assoluti degli scarti. Siccome media e mediana, in generale non coincidono allora no, la media non minimizza la somma dei valori assoluti degli scarti.
 :::
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 2
 
@@ -1836,7 +1889,7 @@ Si estrae dalle due urne e si somma,
 
 poi si rimettono le palline nelle urne e si ripete il gioco per $n=5$ volte.
 
-`r i2 <- i2+1;item()` (**Punti 14**) Qual è la probabilità di vincere almeno 1 volta su 5 giocate?
+`r punti_p(nex = T)` Qual è la probabilità di vincere almeno 1 volta su 5 giocate?
 
 ::: {.sol data-latex=""}
 $$
@@ -1850,7 +1903,7 @@ cat(bin_dis(1,n = 5,pp = 2/9,verso = "\\geq",comp = T))
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Per giocare si devono puntare due euro ad ogni giocata. Se vinciamo ci vengono dati 9€, i 2€ giocati più 7€ di vincita. Quindi:
+`r punti_p()` Per giocare si devono puntare due euro ad ogni giocata. Se vinciamo ci vengono dati 9€, i 2€ giocati più 7€ di vincita. Quindi:
 
 - se la somma non fa 2 perdiamo 2€ 
 - se la somma fa 2 riceviamo 9€ (7€ vinti + 2€ giocati)
@@ -1882,7 +1935,7 @@ E(Y) &=&E(Y_1+...+Y_5)\\
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 3**) Se $A$ e $B$ sono due eventi tali che, $P(A)=0.5$, $P(B)=0.4$ e $P(A\cup B)=0.58$. $A$ e $B$ sono indipendenti? Perché?
+`r punti_p()` Se $A$ e $B$ sono due eventi tali che, $P(A)=0.5$, $P(B)=0.4$ e $P(A\cup B)=0.58$. $A$ e $B$ sono indipendenti? Perché?
 
 ::: {.sol data-latex=""}
 No, perché se lo fossero
@@ -1898,18 +1951,18 @@ e quindi
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 2**) Siano $Y_1,...,Y_n$, $n$ VA IID, tali che, $Y_i\sim\chi_{1}^2$, posto
+`r punti_p()` Siano $Y_1,...,Y_n$, $n$ VA IID, tali che, $Y_i\sim\chi_{1}^2$, posto
 $$
 X=\sum_{i=1}^n Y_i
 $$
 come si distribuisce $X$?
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 3
 
-(**Punti 14**) Un'urna contiene 150 di palline numerate. 
+`r punti_p(nex = T)` Un'urna contiene 150 di palline numerate. 
 
 - 40 palline numerate con -1
 - 70 palline numerate con  0
@@ -1933,11 +1986,11 @@ cat(tlc(tipo = "somma",x1 = x1,x2 = x2,verso = NULL,mu = 0,s2 = ss,n = 81))
 :::
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 4
   
-`r i2 <- i2+1;item()` (**Punti 3**) Sia $\hat\sigma^2$ lo stimatore di massima verosimiglianza per il parametro $\sigma^2$ della normale. $\hat\sigma^2$ è corretto? Quanto vale la sua distorsione?
+`r punti_p(nex = T)` Sia $\hat\sigma^2$ lo stimatore di massima verosimiglianza per il parametro $\sigma^2$ della normale. $\hat\sigma^2$ è corretto? Quanto vale la sua distorsione?
 
 ::: {.sol data-latex=""}
 No, $\hat\sigma^2$ non è corretto
@@ -1950,9 +2003,9 @@ B(\hat\sigma^2)=|E(\hat\sigma^2)-\sigma^2|=\frac {\sigma^2}n
 $$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Descrivere la tavola della verità di un test.
+`r punti_p()` Descrivere la tavola della verità di un test.
 
-`r i2 <- i2+1;item()` (**Punti 3**) In uno studio clinico si è osservato l'effeto sul numero di anticorpi su due gruppi trattati con un farmaco differente. Si è osservato $\hat\mu_1=10.2$, $\hat\sigma_1=1.12$ e $\hat\mu_2=15.6$, $\hat\sigma_2=3.72$. Posto a test
+`r punti_p()` In uno studio clinico si è osservato l'effeto sul numero di anticorpi su due gruppi trattati con un farmaco differente. Si è osservato $\hat\mu_1=10.2$, $\hat\sigma_1=1.12$ e $\hat\mu_2=15.6$, $\hat\sigma_2=3.72$. Posto a test
 $$
 \begin{cases}
 H_0:\sigma_1=\sigma_2\\
@@ -1962,13 +2015,13 @@ $$
 è risultato $p_\text{value}=0.21$. Quale test dovremmo usare per testare la differenza tra le medie?
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 5
 
 Un'azienda automobilistica sta sperimentando un nuovo tipo di motore per ridurre i consumi di carburante. Il motore montato su un'auto prototipo che è stata fatta guidare a $n=15$ giornalisti. Si è osservato un consumo medio pari $\bar x=24.5~\text{Km/litro}$ con una deviazione standard $\hat\sigma=2.25~\text{Km/litro}$. `r m <- 24.5; s<-15/14*2.25`
 
-`r i2 <- i2+1;item()` (**Punti 10**) Costruire un intervallo di confidenza al 95% per il consumo medio.
+`r punti_p(nex = T)` Costruire un intervallo di confidenza al 95% per il consumo medio.
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
@@ -1977,7 +2030,7 @@ cat(idc(xm = m,sd = 2.25,alpha = .05,n = 15,dist_ = "t"))
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 4**) È noto che quella fascia di motori ha un consuo medio pari $23.9~\text{Km/litro}$. Testare al livello di significatività dell'5% che il nuovo motore consumi come gli altri contro l'alternativa che abbia consumi _diversi_.
+`r punti_p()` È noto che quella fascia di motori ha un consuo medio pari $23.9~\text{Km/litro}$. Testare che il nuovo motore consumi come gli altri contro l'alternativa che abbia consumi _diversi_.
 
 ::: {.sol data-latex=""}
 $$
@@ -1990,7 +2043,7 @@ $$
 Siccome $23.9\notin IdC_{95\%}$ allora rifiuto $H_0$ al lds del $5\%$.
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 6
 
@@ -2034,7 +2087,7 @@ qui di seguito le statistiche di interesse
 \end{align*}
 
 
-`r i2 <- i2+1;item()` (**Punti 14**) Stimare il modello di regressione dove l'indice di stress ($Y$) è spiegato da $X$ e quello dove $Y$ è spiegato da $W$.
+`r punti_p(nex = T)` Stimare il modello di regressione dove l'indice di stress ($Y$) è spiegato da $X$ e quello dove $Y$ è spiegato da $W$.
 
 ::: {.sol data-latex=""}
 \begin{align*}
@@ -2048,7 +2101,7 @@ r_{XY}&=\frac{`r cxy`}{`r sx`\cdot`r sy`} &r_{WY}&=\frac{`r cwy`}{`r sw`\cdot`r 
 \end{align*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Quale dei due modelli è più affidabile?
+`r punti_p()` Quale dei due modelli è più affidabile?
 
 ::: {.sol data-latex=""}
 \begin{align*}
@@ -2060,7 +2113,7 @@ r_{XY}&=\frac{`r cxy`}{`r sx`\cdot`r sy`} &r_{WY}&=\frac{`r cwy`}{`r sw`\cdot`r 
 quindi $X$ spiega $Y$ meglio di $W$.
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Considerata la scomposizine della TSS di $X$ rispetto ad $Y$.
+`r punti_p()` Considerata la scomposizine della TSS di $X$ rispetto ad $Y$.
 $$
 TSS = ESS + RSS
 $$
@@ -2075,7 +2128,7 @@ $$
 $$
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Sotto ipotesi di normalità dei residui, come sono distribuiti gli stimatori dei mini quadrati $\hat\beta_0$ e $\hat\beta_1$?
+`r punti_p()` Sotto ipotesi di normalità dei residui, come sono distribuiti gli stimatori dei mini quadrati $\hat\beta_0$ e $\hat\beta_1$?
 
 ::: {.sol data-latex=""}
 \begin{eqnarray*}
@@ -2084,20 +2137,29 @@ $$
 \end{eqnarray*}
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Prova di Statistica 2021/09/06-1
 
 ```{r}
 #
-rm(list = ls())
+
 
 source("intro.R")
 fig.def(2.5,3.5)
 
-i1 <- 1; 
-i2 <- 0
+
+
 ```
 
 ### Esercizio 1
+
+```{r}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
 ```{r}
 # Basic settings
 set.seed(12)   # per ottenere sempre la stessa simulazione
@@ -2120,7 +2182,7 @@ kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
 
-`r i2 <- i2+1;item()` (**Punti 14**) Individuare la classe modale.
+`r punti_p(start=T)` Individuare la classe modale.
 
 ::: {.sol data-latex=""}
 ```{r}
@@ -2129,7 +2191,7 @@ kable(dat3[,c(1:2,12,3:7)],booktabs=T,escape = F,linesep="") %>%
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Quante aziende, approssimativamente, hanno un bilancio inferiore a 1.5?
+`r punti_p()` Quante aziende, approssimativamente, hanno un bilancio inferiore a 1.5?
 
 ::: {.sol data-latex=""}
 ```{r,results='asis'}
@@ -2140,18 +2202,18 @@ cat(F_print(1.5))
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Che relazione dobbiamo aspettarci tra media e mediana? 
+`r punti_p()` Che relazione dobbiamo aspettarci tra media e mediana? 
 
-`r i2 <- i2+1;item()` (**Punti 2**) La varianza dei dati è pari a $\sigma^2=`r s2c(samp)`$. Nell'ipotesi che tutte le aziende aumentassero il loro bilancio di 10 mila ero, quanto varrebbe la varianza dei così trasformati?
+`r punti_p()` La varianza dei dati è pari a $\sigma^2=`r s2c(samp)`$. Nell'ipotesi che tutte le aziende aumentassero il loro bilancio di 10 mila ero, quanto varrebbe la varianza dei così trasformati?
 
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 2
   
 Siano $X_1\sim N(10,2)$ e sia $X_2\sim N(10,3)$. Posto $A=\{X_1<11\}$, $B=\{X_1>9\}$, e $C=\{9<X_2<10\}$
 
-`r i2 <- i2+1;item()` (**Punti 14**) Quanto vale $P\Big((A\cap B)\cap C\Big)$? 
+`r punti_p(nex = T)` Quanto vale $P\Big((A\cap B)\cap C\Big)$? 
 
 ::: {.sol data-latex=""}
 \[
@@ -2182,7 +2244,7 @@ P\Big(\{9<X_1<11\}\cap\{9<X_2<10\}\Big)=P\Big(\{9<X_1<11\}\Big)P\Big(\{9<X_2<10\
 \]
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Posto $Y=X_1-X_2$, calcolare $P(Y<-1)$.
+`r punti_p()` Posto $Y=X_1-X_2$, calcolare $P(Y<-1)$.
 
 ::: {.sol data-latex=""}
 $$Y=X_1-X_2\sim N(10-10,2+3)$$
@@ -2197,13 +2259,13 @@ cat(norm_int(x1 = x0,mm = mm,ss = ss,vnam = "Y",mu = "\\mu_Y",sigma = "\\sigma_Y
 ```
 :::
 
-`r i2 <- i2+1;item()` (**Punti 3**) Siano $X_1,...,X_n$, $n$ VC IID, tali che $X_i\sim \text{Ber}(\pi)$, posto
+`r punti_p()` Siano $X_1,...,X_n$, $n$ VC IID, tali che $X_i\sim \text{Ber}(\pi)$, posto
 \[
  X = X_1+...+X_n
 \]
 come si distribuisce $X$? 
 
-`r i2 <- i2+1;item()` (**Punti 2**) Sia $X\sim \text{Pois}(1.5)$, per quali valori $x$, $F(x)$, la funzione di ripartizione di $X$ è minore o uguale a 0.5? Ovvero, per quali $x$ la seguente è rispettata $F(x)\le 0.5$?
+`r punti_p()` Sia $X\sim \text{Pois}(1.5)$, per quali valori $x$, $F(x)$, la funzione di ripartizione di $X$ è minore o uguale a 0.5? Ovvero, per quali $x$ la seguente è rispettata $F(x)\le 0.5$?
 
 ::: {.sol data-latex=""}
 Per definizione
@@ -2219,13 +2281,13 @@ F(x)   &=&  P(X\le x)\\
 \end{eqnarray*}
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 3
   
-`r i2 <- i2+1;item()` (**Punti 2**) Enunciare il teorema centrale del limite per la somma. 
+`r punti_p(nex = T)` Enunciare il teorema centrale del limite per la somma. 
 
-`r i2 <- i2+1;item()` (**Punti 14**) Il numero di incidenti giornalieri sul lavoro del comparto $A$ è distribuito come una
+`r punti_p()` Il numero di incidenti giornalieri sul lavoro del comparto $A$ è distribuito come una
 Poisson di parametro $\lambda = 0.1$. In un anno $n=365$ quale è la probabilità che il numero totale di
 incidenti sia minore di 40?
 
@@ -2241,15 +2303,15 @@ cat(tlc(tipo = "somma",x1 = x0,mu = mm,s2 = ss,n = 365,verso = "<"))
 ```
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 4
   
-`r i2 <- i2+1;item()` (**Punti 3**) Siano $h_1$ e $h_2$ due stimatori corretti per $\theta$, cosa significa che $h_1$ è più efficiente di $h_2$? 
+`r punti_p(nex = T)` Siano $h_1$ e $h_2$ due stimatori corretti per $\theta$, cosa significa che $h_1$ è più efficiente di $h_2$? 
 
-`r i2 <- i2+1;item()` (**Punti 3**) Definire la funzione di verosimiglianza della Poisson. 
+`r punti_p()` Definire la funzione di verosimiglianza della Poisson. 
 
-`r i2 <- i2+1;item()` (**Punti 3**) Una moneta, che non sappiamo se è perfetta oppure no, viene lanciata 40 volte.
+`r punti_p()` Una moneta, che non sappiamo se è perfetta oppure no, viene lanciata 40 volte.
 Posto $\pi$ la probabilità che la moneta mostri testa, si è testato
 \[
 \begin{cases}
@@ -2259,7 +2321,7 @@ H_1:\pi\ne\frac 12
 \]
 ed è risultato $p_\text{value}=0.021$. Possiamo concludere che la moneta sia truccata? 
 
-`r i2 <- i2+1;item()` (**Punti 2**) In caso di campionamento casuale semplice **senza reintroduzione**
+`r punti_p()` In caso di campionamento casuale semplice **senza reintroduzione**
 quanto vale la varianza della media aritmetica campionaria?
 
 ::: {.sol data-latex=""}
@@ -2270,7 +2332,7 @@ Siano $X_1,...,X_m$ $n$ VC estratte **senza reintroduzione** allora
 \end{eqnarray*}
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 5
 
@@ -2281,17 +2343,17 @@ tuttavia, l'importo medio annuale speso per la ricerca industriale
 è risultato pari a 2750.00€ con una deviazione standard pari
 a 1300.00€.
 
-`r i2 <- i2+1;item()` (**Punti 7**) Determinare un intervallo di confidenza al 95%
+`r punti_p(nex = T)` Determinare un intervallo di confidenza al 95%
 per l'importo medio annuale speso per la ricerca industriale. 
 
 ```{r}
 cat(idc(sd = 1300,xm = 2750,alpha = .05,n = 16,dist_ = "t"))
 ```
 
-`r i2 <- i2+1;item()` (**Punti 7**) Una indagine più vasta dell'anno precedente
+`r punti_p()` Una indagine più vasta dell'anno precedente
 ha fornito una spesa media per la ricerca industriale pari a
 3250.00€ con una deviazione standard pari a 1200.00€.
-Al livello di significatività del 5%, verificare l'ipotesi
+Verificare l'ipotesi
 che l'importo medio nell'ultimo anno sia stato equivalente a
 quello dell'anno precedente contro l'alternativa di una
 diminuzione dell'investimento in ricerca industriale.
@@ -2304,11 +2366,11 @@ muh <- 2750
 mu0 <- 3250
 alpha <- 0.05
 h1 <- "<"
-cat(ztest_mu(muh = muh,s = s,n = n,mu0 = mu0,h1 = h1,alpha = alpha))
+cat(ztest_mu(muh = muh,s = s,n = n,mu0 = mu0,h1 = h1))
 ```
 :::
 
-`r i2 <- 0; i1 <- i1+1`
+
 
 ### Esercizio 6
 
@@ -2337,7 +2399,7 @@ fatturato ($X$) e il profitto ($Y$) (in unità convenzionali).
 Si osservano le seguenti statistiche, $\sum_{i=1}^{15}x_i=`r sum(x)`$, $\sum_{i=1}^{15}y_i=`r sum(y)`$,
  $\sum_{i=1}^{15}x_i^2=`r sum(x^2)`$, $\sum_{i=1}^{15}y_i^2=`r sum(y^2)`$ e $\sum_{i=1}^{15}x_iy_i=`r sum(x*y)`$.
 
-`r i2 <- i2+1;item()` (**Punti 14**) Stimare il modello di regressione dove $Y$ viene spiegata da $X$
+`r punti_p(nex = T)` Stimare il modello di regressione dove $Y$ viene spiegata da $X$
 
 ::: {.sol data-latex=""}
 ```{r}
@@ -2346,7 +2408,7 @@ cat(calcolo_beta())
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 3**) Qual è la percentuale di varianza spiegata dal modello?
+`r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
 
 ::: {.sol data-latex=""}
 ```{r}
@@ -2355,7 +2417,7 @@ cat(R2())
 :::
 
 
-`r i2 <- i2+1;item()` (**Punti 2**) Se in un modello di regressione si conoscono $\hat\beta_1$, $r^2$ e $\hat\sigma_X$ è possibile ricavare $\hat\sigma_Y$? In che modo?
+`r punti_p()` Se in un modello di regressione si conoscono $\hat\beta_1$, $r^2$ e $\hat\sigma_X$ è possibile ricavare $\hat\sigma_Y$? In che modo?
 
 ::: {.sol data-latex=""}
 \begin{eqnarray*}
@@ -2368,5 +2430,5 @@ cat(R2())
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` (**Punti 2**) Cosa significa che il coefficiente di correlazione è invariante alle trasformazioni lineari?
+`r punti_p()` Cosa significa che il coefficiente di correlazione è invariante alle trasformazioni lineari?
 

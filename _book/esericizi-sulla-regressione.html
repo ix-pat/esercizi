@@ -1,0 +1,3857 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Esericizi sulla Regressione | Eserciziario di Statistica</title>
+  <meta name="description" content="Appunti sparsi" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Esericizi sulla Regressione | Eserciziario di Statistica" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Appunti sparsi" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Esericizi sulla Regressione | Eserciziario di Statistica" />
+  
+  <meta name="twitter:description" content="Appunti sparsi" />
+  
+
+<meta name="author" content="Patrizio Frederic" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="test-del-chi-quadro-per-conformità.html"/>
+<link rel="next" href="anno-2021.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Funzione per alternare la visibilità di un singolo blocco sol
+  function toggleSolution(event) {
+    var block = event.target.nextElementSibling;
+    if (block.style.display === 'none' || block.style.display === '') {
+      block.style.display = 'block';
+    } else {
+      block.style.display = 'none';
+    }
+  }
+
+  // Trova tutti i blocchi .sol
+  var elements = document.querySelectorAll('.sol');
+  elements.forEach(function(el) {
+    // Crea un nuovo bottone per ogni blocco .sol
+    var button = document.createElement('button');
+    button.innerHTML = 'Mostra/Nascondi Soluzione';
+    button.onclick = toggleSolution;
+    // Inserisce il bottone prima del blocco .sol
+    el.parentNode.insertBefore(button, el);
+  });
+});
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://frederic.economia.unimore.it/">Statistica Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Eserciziario</a></li>
+<li class="chapter" data-level="" data-path="avvertenza.html"><a href="avvertenza.html"><i class="fa fa-check"></i>Avvertenza</a></li>
+<li class="chapter" data-level="" data-path="introduzione.html"><a href="introduzione.html"><i class="fa fa-check"></i>Introduzione</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html"><i class="fa fa-check"></i>Esercizi di Statistica Descrittiva</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#versione-senza-contesto"><i class="fa fa-check"></i>Versione senza contesto</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#variante-a"><i class="fa fa-check"></i>Variante A</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#variante-b"><i class="fa fa-check"></i>Variante B</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#variante-c"><i class="fa fa-check"></i>Variante C</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#varianti-con-contesto-eserciziario"><i class="fa fa-check"></i>Varianti con contesto (eserciziario)</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-conteggi"><i class="fa fa-check"></i>Esercizio: Conteggi</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-dati-continui"><i class="fa fa-check"></i>Esercizio Dati Continui</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-1"><i class="fa fa-check"></i>Esercizio (variante 1)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-2"><i class="fa fa-check"></i>Esercizio (variante 2)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-3"><i class="fa fa-check"></i>Esercizio (variante 3)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-dati-non-ordinati"><i class="fa fa-check"></i>Esercizio Dati non ordinati</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html"><i class="fa fa-check"></i>Esercizi di probabilità</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#due-urne"><i class="fa fa-check"></i>Due urne</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#valigetta"><i class="fa fa-check"></i>Valigetta</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urna"><i class="fa fa-check"></i>Urna</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#applicazione-regole"><i class="fa fa-check"></i>Applicazione regole</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#studente"><i class="fa fa-check"></i>Studente</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#giulio-e-il-treno"><i class="fa fa-check"></i>Giulio e il treno</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#somma-di-due-dadi"><i class="fa fa-check"></i>Somma di due dadi</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#scatola-e-biglietti"><i class="fa fa-check"></i>Scatola e biglietti</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urna-con-colori-e-lettere-diverse"><i class="fa fa-check"></i>Urna con colori e lettere diverse</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urne-che-portano-ad-altre-urne"><i class="fa fa-check"></i>Urne che portano ad altre urne</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#estrazioni-con-e-senza-reintroduzione"><i class="fa fa-check"></i>Estrazioni con e senza reintroduzione</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urne-e-palline-numerate"><i class="fa fa-check"></i>Urne e palline numerate</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html"><i class="fa fa-check"></i>Esercizi Di Probabilità e Variabili Casuali</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-1"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-2"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-3"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-4"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes"><i class="fa fa-check"></i>Esercizio sul Teorema di Bayes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html"><i class="fa fa-check"></i>Esercizi sul TLC</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#una-vc-qualunque-somma-s_n"><i class="fa fa-check"></i>Una VC qualunque: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#una-vc-qualunque-media-barx"><i class="fa fa-check"></i>Una VC qualunque: media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#unurna-somma-s_n"><i class="fa fa-check"></i>Un’urna: somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#unurna-media-barx"><i class="fa fa-check"></i>Un’urna: media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-somma-s_n"><i class="fa fa-check"></i>2 Urne: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-media-barx"><i class="fa fa-check"></i>2 Urne: Media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-media-barx-1"><i class="fa fa-check"></i>2 Urne: Media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#bernoulli-somma-s_n"><i class="fa fa-check"></i>Bernoulli: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#bernoulli-proporzione-widehatpi"><i class="fa fa-check"></i>Bernoulli: Proporzione, <span class="math inline">\(\widehat{\pi}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-proporzione-widehatpi"><i class="fa fa-check"></i>2 Urne: Proporzione, <span class="math inline">\(\widehat{\pi}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#poisson-somma-s_n"><i class="fa fa-check"></i>Poisson: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#poisson-media-barx"><i class="fa fa-check"></i>Poisson: Media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#poisson-somma-s_n-1"><i class="fa fa-check"></i>Poisson: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#proporzione-poisson-widehatpi"><i class="fa fa-check"></i>Proporzione – Poisson, <span class="math inline">\(\widehat{\pi}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html"><i class="fa fa-check"></i>Test e Intervalli di Confidenza</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#un-campione-idc-e-test-per-mu-sigma-nota-z-test."><i class="fa fa-check"></i>Un campione, IdC e test per <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span> nota (z test).</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#un-campione-idc-e-test-per-mu-sigma-incognita-t-test."><i class="fa fa-check"></i>Un campione, IdC e test per <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span> incognita (t test).</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#un-campione-idc-e-test-per-pi-z-test."><i class="fa fa-check"></i>Un campione, IdC e test per <span class="math inline">\(\pi\)</span> (z test).</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#t-test-a-due-campioni"><i class="fa fa-check"></i>t-Test a due campioni</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#due-campioni-proporzione"><i class="fa fa-check"></i>Due campioni: proporzione</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html"><i class="fa fa-check"></i>Test del Chi-quadro per indipendenza</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-1-1"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-2-1"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-3-1"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-4-1"><i class="fa fa-check"></i>Esercizio 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html"><i class="fa fa-check"></i>Test del Chi-quadro per conformità</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html#esercizio-1-2"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html#esercizio-2-2"><i class="fa fa-check"></i>Esercizio 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html"><i class="fa fa-check"></i>Esericizi sulla Regressione</a>
+<ul>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-dati-maternità-usa"><i class="fa fa-check"></i>Esercizio (Dati maternità USA)</a>
+<ul>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#i-dati"><i class="fa fa-check"></i>I dati</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#la-matrice-dei-dati"><i class="fa fa-check"></i>La matrice dei dati</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#la-rappresentazione-dei-dati"><i class="fa fa-check"></i>La rappresentazione dei dati</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-1-3"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-2-3"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-3-2"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-4-2"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-5"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-6"><i class="fa fa-check"></i>Esercizio 6</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-7"><i class="fa fa-check"></i>Esercizio 7</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-8"><i class="fa fa-check"></i>Esercizio 8</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html"><i class="fa fa-check"></i>Anno 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210611-1"><i class="fa fa-check"></i>Prova di Statistica 2021/06/11-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-4"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-4"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-3"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-3"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-1"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-1"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210611-2"><i class="fa fa-check"></i>Prova di Statistica 2021/06/11-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-5"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-5"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-4"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-4"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-2"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-2"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210630-1"><i class="fa fa-check"></i>Prova di Statistica 2021/06/30-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-6"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-6"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-5"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-5"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-3"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-3"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210630-2"><i class="fa fa-check"></i>Prova di Statistica 2021/06/30-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-7"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-7"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-6"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-6"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-4"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-4"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210722-1"><i class="fa fa-check"></i>Prova di Statistica 2021/07/22-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-8"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-8"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-7"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-7"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-5"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-5"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210722-2"><i class="fa fa-check"></i>Prova di Statistica 2021/07/22-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-9"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-9"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-8"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-8"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-6"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-6"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210906-1"><i class="fa fa-check"></i>Prova di Statistica 2021/09/06-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-10"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-10"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-9"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-9"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-7"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-7"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html"><i class="fa fa-check"></i>Anno 2022</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220616-1"><i class="fa fa-check"></i>Prova di Statistica 2022/06/16-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-11"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-11"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-10"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-10"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-8"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-8"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220616-2"><i class="fa fa-check"></i>Prova di Statistica 2022/06/16-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-12"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-12"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-11"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-11"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-9"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-9"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220616-3"><i class="fa fa-check"></i>Prova di Statistica 2022/06/16-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-13"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-13"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-12"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-12"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-10"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-10"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220701-1"><i class="fa fa-check"></i>Prova di Statistica 2022/07/01-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-14"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-14"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-13"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-13"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-11"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-11"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220701-2"><i class="fa fa-check"></i>Prova di Statistica 2022/07/01-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-15"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-15"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-14"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-14"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-12"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-12"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220701-3"><i class="fa fa-check"></i>Prova di Statistica 2022/07/01-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-16"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-16"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-15"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-15"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-13"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-13"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220727-1"><i class="fa fa-check"></i>Prova di Statistica 2022/07/27-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-17"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-17"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-16"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-16"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-14"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-14"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220727-2"><i class="fa fa-check"></i>Prova di Statistica 2022/07/27-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-18"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-18"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-17"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-17"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-15"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-15"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220727-3"><i class="fa fa-check"></i>Prova di Statistica 2022/07/27-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-19"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-19"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-18"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-18"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-16"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-16"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html"><i class="fa fa-check"></i>Anno 2023</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230111-1"><i class="fa fa-check"></i>Prova di Statistica 2023/01/11-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-20"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-20"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-19"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-19"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-17"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-17"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230111-2"><i class="fa fa-check"></i>Prova di Statistica 2023/01/11-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-21"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-21"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-20"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-20"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-18"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-18"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230111-3"><i class="fa fa-check"></i>Prova di Statistica 2023/01/11-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-22"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-22"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-21"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-21"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-19"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-19"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230216-1"><i class="fa fa-check"></i>Prova di Statistica 2023/02/16-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-23"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-23"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-22"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-22"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-20"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-20"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230216-2"><i class="fa fa-check"></i>Prova di Statistica 2023/02/16-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-24"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-24"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-23"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-23"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-21"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-21"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230216-3"><i class="fa fa-check"></i>Prova di Statistica 2023/02/16-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-25"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-25"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-24"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-24"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-22"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-22"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230608-1"><i class="fa fa-check"></i>Prova di Statistica 2023/06/08-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-26"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-26"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-25"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-25"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-23"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230608-2"><i class="fa fa-check"></i>Prova di Statistica 2023/06/08-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-27"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-27"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-26"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-26"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-24"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-23"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230608-3"><i class="fa fa-check"></i>Prova di Statistica 2023/06/08-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-28"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-28"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-27"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-27"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-25"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-24"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230627-1"><i class="fa fa-check"></i>Prova di Statistica 2023/06/27-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-29"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-29"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-28"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-28"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-26"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-25"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230627-2"><i class="fa fa-check"></i>Prova di Statistica 2023/06/27-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-30"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-30"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-29"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-29"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-27"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-26"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230627-3"><i class="fa fa-check"></i>Prova di Statistica 2023/06/27-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-31"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-31"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-30"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-30"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-28"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-27"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230723-1"><i class="fa fa-check"></i>Prova di Statistica 2023/07/23-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-32"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-32"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-31"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-31"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-29"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-28"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230723-2"><i class="fa fa-check"></i>Prova di Statistica 2023/07/23-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-33"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-33"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-32"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-32"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-30"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-29"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230723-3"><i class="fa fa-check"></i>Prova di Statistica 2023/07/23-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-34"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-34"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-33"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-33"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-31"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-30"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html"><i class="fa fa-check"></i>Anno 2024</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240603-1"><i class="fa fa-check"></i>Prova di Statistica 2024/06/03-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-35"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-35"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-34"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-34"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-32"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240603-2"><i class="fa fa-check"></i>Prova di Statistica 2024/06/03-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-36"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-36"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-35"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-35"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-33"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240603-3"><i class="fa fa-check"></i>Prova di Statistica 2024/06/03-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-37"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-37"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-36"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-36"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-34"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-31"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240621-1"><i class="fa fa-check"></i>Prova di Statistica 2024/06/21-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-38"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-38"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-37"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-37"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-35"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240621-2"><i class="fa fa-check"></i>Prova di Statistica 2024/06/21-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-39"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-39"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-38"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-38"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-36"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240621-3"><i class="fa fa-check"></i>Prova di Statistica 2024/06/21-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-40"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-40"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-39"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-39"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-37"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-32"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-240706--1"><i class="fa fa-check"></i>Prova di Statistica 24/07/06 -1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-41"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-41"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-40"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-40"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-38"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-33"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-240706--2"><i class="fa fa-check"></i>Prova di Statistica 24/07/06 -2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-42"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-42"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-41"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-41"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-39"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-34"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-240706--3"><i class="fa fa-check"></i>Prova di Statistica 24/07/06 -3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-43"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-43"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-42"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-42"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-40"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-35"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Eserciziario di Statistica</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="esericizi-sulla-regressione" class="section level1 hasAnchor">
+<h1>Esericizi sulla Regressione<a href="esericizi-sulla-regressione.html#esericizi-sulla-regressione" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="button-container">
+
+</div>
+<div id="esercizio-dati-maternità-usa" class="section level2 hasAnchor">
+<h2>Esercizio (Dati maternità USA)<a href="esericizi-sulla-regressione.html#esercizio-dati-maternità-usa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="i-dati" class="section level3 hasAnchor">
+<h3>I dati<a href="esericizi-sulla-regressione.html#i-dati" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il dataset di dimensioni <span class="math inline">\(n = 51\)</span> è relativo ai 50 stati e al Distretto di Columbia negli Stati Uniti. Le variabili sono</p>
+<ul>
+<li><span class="math inline">\(y =\)</span> <em>il tasso di natalità dell’anno 2002 per 1000 femmine di età compresa tra 15 e 17 anni</em><br />
+</li>
+<li><span class="math inline">\(x =\)</span> <em>il tasso di povertà, che rappresenta la percentuale della popolazione dello stato che vive in famiglie con redditi al di sotto della soglia di povertà definita dal governo federale.</em></li>
+</ul>
+<p>(Fonte dei dati: Mind On Statistics, 3a edizione, Utts and Heckard).</p>
+</div>
+<div id="la-matrice-dei-dati" class="section level3 hasAnchor">
+<h3>La matrice dei dati<a href="esericizi-sulla-regressione.html#la-matrice-dei-dati" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\(i\)</span>
+</th>
+<th style="text-align:left;">
+Stato
+</th>
+<th style="text-align:right;">
+Tasso di povertà
+</th>
+<th style="text-align:right;">
+Tasso di natalità 15-17
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+20.1
+</td>
+<td style="text-align:right;">
+31.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Alaska
+</td>
+<td style="text-align:right;">
+7.1
+</td>
+<td style="text-align:right;">
+18.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Arizona
+</td>
+<td style="text-align:right;">
+16.1
+</td>
+<td style="text-align:right;">
+35.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Arkansas
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+31.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+California
+</td>
+<td style="text-align:right;">
+16.7
+</td>
+<td style="text-align:right;">
+22.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Colorado
+</td>
+<td style="text-align:right;">
+8.8
+</td>
+<td style="text-align:right;">
+26.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Connecticut
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+14.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Delaware
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+24.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+District of Columbia
+</td>
+<td style="text-align:right;">
+22.0
+</td>
+<td style="text-align:right;">
+44.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Florida
+</td>
+<td style="text-align:right;">
+16.2
+</td>
+<td style="text-align:right;">
+23.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Georgia
+</td>
+<td style="text-align:right;">
+12.1
+</td>
+<td style="text-align:right;">
+31.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Hawaii
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+17.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Idaho
+</td>
+<td style="text-align:right;">
+14.5
+</td>
+<td style="text-align:right;">
+18.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Illinois
+</td>
+<td style="text-align:right;">
+12.4
+</td>
+<td style="text-align:right;">
+23.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Indiana
+</td>
+<td style="text-align:right;">
+9.6
+</td>
+<td style="text-align:right;">
+22.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Iowa
+</td>
+<td style="text-align:right;">
+12.2
+</td>
+<td style="text-align:right;">
+16.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Kansas
+</td>
+<td style="text-align:right;">
+10.8
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Kentucky
+</td>
+<td style="text-align:right;">
+14.7
+</td>
+<td style="text-align:right;">
+26.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+Louisiana
+</td>
+<td style="text-align:right;">
+19.7
+</td>
+<td style="text-align:right;">
+31.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Maine
+</td>
+<td style="text-align:right;">
+11.2
+</td>
+<td style="text-align:right;">
+11.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Maryland
+</td>
+<td style="text-align:right;">
+10.1
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Massachusetts
+</td>
+<td style="text-align:right;">
+11.0
+</td>
+<td style="text-align:right;">
+12.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+Michigan
+</td>
+<td style="text-align:right;">
+12.2
+</td>
+<td style="text-align:right;">
+18.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Minnesota
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+14.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Mississippi
+</td>
+<td style="text-align:right;">
+23.5
+</td>
+<td style="text-align:right;">
+37.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+Missouri
+</td>
+<td style="text-align:right;">
+9.4
+</td>
+<td style="text-align:right;">
+22.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+Montana
+</td>
+<td style="text-align:right;">
+15.3
+</td>
+<td style="text-align:right;">
+17.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+Nebraska
+</td>
+<td style="text-align:right;">
+9.6
+</td>
+<td style="text-align:right;">
+18.3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+Nevada
+</td>
+<td style="text-align:right;">
+11.1
+</td>
+<td style="text-align:right;">
+28.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+New Hampshire
+</td>
+<td style="text-align:right;">
+5.3
+</td>
+<td style="text-align:right;">
+8.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+New Jersey
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:right;">
+14.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+New Mexico
+</td>
+<td style="text-align:right;">
+25.3
+</td>
+<td style="text-align:right;">
+37.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+New York
+</td>
+<td style="text-align:right;">
+16.5
+</td>
+<td style="text-align:right;">
+15.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+North Carolina
+</td>
+<td style="text-align:right;">
+12.6
+</td>
+<td style="text-align:right;">
+28.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+North Dakota
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+11.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+Ohio
+</td>
+<td style="text-align:right;">
+11.5
+</td>
+<td style="text-align:right;">
+20.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:left;">
+Oklahoma
+</td>
+<td style="text-align:right;">
+17.1
+</td>
+<td style="text-align:right;">
+30.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:left;">
+Oregon
+</td>
+<td style="text-align:right;">
+11.2
+</td>
+<td style="text-align:right;">
+18.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:left;">
+Pennsylvania
+</td>
+<td style="text-align:right;">
+12.2
+</td>
+<td style="text-align:right;">
+17.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+Rhode Island
+</td>
+<td style="text-align:right;">
+10.6
+</td>
+<td style="text-align:right;">
+19.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+South Carolina
+</td>
+<td style="text-align:right;">
+19.9
+</td>
+<td style="text-align:right;">
+29.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:left;">
+South Dakota
+</td>
+<td style="text-align:right;">
+14.5
+</td>
+<td style="text-align:right;">
+17.3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:left;">
+Tennessee
+</td>
+<td style="text-align:right;">
+15.5
+</td>
+<td style="text-align:right;">
+28.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+Texas
+</td>
+<td style="text-align:right;">
+17.4
+</td>
+<td style="text-align:right;">
+38.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+Utah
+</td>
+<td style="text-align:right;">
+8.4
+</td>
+<td style="text-align:right;">
+17.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+Vermont
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+10.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+Virginia
+</td>
+<td style="text-align:right;">
+10.2
+</td>
+<td style="text-align:right;">
+19.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+Washington
+</td>
+<td style="text-align:right;">
+12.5
+</td>
+<td style="text-align:right;">
+16.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:left;">
+West Virginia
+</td>
+<td style="text-align:right;">
+16.7
+</td>
+<td style="text-align:right;">
+21.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+Wisconsin
+</td>
+<td style="text-align:right;">
+8.5
+</td>
+<td style="text-align:right;">
+15.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+Wyoming
+</td>
+<td style="text-align:right;">
+12.2
+</td>
+<td style="text-align:right;">
+17.7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="la-rappresentazione-dei-dati" class="section level3 hasAnchor">
+<h3>La rappresentazione dei dati<a href="esericizi-sulla-regressione.html#la-rappresentazione-dei-dati" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-21909dcb35cdbfc89c90" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-21909dcb35cdbfc89c90">{"x":{"visdat":{"a357739c8021d":["function () ","plotlyVisDat"]},"cur_data":"a357739c8021d","attrs":{"a357739c8021d":{"x":{},"y":{},"text":{},"mode":"markers","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)","xaxis":{"domain":[0,1],"automargin":true,"title":"Tasso di povertà"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Tasso di natalità 15-17"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[20.100000000000001,7.0999999999999996,16.100000000000001,14.9,16.699999999999999,8.8000000000000007,9.6999999999999993,10.300000000000001,22,16.199999999999999,12.1,10.300000000000001,14.5,12.4,9.5999999999999996,12.199999999999999,10.800000000000001,14.699999999999999,19.699999999999999,11.199999999999999,10.1,11,12.199999999999999,9.1999999999999993,23.5,9.4000000000000004,15.300000000000001,9.5999999999999996,11.1,5.2999999999999998,7.7999999999999998,25.300000000000001,16.5,12.6,12,11.5,17.100000000000001,11.199999999999999,12.199999999999999,10.6,19.899999999999999,14.5,15.5,17.399999999999999,8.4000000000000004,10.300000000000001,10.199999999999999,12.5,16.699999999999999,8.5,12.199999999999999],"y":[31.5,18.899999999999999,35,31.600000000000001,22.600000000000001,26.199999999999999,14.1,24.699999999999999,44.799999999999997,23.199999999999999,31.399999999999999,17.699999999999999,18.399999999999999,23.399999999999999,22.600000000000001,16.399999999999999,21.399999999999999,26.5,31.699999999999999,11.9,20,12.5,18,14.199999999999999,37.600000000000001,22.199999999999999,17.800000000000001,18.300000000000001,28,8.0999999999999996,14.699999999999999,37.799999999999997,15.699999999999999,28.600000000000001,11.699999999999999,20.100000000000001,30.100000000000001,18.199999999999999,17.199999999999999,19.600000000000001,29.199999999999999,17.300000000000001,28.199999999999999,38.200000000000003,17.800000000000001,10.4,19,16.800000000000001,21.5,15.9,17.699999999999999],"text":["Alabama ","Alaska ","Arizona ","Arkansas ","California ","Colorado ","Connecticut ","Delaware ","District of Columbia ","Florida ","Georgia ","Hawaii ","Idaho ","Illinois ","Indiana ","Iowa ","Kansas ","Kentucky ","Louisiana ","Maine ","Maryland ","Massachusetts ","Michigan ","Minnesota ","Mississippi ","Missouri ","Montana ","Nebraska ","Nevada ","New Hampshire ","New Jersey ","New Mexico ","New York ","North Carolina ","North Dakota ","Ohio ","Oklahoma ","Oregon ","Pennsylvania ","Rhode Island ","South Carolina ","South Dakota ","Tennessee ","Texas ","Utah ","Vermont ","Virginia ","Washington ","West Virginia ","Wisconsin ","Wyoming "],"mode":"markers","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Tutta l’informazione sul modello di regressione lineare semplice è contenuta nelle
+seguenti statistiche
+<span class="math display">\[\sum_{i=1}^n x_i=      669.00,
+~~\sum_{i=1}^n y_i=      1~136.40,
+~~\sum_{i=1}^n x_i^2=    9~690.44,
+~~\sum_{i=1}^ny_i^2=     28~556.56,
+~~ \sum_{i=1}^n x_i y_i= 16~163.14\]</span>
+o, equivalentemente, le medie
+<span class="math display">\[\frac{1}{51}\sum_{i=1}^n x_i=      13.1176,
+~~\frac{1}{51}\sum_{i=1}^n y_i=      22.2824,
+~~\frac{1}{51}\sum_{i=1}^n x_i^2=    190.0086,
+~~\frac{1}{51}\sum_{i=1}^ny_i^2=     559.9325,
+~~ \frac{1}{51}\sum_{i=1}^n x_i y_i= 316.9243\]</span></p>
+<p><span class="math display">\[\begin{alignat*}{3}
+\bar x &amp; =  \frac 1 n \sum_{i=1}^n x_i  = 13.1176 &amp;
+\hat\sigma_X^2 &amp; =  \frac 1 n \sum_{i=1}^n x_i^2 - \bar x^2  = 17.936 &amp;\\
+\bar y &amp; =  \frac 1 n \sum_{i=1}^n y_i   = 22.2824 &amp;
+\hat\sigma_Y^2 &amp; =  \frac 1 n \sum_{i=1}^n y_i^2 - \bar y^2  = 63.4293 &amp;\\
+\text{cov}(x,y) &amp; = \frac 1 n \sum_{i=1}^n x_iy_i -\bar x\bar y  = 24.6323 &amp;
+r &amp; = \frac{\text{cov}(x,y)}{\hat\sigma_X \hat\sigma_Y }  = 0.7303 &amp;\\
+\hat\beta_1 &amp; = \frac{\text{cov}(x,y)}{\hat\sigma_X^2} = 1.3733 &amp;
+\hat\beta_0 &amp; = \bar y  - \hat\beta_1\bar x = 4.2673. &amp;\\
+\hat\sigma_\varepsilon^2 &amp; = \hat\sigma_Y^2(1-r^2)=29.6007 &amp;
+S_\varepsilon^2 &amp; = \frac{n}{n-2}\hat\sigma_\varepsilon^2 = 30.8089\\
+\hat\sigma_\varepsilon &amp; = \hat\sigma_Y\sqrt{(1-r^2)}=5.4407 &amp; \qquad
+S_\varepsilon &amp; = \sqrt{\frac{n}{n-2}}\hat\sigma_\varepsilon = 5.5506\\
+\end{alignat*}\]</span></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<hr />
+<p>Valutare la bontà di adattamento del modello precedente.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+r&amp;=&amp;\frac{\text{cov}(X,Y)}{\sigma_X\sigma_Y}=\frac{ 24.63 }{ 4.235 \times 7.964 }= 0.7303 \\r^2&amp;=&amp; 0.5333 &lt; 0.75
+\end{eqnarray*}\]</span>
+Il modello <strong>non</strong> si adatta bene ai dati.</p>
+</div>
+<hr />
+<p>Fornire una interpretazione dei parametri della retta di regressione.</p>
+<div class="sol">
+<p>I parametri della retta di regressione sono <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>.
+Il primo, <span class="math inline">\(\beta_{0},\)</span> rappresenta l’intercetta della retta,
+ovvero il punto in cui la retta interseca l’asse delle ordinate.
+Il secondo parametro, <span class="math inline">\(\beta_{1}\)</span>, rappresenta la pendenza della
+retta (chiamato anche coefficiente angolare), ovvero l’incremento
+verticale corrispondente a un incremento orizzontale unitario e
+coincide, perciò, con la tangente dell’angolo compreso fra la
+retta e l’asse delle ascisse.</p>
+<p>In questo caso, il tasso di natalità per le under 15,
+secondo il modello stimato, è dato da
+<span class="math display">\[Y= 4.2673 + 1.3733 X\]</span></p>
+<p>ossia, è composto da un quantitativo fisso di <span class="math inline">\(4.2673\)</span> di tasso di natalità per le under 15 in un ipotetico stato a con tasso di povertà zero (<span class="math inline">\(x=0\)</span>), a cui si aggiunge un incremento di <span class="math inline">\(1.3733\)</span> per ogni incremento unitario del tasso di povertà.</p>
+</div>
+<hr />
+<p>Determinare il residuo per lo stato del Colorado <span class="math inline">\(i=6\)</span>
+uguale 6, ossia per <span class="math inline">\(x=6\)</span>.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat y_i &amp;=&amp;\hat\beta_0+\hat\beta_1 x_i=\\
+&amp;=&amp; 4.267 + 1.3733 \times 8.8 = 16.35 \\
+\hat \varepsilon_i &amp;=&amp; y_i-\hat y_i\\
+&amp;=&amp; 26.2 - 16.35 = 9.847  
+\end{eqnarray*}\]</span></p>
+</div>
+<hr />
+<p>Verificare l’ipotesi che l’intercetta della retta di regressione sia uguale a
+zero contro l’alternativa che sia diversa da zero.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.5333 )\times 63.43 \\
+   &amp;=&amp;  29.6 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 51 } { 51 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 51 } { 51 -2} \times  29.6  =  30.81  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{0}) &amp;=&amp; \sigma_{\varepsilon}^{2} \left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\\
+\widehat{V(\hat\beta_{0})} &amp;=&amp; S_{\varepsilon}^{2}\left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\ \\
+&amp;=&amp;  30.81 \times\left( \frac{1} { 51 }  +  \frac{ 13.12 ^{2}} { 51 \times  17.94 } \right)\\
+\widehat{SE(\hat\beta_{0})}        &amp;=&amp;  \sqrt{ 6.4 }\\
+&amp;=&amp;  2.53
+\end{eqnarray*}\]</span>
+<span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_0 = \beta_{0;H_0}=0 \\
+   H_1: \beta_0 \neq \beta_{0;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 0 } - \beta_{ 0 ;H_0}} {\widehat{SE(\hat\beta_{ 0 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( 4.267 -  0 )} { 2.53 }
+=   1.687 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Siccome <span class="math inline">\(H_1\)</span> è bilaterale, considereremo <span class="math inline">\(\alpha/2\)</span>,
+anziché <span class="math inline">\(\alpha\)</span></p>
+<p><span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span> e quindi <span class="math inline">\(\alpha/2=0.05, 0.025, 0.005, 0.0005\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{51-2;0.05}=1.6766\)</span>; <span class="math inline">\(t_{51-2;0.025}=2.0096\)</span>; <span class="math inline">\(t_{51-2;0.005}=2.68\)</span>; <span class="math inline">\(t_{51-2;0.0005}=3.5004\)</span></p>
+<p>Siccome <span class="math inline">\(1.6766&lt;|t_\text{obs}|=1.6868&lt;2.0096\)</span>, indecisione sul rifiuto di <span class="math inline">\(H_0\)</span> al 10%,</p>
+<p><span class="math inline">\(0.05&lt;p_\text{value}&lt;0.1\)</span>, <em>marginalmente significativo</em> <span class="math inline">\(\fbox{.}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(|T_{51-2}|&gt;|1.69|)=2P(T_{51-2}&gt;1.69)=0.097990 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.05 &lt; p_\text{value}= 0.097990 \leq 0.1
+\]</span></p>
+</div>
+<hr />
+<p>Verificare l’ipotesi che la pendenza della retta di regressione sia uguale a 0
+contro l’alternativa che sia diversa da 0.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.5333 )\times 63.43 \\
+   &amp;=&amp;  29.6 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 51 } { 51 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 51 } { 51 -2} \times  29.6  =  30.81  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{1}) &amp;=&amp; \frac{\sigma_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+\widehat{V(\hat\beta_{1})} &amp;=&amp; \frac{S_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+&amp;=&amp; \frac{ 30.81 } { 51 \times  17.94 } =  0.0337 \\
+\widehat{SE(\hat\beta_{1})}        &amp;=&amp;  \sqrt{ 0.0337 }\\
+&amp;=&amp;  0.1836
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_1 = \beta_{1;H_0}=0 \\
+   H_1: \beta_1 &gt; \beta_{1;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 1 } - \beta_{ 1 ;H_0}} {\widehat{SE(\hat\beta_{ 1 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( 1.373 -  0 )} { 0.1836 }
+=   7.481 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Consideriamo <span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{51-2;0.1}=1.2991\)</span>; <span class="math inline">\(t_{51-2;0.05}=1.6766\)</span>; <span class="math inline">\(t_{51-2;0.01}=2.4049\)</span>; <span class="math inline">\(t_{51-2;0.001}=3.2651\)</span></p>
+<p>Siccome <span class="math inline">\(t_\text{obs}=7.4808&gt;3.2651\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> sotto all’1‰,</p>
+<p><span class="math inline">\(p_\text{value}&lt;0.001\)</span>, <em>estremamente significativo</em> <span class="math inline">\(\fbox{***}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(T_{51-2}&gt;7.48)=6e-10 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0 &lt; p_\text{value}= 6e-10 \leq 0.001
+\]</span></p>
+</div>
+<hr />
+<p>Un software professionale restituisce un output del genere</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="esericizi-sulla-regressione.html#cb1-1" tabindex="-1"></a><span class="fu">head</span>(data_poverty,<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##                    state poverty_rate birth_rate
+## 1               Alabama          20.1       31.5
+## 2                Alaska           7.1       18.9
+## 3               Arizona          16.1       35.0
+## 4              Arkansas          14.9       31.6
+## 5            California          16.7       22.6
+## 6              Colorado           8.8       26.2
+## 7           Connecticut           9.7       14.1
+## 8              Delaware          10.3       24.7
+## 9  District of Columbia          22.0       44.8
+## 10              Florida          16.2       23.2</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="esericizi-sulla-regressione.html#cb3-1" tabindex="-1"></a>modello <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> birth_rate <span class="sc">~</span> poverty_rate,<span class="at">data =</span> data_poverty)</span>
+<span id="cb3-2"><a href="esericizi-sulla-regressione.html#cb3-2" tabindex="-1"></a><span class="fu">summary</span>(modello)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = birth_rate ~ poverty_rate, data = data_poverty)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -11.227  -3.655  -0.041   2.497  10.515 
+## 
+## Coefficients:
+##              Estimate Std. Error t value     Pr(&gt;|t|)    
+## (Intercept)     4.267      2.530    1.69        0.098 .  
+## poverty_rate    1.373      0.184    7.48 0.0000000012 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 5.55 on 49 degrees of freedom
+## Multiple R-squared:  0.533,  Adjusted R-squared:  0.524 
+## F-statistic:   56 on 1 and 49 DF,  p-value: 0.00000000119</code></pre>
+<div class="button-container">
+
+</div>
+</div>
+</div>
+<div id="esercizio-1-3" class="section level2 hasAnchor">
+<h2>Esercizio 1<a href="esericizi-sulla-regressione.html#esercizio-1-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Si sono raccolti i seguenti valori per la variabile indipendente
+<span class="math inline">\(X\)</span>, indice delle importazioni, e la variabile dipendente <span class="math inline">\(Y\)</span>,
+indice della produzione industriale (dati artificiali).</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(i\)</span>
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:right;">
+119
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+122
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+111
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+126
+</td>
+<td style="text-align:right;">
+128
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+133
+</td>
+</tr>
+</tbody>
+</table>
+<p>1.a Calcolare i parametri <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span> della
+retta di regressione in cui <span class="math inline">\(Y\)</span> è spiegata attraverso <span class="math inline">\(X\)</span>.</p>
+<p>(Suggerimento: <span class="math inline">\(\bar{x} = 112.875~~112.875\)</span>; <span class="math inline">\(\sigma_{X} = 5.89359~~5.8936\)</span>;
+<span class="math inline">\(\bar{y} = 118.4375\)</span>; <span class="math inline">\(\sigma_{Y} = 8.74620\)</span>; <span class="math inline">\(\text{cov}(X,Y)= 50.74219\)</span>).
+NB: ora si danno le somme, le somme dei quadrati e dei prodotti:
+<span class="math inline">\(\sum_{i=1}^{n} x_{i}\)</span>, <span class="math inline">\(\sum_{i=1}^{n} x_{i}^{2}\)</span>,
+<span class="math inline">\(\sum_{i=1}^{n} y_{i}\)</span>, <span class="math inline">\(\sum_{i=1}^{n} y_{i}^{2}\)</span>,
+<span class="math inline">\(\sum_{i=1}^{n} x_{i}\, y_{i}\)</span>.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\widehat{\beta}_{1} &amp;=&amp; r \frac{\sigma_{Y}} {\sigma_{X}}
+                     =  \frac{\text{cov}(X,Y)} {\sigma_{X}^{2}}
+                     =  \frac{50.7422} {(5.8936)^{2}} = 1.4609  \\
+\widehat{\beta}_{0} &amp;=&amp; \overline{y} - \widehat{\beta}_{1} \overline{x}
+                     =  118.4375 - 1.4609 \times 112.875 = -46.4575.
+\end{eqnarray*}\]</span></p>
+</div>
+<p>1.b Valutare la bontà di adattamento del modello precedente.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+r     &amp;=&amp; \frac{\text{cov}(X,Y)} {\sigma_{X}\ \sigma_{Y}}
+       =  \frac{50.7422} {5.8936 \times 8.7462} = 0.9844\\
+r^{2} &amp;=&amp; (0.9844)^{2} = 0.969
+\end{eqnarray*}\]</span></p>
+<p>L’adattamento del modello ai dati è soddisfacente.</p>
+</div>
+<p>1.c Rappresentare nel diagramma di dispersione la retta di regressione.</p>
+<div class="sol">
+<p>Per disegnare velocemente la retta si individuano nel grafico due punti:
+(1)il punto medio <span class="math inline">\((\bar{x},\, \bar{y})\)</span>, che è già noto; e un solo
+punto “estremo” nel grafico, che può essere <span class="math inline">\(x=100\)</span> o <span class="math inline">\(x=120\)</span>
+(i numeri “tondi” facilitano il calcolo e il disegno).
+Tramite l’equazione della retta di regressione si stima
+la coordinata corrispondente:</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\widehat{y} &amp;=&amp; -46.457 + 1.461 \,\times\, 100 = 99.629
+                \qquad \mbox{per $x=100$} \qquad OY= 99.629 \\
+\widehat{y} &amp;=&amp; -46.457 + 1.461 \,\times\, 120 = 128.846
+                \qquad \mbox{per $x=120$} \qquad OY= 128.846\, .
+\end{eqnarray*}\]</span></p>
+<p>La “piccola” scala degli assi può portare a disegnare una retta
+non appropriata; l’ispezione visiva aiuta, in questi casi, meglio
+di quella numerica a disegnare una “buona” retta di regressione.</p>
+</div>
+<p>1.d Fornire una interpretazione dei parametri della retta di regressione.</p>
+<div class="sol">
+<p>I parametri della retta di regressione sono <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>.
+Il primo, <span class="math inline">\(\beta_{0},\)</span> rappresenta l’intercetta della retta, ovvero il
+punto in cui la retta interseca l’asse delle ordinate.
+Il secondo parametro, <span class="math inline">\(\beta_{1}\)</span>, rappresenta la pendenza della retta
+(chiamato anche coefficiente angolare), ovvero l’incremento verticale
+corrispondente a un incremento orizzontale unitario e coincide, perciò,
+con la tangente dell’angolo compreso fra la retta e l’asse delle ascisse.</p>
+<p>Quando si chiede di fornire una interpretazione dei parametri della retta
+di regressione, tuttavia, si intende che il candidato interpreti anche
+i valori numerici di <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span> effettivamente calcolati
+in precedenza, alla luce del fenomeno descritto da <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.
+In questo caso, l’indice della produzione industriale, secondo il modello
+stimato, è dato da
+<span class="math display">\[y= -46.4575 + 1.4609 x\]</span>
+ossia, è composto da un quantitativo fisso di <span class="math inline">\(-46.4575\)</span> quando l’indice
+delle importazione è zero (<span class="math inline">\(X=0\)</span>), un caso molto raro (ma impossibile
+nel mondo attuale), a cui si aggiungono 1.4609 per ogni unità in più
+dell’indice delle importazioni.</p>
+</div>
+<p>1.e Calcolare un indicatore che sintetizzi l’ordine
+di grandezza dei residui della retta di regressione.</p>
+<div class="sol">
+<p>La media quadratica dei residui della retta di regressione coincide con
+il RMSE e rappresenta una sintesi della dispersione dei residui intorno
+alla retta di regressione. Si calcola con la formula:</p>
+<p></p>
+</div>
+<p>1.f Prevedere il valore dell’indice industriale per un valore
+dell’indice delle importazioni pari a 120, ossia <span class="math inline">\(x=120\)</span>.</p>
+<div class="sol">
+<p>Si determina il valore previsto tramite la retta di regressione:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\widehat{Y}_{i}     &amp;=&amp; -46.4575 + 1.4609\times 120 \\
+\widehat{y}_{x=120} &amp;=&amp; 128.8462
+\end{eqnarray*}\]</span></p>
+</div>
+<p>1.g Dal diagramma di dispersione sotto riportato,
+spiegare se la retta di regressione è adeguata o no a
+rappresentare il fenomeno.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<div class="sol">
+<p>L’ispezione visiva dei dati potrebbe suggerire anche l’esistenza
+di una certa NON linearità.
+Non vi sono punti leva; in ogni caso, la non linearità impone
+di modellarla prima di cercare i punti leva.
+<img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+</div>
+<p>1.h Si consideri il diagramma dei residui sotto riportato.
+Tracciare la retta dei residui.
+Commentare la loro forma e spiegare se sono indipendenti o presentano
+ancora una “struttura”, un andamento peculiare.</p>
+<div class="sol">
+<p>La retta dei residui è parallela all’asse delle <span class="math inline">\(X\)</span>, ossia coincide con esso.
+Il grafico dei residui evidenzia ancora la supposta la NON linearità;
+infatti, i residui mostrano un andamento “V”, tipica indicazione di
+non linearità.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+</div>
+<p>1.i<br />
+Verificare
+l’ipotesi che la pendenza della retta di regressione sia uguale a
+1 contro l’alternativa che sia maggiore di 1</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.969 )\times 76.5 \\
+   &amp;=&amp;  2.369 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 16 } { 16 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 16 } { 16 -2} \times  2.369  =  2.707  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{1}) &amp;=&amp; \frac{\sigma_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+\widehat{V(\hat\beta_{1})} &amp;=&amp; \frac{S_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+&amp;=&amp; \frac{ 2.707 } { 16 \times  34.73 } =  0.004871 \\
+\widehat{SE(\hat\beta_{1})}        &amp;=&amp;  \sqrt{ 0.004871 }\\
+&amp;=&amp;  0.06979
+\end{eqnarray*}\]</span>
+<span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_1 = \beta_{1;H_0}=1 \\
+   H_1: \beta_1 &gt; \beta_{1;H_0}=1
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 1 } - \beta_{ 1 ;H_0}} {\widehat{SE(\hat\beta_{ 1 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( 1.461 -  1 )} { 0.06979 }
+=   6.603 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Consideriamo <span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{16-2;0.1}=1.345\)</span>; <span class="math inline">\(t_{16-2;0.05}=1.7613\)</span>; <span class="math inline">\(t_{16-2;0.01}=2.6245\)</span>; <span class="math inline">\(t_{16-2;0.001}=3.7874\)</span></p>
+<p>Siccome <span class="math inline">\(t_\text{obs}=6.6033&gt;3.7874\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> sotto all’1‰,</p>
+<p><span class="math inline">\(p_\text{value}&lt;0.001\)</span>, <em>estremamente significativo</em> <span class="math inline">\(\fbox{***}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(T_{16-2}&gt;6.6)=0.000006 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0 &lt; p_\text{value}= 0.000006 \leq 0.001
+\]</span></p>
+</div>
+<p>1.j Verificare l’ipotesi che l’intercetta della retta di
+regressione sia uguale a zero contro l’alternativa che sia
+minore di zero.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.969 )\times 76.5 \\
+   &amp;=&amp;  2.369 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 16 } { 16 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 16 } { 16 -2} \times  2.369  =  2.707  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{0}) &amp;=&amp; \sigma_{\varepsilon}^{2} \left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\\
+\widehat{V(\hat\beta_{0})} &amp;=&amp; S_{\varepsilon}^{2}\left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\ \\
+&amp;=&amp;  2.707 \times\left( \frac{1} { 16 }  +  \frac{ 112.9 ^{2}} { 16 \times  34.73 } \right)\\
+\widehat{SE(\hat\beta_{0})}        &amp;=&amp;  \sqrt{ 62.23 }\\
+&amp;=&amp;  7.889
+\end{eqnarray*}\]</span>
+<span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_0 = \beta_{0;H_0}=0 \\
+   H_1: \beta_0 &lt; \beta_{0;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 0 } - \beta_{ 0 ;H_0}} {\widehat{SE(\hat\beta_{ 0 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( -46.46 -  0 )} { 7.889 }
+=   -5.889 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Consideriamo <span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{16-2;0.1}=-1.345\)</span>; <span class="math inline">\(t_{16-2;0.05}=-1.7613\)</span>; <span class="math inline">\(t_{16-2;0.01}=-2.6245\)</span>; <span class="math inline">\(t_{16-2;0.001}=-3.7874\)</span></p>
+<p>Siccome <span class="math inline">\(t_\text{obs}=-5.8892&lt;-1.345\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> sotto all’1‰,</p>
+<p><span class="math inline">\(p_\text{value}&lt;0.001\)</span>, <em>estremamente significativo</em> <span class="math inline">\(\fbox{***}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(T_{16-2}&lt;-5.89)=0.000020 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0 &lt; p_\text{value}= 0.000020 \leq 0.001
+\]</span></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+<div id="esercizio-2-3" class="section level2 hasAnchor">
+<h2>Esercizio 2<a href="esericizi-sulla-regressione.html#esercizio-2-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nella tabella seguente sono riportati i valori del seguente
+esperimento: numero di ore dopo l’assunzione di un dato farmaco
+(<span class="math inline">\(X\)</span>) e incremento percentuale della pressione sistolica (<span class="math inline">\(Y\)</span>).</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+4.00
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:right;">
+6.00
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+<td style="text-align:right;">
+8.00
+</td>
+<td style="text-align:right;">
+9.00
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1.42
+</td>
+<td style="text-align:right;">
+-0.53
+</td>
+<td style="text-align:right;">
+2.6
+</td>
+<td style="text-align:right;">
+4.02
+</td>
+<td style="text-align:right;">
+4.49
+</td>
+<td style="text-align:right;">
+5.72
+</td>
+<td style="text-align:right;">
+6.54
+</td>
+<td style="text-align:right;">
+8.91
+</td>
+<td style="text-align:right;">
+8.74
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p>1.a Calcolare i parametri <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>
+della retta di regressione in cui <span class="math inline">\(Y\)</span> è spiegata attraverso <span class="math inline">\(X\)</span>.
+(Suggerimento <span class="math inline">\(\bar{x} = 5\)</span>; <span class="math inline">\(\hat\sigma_{X} = 3.1623\)</span>;
+<span class="math inline">\(\bar{y} = 4.7191\)</span>; <span class="math inline">\(\hat\sigma_{Y} = 3.4598\)</span>; <span class="math inline">\(\text{cov}(X,Y)= 1.5618\)</span>).</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+       \hat\beta_1 &amp;=&amp; \frac{\text{cov}(X,Y)}{\hat\sigma_X^2} \\
+            &amp;=&amp; \frac{ 1.562 }{ 10 }  =  0.1562 \\
+      \hat\beta_0 &amp;=&amp; \bar y - \hat\beta_1 \bar x\\
+          &amp;=&amp;  4.719 - 0.1562 \times  5 = 3.938
+      \end{eqnarray*}\]</span></p>
+</div>
+<p>1.b Valutare la bontà di adattamento del modello precedente.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+r&amp;=&amp;\frac{\text{cov}(X,Y)}{\sigma_X\sigma_Y}=\frac{ 1.562 }{ 3.162 \times 3.46 }= 0.1427 \\r^2&amp;=&amp; 0.02038 &lt; 0.75
+\end{eqnarray*}\]</span>
+Il modello <strong>non</strong> si adatta bene ai dati.</p>
+</div>
+<p>1.c Rappresentare nel diagramma di dispersione la retta di regressione.</p>
+<div class="sol">
+<p>Per disegnare velocemente la retta si individuano nel grafico
+due punti: (1)il punto medio <span class="math inline">\((\bar{x},\, \bar{y})\)</span>, che è già
+noto; e un solo punto “estremo” nel grafico, che può essere <span class="math inline">\(x=0\)</span>
+o <span class="math inline">\(x=10\)</span> (i numeri “tondi” facilitano il calcolo e il disegno).
+Qui, però, l’asse delle <span class="math inline">\(X\)</span> presenta l’origine, ossia,
+il valore <span class="math inline">\(x=0\)</span> che ha come ordinata il valore di
+<span class="math inline">\(\widehat{\beta_{0}}=3.9382\)</span> già calcolato!
+Diversamente, tramite l’equazione della retta di
+regressione si stima la coordinata corrispondente:</p>
+<p><span class="math display">\[\hat y_{X= 10 }=\hat\beta_0+\hat\beta_1 x= 3.938 + 0.1562 \times 10 = 5.5 \]</span></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+</div>
+<p>1.d Fornire una interpretazione dei parametri della retta di regressione.</p>
+<div class="sol">
+<p>I parametri della retta di regressione sono <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>.
+Il primo, <span class="math inline">\(\beta_{0},\)</span> rappresenta l’intercetta della retta,
+ovvero il punto in cui la retta interseca l’asse delle ordinate.
+Il secondo parametro, <span class="math inline">\(\beta_{1}\)</span>, rappresenta la pendenza della
+retta (chiamato anche coefficiente angolare), ovvero l’incremento
+verticale corrispondente a un incremento orizzontale unitario e
+coincide, perciò, con la tangente dell’angolo compreso fra la
+retta e l’asse delle ascisse.</p>
+<p>In questo caso, la variazione percentuale della pressione sistolica,
+secondo il modello stimato, è dato da
+<span class="math display">\[Y= 3.9382 + 0.1562 X\]</span>
+ossia, è composta da un quantitativo fisso di <span class="math inline">\(3.9382\)</span> che si ottiene
+immediatamente dopo l’assunzione del farmaco (<span class="math inline">\(X=0\)</span>), che non è privo
+di significato, a cui si aggiunge un incremento di <span class="math inline">\(0.1562\)</span> per ogni ora
+aggiuntiva.</p>
+</div>
+<p>1.e Prevedere il valore relativo a <span class="math inline">\(x=5\)</span>
+(notando che <span class="math inline">\(\bar{x}=5\)</span>, con opportune giustificazioni, si
+può rispondere senza fare necessariamente i conti)</p>
+<div class="sol">
+<p>Dalle proprietà della retta di regressione si ha che:
+<span class="math inline">\(\widehat{y}_{x=\bar{x}}=\bar{y}=4.7191\)</span>.
+Ovvero: la retta di regressione passa per il punto <span class="math inline">\((\bar{x},\bar{y})\)</span></p>
+</div>
+<p>1.f Calcolare l’ordine di grandezza dell’errore di previsione.</p>
+<div class="sol">
+<p>L’ordine di grandezza dell’errore di previsione commesso è dato
+da RMSE che rappresenta una sintesi della dispersione dei residui
+intorno alla retta di regressione.
+</p>
+</div>
+<p>1.g Verificare
+l’ipotesi che la pendenza della retta di regressione sia uguale a
+0 contro l’alternativa che sia diversa da 0</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.02038 )\times 11.97 \\
+   &amp;=&amp;  11.73 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 11 } { 11 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 11 } { 11 -2} \times  11.73  =  14.33  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{1}) &amp;=&amp; \frac{\sigma_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+\widehat{V(\hat\beta_{1})} &amp;=&amp; \frac{S_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+&amp;=&amp; \frac{ 14.33 } { 11 \times  10 } =  0.1303 \\
+\widehat{SE(\hat\beta_{1})}        &amp;=&amp;  \sqrt{ 0.1303 }\\
+&amp;=&amp;  0.361
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_1 = \beta_{1;H_0}=0 \\
+   H_1: \beta_1 \neq \beta_{1;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 1 } - \beta_{ 1 ;H_0}} {\widehat{SE(\hat\beta_{ 1 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( 0.1562 -  0 )} { 0.361 }
+=   0.4327 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Siccome <span class="math inline">\(H_1\)</span> è bilaterale, considereremo <span class="math inline">\(\alpha/2\)</span>,
+anziché <span class="math inline">\(\alpha\)</span></p>
+<p><span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span> e quindi <span class="math inline">\(\alpha/2=0.05, 0.025, 0.005, 0.0005\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{11-2;0.05}=1.8331\)</span>; <span class="math inline">\(t_{11-2;0.025}=2.2622\)</span>; <span class="math inline">\(t_{11-2;0.005}=3.2498\)</span>; <span class="math inline">\(t_{11-2;0.0005}=4.7809\)</span></p>
+<p>Siccome <span class="math inline">\(|t_\text{obs}|=0.4327&lt;t_{11-2;0.05}=1.8331\)</span>, quindi <strong>non</strong> rifiuto <span class="math inline">\(H_0\)</span> a <strong>nessun</strong> livello di significatività,</p>
+<p><span class="math inline">\(p_\text{value}&gt;0.1\)</span>, <em>non significativo</em></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(|T_{11-2}|&gt;|0.43|)=2P(T_{11-2}&gt;0.43)=0.675431 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.1 &lt; p_\text{value}= 0.675431 \leq 1
+\]</span></p>
+</div>
+<p>1.h<br />
+Verificare l’ipotesi che l’intercetta della retta di
+regressione sia uguale a zero contro l’alternativa che sia
+diversa da zero</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.02036 )\times 11.97 \\
+   &amp;=&amp;  11.73 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 11 } { 11 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 11 } { 11 -2} \times  11.73  =  14.33  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{0}) &amp;=&amp; \sigma_{\varepsilon}^{2} \left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\\
+\widehat{V(\hat\beta_{0})} &amp;=&amp; S_{\varepsilon}^{2}\left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\ \\
+&amp;=&amp;  14.33 \times\left( \frac{1} { 11 }  +  \frac{ 5 ^{2}} { 11 \times  10 } \right)\\
+\widehat{SE(\hat\beta_{0})}        &amp;=&amp;  \sqrt{ 4.56 }\\
+&amp;=&amp;  2.135
+\end{eqnarray*}\]</span>
+<span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_0 = \beta_{0;H_0}=0 \\
+   H_1: \beta_0 \neq \beta_{0;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 0 } - \beta_{ 0 ;H_0}} {\widehat{SE(\hat\beta_{ 0 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( 3.938 -  0 )} { 2.135 }
+=   1.844 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Siccome <span class="math inline">\(H_1\)</span> è bilaterale, considereremo <span class="math inline">\(\alpha/2\)</span>,
+anziché <span class="math inline">\(\alpha\)</span></p>
+<p><span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span> e quindi <span class="math inline">\(\alpha/2=0.05, 0.025, 0.005, 0.0005\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{11-2;0.05}=1.8331\)</span>; <span class="math inline">\(t_{11-2;0.025}=2.2622\)</span>; <span class="math inline">\(t_{11-2;0.005}=3.2498\)</span>; <span class="math inline">\(t_{11-2;0.0005}=4.7809\)</span></p>
+<p>Siccome <span class="math inline">\(1.8331&lt;|t_\text{obs}|=1.8442&lt;2.2622\)</span>, indecisione sul rifiuto di <span class="math inline">\(H_0\)</span> al 10%,</p>
+<p><span class="math inline">\(0.05&lt;p_\text{value}&lt;0.1\)</span>, <em>marginalmente significativo</em> <span class="math inline">\(\fbox{.}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(|T_{11-2}|&gt;|1.84|)=2P(T_{11-2}&gt;1.84)=0.098258 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.05 &lt; p_\text{value}= 0.098258 \leq 0.1
+\]</span></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+<div id="esercizio-3-2" class="section level2 hasAnchor">
+<h2>Esercizio 3<a href="esericizi-sulla-regressione.html#esercizio-3-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>L’incasso settimanale di un negozio sia rappresentato dalla
+variabile (casuale) <span class="math inline">\(X\)</span> (in migliaia di euro).
+L’uscita di cassa settimanale sia rappresentata dalla variabile
+(casuale) <span class="math inline">\(Y\)</span> (in migliaia di euro).
+I dati rilevati per 4 mesi sono riportati di séguito.</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+</tbody>
+</table>
+<p>1.a Calcolare i parametri <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>
+della retta di regressione in cui <span class="math inline">\(Y\)</span> è spiegata attraverso <span class="math inline">\(X\)</span>.
+(Suggerimento <span class="math inline">\(\bar{x} = 22.625\)</span>; <span class="math inline">\(\hat\sigma_{X} = 7.5736\)</span>;
+<span class="math inline">\(\bar{y} = 12.8125\)</span>; <span class="math inline">\(\hat\sigma_{Y} = 4.7331\)</span>; <span class="math inline">\(\text{cov}(X,Y)= 35.2422\)</span>).</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+       \hat\beta_1 &amp;=&amp; \frac{\text{cov}(X,Y)}{\hat\sigma_X^2} \\
+            &amp;=&amp; \frac{ 35.24 }{ 57.36 }  =  0.6144 \\
+      \hat\beta_0 &amp;=&amp; \bar y - \hat\beta_1 \bar x\\
+          &amp;=&amp;  12.81 - 0.6144 \times  22.625 = -1.089
+      \end{eqnarray*}\]</span></p>
+</div>
+<p>1.b Valutare la bontà di adattamento del modello precedente.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+r&amp;=&amp;\frac{\text{cov}(X,Y)}{\sigma_X\sigma_Y}=\frac{ 35.24 }{ 7.574 \times 4.733 }= 0.9831 \\r^2&amp;=&amp; 0.9666 &gt; 0.75
+\end{eqnarray*}\]</span>
+Il modello si adatta bene ai dati.</p>
+</div>
+<p>1.c Rappresentare nel diagramma di dispersione la retta di regressione.</p>
+<div class="sol">
+<p>Per disegnare velocemente la retta si individuano nel grafico
+due punti: (1)il punto medio <span class="math inline">\((\bar{x},\, \bar{y})\)</span>, che è già
+noto; e un solo punto “estremo” nel grafico, e un solo punto “estremo” nel grafico, che può essere <span class="math inline">\(x=5\)</span> o
+<span class="math inline">\(x=35\)</span> (i numeri “tondi” facilitano il calcolo e il disegno, ma
+qui <span class="math inline">\(x=0\)</span> non funziona perché la Y diventa negativa). Tramite
+l’equazione della retta di regressione si stima la coordinata
+corrispondente:</p>
+<p><span class="math display">\[\hat y_{X= 35 }=\hat\beta_0+\hat\beta_1 x= -1.089 + 0.6144 \times 35 = 20.42 \]</span></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
+</div>
+<p>1.d Fornire una interpretazione dei parametri della retta di regressione.</p>
+<div class="sol">
+<p>I parametri della retta di regressione sono <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>.
+Il primo, <span class="math inline">\(\beta_{0},\)</span> rappresenta l’intercetta della retta,
+ovvero il punto in cui la retta interseca l’asse delle ordinate.
+Il secondo parametro, <span class="math inline">\(\beta_{1}\)</span>, rappresenta la pendenza della
+retta (chiamato anche coefficiente angolare), ovvero l’incremento
+verticale corrispondente a un incremento orizzontale unitario e
+coincide, perciò, con la tangente dell’angolo compreso fra la
+retta e l’asse delle ascisse.</p>
+<p>In questo caso, la variazione percentuale della pressione sistolica,
+secondo il modello stimato, è dato da
+<span class="math display">\[Y= -1.0885 + 0.6144 X\]</span></p>
+<p>ossia, è composta da un quantitativo fisso di <span class="math inline">\(-1.0885\)</span> (migliaia
+di euro) quando l’uscita di cassa è zero (<span class="math inline">\(X=0\)</span>), a cui si
+aggiungono <span class="math inline">\(0.6144\)</span> migliaia di euro per ogni unità (in migliaia di
+euro) di incasso aggiunto.</p>
+</div>
+<p>1.e<br />
+Prevedere il valore dell’uscita per
+un incasso di 30 migliaia di euro, ossia <span class="math inline">\(x=30\)</span> e fornire l’ordine di grandezza dell’errore
+di previsione commesso.</p>
+<div class="sol">
+<p><span class="math display">\[\hat y_{X= 30 }=\hat\beta_0+\hat\beta_1 x= -1.089 + 0.6144 \times 30 = 17.34 \]</span></p>
+<p><span class="math display">\[
+\hat\sigma_{\varepsilon}=\hat\sigma_Y\sqrt{1-r^2}=
+4.7331\sqrt{1-0.9666}=0.8656
+\]</span></p>
+</div>
+<p>1.f Verificare
+l’ipotesi che la pendenza della retta di regressione sia uguale a
+1/2 contro l’alternativa che sia diversa da 1/2.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.9666 )\times 22.4 \\
+   &amp;=&amp;  0.7492 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 16 } { 16 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 16 } { 16 -2} \times  0.7492  =  0.8562  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{1}) &amp;=&amp; \frac{\sigma_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+\widehat{V(\hat\beta_{1})} &amp;=&amp; \frac{S_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+&amp;=&amp; \frac{ 0.8562 } { 16 \times  57.36 } =  0.0009329 \\
+\widehat{SE(\hat\beta_{1})}        &amp;=&amp;  \sqrt{ 0.0009329 }\\
+&amp;=&amp;  0.03054
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_1 = \beta_{1;H_0}=0.5 \\
+   H_1: \beta_1 \neq \beta_{1;H_0}=0.5
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 1 } - \beta_{ 1 ;H_0}} {\widehat{SE(\hat\beta_{ 1 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( 0.6144 -  0.5 )} { 0.03054 }
+=   3.746 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Siccome <span class="math inline">\(H_1\)</span> è bilaterale, considereremo <span class="math inline">\(\alpha/2\)</span>,
+anziché <span class="math inline">\(\alpha\)</span></p>
+<p><span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span> e quindi <span class="math inline">\(\alpha/2=0.05, 0.025, 0.005, 0.0005\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{16-2;0.05}=1.7613\)</span>; <span class="math inline">\(t_{16-2;0.025}=2.1448\)</span>; <span class="math inline">\(t_{16-2;0.005}=2.9768\)</span>; <span class="math inline">\(t_{16-2;0.0005}=4.1405\)</span></p>
+<p>Siccome <span class="math inline">\(2.9768&lt;|t_\text{obs}|=3.7457&lt;4.1405\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> all’1%,</p>
+<p><span class="math inline">\(0.001&lt;p_\text{value}&lt;0.01\)</span>, <em>molto significativo</em> <span class="math inline">\(\fbox{**}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(|T_{16-2}|&gt;|3.75|)=2P(T_{16-2}&gt;3.75)=0.002172 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.001 &lt; p_\text{value}= 0.002172 \leq 0.01
+\]</span></p>
+</div>
+<p>1.g<br />
+Verificare l’ipotesi che l’intercetta della retta di
+regressione sia uguale a zero contro l’alternativa che sia
+minore di zero.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.9665 )\times 22.4 \\
+   &amp;=&amp;  0.7492 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 16 } { 16 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 16 } { 16 -2} \times  0.7492  =  0.8562  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{0}) &amp;=&amp; \sigma_{\varepsilon}^{2} \left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\\
+\widehat{V(\hat\beta_{0})} &amp;=&amp; S_{\varepsilon}^{2}\left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\ \\
+&amp;=&amp;  0.8562 \times\left( \frac{1} { 16 }  +  \frac{ 22.62 ^{2}} { 16 \times  57.36 } \right)\\
+\widehat{SE(\hat\beta_{0})}        &amp;=&amp;  \sqrt{ 0.5311 }\\
+&amp;=&amp;  0.7288
+\end{eqnarray*}\]</span>
+<span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_0 = \beta_{0;H_0}=0 \\
+   H_1: \beta_0 &lt; \beta_{0;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 0 } - \beta_{ 0 ;H_0}} {\widehat{SE(\hat\beta_{ 0 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( -1.089 -  0 )} { 0.7288 }
+=   -1.494 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Consideriamo <span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{16-2;0.1}=-1.345\)</span>; <span class="math inline">\(t_{16-2;0.05}=-1.7613\)</span>; <span class="math inline">\(t_{16-2;0.01}=-2.6245\)</span>; <span class="math inline">\(t_{16-2;0.001}=-3.7874\)</span></p>
+<p>Siccome <span class="math inline">\(-3.7874&lt;t_\text{obs}=-1.4936&lt;-2.6245\)</span>, indecisione sul rifiuto di <span class="math inline">\(H_0\)</span> al 10%,</p>
+<p><span class="math inline">\(0.05&lt;p_\text{value}&lt;0.1\)</span>, <em>marginalmente significativo</em> <span class="math inline">\(\fbox{.}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(T_{16-2}&lt;-1.49)=0.078734 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.05 &lt; p_\text{value}= 0.078734 \leq 0.1
+\]</span></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+<div id="esercizio-4-2" class="section level2 hasAnchor">
+<h2>Esercizio 4<a href="esericizi-sulla-regressione.html#esercizio-4-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Si esaminano 15 aziende e si rileva, per ognuna di esse,
+il numero di addetti (<span class="math inline">\(X\)</span>) e il fatturato (<span class="math inline">\(Y\)</span> in unità
+convenzionali).
+I risultati sono riportati nella tabella seguente.</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+160
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+178
+</td>
+<td style="text-align:right;">
+210
+</td>
+<td style="text-align:right;">
+260
+</td>
+<td style="text-align:right;">
+315
+</td>
+<td style="text-align:right;">
+380
+</td>
+</tr>
+</tbody>
+</table>
+<p>1.a Calcolare i parametri <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>
+della retta di regressione in cui <span class="math inline">\(Y\)</span> è spiegata attraverso <span class="math inline">\(X\)</span>.
+(Suggerimento <span class="math inline">\(\bar{x} = 90\)</span>; <span class="math inline">\(\hat\sigma_{X} = 43.2049\)</span>;
+<span class="math inline">\(\bar{y} = 143.4667\)</span>; <span class="math inline">\(\hat\sigma_{Y} = 102.1077\)</span>; <span class="math inline">\(\text{cov}(X,Y)= 4145.3333\)</span>).</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+       \hat\beta_1 &amp;=&amp; \frac{\text{cov}(X,Y)}{\hat\sigma_X^2} \\
+            &amp;=&amp; \frac{ 4145 }{ 1867 }  =  2.221 \\
+      \hat\beta_0 &amp;=&amp; \bar y - \hat\beta_1 \bar x\\
+          &amp;=&amp;  143.5 - 2.2207 \times  90 = -56.4
+      \end{eqnarray*}\]</span></p>
+</div>
+<p>1.b Valutare la bontà di adattamento del modello precedente.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+r&amp;=&amp;\frac{\text{cov}(X,Y)}{\sigma_X\sigma_Y}=\frac{ 4145 }{ 43.2 \times 102.1 }= 0.9397 \\r^2&amp;=&amp; 0.8829 &gt; 0.75
+\end{eqnarray*}\]</span>
+Il modello si adatta bene ai dati.</p>
+</div>
+<p>1.c Rappresentare nel diagramma di dispersione la retta di regressione.</p>
+<div class="sol">
+<p>Per disegnare velocemente la retta si individuano nel grafico
+due punti: (1)il punto medio <span class="math inline">\((\bar{x},\, \bar{y})\)</span>, che è già
+noto; e un solo punto “estremo” nel grafico, e un solo punto “estremo” nel
+nel grafico, che può essere <span class="math inline">\(x=160\)</span>
+o <span class="math inline">\(x=40\)</span> (un numero inferiore dà un <span class="math inline">\(y\)</span> negativo).
+Quest’ultimo NON conviene perché “esce” dagli assi.
+Tramite l’equazione della retta di regressione si stima la coordinata
+corrispondente:</p>
+<p><span class="math display">\[\hat y_{X= 40 }=\hat\beta_0+\hat\beta_1 x= -56.4 + 2.2207 \times 40 = 32.43 \]</span></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+</div>
+<p>1.d Fornire una interpretazione dei parametri della retta di regressione.</p>
+<div class="sol">
+<p>I parametri della retta di regressione sono <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>.
+Il primo, <span class="math inline">\(\beta_{0},\)</span> rappresenta l’intercetta della retta,
+ovvero il punto in cui la retta interseca l’asse delle ordinate.
+Il secondo parametro, <span class="math inline">\(\beta_{1}\)</span>, rappresenta la pendenza della
+retta (chiamato anche coefficiente angolare), ovvero l’incremento
+verticale corrispondente a un incremento orizzontale unitario e
+coincide, perciò, con la tangente dell’angolo compreso fra la
+retta e l’asse delle ascisse.</p>
+<p>In questo caso, il numero di addetti, secondo il modello stimato,
+è dato da
+<span class="math display">\[y= -56.3976 + 2.2207 x\]</span>
+ossia, è composto da un quantitativo fisso di <span class="math inline">\(-56.3976\)</span>
+di fatturato quando il numero degli addetti è è zero (<span class="math inline">\(X=0\)</span>)
+che corrisponde al costo di una impresa senza addetti, a cui
+si aggiungono 2.2207 per ogni unità di lavoro aggiuntiva.</p>
+</div>
+<p>1.e Prevedere il valore del fatturato per un numero
+di addetti pari a 75 unità, ossia per <span class="math inline">\(x=75\)</span>.</p>
+<div class="sol">
+<p><span class="math display">\[\hat y_{X= 75 }=\hat\beta_0+\hat\beta_1 x= -56.4 + 2.2207 \times 75 = 110.2 \]</span></p>
+</div>
+<p>1.f Verificare
+l’ipotesi che la pendenza della retta di regressione sia uguale a
+2 contro l’alternativa che sia maggiore di 2, sapendo che</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.8829 )\times 10426 \\
+   &amp;=&amp;  1220 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 15 } { 15 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 15 } { 15 -2} \times  1220  =  1408  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{1}) &amp;=&amp; \frac{\sigma_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+\widehat{V(\hat\beta_{1})} &amp;=&amp; \frac{S_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+&amp;=&amp; \frac{ 1408 } { 15 \times  1867 } =  0.05029 \\
+\widehat{SE(\hat\beta_{1})}        &amp;=&amp;  \sqrt{ 0.05029 }\\
+&amp;=&amp;  0.2243
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_1 = \beta_{1;H_0}=2 \\
+   H_1: \beta_1 &gt; \beta_{1;H_0}=2
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 1 } - \beta_{ 1 ;H_0}} {\widehat{SE(\hat\beta_{ 1 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( 2.221 -  2 )} { 0.2243 }
+=   0.9842 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Consideriamo <span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{15-2;0.1}=1.3502\)</span>; <span class="math inline">\(t_{15-2;0.05}=1.7709\)</span>; <span class="math inline">\(t_{15-2;0.01}=2.6503\)</span>; <span class="math inline">\(t_{15-2;0.001}=3.852\)</span></p>
+<p>Siccome <span class="math inline">\(t_\text{obs}=0.9842&lt;t_{15-2;0.1}=1.3502\)</span>, quindi <strong>non</strong> rifiuto <span class="math inline">\(H_0\)</span> a <strong>nessun</strong> livello di significatività,</p>
+<p><span class="math inline">\(p_\text{value}&gt;0.1\)</span>, <em>non significativo</em></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(T_{15-2}&gt;0.98)=0.171488 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.1 &lt; p_\text{value}= 0.171488 \leq 1
+\]</span></p>
+</div>
+<p>1.g<br />
+Verificare l’ipotesi che l’intercetta della retta di
+regressione sia uguale a zero contro l’alternativa che sia
+minore di zero.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.883 )\times 10426 \\
+   &amp;=&amp;  1220 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 15 } { 15 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 15 } { 15 -2} \times  1220  =  1408  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{0}) &amp;=&amp; \sigma_{\varepsilon}^{2} \left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\\
+\widehat{V(\hat\beta_{0})} &amp;=&amp; S_{\varepsilon}^{2}\left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\ \\
+&amp;=&amp;  1408 \times\left( \frac{1} { 15 }  +  \frac{ 90 ^{2}} { 15 \times  1867 } \right)\\
+\widehat{SE(\hat\beta_{0})}        &amp;=&amp;  \sqrt{ 501.2 }\\
+&amp;=&amp;  22.39
+\end{eqnarray*}\]</span>
+<span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_0 = \beta_{0;H_0}=0 \\
+   H_1: \beta_0 &lt; \beta_{0;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 0 } - \beta_{ 0 ;H_0}} {\widehat{SE(\hat\beta_{ 0 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( -56.4 -  0 )} { 22.39 }
+=   -2.519 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Consideriamo <span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{15-2;0.1}=-1.3502\)</span>; <span class="math inline">\(t_{15-2;0.05}=-1.7709\)</span>; <span class="math inline">\(t_{15-2;0.01}=-2.6503\)</span>; <span class="math inline">\(t_{15-2;0.001}=-3.852\)</span></p>
+<p>Siccome <span class="math inline">\(-2.6503&lt;t_\text{obs}=-2.5191&lt;-1.7709\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> al 5%,</p>
+<p><span class="math inline">\(0.01&lt;p_\text{value}&lt;0.05\)</span>, <em>significativo</em> <span class="math inline">\(\fbox{*}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(T_{15-2}&lt;-2.52)=0.012824 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.01 &lt; p_\text{value}= 0.012824 \leq 0.05
+\]</span></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+<div id="esercizio-5" class="section level2 hasAnchor">
+<h2>Esercizio 5<a href="esericizi-sulla-regressione.html#esercizio-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nel maggio del 1973 per 15 giorni consecutivi si sono osservati i valori
+di concentrazione di ozono (espressa in parti per milione) a New York <span class="math inline">\(Y\)</span>
+e temperatura a terra, <span class="math inline">\(X\)</span> (espressa in gradi Fahrenheit), come espresso
+nella seguente tabella.</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+160
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+178
+</td>
+<td style="text-align:right;">
+210
+</td>
+<td style="text-align:right;">
+260
+</td>
+<td style="text-align:right;">
+315
+</td>
+<td style="text-align:right;">
+380
+</td>
+</tr>
+</tbody>
+</table>
+<p>1.a Calcolare i parametri <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>
+della retta di regressione in cui <span class="math inline">\(Y\)</span> è spiegata attraverso <span class="math inline">\(X\)</span>.
+(Suggerimento <span class="math inline">\(\bar{x} = 90\)</span>; <span class="math inline">\(\hat\sigma_{X} = 43.2049\)</span>;
+<span class="math inline">\(\bar{y} = 143.4667\)</span>; <span class="math inline">\(\hat\sigma_{Y} = 102.1077\)</span>; <span class="math inline">\(\text{cov}(X,Y)= 4145.3333\)</span>).</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+       \hat\beta_1 &amp;=&amp; \frac{\text{cov}(X,Y)}{\hat\sigma_X^2} \\
+            &amp;=&amp; \frac{ 4145 }{ 1867 }  =  2.221 \\
+      \hat\beta_0 &amp;=&amp; \bar y - \hat\beta_1 \bar x\\
+          &amp;=&amp;  143.5 - 2.2207 \times  90 = -56.4
+      \end{eqnarray*}\]</span></p>
+</div>
+<p>1.b Valutare la bontà di adattamento del modello precedente.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+r&amp;=&amp;\frac{\text{cov}(X,Y)}{\sigma_X\sigma_Y}=\frac{ 4145 }{ 43.2 \times 102.1 }= 0.9397 \\r^2&amp;=&amp; 0.8829 &gt; 0.75
+\end{eqnarray*}\]</span>
+Il modello si adatta bene ai dati.</p>
+</div>
+<p><strong>Nota</strong> altre domande simili alle precedenti non vengono riportate</p>
+<p>1.c<br />
+Verificare l’ipotesi che l’intercetta della retta di
+regressione sia uguale a zero contro l’alternativa che sia
+minore di zero.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.8829 )\times 10426 \\
+   &amp;=&amp;  1220 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 15 } { 15 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 15 } { 15 -2} \times  1220  =  1408  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{0}) &amp;=&amp; \sigma_{\varepsilon}^{2} \left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\\
+\widehat{V(\hat\beta_{0})} &amp;=&amp; S_{\varepsilon}^{2}\left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\ \\
+&amp;=&amp;  1408 \times\left( \frac{1} { 15 }  +  \frac{ 90 ^{2}} { 15 \times  1867 } \right)\\
+\widehat{SE(\hat\beta_{0})}        &amp;=&amp;  \sqrt{ 501.2 }\\
+&amp;=&amp;  22.39
+\end{eqnarray*}\]</span>
+<span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_0 = \beta_{0;H_0}=0 \\
+   H_1: \beta_0 &lt; \beta_{0;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 0 } - \beta_{ 0 ;H_0}} {\widehat{SE(\hat\beta_{ 0 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( -56.4 -  0 )} { 22.39 }
+=   -2.519 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Consideriamo <span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{15-2;0.1}=-1.3502\)</span>; <span class="math inline">\(t_{15-2;0.05}=-1.7709\)</span>; <span class="math inline">\(t_{15-2;0.01}=-2.6503\)</span>; <span class="math inline">\(t_{15-2;0.001}=-3.852\)</span></p>
+<p>Siccome <span class="math inline">\(-2.6503&lt;t_\text{obs}=-2.5191&lt;-1.7709\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> al 5%,</p>
+<p><span class="math inline">\(0.01&lt;p_\text{value}&lt;0.05\)</span>, <em>significativo</em> <span class="math inline">\(\fbox{*}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(T_{15-2}&lt;-2.52)=0.012824 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.01 &lt; p_\text{value}= 0.012824 \leq 0.05
+\]</span></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+<div id="esercizio-6" class="section level2 hasAnchor">
+<h2>Esercizio 6<a href="esericizi-sulla-regressione.html#esercizio-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Il reddito pro capite, in migliaia di euro, relativo a 16 aree
+amministrative rilevato nell’anno 1989, <span class="math inline">\(X\)</span>, e rilevato nell’anno
+1999, <span class="math inline">\(Y\)</span>, sono riportati nella tabella seguente.</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+<th style="text-align:right;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(x\)</span>
+</td>
+<td style="text-align:right;">
+47.8
+</td>
+<td style="text-align:right;">
+27.9
+</td>
+<td style="text-align:right;">
+36.6
+</td>
+<td style="text-align:right;">
+54.2
+</td>
+<td style="text-align:right;">
+41.9
+</td>
+<td style="text-align:right;">
+44.4
+</td>
+<td style="text-align:right;">
+54.3
+</td>
+<td style="text-align:right;">
+42.3
+</td>
+<td style="text-align:right;">
+41.5
+</td>
+<td style="text-align:right;">
+43.2
+</td>
+<td style="text-align:right;">
+56.3
+</td>
+<td style="text-align:right;">
+63.3
+</td>
+<td style="text-align:right;">
+46.8
+</td>
+<td style="text-align:right;">
+45.2
+</td>
+<td style="text-align:right;">
+38.7
+</td>
+<td style="text-align:right;">
+36.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y\)</span>
+</td>
+<td style="text-align:right;">
+63.0
+</td>
+<td style="text-align:right;">
+33.4
+</td>
+<td style="text-align:right;">
+42.0
+</td>
+<td style="text-align:right;">
+72.8
+</td>
+<td style="text-align:right;">
+52.0
+</td>
+<td style="text-align:right;">
+54.0
+</td>
+<td style="text-align:right;">
+63.4
+</td>
+<td style="text-align:right;">
+60.7
+</td>
+<td style="text-align:right;">
+54.4
+</td>
+<td style="text-align:right;">
+55.5
+</td>
+<td style="text-align:right;">
+74.0
+</td>
+<td style="text-align:right;">
+79.2
+</td>
+<td style="text-align:right;">
+53.1
+</td>
+<td style="text-align:right;">
+59.6
+</td>
+<td style="text-align:right;">
+52.0
+</td>
+<td style="text-align:right;">
+47.2
+</td>
+</tr>
+</tbody>
+</table>
+<p>1.a Calcolare i parametri <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>
+della retta di regressione in cui <span class="math inline">\(Y\)</span> è spiegata attraverso <span class="math inline">\(X\)</span>.
+(Suggerimento <span class="math inline">\(\bar{x} = 45.0438\)</span>; <span class="math inline">\(\hat\sigma_{X} = 8.4996\)</span>;
+<span class="math inline">\(\bar{y} = 57.2687\)</span>; <span class="math inline">\(\hat\sigma_{Y} = 11.4263\)</span>; <span class="math inline">\(\text{cov}(X,Y)= 92.4239\)</span>).</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+       \hat\beta_1 &amp;=&amp; \frac{\text{cov}(X,Y)}{\hat\sigma_X^2} \\
+            &amp;=&amp; \frac{ 92.42 }{ 72.24 }  =  1.279 \\
+      \hat\beta_0 &amp;=&amp; \bar y - \hat\beta_1 \bar x\\
+          &amp;=&amp;  57.27 - 1.2793 \times  45.0438 = -0.3573
+      \end{eqnarray*}\]</span></p>
+</div>
+<p>1.b Valutare la bontà di adattamento del modello precedente.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+r&amp;=&amp;\frac{\text{cov}(X,Y)}{\sigma_X\sigma_Y}=\frac{ 92.42 }{ 8.5 \times 11.43 }= 0.9517 \\r^2&amp;=&amp; 0.9056 &gt; 0.75
+\end{eqnarray*}\]</span>
+Il modello si adatta bene ai dati.</p>
+</div>
+<p>1.c Determinare il residuo (o l’errore) derivante
+dalla previsione, calcolata con il modello di regressione in <span class="math inline">\(x=54.3\)</span>.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat y_i &amp;=&amp;\hat\beta_0+\hat\beta_1 x_i=\\
+&amp;=&amp; -0.3573 + 1.2793 \times 54.3 = 69.11 \\
+\hat \varepsilon_i &amp;=&amp; y_i-\hat y_i\\
+&amp;=&amp; 63.4 - 69.11 = -5.711  
+\end{eqnarray*}\]</span></p>
+</div>
+<p><strong>Nota</strong> altre domande simili alle precedenti non vengono riportate</p>
+<p>1.d<br />
+Verificare
+l’ipotesi che la pendenza della retta di regressione sia uguale a 0
+contro l’alternativa che sia maggiore di 0.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.9056 )\times 130.6 \\
+   &amp;=&amp;  12.32 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 16 } { 16 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 16 } { 16 -2} \times  12.32  =  14.08  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{1}) &amp;=&amp; \frac{\sigma_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+\widehat{V(\hat\beta_{1})} &amp;=&amp; \frac{S_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+&amp;=&amp; \frac{ 14.08 } { 16 \times  72.24 } =  0.01218 \\
+\widehat{SE(\hat\beta_{1})}        &amp;=&amp;  \sqrt{ 0.01218 }\\
+&amp;=&amp;  0.1104
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_1 = \beta_{1;H_0}=0 \\
+   H_1: \beta_1 &gt; \beta_{1;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 1 } - \beta_{ 1 ;H_0}} {\widehat{SE(\hat\beta_{ 1 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( 1.279 -  0 )} { 0.1104 }
+=   11.59 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Consideriamo <span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{16-2;0.1}=1.345\)</span>; <span class="math inline">\(t_{16-2;0.05}=1.7613\)</span>; <span class="math inline">\(t_{16-2;0.01}=2.6245\)</span>; <span class="math inline">\(t_{16-2;0.001}=3.7874\)</span></p>
+<p>Siccome <span class="math inline">\(t_\text{obs}=11.5922&gt;3.7874\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> sotto all’1‰,</p>
+<p><span class="math inline">\(p_\text{value}&lt;0.001\)</span>, <em>estremamente significativo</em> <span class="math inline">\(\fbox{***}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(T_{16-2}&gt;11.59)=7e-09 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0 &lt; p_\text{value}= 7e-09 \leq 0.001
+\]</span></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+<div id="esercizio-7" class="section level2 hasAnchor">
+<h2>Esercizio 7<a href="esericizi-sulla-regressione.html#esercizio-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Si esaminano 15 aziende e si rileva, per ognuna di esse, il
+costo (<span class="math inline">\(X\)</span>) e il fatturato (<span class="math inline">\(Y\)</span>) (in unità convenzionali).
+I risultati sono i seguenti:
+<span class="math display">\[y_{i} = -17.418 + 4.093 x_{i} + \epsilon_{i}\]</span>
+con <span class="math inline">\(r=0.9845\)</span>.</p>
+<p>1.e Qual è l’incremento di fatturato, che
+ci si può attendere con un aumento del costo di una unità?
+Qual è la quantità di fatturato che ci si può attendere sia
+ottenute da una azienda senza costi?</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+r         &amp;=&amp; \frac{\text{cov}(X,Y)} {\hat\sigma_X\cdot\hat\sigma_Y} = 0.9845 \\
+\beta_{1} &amp;=&amp; \frac{\text{cov}(X,Y)} {\hat\sigma_X^{2}}
+           =  r \frac{\hat\sigma_Y} {\hat\sigma_X} = 4.093         \\
+\beta_{0} &amp;=&amp; \overline{y} - \beta_{1} \cdot \overline{x} = -17.418.
+\end{eqnarray*}\]</span></p>
+</div>
+<p>1.a<br />
+Mostrare che la deviazione standard della <span class="math inline">\(Y\)</span> è pari a 44.803 sapendo che
+<span class="math inline">\(\bar{x} = 26\)</span>; <span class="math inline">\(\widehat{\sigma}_{X} = 10.7765\)</span>.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\beta_{1}  &amp;=&amp; r\ \frac{\widehat{\sigma}_{Y}} {\widehat{\sigma}_{X}}
+               \qquad\Rightarrow \\
+\sigma_{Y} &amp;=&amp; \frac{\beta_{1} \widehat{\sigma}_{X}} {r}
+            =  \frac{4.093 \times 10.7765} {0.9845}  = 44.803.
+\end{eqnarray*}\]</span></p>
+</div>
+<p>1.b
+Verificare l’ipotesi che l’intercetta della retta di
+regressione sia uguale a zero contro l’alternativa che sia
+diversa da zero</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.9692 )\times 2007 \\
+   &amp;=&amp;  61.74 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 15 } { 15 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 15 } { 15 -2} \times  61.74  =  71.24  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{0}) &amp;=&amp; \sigma_{\varepsilon}^{2} \left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\\
+\widehat{V(\hat\beta_{0})} &amp;=&amp; S_{\varepsilon}^{2}\left( \frac{1} {n}  +  \frac{\bar{x}^{2}} {n \hat{\sigma}^{2}_{X}} \right)\ \\
+&amp;=&amp;  71.24 \times\left( \frac{1} { 15 }  +  \frac{ 26 ^{2}} { 15 \times  116.1 } \right)\\
+\widehat{SE(\hat\beta_{0})}        &amp;=&amp;  \sqrt{ 32.4 }\\
+&amp;=&amp;  5.692
+\end{eqnarray*}\]</span>
+<span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_0 = \beta_{0;H_0}=0 \\
+   H_1: \beta_0 \neq \beta_{0;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 0 } - \beta_{ 0 ;H_0}} {\widehat{SE(\hat\beta_{ 0 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( -17.42 -  0 )} { 5.692 }
+=   -3.06 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Siccome <span class="math inline">\(H_1\)</span> è bilaterale, considereremo <span class="math inline">\(\alpha/2\)</span>,
+anziché <span class="math inline">\(\alpha\)</span></p>
+<p><span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span> e quindi <span class="math inline">\(\alpha/2=0.05, 0.025, 0.005, 0.0005\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{15-2;0.05}=1.7709\)</span>; <span class="math inline">\(t_{15-2;0.025}=2.1604\)</span>; <span class="math inline">\(t_{15-2;0.005}=3.0123\)</span>; <span class="math inline">\(t_{15-2;0.0005}=4.2208\)</span></p>
+<p>Siccome <span class="math inline">\(3.0123&lt;|t_\text{obs}|=3.0603&lt;4.2208\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> all’1%,</p>
+<p><span class="math inline">\(0.001&lt;p_\text{value}&lt;0.01\)</span>, <em>molto significativo</em> <span class="math inline">\(\fbox{**}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(|T_{15-2}|&gt;|-3.06|)=2P(T_{15-2}&gt;3.06)=0.009117 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.001 &lt; p_\text{value}= 0.009117 \leq 0.01
+\]</span></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+<div id="esercizio-8" class="section level2 hasAnchor">
+<h2>Esercizio 8<a href="esericizi-sulla-regressione.html#esercizio-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sia <span class="math inline">\(X\)</span> il voto in matematica (in decimi) e sia <span class="math inline">\(Y\)</span> il voto in
+statistica (in decimi).
+Si sono eseguite 5 osservazioni e i risultati ottenuti sono i seguenti.</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(i\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(x_i\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(y_i\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+</tbody>
+</table>
+<p>1.a Calcolare i parametri <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span> della retta
+di regressione in cui <span class="math inline">\(Y\)</span> è spiegata attraverso <span class="math inline">\(X\)</span>.</p>
+<div class="sol">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<span class="math inline">\(i\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(x_i\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(y_i\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(x_i^2\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(y_i^2\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(x_i\cdot y_i\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6.0
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+36.0
+</td>
+<td style="text-align:right;">
+30.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+49.0
+</td>
+<td style="text-align:right;">
+42.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+6.0
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+36.0
+</td>
+<td style="text-align:right;">
+42.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9.0
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+81.0
+</td>
+<td style="text-align:right;">
+72.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Totale
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+33.0
+</td>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:right;">
+227.0
+</td>
+<td style="text-align:right;">
+206.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Totale/n
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+6.6
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+45.4
+</td>
+<td style="text-align:right;">
+41.2
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\begin{eqnarray*}
+           \bar x &amp;=&amp;\frac 1 n\sum_{i=1}^n x_i = \frac {1}{ 5 }  30 =  6 \\
+           \bar y &amp;=&amp;\frac 1 n\sum_{i=1}^n y_i = \frac {1}{ 5 }  33 =  6.6 \\
+           \hat\sigma_X^2&amp;=&amp;\frac 1 n\sum_{i=1}^n x_i^2-\bar x^2=\frac {1}{ 5 }  190  - 6 ^2= 2 \\
+           \hat\sigma_Y^2&amp;=&amp;\frac 1 n\sum_{i=1}^n y_i^2-\bar y^2=\frac {1}{ 5 }  227  - 6.6 ^2= 1.84 \\
+           \text{cov}(X,Y)&amp;=&amp;\frac 1 n\sum_{i=1}^n x_i~y_i-\bar x\bar y=\frac {1}{ 5 }  206 - 6 \cdot 6.6 = 1.6 \\
+           \hat\beta_1 &amp;=&amp; \frac{\text{cov}(X,Y)}{\hat\sigma_X^2} \\
+                    &amp;=&amp; \frac{ 1.6 }{ 2 }  =  0.8 \\
+           \hat\beta_0 &amp;=&amp; \bar y - \hat\beta_1 \bar x\\
+                    &amp;=&amp;  6.6 - 0.8 \times  6 = 1.8
+         \end{eqnarray*}\]</span></p>
+</div>
+<p>1.b Valutare la bontà di adattamento del modello precedente.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+r&amp;=&amp;\frac{\text{cov}(X,Y)}{\sigma_X\sigma_Y}=\frac{ 1.6 }{ 1.414 \times 1.356 }= 0.8341 \\r^2&amp;=&amp; 0.6957 &lt; 0.75
+\end{eqnarray*}\]</span>
+Il modello <strong>non</strong> si adatta bene ai dati.</p>
+</div>
+<p>1.c Fornire una interpretazione dei parametri della retta di regressione.</p>
+<div class="sol">
+<p>I parametri della retta di regressione sono <span class="math inline">\(\beta_{0}\)</span> e <span class="math inline">\(\beta_{1}\)</span>.
+Il primo, <span class="math inline">\(\beta_{0},\)</span> rappresenta l’intercetta della retta,
+ovvero il punto in cui la retta interseca l’asse delle ordinate.
+Il secondo parametro, <span class="math inline">\(\beta_{1}\)</span>, rappresenta la pendenza della
+retta (chiamato anche coefficiente angolare), ovvero l’incremento
+verticale corrispondente a un incremento orizzontale unitario e
+coincide, perciò, con la tangente dell’angolo compreso fra la
+retta e l’asse delle ascisse.</p>
+<p>In questo caso, la variazione percentuale della pressione sistolica,
+secondo il modello stimato, è dato da
+<span class="math display">\[Y= 1.8 + 0.8 X\]</span></p>
+<p>ossia, è composto da un quantitativo fisso di <span class="math inline">\(1.8\)</span> di voto
+quando il voto di matematica è zero (<span class="math inline">\(X=0\)</span>) che in linea
+generale non ha molto senso e quindi non è interpretabile
+chiaramente, a cui si aggiungono <span class="math inline">\(0.8\)</span> punti per ogni unità
+di voto di matematica aggiuntivo.</p>
+</div>
+<p>1.d Determinare il residuo per un voto di matematica
+uguale 6, ossia per <span class="math inline">\(x=6\)</span>.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat y_i &amp;=&amp;\hat\beta_0+\hat\beta_1 x_i=\\
+&amp;=&amp; 1.8 + 0.8 \times 6 = 6.6 \\
+\hat \varepsilon_i &amp;=&amp; y_i-\hat y_i\\
+&amp;=&amp; 7 - 6.6 = 0.4  
+\end{eqnarray*}\]</span></p>
+</div>
+<p>1.e<br />
+Verificare
+l’ipotesi che la pendenza della retta di regressione sia uguale a
+zero contro l’alternativa che sia maggiore di zero.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\sigma_\varepsilon}^2&amp;=&amp;(1-r^2)\hat\sigma_Y^2\\
+&amp;=&amp; (1- 0.6957 )\times 1.84 \\
+   &amp;=&amp;  0.56 \\
+   S_\varepsilon^2 &amp;=&amp; \frac{n} {n-2} \hat{\sigma_\varepsilon}^2\\
+   &amp;=&amp;  \frac{ 5 } { 5 -2} \hat{\sigma_\varepsilon}^2 \\
+&amp;=&amp;  \frac{ 5 } { 5 -2} \times  0.56  =  0.9333  
+\end{eqnarray*}\]</span></p>
+<p>E quindi<span class="math display">\[\begin{eqnarray*}
+V(\hat\beta_{1}) &amp;=&amp; \frac{\sigma_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+\widehat{V(\hat\beta_{1})} &amp;=&amp; \frac{S_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
+&amp;=&amp; \frac{ 0.9333 } { 5 \times  2 } =  0.09333 \\
+\widehat{SE(\hat\beta_{1})}        &amp;=&amp;  \sqrt{ 0.09333 }\\
+&amp;=&amp;  0.3055
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI</p>
+<p><span class="math display">\[\begin{cases}
+   H_0: \beta_1 = \beta_{1;H_0}=0 \\
+   H_1: \beta_1 \neq \beta_{1;H_0}=0
+   \end{cases}\]</span></p>
+<p><span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(T\)</span>
+Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\)</span> t-Test.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\hat\beta_{ 1 } - \beta_{ 1 ;H_0}} {\widehat{SE(\hat\beta_{ 1 })}}&amp;\sim&amp;t_{n-2}\\
+   t_{\text{obs}}
+&amp;=&amp; \frac{ ( 0.8 -  0 )} { 0.3055 }
+=   2.619 \, .
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>Siccome <span class="math inline">\(H_1\)</span> è bilaterale, considereremo <span class="math inline">\(\alpha/2\)</span>,
+anziché <span class="math inline">\(\alpha\)</span></p>
+<p><span class="math inline">\(\alpha=0.1, 0.05, 0.01, 0.001\)</span> e quindi <span class="math inline">\(\alpha/2=0.05, 0.025, 0.005, 0.0005\)</span></p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(t_{5-2;0.05}=2.3534\)</span>; <span class="math inline">\(t_{5-2;0.025}=3.1824\)</span>; <span class="math inline">\(t_{5-2;0.005}=5.8409\)</span>; <span class="math inline">\(t_{5-2;0.0005}=12.924\)</span></p>
+<p>Siccome <span class="math inline">\(2.3534&lt;|t_\text{obs}|=2.6186&lt;3.1824\)</span>, indecisione sul rifiuto di <span class="math inline">\(H_0\)</span> al 10%,</p>
+<p><span class="math inline">\(0.05&lt;p_\text{value}&lt;0.1\)</span>, <em>marginalmente significativo</em> <span class="math inline">\(\fbox{.}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(|T_{5-2}|&gt;|2.62|)=2P(T_{5-2}&gt;2.62)=0.079096 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.05 &lt; p_\text{value}= 0.079096 \leq 0.1
+\]</span></p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="test-del-chi-quadro-per-conformità.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anno-2021.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Esami_passati_con_soluzioni.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

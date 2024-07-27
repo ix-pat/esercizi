@@ -1,0 +1,2739 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Esercizi di Statistica Descrittiva | Eserciziario di Statistica</title>
+  <meta name="description" content="Appunti sparsi" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Esercizi di Statistica Descrittiva | Eserciziario di Statistica" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Appunti sparsi" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Esercizi di Statistica Descrittiva | Eserciziario di Statistica" />
+  
+  <meta name="twitter:description" content="Appunti sparsi" />
+  
+
+<meta name="author" content="Patrizio Frederic" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduzione.html"/>
+<link rel="next" href="esercizi-di-probabilità.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Funzione per alternare la visibilità di un singolo blocco sol
+  function toggleSolution(event) {
+    var block = event.target.nextElementSibling;
+    if (block.style.display === 'none' || block.style.display === '') {
+      block.style.display = 'block';
+    } else {
+      block.style.display = 'none';
+    }
+  }
+
+  // Trova tutti i blocchi .sol
+  var elements = document.querySelectorAll('.sol');
+  elements.forEach(function(el) {
+    // Crea un nuovo bottone per ogni blocco .sol
+    var button = document.createElement('button');
+    button.innerHTML = 'Mostra/Nascondi Soluzione';
+    button.onclick = toggleSolution;
+    // Inserisce il bottone prima del blocco .sol
+    el.parentNode.insertBefore(button, el);
+  });
+});
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://frederic.economia.unimore.it/">Statistica Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Eserciziario</a></li>
+<li class="chapter" data-level="" data-path="avvertenza.html"><a href="avvertenza.html"><i class="fa fa-check"></i>Avvertenza</a></li>
+<li class="chapter" data-level="" data-path="introduzione.html"><a href="introduzione.html"><i class="fa fa-check"></i>Introduzione</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html"><i class="fa fa-check"></i>Esercizi di Statistica Descrittiva</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#versione-senza-contesto"><i class="fa fa-check"></i>Versione senza contesto</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#variante-a"><i class="fa fa-check"></i>Variante A</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#variante-b"><i class="fa fa-check"></i>Variante B</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#variante-c"><i class="fa fa-check"></i>Variante C</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#varianti-con-contesto-eserciziario"><i class="fa fa-check"></i>Varianti con contesto (eserciziario)</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-conteggi"><i class="fa fa-check"></i>Esercizio: Conteggi</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-dati-continui"><i class="fa fa-check"></i>Esercizio Dati Continui</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-1"><i class="fa fa-check"></i>Esercizio (variante 1)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-2"><i class="fa fa-check"></i>Esercizio (variante 2)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-3"><i class="fa fa-check"></i>Esercizio (variante 3)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-dati-non-ordinati"><i class="fa fa-check"></i>Esercizio Dati non ordinati</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html"><i class="fa fa-check"></i>Esercizi di probabilità</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#due-urne"><i class="fa fa-check"></i>Due urne</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#valigetta"><i class="fa fa-check"></i>Valigetta</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urna"><i class="fa fa-check"></i>Urna</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#applicazione-regole"><i class="fa fa-check"></i>Applicazione regole</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#studente"><i class="fa fa-check"></i>Studente</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#giulio-e-il-treno"><i class="fa fa-check"></i>Giulio e il treno</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#somma-di-due-dadi"><i class="fa fa-check"></i>Somma di due dadi</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#scatola-e-biglietti"><i class="fa fa-check"></i>Scatola e biglietti</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urna-con-colori-e-lettere-diverse"><i class="fa fa-check"></i>Urna con colori e lettere diverse</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urne-che-portano-ad-altre-urne"><i class="fa fa-check"></i>Urne che portano ad altre urne</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#estrazioni-con-e-senza-reintroduzione"><i class="fa fa-check"></i>Estrazioni con e senza reintroduzione</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urne-e-palline-numerate"><i class="fa fa-check"></i>Urne e palline numerate</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html"><i class="fa fa-check"></i>Esercizi Di Probabilità e Variabili Casuali</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-1"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-2"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-3"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-4"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes"><i class="fa fa-check"></i>Esercizio sul Teorema di Bayes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html"><i class="fa fa-check"></i>Esercizi sul TLC</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#una-vc-qualunque-somma-s_n"><i class="fa fa-check"></i>Una VC qualunque: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#una-vc-qualunque-media-barx"><i class="fa fa-check"></i>Una VC qualunque: media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#unurna-somma-s_n"><i class="fa fa-check"></i>Un’urna: somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#unurna-media-barx"><i class="fa fa-check"></i>Un’urna: media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-somma-s_n"><i class="fa fa-check"></i>2 Urne: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-media-barx"><i class="fa fa-check"></i>2 Urne: Media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-media-barx-1"><i class="fa fa-check"></i>2 Urne: Media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#bernoulli-somma-s_n"><i class="fa fa-check"></i>Bernoulli: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#bernoulli-proporzione-widehatpi"><i class="fa fa-check"></i>Bernoulli: Proporzione, <span class="math inline">\(\widehat{\pi}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-proporzione-widehatpi"><i class="fa fa-check"></i>2 Urne: Proporzione, <span class="math inline">\(\widehat{\pi}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#poisson-somma-s_n"><i class="fa fa-check"></i>Poisson: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#poisson-media-barx"><i class="fa fa-check"></i>Poisson: Media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#poisson-somma-s_n-1"><i class="fa fa-check"></i>Poisson: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#proporzione-poisson-widehatpi"><i class="fa fa-check"></i>Proporzione – Poisson, <span class="math inline">\(\widehat{\pi}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html"><i class="fa fa-check"></i>Test e Intervalli di Confidenza</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#un-campione-idc-e-test-per-mu-sigma-nota-z-test."><i class="fa fa-check"></i>Un campione, IdC e test per <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span> nota (z test).</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#un-campione-idc-e-test-per-mu-sigma-incognita-t-test."><i class="fa fa-check"></i>Un campione, IdC e test per <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span> incognita (t test).</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#un-campione-idc-e-test-per-pi-z-test."><i class="fa fa-check"></i>Un campione, IdC e test per <span class="math inline">\(\pi\)</span> (z test).</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#t-test-a-due-campioni"><i class="fa fa-check"></i>t-Test a due campioni</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#due-campioni-proporzione"><i class="fa fa-check"></i>Due campioni: proporzione</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html"><i class="fa fa-check"></i>Test del Chi-quadro per indipendenza</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-1-1"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-2-1"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-3-1"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-4-1"><i class="fa fa-check"></i>Esercizio 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html"><i class="fa fa-check"></i>Test del Chi-quadro per conformità</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html#esercizio-1-2"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html#esercizio-2-2"><i class="fa fa-check"></i>Esercizio 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html"><i class="fa fa-check"></i>Esericizi sulla Regressione</a>
+<ul>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-dati-maternità-usa"><i class="fa fa-check"></i>Esercizio (Dati maternità USA)</a>
+<ul>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#i-dati"><i class="fa fa-check"></i>I dati</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#la-matrice-dei-dati"><i class="fa fa-check"></i>La matrice dei dati</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#la-rappresentazione-dei-dati"><i class="fa fa-check"></i>La rappresentazione dei dati</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-1-3"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-2-3"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-3-2"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-4-2"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-5"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-6"><i class="fa fa-check"></i>Esercizio 6</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-7"><i class="fa fa-check"></i>Esercizio 7</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-8"><i class="fa fa-check"></i>Esercizio 8</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html"><i class="fa fa-check"></i>Anno 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210611-1"><i class="fa fa-check"></i>Prova di Statistica 2021/06/11-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-4"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-4"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-3"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-3"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-1"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-1"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210611-2"><i class="fa fa-check"></i>Prova di Statistica 2021/06/11-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-5"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-5"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-4"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-4"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-2"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-2"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210630-1"><i class="fa fa-check"></i>Prova di Statistica 2021/06/30-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-6"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-6"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-5"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-5"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-3"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-3"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210630-2"><i class="fa fa-check"></i>Prova di Statistica 2021/06/30-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-7"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-7"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-6"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-6"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-4"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-4"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210722-1"><i class="fa fa-check"></i>Prova di Statistica 2021/07/22-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-8"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-8"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-7"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-7"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-5"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-5"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210722-2"><i class="fa fa-check"></i>Prova di Statistica 2021/07/22-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-9"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-9"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-8"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-8"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-6"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-6"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210906-1"><i class="fa fa-check"></i>Prova di Statistica 2021/09/06-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-10"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-10"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-9"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-9"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-7"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-7"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html"><i class="fa fa-check"></i>Anno 2022</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220616-1"><i class="fa fa-check"></i>Prova di Statistica 2022/06/16-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-11"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-11"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-10"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-10"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-8"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-8"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220616-2"><i class="fa fa-check"></i>Prova di Statistica 2022/06/16-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-12"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-12"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-11"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-11"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-9"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-9"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220616-3"><i class="fa fa-check"></i>Prova di Statistica 2022/06/16-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-13"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-13"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-12"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-12"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-10"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-10"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220701-1"><i class="fa fa-check"></i>Prova di Statistica 2022/07/01-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-14"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-14"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-13"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-13"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-11"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-11"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220701-2"><i class="fa fa-check"></i>Prova di Statistica 2022/07/01-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-15"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-15"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-14"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-14"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-12"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-12"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220701-3"><i class="fa fa-check"></i>Prova di Statistica 2022/07/01-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-16"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-16"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-15"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-15"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-13"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-13"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220727-1"><i class="fa fa-check"></i>Prova di Statistica 2022/07/27-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-17"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-17"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-16"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-16"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-14"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-14"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220727-2"><i class="fa fa-check"></i>Prova di Statistica 2022/07/27-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-18"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-18"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-17"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-17"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-15"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-15"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220727-3"><i class="fa fa-check"></i>Prova di Statistica 2022/07/27-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-19"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-19"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-18"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-18"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-16"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-16"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html"><i class="fa fa-check"></i>Anno 2023</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230111-1"><i class="fa fa-check"></i>Prova di Statistica 2023/01/11-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-20"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-20"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-19"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-19"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-17"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-17"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230111-2"><i class="fa fa-check"></i>Prova di Statistica 2023/01/11-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-21"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-21"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-20"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-20"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-18"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-18"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230111-3"><i class="fa fa-check"></i>Prova di Statistica 2023/01/11-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-22"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-22"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-21"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-21"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-19"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-19"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230216-1"><i class="fa fa-check"></i>Prova di Statistica 2023/02/16-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-23"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-23"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-22"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-22"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-20"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-20"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230216-2"><i class="fa fa-check"></i>Prova di Statistica 2023/02/16-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-24"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-24"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-23"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-23"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-21"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-21"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230216-3"><i class="fa fa-check"></i>Prova di Statistica 2023/02/16-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-25"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-25"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-24"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-24"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-22"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-22"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230608-1"><i class="fa fa-check"></i>Prova di Statistica 2023/06/08-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-26"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-26"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-25"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-25"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-23"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230608-2"><i class="fa fa-check"></i>Prova di Statistica 2023/06/08-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-27"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-27"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-26"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-26"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-24"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-23"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230608-3"><i class="fa fa-check"></i>Prova di Statistica 2023/06/08-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-28"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-28"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-27"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-27"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-25"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-24"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230627-1"><i class="fa fa-check"></i>Prova di Statistica 2023/06/27-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-29"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-29"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-28"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-28"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-26"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-25"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230627-2"><i class="fa fa-check"></i>Prova di Statistica 2023/06/27-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-30"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-30"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-29"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-29"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-27"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-26"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230627-3"><i class="fa fa-check"></i>Prova di Statistica 2023/06/27-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-31"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-31"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-30"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-30"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-28"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-27"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230723-1"><i class="fa fa-check"></i>Prova di Statistica 2023/07/23-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-32"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-32"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-31"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-31"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-29"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-28"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230723-2"><i class="fa fa-check"></i>Prova di Statistica 2023/07/23-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-33"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-33"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-32"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-32"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-30"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-29"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230723-3"><i class="fa fa-check"></i>Prova di Statistica 2023/07/23-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-34"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-34"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-33"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-33"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-31"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-30"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html"><i class="fa fa-check"></i>Anno 2024</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240603-1"><i class="fa fa-check"></i>Prova di Statistica 2024/06/03-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-35"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-35"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-34"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-34"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-32"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240603-2"><i class="fa fa-check"></i>Prova di Statistica 2024/06/03-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-36"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-36"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-35"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-35"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-33"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240603-3"><i class="fa fa-check"></i>Prova di Statistica 2024/06/03-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-37"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-37"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-36"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-36"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-34"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-31"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240621-1"><i class="fa fa-check"></i>Prova di Statistica 2024/06/21-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-38"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-38"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-37"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-37"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-35"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240621-2"><i class="fa fa-check"></i>Prova di Statistica 2024/06/21-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-39"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-39"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-38"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-38"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-36"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240621-3"><i class="fa fa-check"></i>Prova di Statistica 2024/06/21-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-40"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-40"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-39"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-39"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-37"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-32"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-240706--1"><i class="fa fa-check"></i>Prova di Statistica 24/07/06 -1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-41"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-41"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-40"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-40"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-38"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-33"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-240706--2"><i class="fa fa-check"></i>Prova di Statistica 24/07/06 -2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-42"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-42"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-41"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-41"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-39"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-34"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-240706--3"><i class="fa fa-check"></i>Prova di Statistica 24/07/06 -3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-43"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-43"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-42"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-42"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-40"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-35"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Eserciziario di Statistica</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="esercizi-di-statistica-descrittiva" class="section level1 hasAnchor">
+<h1>Esercizi di Statistica Descrittiva<a href="esercizi-di-statistica-descrittiva.html#esercizi-di-statistica-descrittiva" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="button-container">
+
+</div>
+<div id="versione-senza-contesto" class="section level2 hasAnchor">
+<h2>Versione senza contesto<a href="esercizi-di-statistica-descrittiva.html#versione-senza-contesto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="variante-a" class="section level3 hasAnchor">
+<h3>Variante A<a href="esercizi-di-statistica-descrittiva.html#variante-a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sono stati analizzati 383 individui per investigare su fenomeno-x. É riportata qui di seguito la distribuzione in classi espressa in frequenza relativa.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right"><span class="math inline">\([\text{x}_j,\)</span></th>
+<th align="right"><span class="math inline">\(\text{x}_{j+1})\)</span></th>
+<th align="right"><span class="math inline">\(f_j\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.0</td>
+<td align="right">3.1</td>
+<td align="right">0.1880</td>
+</tr>
+<tr class="even">
+<td align="right">3.1</td>
+<td align="right">4.1</td>
+<td align="right">0.1932</td>
+</tr>
+<tr class="odd">
+<td align="right">4.1</td>
+<td align="right">5.2</td>
+<td align="right">0.1854</td>
+</tr>
+<tr class="even">
+<td align="right">5.2</td>
+<td align="right">6.7</td>
+<td align="right">0.2141</td>
+</tr>
+<tr class="odd">
+<td align="right">6.7</td>
+<td align="right">13.0</td>
+<td align="right">0.2193</td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">1.0000</td>
+</tr>
+</tbody>
+</table>
+<p>2.a Disegnare l’istogramma di densità percentuale.</p>
+<div class="sol">
+<p>Ricordando che:</p>
+<ul>
+<li><span class="math inline">\(n_j=f_j\cdot n\)</span>,</li>
+<li><span class="math inline">\(b_j=x_{j+1}-x_{j}\)</span>,</li>
+<li><span class="math inline">\(h_j=f_j/b_j\times 100\)</span>,</li>
+</ul>
+<p>si consiglia di mettere i dati in tabella:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\([\text{x}_j,\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\text{x}_{j+1})\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(n_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(f_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(b_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(h_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(F_j\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:right;">
+0.1880
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+6.064
+</td>
+<td style="text-align:right;">
+0.1880
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+0.1932
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+19.321
+</td>
+<td style="text-align:right;">
+0.3812
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+0.1854
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+16.853
+</td>
+<td style="text-align:right;">
+0.5666
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5.2
+</td>
+<td style="text-align:right;">
+6.7
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+0.2141
+</td>
+<td style="text-align:right;">
+1.5
+</td>
+<td style="text-align:right;">
+14.273
+</td>
+<td style="text-align:right;">
+0.7807
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6.7
+</td>
+<td style="text-align:right;">
+13.0
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+0.2193
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+3.481
+</td>
+<td style="text-align:right;">
+1.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+383
+</td>
+<td style="text-align:right;">
+1.0000
+</td>
+<td style="text-align:right;">
+13.0
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/4-1.png" width="672" /></p>
+</div>
+<p>2.b calcolare il valore approssimato del percentile <span class="math inline">\(65\)</span>-esimo, e tracciarlo nell’istogramma.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+  p &amp;=&amp;  0.65 , \text{essendo }F_{ 4 }= 0.7807  &gt; 0.65  \Rightarrow j_{ 0.65 }= 4 \\
+  x_{ 0.65 } &amp;=&amp; x_{\text{inf}; 4 } + \frac{ { 0.65 } - F_{ 3 }} {f_{ 4 }} \cdot b_{ 4 } \\
+            &amp;=&amp;  5.2  + \frac {{ 0.65 } -  0.5666 } { 0.2141 } \cdot  1.5  \\
+            &amp;=&amp;  5.784
+\end{eqnarray*}\]</span></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/6-1.png" width="672" /></p>
+</div>
+<p>2.c Qual è il numero di individui con fenomeno-x superiore a 5.2?</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+  \#(X&gt;5.2) &amp;=&amp;  (f_4+f_5)\times n\\
+            &amp;=&amp; (0.2141+0.2141)\times 383\\
+            &amp;=&amp; 166,\text{ o alternativamente}\\
+            &amp;=&amp; (1-F_3)\times n\\
+            &amp;=&amp; (1-0.5666)\times 383\\
+            &amp;=&amp; 166
+\end{eqnarray*}\]</span></p>
+</div>
+<p>2.d Analizzare la relazione tra media, mediana e moda alla luce del istogramma di densità.</p>
+<div class="sol">
+<p>È presente un’evidente asimmetria positiva (coda lunga a dx) e quindi</p>
+<p><span class="math display">\[Moda&gt;x_{0.5}&gt;\bar x\]</span></p>
+</div>
+</div>
+<div id="variante-b" class="section level3 hasAnchor">
+<h3>Variante B<a href="esercizi-di-statistica-descrittiva.html#variante-b" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sono stati analizzati 250 individui per investigare su dati-x. È riportata qui di seguito la distribuzione in classi espressa in frequenza assoluta.</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\([\text{x}_j,\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\text{x}_{j+1})\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(n_j\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+73
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+83
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+250
+</td>
+</tr>
+</tbody>
+</table>
+<p>2.a Disegnare l’istogramma di densità percentuale.</p>
+<div class="sol">
+<p>Ricordando che:</p>
+<ul>
+<li><span class="math inline">\(f_j=n_j/n\)</span>,</li>
+<li><span class="math inline">\(b_j=x_{j+1}-x_{j}\)</span>,</li>
+<li><span class="math inline">\(h_j=f_j/b_j\times 100\)</span>,</li>
+</ul>
+<p>si consiglia di mettere i dati in tabella:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\([\text{x}_j,\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\text{x}_{j+1})\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(n_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(f_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(b_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(h_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(F_j\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+0.292
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4.171
+</td>
+<td style="text-align:right;">
+0.292
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+0.116
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11.600
+</td>
+<td style="text-align:right;">
+0.408
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+0.260
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+26.000
+</td>
+<td style="text-align:right;">
+0.668
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+0.332
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+33.200
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>2.b calcolare il valore approssimato del percentile <span class="math inline">\(25\)</span>-esimo, e tracciarlo nell’istogramma.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+  p &amp;=&amp;  0.25 , \text{essendo }F_{ 1 }= 0.292  &gt; 0.25  \Rightarrow j_{ 0.25 }= 1 \\
+  x_{ 0.25 } &amp;=&amp; x_{\text{inf}; 1 } + \frac{ { 0.25 } - F_{ 0 }} {f_{ 1 }} \cdot b_{ 1 } \\
+            &amp;=&amp;  0  + \frac {{ 0.25 } -  0 } { 0.292 } \cdot  7  \\
+            &amp;=&amp;  5.993
+\end{eqnarray*}\]</span></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<p>2.c Calcolare il numero di individui maggiori del 75-esimo percentile, <span class="math inline">\(x_{0.75}\)</span></p>
+<div class="sol">
+<p>Per definizione
+<span class="math display">\[
+\%(X\le x_{0.75})=75\%
+\]</span>
+e quindi
+<span class="math display">\[
+\%(X&gt; x_{0.75}) = 25%
+\]</span>
+calcoliamo il 25% di <span class="math inline">\(n=250\)</span> e otteniamo
+<span class="math display">\[
+\#(X&gt;x_{0.75})=250\times 0.25=62.5
+\]</span></p>
+</div>
+<p>2.d calcolare il valore approssimato della media aritmetica <span class="math inline">\(\bar x\)</span> e della varianza <span class="math inline">\(\sigma^2\)</span>.</p>
+<div class="sol">
+Calcoliamo i valori medi delle classi <span class="math inline">\(\bar x_j\)</span>, il loro quadrato <span class="math inline">\(\bar x_j^2\)</span> e li pesiamo con gli <span class="math inline">\(n_j\)</span>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\([\text{x}_j,\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\text{x}_{j+1})\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(n_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(f_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\bar{\text{x}}_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\bar{\text{x}}_j^2\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+0.292
+</td>
+<td style="text-align:right;">
+3.5
+</td>
+<td style="text-align:right;">
+12.25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+0.116
+</td>
+<td style="text-align:right;">
+7.5
+</td>
+<td style="text-align:right;">
+56.25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+0.260
+</td>
+<td style="text-align:right;">
+8.5
+</td>
+<td style="text-align:right;">
+72.25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+0.332
+</td>
+<td style="text-align:right;">
+9.5
+</td>
+<td style="text-align:right;">
+90.25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+</tbody>
+</table>
+<p>e quindi
+<span class="math display">\[
+\bar x= \frac 1n\sum_{j=1}^k\bar x_jn_j=\frac{1814}{250}=7.256
+\]</span></p>
+<p>e quindi
+<span class="math display">\[
+\sigma^2= \frac 1n\sum_{j=1}^k\bar x_j^2n_j-\bar x^2=\frac{14712.5}{250}-(7.256)^2=6.2005
+\]</span></p>
+</div>
+</div>
+<div id="variante-c" class="section level3 hasAnchor">
+<h3>Variante C<a href="esercizi-di-statistica-descrittiva.html#variante-c" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sono stati analizzati 200 individui per investigare su dati-x. Sono noti i percentili
+<span class="math inline">\(x_{0.21}=11\)</span>, <span class="math inline">\(x_{0.42}=23\)</span>, <span class="math inline">\(x_{0.6}=39\)</span>, <span class="math inline">\(x_{0.78}=62\)</span>, il minimo è 0, il massimo è 150.</p>
+<p>2.a Disegnare l’istogramma di densità percentuale.</p>
+<div class="sol">
+<p>Ricordando che:</p>
+<ul>
+<li><span class="math inline">\(f_1=F_1\)</span>, <span class="math inline">\(f_2=F_2-F_1\)</span>,…,<span class="math inline">\(f_j = F_j-F_{j-1}\)</span>,</li>
+<li><span class="math inline">\(b_j=x_{j+1}-x_{j}\)</span>,</li>
+<li><span class="math inline">\(h_j=f_j/b_j\times 100\)</span>,</li>
+</ul>
+<p>si consiglia di mettere i dati in tabella:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\([\text{x}_j,\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\text{x}_{j+1})\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(f_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(b_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(h_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(F_j\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0.210
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1.9091
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+0.210
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+1.7500
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+0.185
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+1.1562
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+0.175
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+0.7609
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+0.220
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+0.2500
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+</tbody>
+</table>
+<p>e infine disegnare il grafico</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<p>2.b Calcolare le frequenze assolute</p>
+<div class="sol">
+<p>Ricordando che:
+<span class="math display">\[
+n_j=f_j\times n
+\]</span></p>
+<p>e mettendo in tabella, otteniamo</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\([\text{x}_j,\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\text{x}_{j+1})\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(f_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(n_j\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0.210
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+0.210
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+0.185
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+0.175
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+0.220
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+200
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>2.c Calcolare la percentuale approssimata di individui con dati-x inferiore a 45</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+\%(X&lt;45)   &amp;\approx&amp;  \%(X&lt;39)+(45-39)\times h_4\\
+&amp;=&amp; F_3\times 100+(45-39)\times 0.7609\\
+&amp;=&amp; 0.605\times 100 + 6\times 0.7609\\
+&amp;=&amp; 65.0652\%
+\end{eqnarray*}\]</span></p>
+<p>graficamente</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<p>2.d Calcolare la percentuale approssimata di individui con dati-x compresa tra 45 e il 90-esimo percentile, <span class="math inline">\(x_{0.90}\)</span>.</p>
+<div class="sol">
+<p>Per calcolare
+<span class="math display">\[
+\%(45&lt; X &lt; x_{0.90})
+\]</span>
+non c’è bisogno di calcolare <span class="math inline">\(x_{0.90}\)</span>, infatti dal punto precedente sappiamo che</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\%(X&lt;45)   &amp;\approx&amp;  \%(X&lt;39)+(45-39)\times h_4\\
+&amp;=&amp; F_3+(45-39)\times 0.7609\\
+&amp;=&amp; 0.605\times 100 + 6\times 0.7609\\
+&amp;=&amp; 65.0652\%
+\end{eqnarray*}\]</span>
+dalla teoria sappiamo che
+<span class="math display">\[
+\%(X&lt;x_{0.90})=90\%
+\]</span>
+e quindi
+<span class="math display">\[\begin{eqnarray*}
+\%(45&lt; X &lt; x_{0.90}) &amp;=&amp; 90\%-65.0652\%\\
+                     &amp;=&amp; 24.9348\%
+\end{eqnarray*}\]</span></p>
+<p>graficamente</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+</div>
+<div id="varianti-con-contesto-eserciziario" class="section level2 hasAnchor">
+<h2>Varianti con contesto (eserciziario)<a href="esercizi-di-statistica-descrittiva.html#varianti-con-contesto-eserciziario" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="esercizio-conteggi" class="section level3 hasAnchor">
+<h3>Esercizio: Conteggi<a href="esercizi-di-statistica-descrittiva.html#esercizio-conteggi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La figura seguente riporta l’istogramma relativo a un campione
+di 200 imprese classificate sulla base del numero di addetti
+secondo le classi: <span class="math inline">\(0-9\)</span> addetti, <span class="math inline">\(10-19\)</span> addetti, <span class="math inline">\(20-49\)</span> addetti,
+<span class="math inline">\(50-99\)</span> addetti, <span class="math inline">\(100-249\)</span> addetti.
+Si noti che sull’asse delle ordinate è riportata la densità
+percentuale.</p>
+<p><em>Si noti che, a causa dell’ampiezza della scala dei valori, i dettagli dell’istogramma <strong>non si leggono</strong> sul grafico e, pertanto, non sono stati riportati gli estremi delle classi sull’asse delle ascisse, <span class="math inline">\(X\)</span>, e i dati si evincono dal testo</em></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sol">
+<p>Il testo fornisce una rappresentazione grafica.
+Per rispondere alle domande successive occorre partire dalla
+rappresentazione in una tabella di frequenze (relative o, come
+conviene in questo caso, percentuali).
+Si devono determinare, quindi, le aree dei rettangoli per ottenere
+le percentuali di unità statistiche contenute nelle varie classi.
+Si procede come segue:</p>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="26%" />
+<col width="22%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Area Classi disgiunte</th>
+<th>Ampiezza Classi congiunte</th>
+<th><span class="math inline">\(\times\)</span>densità</th>
+<th>frequenze perc.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(A(  0- 9)\)</span></td>
+<td><span class="math inline">\(=[  9,5 -(-0,5)]\)</span></td>
+<td><span class="math inline">\(\times 2\)</span></td>
+<td><span class="math inline">\(= 20\%\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(A( 10- 19)\)</span></td>
+<td><span class="math inline">\(=[ 19,5 -  9,5)]\)</span></td>
+<td><span class="math inline">\(\times 3\)</span></td>
+<td><span class="math inline">\(= 30\%\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A( 20- 49)\)</span></td>
+<td><span class="math inline">\(=[ 49,5 - 19,5)]\)</span></td>
+<td><span class="math inline">\(\times 0.833\)</span></td>
+<td><span class="math inline">\(= 25\%\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(A( 50- 99)\)</span></td>
+<td><span class="math inline">\(=[ 99,5 - 49,5)]\)</span></td>
+<td><span class="math inline">\(\times 0.3\)</span></td>
+<td><span class="math inline">\(= 15\%\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A(100-249)\)</span></td>
+<td><span class="math inline">\(=[249,5 - 99,5)]\)</span></td>
+<td><span class="math inline">\(\times 0.066\)</span></td>
+<td><span class="math inline">\(= 10\%\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>A questo punto è possibile costruire la tabella della
+distribuzione delle frequenze percentuali della <span class="math inline">\(X\)</span>, numero
+di addetti delle imprese.</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\([\text{x}_j,\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\text{x}_{j+1})\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(n_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(f_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(b_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(h_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(F_j\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+-0.5
+</td>
+<td style="text-align:right;">
+9.5
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+2.0000
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9.5
+</td>
+<td style="text-align:right;">
+19.5
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3.0000
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19.5
+</td>
+<td style="text-align:right;">
+49.5
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+0.8333
+</td>
+<td style="text-align:right;">
+0.75
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+49.5
+</td>
+<td style="text-align:right;">
+99.5
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+0.3000
+</td>
+<td style="text-align:right;">
+0.90
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+99.5
+</td>
+<td style="text-align:right;">
+249.5
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+0.10
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+0.0667
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+</tr>
+</tbody>
+</table>
+<p>La funzione di ripartizione è utile quando si devono determinare
+la mediana (o la classe che la contiene) e/o la classe che contiene
+un determinato percentile.
+Un’altra definizione di percentile, infatti, utilizza la
+funzione cumulata delle frequenze percentuali, <span class="math inline">\(F_{\%; j}\)</span>.
+Il percentile <span class="math inline">\(p\)</span>-esimo è il “primo” valore della <span class="math inline">\(x\)</span>,
+indicato con <span class="math inline">\(x_{p}\)</span>, nel quale la <span class="math inline">\(F_{\%; j}(x_{p})\)</span> è uguale
+o supera il <span class="math inline">\((100 \times p)\)</span>%.</p>
+</div>
+<p>2.a Qual è l’intervallo con il maggior numero di imprese?</p>
+<div class="sol">
+<p>L’intervallo <span class="math inline">\([10;\ 19]\)</span>.</p>
+</div>
+<p>2.b Qual è il numero di imprese che hanno addetti
+nella classe <span class="math inline">\([0,\, 9]\)</span>?</p>
+<div class="sol">
+<p><span class="math inline">\(f\left( 0 \vdash 10 \right) = \frac{10 \,\times\, 2} {100}\ 200 = 40\)</span> (circa).</p>
+</div>
+<p>2.c In quale classe si trova il 15<span class="math inline">\(^{o}\)</span> percentile?</p>
+<div class="sol">
+<p>Il 15<span class="math inline">\(^{o}\)</span> percentile si trova nella classe <span class="math inline">\([0;\, 9]\)</span>.</p>
+</div>
+<p>2.d Qual è l’intervallo che contiene la mediana?</p>
+<div class="sol">
+<p>Il 50% delle imprese è contenuto esattamente nelle prime due classi.
+La mediana si trova dunque tra la fine dell’intervallo
+<span class="math inline">\([10;\, 19]\)</span> e l’inizio dell’intervallo <span class="math inline">\([20;\, 49]\)</span>.
+Si potrebbe, quindi, dire che la mediana è 20?
+No, perché non è noto come sono distribuite le imprese nella classe
+<span class="math inline">\([20;\, 49]\)</span>; infatti, ipoteticamente, tutte le imprese della classe
+potrebbero avere 49 addetti e, in tal caso la mediana sarebbe 49 o
+la media tra 49 e 19.</p>
+</div>
+<p>2.e In quale classe si trova il 75<span class="math inline">\(^{o}\)</span> percentile?</p>
+<div class="sol">
+<p>Il 75<span class="math inline">\(^{o}\)</span> percentile si trova nella classe <span class="math inline">\([50;\, 99]\)</span>.</p>
+<p>NB: il 75% della frequenza cumulata si trova proprio nella terza
+classe <span class="math inline">\([20;\, 49]\)</span>; perciò un valore successivo potrebbe essere
+il 75<span class="math inline">\(^{o}\)</span> percentile, per esempio 50.
+Non si sa, come già detto per la mediana, se tra i dati vi sia
+una impresa con 50 addetti e, dunque, si può solo dire che la
+classe contenente il 75<span class="math inline">\(^{o}\)</span> percentile è la successiva.</p>
+</div>
+<p>2.f Quale relazione ci si deve attendere
+fra media e mediana per i dati proposti?</p>
+<div class="sol">
+<p>L’esame del grafico mostra che vi è una asimmetria a destra
+(o positiva); pertanto, risulta (media<span class="math inline">\(&gt;\)</span>mediana); infatti, in
+base ai dati dell’istogramma, eseguendo i calcoli si trova che
+<span class="math inline">\(\bar{x}=43\)</span> e <span class="math inline">\(x_{0,5}=20\)</span>.</p>
+</div>
+<p>2.g Determinare il valore approssimato della mediana,
+assumendo la distribuzione uniforme dei casi contenuti nella classe
+che contiene la mediana.</p>
+<div class="sol">
+<p><span class="math display">\[\begin{eqnarray*}
+  p &amp;=&amp;  0.5 , \text{essendo }F_{ 2 }= 0.5  &gt; 0.5  \Rightarrow j_{ 0.5 }= 2 \\
+  x_{ 0.5 } &amp;=&amp; x_{\text{inf}; 2 } + \frac{ { 0.5 } - F_{ 1 }} {f_{ 2 }} \cdot b_{ 2 } \\
+            &amp;=&amp;  9.5  + \frac {{ 0.5 } -  0.2 } { 0.3 } \cdot  10  \\
+            &amp;=&amp;  19.5
+\end{eqnarray*}\]</span></p>
+</div>
+<p>2.h Definizione formale di percentile.</p>
+<div class="sol">
+<p>Il <span class="math inline">\(p\)</span>-esimo percentile (<span class="math inline">\(0 \le p\le 1\)</span>) del carattere <span class="math inline">\(X\)</span>
+è quel valore di <span class="math inline">\(X\)</span>, indicato con <span class="math inline">\(x_{p}\)</span>, tale che</p>
+<p><span class="math display">\[\begin{eqnarray*}
+p       &amp;=&amp; F(x_{p}) \\
+p       &amp;=&amp; A(X &lt; x_{p})      \qquad \mbox{Area\ totale\ uguale\ 1} \\
+p \times 100 &amp;=&amp; \%(X &lt; x_{p}) \qquad \mbox{Area\ totale\ uguale\ 100}
+\end{eqnarray*}\]</span></p>
+</div>
+</div>
+<div id="esercizio-dati-continui" class="section level3 hasAnchor">
+<h3>Esercizio Dati Continui<a href="esercizi-di-statistica-descrittiva.html#esercizio-dati-continui" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’istogramma seguente mostra la distribuzione per
+classi di cilindrata delle autovetture iscritte al Pubblico
+Registro Automobilistico (dati aggiornati al 31/12/99;
+fonte www.aci.it).
+Il numero di autovetture censite è pari a 32027945; ma,
+per comodità nei calcoli, il numero totale, <span class="math inline">\(n\)</span>, è stato
+posto pari a 3000.
+Sopra ogni rettangolo è indicato il valore delle
+densità di frequenza percentuale.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>2.a Qual è la percentuale di autovetture comprese nella seconda classe?</p>
+<div class="sol">
+<p>La seconda classe ha ampiezza pari a <span class="math inline">\(1200 - 800 = 400\)</span>.
+La densità percentuale è pari a 0.0925 e, quindi, la
+percentuale di autoveicoli con cilindrata compresa in tale
+intervallo è <span class="math inline">\(0.0925 \times 400 = 37\%\)</span>.</p>
+</div>
+<p>2.b In quale classe cade la mediana?</p>
+<div class="sol">
+<p>La percentuale di autoveicoli nella prima classe è
+<span class="math inline">\(0.02 \,\times\, 400 = 8\%\)</span>.
+La percentuale di autoveicoli nella seconda classe è <span class="math inline">\(37\%\)</span>.
+La percentuale di autoveicoli nella terza classe è
+<span class="math inline">\(0.0775 \,\times\, 400 = 31\%\)</span>.
+Dal momento che <span class="math inline">\(8\% +37\% &lt; 50\%\)</span>, mentre
+<span class="math inline">\(8\% +37\% +31\% &gt; 50\%\)</span>, la mediana appartiene
+alla terza classe, ovvero è compresa fra 1200cc e 1600cc.</p>
+</div>
+<p>2.c Determinare il valore approssimato della mediana,
+assumendo la distribuzione uniforme dei casi contenuti
+nella classe che contiene la mediana.</p>
+<div class="sol">
+<p>Sia <span class="math inline">\(m\)</span> il numero della classe contenente la mediana:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+  p &amp;=&amp;  0.5 , \text{essendo }F_{ 3 }= 0.76  &gt; 0.5  \Rightarrow j_{ 0.5 }= 3 \\
+  x_{ 0.5 } &amp;=&amp; x_{\text{inf}; 3 } + \frac{ { 0.5 } - F_{ 2 }} {f_{ 3 }} \cdot b_{ 3 } \\
+            &amp;=&amp;  1200  + \frac {{ 0.5 } -  0.45 } { 0.31 } \cdot  400  \\
+            &amp;=&amp;  1265
+\end{eqnarray*}\]</span></p>
+</div>
+<p>2.d Qual è la “classe modale” ?</p>
+<div class="sol">
+<p>La “classe modale” è quella con la massima densità di frequenza
+(il rettangolo con l’altezza maggiore) e corrisponde alla classe
+800–1200 con una percentuale (seconda classe) pari a <span class="math inline">\(37\%\)</span>.
+In questo caso è anche la classe con la percentuale di più
+alta; infatti, la percentuale di autoveicoli nella terza classe
+è <span class="math inline">\(0.0775 \,\times\, 400 = 31\%\)</span>.
+Le altre classi hanno una percentuale inferiore, come si può
+osservare considerando le unità di misura del grafico e i
+relativi valori.</p>
+</div>
+<p>2.e Giulio ha una macchina con cilindrata pari a 625cc. Indicare la risposta corretta:</p>
+<ul>
+<li><span class="math inline">\(\Box \;\)</span> l’auto di Giulio è molto potente, infatti meno del 9% delle auto ha cilindrata inferiore</li>
+<li><span class="math inline">\(\Box \;\)</span> l’auto di Giulio è molto potente, infatti più del 90% delle auto ha cilindrata inferiore</li>
+<li><span class="math inline">\(\Box \;\)</span> l’auto di Giulio è poco potente, infatti meno del 9% delle auto ha cilindrata inferiore</li>
+<li><span class="math inline">\(\Box \;\)</span> l’auto di Giulio è poco potente, infatti più del 9% delle auto ha cilindrata inferiore</li>
+</ul>
+<div class="sol">
+<p>l’auto di Giulio è poco potente, infatti meno del 9% delle auto ha cilindrata inferiore</p>
+</div>
+</div>
+<div id="esercizio-variante-1" class="section level3 hasAnchor">
+<h3>Esercizio (variante 1)<a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La distribuzione delle frequenze assolute della cilindrata
+delle autovetture iscritte al Pubblico Registro Automobilistico
+(dati aggiornati al 31/12/99; fonte www.aci.it) è riportata
+nella tabella seguente.
+Il numero di autovetture censite, per comodità è stato posto
+pari a 3000 (decine di migliaia, si veda l’esercizio precedente).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right"><span class="math inline">\([\text{x}_j,\)</span></th>
+<th align="right"><span class="math inline">\(\text{x}_{j+1})\)</span></th>
+<th align="right"><span class="math inline">\(n_j\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">400</td>
+<td align="right">800</td>
+<td align="right">240</td>
+</tr>
+<tr class="even">
+<td align="right">800</td>
+<td align="right">1200</td>
+<td align="right">1110</td>
+</tr>
+<tr class="odd">
+<td align="right">1200</td>
+<td align="right">1600</td>
+<td align="right">930</td>
+</tr>
+<tr class="even">
+<td align="right">1600</td>
+<td align="right">2000</td>
+<td align="right">600</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="right">3500</td>
+<td align="right">120</td>
+</tr>
+</tbody>
+</table>
+<p>2.a Qual è la percentuale di autovetture comprese nella seconda classe?</p>
+<div class="sol">
+<p><span class="math inline">\(f_{\%;\, 2} = 100 \,\times\, 1110/3000 = 37\%\)</span>.</p>
+</div>
+<p>2.b In quale classe cade la mediana?</p>
+<div class="sol">
+<p>Per individuare la classe che contiene la mediana,
+si cumulano le percentuali a partire dalla prima
+classe e ci si arresta appena si supera il 50%.
+Per completezza e comodità si riporta la seguente
+tabella che contiene le frequenze percentuali e le
+frequenze percentuali cumulate, <span class="math inline">\(F_{\%;\, j}\)</span>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right"><span class="math inline">\([\text{x}_j,\)</span></th>
+<th align="right"><span class="math inline">\(\text{x}_{j+1})\)</span></th>
+<th align="right"><span class="math inline">\(n_j\)</span></th>
+<th align="right"><span class="math inline">\(f_j\)</span></th>
+<th align="right"><span class="math inline">\(F_j\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">400</td>
+<td align="right">800</td>
+<td align="right">240</td>
+<td align="right">0.08</td>
+<td align="right">0.08</td>
+</tr>
+<tr class="even">
+<td align="right">800</td>
+<td align="right">1200</td>
+<td align="right">1110</td>
+<td align="right">0.37</td>
+<td align="right">0.45</td>
+</tr>
+<tr class="odd">
+<td align="right">1200</td>
+<td align="right">1600</td>
+<td align="right">930</td>
+<td align="right">0.31</td>
+<td align="right">0.76</td>
+</tr>
+<tr class="even">
+<td align="right">1600</td>
+<td align="right">2000</td>
+<td align="right">600</td>
+<td align="right">0.20</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="right">3500</td>
+<td align="right">120</td>
+<td align="right">0.04</td>
+<td align="right">1.00</td>
+</tr>
+</tbody>
+</table>
+<p>La classe che contiene la mediana è 120-160 perché in questa
+la frequenza percentuale cumulata ha superato il 50%.</p>
+<p>Si noti che un modo diverso di fornire i dati è riportare
+nel grafico: le densità percentuali, <span class="math inline">\(h_{\%;\, j}\)</span>, oppure
+le densità di frequenza relativa, <span class="math inline">\(h_{j}\)</span>; si ricordi che:</p>
+<p></p>
+<p>Si noti che in casi come questi, in cui si riportano le
+frequenze assolute, <span class="math inline">\(n_{j}\)</span>, occorre esaminare con attenzione
+la leggenda dell’asse delle ordinate perché può capitare
+che le <span class="math inline">\(n_{j}\)</span> si riportino direttamente sull’asse delle
+ordinate.</p>
+</div>
+</div>
+<div id="esercizio-variante-2" class="section level3 hasAnchor">
+<h3>Esercizio (variante 2)<a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La distribuzione delle frequenze relative della cilindrata
+delle autovetture iscritte al Pubblico Registro Automobilistico
+(dati aggiornati al 31/12/99; fonte www.aci.it) è riportata
+nella tabella seguente.
+Il numero di autovetture censite è pari a 320.27 centinaia
+di migliaia (<span class="math inline">\(10^{5}\)</span>).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right"><span class="math inline">\([\text{x}_j,\)</span></th>
+<th align="right"><span class="math inline">\(\text{x}_{j+1})\)</span></th>
+<th align="right"><span class="math inline">\(f_j\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">400</td>
+<td align="right">800</td>
+<td align="right">0.08</td>
+</tr>
+<tr class="even">
+<td align="right">800</td>
+<td align="right">1200</td>
+<td align="right">0.37</td>
+</tr>
+<tr class="odd">
+<td align="right">1200</td>
+<td align="right">1600</td>
+<td align="right">0.31</td>
+</tr>
+<tr class="even">
+<td align="right">1600</td>
+<td align="right">2000</td>
+<td align="right">0.20</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="right">3500</td>
+<td align="right">0.04</td>
+</tr>
+</tbody>
+</table>
+<p>2.a Disegnare l’istogramma (delle densità relative) della
+distribuzione della cilindrata delle auto in circolazione.</p>
+<div class="sol">
+<p>Per disegnare l’istogramma occorrono le altezze, <span class="math inline">\(h_{i}\)</span>,
+dei rettangoli da disegnare per ogni classe: i calcoli sono
+riportati di séguito:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+h_{j} &amp;=&amp; \frac{f_{j}} {b_{j+1} - b_{j}}                \\
+h_{1} &amp;=&amp; \frac{0.08} { 800 -  400} =  0.0002   \\
+h_{2} &amp;=&amp; \frac{0.37} {1200 -  800} =  0.000925 \\
+h_{3} &amp;=&amp; \frac{0.31} {1600 - 1200} =  0.000775 \\
+h_{4} &amp;=&amp; \frac{0.20} {2000 - 1600} =  0.000500 \\
+h_{5} &amp;=&amp; \frac{0.04} {3500 - 2000} =  0.00002\bar{6} \, .
+\end{eqnarray*}\]</span></p>
+<p>Queste sono le altezze per disegnare i rettangoli nel grafico
+sopra riportato.</p>
+<p>Le altre domande possono essere simili alle precedenti.</p>
+</div>
+</div>
+<div id="esercizio-variante-3" class="section level3 hasAnchor">
+<h3>Esercizio (variante 3)<a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’esame della distribuzione della cilindrata delle autovetture
+iscritte al Pubblico Registro Automobilistico (dati aggiornati
+al 31/12/99; fonte www.aci.it) ha fornito i seguenti dati:</p>
+<ul>
+<li>l’<span class="math inline">\(8^{o}\)</span> percentile è 800cc,</li>
+<li>il <span class="math inline">\(45^{o}\)</span> percentile è 1200cc,</li>
+<li>il <span class="math inline">\(76^{o}\)</span> percentile è 1600cc,</li>
+<li>il <span class="math inline">\(96^{o}\)</span> percentile è 2000cc.</li>
+</ul>
+<p>Il valore minino della cilindrata è 400cc e
+il valore massimo è 3500cc.
+Il numero di autovetture censite è pari a 3000
+(dato di comodo, come detto in precedenza).</p>
+<p>Si noti che nel compito di esame i percentili sono spesso
+espressi in simboli, come segue, dove, per semplificare,
+si sono omesse le unità di misura e altre indicazioni
+perché la corrispondenza tra i simboli e le espressioni
+verbali sembra ovvia:</p>
+<ul>
+<li><span class="math inline">\(x_{0.08}= 800\)</span>,</li>
+<li><span class="math inline">\(x_{0.45}= 1200\)</span>,</li>
+<li><span class="math inline">\(x_{0.76}= 1600\)</span>,</li>
+<li><span class="math inline">\(x_{0.96}= 2000\)</span>.</li>
+</ul>
+<p>Il minimo e il massimo sono, rispettivamente,
+<span class="math inline">\(x_{\min}=\)</span> 400 e <span class="math inline">\(x_{\max}= 3500\)</span>.</p>
+<p>2.a Disegnare l’istogramma (delle densità percentuali) della
+distribuzione della cilindrata delle auto in circolazione.</p>
+<div class="sol">
+<p>Per disegnare l’istogramma occorrono le altezze, <span class="math inline">\(h_{j}\)</span>,
+dei rettangoli da disegnare per ogni classe.
+Per ottenere le altezze occorre determinare le percentuali di
+autovetture in circolazione che appartengono alle corrispondenti
+classi di cilindrata.
+I dati del problema forniscono tutti i percentili, dai quali si
+può ricavare le percentuali di ogni classe: perché si possa
+procedere compiutamente occorre conoscere il minimo e il massimo
+del carattere in oggetto.</p>
+<ul>
+<li>La prima classe va, dal minimo, <span class="math inline">\(x_{(1)}\)</span>, all’<span class="math inline">\(8^{o}\)</span> percentile;
+ossia, è 400-800cc.</li>
+<li>La seconda classe va, dall’<span class="math inline">\(8^{o}\)</span> percentile al <span class="math inline">\(45^{o}\)</span> percentile;
+ossia, è 800-1200cc.</li>
+<li>La terza classe va, dal <span class="math inline">\(45^{o}\)</span> percentile al <span class="math inline">\(76^{o}\)</span> percentile;
+ossia, è 1200-1600cc.</li>
+<li>La quarta classe va, dal <span class="math inline">\(76^{o}\)</span> percentile al <span class="math inline">\(96^{o}\)</span> percentile;
+ossia, è 1600-2000cc.</li>
+<li>La quinta classe va, dal <span class="math inline">\(96^{o}\)</span> percentile al massimo, <span class="math inline">\(x_{(n)}\)</span>;</li>
+<li>La settima classe va, dal <span class="math inline">\(99^{o}\)</span> percentile al massimo, <span class="math inline">\(x_{(n)}\)</span>;
+ossia, è 2000-3500cc.</li>
+</ul>
+<p>Per eseguire i calcoli si noti, poi, che il percentile rappresenta
+la percentuale cumulata dei soggetti; per conoscere, quindi, la
+percentuale di una classe occorre sottrarre al percentile
+“corrente” il valore di quello della classe precedente:
+<span class="math inline">\(\,\)</span> oppure
+<span class="math inline">\(\,\)</span> oppure ancora
+<span class="math inline">\(\,\)</span>.
+Le densità sono:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+h_{j} &amp;=&amp; \frac{100\ (F_{j} - F_{j-1})} {b_{j+1} - b_{j}}
+       =  \frac{f_{\%;\, j}} {b_{j+1} - b_{j}} \\
+h_{\%;\, 1} &amp;=&amp; \frac{  8 -  0} { 800 -  400} =  0.0200     \\
+h_{\%;\, 2} &amp;=&amp; \frac{ 45 -  8} {1200 -  800} =  0.0925     \\
+h_{\%;\, 3} &amp;=&amp; \frac{ 76 - 45} {1600 - 1200} =  0.0775     \\
+h_{\%;\, 4} &amp;=&amp; \frac{ 96 - 76} {2000 - 1600} =  0.0500     \\
+h_{\%;\, 5} &amp;=&amp; \frac{100 - 96} {3500 - 2000} =  0.002\bar{6} \, .
+\end{eqnarray*}\]</span></p>
+<p>Queste sono le altezze per disegnare i rettangoli nel grafico
+sopra riportato.
+Si noti che nel calcolo delle percentuali di classe <span class="math inline">\(f_{0}=0\)</span>
+e <span class="math inline">\(f_{J}=100\)</span>, dove <span class="math inline">\(J\)</span> è l’indice dell’ultima classe e,
+quindi, il percentile di <span class="math inline">\(x_{(n)}\)</span> (il massimo).
+In tabella:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+<span class="math inline">\([\text{x}_j,\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\text{x}_{j+1})\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(F_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(f_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(b_j\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(h_j\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+0.0200
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+0.0925
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+1600
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+0.0775
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1600
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+0.96
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+0.0500
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+3500
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+0.0027
+</td>
+</tr>
+</tbody>
+</table>
+<p>e di cosegeunza otteniamo</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+</div>
+</div>
+<div id="esercizio-dati-non-ordinati" class="section level3 hasAnchor">
+<h3>Esercizio Dati non ordinati<a href="esercizi-di-statistica-descrittiva.html#esercizio-dati-non-ordinati" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con riferimento a molti processi industriali, si usa il
+termine “Work-In-Process” (spesso abbreviato con WIP).
+Negli impianti di produzione dei libri, il WIP rappresenta
+il tempo necessario per piegare, riunire, cucire, e rilegare
+i fogli che provengono da una pressa.
+I dati che seguono sono relativi ai tempi di lavorazione
+(tempo, in giorni, che intercorre tra quando i libri vengono
+stampati e quando sono impacchettati nei cartoni) per due
+campioni di 20 libri estratti da due impianti di produzione
+(D. M. Levine <em>et al</em>., 2000, <em>Business Statistics:
+A First Course</em>, 2.nd Edition, Prentice-Hall. Tr. it. (2002),
+<em>Statistica</em>, Apogeo, Milano, p. 126).</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left">Impianto 1</td>
+<td align="right">5.62</td>
+<td align="right">5.29</td>
+<td align="right">16.25</td>
+<td align="right">10.92</td>
+<td align="right">11.46</td>
+<td align="right">21.62</td>
+<td align="right">8.45</td>
+<td align="right">8.58</td>
+<td align="right">5.41</td>
+<td align="right">11.42</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">11.62</td>
+<td align="right">7.29</td>
+<td align="right">7.50</td>
+<td align="right">7.96</td>
+<td align="right">4.42</td>
+<td align="right">10.50</td>
+<td align="right">7.58</td>
+<td align="right">9.29</td>
+<td align="right">7.54</td>
+<td align="right">8.92</td>
+</tr>
+<tr class="odd">
+<td align="left">Impianto 2</td>
+<td align="right">9.54</td>
+<td align="right">11.46</td>
+<td align="right">16.62</td>
+<td align="right">12.62</td>
+<td align="right">25.75</td>
+<td align="right">15.41</td>
+<td align="right">14.29</td>
+<td align="right">13.13</td>
+<td align="right">13.71</td>
+<td align="right">10.04</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">5.75</td>
+<td align="right">12.46</td>
+<td align="right">9.17</td>
+<td align="right">13.21</td>
+<td align="right">6.00</td>
+<td align="right">2.33</td>
+<td align="right">14.25</td>
+<td align="right">5.37</td>
+<td align="right">6.25</td>
+<td align="right">9.71</td>
+</tr>
+</tbody>
+</table>
+<p>Determinare:</p>
+<p>2.a il campo di variazione,
+2.b la mediana,
+2.c la media sapendo che la somma è pari a 187.64 per l’impianto A e 227.07 per l’impianto B.</p>
+<div class="sol">
+<p>Per rispondere alle tre domande conviene ordinare prima i dati, come
+riportato nella tabella seguente.</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left">Impianto 1</td>
+<td align="right">4.42</td>
+<td align="right">5.29</td>
+<td align="right">5.41</td>
+<td align="right">5.62</td>
+<td align="right">7.29</td>
+<td align="right">7.50</td>
+<td align="right">7.54</td>
+<td align="right">7.58</td>
+<td align="right">7.96</td>
+<td align="right">8.45</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">8.58</td>
+<td align="right">8.92</td>
+<td align="right">9.29</td>
+<td align="right">10.50</td>
+<td align="right">10.92</td>
+<td align="right">11.42</td>
+<td align="right">11.46</td>
+<td align="right">11.62</td>
+<td align="right">16.25</td>
+<td align="right">21.62</td>
+</tr>
+<tr class="odd">
+<td align="left">Impianto 2</td>
+<td align="right">2.33</td>
+<td align="right">5.37</td>
+<td align="right">5.75</td>
+<td align="right">6.00</td>
+<td align="right">6.25</td>
+<td align="right">9.17</td>
+<td align="right">9.54</td>
+<td align="right">9.71</td>
+<td align="right">10.04</td>
+<td align="right">11.46</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">12.46</td>
+<td align="right">12.62</td>
+<td align="right">13.13</td>
+<td align="right">13.21</td>
+<td align="right">13.71</td>
+<td align="right">14.25</td>
+<td align="right">14.29</td>
+<td align="right">15.41</td>
+<td align="right">16.62</td>
+<td align="right">25.75</td>
+</tr>
+</tbody>
+</table>
+<p>Il campo di variazione è dato dalla differenza tra il massimo osservato
+e il minimo.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mbox{CdV}(A) &amp;=&amp; x_{A;\, (n)} - x_{A;\, (1)} = 21.62 - 4.42 = 17.2 \,. \\
+\mbox{CdV}(B) &amp;=&amp; x_{B;\, (n)} - x_{B;\, (1)} = 25.75 - 2.33 = 23.42 \,.
+\end{eqnarray*}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Il campo di variazione dell’impianto A è più piccolo di quello di B.
+Se le distribuzioni dei due insiemi di dati sono simili, allora ciò
+comporta un minore variabilità dei dati (o della prestazione)
+dell’impianto A.</p></li>
+<li><p>La mediana per un numero di osservazioni pari è data da:</p></li>
+</ol>
+<p><span class="math display">\[\begin{eqnarray*}
+x_{A;\, 0.5} &amp;=&amp; \frac{1} {2}\ \left( x_{A;\, (n/2)} + x_{A;\, (n/2)+1} \right)
+              =  \frac{8.45 + 8.58} {2} = 8.515 \,. \\
+x_{B;\, 0.5} &amp;=&amp; \frac{1} {2}\ \left( x_{B;\, (n/2)} + x_{B;\, (n/2)+1} \right)
+              =  \frac{11.46 + 12.46} {2} = 11.96 \,.
+\end{eqnarray*}\]</span></p>
+<p>La mediana dell’impianto A è inferiore a quella dell’impianto B,
+che comporta presumibilmente una diversa dislocazione (o non
+sovrapponibilità) dei due istogrammi.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>La media è data da:</li>
+</ol>
+<p><span class="math display">\[\begin{eqnarray*}
+\bar{x}_{A} &amp;=&amp; \frac{187.64} {20} = 9.38 \,. \\
+\bar{x}_{B} &amp;=&amp; \frac{227.07} {20} = 11.35 \,.
+\end{eqnarray*}\]</span></p>
+<p>Idem, come sopra: la media dell’impianto A è inferiore a quella
+dell’impianto B, che comporta una diversa dislocazione (o non
+sovrapponibilità) dei due istogrammi.
+Tale esito mostra anche che l’impianto A è pi'u efficiente
+dell’impianto B perché A produce in un tempo medio inferiore
+a quello di B.</p>
+</div>
+<p>2.d <span class="math inline">\(\,\)</span>il primo quartile,
+2.e <span class="math inline">\(\,\)</span>il terzo quartile,
+2.f <span class="math inline">\(\,\)</span>la differenza interquartile.</p>
+<div class="sol">
+<p>Si ragiona sui dati ordinati sopra riportati.</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Il primo quartile è dato dal valore della <span class="math inline">\(X\)</span> relativa
+al soggetto nella posizione successiva a <span class="math inline">\(\lfloor n\, p \rfloor =
+\lfloor 20 \,\times\, 0.25 \rfloor = 5\)</span>, ossia <span class="math inline">\(x_{A;\, 0.25} =
+x_{A;\ (\lfloor n\, p \rfloor + 1)} = x_{A;\ (6)} = \textbf{7.50}\)</span>
+e <span class="math inline">\(x_{B;\, 0.25} = x_{B;\ (\lfloor n\, p \rfloor + 1)} =
+x_{B;\ (6)} = \textbf{9.17}\)</span>.
+Si noti che il simbolo <span class="math inline">\(\lfloor \cdot \rfloor\)</span> indica la parte
+intera dell’argomento.
+Tale regola è una approssimazione, adottata per semplificare
+il procedimento; tuttavia, in questo caso, si può ottenere un
+risultato pi'u preciso.
+Si tratta, infatti, di un numero divisibile per 4; pertanto, il
+primo quartile sarà dato dalla media dei valori corrispondenti
+ai soggetti 5.o e 6.o in graduatoria in modo da avere a sinistra
+esattamente 5 soggetti (il 25%) e a destra 15 soggetti (il 75%):</li>
+</ol>
+<p><span class="math display">\[\begin{eqnarray*}
+x_{A;\, 0.25} &amp;=&amp; \frac{1} {2}\ \left( x_{A;\, (n/4)} + x_{A;\, (n/4)+1} \right)
+               =  \frac{7.29 + 7.50} {2} = 7.395 \,. \\
+x_{B;\, 0.25} &amp;=&amp; \frac{1} {2}\ \left( x_{B;\, (n/4)} + x_{B;\, (n/4)+1} \right)
+               =  \frac{6.25 + 9.17} {2} = 7.71 \,.
+\end{eqnarray*}\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Il terzo quartile è dato dal valore della <span class="math inline">\(X\)</span> relativa
+al soggetto nella posizione successiva a <span class="math inline">\(\lfloor n\, p \rfloor =
+\lfloor 20 \,\times\, 0.75 \rfloor = 15\)</span>, ossia <span class="math inline">\(x_{A;\, 0.75} =
+x_{A;\ (\lfloor n\, p \rfloor + 1)} = x_{A;\ (16)} = \textbf{11.42}\)</span>
+e <span class="math inline">\(x_{B;\, 0.75} = x_{B;\ (\lfloor n\, p \rfloor + 1)} =
+x_{B;\ (16)} = \textbf{14.25}\)</span>.
+L’approssimazione è stata adottata, come già detto, per semplificare
+il procedimento, ma, in questo caso, si può ottenere un risultato pi'u
+preciso perché si tratta di un numero divisibile per 4; pertanto, il terzo
+quartile sarà dato dalla media dei valori corrispondenti ai soggetti 15.o
+e 16.o in graduatoria in modo da avere a sinistra esattamente 15 soggetti
+(il 75%) e a destra 5 soggetti (il 15%):</li>
+</ol>
+<p><span class="math display">\[\begin{eqnarray*}
+x_{A;\, 0.75} &amp;=&amp; \frac{1} {2}\ \left( x_{A;\, (3n/4)} + x_{A;\, (3n/4)+1} \right)
+               =  \frac{10.92 + 11.42} {2} = 11.17 \,. \\
+x_{B;\, 0.75} &amp;=&amp; \frac{1} {2}\ \left( x_{B;\, (3n/4)} + x_{B;\, (3n/4)+1} \right)
+               =  \frac{13.71 + 14.25} {2} = 13.98 \,.
+\end{eqnarray*}\]</span></p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>La differenza interquartile è data da:</li>
+</ol>
+<p><span class="math display">\[\begin{eqnarray*}
+DI_{A} &amp;=&amp; x_{A;\, 0.75} - x_{A;\, 0.25} = 11.17 - 7.395 = 3.775 \,. \\
+DI_{B} &amp;=&amp; x_{B;\, 0.75} - x_{B;\, 0.25} = 13.98 - 7.71  = 6.27 \,.
+\end{eqnarray*}\]</span></p>
+</div>
+<p>2.g Calcolare la varianza, sapendo che
+<span class="math inline">\(\sum_{i=1}^{20} x_{A;\, i}^{2} = 2064.08\)</span> e
+<span class="math inline">\(\sum_{i=1}^{20} x_{B;\, i}^{2} = 3077.31\)</span>.
+2.h Calcolare la deviazione standard.</p>
+<div class="sol">
+<ol start="7" style="list-style-type: lower-alpha">
+<li>Per determinare la varianza, che è il quadrato della deviazione
+standard, si utilizza la formula che consente di ridurre gli errori
+di arrotondamento.</li>
+</ol>
+<p><span class="math display">\[\begin{eqnarray*}
+\sigma_{A}^{2} &amp;=&amp; \frac{1} {n}\ \sum_{i=1}^{n} x_{i}^{2} - \bar{x}^{2}
+                =  \frac{1} {20}\ 2064.08 - (9.38)^{2} = 15.18 \,. \\
+\sigma_{B}^{2} &amp;=&amp; \frac{1} {n}\ \sum_{i=1}^{n} x_{i}^{2} - \bar{x}^{2}
+                =  \frac{1} {20}\ 3077.31 - (11.35)^{2} = 24.96 \,.
+\end{eqnarray*}\]</span></p>
+<ol start="8" style="list-style-type: lower-alpha">
+<li>Per la deviazione standard si ha:</li>
+</ol>
+<p><span class="math display">\[\begin{eqnarray*}
+\sigma_{A} &amp;=&amp; \sqrt{ \frac{1} {n}\ \sum_{i=1}^{n} x_{i}^{2} - \bar{x}^{2} }
+            =  \sqrt{ \frac{1} {20}\ 2064.08 - (9.38)^{2} } = 3.90 \,. \\
+\sigma_{B} &amp;=&amp; \sqrt{ \frac{1} {n}\ \sum_{i=1}^{n} x_{i}^{2} - \bar{x}^{2} }
+            =  \sqrt{ \frac{1} {20}\ 3077.31 - (11.35)^{2} } = 5.00 \,.
+\end{eqnarray*}\]</span></p>
+<p>Idem, come sopra: la variabilità dei dati dell’impianto A è
+inferiore a quella dell’impianto B, che comporta una maggiore
+concentrazione dell’istogramma rafforzando le differenze (tra i
+due impianti) già evidenziate.</p>
+</div>
+<p>2.i La distribuzione è asimmetrica?
+Se sì, di quale tipo di asimmetria si tratta?
+2.j Dalle risposte date, emergono differenze tra i due impianti?</p>
+<div class="sol">
+<ol style="list-style-type: lower-roman">
+<li>La distribuzione dell’impianto A presenta una pronunciata
+asimmetria a destra (obliqua a destra o positiva), mentre quella
+dell’impianto B una minore asimmetria a sinistra (obliqua a sinistra
+o negativa).
+Per verificare numericamente questa affermazione si devono
+confrontare le media e la mediana:</li>
+</ol>
+<p><span class="math display">\[\begin{eqnarray*}
+x_{A;\, 0.5} &amp;=&amp; 8.515\ &lt;\ \bar{x}_{A}= 9.38 \quad\Rightarrow\quad
+                 \mbox{obliqua (o asimmetrica) a destra} \\
+x_{B;\, 0.5} &amp;=&amp; 11.96\ &gt;\ \bar{x}_{B}= 11.35 \quad\Rightarrow\quad
+                 \mbox{obliqua (o asimmetrica) a sinistra}\, .
+\end{eqnarray*}\]</span></p>
+<p>Si noti, tuttavia, che l’asimmetria a sinistra è poco evidente
+perché lo scarto tra i due valori è solo di circa mezzo decimo
+dell’unità, equivalente a circa il 5% del valore della media.</p>
+<ol start="10" style="list-style-type: lower-alpha">
+<li>Dalle risposte date si evincono alcune differenze:</li>
+</ol>
+<ul>
+<li>la media dell’impianto A è inferiore di circa 2 punti;</li>
+<li>la variabilità dell’impianto A è inferiore di quella di B;</li>
+<li>l’asimmetria dell’impianto A è più pronunciata di quella di B.</li>
+</ul>
+<p>Si può concludere che l’impianto A è più efficiente
+dell’impianto B di circa due giorni e risulta anche più
+“costante” nella produzione perché il tempo di produzione
+presenta una variabilità inferiore.</p>
+</div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduzione.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="esercizi-di-probabilità.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Esami_passati_con_soluzioni.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

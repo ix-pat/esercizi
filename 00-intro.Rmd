@@ -33,36 +33,14 @@ source("intro.R")
 ```
 
 
-```{r,results='asis', echo=FALSE}
-
-if (html) cat("
-<style>
-/* Selettore per l'ambiente theorem */
-.example {
-  /* Stili CSS per l'ambiente theorem */
-  background-color: #F0F0F0; /* Colore di sfondo desiderato */
-  border: 1px solid #CCCCCC; /* Colore del bordo desiderato */
-  padding: 10px; /* Spaziatura interna desiderata */
-}
-/* Selettore per il nome del teorema */
-.example .name {
-  /* Stili CSS per il nome del teorema */
-  color: blue; /* Colore del nome del teorema */
-}
-/* Selettore per l'enunciato del teorema */
-.example .example-body {
-  /* Stili CSS per l'enunciato del teorema */
-  color: red; /* Colore dell'enunciato del teorema */
-}
-</style>"
-)
-```
-
 # Avvertenza {-}
 
 \large
 
 Questo lavoro è un work in progress, questa non è la versione definitiva, sconsiglio di stampare tutto. 
+
+
+
 
 \normalsize
 

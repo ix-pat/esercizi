@@ -7,13 +7,22 @@ editor_options:
 source("intro.R")
 s2=1
  
-i2 <- 0
-i1 <- 1
+
 ```
 
 \part{Esercizi per argomento}
 
+
+```{r}
+if (html) cat('')
+```
+  
+
 # Esercizi di Statistica Descrittiva
+
+
+
+<div class="button-container"></div>
 
 ## Versione senza contesto
 
@@ -42,7 +51,7 @@ Sono stati analizzati `r n` individui per investigare su `r nomex`. É riportata
 kable((dat3[1:(k+1),c(1:2,4)]),booktabs=T,escape = F,linesep="")
 ```
 
-`r i2 <- i2+1;item()` Disegnare l'istogramma di densità percentuale.
+`r item(T)` Disegnare l'istogramma di densità percentuale.
 
 :::{.sol data-latex=""}
 Ricordando che: 
@@ -65,7 +74,7 @@ axis(2)
 :::
 
 `r p=0.65; X<-dat2`
-`r i2 <- i2+1;item()`   calcolare il valore approssimato del percentile  $`r p*100`$-esimo, e tracciarlo nell'istogramma.
+`r item()`   calcolare il valore approssimato del percentile  $`r p*100`$-esimo, e tracciarlo nell'istogramma.
 
 :::{.sol data-latex=""}
 ```{r 5,results='asis'}
@@ -83,7 +92,7 @@ text((max(brk)+Q.int(p))/2,2.5,paste((1-p)*100,"%"),cex=3)
 ```
 :::
 
-`r i2 <- i2+1;item()` Qual è il numero di individui con `r nomex` superiore a 5.2?
+`r item()` Qual è il numero di individui con `r nomex` superiore a 5.2?
 
 :::{.sol data-latex=""}
 \begin{eqnarray*}
@@ -96,7 +105,7 @@ text((max(brk)+Q.int(p))/2,2.5,paste((1-p)*100,"%"),cex=3)
 \end{eqnarray*}
 :::  
 
-`r i2 <- i2+1;item()`   Analizzare la relazione tra media, mediana e moda alla luce del istogramma di densità.
+`r item()`   Analizzare la relazione tra media, mediana e moda alla luce del istogramma di densità.
 
 :::{.sol data-latex=""}
 È presente un'evidente asimmetria positiva (coda lunga a dx) e quindi
@@ -123,13 +132,13 @@ nomex <- "dati-x"
 ls2e(stat_base(samp,brk))
 ```
 
-`r i1 <- i1+1; i2 <- 0`   Sono stati analizzati `r n` individui per investigare su `r nomex`. È riportata qui di seguito la distribuzione in classi espressa in frequenza assoluta.
+Sono stati analizzati `r n` individui per investigare su `r nomex`. È riportata qui di seguito la distribuzione in classi espressa in frequenza assoluta.
 
 ```{r}
 tabl((dat3[1:(k+1),c(1:3)]))
 ```
 
-`r i2 <- i2+1;item()`   Disegnare l'istogramma di densità percentuale.
+`r item(T)`   Disegnare l'istogramma di densità percentuale.
 
 :::{.sol data-latex=""}
 Ricordando che: 
@@ -146,7 +155,7 @@ tabl((dat3[1:(k+1),c(1:7)]))
 :::
 
 `r p=0.25; X<-dat2`
-`r i2 <- i2+1;item()`   calcolare il valore approssimato del percentile  $`r p*100`$-esimo, e tracciarlo nell'istogramma.
+`r item()`   calcolare il valore approssimato del percentile  $`r p*100`$-esimo, e tracciarlo nell'istogramma.
 
 :::{.sol data-latex=""}
 ```{r,results='asis'}
@@ -164,7 +173,7 @@ text((max(brk)+Q.int(p))/2,2.5,paste((1-p)*100,"%"),cex=3)
 ```
 :::
 
-`r i2 <- i2+1;item()`  Calcolare il numero di individui maggiori del 75-esimo percentile, $x_{0.75}$
+`r item()`  Calcolare il numero di individui maggiori del 75-esimo percentile, $x_{0.75}$
 
 :::{.sol data-latex=""}
 Per definizione
@@ -181,7 +190,7 @@ calcoliamo il 25% di $n=`r n`$ e otteniamo
 \]
 :::
 
-`r i2 <- i2+1;item()`   calcolare il valore approssimato della media aritmetica  $\bar x$ e della varianza $\sigma^2$.
+`r item()`   calcolare il valore approssimato della media aritmetica  $\bar x$ e della varianza $\sigma^2$.
 
 :::{.sol data-latex=""}
 Calcoliamo i valori medi delle classi $\bar x_j$, il loro quadrato $\bar x_j^2$ e li pesiamo con gli $n_j$
@@ -223,10 +232,10 @@ sper <- paste("$x_{",round(dat2$Fj[-k],2),"}=",br2[-k],"$",sep="")
 
 ```
 
-`r i1 <- i1+1; i2 <- 0`   Sono stati analizzati `r n` individui per investigare su `r nomex`. Sono noti i percentili
+Sono stati analizzati `r n` individui per investigare su `r nomex`. Sono noti i percentili
 `r sper`, il minimo è `r min(brk)`, il massimo è `r max(brk)`.
 
-`r i2 <- i2+1;item()`   Disegnare l'istogramma di densità percentuale.
+`r item(T)`   Disegnare l'istogramma di densità percentuale.
 
 :::{.sol data-latex=""}
 Ricordando che: 
@@ -250,7 +259,7 @@ axis(2)
 ```
 :::
 
-`r i2 <- i2+1;item()`   Calcolare le frequenze assolute
+`r item()`   Calcolare le frequenze assolute
 
 :::{.sol data-latex=""}
 Ricordando che: 
@@ -265,7 +274,7 @@ tabl((dat3[1:(k+1),c(1:2,4:3)]))
 ```
 :::
 
-`r i2 <- i2+1;item()`   Calcolare la percentuale approssimata di individui con `r nomex` inferiore a 45 
+`r item()`   Calcolare la percentuale approssimata di individui con `r nomex` inferiore a 45 
 
 :::{.sol data-latex=""}
 \begin{eqnarray*}
@@ -289,7 +298,7 @@ text((max(brk)+45)/2,0.1,paste((1-round(F.int(45),2))*100,"%"),cex=3)
 :::
 
 
-`r i2 <- i2+1;item()`   Calcolare la percentuale approssimata di individui con `r nomex` compresa tra 45 e il 90-esimo percentile, $x_{0.90}$.
+`r item()`   Calcolare la percentuale approssimata di individui con `r nomex` compresa tra 45 e il 90-esimo percentile, $x_{0.90}$.
 
 :::{.sol data-latex=""}
 Per calcolare
@@ -330,6 +339,10 @@ text((Q.int(.9)+max(brk))/2,.1,paste(10,"%"),cex=3)
 ```
 :::
 
+
+
+<div class="button-container"></div>
+
 ## Varianti con contesto (eserciziario)
 
 ```{r}
@@ -368,8 +381,6 @@ n <- length(samp)
 ```
 
 ### Esercizio: Conteggi 
-
-`r i1 <- i1+1; i2 <- 0`
 
 La figura seguente riporta l'istogramma relativo a un campione
 di 200 imprese classificate sulla base del numero di addetti
@@ -425,26 +436,26 @@ indicato con $x_{p}$, nel quale la $F_{\%; j}(x_{p})$ è uguale
 o supera il $(100 \times p)$%.
 :::
 
-`r i2 <- i2+1;item()` Qual è l'intervallo con il maggior numero di imprese?
+`r item(T)` Qual è l'intervallo con il maggior numero di imprese?
 
 :::{.sol data-latex=""}
 L'intervallo $[10;\ 19]$.
 :::
 
-`r i2 <- i2+1;item()` Qual è il numero di imprese che hanno addetti
+`r item()` Qual è il numero di imprese che hanno addetti
 nella classe $[0,\, 9]$?
 
 :::{.sol data-latex=""}
 $f\left( 0 \vdash 10 \right) = \frac{10 \,\times\, 2} {100}\ 200 = 40$ (circa).
 :::
 
-`r i2 <- i2+1;item()` In quale classe si trova il 15$^{o}$ percentile?
+`r item()` In quale classe si trova il 15$^{o}$ percentile?
 
 :::{.sol data-latex=""}
 Il 15$^{o}$ percentile si trova nella classe $[0;\, 9]$.
 :::
 
-`r i2 <- i2+1;item()` Qual è l'intervallo che contiene la mediana?
+`r item()` Qual è l'intervallo che contiene la mediana?
 
 :::{.sol data-latex=""}
 Il 50\% delle imprese è contenuto esattamente nelle prime due classi.
@@ -457,7 +468,7 @@ potrebbero avere 49 addetti e, in tal caso la mediana sarebbe 49 o
 la media tra 49 e 19.
 :::
 
-`r i2 <- i2+1;item()` In quale classe si trova il 75$^{o}$ percentile?
+`r item()` In quale classe si trova il 75$^{o}$ percentile?
 
 :::{.sol data-latex=""}
 Il 75$^{o}$ percentile si trova nella classe $[50;\, 99]$.
@@ -471,7 +482,7 @@ classe contenente il 75$^{o}$ percentile è la successiva.
 :::
 
 
-`r i2 <- i2+1;item()` Quale relazione ci si deve attendere
+`r item()` Quale relazione ci si deve attendere
 fra media e mediana per i dati proposti?
 
 :::{.sol data-latex=""}
@@ -481,7 +492,7 @@ base ai dati dell'istogramma, eseguendo i calcoli si trova che
 $\bar{x}=43$ e $x_{0,5}=20$.
 :::
 
-`r i2 <- i2+1;item()` Determinare il valore approssimato della mediana,
+`r item()` Determinare il valore approssimato della mediana,
 assumendo la distribuzione uniforme dei casi contenuti nella classe
 che contiene la mediana.
 
@@ -493,7 +504,7 @@ cat(percentile(p = p))
 ```
 :::
 
-`r i2 <- i2+1;item()` Definizione formale di percentile.
+`r item()` Definizione formale di percentile.
 
 :::{.sol data-latex=""}
 Il $p$-esimo percentile ($0 \le p\le 1$) del carattere $X$
@@ -509,7 +520,6 @@ p \times 100 &=& \%(X < x_{p}) \qquad \mbox{Area\ totale\ uguale\ 100}
 
 ### Esercizio Dati Continui
 
-`r i1 <- i1+1; i2 <- 0`
 
 ```{r}
 # Basic settings
@@ -567,7 +577,7 @@ segments(0,dat2$hj,dat2$xinf,dat2$hj,lty=2)
 
 ```
 
-`r i2 <- i2+1;item()` Qual è la percentuale di autovetture comprese nella seconda classe?
+`r item(T)` Qual è la percentuale di autovetture comprese nella seconda classe?
 
 :::{.sol data-latex=""} 
 La seconda classe ha ampiezza pari a $1200 - 800 = 400$.
@@ -576,7 +586,7 @@ percentuale di autoveicoli con cilindrata compresa in tale
 intervallo è $0.0925 \times 400 = 37\%$. 
 :::
 
-`r i2 <- i2+1;item()` In quale classe cade la mediana?
+`r item()` In quale classe cade la mediana?
 
 :::{.sol data-latex=""} 
 La percentuale di autoveicoli nella prima classe è
@@ -589,7 +599,7 @@ $8\% +37\% +31\% > 50\%$, la mediana appartiene
 alla terza classe, ovvero è compresa fra 1200cc e 1600cc. 
 :::
 
-`r i2 <- i2+1;item()` Determinare il valore approssimato della mediana,
+`r item()` Determinare il valore approssimato della mediana,
 assumendo la distribuzione uniforme dei casi contenuti
 nella classe che contiene la mediana.
 
@@ -601,7 +611,7 @@ cat(percentile(p = p))
 ```
 :::
 
-`r i2 <- i2+1;item()` Qual è la "classe modale" ?
+`r item()` Qual è la "classe modale" ?
 
 :::{.sol data-latex=""} 
 La "classe modale" è quella con la massima densità di frequenza
@@ -615,7 +625,7 @@ osservare considerando le unità di misura del grafico e i
 relativi valori. 
 :::
 
-`r i2 <- i2+1;item()` Giulio ha una macchina con cilindrata pari a 625cc. Indicare la risposta corretta:
+`r item()` Giulio ha una macchina con cilindrata pari a 625cc. Indicare la risposta corretta:
 
 - $\Box \;$ l'auto di Giulio è molto potente, infatti meno del 9\% delle auto ha cilindrata inferiore 
 - $\Box \;$ l'auto di Giulio è molto potente, infatti più del 90\% delle auto ha cilindrata inferiore 
@@ -628,7 +638,6 @@ l'auto di Giulio è poco potente, infatti meno del 9\% delle auto ha cilindrata 
 
 ### Esercizio (variante 1) 
 
-`r i1 <- i1+1; i2 <- 0`
 
 La distribuzione delle frequenze assolute della cilindrata
 delle autovetture iscritte al Pubblico Registro Automobilistico
@@ -641,13 +650,13 @@ pari a 3000 (decine di migliaia, si veda l'esercizio precedente).
 kable((dat3[1:(k),1:3]),booktabs=T,escape = F,linesep="")
 ```
 
-`r i2 <- i2+1;item()` Qual è la percentuale di autovetture comprese nella seconda classe?
+`r item(T)` Qual è la percentuale di autovetture comprese nella seconda classe?
 
 :::{.sol data-latex=""} 
 $f_{\%;\, 2} = 100 \,\times\, 1110/3000 = 37\%$. 
 :::
 
-`r i2 <- i2+1;item()` In quale classe cade la mediana?
+`r item()` In quale classe cade la mediana?
 
 :::{.sol data-latex=""} 
 Per individuare la classe che contiene la mediana,
@@ -683,7 +692,6 @@ ordinate.
 
 ### Esercizio (variante 2)
 
-`r i1 <- i1+1; i2 <- 0`
 
 La distribuzione delle frequenze relative della cilindrata
 delle autovetture iscritte al Pubblico Registro Automobilistico
@@ -696,7 +704,7 @@ di migliaia ($10^{5}$).
 kable((dat3[1:(k),c(1:2,4)]),booktabs=T,escape = F,linesep="")
 ```
 
-`r i2 <- i2+1;item()` Disegnare l'istogramma (delle densità relative) della
+`r item(T)` Disegnare l'istogramma (delle densità relative) della
 distribuzione della cilindrata delle auto in circolazione.
 
 :::{.sol data-latex=""} 
@@ -723,7 +731,6 @@ Le altre domande possono essere simili alle precedenti.
 
 ### Esercizio (variante 3) 
 
-`r i1 <- i1+1; i2 <- 0`
 
 L'esame della distribuzione della cilindrata delle autovetture
 iscritte al Pubblico Registro Automobilistico (dati aggiornati
@@ -753,7 +760,7 @@ verbali sembra ovvia:
 Il minimo e il massimo sono, rispettivamente,
 $x_{\min}=$ 400 e $x_{\max}= 3500$.
 
-`r i2 <- i2+1;item()` Disegnare l'istogramma (delle densità percentuali) della
+`r item(T)` Disegnare l'istogramma (delle densità percentuali) della
 distribuzione della cilindrata delle auto in circolazione.
 
 :::{.sol data-latex=""} 
@@ -825,7 +832,6 @@ segments(0,dat2$hj,dat2$xinf,dat2$hj,lty=2)
 
 ### Esercizio Dati non ordinati
 
-`r i1 <- i1+1; i2 <- 0`
 
 Con riferimento a molti processi industriali, si usa il
 termine "Work-In-Process" (spesso abbreviato con WIP).
@@ -856,9 +862,9 @@ kable(stp,booktabs=T,escape = F,linesep="",row.names = T)
 
 Determinare:             
 
-`r i2 <- i2+1;item()`  il campo di variazione,
-`r i2 <- i2+1;item()` la mediana,
-`r i2 <- i2+1;item()`  la media sapendo che la somma è pari a 187.64 per l'impianto A e 227.07 per l'impianto B.
+`r item(T)`  il campo di variazione,
+`r item()` la mediana,
+`r item()`  la media sapendo che la somma è pari a 187.64 per l'impianto A e 227.07 per l'impianto B.
 
 :::{.sol data-latex=""} 
 Per rispondere alle tre domande conviene ordinare prima i dati, come
@@ -922,9 +928,9 @@ dell'impianto B perché A produce in un tempo medio inferiore
 a quello di B. 
 :::
 
-`r i2 <- i2+1;item()`  $\,$il primo quartile,
-`r i2 <- i2+1;item()`  $\,$il terzo quartile,
-`r i2 <- i2+1;item()`  $\,$la differenza interquartile.
+`r item()`  $\,$il primo quartile,
+`r item()`  $\,$il terzo quartile,
+`r item()`  $\,$la differenza interquartile.
 
 :::{.sol data-latex=""} 
 Si ragiona sui dati ordinati sopra riportati. 
@@ -983,10 +989,10 @@ DI_{B} &=& x_{B;\, 0.75} - x_{B;\, 0.25} = 13.98 - 7.71  = 6.27 \,.
 \end{eqnarray*}
 :::
 
-`r i2 <- i2+1;item()` Calcolare la varianza, sapendo che
+`r item()` Calcolare la varianza, sapendo che
 $\sum_{i=1}^{20} x_{A;\, i}^{2} = 2064.08$ e
 $\sum_{i=1}^{20} x_{B;\, i}^{2} = 3077.31$. 
-`r i2 <- i2+1;item()` Calcolare la deviazione standard.
+`r item()` Calcolare la deviazione standard.
 
 :::{.sol data-latex=""} 
 
@@ -1019,9 +1025,9 @@ concentrazione dell'istogramma rafforzando le differenze (tra i
 due impianti) già evidenziate. 
 :::
 
-`r i2 <- i2+1;item()`   La distribuzione è asimmetrica?
+`r item()`   La distribuzione è asimmetrica?
 Se sì, di quale tipo di asimmetria si tratta?
-`r i2 <- i2+1;item()`  Dalle risposte date, emergono differenze tra i due impianti?
+`r item()`  Dalle risposte date, emergono differenze tra i due impianti?
 
 :::{.sol data-latex=""} 
 i.  La distribuzione dell'impianto A presenta una pronunciata

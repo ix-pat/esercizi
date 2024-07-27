@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Test del Chi-quadro per indipendenza | Eserciziario di Statistica</title>
+  <meta name="description" content="Appunti sparsi" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Test del Chi-quadro per indipendenza | Eserciziario di Statistica" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Appunti sparsi" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Test del Chi-quadro per indipendenza | Eserciziario di Statistica" />
+  
+  <meta name="twitter:description" content="Appunti sparsi" />
+  
+
+<meta name="author" content="Patrizio Frederic" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="test-e-intervalli-di-confidenza.html"/>
+<link rel="next" href="test-del-chi-quadro-per-conformità.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Funzione per alternare la visibilità di un singolo blocco sol
+  function toggleSolution(event) {
+    var block = event.target.nextElementSibling;
+    if (block.style.display === 'none' || block.style.display === '') {
+      block.style.display = 'block';
+    } else {
+      block.style.display = 'none';
+    }
+  }
+
+  // Trova tutti i blocchi .sol
+  var elements = document.querySelectorAll('.sol');
+  elements.forEach(function(el) {
+    // Crea un nuovo bottone per ogni blocco .sol
+    var button = document.createElement('button');
+    button.innerHTML = 'Mostra/Nascondi Soluzione';
+    button.onclick = toggleSolution;
+    // Inserisce il bottone prima del blocco .sol
+    el.parentNode.insertBefore(button, el);
+  });
+});
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://frederic.economia.unimore.it/">Statistica Home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Eserciziario</a></li>
+<li class="chapter" data-level="" data-path="avvertenza.html"><a href="avvertenza.html"><i class="fa fa-check"></i>Avvertenza</a></li>
+<li class="chapter" data-level="" data-path="introduzione.html"><a href="introduzione.html"><i class="fa fa-check"></i>Introduzione</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html"><i class="fa fa-check"></i>Esercizi di Statistica Descrittiva</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#versione-senza-contesto"><i class="fa fa-check"></i>Versione senza contesto</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#variante-a"><i class="fa fa-check"></i>Variante A</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#variante-b"><i class="fa fa-check"></i>Variante B</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#variante-c"><i class="fa fa-check"></i>Variante C</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#varianti-con-contesto-eserciziario"><i class="fa fa-check"></i>Varianti con contesto (eserciziario)</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-conteggi"><i class="fa fa-check"></i>Esercizio: Conteggi</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-dati-continui"><i class="fa fa-check"></i>Esercizio Dati Continui</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-1"><i class="fa fa-check"></i>Esercizio (variante 1)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-2"><i class="fa fa-check"></i>Esercizio (variante 2)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-variante-3"><i class="fa fa-check"></i>Esercizio (variante 3)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#esercizio-dati-non-ordinati"><i class="fa fa-check"></i>Esercizio Dati non ordinati</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html"><i class="fa fa-check"></i>Esercizi di probabilità</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#due-urne"><i class="fa fa-check"></i>Due urne</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#valigetta"><i class="fa fa-check"></i>Valigetta</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urna"><i class="fa fa-check"></i>Urna</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#applicazione-regole"><i class="fa fa-check"></i>Applicazione regole</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#studente"><i class="fa fa-check"></i>Studente</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#giulio-e-il-treno"><i class="fa fa-check"></i>Giulio e il treno</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#somma-di-due-dadi"><i class="fa fa-check"></i>Somma di due dadi</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#scatola-e-biglietti"><i class="fa fa-check"></i>Scatola e biglietti</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urna-con-colori-e-lettere-diverse"><i class="fa fa-check"></i>Urna con colori e lettere diverse</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urne-che-portano-ad-altre-urne"><i class="fa fa-check"></i>Urne che portano ad altre urne</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#estrazioni-con-e-senza-reintroduzione"><i class="fa fa-check"></i>Estrazioni con e senza reintroduzione</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urne-e-palline-numerate"><i class="fa fa-check"></i>Urne e palline numerate</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html"><i class="fa fa-check"></i>Esercizi Di Probabilità e Variabili Casuali</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-1"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-2"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-3"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-4"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes"><i class="fa fa-check"></i>Esercizio sul Teorema di Bayes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html"><i class="fa fa-check"></i>Esercizi sul TLC</a>
+<ul>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#una-vc-qualunque-somma-s_n"><i class="fa fa-check"></i>Una VC qualunque: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#una-vc-qualunque-media-barx"><i class="fa fa-check"></i>Una VC qualunque: media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#unurna-somma-s_n"><i class="fa fa-check"></i>Un’urna: somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#unurna-media-barx"><i class="fa fa-check"></i>Un’urna: media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-somma-s_n"><i class="fa fa-check"></i>2 Urne: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-media-barx"><i class="fa fa-check"></i>2 Urne: Media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-media-barx-1"><i class="fa fa-check"></i>2 Urne: Media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#bernoulli-somma-s_n"><i class="fa fa-check"></i>Bernoulli: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#bernoulli-proporzione-widehatpi"><i class="fa fa-check"></i>Bernoulli: Proporzione, <span class="math inline">\(\widehat{\pi}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#urne-proporzione-widehatpi"><i class="fa fa-check"></i>2 Urne: Proporzione, <span class="math inline">\(\widehat{\pi}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#poisson-somma-s_n"><i class="fa fa-check"></i>Poisson: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#poisson-media-barx"><i class="fa fa-check"></i>Poisson: Media, <span class="math inline">\(\bar{X}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#poisson-somma-s_n-1"><i class="fa fa-check"></i>Poisson: Somma, <span class="math inline">\(S_{n}\)</span></a></li>
+<li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html#proporzione-poisson-widehatpi"><i class="fa fa-check"></i>Proporzione – Poisson, <span class="math inline">\(\widehat{\pi}\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html"><i class="fa fa-check"></i>Test e Intervalli di Confidenza</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#un-campione-idc-e-test-per-mu-sigma-nota-z-test."><i class="fa fa-check"></i>Un campione, IdC e test per <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span> nota (z test).</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#un-campione-idc-e-test-per-mu-sigma-incognita-t-test."><i class="fa fa-check"></i>Un campione, IdC e test per <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span> incognita (t test).</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#un-campione-idc-e-test-per-pi-z-test."><i class="fa fa-check"></i>Un campione, IdC e test per <span class="math inline">\(\pi\)</span> (z test).</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#t-test-a-due-campioni"><i class="fa fa-check"></i>t-Test a due campioni</a></li>
+<li class="chapter" data-level="" data-path="test-e-intervalli-di-confidenza.html"><a href="test-e-intervalli-di-confidenza.html#due-campioni-proporzione"><i class="fa fa-check"></i>Due campioni: proporzione</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html"><i class="fa fa-check"></i>Test del Chi-quadro per indipendenza</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-1-1"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-2-1"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-3-1"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-4-1"><i class="fa fa-check"></i>Esercizio 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html"><i class="fa fa-check"></i>Test del Chi-quadro per conformità</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html#esercizio-1-2"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html#esercizio-2-2"><i class="fa fa-check"></i>Esercizio 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html"><i class="fa fa-check"></i>Esericizi sulla Regressione</a>
+<ul>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-dati-maternità-usa"><i class="fa fa-check"></i>Esercizio (Dati maternità USA)</a>
+<ul>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#i-dati"><i class="fa fa-check"></i>I dati</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#la-matrice-dei-dati"><i class="fa fa-check"></i>La matrice dei dati</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#la-rappresentazione-dei-dati"><i class="fa fa-check"></i>La rappresentazione dei dati</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-1-3"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-2-3"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-3-2"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-4-2"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-5"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-6"><i class="fa fa-check"></i>Esercizio 6</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-7"><i class="fa fa-check"></i>Esercizio 7</a></li>
+<li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html#esercizio-8"><i class="fa fa-check"></i>Esercizio 8</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html"><i class="fa fa-check"></i>Anno 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210611-1"><i class="fa fa-check"></i>Prova di Statistica 2021/06/11-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-4"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-4"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-3"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-3"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-1"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-1"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210611-2"><i class="fa fa-check"></i>Prova di Statistica 2021/06/11-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-5"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-5"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-4"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-4"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-2"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-2"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210630-1"><i class="fa fa-check"></i>Prova di Statistica 2021/06/30-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-6"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-6"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-5"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-5"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-3"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-3"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210630-2"><i class="fa fa-check"></i>Prova di Statistica 2021/06/30-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-7"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-7"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-6"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-6"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-4"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-4"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210722-1"><i class="fa fa-check"></i>Prova di Statistica 2021/07/22-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-8"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-8"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-7"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-7"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-5"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-5"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210722-2"><i class="fa fa-check"></i>Prova di Statistica 2021/07/22-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-9"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-9"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-8"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-8"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-6"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-6"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#prova-di-statistica-20210906-1"><i class="fa fa-check"></i>Prova di Statistica 2021/09/06-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-1-10"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-2-10"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-3-9"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-4-9"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-5-7"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2021.html"><a href="anno-2021.html#esercizio-6-7"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html"><i class="fa fa-check"></i>Anno 2022</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220616-1"><i class="fa fa-check"></i>Prova di Statistica 2022/06/16-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-11"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-11"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-10"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-10"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-8"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-8"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220616-2"><i class="fa fa-check"></i>Prova di Statistica 2022/06/16-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-12"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-12"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-11"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-11"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-9"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-9"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220616-3"><i class="fa fa-check"></i>Prova di Statistica 2022/06/16-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-13"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-13"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-12"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-12"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-10"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-10"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220701-1"><i class="fa fa-check"></i>Prova di Statistica 2022/07/01-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-14"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-14"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-13"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-13"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-11"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-11"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220701-2"><i class="fa fa-check"></i>Prova di Statistica 2022/07/01-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-15"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-15"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-14"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-14"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-12"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-12"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220701-3"><i class="fa fa-check"></i>Prova di Statistica 2022/07/01-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-16"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-16"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-15"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-15"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-13"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-13"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220727-1"><i class="fa fa-check"></i>Prova di Statistica 2022/07/27-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-17"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-17"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-16"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-16"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-14"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-14"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220727-2"><i class="fa fa-check"></i>Prova di Statistica 2022/07/27-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-18"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-18"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-17"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-17"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-15"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-15"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#prova-di-statistica-20220727-3"><i class="fa fa-check"></i>Prova di Statistica 2022/07/27-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-1-19"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-2-19"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-3-18"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-4-18"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-5-16"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2022.html"><a href="anno-2022.html#esercizio-6-16"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html"><i class="fa fa-check"></i>Anno 2023</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230111-1"><i class="fa fa-check"></i>Prova di Statistica 2023/01/11-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-20"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-20"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-19"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-19"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-17"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-17"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230111-2"><i class="fa fa-check"></i>Prova di Statistica 2023/01/11-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-21"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-21"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-20"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-20"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-18"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-18"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230111-3"><i class="fa fa-check"></i>Prova di Statistica 2023/01/11-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-22"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-22"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-21"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-21"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-19"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-19"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230216-1"><i class="fa fa-check"></i>Prova di Statistica 2023/02/16-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-23"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-23"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-22"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-22"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-20"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-20"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230216-2"><i class="fa fa-check"></i>Prova di Statistica 2023/02/16-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-24"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-24"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-23"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-23"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-21"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-21"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230216-3"><i class="fa fa-check"></i>Prova di Statistica 2023/02/16-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-25"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-25"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-24"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-24"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-22"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-22"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230608-1"><i class="fa fa-check"></i>Prova di Statistica 2023/06/08-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-26"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-26"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-25"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-25"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-23"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230608-2"><i class="fa fa-check"></i>Prova di Statistica 2023/06/08-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-27"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-27"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-26"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-26"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-24"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-23"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230608-3"><i class="fa fa-check"></i>Prova di Statistica 2023/06/08-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-28"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-28"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-27"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-27"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-25"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-24"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230627-1"><i class="fa fa-check"></i>Prova di Statistica 2023/06/27-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-29"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-29"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-28"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-28"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-26"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-25"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230627-2"><i class="fa fa-check"></i>Prova di Statistica 2023/06/27-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-30"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-30"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-29"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-29"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-27"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-26"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230627-3"><i class="fa fa-check"></i>Prova di Statistica 2023/06/27-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-31"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-31"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-30"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-30"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-28"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-27"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230723-1"><i class="fa fa-check"></i>Prova di Statistica 2023/07/23-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-32"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-32"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-31"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-31"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-29"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-28"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230723-2"><i class="fa fa-check"></i>Prova di Statistica 2023/07/23-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-33"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-33"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-32"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-32"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-30"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-29"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#prova-di-statistica-20230723-3"><i class="fa fa-check"></i>Prova di Statistica 2023/07/23-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-1-34"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-2-34"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-3-33"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-4-33"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-5-31"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2023.html"><a href="anno-2023.html#esercizio-6-30"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html"><i class="fa fa-check"></i>Anno 2024</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240603-1"><i class="fa fa-check"></i>Prova di Statistica 2024/06/03-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-35"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-35"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-34"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-34"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-32"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240603-2"><i class="fa fa-check"></i>Prova di Statistica 2024/06/03-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-36"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-36"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-35"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-35"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-33"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240603-3"><i class="fa fa-check"></i>Prova di Statistica 2024/06/03-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-37"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-37"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-36"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-36"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-34"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-31"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240621-1"><i class="fa fa-check"></i>Prova di Statistica 2024/06/21-1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-38"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-38"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-37"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-37"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-35"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240621-2"><i class="fa fa-check"></i>Prova di Statistica 2024/06/21-2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-39"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-39"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-38"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-38"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-36"><i class="fa fa-check"></i>Esercizio 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-20240621-3"><i class="fa fa-check"></i>Prova di Statistica 2024/06/21-3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-40"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-40"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-39"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-39"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-37"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-32"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-240706--1"><i class="fa fa-check"></i>Prova di Statistica 24/07/06 -1</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-41"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-41"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-40"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-40"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-38"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-33"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-240706--2"><i class="fa fa-check"></i>Prova di Statistica 24/07/06 -2</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-42"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-42"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-41"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-41"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-39"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-34"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#prova-di-statistica-240706--3"><i class="fa fa-check"></i>Prova di Statistica 24/07/06 -3</a>
+<ul>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-1-43"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-2-43"><i class="fa fa-check"></i>Esercizio 2</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-3-42"><i class="fa fa-check"></i>Esercizio 3</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-4-42"><i class="fa fa-check"></i>Esercizio 4</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-5-40"><i class="fa fa-check"></i>Esercizio 5</a></li>
+<li class="chapter" data-level="" data-path="anno-2024.html"><a href="anno-2024.html#esercizio-6-35"><i class="fa fa-check"></i>Esercizio 6</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Eserciziario di Statistica</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="test-del-chi-quadro-per-indipendenza" class="section level1 hasAnchor">
+<h1>Test del Chi-quadro per indipendenza<a href="test-del-chi-quadro-per-indipendenza.html#test-del-chi-quadro-per-indipendenza" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="button-container">
+
+</div>
+<div id="esercizio-1-1" class="section level2 hasAnchor">
+<h2>Esercizio 1<a href="test-del-chi-quadro-per-indipendenza.html#esercizio-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In uno studio sulle preferenze di gusti di gelato è stato chiesto ad un campione di 200 persone, divise tra 100 uomini e 100 donne, di esprimere la propria preferenza tra quattro gusti di gelato (Cioccolato, Fragola, Vaniglia e Limone).</p>
+<p>Qui di seguito è riportata la tavola di contingenza:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Cioccolato
+</th>
+<th style="text-align:right;">
+Fragola
+</th>
+<th style="text-align:right;">
+Vaniglia
+</th>
+<th style="text-align:right;">
+Limone
+</th>
+<th style="text-align:right;">
+Tot
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Uomo
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Donna
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Tot
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+210
+</td>
+</tr>
+</tbody>
+</table>
+<p>Testare l’ipotesi che vi sia indipendenza tra genere e preferenza tra le profumazioni.</p>
+<div class="sol">
+<p><strong>Test <span class="math inline">\(\chi^2\)</span> per indipendenza</strong></p>
+<p><span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI
+<span class="math display">\[
+\Big\{H_0:\pi_{ij}=\pi_{i\bullet}\pi_{\bullet j}
+\]</span>
+<span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(\chi^2\)</span></p>
+Si usa il test <span class="math inline">\(\chi^2\)</span>, si crea la tabella delle frequenze teoriche
+<span class="math display">\[
+n_{ij}^*=\frac{n_{i\bullet}n_{\bullet j}}{n}
+\]</span>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Cioccolato
+</th>
+<th style="text-align:right;">
+Fragola
+</th>
+<th style="text-align:right;">
+Vaniglia
+</th>
+<th style="text-align:right;">
+Limone
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Uomo
+</td>
+<td style="text-align:right;">
+23.57
+</td>
+<td style="text-align:right;">
+13.1
+</td>
+<td style="text-align:right;">
+36.67
+</td>
+<td style="text-align:right;">
+36.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Donna
+</td>
+<td style="text-align:right;">
+21.43
+</td>
+<td style="text-align:right;">
+11.9
+</td>
+<td style="text-align:right;">
+33.33
+</td>
+<td style="text-align:right;">
+33.33
+</td>
+</tr>
+</tbody>
+</table>
+La tabella delle distanze
+<span class="math display">\[
+\frac{(n_{ij}-n_{ij}^*)^2}{n_{ij}^*}
+\]</span>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Cioccolato
+</th>
+<th style="text-align:right;">
+Fragola
+</th>
+<th style="text-align:right;">
+Vaniglia
+</th>
+<th style="text-align:right;">
+Limone
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Uomo
+</td>
+<td style="text-align:right;">
+0.087
+</td>
+<td style="text-align:right;">
+0.277
+</td>
+<td style="text-align:right;">
+1.212
+</td>
+<td style="text-align:right;">
+0.303
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Donna
+</td>
+<td style="text-align:right;">
+0.095
+</td>
+<td style="text-align:right;">
+0.305
+</td>
+<td style="text-align:right;">
+1.333
+</td>
+<td style="text-align:right;">
+0.333
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+    \chi^2_{obs}= 3.945
+  \]</span></p>
+<p>i <span class="math inline">\(gdl\)</span></p>
+<p><span class="math display">\[
+    ( 2 -1)\times( 4 -1)= 3
+  \]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(\chi^2_{3;0.1}=6.2514\)</span>; <span class="math inline">\(\chi^2_{3;0.05}=7.8147\)</span>; <span class="math inline">\(\chi^2_{3;0.01}=11.3449\)</span>; <span class="math inline">\(\chi^2_{3;0.001}=16.2662\)</span></p>
+<p>Siccome</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(\chi^2_{3}&gt;3.95)=0.266914089227996 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la distribuzione <span class="math inline">\(\chi^2\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.1 \leq p_\text{value}= 0.2669 &lt; 1
+\]</span></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+<div id="esercizio-2-1" class="section level2 hasAnchor">
+<h2>Esercizio 2<a href="test-del-chi-quadro-per-indipendenza.html#esercizio-2-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In uno studio sulle preferenze di bevande è stato chiesto ad un campione di 180 persone di esprimere la propria preferenza tra tre tipi di bevande (Acqua, Succo d’arancia e Bibita gassata). Le persone sono state suddivise in due gruppi, chi mangia regolarmente frutta e chi no.</p>
+<p>Qui di seguito è riportata la tavola di contingenza:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Acqua
+</th>
+<th style="text-align:right;">
+Succo d’arancia
+</th>
+<th style="text-align:right;">
+Bibita gassata
+</th>
+<th style="text-align:right;">
+Tot
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+consuma frutta
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+non consuma frutta
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Tot
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+180
+</td>
+</tr>
+</tbody>
+</table>
+<p>Testare l’ipotesi che vi sia indipendenza tra consumo abituale di frutta e preferenza di bevande.</p>
+<div class="sol">
+<p><strong>Test <span class="math inline">\(\chi^2\)</span> per indipendenza</strong></p>
+<p><span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI
+<span class="math display">\[
+\Big\{H_0:\pi_{ij}=\pi_{i\bullet}\pi_{\bullet j}
+\]</span>
+<span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(\chi^2\)</span></p>
+Si usa il test <span class="math inline">\(\chi^2\)</span>, si crea la tabella delle frequenze teoriche
+<span class="math display">\[
+n_{ij}^*=\frac{n_{i\bullet}n_{\bullet j}}{n}
+\]</span>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Acqua
+</th>
+<th style="text-align:right;">
+Succo d’arancia
+</th>
+<th style="text-align:right;">
+Bibita gassata
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+consuma frutta
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+27.5
+</td>
+<td style="text-align:right;">
+27.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+non consuma frutta
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+27.5
+</td>
+<td style="text-align:right;">
+27.5
+</td>
+</tr>
+</tbody>
+</table>
+La tabella delle distanze
+<span class="math display">\[
+\frac{(n_{ij}-n_{ij}^*)^2}{n_{ij}^*}
+\]</span>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Acqua
+</th>
+<th style="text-align:right;">
+Succo d’arancia
+</th>
+<th style="text-align:right;">
+Bibita gassata
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+consuma frutta
+</td>
+<td style="text-align:right;">
+0.714
+</td>
+<td style="text-align:right;">
+0.227
+</td>
+<td style="text-align:right;">
+2.045
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+non consuma frutta
+</td>
+<td style="text-align:right;">
+0.714
+</td>
+<td style="text-align:right;">
+0.227
+</td>
+<td style="text-align:right;">
+2.045
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+    \chi^2_{obs}= 5.974
+  \]</span></p>
+<p>i <span class="math inline">\(gdl\)</span></p>
+<p><span class="math display">\[
+    ( 2 -1)\times( 3 -1)= 2
+  \]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(\chi^2_{2;0.1}=4.6052\)</span>; <span class="math inline">\(\chi^2_{2;0.05}=5.9915\)</span>; <span class="math inline">\(\chi^2_{2;0.01}=9.2103\)</span>; <span class="math inline">\(\chi^2_{2;0.001}=13.8155\)</span></p>
+<p>Siccome <span class="math inline">\(4.6052&lt;\chi^2_\text{obs}=5.974&lt;5.9915\)</span>, indecisione sul rifiuto di <span class="math inline">\(H_0\)</span> al 10%, <span class="math inline">\(0.05&lt;p_\text{value}&lt;0.1\)</span>,</p>
+<p><em>marginalmente significativo</em> <span class="math inline">\(\fbox{.}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(\chi^2_{2}&gt;5.97)=0.0505395035491347 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la distribuzione <span class="math inline">\(\chi^2\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.05 \leq p_\text{value}= 0.05054 &lt; 0.1
+\]</span></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+<div id="esercizio-3-1" class="section level2 hasAnchor">
+<h2>Esercizio 3<a href="test-del-chi-quadro-per-indipendenza.html#esercizio-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In uno studio sulle opinioni riguardo al tema del “Matrimonio tra persone dello stesso sesso” è stato chiesto ad un campione di 180 persone di esprimere la propria opinione scegliendo tra tre possibilità (Sostenitore, Neutrale, Contrario). Le persone sono state suddivise in due gruppi, “Elettori di Destra” e “Elettori di Sinistra”.</p>
+<p>Qui di seguito è riportata la tavola di contingenza:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Sostenitore
+</th>
+<th style="text-align:right;">
+Neutrale
+</th>
+<th style="text-align:right;">
+Contrario
+</th>
+<th style="text-align:right;">
+Tot
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Elettori di Destra
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Elettori di Sinistra
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+75
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Tot
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+160
+</td>
+</tr>
+</tbody>
+</table>
+<p>Testare l’ipotesi che vi sia indipendenza tra l’opinione riguardo al tema “Matrimonio tra persone dello stesso sesso” e l’appartenenza ai gruppi “Elettori di Destra” e “Elettori di Sinistra”.</p>
+<div class="sol">
+<p><strong>Test <span class="math inline">\(\chi^2\)</span> per indipendenza</strong></p>
+<p><span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI
+<span class="math display">\[
+\Big\{H_0:\pi_{ij}=\pi_{i\bullet}\pi_{\bullet j}
+\]</span>
+<span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(\chi^2\)</span></p>
+Si usa il test <span class="math inline">\(\chi^2\)</span>, si crea la tabella delle frequenze teoriche
+<span class="math display">\[
+n_{ij}^*=\frac{n_{i\bullet}n_{\bullet j}}{n}
+\]</span>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Sostenitore
+</th>
+<th style="text-align:right;">
+Neutrale
+</th>
+<th style="text-align:right;">
+Contrario
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Elettori di Destra
+</td>
+<td style="text-align:right;">
+37.19
+</td>
+<td style="text-align:right;">
+18.59
+</td>
+<td style="text-align:right;">
+29.22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Elettori di Sinistra
+</td>
+<td style="text-align:right;">
+32.81
+</td>
+<td style="text-align:right;">
+16.41
+</td>
+<td style="text-align:right;">
+25.78
+</td>
+</tr>
+</tbody>
+</table>
+La tabella delle distanze
+<span class="math display">\[
+\frac{(n_{ij}-n_{ij}^*)^2}{n_{ij}^*}
+\]</span>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Sostenitore
+</th>
+<th style="text-align:right;">
+Neutrale
+</th>
+<th style="text-align:right;">
+Contrario
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Elettori di Destra
+</td>
+<td style="text-align:right;">
+0.213
+</td>
+<td style="text-align:right;">
+3.972
+</td>
+<td style="text-align:right;">
+1.144
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Elettori di Sinistra
+</td>
+<td style="text-align:right;">
+0.241
+</td>
+<td style="text-align:right;">
+4.501
+</td>
+<td style="text-align:right;">
+1.296
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+    \chi^2_{obs}= 11.37
+  \]</span></p>
+<p>i <span class="math inline">\(gdl\)</span></p>
+<p><span class="math display">\[
+    ( 2 -1)\times( 3 -1)= 2
+  \]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(\chi^2_{2;0.1}=4.6052\)</span>; <span class="math inline">\(\chi^2_{2;0.05}=5.9915\)</span>; <span class="math inline">\(\chi^2_{2;0.01}=9.2103\)</span>; <span class="math inline">\(\chi^2_{2;0.001}=13.8155\)</span></p>
+<p>Siccome <span class="math inline">\(9.2103&lt;\chi^2_\text{obs}=11.3675&lt;13.8155\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> all’1%, <span class="math inline">\(0.001&lt;p_\text{value}&lt;0.01\)</span>,</p>
+<p><em>molto significativo</em> <span class="math inline">\(\fbox{**}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(\chi^2_{2}&gt;11.37)=0.00339653324963196 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la distribuzione <span class="math inline">\(\chi^2\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0.001 \leq p_\text{value}= 0.003397 &lt; 0.01
+\]</span></p>
+</div>
+<div class="button-container">
+
+</div>
+</div>
+<div id="esercizio-4-1" class="section level2 hasAnchor">
+<h2>Esercizio 4<a href="test-del-chi-quadro-per-indipendenza.html#esercizio-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In uno studio sociologico sulle preferenze di attività ricreative è stato chiesto ad un campione di 270 persone di esprimere la propria preferenza tra tre tipi di attività (Sport, Lettura e Arte). Le persone sono state suddivise in tre gruppi, “Giovani”, “Adulti” e “Anziani”.</p>
+<p>Qui di seguito è riportata la tavola di contingenza:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Sport
+</th>
+<th style="text-align:right;">
+Lettura
+</th>
+<th style="text-align:right;">
+Arte
+</th>
+<th style="text-align:right;">
+Tot
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Giovani
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Adulti
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+115
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Anziani
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Tot
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+295
+</td>
+</tr>
+</tbody>
+</table>
+<p>Testare l’ipotesi che vi sia indipendenza tra la preferenza per le attività ricreative e l’età.</p>
+<div class="sol">
+<p><strong>Test <span class="math inline">\(\chi^2\)</span> per indipendenza</strong></p>
+<p><span class="math inline">\(\fbox{A}\)</span> FORMULAZIONE DELLE IPOTESI
+<span class="math display">\[
+\Big\{H_0:\pi_{ij}=\pi_{i\bullet}\pi_{\bullet j}
+\]</span>
+<span class="math inline">\(\fbox{B}\)</span> SCELTA E CALCOLO STATISTICA-TEST, <span class="math inline">\(\chi^2\)</span></p>
+Si usa il test <span class="math inline">\(\chi^2\)</span>, si crea la tabella delle frequenze teoriche
+<span class="math display">\[
+n_{ij}^*=\frac{n_{i\bullet}n_{\bullet j}}{n}
+\]</span>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Sport
+</th>
+<th style="text-align:right;">
+Lettura
+</th>
+<th style="text-align:right;">
+Arte
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Giovani
+</td>
+<td style="text-align:right;">
+37.29
+</td>
+<td style="text-align:right;">
+41.02
+</td>
+<td style="text-align:right;">
+31.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Adulti
+</td>
+<td style="text-align:right;">
+38.98
+</td>
+<td style="text-align:right;">
+42.88
+</td>
+<td style="text-align:right;">
+33.14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Anziani
+</td>
+<td style="text-align:right;">
+23.73
+</td>
+<td style="text-align:right;">
+26.10
+</td>
+<td style="text-align:right;">
+20.17
+</td>
+</tr>
+</tbody>
+</table>
+La tabella delle distanze
+<span class="math display">\[
+\frac{(n_{ij}-n_{ij}^*)^2}{n_{ij}^*}
+\]</span>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Sport
+</th>
+<th style="text-align:right;">
+Lettura
+</th>
+<th style="text-align:right;">
+Arte
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Giovani
+</td>
+<td style="text-align:right;">
+4.334
+</td>
+<td style="text-align:right;">
+0.025
+</td>
+<td style="text-align:right;">
+4.315
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Adulti
+</td>
+<td style="text-align:right;">
+2.070
+</td>
+<td style="text-align:right;">
+6.834
+</td>
+<td style="text-align:right;">
+1.997
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Anziani
+</td>
+<td style="text-align:right;">
+0.586
+</td>
+<td style="text-align:right;">
+9.933
+</td>
+<td style="text-align:right;">
+19.497
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+    \chi^2_{obs}= 49.59
+  \]</span></p>
+<p>i <span class="math inline">\(gdl\)</span></p>
+<p><span class="math display">\[
+    ( 3 -1)\times( 3 -1)= 4
+  \]</span></p>
+<p><span class="math inline">\(\fbox{C}\)</span> CONCLUSIONE</p>
+<p>I valori critici sono</p>
+<p><span class="math inline">\(\chi^2_{4;0.1}=7.7794\)</span>; <span class="math inline">\(\chi^2_{4;0.05}=9.4877\)</span>; <span class="math inline">\(\chi^2_{4;0.01}=13.2767\)</span>; <span class="math inline">\(\chi^2_{4;0.001}=18.4668\)</span></p>
+<p>Siccome <span class="math inline">\(\chi^2_\text{obs}=49.5915&gt;18.4668\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> sotto all’1‰, <span class="math inline">\(p_\text{value}&lt;0.001\)</span>,</p>
+<p><em>estremamente significativo</em> <span class="math inline">\(\fbox{***}\)</span>.</p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
+<p><span class="math display">\[ p_{\text{value}} = P(\chi^2_{4}&gt;49.59)=0.000000000439748015779173 \]</span></p>
+<p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la distribuzione <span class="math inline">\(\chi^2\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
+0 \leq p_\text{value}= 0.0000000004397 &lt; 0.001
+\]</span></p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="test-e-intervalli-di-confidenza.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="test-del-chi-quadro-per-conformità.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Esami_passati_con_soluzioni.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
