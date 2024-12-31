@@ -10,7 +10,7 @@ source("intro.R")
 
 
 
-```{r}
+```{r 05-test-19}
 if (html) cat('')
 ```
   
@@ -28,7 +28,7 @@ Determinare un intervallo di confidenza al 99\%
 per il costo medio per unità.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-1,,results='asis'}
 idc(xm = 30,sd = 1.50,alpha = 0.01,n = 17,dist_ = "t",mus = "\\hat\\mu",ss = "S")
 ```
 :::
@@ -45,7 +45,7 @@ conclusioni.
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-2,,results='asis'}
 res <- ztest_mu(muh = 30,s = 2,n = 17,mu0 = 29,h1 = ">")
 cat(res,sep="\n")
 ```
@@ -61,7 +61,7 @@ Determinare un intervallo di confidenza al 95\%
 per il costo medio per unità.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-3,,results='asis'}
 idc(xm = 25,sd = 2.00,alpha = 0.05,n = 15,dist_ = "t",mus = "\\hat\\mu",ss = "S")
 ```
 :::
@@ -77,7 +77,7 @@ l'ipotesi nulla e l'ipotesi alternativa e trarre le opportune
 conclusioni.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-4,,results='asis'}
 ztest_mu(muh = 25,s = 2.50,n = 15,mu0 = 26,h1 = "<")
 ```
 :::
@@ -92,7 +92,7 @@ Determinare un intervallo di confidenza al 95\%
 per il costo medio per unità.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-5,,results='asis'}
 idc(xm = 28,sd = 1.80,alpha = 0.05,n = 20,dist_ = "t",mus = "\\hat\\mu",ss = "S")
 ```
 :::
@@ -108,7 +108,7 @@ l'ipotesi nulla e l'ipotesi alternativa e trarre le opportune
 conclusioni.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-6,,results='asis'}
 res <- ztest_mu(muh = 28,s = 2.20,n = 20,mu0 = 27,h1 = "\\neq")
 cat(res,sep="\n")
 ```
@@ -127,7 +127,7 @@ Determinare un intervallo di confidenza al 95\% per
 l'età media dei politici italiani.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-7,,results='asis'}
 idc(xm = 48.5,sd = 10.6,alpha = 0.05,n = 20,dist_ = "t",mus = "\\hat\\mu",ss = "S")
 ```
 :::
@@ -142,7 +142,7 @@ l'ipotesi nulla e l'ipotesi alternativa e trarre le opportune
 conclusioni.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-8,,results='asis'}
 res <- ttest_mu(muh = 48.5,sh = 10.6,n = 20,mu0 = 55,h1 = "<")
 cat(res,sep="\n")
 ```
@@ -158,7 +158,7 @@ Determinare un intervallo di confidenza al 99\% per
 il reddito medio annuale dei manager italiani.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-9,,results='asis'}
 idc(xm = 85,sd = 15,alpha = 0.01,n = 30,dist_ = "t",mus = "\\hat\\mu",ss = "S")
 ```
 :::
@@ -173,7 +173,7 @@ l'ipotesi nulla e l'ipotesi alternativa e trarre le opportune
 conclusioni.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-10,,results='asis'}
 res <- ttest_mu(muh = 85,sh = 15,n = 30,mu0 = 80,h1 = ">")
 cat(res,sep="\n")
 ```
@@ -192,7 +192,7 @@ Determinare un intervallo di confidenza
 al 95\% per $\mu = E(X)$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-11,,results='asis'}
 idc(xm = 78,sd = 12,alpha = 0.05,n = 26,dist_ = "t",mus = "\\hat\\mu",ss = "S")
 ```
 :::
@@ -204,7 +204,7 @@ ritenere che il valore medio osservato nel campione sia
 diverso da 72?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-12,,results='asis'}
 res <- ttest_mu(muh = 78,sh = 12,n = 26,mu0 = 72,h1 = "\\neq")
 cat(res,sep="\n")
 ```
@@ -222,7 +222,7 @@ cat(res,sep="\n")
 Costruire un intervallo di confidenza al 95% per \(\pi\) la quota di persone del quartiere _R_ favorevole alla nuova pista ciclabile.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 05-test-20}
 idc(xm = 70,alpha = .05,n = 100,dist_ = "z")
 ```
 :::
@@ -232,7 +232,7 @@ idc(xm = 70,alpha = .05,n = 100,dist_ = "z")
 la percentuale di favorevoli alla pista ciclabile è del 65%. Testare l'ipotesi che nel quartiere _R_ la quota di favorevoli sia uguale a quella cittadina contro l'alternativa che sia minore.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 05-test-21}
 sn <- 70
 n  <- 100
 p0 <- 0.65
@@ -250,7 +250,7 @@ ztest_pi(sn = sn,n = n,p0 = p0,h1 = h1)
 Costruire un intervallo di confidenza al 99% per \(\pi\), la quota di startup italiane che hanno implementato misure di cybersecurity avanzate.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 05-test-22}
 cat(idc(xm = 84,alpha = .01,n = 120,dist_ = "z"))
 ```
 :::
@@ -259,7 +259,7 @@ cat(idc(xm = 84,alpha = .01,n = 120,dist_ = "z"))
 `r item_()` Un'indagine molto più ampia condotta su startup europee ha mostrato che la percentuale di startup con misure di cybersecurity avanzate è del 75%. Testare l'ipotesi che in Italia la quota di startup con misure di cybersecurity avanzate sia uguale a quella europea contro l'alternativa che sia diversa.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 05-test-23}
 sn <- 84
 n  <- 120
 p0 <- 0.75
@@ -289,7 +289,7 @@ Si assuma l'ipotesi di eterogeneità delle varianze dei due
 gruppi.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-13,,results='asis'}
 ttest_2c_et(mu1 = 95,mu2 = 92,s1h = 3.4,s2h = 1.9,n1 = 10,n2 = 20,h1 = ">",a = "A",b = "B")
 ```
 :::
@@ -299,7 +299,7 @@ ttest_2c_et(mu1 = 95,mu2 = 92,s1h = 3.4,s2h = 1.9,n1 = 10,n2 = 20,h1 = ">",a = "
 `r item_next()` In uno studio sull'efficacia di due metodi di insegnamento della matematica, si è proceduto facendo seguire il metodo \(A\) ad un campione di 15 studenti (gruppo \(A\)) e il metodo \(B\) ad un secondo campione di 18 studenti (gruppo \(B\)). Si è quindi misurata la prestazione degli studenti con un test finale. La prestazione media del gruppo \(A\) risulta pari a 78 con una deviazione standard pari a 8.3, mentre la prestazione media del gruppo \(B\) risulta pari a 74 con una deviazione standard pari a 7.5. Verificare l'ipotesi che la prestazione media dei due metodi di insegnamento sia uguale, contro l'alternativa che il metodo \(A\) produca prestazioni mediamente migliori di quello \(B\). Si assuma l'ipotesi di eterogeneità delle varianze dei due gruppi, anche se i numeri non sembrano giustificarla.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-14,,results='asis'}
 ttest_2c_et(mu1 = 78,mu2 = 74,s1h = 8.3,s2h = 7.5,n1 = 15,n2 = 18,h1 = ">",a = "A",b = "B")
 ```
 :::
@@ -309,7 +309,7 @@ ttest_2c_et(mu1 = 78,mu2 = 74,s1h = 8.3,s2h = 7.5,n1 = 15,n2 = 18,h1 = ">",a = "
 `r item_next()` In uno studio sulla produttività dei lavoratori, si è proceduto confrontando i lavoratori del Nord e del Sud. Si è quindi misurata la produttività media con un'opportuna scala. La produttività media del gruppo Nord risulta pari a 85 con una deviazione standard pari a 7.2, mentre la produttività media del gruppo Sud risulta pari a 80 con una deviazione standard pari a 6.8. Verificare l'ipotesi che la produttività media dei due gruppi sia uguale, contro l'alternativa che le due produttività medie siano diverse. Si assuma l'ipotesi di omogeneità delle varianze dei due gruppi.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-15,,results='asis'}
 ttest_2c_om(mu1 = 85,mu2 = 80,s1h = 7.2,s2h = 6.8,n1 = 15,n2 = 18,h1 = "\\neq",a = "Nord",b = "Sud")
 ```
 :::
@@ -330,7 +330,7 @@ Specificare l'ipotesi nulla e l'ipotesi alternativa,
 il tipo di test da utilizzare, e le conclusioni.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-16,,results='asis'}
 ztest_2c_pi(s1 = 60,s2 = 30,n1 = 120,n2 = 120,h1 = ">",a = "U",b = "D")
 ```
 :::
@@ -340,7 +340,7 @@ ztest_2c_pi(s1 = 60,s2 = 30,n1 = 120,n2 = 120,h1 = ">",a = "U",b = "D")
 `r item_next()` Per verificare se ci sia differenza nella soddisfazione lavorativa tra dipendenti a tempo pieno e part-time, si è condotta un'indagine su 100 dipendenti a tempo pieno e 100 dipendenti part-time. Dalle interviste è emerso che 70 dei 100 dipendenti a tempo pieno si siano dichiarati soddisfatti, mentre 50 dei 100 dipendenti part-time si siano dichiarati soddisfatti. Verificare l'ipotesi che non ci sia differenza nella soddisfazione lavorativa tra dipendenti a tempo pieno e part-time, contro l'alternativa che i dipendenti part-time siano meno soddisfatti. Specificare l'ipotesi nulla e l'ipotesi alternativa, il tipo di test da utilizzare, e le conclusioni.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-17,,results='asis'}
 ztest_2c_pi(s1 = 70,s2 = 50,n1 = 100,n2 = 100,h1 = ">",a = "Tempo Pieno",b = "Part-Time")
 ```
 :::
@@ -350,7 +350,7 @@ ztest_2c_pi(s1 = 70,s2 = 50,n1 = 100,n2 = 100,h1 = ">",a = "Tempo Pieno",b = "Pa
 `r item_next()` Per verificare se ci sia differenza nella preferenza per il lavoro remoto tra dipendenti di aziende tecnologiche e dipendenti di aziende manifatturiere, si è condotta un'indagine su 90 dipendenti di aziende tecnologiche e 90 dipendenti di aziende manifatturiere. Dalle interviste è emerso che 63 dei 90 dipendenti di aziende tecnologiche preferiscono il lavoro remoto, mentre 45 dei 90 dipendenti di aziende manifatturiere preferiscono il lavoro remoto. Verificare l'ipotesi che non ci sia differenza nella preferenza per il lavoro remoto tra i due gruppi, contro l'alternativa che ci sia una differenza significativa. Specificare l'ipotesi nulla e l'ipotesi alternativa, il tipo di test da utilizzare, e le conclusioni.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 05-test-18,,results='asis'}
 ztest_2c_pi(s1 = 63,s2 = 45,n1 = 90,n2 = 90,h1 = "\\neq",a = "Tecnologiche",b = "Manifatturiere")
 ```
 :::

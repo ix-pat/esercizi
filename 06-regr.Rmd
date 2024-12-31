@@ -16,7 +16,7 @@ i2 <- 1
 ```
 
 
-```{r}
+```{r 06-regr-43}
 if (html) cat('')
 ```
   
@@ -40,7 +40,7 @@ Il dataset di dimensioni $n = 51$ è relativo ai 50 stati e al Distretto di Colu
 ### La matrice dei dati
 
 
-```{r}
+```{r 06-regr-44}
 dat <- read.csv('poverty.txt')
 
 tabl(cbind(1:51,dat[,1:3]),col.names = c("$i$", "Stato","Tasso di povertà","Tasso di natalità 15-17"))
@@ -48,7 +48,7 @@ tabl(cbind(1:51,dat[,1:3]),col.names = c("$i$", "Stato","Tasso di povertà","Tas
 
 ### La rappresentazione dei dati
 
-```{r}
+```{r 06-regr-45}
 
 x <- dat$PovPct
 y <- dat$Brth15to17
@@ -126,7 +126,7 @@ S_\varepsilon^2 & = \frac{n}{n-2}\hat\sigma_\varepsilon^2 = `r se2`\\
 S_\varepsilon & = \sqrt{\frac{n}{n-2}}\hat\sigma_\varepsilon = `r sqrt(se2)`\\
 \end{alignat*}
 
-```{r}
+```{r 06-regr-46}
 
 #reg <- data.frame(pov = df$poverty_rate, est = b0+b1*df$poverty_rate)
 # Crea un grafico di dispersione interattivo
@@ -155,7 +155,7 @@ Valutare la bontà di adattamento del modello precedente.
 
 :::{.sol data-latex=""}
 
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-1,,results='asis',warning=FALSE,message=FALSE}
 #detach(regr(x,y))
 res <-R2()
 cat(res,sep="\n")
@@ -169,7 +169,7 @@ Fornire una interpretazione dei parametri della retta di regressione.
 
 :::{.sol data-latex=""}
 
-```{r}
+```{r 06-regr-47}
 x_name <- "tasso di povertà"
 y_name <- "tasso di natalità per le under 15"
 ```
@@ -199,7 +199,7 @@ uguale 6, ossia per $x=6$.
 :::{.sol data-latex=""}
 
 
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-2,,results='asis',warning=FALSE,message=FALSE}
 #detach(regr(x,y))
 j <- 6
 res <-residuo(x[j],y[j])
@@ -214,7 +214,7 @@ zero contro l'alternativa che sia diversa da zero.
 
 :::{.sol data-latex=""}
 
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-3,,results='asis',warning=FALSE,message=FALSE}
 res <- se_beta0()
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq")
@@ -230,7 +230,7 @@ contro l'alternativa che sia diversa da 0.
 
 :::{.sol data-latex=""}
 
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-4,,results='asis',warning=FALSE,message=FALSE}
 res <- se_beta1()
 cat(res,sep="\n")
 res <- ttest_beta(cof = 1,bj0 = 0,h1 = ">")
@@ -243,7 +243,7 @@ ___________________________________
 
 Un software professionale restituisce un output del genere
 
-```{r,echo=TRUE,results='markup'}
+```{r 06-regr-5,,echo=TRUE,results='markup'}
 head(data_poverty,n = 10)
 modello <- lm(formula = birth_rate ~ poverty_rate,data = data_poverty)
 summary(modello)
@@ -262,7 +262,7 @@ $X$, indice delle importazioni, e la variabile dipendente $Y$,
 indice della produzione industriale (dati artificiali).
 
 \small
-```{r,warning=FALSE,message=FALSE}
+```{r 06-regr-6,,warning=FALSE,message=FALSE}
 dati <- data.frame(
 i = c(1    ,2    ,3    ,4    ,5    ,6    ,7    ,8    ,9    ,10   ,11   ,12   ,13   ,14   ,15   ,16),
 x = c(102  ,105  ,107  ,108  ,109  ,109  ,110  ,112  ,113  ,115  ,116  ,118  ,119  ,120  ,121  ,122 ),
@@ -325,7 +325,7 @@ Tramite l'equazione della retta di regressione si stima
 la coordinata corrispondente:
 
 
-```{r}
+```{r 06-regr-48}
 plot(x,y,axes=F,xlim=c(100,125),ylim=c(95,135))
 axis(2,c(b0+b1*100,b0+b1*120),round(c(b0+b1*100,b0+b1*120),3),las=2)
 axis(1)
@@ -402,11 +402,11 @@ Si determina il valore previsto tramite la retta di regressione:
 spiegare se la retta di regressione è adeguata o no a
 rappresentare il fenomeno.
 
-```{r}
+```{r 06-regr-49}
 fig.def(2.8,4.5)
 ```
  
-```{r}
+```{r 06-regr-50}
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])))
 abline(h=0,lty=2,col="grey")
 axis(1)
@@ -418,7 +418,7 @@ L'ispezione visiva dei dati potrebbe suggerire anche l'esistenza
 di una certa NON linearità.
 Non vi sono punti leva; in ogni caso, la non linearità impone
 di modellarla prima di cercare i punti leva.
-```{r}
+```{r 06-regr-51}
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])))
 abline(h=0,lty=2,col="grey")
 fit <- smooth.spline(x, es)      # smooth.spline fit
@@ -448,11 +448,11 @@ Il grafico dei residui evidenzia ancora la supposta la NON linearità;
 infatti, i residui mostrano un andamento "V", tipica indicazione di
 non linearità.
 
-```{r}
+```{r 06-regr-52}
 fig.def(2.8,4.5)
 ```
 
-```{r}
+```{r 06-regr-53}
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])))
 axis(1)
 axis(2)
@@ -467,7 +467,7 @@ l'ipotesi che la pendenza della retta di regressione sia uguale a
 1 contro l'alternativa che sia maggiore di 1
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-7,,results='asis',warning=FALSE,message=FALSE}
 se_beta1()
 
 ttest_beta(cof = 1,bj0 = 1,h1 = ">")
@@ -480,7 +480,7 @@ regressione sia uguale a zero contro l'alternativa che sia
 minore di zero.
  
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-8,,results='asis',warning=FALSE,message=FALSE}
 
 res <- se_beta0()
 cat(res,sep="\n")
@@ -502,7 +502,7 @@ esperimento: numero di ore dopo l'assunzione di un dato farmaco
 ($X$) e incremento percentuale della pressione sistolica ($Y$).
 
 
-```{r,warning=FALSE,message=FALSE}
+```{r 06-regr-9,,warning=FALSE,message=FALSE}
 dati <- data.frame(
 x = c(0.00  ,1.00  , 2.00  ,3.00  ,4.00  ,5.00  ,6.00  ,7.00  ,8.00  ,9.00  ,10.00 ),
 y = c(10.00 ,1.42  ,-0.53  ,2.60  ,4.02  ,4.49  ,5.72  ,6.54  ,8.91  ,8.74  , 0.00 )
@@ -522,7 +522,7 @@ $\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
 
 :::{.sol data-latex=""}
 
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-10,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-calcolo_beta(semplice = T)
 cat(res,sep="\n")
@@ -533,7 +533,7 @@ cat(res,sep="\n")
 
 :::{.sol data-latex=""}
 
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-11,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-R2()
 cat(res,sep="\n")
@@ -554,14 +554,14 @@ Diversamente, tramite l'equazione della retta di
 regressione si stima la coordinata corrispondente:
 
 
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-12,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-previsione(10)
 cat(res,sep="\n")
 fig.def(3,5)
 ```
 
-```{r}
+```{r 06-regr-54}
 plot(x,y,axes=F)
 axis(2,c(b0,b0+b1*10),round(c(b0,b0+b1*10),3),las=2)
 axis(1)
@@ -619,7 +619,7 @@ l'ipotesi che la pendenza della retta di regressione sia uguale a
 0 contro l'alternativa che sia diversa da 0
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-13,,results='asis',warning=FALSE,message=FALSE}
 
 res <- se_beta1()
 cat(res,sep="\n")
@@ -634,7 +634,7 @@ regressione sia uguale a zero contro l'alternativa che sia
 diversa da zero
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-14,,results='asis',warning=FALSE,message=FALSE}
 res <- se_beta0()
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "\\neq")
@@ -657,7 +657,7 @@ L'uscita di cassa settimanale sia rappresentata dalla variabile
 (casuale) $Y$ (in migliaia di euro).
 I dati rilevati per 4 mesi sono riportati di séguito.
 
-```{r,warning=FALSE,message=FALSE}
+```{r 06-regr-15,,warning=FALSE,message=FALSE}
 dati <- data.frame(
 x = c(12  , 21  , 25  , 31  , 13  , 15  , 10  , 18  , 19  , 24  , 28  , 32  , 33  , 22  , 24  , 35),
 y = c(6   , 11  , 15  , 17  , 7   , 8   , 7   , 9   , 10  , 14  , 16  , 20  , 19  , 11  , 14  , 21
@@ -679,7 +679,7 @@ della retta di regressione in cui $Y$ è spiegata attraverso $X$.
 $\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-16,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-calcolo_beta(T)
 cat(res,sep="\n")
@@ -689,7 +689,7 @@ cat(res,sep="\n")
 `r item()`   Valutare la bontà di adattamento del modello precedente.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-17,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-R2()
 cat(res,sep="\n")
@@ -708,7 +708,7 @@ l'equazione della retta di regressione si stima la coordinata
 corrispondente:
 
 
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-18,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-previsione(35)
 cat(res,sep="\n")
@@ -718,7 +718,7 @@ fig.def(3,5)
 ```
  
 
-```{r}
+```{r 06-regr-55}
 plot(x,y,axes=F,xlim=c(min(x0,min(x)),max(x1,max(x))))
 axis(2,c(b0+b1*x0,b0+b1*x1),round(c(b0+b1*x0,b0+b1*x1),3),las=2)
 axis(1)
@@ -757,7 +757,7 @@ un incasso di 30 migliaia di euro, ossia $x=30$ e fornire l'ordine di grandezza 
 di previsione commesso.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-19,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-previsione(30)
 cat(res,sep="\n")
@@ -774,7 +774,7 @@ l'ipotesi che la pendenza della retta di regressione sia uguale a
 1/2 contro l'alternativa che sia diversa da 1/2.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-20,,results='asis',warning=FALSE,message=FALSE}
 
 res <- se_beta1()
 cat(res,sep="\n")
@@ -789,7 +789,7 @@ regressione sia uguale a zero contro l'alternativa che sia
 minore di zero.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-21,,results='asis',warning=FALSE,message=FALSE}
 res <- se_beta0()
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<")
@@ -812,7 +812,7 @@ I risultati sono riportati nella tabella seguente.
 
 
 
-```{r,warning=FALSE,message=FALSE}
+```{r 06-regr-22,,warning=FALSE,message=FALSE}
 dati <- data.frame(
 x = c(20  , 30  , 40  , 50  , 60  , 70  , 80  , 90  , 100 , 110 , 120 , 130 , 140 , 150 , 160),
 y = c(25  , 40  , 50  , 64  , 75  , 85  , 100 , 105 , 120 , 145 , 178 , 210 , 260 , 315 , 380)
@@ -833,7 +833,7 @@ della retta di regressione in cui $Y$ è spiegata attraverso $X$.
 $\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-23,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-calcolo_beta(T)
 cat(res,sep="\n")
@@ -843,7 +843,7 @@ cat(res,sep="\n")
 `r item()`   Valutare la bontà di adattamento del modello precedente.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-24,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-R2()
 cat(res,sep="\n")
@@ -862,7 +862,7 @@ Quest'ultimo NON conviene perché "esce" dagli assi.
 Tramite l'equazione della retta di regressione si stima la coordinata
 corrispondente:
 
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-25,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-previsione(40)
 cat(res,sep="\n")
@@ -871,7 +871,7 @@ x1 <- mx
 fig.def(3,5)
 ```
 
-```{r}
+```{r 06-regr-56}
 plot(x,y,axes=F,xlim=c(min(x0,min(x)),max(x1,max(x))))
 axis(2,c(b0+b1*x0,b0+b1*x1),round(c(b0+b1*x0,b0+b1*x1),3),las=2)
 axis(1)
@@ -907,7 +907,7 @@ si aggiungono `r b1` per ogni unità di lavoro aggiuntiva.
 di addetti pari a 75 unità, ossia per $x=75$.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-26,,results='asis',warning=FALSE,message=FALSE}
 res <-previsione(75)
 cat(res,sep="\n")
 ```
@@ -918,7 +918,7 @@ l'ipotesi che la pendenza della retta di regressione sia uguale a
 2 contro l'alternativa che sia maggiore di 2, sapendo che
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-27,,results='asis',warning=FALSE,message=FALSE}
 
 res <- se_beta1()
 cat(res,sep="\n")
@@ -933,7 +933,7 @@ regressione sia uguale a zero contro l'alternativa che sia
 minore di zero.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-28,,results='asis',warning=FALSE,message=FALSE}
 res <- se_beta0()
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<")
@@ -954,7 +954,7 @@ di concentrazione di ozono (espressa in parti per milione) a New York $Y$
 e temperatura a terra, $X$ (espressa in gradi Fahrenheit), come espresso
 nella seguente tabella.
 
-```{r,warning=FALSE,message=FALSE}
+```{r 06-regr-29,,warning=FALSE,message=FALSE}
 dati <- data.frame(
 x = c(20  , 30  , 40  , 50  , 60  , 70  , 80  , 90  , 100 , 110 , 120 , 130 , 140 , 150 , 160),
 y = c(25  , 40  , 50  , 64  , 75  , 85  , 100 , 105 , 120 , 145 , 178 , 210 , 260 , 315 , 380)
@@ -974,7 +974,7 @@ della retta di regressione in cui $Y$ è spiegata attraverso $X$.
 $\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-30,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-calcolo_beta(T)
 cat(res,sep="\n")
@@ -984,7 +984,7 @@ cat(res,sep="\n")
 `r item()`   Valutare la bontà di adattamento del modello precedente.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-31,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-R2()
 cat(res,sep="\n")
@@ -999,7 +999,7 @@ regressione sia uguale a zero contro l'alternativa che sia
 minore di zero.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-32,,results='asis',warning=FALSE,message=FALSE}
 res <- se_beta0()
 cat(res,sep="\n")
 res <- ttest_beta(cof = 0,bj0 = 0,h1 = "<")
@@ -1019,7 +1019,7 @@ amministrative rilevato nell'anno 1989, $X$, e rilevato nell'anno
 1999, $Y$, sono riportati nella tabella seguente.
 
 \footnotesize
-```{r,warning=FALSE,message=FALSE}
+```{r 06-regr-33,,warning=FALSE,message=FALSE}
 dati <- data.frame(
 x = c(47.8 , 27.9 , 36.6 , 54.2 , 41.9 , 44.4 , 54.3 , 42.3 , 41.5 , 43.2 , 56.3 , 63.3 , 46.8 , 45.2 , 38.7  , 36.3 ),
 y = c(63.0 , 33.4 , 42.0 , 72.8 , 52.0 , 54.0 , 63.4 , 60.7 , 54.4 , 55.5 , 74.0 , 79.2 , 53.1 , 59.6 , 52.00 , 47.2)
@@ -1039,7 +1039,7 @@ della retta di regressione in cui $Y$ è spiegata attraverso $X$.
 $\bar{y} = `r my`$;  $\hat\sigma_{Y} = `r sy`$; $\text{cov}(X,Y)= `r co`$).
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-34,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-calcolo_beta(T)
 cat(res,sep="\n")
@@ -1049,7 +1049,7 @@ cat(res,sep="\n")
 `r item()`   Valutare la bontà di adattamento del modello precedente.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-35,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-R2()
 cat(res,sep="\n")
@@ -1060,7 +1060,7 @@ cat(res,sep="\n")
 dalla previsione, calcolata con il modello di regressione in $x=54.3$.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-36,,results='asis',warning=FALSE,message=FALSE}
 #
 j <- which(x==54.3)
 res <-residuo(x[j],y[j])
@@ -1076,7 +1076,7 @@ l'ipotesi che la pendenza della retta di regressione sia uguale a 0
 contro l'alternativa che sia maggiore di 0.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-37,,results='asis',warning=FALSE,message=FALSE}
 res <- se_beta1()
 cat(res,sep="\n")
 res <- ttest_beta(cof = 1,bj0 = 0,h1 = ">")
@@ -1130,7 +1130,7 @@ regressione sia uguale a zero contro l'alternativa che sia
 diversa da zero
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-38,,results='asis',warning=FALSE,message=FALSE}
 
 stat2 <- list(
   mx = 26,
@@ -1189,12 +1189,12 @@ tabl(prn[1:n,1:3],row.names = F)
 di regressione in cui $Y$ è spiegata attraverso $X$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 06-regr-57}
 tabl(prn,row.names = F)%>%
   row_spec(n,hline_after = T)
 ```
 
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-39,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-calcolo_beta()
 cat(res,sep="\n")
@@ -1204,7 +1204,7 @@ cat(res,sep="\n")
 `r item()`   Valutare la bontà di adattamento del modello precedente.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-40,,results='asis',warning=FALSE,message=FALSE}
 #
 res <-R2()
 cat(res,sep="\n")
@@ -1238,7 +1238,7 @@ di voto di matematica aggiuntivo.
 uguale 6, ossia per $x=6$.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-41,,results='asis',warning=FALSE,message=FALSE}
 #
 j <- which(x==6)
 res <-residuo(x[j],y[j])
@@ -1252,7 +1252,7 @@ l'ipotesi che la pendenza della retta di regressione sia uguale a
 zero contro l'alternativa che sia maggiore di zero.
 
 :::{.sol data-latex=""}
-```{r,results='asis',warning=FALSE,message=FALSE}
+```{r 06-regr-42,,results='asis',warning=FALSE,message=FALSE}
 res <- se_beta1()
 cat(res,sep="\n")
 res <- ttest_beta(cof = 1,bj0 = 0,h1 = "\\neq")

@@ -24,7 +24,7 @@ In uno studio sulle preferenze di gusti di gelato è stato chiesto ad un campion
 
 Qui di seguito è riportata la tavola di contingenza:
 
-```{r}
+```{r 05a-chi2-1}
 
 dat <- matrix(c(25, 20, 15, 10, 30, 40, 40, 30), 2)
 
@@ -41,7 +41,7 @@ tabl(dat_print, digits = 4) %>%
 Testare l'ipotesi che vi sia indipendenza tra genere e preferenza tra le profumazioni.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 05a-chi2-2}
 cat(chi_test(dat = dat))
 ```
 :::
@@ -56,7 +56,7 @@ In uno studio sulle preferenze di bevande è stato chiesto ad un campione di 180
 
 Qui di seguito è riportata la tavola di contingenza:
 
-```{r}
+```{r 05a-chi2-3}
 dat <- matrix(c(40, 30, 30, 25, 20, 35), 2)
 
 nome_y <- c("consuma frutta", "non consuma frutta")
@@ -72,7 +72,7 @@ tabl(dat_print, digits = 4) %>%
 Testare l'ipotesi che vi sia indipendenza tra consumo abituale di frutta e preferenza di bevande.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 05a-chi2-4}
 cat(chi_test(dat = dat))
 ```
 :::
@@ -87,7 +87,7 @@ In uno studio sulle opinioni riguardo al tema del "Matrimonio tra persone dello 
 
 Qui di seguito è riportata la tavola di contingenza:
 
-```{r}
+```{r 05a-chi2-5}
 
 dat <- matrix(c(40, 30, 10, 25, 35, 20), 2)
 
@@ -105,7 +105,7 @@ tabl(dat_print, digits = 4) %>%
 Testare l'ipotesi che vi sia indipendenza tra l'opinione riguardo al tema "Matrimonio tra persone dello stesso sesso" e l'appartenenza ai gruppi "Elettori di Destra" e "Elettori di Sinistra".
 
 :::{.sol data-latex=""}
-```{r}
+```{r 05a-chi2-6}
 cat(chi_test(dat = dat))
 ```
 :::
@@ -122,7 +122,7 @@ In uno studio sociologico sulle preferenze di attività ricreative è stato chie
 Qui di seguito è riportata la tavola di contingenza:
 
 
-```{r}
+```{r 05a-chi2-7}
 
 dat <- matrix(c(50, 30, 20, 40, 60, 10, 20, 25, 40), 3)
 
@@ -141,7 +141,7 @@ tabl(dat_print, digits = 4) %>%
 Testare l'ipotesi che vi sia indipendenza tra la preferenza per le attività ricreative e l'età.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 05a-chi2-8}
 cat(chi_test(dat = dat))
 ```
 :::
@@ -158,7 +158,7 @@ L'Associazione Bar dell'Emilia Romagna ha condotto un'indagine sulle preferenze 
 
 Qui di seguito è riportata la tabella delle preferenze dei clienti dei bar dell'Emilia Romagna:
 
-```{r}
+```{r 05a-chi2-9}
 X <- c("Caffè", "Tè", "Altro")
 Y <- c("Dati Associazione", "Media Nazionale")
 ntot <- 250
@@ -172,7 +172,7 @@ chi_print_conf(Freq_c = Freq_c,Freq_0 = Freq_0,X,Y)
 Testare l'ipotesi che le preferenze dei clienti dei bar dell'Emilia Romagna per le bevande differiscano dalla media nazionale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 05a-chi2-10}
 cat(chi_conf(Freq_c = Freq_c,Freq_0 = Freq_0,X,Y))
 ```
 :::
@@ -188,7 +188,7 @@ L'Associazione dei Ristoranti dell'Emilia Romagna ha condotto un'indagine sulle 
 
 Qui di seguito è riportata la tabella delle preferenze dei clienti dei ristoranti dell'Emilia Romagna e le percentuali nazionali:
 
-```{r}
+```{r 05a-chi2-11}
 X <- c("Italiana", "Giapponese", "Messicana", "Mediterranea", "Vegetariana")
 
 Y <- c("Dati Associazione", "Media Nazionale")
@@ -206,7 +206,7 @@ chi_print_conf(Freq_c = Freq_c,Freq_0 = Freq_0,X,Y)
 Testare l'ipotesi che le preferenze dei clienti dei bar dell'Emilia Romagna per le bevande differiscano dalla media nazionale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 05a-chi2-12}
 cat(chi_conf(Freq_c = Freq_c,Freq_0 = Freq_0,X,Y))
 ```
 :::

@@ -1,5 +1,5 @@
 
-```{r}
+```{r 2024-38}
 rm(list = rm())
 source("intro.R")
 if (html) cat('')
@@ -7,7 +7,7 @@ if (html) cat('')
   
 # Anno 2024
 
-```{r}
+```{r 2024-39}
 source("punti.R")
 punti_list <- punti_2024
 compito <- 0
@@ -20,11 +20,11 @@ compito <- 0
 
 ### Esercizio 1
 
-```{r}
+```{r 2024-40}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2024-41}
 
 # Basic settings
 set.seed(1)   # per ottenere sempre la stessa simulazione
@@ -42,7 +42,7 @@ ls2e(x = stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie della provincia di Milano è stato rilevata la spesa annua per le vacanze (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
-```{r}
+```{r 2024-42}
 kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -51,7 +51,7 @@ kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)`  Disegnare l'istogramma di densità percentuale. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-43}
 kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -62,7 +62,7 @@ histp(T)
 `r punti_p()` Quante famiglie spendono meno di 5 mila euro all'anno? 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-44}
 F_print(x = 5,verso = "<")
 ```
 :::  
@@ -79,7 +79,7 @@ Se ogni famiglia spendesse 2 mila euro in più all'anno, quanto varrebbero la me
 `r punti_p(nex=T)`  Si lancia una moneta perfetta 4 volte. Sia $X$ la variabile casuale che conta il numero di Teste su 4 lanci. Calcolare la probabilità che $X\leq 2$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-1,,results='asis'}
 bin_dis(x1 = 2,n = 4,pp = .5)
 ```
 :::  
@@ -88,7 +88,7 @@ bin_dis(x1 = 2,n = 4,pp = .5)
 
 :::{.sol data-latex=""}
 Siccome $X+Y\sim\text{Binom(4+3,0.5)}$, allora
-```{r,results='asis'}
+```{r 2024-2,,results='asis'}
 bin_dis(x1 = 3,n = 7,pp = .5,sing = T,vnam = "X+Y")
 ```
 :::  
@@ -111,7 +111,7 @@ Qual è la probabilità di vincere più di 60 euro?
 
 :::{.sol data-latex=""}
 
-```{r}
+```{r 2024-45}
 n <- 100
 mx <- sum(0:2*c(3,2,1)/6)
 vx <- sum((0:2)^2*c(3,2,1)/6)-mx^2
@@ -136,7 +136,7 @@ Dimostrare la consistenza di $\hat\mu$.
 
 `r punti_p()` Definire la significatività di un test.
 
-```{r}
+```{r 2024-46}
 tabella <- matrix(c(45, 35, 20, 25, 30, 45, 10, 15, 25), nrow = 3, ncol = 3, byrow = TRUE)
 n <- sum(tabella)
 pval <- format(chisq.test(t(tabella))$p.value, digits = 4, nsmall = 4)
@@ -145,7 +145,7 @@ pval <- format(chisq.test(t(tabella))$p.value, digits = 4, nsmall = 4)
 
 `r punti_p()` Un sociologo sta conducendo uno studio sull'associazione tra il livello di istruzione e il comportamento di voto. Ha somministrato un questionario a `r n` partecipanti, chiedendo loro di indicare il proprio livello di istruzione (Basso, Medio, Alto) e il comportamento di voto (Regolarmente, Occasionalmente, Mai). L'obiettivo è determinare se c'è un'associazione significativa tra il livello di istruzione e il comportamento di voto.
 
-```{r}
+```{r 2024-47}
 
 # Assegnazione dei nomi alle righe e alle colonne
 rownames(tabella) <- c("Basso", "Medio", "Alto")
@@ -169,7 +169,7 @@ Eseguito il test del $\chi^2$ per verificare l'indipendenza tra il livello di is
 ### Esercizio 5
 
 
-```{r}
+```{r 2024-48}
 set.seed(9)
 n <- 50
 x <- round(runif(n = n,min = 8,20),0) # Anni di studio
@@ -186,7 +186,7 @@ $\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum
 `r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-3,,results='asis'}
 calcolo_beta()
 residuo(x = x[3],y = y[3])
 ```
@@ -205,7 +205,7 @@ $\hat\sigma_Y$, la standard deviation di $Y$?
 `r punti_p()` Testare l'ipotesi che $\beta_1$ sia uguale a zero, contro l'alternativa che sia diverso per diversi livelli di significatività e dare una valutazione approssimativa del $p$-value (ad esempio il $p$-value è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-49}
 ttest_beta(1,0,SE = T)
 ```
 :::
@@ -218,11 +218,11 @@ ttest_beta(1,0,SE = T)
 
 ### Esercizio 1
 
-```{r}
+```{r 2024-50}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2024-51}
 
 # Basic settings
 set.seed(1)   # per ottenere sempre la stessa simulazione
@@ -240,7 +240,7 @@ ls2e(x = stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie della provincia di Milano è stato rilevata la spesa annua per le vacanze (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze relative:
 
-```{r}
+```{r 2024-52}
 kable(dat3[,c(1,2,4)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -249,7 +249,7 @@ kable(dat3[,c(1,2,4)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)`  Individuare l'intervallo modale. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-53}
 kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -260,7 +260,7 @@ histp(T)
 `r punti_p()` Quante famiglie investono più di 4 mila euro all'anno? 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-54}
 F_print(x = 4,verso = ">")
 ```
 :::  
@@ -284,7 +284,7 @@ Se ogni famiglia aumentasse la propria spesa del 2%, quanto varrebbero la media 
 `r punti_p(nex=T)`  Sia $X$ numero settimanale di pratiche inevase dall'ufficio provinciale, si assume $X\sim\text{Pois}(3.5)$. Calcolare la probabilità che $X\geq 3$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-4,,results='asis'}
 pois_dis(x1 = 3,ll = 3.5,verso = "\\geq")
 ```
 :::  
@@ -292,7 +292,7 @@ pois_dis(x1 = 3,ll = 3.5,verso = "\\geq")
 `r punti_p()` Sia $Y$ numero settimanale di pratiche inevase dall'ufficio comunale, si assume $Y\sim\text{Pois}(2)$ e si assume $X$ indipendente da $Y$. Calcolare la probabilità che $X+Y=5$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-5,,results='asis'}
 pois_dis(x1 = 5,ll = 3.5+2,sing = T)
 ```
 :::  
@@ -314,7 +314,7 @@ Si estrae 50 volte con reintroduzione.
 Qual è la probabilità che la media delle vincite ottenute sia minore di 0.6 euro?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-55}
 n <- 50
 mx <- sum(0:2*4:2/9)
 vx <- sum((0:2)^2*4:2/9)-mx^2
@@ -340,7 +340,7 @@ Dimostrare la consistenza di $\hat\pi$.
 
 `r punti_p()` Definire la potenza di un test.
 
-```{r}
+```{r 2024-56}
 tabella <- matrix(c(30, 20, 10, 40, 35, 25), nrow = 3, ncol = 2, byrow = TRUE)
 n <- sum(tabella)
 pval <- format(chisq.test(tabella)$p.value, digits = 4, nsmall = 4)
@@ -352,7 +352,7 @@ colnames(tabella) <- c("Sì", "No")
 
 `r punti_p()` Un economista sta conducendo uno studio sull'associazione tra il livello di istruzione e il possesso di una casa. Ha somministrato un questionario a `r n` partecipanti, chiedendo loro di indicare il proprio livello di istruzione (Basso, Medio, Alto) e se possiedono una casa (Sì, No). L'obiettivo è determinare se c'è un'associazione significativa tra il livello di istruzione e il possesso di una casa.
 
-```{r}
+```{r 2024-57}
 tabella <- matrix(c(30, 20, 10, 40, 35, 25), nrow = 3, ncol = 2, byrow = TRUE)
 n <- sum(tabella)
 pval <- format(chisq.test(t(tabella))$p.value, digits = 4, nsmall = 4)
@@ -378,7 +378,7 @@ Eseguito il test del $\chi^2$ per verificare l'indipendenza tra il livello di is
 ### Esercizio 5
 
 
-```{r}
+```{r 2024-58}
 set.seed(90)
 n <- 50
 x <- round(runif(n = n,min = 8,20),0) # Anni di studio
@@ -395,7 +395,7 @@ $\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum
 `r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-6,,results='asis'}
 calcolo_beta()
 residuo(x = x[3],y = y[3])
 ```
@@ -404,7 +404,7 @@ residuo(x = x[3],y = y[3])
 `r punti_p()` Il modello si adatta bene ai dati?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-7,,results='asis'}
 R2()
 ```
 :::
@@ -418,7 +418,7 @@ R2()
 `r punti_p()` Testare l'ipotesi che $\beta_0$ sia uguale a 35, contro l'alternativa che sia minore per diversi livelli di significatività e dare una valutazione approssimativa del $p$-value (ad esempio il $p$-value è minore di 0.0005, compreso tra 0.05 e  0.01, ecc.).
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-59}
 ttest_beta(0,35,h1 = "<",SE = T)
 ```
 :::
@@ -432,11 +432,11 @@ ttest_beta(0,35,h1 = "<",SE = T)
 
 ### Esercizio 1
 
-```{r}
+```{r 2024-60}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2024-61}
 
 # Basic settings
 set.seed(1)   # per ottenere sempre la stessa simulazione
@@ -454,7 +454,7 @@ ls2e(x = stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie della provincia di Milano è stato rilevata la spesa annua per le vacanze (espresso in migliaia di euro). Qui di seguito la distribuzione delle densità percentuali:
 
-```{r}
+```{r 2024-62}
 kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -463,7 +463,7 @@ kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)`  Calcolare il valore approssimativo della mediana. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-63}
 percentile()
 histp(T)
 draw_dist(dist = H.int,z1 = 4,z2 = 10)
@@ -473,7 +473,7 @@ draw_dist(dist = H.int,z1 = 4,z2 = 10)
 `r punti_p()` Quante famiglie spendono tra 4 mila e 10 mila euro l'anno? 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-64}
 F_print(x = 4,x2 = 10,verso = F)
 ```
 :::  
@@ -497,7 +497,7 @@ Se ogni famiglia diminuisse la propria spesa del 2%, quanto varrebbero la media 
 `r punti_p(nex=T)`  Sia $X\sim N(5,2)$ sia $A=\{X>4\}$ e $B=\{X<6\}$. Calcolare $P(A\cap B)$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-8,,results='asis'}
 norm_int(x1 = 4,x2 = 6,verso = NULL,5,2)
 ```
 :::  
@@ -505,7 +505,7 @@ norm_int(x1 = 4,x2 = 6,verso = NULL,5,2)
 `r punti_p()` Sia $Y\sim N(3,1)$, $X$ e $Y$ indipendenti, posto $W=X-Y$, calcolare $P(W<0)$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-9,,results='asis'}
 norm_int(x1 = 0,verso = "<",mm = 5-3,ss = 2+1)
 ```
 :::  
@@ -527,7 +527,7 @@ Qual è la probabilità che la la vincita totale sia maggiore di 50?
 
 :::{.sol data-latex=""}
 
-```{r}
+```{r 2024-65}
 n <- 50
 mx <- 2/6
 
@@ -552,7 +552,7 @@ Dimostrare la consistenza di $\hat\lambda$.
 `r punti_p()` Definire gli errori di primo e di secondo tipo.
 
 
-```{r}
+```{r 2024-66}
 # Definizione dei dati osservati
 observed <- c(5, 8, 12, 7, 6, 4, 3)
 total <- sum(observed)
@@ -565,7 +565,7 @@ pval_poisson <- format(chisq_result$p.value, digits = 4, nsmall = 4)
 
 `r punti_p()` Un biologo sta studiando il numero di cellule di una certa specie osservate in campioni di terreno. Ha raccolto dati sul numero di cellule in `r total` campioni. I dati osservati sono riportati nella tabella seguente. L'obiettivo è determinare se i dati seguono una distribuzione di Poisson.
 
-```{r}
+```{r 2024-67}
 # Definizione dei dati osservati
 observed <- c(5, 8, 12, 7, 6, 4, 3)
 total <- sum(observed)
@@ -599,7 +599,7 @@ Testare l'ipotesi che la proporzione di persone favorevoli al reddito di cittadi
 `r punti_p()` Calcolare e discutere il $p$-value del test precedente.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-68}
 s1 <- 60
 n1 <- 150
 s2 <- 95
@@ -617,7 +617,7 @@ ztest_2c_pi(s1 = s1,s2 = s2,n1 = n1,n2 = n2,h1 = h1,a = a,b = b)
 ### Esercizio 6
 
 
-```{r}
+```{r 2024-69}
 set.seed(12)
 n <- 50
 x <- round(runif(n = n,min = 8,20),0) # Anni di studio
@@ -634,7 +634,7 @@ $\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum
 `r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-10,,results='asis'}
 calcolo_beta()
 residuo(x = x[3],y = y[3])
 ```
@@ -658,11 +658,11 @@ $\hat\sigma_X$, la standard deviation di $X$?
 
 ### Esercizio 1
 
-```{r}
+```{r 2024-70}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2024-71}
 
 # Basic settings
 set.seed(1)   # per ottenere sempre la stessa simulazione
@@ -680,7 +680,7 @@ ls2e(x = stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie dell'Emilia-Romagna sono stati rilevati i consumi annui in beni tecnologici (dati espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
-```{r}
+```{r 2024-72}
 kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -689,7 +689,7 @@ kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)`  Disegnare l'istogramma di densità percentuale. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-73}
 kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -700,7 +700,7 @@ histp(T)
 `r punti_p()` Quante famiglie spendono meno di 5 mila euro all'anno? 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-74}
 F_print(x = 5,verso = "<")
 ```
 :::  
@@ -717,7 +717,7 @@ Se ogni famiglia spendesse 2 mila euro in più all'anno, quanto varrebbero la me
 `r punti_p(nex=T)`  Si consideri un'urna che ha una pallina bianche e due nere. Si estrae 4 volte con reinserimento. Sia $X$ la variabile casuale che conta il numero di bianche su 4 estrazioni. Calcolare la probabilità che $X\leq 2$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-11,,results='asis'}
 bin_dis(x1 = 2,n = 4,pp = 1/3,comp = F)
 ```
 :::  
@@ -725,7 +725,7 @@ bin_dis(x1 = 2,n = 4,pp = 1/3,comp = F)
 `r punti_p()` Sia $X$ la VC del punto precedente e sia $Y\sim N(0,1)$, $X$ ed $Y$ indipendenti. Considerato $A=\{X\leq 2\}$, $B=\{Y<1\}$, calcolare $P(A\cup B)$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-12,,results='asis'}
 pa <- pbinom(2,4,1/3)
 pb <- pnorm(1)
 p_aub(pa,pb)
@@ -751,7 +751,7 @@ Qual è la probabilità di vincere più di 55 euro?
 
 :::{.sol data-latex=""}
 
-```{r}
+```{r 2024-75}
 n <- 100
 mx <- sum(0:2*c(6,3,1)/10)
 vx <- sum((0:2)^2*c(6,3,1)/10)-mx^2
@@ -778,7 +778,7 @@ Com'è distribuito asintoticamente $\hat\theta$?
 
 `r punti_p()` Definire la significatività di un test.
 
-```{r}
+```{r 2024-76}
 tabella <- matrix(c(15, 20, 25, 25, 30, 25, 35, 30, 15), nrow = 3, ncol = 3, byrow = TRUE)
 n <- sum(tabella)
 pval <- format(chisq.test(t(tabella))$p.value, digits = 4, nsmall = 4)
@@ -786,7 +786,7 @@ pval <- format(chisq.test(t(tabella))$p.value, digits = 4, nsmall = 4)
 
 `r punti_p()` Un nutrizionista sta conducendo uno studio sull'associazione tra il tipo di dieta e lo stato di salute. Ha somministrato un questionario a `r n` partecipanti, chiedendo loro di indicare il proprio stato di salute  Ottimo, Buono, Scarso e il tipo di dieta seguito (Vegano, Vegetariano, Onnivoro). L'obiettivo è determinare se c'è un'associazione tra il tipo di dieta e lo stato di salute.
 
-```{r}
+```{r 2024-77}
 
 # Assegnazione dei nomi alle righe e alle colonne
 colnames(tabella) <-  c("Ottimo", "Buono", "Scarso")
@@ -807,7 +807,7 @@ Eseguito il test del $\chi^2$ per verificare l'indipendenza tra il livello di is
 ### Esercizio 5
 
 
-```{r}
+```{r 2024-78}
 set.seed(9)
 n <- 25
 sig <- 2
@@ -826,7 +826,7 @@ $\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum
 `r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-13,,results='asis'}
 calcolo_beta()
 residuo(x = x[3],y = y[3])
 ```
@@ -835,7 +835,7 @@ residuo(x = x[3],y = y[3])
 `r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-14,,results='asis'}
 R2()
 ```
 :::
@@ -877,7 +877,7 @@ Da cui:
 
 Calcolando il valore:
 
-```{r}
+```{r 2024-79}
 sigma_X <- 0.8
 beta_1 <- 1.2
 r <- 0.75
@@ -893,7 +893,7 @@ sigma_Y <- (r * sigma_X) / beta_1
 Ora possiamo trovare \(\hat\alpha_1\) usando il valore di \(\hat\sigma_Y\):
 
 
-```{r}
+```{r 2024-80}
 alpha_1 <- r * (sigma_X / sigma_Y)
 ```
 
@@ -910,7 +910,7 @@ Pertanto, la stima del coefficiente angolare \(\hat\alpha_1\) è approssimativam
 `r punti_p()` Testare l'ipotesi che $\beta_1$ sia uguale a zero, contro l'alternativa che sia diverso per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-81}
 ttest_beta(1,0,SE = T)
 ```
 :::
@@ -925,11 +925,11 @@ ttest_beta(1,0,SE = T)
 
 ### Esercizio 1
 
-```{r}
+```{r 2024-82}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2024-83}
 
 # Basic settings
 set.seed(10)   # per ottenere sempre la stessa simulazione
@@ -958,7 +958,7 @@ x_agg <- (n_ER * x_ER + n_L * x_L + n_V * x_V) / (n_ER + n_L + n_V)
 
 Su un campione di $`r n`$ famiglie dell'Emilia-Romagna sono stati rilevati i consumi annui in beni tecnologici (dai espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze relative:
 
-```{r}
+```{r 2024-84}
 kable(dat3[,c(1,2,4)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -967,7 +967,7 @@ kable(dat3[,c(1,2,4)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)`  Individuare l'intervallo modale. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-85}
 kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -978,7 +978,7 @@ histp(T)
 `r punti_p()` Quante famiglie spendono più del 25-esimo percentile $x_{0.25}$? 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-86}
 F_print(x = Q.int(.25),verso = ">")
 ```
 :::  
@@ -1014,7 +1014,7 @@ Dove:
 `r punti_p(nex=T)`  Sia $X$ il numero di telefonate in arrivo ad un centralino di emergenza, si assume $X\sim\text{Pois}(1.2)$. Calcolare la probabilità che $X\geq 2$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-15,,results='asis'}
 pois_dis(x1 = 2,ll = 1.2,verso = "\\geq")
 ```
 :::  
@@ -1022,7 +1022,7 @@ pois_dis(x1 = 2,ll = 1.2,verso = "\\geq")
 `r punti_p()` Siano $X\sim\text{Pois}(1.2)$ e $Y\sim\text{Binom}(n=2,\pi=0.5)$, $X$ e $Y$ indipendenti, posto $A=\{X\geq 2\}$, $B=\{Y=0\}$, calcolare $P(A\cup B)$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-16,,results='asis'}
 pa <- 1-sum(dpois(0:1,1.2))
 pb <- .5^2
 ```
@@ -1031,7 +1031,7 @@ pb <- .5^2
   P(B) &=& 0.5^2 = `r pb`
 \end{eqnarray*}
   
-```{r}
+```{r 2024-87}
 p_aub(pa = pa,pb = pb)
 ```
 :::  
@@ -1051,7 +1051,7 @@ $$
 Disegnare le sua funzione di ripartizione, $F(x)$, nell'intervallo $-2\leq x\leq 3$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-88}
 x <- c(-2,-1,0,2,3)
 px <- c(0,c(2,2,1)/5,0)
 plot(x,pbinom(x,2,.5),type="n",ylab="F(x)",axes = F)
@@ -1073,7 +1073,7 @@ Si estrae 50 volte con reintroduzione.
 Qual è la probabilità che la proporzione di premi da 2 euro sia compresa tra 0.20 e 0.23.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-89}
 n <- 50
 mx <- sum(0:2*4:2/9)
 vx <- sum((0:2)^2*4:2/9)-mx^2
@@ -1115,7 +1115,7 @@ $$
 ### Esercizio 5
 
 
-```{r}
+```{r 2024-90}
 set.seed(9)
 n <- 50
 x <- round(runif(n = n,min = 8,20),0) # Anni di studio
@@ -1134,7 +1134,7 @@ $\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum
 `r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-17,,results='asis'}
 calcolo_beta()
 residuo(x = x[3],y = y[3])
 ```
@@ -1143,14 +1143,14 @@ residuo(x = x[3],y = y[3])
 `r punti_p()` Il modello si adatta bene ai dati?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-18,,results='asis'}
 R2()
 ```
 :::
 
 `r punti_p()` Interpretare il diagramma dei residui.
 
-```{r, fig.width=5, fig.height=3.5}
+```{r 2024-19,, fig.width=5, fig.height=3.5}
 par(mar=c(4,4,0,2),cex=.8)
 plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
 axis(1, cex=1)
@@ -1159,7 +1159,7 @@ abline(h=0, lty=2)
 ```
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-20,,results='asis'}
 plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
 axis(1, cex=1)
 axis(2, cex=1)
@@ -1175,7 +1175,7 @@ spline_pat(x,es,df1 = 5,df2 = 4)
 `r punti_p()` Testare l'ipotesi che $\beta_0$ sia uguale a 16.4, contro l'alternativa che sia minore per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-91}
 ttest_beta(0,16.4,h1 = "<",SE = T)
 ```
 :::
@@ -1190,11 +1190,11 @@ ttest_beta(0,16.4,h1 = "<",SE = T)
 
 ### Esercizio 1
 
-```{r}
+```{r 2024-92}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2024-93}
 
 # Basic settings
 set.seed(1)   # per ottenere sempre la stessa simulazione
@@ -1212,7 +1212,7 @@ ls2e(x = stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie dell'Emilia-Romagna sono stati rilevati i consumi annui in beni tecnologici (dai espressi in migliaia di euro). Qui di seguito la distribuzione delle densità percentuali:
 
-```{r}
+```{r 2024-94}
 kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -1221,7 +1221,7 @@ kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)`  Calcolare il valore approssimativo della mediana. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-95}
 percentile()
 histp(T)
 draw_dist(dist = H.int,z1 = 4,z2 = 10)
@@ -1231,7 +1231,7 @@ draw_dist(dist = H.int,z1 = 4,z2 = 10)
 `r punti_p()` Qual è la percentuale di famiglie spendono più del 55-esimo percentile $x_{0.55}$? 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-96}
 F_print(x = Q.int(.55),verso = ">")
 ```
 :::  
@@ -1255,7 +1255,7 @@ Se ogni famiglia diminuisse la propria spesa del 2%, quanto varrebbero la media 
 Calcolare $P(A\cup B)$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-21,,results='asis'}
 norm_int(x1 =  5,verso = ">",mm =  6,ss = 0.5,vnam = "X")
 norm_int(x1 = 7,verso = "<",mm = 6,ss = 0.5,vnam = "Y")
 zx <- round((5-6)/sqrt(0.5),2)
@@ -1269,7 +1269,7 @@ p_aub(pa,pb)
 `r punti_p()` , posto $W=X-Y$, calcolare $P(W<1|W>-1)$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-22,,results='asis'}
 pab <- pnorm(1)-pnorm(-1)
 pb  <- pnorm(-1,lower.tail = F)
 ```
@@ -1295,7 +1295,7 @@ P(A \cup B)    &=&  P(A) + P(B) - P(A\cap B)\\
 `r punti_p()` Sia $X\sim\text{Binom}(n=2,\pi=0.5)$ e sia $F$ la sua funzione di ripartizione. Disegnare $F(x)$ nell'intervallo $-1\leq x\leq 3$
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-97}
 bin_dis(x1 = 0,n = 2,pp = .5)
 bin_dis(x1 = 1,n = 2,pp = .5)
 bin_dis(x1 = 2,n = 2,pp = .5)
@@ -1322,7 +1322,7 @@ Qual è la probabilità che la la vincita totale sia maggiore di 30?
 
 :::{.sol data-latex=""}
 
-```{r}
+```{r 2024-98}
 n <- 100
 mx <- 1/4
 
@@ -1346,7 +1346,7 @@ Ricavare il suo _Standard Error_ teorico e quello stimato.
 
 `r punti_p()` Definire gli errori di primo e di secondo tipo e le relative probabilità.
 
-```{r}
+```{r 2024-99}
 # Definizione dei dati osservati
 observed <- c(13, 5, 10, 10, 8, 7, 4)
 total <- sum(observed)
@@ -1358,7 +1358,7 @@ pval_poisson <- format(chisq_result$p.value, digits = 4, nsmall = 4)
 
 `r punti_p()` Un economista sta studiando il numero di piccole imprese che aprono ogni mese in una certa regione. Ha raccolto dati sul numero di nuove imprese in `r total` mesi. I dati osservati sono riportati nella tabella seguente. L'obiettivo è determinare se i dati seguono una distribuzione di Poisson.
 
-```{r}
+```{r 2024-100}
 # Definizione dei dati osservati
 
 # Creazione della tabella
@@ -1379,7 +1379,7 @@ Eseguito il test del $\chi^2$ per verificare la conformità dei dati alla distri
 ### Esercizio 5
 
 
-```{r}
+```{r 2024-101}
 s1 <- 1.1
 n1 <- 18
 mu1 <- 1.8
@@ -1400,7 +1400,7 @@ per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\t
 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-102}
 ttest_2c_om(mu1 = mu1,mu2 = mu2,s1h = s1,s2h = s2,n1 = n1,n2 = n2,h1 = ">",a = a,b = b,um = "mila euro")
 ```
 :::
@@ -1409,7 +1409,7 @@ ttest_2c_om(mu1 = mu1,mu2 = mu2,s1h = s1,s2h = s2,n1 = n1,n2 = n2,h1 = ">",a = a
 ### Esercizio 6
 
 
-```{r}
+```{r 2024-103}
 set.seed(9)
 n <- 50
 x <- round(runif(n = n,min = 0,8),2) # Anni di studio
@@ -1427,7 +1427,7 @@ $\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum
 `r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-23,,results='asis'}
 calcolo_beta()
 residuo(x = x[3],y = y[3])
 ```
@@ -1470,7 +1470,7 @@ par(bg="transparent")
 
 
 ### Esercizio 1
-```{r}
+```{r 2024-104}
 # Basic settings
 set.seed(1)   # per ottenere sempre la stessa simulazione
 n <- 150      # ampiezza campionaria
@@ -1487,7 +1487,7 @@ ls2e(x = stat_base(samp,brk))
 
 Su un campione di $`r n`$ di piccole e medie imprese dell'Emilia-Romagna sono stati rilevati gli investimenti in infrastrutture tecnologiche (dati espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
-```{r}
+```{r 2024-105}
 kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 i2 <- 0
@@ -1496,7 +1496,7 @@ i2 <- 0
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-106}
 kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -1507,7 +1507,7 @@ histp(T)
 `r punti_p()` Quante imprese investono tra $x_{0.15}$ il 15-esimo e $x_{0.85}$ l'85-esimo percentile? 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-107}
 F_print(x = Q.int(.15),x2 = Q.int(.85),verso = "alt")
 ```
 :::  
@@ -1526,7 +1526,7 @@ $$
 `r punti_p(nex=T)` Si consideri un'urna che ha una pallina bianche, due nere e due verdi. Si estrae 5 volte con reinserimento. Sia $X$ la variabile casuale che conta il numero di bianche su 5 estrazioni. Calcolare la probabilità che $X\leq 1$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-24,,results='asis'}
 bin_dis(x1 = 1,n = 5,pp = 1/5,comp = F)
 ```
 :::  
@@ -1534,7 +1534,7 @@ bin_dis(x1 = 1,n = 5,pp = 1/5,comp = F)
 `r punti_p()` Sia $X$ la VC del punto precedente. Considerato $A=\{X\leq 1\}$, $B=\{X\leq 2\}$, calcolare $P(A|B)$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-25,,results='asis'}
 pa <- pbinom(1,5,1/5)
 pb <- pbinom(2,5,1/5)
 pab <- pa
@@ -1564,7 +1564,7 @@ $$
 Disegnare le sua funzione di ripartizione, $F(x)$, nell'intervallo $-2\leq x\leq 2$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-108}
 x <- c(-2,-1,1,2)
 px <- c(0,c(2,3)/5,0)
 kk <- length(px)
@@ -1586,7 +1586,7 @@ Qual è la probabilità che la somma sia maggiore di 25?
 
 :::{.sol data-latex=""}
 
-```{r}
+```{r 2024-109}
 n <- 100
 mx <- sum(-1*.4+1*.6)
 vx <- sum(.4+.6)-mx^2
@@ -1620,7 +1620,7 @@ Estratti $n=25$ dati si è ottenuto $\sum_{i=1}^n x_i = 45$ e $\sum_{i=1}^n x_i^
 
 `r punti_p()` Definire la significatività e la potenza di un test.
 
-```{r}
+```{r 2024-110}
 # Creazione della tabella con i dati
 tabella_aziendale <- matrix(c(30, 15, 20, 20, 25, 40, 45, 30, 35), nrow = 3, ncol = 3, byrow = TRUE)
 n_aziendale <- sum(tabella_aziendale)
@@ -1629,7 +1629,7 @@ pval  <- format(chisq.test(t(tabella_aziendale))$p.value, digits = 4, nsmall = 4
 
 `r punti_p()` Un responsabile delle risorse umane sta conducendo uno studio sull'associazione tra il tipo di formazione ricevuta e la performance lavorativa. Ha somministrato un questionario a `r n_aziendale` dipendenti, chiedendo loro di indicare la propria performance lavorativa (Alta, Media, Bassa) e il tipo di formazione ricevuta (Tecnica, Manageriale, Soft Skills). L'obiettivo è determinare se c'è un'associazione tra il tipo di formazione ricevuta e la performance lavorativa.
 
-```{r}
+```{r 2024-111}
 
 # Assegnazione dei nomi alle righe e alle colonne
 colnames(tabella_aziendale) <-  c("Alta", "Media", "Bassa")
@@ -1655,7 +1655,7 @@ Determinare un intervallo di confidenza al 95\% per
 il reddito medio annuale dei manager italiani.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-26,,results='asis'}
 idc(xm = 85,sd = 15,alpha = 0.05,n = 30,dist_ = "t",mus = "\\hat\\mu",ss = "S")
 ```
 :::
@@ -1667,7 +1667,7 @@ che il reddito medio annuale dei manager italiani sia uguale a quello
 dei manager europei contro l'alternativa che sia maggiore, per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-27,,results='asis'}
 ttest_mu(muh = 85,sh = 15,n = 30,mu0 = 80,h1 = ">")
 ```
 :::
@@ -1675,7 +1675,7 @@ ttest_mu(muh = 85,sh = 15,n = 30,mu0 = 80,h1 = ">")
 
 ### Esercizio 6
 
-```{r}
+```{r 2024-112}
 set.seed(42)
 n <- 30
 sig <- 1.5
@@ -1695,7 +1695,7 @@ $\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum
 `r punti_p(nex=T)` Si è osservato $x_7=`r p(x[7])`$ e $y_7=`r p(y[7])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=7$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-28,,results='asis'}
 calcolo_beta()
 residuo(x = x[7],y = y[7])
 ```
@@ -1731,7 +1731,7 @@ Calcolo:
 <!-- `r punti_p()` Testare l'ipotesi che $\beta_1$ sia uguale a zero, contro l'alternativa che sia diverso per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.). -->
 
 <!-- :::{.sol data-latex=""} -->
-<!-- ```{r} -->
+<!-- ```{r 2024-113} -->
 <!-- ttest_beta(1,0,SE = T) -->
 <!-- ``` -->
 <!-- ::: -->
@@ -1744,7 +1744,7 @@ Calcolo:
 
 
 ### Esercizio 1
-```{r}
+```{r 2024-114}
 
 punti <- list(
   e1 = c(14,3,2,2),
@@ -1784,7 +1784,7 @@ x_agg <- (n_ER * x_ER + n_L * x_L + n_V * x_V) / (n_ER + n_L + n_V)
 
 Su un campione di $`r n`$ di piccole e medie imprese dell'Emilia-Romagna sono stati rilevati gli investimenti in infrastrutture tecnologiche (dati espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze assolute:
 
-```{r}
+```{r 2024-115}
 kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 i2 <- 0
@@ -1793,7 +1793,7 @@ i2 <- 0
 `r punti_p(start=T)` Individuare l'intervallo modale. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-116}
 kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -1804,7 +1804,7 @@ histp(T)
 `r punti_p()` Quante imprese investono tra $x_{0.25}$ il 25-esimo e $x_{0.75}$ il 75-esimo percentile? 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-117}
 F_print(x = Q.int(.25),x2 = Q.int(.75),verso = "alt")
 invisible(round_all(2))
 ```
@@ -1841,7 +1841,7 @@ Dove:
 `r punti_p(nex=T)` Sia $X$ il numero di telefonate in arrivo ad un centralino di emergenza, si assume $X\sim\text{Pois}(1.3)$. Calcolare la probabilità che $X\geq 1$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-29,,results='asis'}
 pois_dis(x1 = 1,ll = 1.3,verso = "\\geq")
 ```
 :::  
@@ -1849,7 +1849,7 @@ pois_dis(x1 = 1,ll = 1.3,verso = "\\geq")
 `r punti_p()` Sia $X\sim\text{Pois}(1.3)$, posto $A=\{X\geq 2\}$, $B=\{X\geq 1\}$, calcolare $P(A|B)$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-118}
 pa <- 1-ppois(1,1.3)
 pb <- 1-ppois(0,1.3)
 pab <- pa
@@ -1880,7 +1880,7 @@ $$
 Disegnare le sua funzione di ripartizione, $F(x)$, nell'intervallo $-2\leq x\leq 3$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-119}
 x <- c(-1,0,1)
 px <- c(1,1,1)/3
 plot_FdR(x,px,-2,3)
@@ -1894,7 +1894,7 @@ Si estrae 50 volte con reintroduzione.
 Qual è la probabilità che la proporzione di palline maggiori di zero sia compresa tra 0.65 e 0.70?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-120}
 n <- 50
 mx <- sum(0:2*4:2/9)
 vx <- sum((0:2)^2*4:2/9)-mx^2
@@ -1940,14 +1940,14 @@ $$
 `r punti_p(nex=T)` In uno studio sull'efficacia di due metodi di insegnamento della matematica, si è proceduto facendo seguire il metodo \(A\) ad un campione di 15 studenti (gruppo \(A\)) e il metodo \(B\) ad un secondo campione di 18 studenti (gruppo \(B\)). Si è quindi misurata la prestazione degli studenti con un test finale. La prestazione media del gruppo \(A\) risulta pari a 78 con una deviazione standard pari a 8.3, mentre la prestazione media del gruppo \(B\) risulta pari a 74 con una deviazione standard pari a 7.5. Sotto ipotesi di eterogeneità verificare l'ipotesi che la prestazione media dei due metodi di insegnamento sia uguale, contro l'alternativa che il metodo \(A\) produca prestazioni mediamente migliori di quello \(B\), per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-30,,results='asis'}
 ttest_2c_et(mu1 = 78,mu2 = 74,s1h = 8.3,s2h = 7.5,n1 = 15,n2 = 18,h1 = ">",a = "A",b = "B")
 ```
 :::
 
 ### Esercizio 6
 
-```{r}
+```{r 2024-121}
 set.seed(42)
 n <- 40
 sig <- .25
@@ -1966,7 +1966,7 @@ $\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum
 `r punti_p(nex=T)` Si è osservato $x_4=`r x[4]`$ e $y_4=`r round(y[4],2)`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=4$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-31,,results='asis'}
 calcolo_beta()
 residuo(x = x[4],y = y[4])
 ```
@@ -1975,14 +1975,14 @@ residuo(x = x[4],y = y[4])
 `r punti_p()` Scomporre la Total Sum of Squares.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-32,,results='asis'}
 TSS()
 ```
 :::
 
 `r punti_p()` Interpretare il diagramma dei residui.
 
-```{r, fig.width=5, fig.height=3.5}
+```{r 2024-33,, fig.width=5, fig.height=3.5}
 par(mar=c(4,4,0,2),cex=.8)
 plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
 axis(1, cex=1)
@@ -1991,7 +1991,7 @@ abline(h=0, lty=2)
 ```
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-34,,results='asis'}
 plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
 axis(1, cex=1)
 axis(2, cex=1)
@@ -2007,7 +2007,7 @@ spline_pat(x,es,df1 = 5,df2 = 5)
 <!-- `r punti_p()` Testare l'ipotesi che $\beta_0$ sia uguale a 12, contro l'alternativa che sia maggiore per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.). -->
 
 <!-- :::{.sol data-latex=""} -->
-<!-- ```{r} -->
+<!-- ```{r 2024-122} -->
 <!-- ttest_beta(0,12.5,h1 = ">",SE = T) -->
 <!-- ``` -->
 <!-- ::: -->
@@ -2020,7 +2020,7 @@ spline_pat(x,es,df1 = 5,df2 = 5)
 
 
 ### Esercizio 1
-```{r}
+```{r 2024-123}
 punti <- list(
   e1 = c(14,3,2,2),
   e2 = c(14,3,2,2),
@@ -2046,7 +2046,7 @@ ls2e(x = stat_base(samp,brk))
 
 Su un campione di $`r n`$ di piccole e medie imprese dell'Emilia-Romagna sono stati rilevati gli investimenti in infrastrutture tecnologiche (dati espressi in migliaia di euro).  Qui di seguito la distribuzione delle densità percentuali:
 
-```{r}
+```{r 2024-124}
 kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -2054,7 +2054,7 @@ kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Calcolare il valore approssimativo della mediana. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-125}
 kable(dat3[,c(1:7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 percentile()
@@ -2094,7 +2094,7 @@ $$
 Calcolare $P(A\cup B)$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-35,,results='asis'}
 norm_int(x1 =  0,verso = ">",mm =  1,ss = 1.5,vnam = "X")
 norm_int(x1 = 0,verso = "<",mm = -1,ss = 1.5,vnam = "Y")
 zx <- round((0-1)/sqrt(1.5),2)
@@ -2108,7 +2108,7 @@ p_aub(pa,pb)
 `r punti_p()` , posto $W=(X+Y)/2$, calcolare $P(W<1|W>-1)$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-36,,results='asis'}
 pab <- pnorm(1,0,sqrt(3/4))-pnorm(-1,0,sqrt(3/4))
 pb  <- pnorm(-1,0,sqrt(3/4),lower.tail = F)
 ```
@@ -2128,7 +2128,7 @@ $$
 `r punti_p()` Sia $X\sim\text{Binom}(n=2,\pi=0.5)$ e sia $F$ la sua funzione di ripartizione. Disegnare $F(x)$ nell'intervallo $-1\leq x\leq 3$
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-126}
 bin_dis(x1 = 0,n = 2,pp = .5)
 bin_dis(x1 = 1,n = 2,pp = .5)
 bin_dis(x1 = 2,n = 2,pp = .5)
@@ -2153,7 +2153,7 @@ Si estrae 150 volte con reintroduzione.
 Qual è la probabilità che la somma sia minore di 80?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-127}
 n <- 150
 xx <- rep(c(-2,-1,2),times=c(2,2,6))
 mx <- mean(xx)
@@ -2199,7 +2199,7 @@ SE(\hat\lambda) = \sqrt{\frac{2.16}{25}} = \sqrt{0.0864} \approx 0.294
 
 Qui di seguito è riportata la tabella delle preferenze dei clienti dei negozi della Toscana e le percentuali nazionali:
 
-```{r}
+```{r 2024-128}
 X <- c("Contanti", "Carta di Credito", "Carta di Debito", "Bonifico Bancario", "Pagamento Mobile")
 
 Y <- c("Dati Associazione", "Media Nazionale")
@@ -2220,7 +2220,7 @@ Eseguito il test del $\chi^2$ per verificare la conformità delle due distribuzi
 Costruire un intervallo di confidenza al 95% per \(\pi\), la quota di startup italiane che hanno implementato misure di cybersecurity avanzate.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-129}
 idc(xm = 84,alpha = .05,n = 120,dist_ = "z")
 ```
 :::
@@ -2228,7 +2228,7 @@ idc(xm = 84,alpha = .05,n = 120,dist_ = "z")
 `r punti_p()` Un'indagine molto più ampia condotta su startup europee ha mostrato che la percentuale di startup con misure di cybersecurity avanzate è del 80%. Testare l'ipotesi che in Italia la quota di startup con misure di cybersecurity avanzate sia uguale a quella europea contro l'alternativa che sia minore. Risolvere col $p_\text{value}$ e confrontarlo per $\alpha=0.1,0.05,0.01,0.001$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2024-130}
 sn <- 84
 n  <- 120
 p0 <- 0.80
@@ -2241,7 +2241,7 @@ ztest_pi(sn = sn,n = n,p0 = p0,h1 = h1)
 ### Esercizio 6
 
 
-```{r}
+```{r 2024-131}
 set.seed(9)
 n <- 50
 x <- round(runif(n = n,min = 0,8),2) # Anni di studio
@@ -2255,7 +2255,7 @@ In uno studio sull'uso delle nuove tecnologie, in un campione di \(n=`r n`\) ind
 `r punti_p(nex=T)` Si è osservato $x_5=`r p(x[5])`$ e $y_5=`r p(y[5])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=5$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2024-37,,results='asis'}
 calcolo_beta()
 residuo(x = x[3],y = y[3])
 ```

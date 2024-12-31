@@ -13,7 +13,7 @@ s2=1
 \part{Esercizi per argomento}
 
 
-```{r}
+```{r 01-descr-5}
 if (html) cat('')
 ```
   
@@ -134,7 +134,7 @@ ls2e(stat_base(samp,brk))
 
 Sono stati analizzati `r n` individui per investigare su `r nomex`. È riportata qui di seguito la distribuzione in classi espressa in frequenza assoluta.
 
-```{r}
+```{r 01-descr-6}
 tabl((dat3[1:(k+1),c(1:3)]))
 ```
 
@@ -149,7 +149,7 @@ Ricordando che:
 
 si consiglia di mettere i dati in tabella:
 
-```{r}
+```{r 01-descr-7}
 tabl((dat3[1:(k+1),c(1:7)]))
 ```
 :::
@@ -158,11 +158,11 @@ tabl((dat3[1:(k+1),c(1:7)]))
 `r item()`   calcolare il valore approssimato del percentile  $`r p*100`$-esimo, e tracciarlo nell'istogramma.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 01-descr-1,,results='asis'}
 cat(percentile(p = p))
 ```
 
-```{r}
+```{r 01-descr-8}
 histp()
 axis(1,brk,las=2)
 axis(2)
@@ -211,7 +211,7 @@ e quindi
 
 ### Variante C
 
-```{r,include=FALSE}
+```{r 01-descr-2,,include=FALSE}
 # Basic settings
 set.seed(3)   # per ottenere sempre la stessa simulazione
 n <- 200      # ampiezza campionaria
@@ -246,13 +246,13 @@ Ricordando che:
 
 si consiglia di mettere i dati in tabella:
 
-```{r}
+```{r 01-descr-9}
 tabl((dat3[1:(k+1),c(1:2,4:7)]),digits = c(0,0,3,0,4,2))
 ```
 
 e infine disegnare il grafico
 
-```{r}
+```{r 01-descr-10}
 histp()
 axis(1,brk,las=2)
 axis(2)
@@ -269,7 +269,7 @@ n_j=f_j\times n
 
 e mettendo in tabella, otteniamo
 
-```{r}
+```{r 01-descr-11}
 tabl((dat3[1:(k+1),c(1:2,4:3)]))
 ```
 :::
@@ -286,7 +286,7 @@ tabl((dat3[1:(k+1),c(1:2,4:3)]))
 
 graficamente
 
-```{r}
+```{r 01-descr-12}
 histp()
 axis(1,brk,las=2)
 axis(2)
@@ -325,7 +325,7 @@ e quindi
 
 graficamente
 
-```{r}
+```{r 01-descr-13}
 histp()
 axis(1,brk,las=2)
 axis(2)
@@ -345,7 +345,7 @@ text((Q.int(.9)+max(brk))/2,.1,paste(10,"%"),cex=3)
 
 ## Varianti con contesto (eserciziario)
 
-```{r}
+```{r 01-descr-14}
 # Basic settings
 set.seed(12)   # per ottenere sempre la stessa simulazione
 n <- 200      # ampiezza campionaria
@@ -391,7 +391,7 @@ percentuale.
 
 _Si noti che, a causa dell'ampiezza della scala dei valori, i dettagli dell'istogramma **non si leggono** sul grafico e, pertanto, non sono stati riportati gli estremi delle classi sull'asse delle ascisse, $X$, e i dati si evincono dal testo_
 
-```{r}
+```{r 01-descr-15}
  plot(range(brk),range(c(0,dat3$`$h_j$`),na.rm = T),type="n",axes=F,xlab = nomex,ylab = "Denistà percentuale")
  rect(xleft = br1,ybottom = 0,xright = br2,ytop = dat3$`$h_j$`)
   axis(1,brk+.5,las=2)
@@ -422,7 +422,7 @@ A questo punto è possibile costruire la tabella della
 distribuzione delle frequenze percentuali della $X$, numero
 di addetti delle imprese.
 
-```{r}
+```{r 01-descr-16}
 tabl((dat3[1:(k),c(1:7)]))
 ```
 
@@ -499,7 +499,7 @@ che contiene la mediana.
 :::{.sol data-latex=""}
 `r p=0.5; X<-dat2`
 
-```{r,results='asis'}
+```{r 01-descr-3,,results='asis'}
 cat(percentile(p = p))
 ```
 :::
@@ -521,7 +521,7 @@ p \times 100 &=& \%(X < x_{p}) \qquad \mbox{Area\ totale\ uguale\ 100}
 ### Esercizio Dati Continui
 
 
-```{r}
+```{r 01-descr-17}
 # Basic settings
 set.seed(12)   # per ottenere sempre la stessa simulazione
 n <- 3000      # ampiezza campionaria
@@ -566,7 +566,7 @@ posto pari a 3000.
 Sopra ogni rettangolo è indicato il valore delle
 densità di frequenza percentuale.
 
-```{r}
+```{r 01-descr-18}
  plot(c(0,range(brk)[2]),range(c(0,dat3$`$h_j$`),na.rm = T),type="n",axes=F,xlab = nomex,ylab = "Denistà percentuale")
  rect(xleft = br1,ybottom = 0,xright = br2,ytop = dat3$`$h_j$`)
  axis(1,c(0,brk))
@@ -606,7 +606,7 @@ nella classe che contiene la mediana.
 :::{.sol data-latex=""} 
 Sia $m$ il numero della classe contenente la mediana: `r X<-dat2;p<-.5`
 
-```{r,results='asis'}
+```{r 01-descr-4,,results='asis'}
 cat(percentile(p = p))
 ```
 :::
@@ -646,7 +646,7 @@ nella tabella seguente.
 Il numero di autovetture censite, per comodità è stato posto
 pari a 3000 (decine di migliaia, si veda l'esercizio precedente).
 
-```{r}
+```{r 01-descr-19}
 kable((dat3[1:(k),1:3]),booktabs=T,escape = F,linesep="")
 ```
 
@@ -666,7 +666,7 @@ Per completezza e comodità si riporta la seguente
 tabella che contiene le frequenze percentuali e le
 frequenze percentuali cumulate, $F_{\%;\, j}$.
 
-```{r}
+```{r 01-descr-20}
 kable((dat3[1:(k),c(1:4,7)]),booktabs=T,escape = F,linesep="")
 ```
 
@@ -700,7 +700,7 @@ nella tabella seguente.
 Il numero di autovetture censite è pari a 320.27 centinaia
 di migliaia ($10^{5}$).
 
-```{r}
+```{r 01-descr-21}
 kable((dat3[1:(k),c(1:2,4)]),booktabs=T,escape = F,linesep="")
 ```
 
@@ -812,13 +812,13 @@ e $f_{J}=100$, dove $J$ è l'indice dell'ultima classe e,
 quindi, il percentile di $x_{(n)}$ (il massimo).
 In tabella:
 
-```{r}
+```{r 01-descr-22}
 tabl((dat3[1:(k),c(1:2,7,4,5,6)]))
 ```
 
 e di cosegeunza otteniamo
 
-```{r}
+```{r 01-descr-23}
  plot(c(0,range(brk)[2]),range(c(0,dat3$`$h_j$`),na.rm = T),type="n",axes=F,xlab = nomex,ylab = "Denistà percentuale")
  rect(xleft = br1,ybottom = 0,xright = br2,ytop = dat3$`$h_j$`)
  axis(1,c(0,brk))
@@ -846,7 +846,7 @@ campioni di 20 libri estratti da due impianti di produzione
 A First Course_, 2.nd Edition, Prentice-Hall. Tr. it. (2002),
 _Statistica_, Apogeo, Milano, p. 126).
 
-```{r}
+```{r 01-descr-24}
 I1 <- c( 5.62  , 5.29  ,16.25  ,10.92  ,11.46  ,21.62  , 8.45  , 8.58  , 5.41  ,11.42 ,
 11.62  , 7.29  , 7.50  , 7.96  , 4.42  ,10.50  , 7.58  , 9.29  , 7.54  , 8.92 )
 
@@ -870,7 +870,7 @@ Determinare:
 Per rispondere alle tre domande conviene ordinare prima i dati, come
 riportato nella tabella seguente.
 
-```{r}
+```{r 01-descr-25}
 I1 <- sort(I1)
 
 I2 <- sort(I2)

@@ -11,7 +11,7 @@ i1 <- 1
 ```
 
 
-```{r}
+```{r 02-prob-1}
 if (html) cat('')
 ```
   
@@ -518,7 +518,7 @@ doppia entrata, nella quale sulle righe si mettono i risultati
 del primo dado ($D1$) e sulle colonne si mettono i risultati
 del secondo dado ($D2$).
 
-```{r}
+```{r 02-prob-2}
 out <- outer(1:6,1:6,function(x,y) paste("$\\fbox{",x,"},\\fbox{",y,"}$",sep=""))
 row.names(out) <- paste("$D_1=",1:6,"$",sep="")
 colnames(out) <- paste("$D_2=",1:6,"$",sep="")
@@ -651,7 +651,7 @@ da $4\times 3=12$ coppie equiprobabili di biglietti:
 Sommando i due termini di ogni coppia si ricava facilmente
 che la distribuzione di probabilità di $X$ è
 
-```{r}
+```{r 02-prob-3}
 out <- outer(1:4,2:4,function(x,y) paste("$",x+y,";\\frac 1{12}$",sep=""))
 row.names(out) <- paste("$A_1=",1:4,"$",sep="")
 colnames(out) <- paste("$B_2=",2:4,"$",sep="")
@@ -661,7 +661,7 @@ kable(out,booktabs=T,escape = F,linesep="")
 
 da cui la probabilità di $X$
 
-```{r}
+```{r 02-prob-4}
 xy <- expand.grid(1:4,2:4)
 X <- cbind(rowSums(xy))
 X <- table(X)/12
@@ -678,7 +678,7 @@ si vede che il valore del primo biglietto è superiore
 a quello del secondo solo in $3$ delle $12$ coppie
 e quindi $P(A_{1}>B_{1})=1/4$.
 
-```{r}
+```{r 02-prob-5}
 out <- outer(1:4,2:4,function(x,y) paste("$",(x>y)+0,";\\frac 1{12}$",sep=""))
 row.names(out) <- paste("$A_1=",1:4,"$",sep="")
 colnames(out) <- paste("$B_2=",2:4,"$",sep="")
@@ -720,7 +720,7 @@ P(S<4)
 Un'urna contiene 3 palline rosse timbrate con $\color{red}{\mbox{A}}$, 2 palline rosse timbrate con $\color{red}{\mbox{B}}$, 1 palline rossa timbrate con $\color{red}{\mbox{C}}$, 2 palline verdi timbrate con $\color{green}{\mbox{A}}$, una verde con $\color{green}{\mbox{B}}$, una verde con $\color{green}{\mbox{C}}$, una nera con $\color{black}{\mbox{A}}$ e una nera con $\mbox{C}$. 
 In tabella
 
-```{r}
+```{r 02-prob-6}
 Y <- data.frame(v1 = c("Rosso","Verde","Nero","Tot"),A = c(3,2,1,6),B = c(2,1,0,3),C=c(1,1,1,3),Tot=c(6,4,2,12))
 
 

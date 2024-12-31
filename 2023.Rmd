@@ -1,5 +1,5 @@
 
-```{r}
+```{r 2023-105}
 rm(list = rm())
 source("intro.R")
 if (html) cat('')
@@ -8,7 +8,7 @@ if (html) cat('')
   
 # Anno 2023
 
-```{r}
+```{r 2023-106}
 source("punti.R")
 punti_list <- punti_2023
 compito <- 0
@@ -26,7 +26,7 @@ compito <- 0
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-107}
 
 # Basic settings
 set.seed(1)   # per ottenere sempre la stessa simulazione
@@ -44,7 +44,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stato rilevato l'investimento annuo in prodotti finanziari (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze assolute:
 
-```{r}
+```{r 2023-108}
 kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -52,7 +52,7 @@ kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-109}
 kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -84,7 +84,7 @@ Se ogni famiglia aumentasse il proprio investimento di 0.5 mila euro, quanto var
 Quanto vale $P(A\cup B)$? 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-1,,results='asis'}
 res1 <- norm_int(x1 = 8,x2 = 10,mm = 10,ss = 1.5,verso = NULL,vnam = "X",mu = "\\mu_X",sigma = "\\sigma_X")
 res2 <- norm_int(x1 = 11,x2 = 10,mm = 10,ss = 0.5,verso = "<",vnam = "Y",mu = "\\mu_Y",sigma = "\\sigma_Y")
 cat(res1)
@@ -132,7 +132,7 @@ cat(res2)
   &=& `r 1/4*3/4/100`
 \end{eqnarray*}
 
-```{r,results='asis'}
+```{r 2023-2,,results='asis'}
 urn <- c(0,0,0,1)
 mm <- mean(urn)
 ss <- s2c(urn)
@@ -156,7 +156,7 @@ Ricavare il suo $MSE$ (Mean Squared Error).
 
 `r punti_p()` In uno studio sull'efficacia degli integratori alimentari, su un gruppo di 238 atleti è stato misurato il rendimento atletico (ottimo, buono e scarso) e l'assunzione di integratori (alto, medio e basso). Qui di seguito i dati:
 
-```{r}
+```{r 2023-110}
 
 x <- matrix(c(21,20,18,35,26,38,15,30,35),3)
 
@@ -175,7 +175,7 @@ il test del chi-quadro sull'indipendenza tra rendimento e assunzione di integrat
 ### Esercizio 5 
 
 
-```{r}
+```{r 2023-111}
 n1 <- 35
 muh1 <- 68
 sdh1 <- 5.1
@@ -187,7 +187,7 @@ sdh2 <- 4.5
 `r punti_p(nex = T)` In uno studio sul gradimento dell'azione politica della regione, nel comune $A$ si è rilevata l'opinione su `r n1` intervistati misurata in una scala di gradimento che va da zero a 100. I dati campionari hanno evidenziato una media pari a $\hat\mu_A=`r muh1`$ e una deviazione standard osservata pari a $\hat\sigma_A=`r sdh1`$, mentre nel comune $A$ si è rilevata l'opinione su `r n1` intervistati misurata in una scala di gradimento che va da zero a 100. I dati campionari hanno evidenziato una media pari a $\hat\mu_B=`r muh2`$ e una deviazione standard osservata pari a $\hat\sigma_B=`r sdh2`$. Sotto ipotesi di omogeneità delle varianza testare l'ipotesi che il gradimento politico sia uguale nei due comuni contro l'alternativa che sia **diverso**.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-3,,results='asis'}
 ttest_2c_om(mu1 = muh1,mu2 = muh2,s1h = sdh1,s2h = sdh2,n1 = n1,n2 = n2,h1 = "\\neq",a = "A",b = "B")
 
 ```
@@ -229,7 +229,7 @@ a cui è stato chiesto il reddito annuo ($X$ espressa in scala di comodo) e la s
 `r punti_p(nex = T)` Stimare la previsione per $x=1.5$ nel modello di regressione dove $Y$ viene spiegata da $X$. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-112}
 cat(calcolo_beta())
 cat(previsione(1.5))
 ```
@@ -242,7 +242,7 @@ $$r^2\times 100=`r r^2*100`$$
 :::
 
 `r punti_p()` Interpretare il diagramma dei residui. 
-```{r,fig.height=2.5,fig.width=3.5}
+```{r 2023-4,,fig.height=2.5,fig.width=3.5}
 par(cex=.35)
 plot(x,ml$res,axes=F,xlab="x",ylab="Residui")
 axis(1)
@@ -253,7 +253,7 @@ par(cex=cex)
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-5,,results='asis'}
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])),cex=.35)
 abline(h=0,lty=2,col="grey")
 
@@ -272,7 +272,7 @@ axis(2)
 
 ## Prova di Statistica 2023/01/11-2
 
-```{r}
+```{r 2023-113}
 
 source("intro.R")
 
@@ -284,11 +284,11 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-114}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-115}
 # Basic settings
 set.seed(2)   # per ottenere sempre la stessa simulazione
 n <- 160      # ampiezza campionaria
@@ -306,7 +306,7 @@ ls2e(stat_base(samp,brk))
 Su un campione di $`r n`$ famiglie della provincia di Modena è stato rilevato l'investimento annuo in prodotti obbligazionari (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze percentuali:
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-116}
 kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -315,7 +315,7 @@ kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-117}
 kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -355,7 +355,7 @@ Se ogni famiglia aumentasse il proprio investimento del 2 percento, quanto varre
   &=& `r 1-(dpois(0,2.5)+dpois(1,2.3))`
 \end{eqnarray*}
 
-```{r}
+```{r 2023-118}
 pois_dis(2,2.3,">")
 ```
 :::
@@ -380,7 +380,7 @@ pois_dis(2,2.3,">")
 
 ### Esercizio 3
 
-```{r}
+```{r 2023-119}
 n <- 365
 ex <- 0.08
 vx <- 0.034
@@ -397,7 +397,7 @@ vs <- ss <- n*vx
 `r punti_p(nex = T)` Un'urna contiene 4 palline numerate con $\fbox{0}$, $\fbox{3}$, $\fbox{4}$ e $\fbox{6}$. Si estrae 100 volte con reinserimento. Qual è la probabilità che la somme delle 100 estrazioni sia maggiore di 310?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-6,,results='asis'}
 urn <- c(0,3,4,6)
 mm <- mean(urn)
 ss <- s2c(urn)
@@ -429,7 +429,7 @@ Ricavare il suo $MSE$ (Mean Squared Error).
 
 ### Esercizio 5
 
-```{r}
+```{r 2023-120}
 s1 <- 26
 n1 <- 35
 s2 <- 45
@@ -442,7 +442,7 @@ Testare usando il $p_\text{value}$ l'ipotesi che la proporzione di disoccupati s
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-7,,results='asis'}
 ztest_2c_pi(s1 = s1,s2 = s2,n1 = n1,n2 = n2,h1 = "<",a = "A",b = "B")
 ```
 :::
@@ -451,7 +451,7 @@ ztest_2c_pi(s1 = s1,s2 = s2,n1 = n1,n2 = n2,h1 = "<",a = "A",b = "B")
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-121}
 
 set.seed(5)
 set.seed(36)
@@ -482,7 +482,7 @@ a cui è stato chiesto il reddito annuo ($X$  espressa in scala di comodo) e gli
 `r punti_p(nex = T)` Stimare la previsione per $x=1.5$ nel modello di regressione dove $Y$ viene spiegata da $X$. 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-8,,results='asis'}
 cat(calcolo_beta())
 cat(previsione(1.5))
 ```
@@ -491,13 +491,13 @@ cat(previsione(1.5))
 `r punti_p()` Il modello si adatta bene ai dati? 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-9,,results='asis'}
 cat(R2())
 ```
 :::
 
 `r punti_p()` Interpretare il diagramma dei residui. 
-```{r}
+```{r 2023-122}
 par(cex=.35)
 plot(x,ml$res,axes=F,xlab="x",ylab="Residui")
 axis(1)
@@ -508,7 +508,7 @@ par(cex=cex)
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-10,,results='asis'}
 
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])),cex=.35)
 abline(h=0,lty=2,col="grey")
@@ -528,7 +528,7 @@ axis(2)
 
 ## Prova di Statistica 2023/01/11-3
 
-```{r}
+```{r 2023-123}
 
 source("intro.R")
 
@@ -540,11 +540,11 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-124}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-125}
 # Basic settings
 set.seed(1)   # per ottenere sempre la stessa simulazione
 n <- 160      # ampiezza campionaria
@@ -561,7 +561,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stato rilevato l'investimento annuo in prodotti finanziari (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
-```{r}
+```{r 2023-126}
 kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -569,7 +569,7 @@ kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-127}
 kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -629,7 +629,7 @@ Qual è la probabilità avere un numero di palline bianche maggiore o uguale a 2
 
 ### Esercizio 3
 
-```{r}
+```{r 2023-128}
 n <- 365
 ex <- 0.08
 vx <- 0.034
@@ -646,7 +646,7 @@ vs <- ss <- n*vx
 `r punti_p(nex = T)` Un'urna contiene 4 palline numerate: $\fbox{0}$, $\fbox{1}$, $\fbox{4}$ e $\fbox{6}$. Si estrae 100 volte con reinserimento. Qual è la probabilità che la media delle 100 estrazioni sia maggiore di 2.8?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-11,,results='asis'}
 urn <- c(0,1,4,6)
 mm <- mean(urn)
 ss <- s2c(urn)
@@ -685,7 +685,7 @@ il $p_\text{value}$ è risultato pari a $p_\text{value}=0.092$. Cosa possiamo co
 
 ### Esercizio 5
 
-```{r}
+```{r 2023-129}
 n1 <- 35
 muh <- 68
 sdh <- 5
@@ -696,7 +696,7 @@ mu0 <- 71
 Costruire un intervallo di confidenza al 95% per il gradimento medio $\mu$. 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-12,,results='asis'}
 options(digits = 4)
 res <- idc(xm = muh,sd = sdh,alpha = .05,n = n1,dist_ = "t",mus = mu0,ss = "S")
 cat(res)
@@ -706,7 +706,7 @@ cat(res)
 `r punti_p()` Un'indagine analoga, svolta sull'intera regione, ha mostrato un gradimento medio pari a $\mu_0=`r mu0`$. Testare l'ipotesi che nel comune A il livello di gradimento sia uguale a quello regionale contro l'alternativa che sia __minore__.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-13,,results='asis'}
 res <- ttest_mu(muh = muh,sh = sdh,n = n1,mu0 = mu0,h1 = "<")
 cat(res)
 ```
@@ -716,7 +716,7 @@ cat(res)
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-130}
 
 set.seed(5)
 set.seed(4)
@@ -746,7 +746,7 @@ a cui è stato chiesto il reddito annuo ($X$ espressa in scala di comodo) e la s
 `r punti_p(nex = T)` Stimare la previsione per $x=1.5$ nel modello di regressione dove $Y$ viene spiegata da $X$. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-131}
 cat(calcolo_beta())
 cat(previsione(1.5))
 ```
@@ -755,13 +755,13 @@ cat(previsione(1.5))
 `r punti_p()` Calcolare e interpretare $R^2$. 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-132}
 cat(R2())
 ```
 :::
 
 `r punti_p()` Interpretare il diagramma dei residui. 
-```{r,fig.height=2.5,fig.width=3.5}
+```{r 2023-14,,fig.height=2.5,fig.width=3.5}
 par(cex=.35)
 plot(x,ml$res,axes=F,xlab="x",ylab="Residui")
 axis(1)
@@ -772,7 +772,7 @@ par(cex=cex)
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-15,,results='asis'}
 
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])),cex=.35)
 abline(h=0,lty=2,col="grey")
@@ -821,7 +821,7 @@ lines(sort(x), lower_bound[order(x)], col = "blue", lwd = 2, lty = 2)
 
 ## Prova di Statistica 2023/02/16-1
 
-```{r}
+```{r 2023-133}
 
 source("intro.R")
 
@@ -832,11 +832,11 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-134}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-135}
 
 # Basic settings
 set.seed(1)   # per ottenere sempre la stessa simulazione
@@ -854,7 +854,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ imprese della provincia di Modena è stato rilevato l'utile dell'ultimo trimestre (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze assolute:
 
-```{r}
+```{r 2023-136}
 kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -862,7 +862,7 @@ kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Individuare la classe modale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-137}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 histp(T)
@@ -892,7 +892,7 @@ histp(T)
 Quanto vale $P(A\cap B)$?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-16,,results='asis'}
 cat(norm_int(x1 = -2,x2 = 1,verso = NULL,mm = 1,ss = 1.5,vnam = "X",mu = "\\mu_X",sigma = "\\sigma_X"))
 cat(norm_int(x1 =  1,verso = "<",mm = 1,ss = 1.5,vnam = "Y",mu = "\\mu_Y",sigma = "\\sigma_Y"))
 ```
@@ -928,7 +928,7 @@ P(E) &=& P(R_1\cap R_2 \cap R_3) + P(B_1\cap B_2 \cap B_3) + P(N_1\cap N_2 \cap 
 `r punti_p(nex = T)` Un'urna contiene 4 palline numerate: $\fbox{0}$, $\fbox{1}$, $\fbox{2}$ e $\fbox{3}$. Si estrae 100 volte con reinserimento. Qual è la probabilità che la media delle 100 estrazioni sia maggiore di 1.6?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-17,,results='asis'}
 urn <- 0:3
 mm <- mean(urn)
 ss <- s2c(urn)
@@ -961,7 +961,7 @@ Ricavare la sua varianza e metterla in relazione con il suo MSE.
 
 `r punti_p(nex = T)` In uno studio sull'efficacia degli integratori alimentari, su un gruppo di 238 atleti è stato misurato il rendimento atletico (ottimo, buono e scarso) e l'assunzione di integratori (alto, medio e basso). Qui di seguito i dati:
 
-```{r}
+```{r 2023-138}
 
 x <- matrix(c(21,20,18,35,26,38,15,30,35),3)
 
@@ -973,7 +973,7 @@ tabl(dat[[2]])
 Al livello del 5% testare l'ipotesi che integratori e rendimento siano indipendenti.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-139}
 chi_test(dat[[1]])
 ```
 :::
@@ -982,7 +982,7 @@ chi_test(dat[[1]])
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-140}
 
 set.seed(6)
 n <- 150
@@ -1008,7 +1008,7 @@ In uno studio sull'adeguamento alle direttive europee sul green si sono analizza
 `r punti_p(nex = T)` Stimare la previsione per $x=3.5$ nel modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-141}
 cat(calcolo_beta())
 cat(previsione(3.5))
 ```
@@ -1017,7 +1017,7 @@ cat(previsione(3.5))
 `r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-142}
 cat(R2())
 ```
 :::
@@ -1025,7 +1025,7 @@ cat(R2())
 `r punti_p()` Interpretare il diagramma dei residui.
 
 
-```{r,fig.height=2.5,fig.width=3.5}
+```{r 2023-18,,fig.height=2.5,fig.width=3.5}
 par(cex=.35)
 plot(x,ml$res,axes=F,xlab="x",ylab="Residui")
 axis(1)
@@ -1036,7 +1036,7 @@ par(cex=cex)
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-19,,results='asis'}
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])),cex=.35)
 abline(h=0,lty=2,col="grey")
 spline_pat(x = x,y = es)
@@ -1056,7 +1056,7 @@ axis(2)
 
 ## Prova di Statistica 2023/02/16-2
 
-```{r}
+```{r 2023-143}
 
 source("intro.R")
 
@@ -1067,11 +1067,11 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-144}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-145}
 options(digits = 3)
 
 # Basic settings
@@ -1089,7 +1089,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ imprese della provincia di Modena è stato rilevato l'utile dell'ultimo trimestre (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze assolute:
 
-```{r}
+```{r 2023-146}
 kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -1097,12 +1097,12 @@ kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Individuare il valore approssimato della mediana.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-147}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
 
-```{r,results='asis'}
+```{r 2023-20,,results='asis'}
 res <- percentile(p = .5)
 cat(res)
 histp()
@@ -1133,7 +1133,7 @@ axis(1,brk)
 `r punti_p(nex = T)` Il numero di telefonate in arrivo nell'ora di punta di un centralino è distribuito come una Poisson di parametro 3.1 ($X\sim\text{Pois}(\lambda=3.1)$). Qual è la probabilità di trovare al massimo 3 telefonate ($X\le 3$)?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-148}
 
 x <- 0:3
 l <- 3.1
@@ -1169,13 +1169,13 @@ P(E)  &=& P(R_1)P( R_2|R_1) P( R_3|R_1\cap R_2)\\
 `r punti_p(nex = T)` Un'urna contiene 2 palline numerate con $\fbox{0}$, 3 numerate con $\fbox{1}$ e 2 numerate con $\fbox{2}$. Si estrae 100 volte con reinserimento. Qual è la probabilità che la somma delle 100 estrazioni sia compresa tra 80 e 120?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-21,,results='asis'}
 urn <- c(0,0,1,1,1,2,2)
 mm <- mean(urn)
 ss <- s2c(urn)
 n <- 100
-res <- norm_int(x1 = 80,x2 = 120,mm = n*mm,ss = n*ss,vnam = "S_n",sigma = "\\sqrt {n\\sigma^2}",verso = NULL)
-cat(res)
+stat_(urn,semp = T)
+tlc(tipo = "somma",80,120,NULL,mu = mm,ss,n = n)
 ```
 :::
 
@@ -1195,7 +1195,7 @@ Ricavare la sua varianza e metterla in relazione con il suo $MSE$ (Mean Squared 
 
 `r punti_p()` In uno studio sull'effetto del titolo di studio sulla percezione del benessere, su un gruppo di 238 intervistati è stato chiesto il titolo di studio (basso: "al massimo le scuole medie inferiori", medio: "Diploma di scuola superiore", alto: "almeno il Diploma di Laurea") e la percezione del proprio benessere (basso, medio, alto). Qui di seguito i dati:
 
-```{r}
+```{r 2023-149}
 
 x <- matrix(c(18,21,20,26,35,38,35,30,15),3)
 dimnames(x)<-list(redimento=c("basso","medio","alto"),reddito=c("basso","medio","alto"))
@@ -1212,7 +1212,7 @@ Si è testata l'indipendenza tra il titolo di studio e la percezione del benesse
 
 ### Esercizio 5
 
-```{r}
+```{r 2023-150}
 mu1 <- 27
 s1  <- 4.2
 n1  <- 12
@@ -1226,7 +1226,7 @@ n2  <- 25
 Sotto ipotesi di eterogeneità, testare l'ipotesi che il reddito medio sia uguale nei due comuni, contro l'alternativa che sia maggiore nel comune $A$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-22,,results='asis'}
 res <- ttest_2c_et(mu1 = mu1,mu2 = mu2,s1h = s1,s2h = s2,n1 = n1,n2 = n2,h1 = ">")
 cat(res)
 ```
@@ -1237,7 +1237,7 @@ cat(res)
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-151}
 
 set.seed(6)
 n <- 150
@@ -1262,7 +1262,7 @@ In uno studio sull'adeguamento alle direttive europee sul green si sono analizza
 `r punti_p(nex = T)` Stimare la previsione per $x=1.5$ nel modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-23,,results='asis'}
 cat(calcolo_beta())
 cat(previsione(1.5))
 ```
@@ -1274,14 +1274,14 @@ cat(previsione(1.5))
 `r punti_p()` Il modello si adatta bene ai dati?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-24,,results='asis'}
 cat(R2())
 ```
 :::
 
 `r punti_p()` Interpretare il diagramma dei residui.
 
-```{r,fig.height=2.5,fig.width=3.5}
+```{r 2023-25,,fig.height=2.5,fig.width=3.5}
 par(cex=.35)
 plot(x,ml$res,axes=F,xlab="x",ylab="Residui")
 axis(1)
@@ -1292,7 +1292,7 @@ par(cex=cex)
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-26,,results='asis'}
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])),cex=.35)
 abline(h=0,lty=2,col="grey")
 spline_pat(x = x,y = es)
@@ -1312,7 +1312,7 @@ axis(2)
 
 ## Prova di Statistica 2023/02/16-3
 
-```{r}
+```{r 2023-152}
 
 source("intro.R")
 
@@ -1323,11 +1323,11 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-153}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-154}
 
 # Basic settings
 set.seed(1)   # per ottenere sempre la stessa simulazione
@@ -1343,7 +1343,7 @@ samp <- genera_dati(brk = brk,nnn=nnn,n=n)
 ls2e(stat_base(samp,brk))
 ```
 
-```{r}
+```{r 2023-155}
 
 
 options(digits=4)
@@ -1364,7 +1364,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ imprese della provincia di Modena è stato rilevato l'utile dell'ultimo trimestre (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
-```{r}
+```{r 2023-156}
 kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -1372,7 +1372,7 @@ kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-157}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -1447,7 +1447,7 @@ X\mathop\sim_a N(n,n)
 
 ### Esercizio 3
 
-```{r}
+```{r 2023-158}
 n <- 365
 ex <- 0.08
 vx <- 0.034
@@ -1464,7 +1464,7 @@ vs <- ss <- n*vx
 `r punti_p(nex = T)` Un'urna conteni tre palline rosse, due bianche e una nera. Si estrae $n=100$ volte con reintroduzione. Qual è la probabilità che la proporzione di palline rosse sia minore di 0.45?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-27,,results='asis'}
 # urn <- c(0,1,4,6)
 mm <- .5
 ss <- .25
@@ -1501,7 +1501,7 @@ ed è risultato $p_\text{value}=0.08$. Possiamo concludere che la moneta sia tru
 
 ### Esercizio 5
 
-```{r}
+```{r 2023-159}
 n1 <- 35
 muh <- 68
 sdh <- 5
@@ -1512,7 +1512,7 @@ mu0 <- 71
 Costruire un intervallo di confidenza al 95% per il reddito medio $\mu$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-28,,results='asis'}
 options(digits = 4)
 res <- idc(xm = muh,sd = sdh,alpha = .05,n = n1,dist_ = "t",mus = mu0,ss = "S")
 cat(res)
@@ -1522,7 +1522,7 @@ cat(res)
 `r punti_p()` Un'indagine analoga, svolta sull'intera regione, ha mostrato un reddito medio pari a $\mu_0=`r mu0`$. Testare l'ipotesi che nel comune $A$ il reddito medio sia uguale a quello regionale contro l'alternativa che sia __diverso__.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-29,,results='asis'}
 res <- ttest_mu(muh = muh,sh = sdh,n = n1,mu0 = mu0,h1 = "\\neq")
 cat(res)
 ```
@@ -1532,7 +1532,7 @@ cat(res)
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-160}
 
 set.seed(456)
 n <- 150
@@ -1559,7 +1559,7 @@ In uno studio sull'adeguamento alle direttive europee sul green si sono analizza
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-30,,results='asis'}
 cat(calcolo_beta())
 cat(previsione(x = 1.5))
 ```
@@ -1568,13 +1568,13 @@ cat(previsione(x = 1.5))
 `r punti_p()` Calcolare e interpretare $R^2$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-31,,results='asis'}
 cat(R2())
 ```
 :::
 
 `r punti_p()` Interpretare il qq-plot dei residui.
-```{r,fig.height=2.5,fig.width=3.5}
+```{r 2023-32,,fig.height=2.5,fig.width=3.5}
 par(cex=.35)
 qqnorm(ml$residuals,asp=1,axes=F)
 abline(0,1)
@@ -1593,7 +1593,7 @@ par(cex=cex)
 
 ## Prova di Statistica 2023/06/08-1
 
-```{r}
+```{r 2023-161}
 
 source("intro.R")
 
@@ -1605,11 +1605,11 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-162}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-163}
 set.seed(1)                      # per ottenere sempre la stessa simulazione
 n <- 160                         # ampiezza campionaria
 
@@ -1624,7 +1624,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stata rilevata la spesa annua dedicata alle vacanze, espressa in migliaia di euro. Qui di seguito la distribuzione delle frequenze assolute:
 
-```{r}
+```{r 2023-164}
 kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -1632,7 +1632,7 @@ kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-165}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%            # Stampa la tabella
   kable_styling(full_width = F, latex_options = "HOLD_position")
 histp(axes = T)
@@ -1643,7 +1643,7 @@ h.int(4,10,density=20)
 `r punti_p()` Qual è la percentuale di famiglie con spesa superiore a 4 mila euro?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-33,,results='asis'}
 cat(F_print(4,verso=">"))
 ```
 :::
@@ -1662,7 +1662,7 @@ Siano $X_A\sim \text{Pois}(1.5)$ e sia $X_B\sim \text{Pois}(1.5)$, $X_A$ e $X_B$
 `r punti_p(nex = T)` Calcolare la probabilità di  $A\cup B$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-34,,results='asis'}
 cat(pois_dis(x1 = 1,ll = 1.5,vnam = "X_A"))
 cat(pois_dis(x1 = 3,ll = 1.5,vnam = "X_B",verso = "\\geq"))
 pa <- ppois(1,1.5)
@@ -1689,7 +1689,7 @@ pb <- 1-ppois(2,1.5)
 Calcolare la probabilità che la proporzione di palline Blu sia maggiore di 0.3.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-35,,results='asis'}
 cat(tlc(tipo = "prop",x1 = 0.3,verso = ">",mu = .4,n = 81))
 ```
 :::
@@ -1723,7 +1723,7 @@ ed è risultato $p_\text{value}=0.009683$. Possiamo concludere che la moneta sia
 
 ### Esercizio 5
 
-```{r}
+```{r 2023-166}
 set.seed(12)
 n <- 50
 x <- runif(n,0,30)
@@ -1738,7 +1738,7 @@ pubblicità ($X$) e l'incremento di utile ($Y$) nell'ultimo quinquennio. Si osse
 `r punti_p(nex = T)` Stimare il modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-36,,results='asis'}
 cat(calcolo_beta())
 ```
 :::
@@ -1746,7 +1746,7 @@ cat(calcolo_beta())
 `r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-37,,results='asis'}
 cat(R2())
 ```
 :::
@@ -1755,7 +1755,7 @@ cat(R2())
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-38,,results='asis'}
 cat(ttest_beta(0,0,h1 = "\\neq",alpha = 0.05))
 ```
 :::
@@ -1763,7 +1763,7 @@ cat(ttest_beta(0,0,h1 = "\\neq",alpha = 0.05))
 
 `r punti_p()` Interpretare il diagramma dei residui.
 
-```{r,fig.height=2.5,fig.width=3.5}
+```{r 2023-39,,fig.height=2.5,fig.width=3.5}
 par(cex=.35)
 plot(x,es,axes=F,xlab="x",ylab="Residui")
 axis(1)
@@ -1774,7 +1774,7 @@ par(cex=cex)
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-40,,results='asis'}
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])),cex=.35)
 abline(h=0,lty=2,col="grey")
 spline_pat(x = x,y = es)
@@ -1793,7 +1793,7 @@ axis(2)
 
 ## Prova di Statistica 2023/06/08-2
 
-```{r}
+```{r 2023-167}
 
 source("intro.R")
 
@@ -1805,11 +1805,11 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-168}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-169}
 set.seed(1)                      # per ottenere sempre la stessa simulazione
 n <- 160                         # ampiezza campionaria
 
@@ -1824,7 +1824,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stata rilevata la spesa annua dedicata alle vacanze, espressa in migliaia di euro. Qui di seguito la distribuzione delle frequenze assolute:
 
-```{r}
+```{r 2023-170}
 kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -1832,7 +1832,7 @@ kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-171}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%            # Stampa la tabella
   kable_styling(full_width = F, latex_options = "HOLD_position")
 histp(axes = T)
@@ -1844,7 +1844,7 @@ h.int(4,8,density=20)
 
 :::{.sol data-latex=""}
 
-```{r,results='asis'}
+```{r 2023-41,,results='asis'}
 cat(F_print(4,x2 = 8,verso = ""))
 ```
 :::
@@ -1862,7 +1862,7 @@ Siano $X_A\sim N(1.5,1.5)$ e sia $X_B\sim N(1.5,1.5)$, $X_A$ e $X_B$ indipendent
 `r punti_p(nex = T)` Calcolare la probabilità di  $A\cup B$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-42,,results='asis'}
 cat(norm_int(x1 = 1,verso = "<",mm = 1.5,ss = 1.5,mu = "\\mu_A",sigma = "\\sigma_A",vnam = "X_A"))
 cat(norm_int(x1 = 2,verso = ">",mm = 1.5,ss = 1.5,mu = "\\mu_B",sigma = "\\sigma_B",vnam = "X_B"))
 pa <- pnorm(1,1.5,sqrt(1.5))
@@ -1899,7 +1899,7 @@ pb <- 1-pnorm(2,1.5,sqrt(1.5))
 Calcolare la probabilità che la somma dei risultati sia maggiore di 80.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-43,,results='asis'}
 cat(media_(0:2,p=c(.3,.3,.4)))
 cat(var_(0:2,p=c(.3,.3,.4)))
 cat(tlc(tipo = "somma",x1 = 80,verso = ">",mu = 1.1,n = 81,s2 = .69))
@@ -1924,7 +1924,7 @@ cat(tlc(tipo = "somma",x1 = 80,verso = ">",mu = 1.1,n = 81,s2 = .69))
 
 `r punti_p(nex = T)` In uno studio sull'efficacia degli integratori alimentari, su un gruppo di 238 atleti è stato misurato il rendimento atletico (ottimo, buono e scarso) e l'assunzione di integratori (alto, medio e basso). Qui di seguito i dati:
 
-```{r}
+```{r 2023-172}
 x <- matrix(c(21,20,18,35,26,38),2)
 rx <- rowSums(x)
 cx <- colSums(x)
@@ -1946,7 +1946,7 @@ dat <- chi_print(dat = x,nome_y = c("buono","scarso"),nome_x = c("alto","medio",
 Testare al livello di significatività del 5% se c'è indipendenza tra integratori e rendimento.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-44,,results='asis'}
 rx <- rowSums(x)
 cx <- colSums(x)
 
@@ -1974,7 +1974,7 @@ cat(cat("Il chi oss è ",chioss,", il chi-teorico,",qchisq(.95,2)," rifiuto:",if
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-173}
 set.seed(12)
 n <- 50
 x <- runif(n,0,30)
@@ -1989,7 +1989,7 @@ pubblicità ($X$) e l'incremento di utile ($Y$) nell'ultimo quinquennio. Si osse
 `r punti_p(nex = T)` Stimare il modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-45,,results='asis'}
 cat(calcolo_beta())
 ```
 :::
@@ -1997,14 +1997,14 @@ cat(calcolo_beta())
 `r punti_p()` Il modello si adatta bene ai dati?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-46,,results='asis'}
 cat(R2())
 ```
 :::
 
 `r punti_p()` Interpretare il diagramma dei residui.
 
-```{r,fig.height=2.5,fig.width=3.5}
+```{r 2023-47,,fig.height=2.5,fig.width=3.5}
 par(cex=.35)
 plot(x,es,axes=F,xlab="x",ylab="Residui")
 axis(1)
@@ -2015,7 +2015,7 @@ par(cex=cex)
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-48,,results='asis'}
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])),cex=.35)
 abline(h=0,lty=2,col="grey")
 spline_pat(x = x,y = es)
@@ -2053,7 +2053,7 @@ w_i = \beta_0'+\beta_1'x_i+\epsilon_i'
 
 ## Prova di Statistica 2023/06/08-3
 
-```{r}
+```{r 2023-174}
 
 source("intro.R")
 
@@ -2065,11 +2065,11 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-175}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-176}
 set.seed(1)                      # per ottenere sempre la stessa simulazione
 n <- 160                         # ampiezza campionaria
 
@@ -2084,7 +2084,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stata rilevata la spesa annua dedicata alle vacanze, espressa in migliaia di euro. Qui di seguito la distribuzione delle frequenze cumulate:
 
-```{r}
+```{r 2023-177}
 kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -2092,7 +2092,7 @@ kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-178}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%            # Stampa la tabella
   kable_styling(full_width = F, latex_options = "HOLD_position")
 histp(axes = T)
@@ -2104,7 +2104,7 @@ h.int(4,8,density=20)
 
 :::{.sol data-latex=""}
 
-```{r,results='asis'}
+```{r 2023-49,,results='asis'}
 cat(F_print(4,x2 = 8,verso = ""))
 ```
 :::
@@ -2123,7 +2123,7 @@ Sia $X\sim\text{Binom}(5,0.5)$ e sia $y\sim\text{Binom}(5,0.4)$, $X$ e $Y$ indip
 `r punti_p(nex = T)` Calcolare la probabilità di  $A\cup B$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-50,,results='asis'}
 cat(bin_dis(1,5,.5))
 cat(bin_dis(2,5,.4,verso = "\\geq",comp = T,vnam = "Y"))
 pa <- pbinom(1,5,.5)
@@ -2159,7 +2159,7 @@ pb <- pbinom(2,5,.4,lower.tail = F)
 Calcolare la probabilità che la media dei risultati sia minore di 0.9.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-51,,results='asis'}
 cat(media_(0:2,p=c(.3,.4,.3)))
 cat(var_(0:2,p=c(.3,.4,.3)))
 cat(tlc(tipo = "media",x1 = 0.9,verso = "<",mu = 1,n = 81,s2 = .6))
@@ -2177,7 +2177,7 @@ cat(tlc(tipo = "media",x1 = 0.9,verso = "<",mu = 1,n = 81,s2 = .6))
 `r punti_p()` Definire gli errori di primo e di secondo tipo e le relative probabilità.
 
 `r punti_p()` Un dado viene lanciato 60 volte e si ottiene 
-```{r}
+```{r 2023-179}
 set.seed(1)
 dad <- sample(1:6,size = 60,replace = T,prob=c(1,1,3,4,1,2)/sum(c(1,1,3,4,1,2)))
 kable(t(table(dad)),booktabs=T,escape = F,linesep="") %>%            # Stampa la tabella
@@ -2199,7 +2199,7 @@ si ottiene un $p_{\text{value}}=`r pval`$. Il dado si può ritenere truccato? Pe
 ### Esercizio 5
 
 
-```{r}
+```{r 2023-180}
 n1 <- 35
 muh <- 0.5
 sdh <- 0.25
@@ -2210,7 +2210,7 @@ mu0 <- 0.6
 Costruire un intervallo di confidenza al 95% per il gradimento medio $\mu$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-52,,results='asis'}
 cat(idc(xm = muh,sd = sdh,alpha = .05,n = n1,dist_ = "t",mus = "\\mu",ss = "S"))
 ```
 :::
@@ -2219,7 +2219,7 @@ cat(idc(xm = muh,sd = sdh,alpha = .05,n = n1,dist_ = "t",mus = "\\mu",ss = "S"))
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-53,,results='asis'}
 ttest_mu(muh = muh,sh = sdh,n = n1,mu0 = mu0,h1 = "<")
 ```
 :::
@@ -2229,7 +2229,7 @@ ttest_mu(muh = muh,sh = sdh,n = n1,mu0 = mu0,h1 = "<")
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-181}
 set.seed(12)
 n <- 50
 x <- runif(n,0,30)
@@ -2244,7 +2244,7 @@ pubblicità ($X$) e l'incremento di utile ($Y$) nell'ultimo quinquennio. Si osse
 `r punti_p(nex = T)` Stimare il modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-54,,results='asis'}
 cat(calcolo_beta())
 ```
 :::
@@ -2252,7 +2252,7 @@ cat(calcolo_beta())
 `r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-55,,results='asis'}
 cat(R2())
 ```
 :::
@@ -2260,7 +2260,7 @@ cat(R2())
 
 `r punti_p()` Interpretare il qq-plot dei residui.
 
-```{r,fig.height=2.5,fig.width=3.5}
+```{r 2023-56,,fig.height=2.5,fig.width=3.5}
 par(cex=.35)
 qqnorm(es,asp=1)
 abline(0,1)
@@ -2294,7 +2294,7 @@ y_i = \beta_0'+\beta_1'w_i+\epsilon_i'
 
 ## Prova di Statistica 2023/06/27-1
 
-```{r}
+```{r 2023-182}
 
 source("intro.R")
 
@@ -2307,12 +2307,12 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-183}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 
-```{r}
+```{r 2023-184}
 set.seed(1)                      # per ottenere sempre la stessa simulazione
 n <- 250                         # ampiezza campionaria
 
@@ -2328,7 +2328,7 @@ ls2e(stat_base(samp,brk))
 Su un campione di $`r n`$ famiglie della provincia di Modena è stato rilevata la spesa mensile in telecomunicazioni (in euro), qui di seguito 
 la distribuzione delle frequenze relative:
 
-```{r}
+```{r 2023-185}
 kable(dat3[,c(1,2,4)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -2336,7 +2336,7 @@ kable(dat3[,c(1,2,4)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-186}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%            # Stampa la tabella
   kable_styling(full_width = F, latex_options = "HOLD_position")
 histp(axes = T)
@@ -2347,7 +2347,7 @@ h.int(60,250,density=20)
 `r punti_p()` Qual è la percentuale di famiglie con spesa superiore a 60 euro?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-57,,results='asis'}
 cat(F_print(60,verso=">"))
 ```
 :::
@@ -2371,7 +2371,7 @@ $X$ e $Y$ indipendenti.
 o uguale a tre ($S=X+Y\ge 3$).
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-58,,results='asis'}
 cat(pois_dis(x1 = 3,ll = 1.3+2.2,vnam = "X+Y",verso = "\\geq"))
 ```
 :::
@@ -2400,7 +2400,7 @@ motivare la risposta.
 `r punti_p()` Sia $X\sim\text{Binom}(2,\pi=0.5)$. Disegnare la sua funzione di ripartizione.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-187}
 plot((-1):3,pbinom((-1):3,2,.5),type="s",xlim=c(-.1,2.1),ylim=c(0,1),axes=F)
 axis(1,0:2)
 axis(2,pbinom((-1):3,2,.5),las=2)
@@ -2417,7 +2417,7 @@ $\mu=1.2$ mila pezzi al giorno e una varianza di $\sigma^2=9.1$.
 Calcolare la probabilità che il numero totale di pezzi prodotti dopo un anno ($n=365$) sia inferiore a ai 400 (mila) pezzi prodotti.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-59,,results='asis'}
 cat(tlc(tipo = "somma",x1 = 400,verso = "<",mu = 1.2,s2 = 9.1,n = 365))
 ```
 :::
@@ -2453,7 +2453,7 @@ dei cittadini sulla presenza di un inceneritore. Sono state intervistate
 per la proporzione dei favorevoli in popolazione.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-60,,results='asis'}
 cat(idc(xm = 70,n = 250,alpha = .01,dist_ = "z"))
 ```
 :::
@@ -2464,7 +2464,7 @@ l'ipotesi che la proporzione nei due comuni sia uguale contro l'alternativa che 
 comune $B$ sia maggiore.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-61,,results='asis'}
 cat(ztest_2c_pi(s1 = 75,s2 = 70,n1 = 230,n2 = 250,h1 = ">",a = "B",b = "A"))
 ```
 :::
@@ -2475,7 +2475,7 @@ cat(ztest_2c_pi(s1 = 75,s2 = 70,n1 = 230,n2 = 250,h1 = ">",a = "B",b = "A"))
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-188}
 set.seed(16)
 n <- 50
 x <- runif(n,0,1.5)
@@ -2495,7 +2495,7 @@ web ($X$) la l'incremento percentuale medio di utile ($Y$). Si osservano le segu
 i coefficienti $\hat\beta_0$ e $\hat\beta_1$
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-62,,results='asis'}
 cat(calcolo_beta())
 ```
 :::
@@ -2504,7 +2504,7 @@ cat(calcolo_beta())
 calcolarla per questo caso.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-63,,results='asis'}
 cat(TSS())
 ```
 :::
@@ -2513,7 +2513,7 @@ cat(TSS())
 
 `r punti_p()` Interpretare il diagramma dei residui.
 
-```{r,fig.height=2.5,fig.width=3.5}
+```{r 2023-64,,fig.height=2.5,fig.width=3.5}
 par(cex=.35)
 plot(x,es,axes=F,xlab="x",ylab="Residui")
 axis(1)
@@ -2523,7 +2523,7 @@ par(cex=cex)
 ```
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-65,,results='asis'}
 
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])),cex=.35)
 abline(h=0,lty=2,col="grey")
@@ -2544,7 +2544,7 @@ axis(2)
 
 ## Prova di Statistica 2023/06/27-2
 
-```{r}
+```{r 2023-189}
 
 source("intro.R")
 
@@ -2557,11 +2557,11 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-190}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-191}
 set.seed(1)                      # per ottenere sempre la stessa simulazione
 n <- 250                         # ampiezza campionaria
 
@@ -2577,7 +2577,7 @@ ls2e(stat_base(samp,brk))
 Su un campione di $`r n`$ piccole imprese della provincia di Modena è stato rilevata la spesa mensile in telecomunicazioni (in euro), qui di seguito 
 la distribuzione delle frequenze assolute:
 
-```{r}
+```{r 2023-192}
 kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -2585,7 +2585,7 @@ kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-193}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%            # Stampa la tabella
   kable_styling(full_width = F, latex_options = "HOLD_position")
 histp(axes = T)
@@ -2596,7 +2596,7 @@ h.int(60,250,density=20)
 `r punti_p()` Qual è il numero di imprese con spesa superiore ai 100 euro?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-66,,results='asis'}
 cat(F_print(100,verso="<"))
 cat(F_print(100,verso=">"))
 ```
@@ -2617,7 +2617,7 @@ il numero di volte che esce _Testa_ su 6 lanci e si considerino gli insiemi $A=\
 `r punti_p(nex = T)` Calcolare la probabilità di $A\cup B$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-67,,results='asis'}
 cat(bin_dis(x1 = 1,n = 6,pp = .5,verso = "\\leq"))
 cat(bin_dis(x1 = 5,n = 6,pp = .5,verso = "\\geq"))
 pa <- pbinom(1,6,.5)
@@ -2636,7 +2636,7 @@ P(A\cap B) &=& 0\\
 da una normale $X\sim N(1,1)$. Calcolare la probabilità che il numero estratto finale sia minore di due.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-68,,results='asis'}
 cat(norm_int(x1 = 2,mm = 0,ss = 1))
 cat(norm_int(x1 = 2,mm = 1,ss = 1))
 
@@ -2667,7 +2667,7 @@ $\mu=1.3$ mila pezzi al giorno e una varianza di $\sigma^2=8.1$.
 Calcolare la probabilità che la media annuale ($n=365$) sia inferiore a 1.2 (mila) pezzi prodotti.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-69,,results='asis'}
 cat(tlc(tipo = "media",x1 = 1.2,verso = "<",mu = 1.3,s2 = 8.1,n = 365))
 ```
 :::
@@ -2702,7 +2702,7 @@ $\hat\sigma_A=3.4$
 per la proporzione dei favorevoli in popolazione.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-70,,results='asis'}
 cat(idc(xm = 72.1,sd = 3.4,n = 25,alpha = .05,dist_ = "t"))
 ```
 :::
@@ -2712,7 +2712,7 @@ Sono state intervistate 23 persone si è osservata una media pari $\mu_B=69.6$ e
 Sotto ipotesi di omogeneità testare l'ipotesi che le medie dei due comuni siano uguali contro l'alternativa che siano diverse
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-71,,results='asis'}
 cat(ttest_2c_om(mu1 = 72.1,mu2 = 69.6,s1h =3.4,s2h = 3.3,n1 = 25,n2 = 24,h1 = "\\neq",a = "A",b = "B" ))
 ```
 :::
@@ -2722,7 +2722,7 @@ cat(ttest_2c_om(mu1 = 72.1,mu2 = 69.6,s1h =3.4,s2h = 3.3,n1 = 25,n2 = 24,h1 = "\
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-194}
 set.seed(111)
 n <- 50
 x <- runif(n,0,1.5)
@@ -2742,7 +2742,7 @@ web ($X$) la l'incremento percentuale in altre campagne di marketing ($Y$). Si o
 i coefficienti $\hat\beta_0$ e $\hat\beta_1$
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-72,,results='asis'}
 cat(calcolo_beta())
 ```
 :::
@@ -2750,7 +2750,7 @@ cat(calcolo_beta())
 `r punti_p()` Il modello si adatta bene ai dati?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-73,,results='asis'}
 cat(TSS())
 ```
 :::
@@ -2759,7 +2759,7 @@ cat(TSS())
 
 `r punti_p()` Interpretare il diagramma dei residui.
 
-```{r,fig.height=2.5,fig.width=3.5}
+```{r 2023-74,,fig.height=2.5,fig.width=3.5}
 par(cex=.35)
 plot(x,es,axes=F,xlab="x",ylab="Residui")
 axis(1)
@@ -2769,7 +2769,7 @@ par(cex=cex)
 ```
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-75,,results='asis'}
 
 plot(x,es,axes=F,ylab=expression(hat(epsilon[i])),cex=.35)
 abline(h=0,lty=2,col="grey")
@@ -2790,7 +2790,7 @@ axis(2)
 
 ## Prova di Statistica 2023/06/27-3
 
-```{r}
+```{r 2023-195}
 
 source("intro.R")
 
@@ -2802,12 +2802,12 @@ source("intro.R")
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-196}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 
-```{r}
+```{r 2023-197}
 set.seed(1)                      # per ottenere sempre la stessa simulazione
 n <- 200                         # ampiezza campionaria
 
@@ -2823,7 +2823,7 @@ ls2e(stat_base(samp,brk))
 Su un campione di $`r n`$ piccole imprese della provincia di Modena è stato rilevata la spesa mensile in telecomunicazioni (in euro), qui di seguito 
 la divisione in classi e le densità percentuali
 
-```{r}
+```{r 2023-198}
 kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -2831,7 +2831,7 @@ kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Calcolare il valore approssimato della mediana
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-76,,results='asis'}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%            # Stampa la tabella
   kable_styling(full_width = F, latex_options = "HOLD_position")
 histp(axes = T)
@@ -2843,7 +2843,7 @@ cat(percentile())
 `r punti_p()` Qual è il numero di imprese con spesa superiore ai 60 euro?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-77,,results='asis'}
 cat(F_print(60,verso=">"))
 ```
 :::
@@ -2862,7 +2862,7 @@ $A=\{X>2.5\}$ e $B=\{Y\geq 3\}$.
 `r punti_p(nex = T)` Calcolare la probabilità di $A\cup B$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-78,,results='asis'}
 cat(norm_int(x1 = 2.5,verso = ">",mm = 2,ss = 1))
 cat(pois_dis(x1 = 3,ll = 2.9,verso = "\\geq",vnam = "Y"))
 pa <- 1-pnorm(2.5,2)
@@ -2905,7 +2905,7 @@ a $\pi=0.15$.
 Calcolare la probabilità che il numero totale di pezzi fallati in un anno ($n=365$) sia maggiore di 60
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-79,,results='asis'}
 cat(tlc(tipo = "somma",x1 = 60,verso = ">",mu = .15,n = 365))
 ```
 :::
@@ -2941,7 +2941,7 @@ $\hat\sigma_C=3.41$.
 per la proporzione dei favorevoli in popolazione.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-80,,results='asis'}
 cat(idc(xm = 77.25,sd = 3.41,n = 25,alpha = .05,dist_ = "t"))
 ```
 :::
@@ -2951,7 +2951,7 @@ di larga scala che ha evidenziato un gradimento medio pari a $\mu_0=76$
 Testare l'ipotesi che nel comune $C$ il gradimento sia uguale a quello regionale contro l'alternativa che sia maggiore.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-81,,results='asis'}
 ttest_mu(muh = 77.25,sh = 3.41,n = 25,mu0 = 76,h1 = ">")
 ```
 :::
@@ -2961,7 +2961,7 @@ ttest_mu(muh = 77.25,sh = 3.41,n = 25,mu0 = 76,h1 = ">")
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-199}
 set.seed(16)
 n <- 4
 x <- sort(runif(n,0,1.5))
@@ -2978,7 +2978,7 @@ web ($X$) la l'incremento percentuale in altre campagne di marketing ($Y$).
 
 Qui di seguito i dati
 
-```{r}
+```{r 2023-200}
 kable(prn[1:5,1:3], booktabs=T,escape = F,linesep="")%>%
   kable_styling(full_width = T) %>%
     row_spec(5, bold = T, color = "white", background = "gray")
@@ -2989,7 +2989,7 @@ kable(prn[1:5,1:3], booktabs=T,escape = F,linesep="")%>%
 e calcolare il residuo per $x=`r x[2]`$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-82,,results='asis'}
 kable(prn, digits = 4,booktabs=T,escape = F,linesep="")%>%
   kable_styling(full_width = T) %>%
   row_spec(5, bold = T, color = "white", background = "gray")
@@ -3002,7 +3002,7 @@ cat(residuo(x[2],y[2]))
 `r punti_p()` Il modello si adatta bene ai dati?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-83,,results='asis'}
 cat(R2())
 ```
 :::
@@ -3022,11 +3022,11 @@ cat(R2())
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-201}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-202}
 
 
 set.seed(1)                      # per ottenere sempre la stessa simulazione
@@ -3043,14 +3043,14 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ di piccole e medie  aziende  della provincia di Modena è stato rilevato l'utile netto (espresso in centinaia di migliaia di euro) durante il periodo del covid. Qui di seguito la distribuzione delle frequenze assolute:
 
-```{r}
+```{r 2023-203}
 tabl(dat3[,c(1,2,3)])
 ```
 
 `r punti_p(start=T)` Individuare la classe modale
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-204}
 tabl(dat3[,1:7])
 histp(axes = T)
 h.int(-10,3,density=20)
@@ -3060,7 +3060,7 @@ h.int(-10,3,density=20)
 `r punti_p()` Qual è la percentuale di imprese con bilancio inferiore a 3 (centomila) euro?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-84,,results='asis'}
 cat(F_print(3,verso="<"))
 ```
 :::
@@ -3092,7 +3092,7 @@ Poisson di parametro $\lambda_B=1.5$ ($X_B\sim \text{Pois}(1.5)$). $X_A$ e $X_B$
 
 :::{.sol data-latex=""}
 Diretta
-```{r,results='asis'}
+```{r 2023-85,,results='asis'}
 cat(pois_dis(x1 = 2,ll = 2.2,vnam = "X_A",verso = "\\geq"))
 cat(pois_dis(x1 = 2,ll = 1.5,vnam = "X_B",verso = "\\geq"))
 pa <- 1-ppois(1,2.2)
@@ -3159,7 +3159,7 @@ P(A|B) &=& \frac {P(A)P(B|A)}{P(B)}\\
 Calcolare la probabilità che la media delle palline estratte sia inferiore a 6.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-86,,results='asis'}
 cat(stat_(urn<-c(3,5,7,11),semp = T))
 cat(tlc(tipo = "media",x1 = 6,verso = "<",mu = mean(urn),s2 = s2c(urn),n = 81))
 ```
@@ -3182,7 +3182,7 @@ Dimostrare la consistenza di $\hat\mu$.
 
 `r punti_p()` Definire la significatività di un test.
 
-```{r}
+```{r 2023-205}
 tabella <- matrix(c(50, 120, 50, 60, 80, 40, 40, 50, 50), nrow = 3, ncol = 3, byrow = TRUE)
 n <- sum(tabella)
 pval <- format(chisq.test(tabella)$p.value,digits = 4,nsmall = 4)
@@ -3190,7 +3190,7 @@ pval <- format(chisq.test(tabella)$p.value,digits = 4,nsmall = 4)
 
 `r punti_p()` Un sociologo sta conducendo uno studio sull'associazione tra l'orientamento politico e l'atteggiamento nei confronti del cambiamento climatico. Ha somministrato un questionario a `r n` partecipanti, chiedendo loro di indicare il proprio orientamento politico (Conservatore, Progressista, Indipendente) e l'atteggiamento nei confronti del cambiamento climatico (Molto, poco, per nulla) preoccupato. L'obiettivo è determinare se c'è un'associazione significativa tra l'orientamento politico e l'atteggiamento nei confronti del cambiamento climatico.
 
-```{r}
+```{r 2023-206}
 
 # Assegnazione dei nomi alle righe e alle colonne
 rownames(tabella) <- c("Conservatore", "Progressista", "Indipendente")
@@ -3211,7 +3211,7 @@ sui cambiamenti climatici il sociologo ottiene un $p_\text{value}=`r pval`$. Qua
 ### Esercizio 5
 
 
-```{r}
+```{r 2023-207}
 # Dati campionari
 n1 <- 10
 muh <- 1200
@@ -3221,7 +3221,7 @@ mu0 <- 1100
 `r punti_p(nex = T)`  In uno studio sulle spese mensili dei dipendenti di un'azienda, è stato selezionato un campione di `r n1` individui. I dati campionari hanno mostrato una media di spese mensili pari a $\hat\mu = `r muh`€$ con una deviazione standard osservata pari a $\hat\sigma = `r sdh`€$. Costruire un intervallo di confidenza al 95% per la media delle spese mensili $\mu$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-87,,results='asis'}
 idc(xm = muh,sd = sdh,alpha = .05,n = n1,dist_ = "t")
 ```
 :::
@@ -3229,7 +3229,7 @@ idc(xm = muh,sd = sdh,alpha = .05,n = n1,dist_ = "t")
 `r punti_p()`  L'azienda afferma che la media delle spese mensili dei dipendenti è pari a $1100€$. Effettuare un test di ipotesi per verificare se la media delle spese mensili sia superiore a $1100€$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-88,,results='asis'}
 ttest_mu(muh = muh,sh = sdh,n = n1,mu0 = mu0,h1 = ">",um = "€")
 ```
 :::
@@ -3238,7 +3238,7 @@ ttest_mu(muh = muh,sh = sdh,n = n1,mu0 = mu0,h1 = ">",um = "€")
 
 ### Esercizio 6
 
-```{r}
+```{r 2023-208}
 set.seed(789)
 n <- 50
 x <- abs(rnorm(n, 0, 6)) + 6 # Anni di studio
@@ -3254,7 +3254,7 @@ In uno studio sul reddito, in un campione di $n=`r n`$ individui, sono state ana
 `r punti_p(nex = T)` Stimare il modello di regressione dove $Y$ viene spiegata da $X$ e prevedere il reddito per un individuo con 12 anni di studio.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-89,,results='asis'}
 cat(calcolo_beta())
 cat(previsione(12))
 ```
@@ -3263,7 +3263,7 @@ cat(previsione(12))
 `r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-90,,results='asis'}
 cat(R2())
 ```
 :::
@@ -3272,7 +3272,7 @@ cat(R2())
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-91,,results='asis'}
 cat(se_beta1())
 ```
 :::
@@ -3293,11 +3293,11 @@ cat(se_beta1())
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-209}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-210}
 
 
 set.seed(1)                      # per ottenere sempre la stessa simulazione
@@ -3314,14 +3314,14 @@ ls2e(stat_base(samp,brk))      # crea il data set e la tabella dat3
 
 Su un campione di $`r n`$ famiglie della provincia di Modena è stata rilevata la quantità mensile di ore dedicate all'utilizzo di servizi di streaming. Di seguito è riportata la distribuzione delle frequenze percentuali:
 
-```{r}
+```{r 2023-211}
 tabl(dat3[,c(1,2,12)])
 ```
 
 `r punti_p(start=T)` Individuare la classe modale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-212}
 tabl(dat3[,1:7])
 histp(axes = T)
 h.int(30,50,density=20)
@@ -3332,7 +3332,7 @@ h.int(30,50,density=20)
 
 :::{.sol data-latex=""}
 
-```{r,results='asis'}
+```{r 2023-92,,results='asis'}
 cat(percentile())
 cat(F_print(30,verso = ">"))
 ```
@@ -3364,7 +3364,7 @@ Si suppone inoltre che i tempi di manutenzione dei due macchinari siano indipend
 
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-93,,results='asis'}
 cat(norm_int(x1 = 14,verso = "<",mm = 15,ss = 1.5,mu = "\\mu_X",sigma = "\\sigma_X",vnam = "X"))
 cat(norm_int(x1 = 13,verso = "<",mm = 12,ss = 1.5,mu = "\\mu_Y",sigma = "\\sigma_Y",vnam = "Y"))
 pa <- pnorm(14,15,sqrt(1.5))
@@ -3384,7 +3384,7 @@ Quando il tempo di manutenzione del macchinario $Y$ è inferiore a 12 ore ($B=\{
 Calcolare la probabilità che l'azienda abbia una perdita economica totale superiore ai 600€.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-213}
 two_way2(c(100,500),c(70,600),c(pa,1-pa),c(pb,1-pb),EV = F)
 0.0429 + 0.1642
 ```
@@ -3409,7 +3409,7 @@ Calcolare la probabilità di vincere più di 30 volte.
 
 :::{.sol data-latex=""}
 \[\pi=\frac 13\]
-```{r,results='asis'}
+```{r 2023-94,,results='asis'}
 cat(tlc(tipo = "somma",x1 = 30,verso = ">",mu = 1/3,n = 81))
 ```
 :::
@@ -3429,7 +3429,7 @@ Dimostrare la consistenza di $\hat\beta_1$.
 
 `r punti_p()` Definire la potenza di un test.
 
-```{r}
+```{r 2023-214}
 tabella <- matrix(c(50, 80, 50, 60, 80, 40, 40, 50, 50), nrow = 3, ncol = 3, byrow = TRUE)
 n <- sum(tabella)
 pval <- format(chisq.test(tabella)$p.value,digits = 4,nsmall = 4)
@@ -3437,7 +3437,7 @@ pval <- format(chisq.test(tabella)$p.value,digits = 4,nsmall = 4)
 
 `r punti_p()` Un sociologo sta conducendo uno studio sull'associazione tra l'orientamento politico e l'atteggiamento nei confronti del cambiamento climatico. Ha somministrato un questionario a `r n` partecipanti, chiedendo loro di indicare il proprio orientamento politico (Conservatore, Progressista, Indipendente) e l'atteggiamento nei confronti del cambiamento climatico (Molto, poco, per nulla) preoccupato. L'obiettivo è determinare se c'è un'associazione significativa tra l'orientamento politico e l'atteggiamento nei confronti del cambiamento climatico.
 
-```{r}
+```{r 2023-215}
 
 # Assegnazione dei nomi alle righe e alle colonne
 rownames(tabella) <- c("Conservatore", "Progressista", "Indipendente")
@@ -3458,7 +3458,7 @@ sui cambiamenti climatici il sociologo ottiene un $p_\text{value}=`r pval`$. Qua
 ### Esercizio 5
 
 
-```{r}
+```{r 2023-216}
 # Dati campionari
 # Dati campionari
 n1 <- 80
@@ -3470,7 +3470,7 @@ alpha <- 0.01
 `r punti_p(nex = T)` In uno studio clinico per valutare l'efficacia di un nuovo farmaco, sono stati selezionati `r n1` pazienti con una particolare condizione medica. Tra questi, `r x1` pazienti hanno mostrato un miglioramento utilizzando il nuovo farmaco. Testare usando il $p_\text{value}$ che il farmaco sia maggiormente efficace rispetto al trattamento esistente che una proporzione pari a $\pi_0 = `r p0`$
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-95,,results='asis'}
 ztest_pi(sn = x1,n = n1,p0 = p0,h1 = ">")
 ```
 :::
@@ -3479,7 +3479,7 @@ ztest_pi(sn = x1,n = n1,p0 = p0,h1 = ">")
 
 
 ### Esercizio 6
-```{r}
+```{r 2023-217}
 set.seed(7)
 n <- 50
 x <- round(abs(rnorm(n, 0, 6)) + 6) # Anni di studio
@@ -3495,7 +3495,7 @@ $\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum
 `r punti_p(nex = T)` Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-96,,results='asis'}
 cat(calcolo_beta())
 cat(residuo(x = x[3],y = y[3]))
 ```
@@ -3504,7 +3504,7 @@ cat(residuo(x = x[3],y = y[3]))
 `r punti_p()` Il modello si adatta bene ai dati?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-97,,results='asis'}
 cat(R2())
 ```
 :::
@@ -3512,7 +3512,7 @@ cat(R2())
 `r punti_p()` Stimare lo Standard Error di $\hat\beta_0$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-98,,results='asis'}
 cat(se_beta0())
 ```
 :::
@@ -3534,11 +3534,11 @@ $\hat\beta_1$, il coefficiente angolare della retta di regressione in cui $Y$ è
 
 ### Esercizio 1
 
-```{r}
+```{r 2023-218}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2023-219}
 
 
 set.seed(1)                      # per ottenere sempre la stessa simulazione
@@ -3555,14 +3555,14 @@ ls2e(stat_base(samp,brk))      # crea il data set e la tabella dat3
 
 Su un campione di $`r n`$ individui è stata rilevata la spesa mensile in euro per abbigliamento. Di seguito sono riportate la densità percentuali:
 
-```{r}
+```{r 2023-220}
 tabl(dat3[,c(1:2,6)])
 ```
 
 `r punti_p(start=T)` Ricavare il valore approssimato della mediana.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2023-221}
 tabl(dat3[,1:7])
 histp(axes = T)
 h.int(150,1000,density=20)
@@ -3573,7 +3573,7 @@ cat(percentile())
 `r punti_p()` Qual è il numero di individui che spende più di 150€ al mese?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-99,,results='asis'}
 cat(F_print(150,verso = ">"))
 ```
 :::
@@ -3606,7 +3606,7 @@ Definiamo gli eventi:
 **(Punti 14)** Calcola la probabilità che almeno uno dei due eventi sia vero, ovvero la probabilità di $A \cup B$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-100,,results='asis'}
 cat(bin_dis(1,5,1/3))
 cat(bin_dis(4,5,2/3,verso = "\\geq",comp = F,vnam = "Y"))
 pa <- pbinom(1,5,1/3)
@@ -3647,7 +3647,7 @@ Calcolare la probabilità che la **proporzione** di vincite sia minore più di 0
 
 :::{.sol data-latex=""}
 \[\pi=\frac 12\]
-```{r,results='asis'}
+```{r 2023-101,,results='asis'}
 cat(tlc(tipo = "prop",x1 = 0.55,verso = "<",mu = 1/2,n = 81))
 ```
 :::
@@ -3666,7 +3666,7 @@ Dimostrare la consistenza di $\hat\beta_0$.
 
 `r punti_p()` Definire gli errori di primo e secondo tipo.
 
-```{r}
+```{r 2023-222}
 tabella <- matrix(c(50, 80, 50, 60, 100, 40, 40, 50, 50), nrow = 3, ncol = 3, byrow = TRUE)
 n <- sum(tabella)
 pval <- format(chisq.test(tabella)$p.value,digits = 4,nsmall = 4)
@@ -3674,7 +3674,7 @@ pval <- format(chisq.test(tabella)$p.value,digits = 4,nsmall = 4)
 
 `r punti_p()` Un sociologo sta conducendo uno studio sull'associazione tra l'orientamento politico e l'atteggiamento nei confronti del cambiamento climatico. Ha somministrato un questionario a `r n` partecipanti, chiedendo loro di indicare il proprio orientamento politico (Conservatore, Progressista, Indipendente) e l'atteggiamento nei confronti del cambiamento climatico (Molto, poco, per nulla) preoccupato. L'obiettivo è determinare se c'è un'associazione significativa tra l'orientamento politico e l'atteggiamento nei confronti del cambiamento climatico.
 
-```{r}
+```{r 2023-223}
 
 # Assegnazione dei nomi alle righe e alle colonne
 rownames(tabella) <- c("Conservatore", "Progressista", "Indipendente")
@@ -3696,7 +3696,7 @@ sui cambiamenti climatici il sociologo ottiene un $p_\text{value}=`r pval`$. Qua
 ### Esercizio 5
 
 
-```{r}
+```{r 2023-224}
 # Dati campionari
 # Dati campionari
 n1 <- 80
@@ -3710,7 +3710,7 @@ alpha <- 0.01
 `r punti_p(nex = T)` In uno studio clinico per valutare l'efficacia di un nuovo farmaco, sono stati selezionati `r n1+n2` pazienti con una particolare condizione medica. Tra questi, `r n1` sono stati trattati con un farmaco sperimentale e `r n2` col placebo. Tra i trattati, `r x1` pazienti hanno mostrato un miglioramento utilizzando il nuovo farmaco, mentre sono `r x2` quelli che hanno assunto il placebo e hanno mostrato miglioramenti. Testare l'ipotesi, usando il il $p_\text{value}$, che il farmaco sia maggiormente efficace rispetto al placebo.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-102,,results='asis'}
 cat(ztest_2c_pi(s1 = x1,s2 = x2,n1 = n1,n2 = n2,h1 = ">",a = "F",b = "P"))
 ```
 :::
@@ -3720,7 +3720,7 @@ cat(ztest_2c_pi(s1 = x1,s2 = x2,n1 = n1,n2 = n2,h1 = ">",a = "F",b = "P"))
 
 
 ### Esercizio 6
-```{r}
+```{r 2023-225}
 set.seed(9)
 n <- 50
 x <- round(abs(rnorm(n, 0, 6)) + 6) # Anni di studio
@@ -3736,7 +3736,7 @@ $\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum
 `r punti_p(nex = T)` Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-103,,results='asis'}
 cat(calcolo_beta())
 cat(residuo(x = x[3],y = y[3]))
 ```
@@ -3745,7 +3745,7 @@ cat(residuo(x = x[3],y = y[3]))
 `r punti_p()` Scrivere la scomposizione della varianza e calcolarla per i dati in esame.
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 2023-104,,results='asis'}
 cat(TSS())
 ```
 :::

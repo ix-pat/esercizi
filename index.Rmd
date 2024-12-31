@@ -30,7 +30,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r, include=FALSE}
+```{r index-1,, include=FALSE}
 
 source("intro.R")
 
@@ -39,7 +39,7 @@ source("intro.R")
 
 
 
-```{r,results='asis', echo=FALSE}
+```{r index-2,,results='asis', echo=FALSE}
 if (html) {
   cat("# Eserciziario {-}\n\n")
   include_graphics("img/titolo.png",dpi=30)

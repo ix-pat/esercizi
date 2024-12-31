@@ -5,7 +5,7 @@ editor_options:
 ---
 
 
-```{r}
+```{r 2022-2}
 rm(list = rm())
 source("intro.R")
 if (html) cat('')
@@ -14,7 +14,7 @@ if (html) cat('')
 
 # Anno 2022
 
-```{r}
+```{r 2022-3}
 source("punti.R")
 punti_list <- punti_2022
 compito <- 0
@@ -27,7 +27,7 @@ compito <- 0
 
 ## Prova di Statistica 2022/06/16-1
 
-```{r, echo=FALSE}
+```{r 2022-1,, echo=FALSE}
 #
 
 
@@ -40,11 +40,11 @@ fig.def(2.5,3.5)
 
 ### Esercizio 1
 
-```{r}
+```{r 2022-4}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2022-5}
 # Basic settings
 set.seed(11)   # per ottenere sempre la stessa simulazione
 n <- 250      # ampiezza campionaria
@@ -62,7 +62,7 @@ ls2e(stat_base(samp,brk))
 Su un campione di $`r n`$ famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-6}
 kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -71,7 +71,7 @@ kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma di densità percentuale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-7}
 kable(dat3[,c(1:2,12,3:7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -110,7 +110,7 @@ Siano $X\sim N(102,1.5)$ e sia $Y\sim N(50,3.5)$, $X$ e $Y$ indipendenti. Posto 
 `r punti_p(nex = T)` Quanto vale $P\Big((A\cap B)\cup C\Big)$?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-8}
 x1 <- 100
 x2 <- 102
 mm <- 102
@@ -122,7 +122,7 @@ cat(norm_int(x1 = x1,x2 = x2,verso = NULL,mm = mm,ss = ss,vnam = vnam,mu = mu,si
 pab <- pnorm(x2,mm,sqrt(ss))-pnorm(x1,mm,sqrt(ss))
 ```
 
-```{r}
+```{r 2022-9}
 x1 <- 47
 x2 <- 53
 mm <- 50
@@ -169,7 +169,7 @@ $$
 
 ### Esercizio 3
 
-```{r}
+```{r 2022-10}
 n <- 300
 ex <- 10
 vx <- 0.3^2
@@ -182,7 +182,7 @@ vs <- ss <- n*vx
 :::{.sol data-latex=""}
 $E(X_i)=`r ex`$, $V(X_i)=`r vx`$ e quindi
 
-```{r}
+```{r 2022-11}
 x1 <- 3100
 verso <- ">"
 mm <- 10
@@ -220,7 +220,7 @@ Dimostrare le correttezza di $\hat\lambda$ in almeno tre passaggi.
 Qui di seguito il numero di accessi per giorno della settimana di $S$ e la percentuale di accessi nella catena $C$.
 
 
-```{r}
+```{r 2022-12}
 
 g <- c( "Lun" , "Mart" , "Merc" , "Giov" , "Ven")
 Y <- c("Supermercato S","Catena C")
@@ -237,7 +237,7 @@ chi_print_conf(Freq_c = s,Freq_0 = n,X = g,Y = Y)
 Testare l'ipotesi che nel supermercato $S$ la distribuzione degli accessi nei giorni della settimana sia uguale a quella della catena.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-13}
 
 chi_conf(Freq_c = s,Freq_0 = n,X = g,Y = Y)
 
@@ -250,7 +250,7 @@ chi_conf(Freq_c = s,Freq_0 = n,X = g,Y = Y)
 
 ### Esercizio 6
 
-```{r}
+```{r 2022-14}
 
 set.seed(36)
 n <- 150
@@ -278,7 +278,7 @@ Qui di seguito le statistiche bivariate
 `r punti_p(nex = T)` Stimare la previsione per $x=1.5$ nel modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-15}
 cat(calcolo_beta())
 cat(previsione(1.5))
 ```
@@ -287,7 +287,7 @@ cat(previsione(1.5))
 `r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-16}
 cat(R2())
 ```
 :::
@@ -308,12 +308,12 @@ $$r_{WX}=-r_{XY}=`r -r`$$
 
 ### Esercizio 1
 
-```{r}
+```{r 2022-17}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 
-```{r 2022-12}
+```{r 2022-17a}
 
 
 # Basic settings
@@ -331,7 +331,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito i dati raccolti in classe e le densità di frequenza percentuali
 
-```{r}
+```{r 2022-18}
 kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -339,7 +339,7 @@ kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Calcolare il valore approssimato della mediana.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-19}
 kable(dat3[,c(1:2,12,3:7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -405,7 +405,7 @@ Siano $X\sim \text{Pois}(1.5)$ e sia $Y\sim \text{Pois}(1.5)$, $X$ e $Y$ indipen
 
 ### Esercizio 3
 
-```{r}
+```{r 2022-20}
 n <- 100
 ex <- 1/6
 vx <- 1/6*5/6
@@ -418,7 +418,7 @@ vs <- ss <- vx/n
 __Soluzione__
 
 $E(X_i)=`r ex`$, $V(X_i)=`r vx`$ e quindi
-```{r}
+```{r 2022-21}
 tlc("prop",x1 = 0.2,verso = ">",mu = 1/6,n = 100)
 ```
 
@@ -449,7 +449,7 @@ Dimostrare le consistenza di $\hat\mu$ in almeno tre passaggi.
 Testare, usando il p-value, che la proporzione di persone favorevoli al reddito di cittadinanza che vivono al sud sia uguale a quelle di quelli che vivono al nord, contro l'alternativa che siano diverse.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-22}
 s1 <- 60
 n1 <- 140
 s2 <- 95
@@ -467,7 +467,7 @@ ztest_2c_pi(s1 = s1,s2 = s2,n1 = n1,n2 = n2,h1 = h1,a = a,b = b)
 
 ### Esercizio 6
 
-```{r}
+```{r 2022-23}
 set.seed(34)
 n <- 150
 x <- sort(abs(rnorm(n)))
@@ -493,7 +493,7 @@ Qui di seguito le statistiche bivariate
 `r punti_p(nex = T)` Stimare la previsione per $x=1.0$ nel modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-24}
 cat(calcolo_beta())
 cat(previsione(1.0))
 ```
@@ -502,7 +502,7 @@ cat(previsione(1.0))
 `r punti_p()` Il modello si adatta bene ai dati?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-25}
 cat(R2())
 ```
 :::
@@ -538,7 +538,7 @@ il modello in cui $W$ viene spiegata da $X$, quanto varranno $\beta_0'$ e $\beta
 
 ## Prova di Statistica 2022/06/16-3
 
-```{r}
+```{r 2022-26}
 
 
 library(pat.book)
@@ -551,11 +551,11 @@ library(pat.book)
 
 ### Esercizio 1
 
-```{r}
+```{r 2022-27}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2022-28}
 
 
 # Basic settings
@@ -576,7 +576,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito i dati raccolti in classe e le frequenze assolute
 
-```{r}
+```{r 2022-29}
 kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -585,7 +585,7 @@ kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-30}
 kable(dat3[,c(1:2,12,3:7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 options(digits = 4)
@@ -644,7 +644,7 @@ Siano $X\sim \text{Binom}(5,0.4)$ e sia $Y\sim \text{Binom}(2,0.4)$, $X$ e $Y$ i
 
 ### Esercizio 3
 
-```{r}
+```{r 2022-31}
 n <- 200
 ex <- 0.2
 vx <- 0.2*0.8
@@ -657,7 +657,7 @@ Calcolare la probabilità che il numero di palline nere sia maggiore di 50.
 
 $E(X_i)=`r ex`$, $V(X_i)=`r vx`$ e quindi
 
-```{r}
+```{r 2022-32}
 cat(tlc("somma",x1 = 50,verso = ">",mu = .2,n = 200))
 ```
 
@@ -689,7 +689,7 @@ reddito medio di chi vive al sud è di 27.5 con una SD pari a 1.7.
 Sotto ipotesi di eterogeneità testare l'ipotesi che il reddito medio sia uguale al nord come al sud, contro l'alternativa che sia diverso.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-33}
 s1h <- 2.4
 s2h <- 1.7
 n1 <- 140
@@ -709,7 +709,7 @@ cat(ttest_2c_et(mu1 = mu1,mu2 = mu2,s1h = s1h,s2h=s2h,n1 = n1,n2 = n2,h1 = h1,a 
 
 ### Esercizio 6
 
-```{r}
+```{r 2022-34}
 set.seed(38)
 n <- 150
 x <- sort(abs(rnorm(n)))
@@ -734,7 +734,7 @@ Qui di seguito le statistiche bivariate
 `r punti_p(nex = T)` Stimare la previsione per $x=1.4$ nel modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-35}
 cat(calcolo_beta())
 cat(previsione(1.0))
 ```
@@ -743,7 +743,7 @@ cat(previsione(1.0))
 `r punti_p()` Calcolare e discutere $R^2$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-36}
 cat(R2())
 ```
 :::
@@ -781,7 +781,7 @@ quanto varranno $\beta_0'$ e $\beta_1'$?
 
 ## Prova di Statistica 2022/07/01-1
 
-```{r}
+```{r 2022-37}
 
 
 
@@ -792,12 +792,12 @@ quanto varranno $\beta_0'$ e $\beta_1'$?
 
 ### Esercizio 1
 
-```{r}
+```{r 2022-38}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 
-```{r}
+```{r 2022-39}
 # Basic settings
 set.seed(2)   # per ottenere sempre la stessa simulazione
 n <- 220      # ampiezza campionaria
@@ -817,7 +817,7 @@ rilevata la spesa in investimenti green, espressa in migliaia di euro. Qui di se
 e le frequenze percentuali.
 
 
-```{r}
+```{r 2022-40}
 kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -825,7 +825,7 @@ kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Individuare la classe modale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-41}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 pmod <- which(dat2$hj==max(dat2$hj))
@@ -853,7 +853,7 @@ n(15<X<x_{0.75})&=&`r (.75-F.int(15))*n`
 considerato la classe modale ricavata al punto 1.a, quale relazione ci dobbiamo attendere tra media e mediana?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-42}
 histp(T)
 ```
 :::
@@ -883,7 +883,7 @@ Siano $X\sim N(10,1)$ e sia $Y\sim N(10,1)$, $X$ e $Y$ indipendenti. Posto $A=\{
 P(A\cup B)&=&P(A)
 \end{eqnarray*}
 
-```{r}
+```{r 2022-43}
 x1 = 8
 verso=">"
 vnam ="X"
@@ -945,7 +945,7 @@ quali sono il valore massimo e quello minimo che $F$ può assumere?
 
 ### Esercizio 3
 
-```{r}
+```{r 2022-44}
 n <- 365
 ex <- 26.34
 vx <- 1.3^2
@@ -958,7 +958,7 @@ x2 <- 9600
 Dopo un anno ($n=365$), qual è la probabilità che il numero totale di telefonate sia compresa tra 9550 e 9600?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-45}
 cat(tlc("somma",x1 = x1,x2 = x2,verso = NULL,mu = ex,s2 = vx,n = n))
 ```
 :::
@@ -997,7 +997,7 @@ Il campione ha restituito una media pari a 19.4 €/mese, con una deviazione sta
 `r punti_p(nex = T)` Costruire un Intervallo di Confidenza al 95% per la media di popolazione $\mu$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-46}
 cat(idc(xm = 19.4,sd = 2.2,alpha = .05,n = 34,dist_ = "t"))
 ```
 :::
@@ -1006,7 +1006,7 @@ cat(idc(xm = 19.4,sd = 2.2,alpha = .05,n = 34,dist_ = "t"))
 Il campione ha restituito una media pari a 20.2 €/mese, con una deviazione standard pari a 2.9 €/mese. Sotto ipotesi di omogeneità testare l'ipotesi che i due comuni abbiano uguale media, contro l'alternativa che sia diversa.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-47}
 n1 <- 34
 n2 <- 38
 s1h <- 2.2
@@ -1027,7 +1027,7 @@ cat(ttest_2c_om(mu1 = mu1,mu2 = mu2,s1h = s1h,s2h = s2h,n1 = n1,n2 = n2,h1 = h1)
 
 ### Esercizio 6
 
-```{r}
+```{r 2022-48}
 
 set.seed(36)
 n <- 5
@@ -1045,7 +1045,7 @@ il numero di abitanti $X$, espresso in migliaia di persone, e il numero di eserc
 
 Qui di seguito i dati
 
-```{r}
+```{r 2022-49}
  kable(t(prn[1:n,2:3]),booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -1054,7 +1054,7 @@ Qui di seguito i dati
 `r punti_p(nex = T)` Calcolare il residuo del quarto dato nel modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-50}
  kable((prn[,]),booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
 cat(calcolo_beta())
@@ -1066,7 +1066,7 @@ cat(residuo(x[4],y[4]))
 e calcolare la Total Sum of Squares (TSS), la Explained Sum of Squares (ESS) e la Residual Sum of Squares (RSS) dei dati analizzati sopra.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-51}
 cat(R2())
 ```
 :::
@@ -1086,7 +1086,7 @@ il modello in cui $W$ viene spiegata da $X$, quanto varranno $\beta_0'$ e $\beta
 
 ## Prova di Statistica 2022/07/01-2
 
-```{r}
+```{r 2022-52}
 
 
 
@@ -1097,12 +1097,12 @@ il modello in cui $W$ viene spiegata da $X$, quanto varranno $\beta_0'$ e $\beta
 
 ### Esercizio 1 
 
-```{r}
+```{r 2022-53}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 
-```{r}
+```{r 2022-54}
 options(digits=3,nsmall=4,knitr.kable.NA = '',scipen = 1)
 # Basic settings
 set.seed(2)   # per ottenere sempre la stessa simulazione
@@ -1125,7 +1125,7 @@ Su un campione di $`r n`$ imprese energivora della provincia di Bologna è stato
 rilevata la spesa in investimenti green, espressa in migliaia di euro. Qui di seguito i dati raccolti in classi
 e le frequenze percentuali.
 
-```{r}
+```{r 2022-55}
 kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -1133,7 +1133,7 @@ kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma delle densità percentuali.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-56}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -1200,7 +1200,7 @@ $$
 Qual è il supporto di $X+Y$?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-57}
 Sxy <- unique(sort(outer(0:2,2:5,"+")))
 ```
 il supporto di $X+Y$ è $\{`r Sxy`\}$.
@@ -1210,7 +1210,7 @@ il supporto di $X+Y$ è $\{`r Sxy`\}$.
 
 ### Esercizio 3
 
-```{r}
+```{r 2022-58}
 n <- 50
 ex <- 3/10
 vx <- ex*(1-ex)
@@ -1231,7 +1231,7 @@ $$
 \pi=\frac 3{10}
 $$
 
-```{r}
+```{r 2022-59}
 cat(tlc("somma",x1,verso = verso,mu = 3/10,n = n))
 ```
 :::
@@ -1266,7 +1266,7 @@ Su un campione di $n=75$ abitanti del quartiere _Q_ è stato chiesto se siano fa
 `r punti_p(nex = T)` Costruire un intervallo di confidenza la 95% per $\pi$ la quota di persone del quartiere _Q_ favorevole alle corsie preferenziali
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-60}
 cat(idc(xm = 45/75,alpha = .05,n = 75,dist_ = "z"))
 ```
 :::
@@ -1276,7 +1276,7 @@ cat(idc(xm = 45/75,alpha = .05,n = 75,dist_ = "z"))
 la percentuale di favorevoli alle corsie preferenziali è del 55%. Testare l'ipotesi che nel quartiere _Q_ la quota di favorevoli sia uguale a quella cittadina contro l'alternativa che sia maggiore.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-61}
 sn <- 45
 n  <- 75
 p0 <- 0.55
@@ -1291,7 +1291,7 @@ cat(ztest_pi(sn = sn,n = n,p0 = p0,h1 = h1))
 
 ### Esercizio 6
 
-```{r}
+```{r 2022-62}
 
 set.seed(36)
 n <- 50
@@ -1317,7 +1317,7 @@ Qui di seguito le statistiche bivariate
 `r punti_p(nex = T)` Stimare la previsione per $x=16$ nel modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-63}
 cat(calcolo_beta())
 cat(previsione(16))
 ```
@@ -1351,7 +1351,7 @@ il modello in cui $W$ viene spiegata da $V$, quanto varranno $\beta_0'$ e $\beta
 
 ## Prova di Statistica 2022/07/01-3
 
-```{r}
+```{r 2022-64}
 
 
 
@@ -1362,12 +1362,12 @@ il modello in cui $W$ viene spiegata da $V$, quanto varranno $\beta_0'$ e $\beta
 
 ### Esercizio 1
 
-```{r}
+```{r 2022-65}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 
-```{r}
+```{r 2022-66}
 options(digits=3,nsmall=4,knitr.kable.NA = '',scipen = 1)
 # Basic settings
 set.seed(2)   # per ottenere sempre la stessa simulazione
@@ -1389,7 +1389,7 @@ Su un campione di $`r n`$ imprese energivora della provincia di Bologna è stato
 rilevata la spesa in investimenti green, espressa in migliaia di euro. Qui di seguito i dati raccolti in classi
 e le frequenze percentuali.
 
-```{r}
+```{r 2022-67}
 kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -1397,7 +1397,7 @@ kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Disegnare l'istogramma delle densità percentuali.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-68}
 kable(dat3[,1:7],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -1477,7 +1477,7 @@ $$
 
 ### Esercizio 3
 
-```{r}
+```{r 2022-69}
 n <- 60
 ex <- 102.3
 vx <- 10.2^2
@@ -1490,7 +1490,7 @@ verso <- ">"
 `r punti_p(nex = T)` Il supermercato _S_ vende, in media ogni giorno, 102.3 kg di pasta, con una deviazione standard di 10.2. Dopo 60 giorni di apertura, qual è la probabilità che il totale di pasta venduta sia maggiore di 6700 kg?
 
 
-```{r}
+```{r 2022-70}
 cat(tlc("somma",x1 = x1,verso = verso,mu = ex,s2 = vx,n = n))
 ```
 
@@ -1526,7 +1526,7 @@ Su un campione di $n=15$ abitanti del quartiere _Q_ è stato chiesto di fornire 
 `r punti_p(nex = T)` Costruire un intervallo di confidenza la 99% per $\mu$ il punteggio medio che le persone del quartiere _Q_ esprimono riguardo alle corsie preferenziali.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-71}
 cat(idc(xm = 76.3,sd = 3.5,alpha = .01,n = 15,dist_ = "t"))
 ```
 :::
@@ -1537,7 +1537,7 @@ il punteggio medio è pari a 66.3 con un deviazione standard pari a 3.3 .
 Testare l'ipotesi che nel quartiere _Q_ il punteggio medio sia uguale a quello cittadino contro l'alternativa che sia maggiore.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-72}
 s <- 3.3
 n <- 15
 muh <- 76.3
@@ -1555,7 +1555,7 @@ cat(ztest_mu(muh = muh,s = s,n = n,mu0 = mu0,h1 = h1))
 
 ### Esercizio 6
 
-```{r}
+```{r 2022-73}
 
 set.seed(35)
 n <- 50
@@ -1580,7 +1580,7 @@ Qui di seguito le statistiche bivariate
 
 `r punti_p(nex = T)` Questi sono alcuni dei dati osservati
 
-```{r}
+```{r 2022-74}
 kable(t(prn[srr <-sample(1:n,4),2:3]),col.names = c("","","",""),booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -1589,7 +1589,7 @@ kable(t(prn[srr <-sample(1:n,4),2:3]),col.names = c("","","",""),booktabs=T,esca
 Calcolare il residuo per $x=`r x[srr[3]]`$ nel modello di regressione dove $Y$ è spiegato da $X$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-75}
 cat(calcolo_beta())
 cat(residuo(x[srr[3]],y[srr[3]]))
 ```
@@ -1598,7 +1598,7 @@ cat(residuo(x[srr[3]],y[srr[3]]))
 `r punti_p()` Ricavare numericamente la scomposizione della varianza del modello di regressione sopra stimato.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-76}
 cat(TSS())
 ```
 :::
@@ -1619,12 +1619,12 @@ cat(TSS())
 
 ### Esercizio 1
 
-```{r}
+```{r 2022-77}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 
-```{r}
+```{r 2022-78}
 # Basic settings
 set.seed(2)   # per ottenere sempre la stessa simulazione
 n <- 220      # ampiezza campionaria
@@ -1641,7 +1641,7 @@ rilevato il bilancio, espresso in migliaia di euro, del 2020. Qui di seguito i d
 e le frequenze percentuali.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-79}
 tabl(dat3[,c(1,2,12)])
 ```
 :::
@@ -1649,7 +1649,7 @@ tabl(dat3[,c(1,2,12)])
 `r punti_p(start=T)` Individuare la classe modale.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-80}
 tabl(dat3[,1:7])
 
 histp()
@@ -1691,7 +1691,7 @@ Siano $X\sim N(5,1/2)$ e sia $Y\sim N(5,1/2)$, $X$ e $Y$ indipendenti. Posto $A=
 `r punti_p(nex = T)` Calcolare $P(A\cup B)$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-81}
 x1 <- 6
 verso <- ">"
 ss <- .5
@@ -1705,7 +1705,7 @@ pb <- pnorm(4,5,sqrt(.5))
 cat(norm_int(x1 = x1,verso = verso,mm = mm,ss = ss))
 ```
 
-```{r}
+```{r 2022-82}
 x1 <- 4
 verso <- "<"
 ss <- .5
@@ -1758,7 +1758,7 @@ $$
 funzione di ripartizione $F(x)$ di $X$, per $x$ compreso tra $-1$ e $2.5$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-83}
 curve(ppois(x,1),-1,2.5,type = "s")
 ```
 :::
@@ -1767,7 +1767,7 @@ curve(ppois(x,1),-1,2.5,type = "s")
 
 ### Esercizio 3
 
-```{r}
+```{r 2022-84}
 n <- 12^2
 ex <- 1/3
 vx <- 1/3*2/3
@@ -1792,7 +1792,7 @@ se esce Rossa. Si ripete il gioco per $`r n`$ volte. Qual è la probabilità che
 **proporzione** di vincite sia maggiore di 0.35?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-85}
 cat(tlc(tipo = "prop",x1 = x1,verso = verso,mu = 1/3,n = n))
 ```
 :::
@@ -1829,7 +1829,7 @@ divise 80 signori e 70 signore, di esprimere la propria preferenza tra tre profu
 di shampoo.
 Qui di seguita la tavola di contingenza
 
-```{r}
+```{r 2022-86}
 
 dat <- matrix(c(50,5,10,55,20,10),2)
 
@@ -1847,7 +1847,7 @@ tabl(dat_print,digits = 4) %>%
 Testare l'ipotesi che vi sia indipendenza tra genere e preferenza tra le profumazioni.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-87}
 chi_test(dat = dat)
 ```
 :::
@@ -1856,7 +1856,7 @@ chi_test(dat = dat)
 
 ### Esercizio 6
 
-```{r}
+```{r 2022-88}
 
 set.seed(666)
 n <- 5
@@ -1875,7 +1875,7 @@ qualità della vita $Y$ (espresso su opportuna scala).
 
 Qui di seguito i dati
 
-```{r}
+```{r 2022-89}
  tabl(t(prn[1:n,2:3]),col.names = LETTERS[1:n]) 
 ```
 
@@ -1884,7 +1884,7 @@ Qui di seguito i dati
 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-90}
  tabl((prn[,]))
 cat(calcolo_beta())
 cat(residuo(x[2],y[2]))
@@ -1896,7 +1896,7 @@ e calcolare la Total Sum of Squares (TSS), la Explained Sum of Squares (ESS) e l
 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-91}
 cat(TSS())
 ```
 :::
@@ -1922,13 +1922,13 @@ quadrati per $\beta_0$ e $\beta_1$ sono corretti?
 
 ### Esercizio 1
 
-```{r}
+```{r 2022-92}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 
 
-```{r}
+```{r 2022-93}
 # Basic settings
 set.seed(2)   # per ottenere sempre la stessa simulazione
 n <- 220      # ampiezza campionaria
@@ -1949,14 +1949,14 @@ rilevato il bilancio, espresso in migliaia di euro, del 2020. Qui di seguito i d
 e le frequenze cumulate.
 
 
-```{r}
+```{r 2022-94}
 tabl(dat3[,c(1,2,7)])
 ```
 
 `r punti_p(start=T)` Disegnare l'istogramma delle densità percentuali.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-95}
 tabl(dat3[,1:7])
 
 histp()
@@ -2032,7 +2032,7 @@ $S_{X-Y}=`r sort(unique(as.numeric(outer(2:5,c(1,2,6),"-"))))`$
 
 ### Esercizio 3
 
-```{r}
+```{r 2022-96}
 n <- 100
 ex <- mean(1:4)
 vx <- s2c(1:4)
@@ -2056,7 +2056,7 @@ Si estrae 100 volte con reinserimento e si fa la media dei 100 numeri
 estratti. Qual è la probabilità che la media sia compresa tra 2.5 e 2.6?
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-97}
 cat(stat_(1:4,semp = T))
 tlc(tipo = "media",x1 = 2.5,x2 = 2.6,verso = NULL,mu = mean(1:4),s2 = s2c(1:4),n = 100)
 ```
@@ -2101,7 +2101,7 @@ Il campione ha restituito una media pari a 12.4 €/mese, con una deviazione sta
 
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-98}
 idc(xm = 12.4,sd = 2.1,dist_ = "t",n = 35)
 ```
 :::
@@ -2110,7 +2110,7 @@ idc(xm = 12.4,sd = 2.1,dist_ = "t",n = 35)
 Il campione ha restituito una media pari a 19.2 €/mese, con una deviazione standard pari a 3.9 €/mese. Sotto ipotesi di eterogeneità testare l'ipotesi che i due comuni abbiano uguale media, contro l'alternativa che a Ferrara consumino di più.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-99}
 s1h <- 2.1
 s2h <- 3.9
 n1 <- 35
@@ -2131,7 +2131,7 @@ cat(ttest_2c_et(mu1 = mu1,mu2 = mu2,s1h = s1h,s2h = s2h,n1 = n1,n2 = n2,h1 = h1)
 
 ### Esercizio 6
 
-```{r}
+```{r 2022-100}
 
 set.seed(666)
 n <- 15
@@ -2158,7 +2158,7 @@ Qui di seguito le statistiche bivariate
 `r punti_p(nex = T)` Stimare la previsione per $x=1.6$ nel modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-101}
 cat(calcolo_beta())
 cat(previsione(1.6))
 ```
@@ -2194,13 +2194,13 @@ Scrivere il suo Standard Error teorico.
 
 ### Esercizio 1
 
-```{r}
+```{r 2022-102}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 
 
-```{r}
+```{r 2022-103}
 # Basic settings
 set.seed(2)   # per ottenere sempre la stessa simulazione
 n <- 220      # ampiezza campionaria
@@ -2222,14 +2222,14 @@ rilevato il bilancio, espresso in migliaia di euro, del 2020. Qui di seguito i d
 e le densità di frequenza percentuale.
 
 
-```{r}
+```{r 2022-104}
 tabl(dat3[,c(1,2,6)]) 
 ```
 
 `r punti_p(start=T)` Calcolare il valore approssimato della mediana.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-105}
 tabl(dat3[,1:7])
 cat(percentile())
 ```
@@ -2306,7 +2306,7 @@ $$S_{X-Y}=`r sort(unique(as.numeric(outer(1:3,c(1,3,5),"*"))))`$$
 
 ### Esercizio 3
 
-```{r}
+```{r 2022-106}
 n <- 60
 ex <- 3.242
 vx <- 0.5^2
@@ -2328,7 +2328,7 @@ verso <- ">"
 deviazione standard di 0.5 mila persone. Dopo 60 giorni di apertura, qual è la probabilità che il 
 totale dei visitatori sia maggiore di 225 mila persone?
 
-```{r}
+```{r 2022-107}
 tlc("somma",225,verso = ">",mu = ex,s2 = vx,n = n)
 ```
 
@@ -2378,7 +2378,7 @@ Testare l'ipotesi la quota di tassisti favorevoli sia uguale tra le due città c
 l'alternativa che i tassisti milanesi siano maggiormente favorevoli.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-108}
 n1 <- 75
 n2 <- 95
 s1 <- 15
@@ -2396,7 +2396,7 @@ cat(ztest_2c_pi(s1 = s1,s2 = s2,n1 = n1,n2 = n2,h1 = h1,a = a,b = b))
 
 ### Esercizio 6
 
-```{r}
+```{r 2022-109}
 
 set.seed(777)
 n <- 15
@@ -2423,14 +2423,14 @@ Qui di seguito le statistiche bivariate
 
 `r punti_p(nex = T)` Questi sono alcuni dei dati osservati
 
-```{r}
+```{r 2022-110}
 tabl(t(prn[sample(1:n,4),2:3]),col.names = c("","","","")) 
 ```
 
 Calcolare il residuo per $x=2.1$ nel modello di regressione dove $Y$ è spiegato da $X$.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-111}
 cat(calcolo_beta())
 cat(residuo(2.1,9.3))
 ```
@@ -2439,7 +2439,7 @@ cat(residuo(2.1,9.3))
 `r punti_p()` Calcolare la percentuale di varianza di $Y$ spiegata dal modello.
 
 :::{.sol data-latex=""}
-```{r}
+```{r 2022-112}
 cat(R2())
 ```
 :::

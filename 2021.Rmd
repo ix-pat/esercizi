@@ -1,5 +1,5 @@
 
-```{r}
+```{r 2021-36}
 rm(list = rm())
 source("intro.R")
 if (html) cat('')
@@ -9,14 +9,14 @@ if (html) cat('')
 \part{Compiti degli anni passati}
 
 
-```{r}
+```{r 2021-37}
 if (html) cat('')
 ```
   
 
 # Anno 2021
 
-```{r}
+```{r 2021-38}
 source("punti.R")
 punti_list <- punti_2021
 compito <- 0
@@ -28,12 +28,12 @@ compito <- 0
 
 ### Esercizio 1
 
-```{r}
+```{r 2021-39}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 
-```{r}
+```{r 2021-40}
 set.seed(121)   # per ottenere sempre la stessa simulazione
 n <- 350      # ampiezza campionaria
 
@@ -48,7 +48,7 @@ ls2e(stat_base(samp,brk))
 Su un campione di $`r n`$ aziende è stato rilevato l'utile del 2020, espresso in centinaia di migliaia euro; 
 qui di seguito l'istogramma di densità percentuale.
 
-```{r}
+```{r 2021-41}
 histp(T)
 kable(dat3[1:(k),c(1:2,6)],booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
@@ -72,7 +72,7 @@ F_j=f_1+...+f_j
 $$
 ricostruire la tabella 
 
-```{r, results='asis'}
+```{r 2021-1,, results='asis'}
 options(digits=4,nsmall=4)
 kable(dat3[,c(1,2,6,5,4,7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
@@ -83,7 +83,7 @@ cat(percentile(p = 0.75))
 `r punti_p()` Qual è il numero di imprese con utile negativo?
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-2,,results='asis'}
 cat(F_print(0,verso=">"))
 ```
 :::
@@ -182,7 +182,7 @@ $$Y\sim N(2-(1+1),1+1+1)\sim N(0,3)$$
 
 ::: {.sol data-latex=""}
 \[\pi=\frac 4{12}=\frac 13\]
-```{r,results='asis'}
+```{r 2021-3,,results='asis'}
 cat(tlc(tipo = "somma",x1 = 21,verso = ">",mu = 1/3,n = 60))
 ```
 :::
@@ -246,7 +246,7 @@ Il $p_\text{value}$ è maggiore di 0.05, la differenza **non è significativa** 
 Testare l'ipotesi che la proporzione di donne che hanno un lavoro stabile nel comune $A$ sia uguale a quelle del come $B$, contro l'alternativa che siano **diverse**.
 
 ::: {.sol data-latex=""}
-```{r, results='asis'}
+```{r 2021-4,, results='asis'}
 s1 <- 30
 n1 <- 50
 s2 <- 40
@@ -264,7 +264,7 @@ cat(ztest_2c_pi(s1 = s1,s2 = s2,n1 = n1,n2 = n2,h1 = h1,a = a,b = b))
 
 
 ### Esercizio 6
-```{r}
+```{r 2021-42}
 
 set.seed(5)
 set.seed(8)
@@ -297,7 +297,7 @@ Si consideri il modello di regressione dove $Y$ viene spiegata da $X$
   `r punti_p(nex = T)` Prevedere il voto nel test di scienze per uno studente che ha ottenuto 6 nel test di matematica.
   
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-5,,results='asis'}
 
 cat(calcolo_beta())
 
@@ -307,7 +307,7 @@ cat(calcolo_beta())
   `r punti_p()` Calcolare la percentuale di varianza spiegata dal modello.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-6,,results='asis'}
 options(digits = 4)
 cat(R2())
 ```
@@ -315,7 +315,7 @@ cat(R2())
 
 
   `r punti_p()` Discutere il qq-plot dei residui
-```{r,fig.asp=1}
+```{r 2021-7,,fig.asp=1}
 qqnorm(es/sd(es),asp=1,xlim=c(-3,3),ylim=c(-3,3))
 abline(0,1,lty=2)
 ```
@@ -336,7 +336,7 @@ Significa che è privo di unità di misura.
 
 ## Prova di Statistica 2021/06/11-2
 
-```{r}
+```{r 2021-43}
 
 
 
@@ -349,11 +349,11 @@ fig.def(2.5,3.5)
 
 ### Esercizio 1
 
-```{r}
+```{r 2021-44}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2021-45}
 # Basic settings
 set.seed(120)   # per ottenere sempre la stessa simulazione
 n <- 300      # ampiezza campionaria
@@ -370,7 +370,7 @@ ls2e(stat_base(samp,brk))
 
 Sono state registrate le temperature del comune $C$ per $n=200$ giorni. Qui di seguito l'istogramma di densità percentuale.
 
-```{r}
+```{r 2021-46}
 histp(axes = T)
 
 kbl((dat3[1:(k),c(1:2,6)]),booktabs=T,escape = F,linesep="") %>%
@@ -394,7 +394,7 @@ F_j=f_1+...+f_j
 $$
 ricostruire la tabella 
 
-```{r, results='asis'}
+```{r 2021-8,, results='asis'}
 options(digits=4,nsmall=4)
 kable(dat3[,c(1,2,6,5,4,7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
@@ -429,7 +429,7 @@ Per definizione
 
 ### Esercizio 2
   
-```{r}
+```{r 2021-47}
 s1 <- 0.55
 s2 <- 0.85
 ```
@@ -449,7 +449,7 @@ X_L=X_E-X_U\sim N(5.1-6.2;1.1+0.5)
 $$
 E quindi
 
-```{r}
+```{r 2021-48}
 vnam<-"X_L"
 mm <- 5.1-6.2
 ss <- 1.1+0.5
@@ -458,7 +458,7 @@ x0 <- 0
 
 ```
 
-```{r,results='asis'}
+```{r 2021-9,,results='asis'}
 cat(norm_int(x1 = 0,verso = "<",mm = mm,ss = ss,vnam = "X_L"))
 ```
 :::
@@ -477,7 +477,7 @@ X\sim\text{Binom}(5,`r pp`)
 $$
 e quindi 
 
-```{r}
+```{r 2021-49}
 bin_dis(2,5,pp,sing=T)
 ```
 
@@ -516,7 +516,7 @@ $$
 `r punti_p(nex = T)` Un'urna contiene $4$ bussolotti numerati con $\fbox{−1}$, $3$ numerati con $\fbox{0}$ e $4$ numerati con $\fbox{+1}$. Si estrae 60 volte con reintroduzione; qual è la probabilità che la media delle 60 estrazioni sia minore di 0.1?
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-10,,results='asis'}
 urn <- rep(c(-1,0,1),times=c(4,3,4))
 cat(stat_(x = urn,semp = T))
 cat(tlc(tipo = "media",x1 = .1,verso = "<",mu = mean(urn),s2 = s2c(urn),n = 60))
@@ -574,7 +574,7 @@ Cioè la probabilità di scegliere $H_1$ quando $H_1$ è vera.
 
 ### Esercizio 5
 
-```{r}
+```{r 2021-50}
 n1 <- 15
 n2 <- 18
 mu1 <- 23.2
@@ -593,7 +593,7 @@ ac <- alpha*100
 Sotto ipotesi di omogeneità, testare l'ipotesi che il reddito medio femminile nel comune $`r a`$ sia uguale a quello del comune $`r b`$, contro l'alternativa che siano **diversi**.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-11,,results='asis'}
 cat(ttest_2c_om(mu1 = mu1,mu2 = mu2,s1h = s1h,s2h = s2h,n1 = n1,n2 = n2,h1 = h1,a = a,b = b))
 ```
 :::
@@ -603,7 +603,7 @@ cat(ttest_2c_om(mu1 = mu1,mu2 = mu2,s1h = s1h,s2h = s2h,n1 = n1,n2 = n2,h1 = h1,
 
 
 ### Esercizio 6
-```{r}
+```{r 2021-51}
 
 set.seed(8)
 n <- 150
@@ -632,14 +632,14 @@ In uno studio sulle competenze scolastiche dei quindicenni si sono analizzati $n
 Si consideri il modello di regressione dove $Y$ viene spiegata da $X$
 
   `r punti_p(nex = T)` Si osservino le prime 5 coppie di dati
-```{r}
+```{r 2021-52}
 kable(data.frame(i=1:5,Libri=x[1:5],Voto=y[1:5]),booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
 Calcolare il residuo per il quarto dato.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-12,,results='asis'}
 
 cat(calcolo_beta())
 cat(residuo(x[4],y[4]))
@@ -653,7 +653,7 @@ Il modello spiega il $r^2\times100=(`r r`)^2\times 100=`r r^2*100`\%>75\%$ della
 :::
 
   `r punti_p()` Discutere il diagramma dei residui
-```{r}
+```{r 2021-53}
 plot(x,y-ys,pch=16,axes=F,xlab="Libri",ylab=expression(hat(epsilon)),type="p")
 axis(1)
 axis(2)
@@ -678,7 +678,7 @@ $$|\tilde \varepsilon_i|>t_{n-2,0.05} $$
 
 ## Prova di Statistica 2021/06/30-1
 
-```{r}
+```{r 2021-54}
 
 
 
@@ -691,11 +691,11 @@ fig.def(2.5,3.5)
 
 ### Esercizio 1
 
-```{r}
+```{r 2021-55}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2021-56}
 # Basic settings
 set.seed(121)   # per ottenere sempre la stessa simulazione
 n <- 350      # ampiezza campionaria
@@ -710,7 +710,7 @@ ls2e(stat_base(samp,brk))
 ```
 
 Su un campione di $`r n`$ aziende è stato rilevato il costo in spese legali (espresso in migliaia di euro). Qui di seguito i dati in classi e le frequenze cumulate:
-```{r}
+```{r 2021-57}
 kable((dat3[1:(k),c(1:2,7)]),booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
 
@@ -733,7 +733,7 @@ $$
 d_j=\frac{f_j}{b_j}\times 100
 $$
 ricostruire la tabella 
-```{r}
+```{r 2021-58}
 kable(dat3[,c(1,2,7,4,5,6)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -744,7 +744,7 @@ e osservare che la classe $[5,8)$ è la classe modale perché è quella con dens
 con spese maggiori di 10 mila euro.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-13,,results='asis'}
 cat(F_print(10,">"))
 ```
 :::
@@ -773,7 +773,7 @@ Si estrae dall'urna $A$ e dall'urna $B$ e si *sommano* i due numeri
 `r punti_p(nex = T)` Calcolare la probabilità che la somma dei numeri sia maggiore uguale a 2.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-14,,results='asis'}
 a <- (two_way(S_1 = c(-1,0,1),S_2 = 1:2,num1 = c(1,2,1),num2 = c(1,1,1)))
 ```
 $$
@@ -858,7 +858,7 @@ V(X_i)&=&\pi(1-\pi)
 
 In virtù del TCL della somma di n VC IID
 
-```{r,results='asis'}
+```{r 2021-15,,results='asis'}
 vnam<-"S_n"
 mm <- 1/3*64
 ss <- 1/3*2/3*64
@@ -945,7 +945,7 @@ Testare l'ipotesi che il consumo di sussistenza $\beta_0$ sia uguale 0.5 contro 
 che sia maggiore.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-16,,results='asis'}
 b00 <- 0.5
 mx <- 1.61
 my <- 1.81
@@ -970,7 +970,7 @@ cat(ttest_beta(0,bj0 = .5,h1 = h1))
 
 
 ### Esercizio 6
-```{r}
+```{r 2021-59}
 set.seed(11)
 n <- 75
 x <- sort(runif(n,0,10))
@@ -1013,7 +1013,7 @@ Si consideri il modello di regressione dove $Y$ viene spiegata da $X$
   per un individuo che guadagna $x=12.3$.
   
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-17,,results='asis'}
 cat(calcolo_beta(semplice = T))
 cat(previsione(12.3))
 ```
@@ -1039,7 +1039,7 @@ La previsione per $x=`r mean(x)`$ è molto più affidabile che quella per $x=12.
 Ricaviamo $R^2$
 $$R^2=\left(\frac{`r cv`}{`r sc(x)`\cdot `r sc(y)`}\right)^2=`r r`^2=`r r^2`$$
 quindi
-```{r,results='asis'}
+```{r 2021-18,,results='asis'}
 cat(TSS())
 ```
 :::
@@ -1060,7 +1060,7 @@ $$\text{se }W=a+bY,\text{allora }r_{X,W}=\text{sign}(b) r_{XY},\text{ dove la fu
 
 ## Prova di Statistica 2021/06/30-2
 
-```{r}
+```{r 2021-60}
 
 
 
@@ -1073,13 +1073,13 @@ fig.def(2.5,3.5)
 
 ### Esercizio 1
 
-```{r}
+```{r 2021-61}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
 Su un campione di $12$ famiglie della provincia $Q$ è stato rilevato il reddito mensile, qui di seguito i dati **non ordinati** espressi in migliaia di euro al mese.
 
-```{r}
+```{r 2021-62}
 # Basic settings
 par(cex=0.5)
 set.seed(1)   # per ottenere sempre la stessa simulazione
@@ -1119,7 +1119,7 @@ x75 <- samp[i75]
 
 ::: {.sol data-latex=""}
 Dobbiamo prima riordinare i dati
-```{r}
+```{r 2021-63}
 
 c1 <- paste("$(", 1:4 ,")$",sep="")
 c2 <- paste("$(", 5:8,")$",sep="")
@@ -1197,7 +1197,7 @@ $$
 la probabilità di avere almeno 5 bussolotti rossi su 6 estrazioni è
 
 
-```{r,results='asis'}
+```{r 2021-19,,results='asis'}
 pp <- .38
 cat(bin_dis(5,6,pp = 3/8,verso = ">"))
 ```
@@ -1266,7 +1266,7 @@ $$
 In virtù del TCL per la media: la media di  $n$ VC IID, tali che
 $E(X_i)=\mu$, $V(X_i)=\sigma^2$
 
-```{r,results='asis'}
+```{r 2021-20,,results='asis'}
 vnam<-"\\bar X"
 mm <- 12.3
 ss <- 1.1^2/81
@@ -1342,7 +1342,7 @@ Titolo di studio superiore e canale preferito sono indipendenti?
 ::: {.sol data-latex=""}
 È un test sull'indipendenza tra due VC
 
-```{r,results='asis'}
+```{r 2021-21,,results='asis'}
 dat <- matrix(c(15,5,12,10,35,15),2,byrow = T)
 
 nome_x<- c("Rai","Mediaset","La7")
@@ -1363,7 +1363,7 @@ cat(chi_test(dat = dat))
 
 
 ### Esercizio 6
-```{r}
+```{r 2021-64}
 
 
 set.seed(4)
@@ -1379,7 +1379,7 @@ options(digits = 4)
 
 
 In uno studio sulla qualità della vita si è osservato su 4 provincie l'ammontare degli investimenti provinciali pro capite per attività culturali ($X$), in centinaia di euro, e un indice di qualità della vita ($Y$), espresso in opportuna scala. Qui di seguito i dati
-```{r}
+```{r 2021-65}
 kable(prn[1:4,1:3],booktabs=T,escape = F,linesep="")%>%
   kable_styling(full_width = F, latex_options = "HOLD_position")%>%
   column_spec(1,background = "#E6E6E6",width = "3em")
@@ -1389,7 +1389,7 @@ kable(prn[1:4,1:3],booktabs=T,escape = F,linesep="")%>%
 
 ::: {.sol data-latex=""}
 Costruiamo le statistiche
-```{r,results='asis'}
+```{r 2021-22,,results='asis'}
 kable(prn,booktabs=T,escape = F,linesep="")%>%
   kable_styling(full_width = F, latex_options = "HOLD_position")%>%
   column_spec(1,background = "#E6E6E6",width = "3em")
@@ -1412,7 +1412,7 @@ Il modello si adatta molto bene ai dati, spiegando il `r r^2*100`% (>75%) della 
 `r punti_p()` Ricavare le quantità $TSS$, $RSS$ e $ESS$.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-23,,results='asis'}
 cat(TSS())
 ```
 :::
@@ -1432,7 +1432,7 @@ Linear Estimators: stimatori lineari).
 
 ## Prova di Statistica 2021/07/22-1
 
-```{r}
+```{r 2021-66}
 
 
 
@@ -1445,11 +1445,11 @@ fig.def(2.5,3.5)
 
 ### Esercizio 1
 
-```{r}
+```{r 2021-67}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2021-68}
 # Basic settings
 set.seed(12)   # per ottenere sempre la stessa simulazione
 n <- 350      # ampiezza campionaria
@@ -1467,7 +1467,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ aziende è stato rilevato il costo annuo in gas metano (espresso in migliaia di euro). Qui di seguito l'istogramma di densità:
 
-```{r}
+```{r 2021-69}
 
 histp(axes = T)
 kable((dat3[1:(k),c(1:2,6)]),booktabs=T,escape = F,linesep="") %>%
@@ -1491,12 +1491,12 @@ $$
 F_j=f_1+...+f_j
 $$
 ricostruire la tabella 
-```{r}
+```{r 2021-70}
 kable(dat3[,c(1,2,6,5,4,7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
 e quindi:
-```{r,results='asis'}
+```{r 2021-24,,results='asis'}
 cat(percentile())
 ```
 :::
@@ -1543,7 +1543,7 @@ Il totale di persone in transito è la somma delle tre Poisson
 $$
 X=X_1+X_2+X_3\sim \text{Pois}(\lambda=1.1+1.1+0.3)
 $$
-```{r,results='asis'}
+```{r 2021-25,,results='asis'}
 cat(pois_dis(2,1.1*2+.3,verso = "\\geq"))
 ```
 :::
@@ -1552,7 +1552,7 @@ cat(pois_dis(2,1.1*2+.3,verso = "\\geq"))
 `r punti_p()` Calcolare la probabilità di osservare una persona su un binario, una persona su un altro binario e nessuna persona sul rimanetene.
 
 ::: {.sol data-latex=""}
-```{r}
+```{r 2021-71}
 p10<-dpois(0,1.1)
 p11<-dpois(1,1.1)
 p30<-dpois(0,0.5)
@@ -1632,7 +1632,7 @@ Calcolare la probabilità che la media delle 64 estrazioni sia compresa tra
 0.92 e 4.08.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-26,,results='asis'}
 urn <- c(-1,0,2,3)
 mu <- mean(c(-1,0,2,3))
 s2 <- s2c(c(-1,0,2,3))
@@ -1641,7 +1641,7 @@ cat(stat_(urn,semp = T))
 
 In virtù del TLC per la media otteniamo
 
-```{r,results='asis'}
+```{r 2021-27,,results='asis'}
 mm <-  mu
 ss <- s2/64
 sd <- sqrt(ss)
@@ -1704,7 +1704,7 @@ $S=0.9$.
 `r punti_p(nex = T)` Costruire un intervallo di confidenza al 99% per il tempo medio di azione.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-28,,results='asis'}
 cat(idc(xm = 26.2,sd = 0.9,alpha = .01,n = 15,dist_ = "t"))
 ```
 :::
@@ -1713,7 +1713,7 @@ cat(idc(xm = 26.2,sd = 0.9,alpha = .01,n = 15,dist_ = "t"))
 di azione pari a 29.3. Testare che il farmaco in sperimentazione agisca in modo uguale agli altri contro l'alternativa che abbia tempi di azione inferiori.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-29,,results='asis'}
 n <- 15
 s <- 0.9
 muh <- 26.2
@@ -1728,7 +1728,7 @@ cat(ttest_mu(muh = muh,sh = s,n = n,mu0 = mu0,h1 = h1))
 
 ### Esercizio 6
 
-```{r}
+```{r 2021-72}
 
 
 set.seed(34)
@@ -1748,7 +1748,7 @@ ls2e(RGX)
 In uno studio sul risparmio gestito sono stati intervistati $n=`r n`$ individui 
 sui quali è stato rilevato il reddito mensile $X$ (in migliaia di euro), e il risparmio gestito $Y$ (in migliaia di euro). Il modello di regressione. Qui di seguito i dati e le statistiche di interesse:
 
-```{r}
+```{r 2021-73}
 kable(prn[],format.args = list(big.mark = " "),digits = 4,booktabs=T,escape = F,linesep="")%>%
   kable_styling(full_width = F, latex_options = "HOLD_position")%>%
   column_spec(1,background = "#E6E6E6",width = "3em")
@@ -1758,7 +1758,7 @@ kable(prn[],format.args = list(big.mark = " "),digits = 4,booktabs=T,escape = F,
   `r punti_p(nex = T)` Stimare il modello di regressione dove il risparmio è funzione del reddito e quello in cui il reddito è funzione del risparmio.
   
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-30,,results='asis'}
 cat(calcolo_beta())
 cat(calcolo_beta(inv = T))
 ```
@@ -1776,7 +1776,7 @@ Sì, i modelli si adattano bene
 :::
 
   `r punti_p()` Discutere il diagramma dei residui del modello di regressione dove $Y$ viene spiegata da $X$.
-```{r}
+```{r 2021-74}
 plot(x,ml$residuals,xlab="Reddito",ylab = "residui",type = "p",pch=16)
 abline(h=0,lty=2)
 
@@ -1805,7 +1805,7 @@ $$
 
 ## Prova di Statistica 2021/07/22-2
 
-```{r}
+```{r 2021-75}
 
 
 
@@ -1818,11 +1818,11 @@ fig.def(2.5,3.5)
 
 ### Esercizio 1
 
-```{r}
+```{r 2021-76}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2021-77}
 # Basic settings
 set.seed(12)   # per ottenere sempre la stessa simulazione
 n <- 350      # ampiezza campionaria
@@ -1838,7 +1838,7 @@ ls2e(stat_base(samp,brk))
 
 Su un campione di $`r n`$ aziende è stato rilevato il costo annuo in gas metano (espresso in migliaia di euro). Qui di seguito i dati e le frequenze percentuali
 
-```{r}
+```{r 2021-78}
 kable((dat3[1:(k),c(1:2,12)]),booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -1846,7 +1846,7 @@ kable((dat3[1:(k),c(1:2,12)]),booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Calcolare la colonna delle densità percentuali.
 
 ::: {.sol data-latex=""}
-```{r}
+```{r 2021-79}
 kable((dat3[1:(k),c(1:6)]),booktabs=T,escape = F,linesep="") %>%
    kable_styling(full_width = F, latex_options = "HOLD_position")
 histp(T)
@@ -1898,7 +1898,7 @@ $$
 
 $X\sim\text{Binom}(n=5,\pi=`r 2/9`)$ e quindi
 
-```{r,results='asis'}
+```{r 2021-31,,results='asis'}
 cat(bin_dis(1,n = 5,pp = 2/9,verso = "\\geq",comp = T))
 ```
 :::
@@ -1972,7 +1972,7 @@ Si estrae $n=81$ volte con reintroduzione, qual è la probabilità che la somma 
 $-6.6$ e $+6.6$?
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-32,,results='asis'}
 urn <- rep(-1:1,times = c(40,70,40))
 mm <-  0
 ss <- s2c(urn)
@@ -2024,7 +2024,7 @@ Un'azienda automobilistica sta sperimentando un nuovo tipo di motore per ridurre
 `r punti_p(nex = T)` Costruire un intervallo di confidenza al 95% per il consumo medio.
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-33,,results='asis'}
 cat(idc(xm = m,sd = 2.25,alpha = .05,n = 15,dist_ = "t"))
 ```
 :::
@@ -2047,7 +2047,7 @@ Siccome $23.9\notin IdC_{95\%}$ allora rifiuto $H_0$ al lds del $5\%$.
 
 ### Esercizio 6
 
-```{r}
+```{r 2021-80}
 xm <- 1.1
 ym <- 12.1
 wm <- 0.9
@@ -2143,7 +2143,7 @@ $$
 
 ## Prova di Statistica 2021/09/06-1
 
-```{r}
+```{r 2021-81}
 #
 
 
@@ -2156,11 +2156,11 @@ fig.def(2.5,3.5)
 
 ### Esercizio 1
 
-```{r}
+```{r 2021-82}
 compito <- compito + 1
 punti <- punti_list[[compito]]
 ```
-```{r}
+```{r 2021-83}
 # Basic settings
 set.seed(12)   # per ottenere sempre la stessa simulazione
 n <- 155      # ampiezza campionaria
@@ -2177,7 +2177,7 @@ ls2e(stat_base(samp,brk))
 
 
 Su un campione di $`r n`$ aziende è bilancio annuo (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze percentuali:
-```{r}
+```{r 2021-84}
 kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -2185,7 +2185,7 @@ kable(dat3[,c(1,2,12)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p(start=T)` Individuare la classe modale.
 
 ::: {.sol data-latex=""}
-```{r}
+```{r 2021-85}
 kable(dat3[,c(1:2,12,3:7)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
 ```
@@ -2194,7 +2194,7 @@ kable(dat3[,c(1:2,12,3:7)],booktabs=T,escape = F,linesep="") %>%
 `r punti_p()` Quante aziende, approssimativamente, hanno un bilancio inferiore a 1.5?
 
 ::: {.sol data-latex=""}
-```{r,results='asis'}
+```{r 2021-34,,results='asis'}
 histp(T)
 h.int(-10,1.5,density=20)
 axis(1,1.5,las=2,col.axis=2)
@@ -2220,7 +2220,7 @@ Siano $X_1\sim N(10,2)$ e sia $X_2\sim N(10,3)$. Posto $A=\{X_1<11\}$, $B=\{X_1>
 (A\cap B)\cap C = \{9<X_1<11\}\cap\{9<X_2<10\}
 \]
 e quindi 
-```{r,results='asis'}
+```{r 2021-35,,results='asis'}
 x1 <- 9
 x2 <- 11
 mm <- 10
@@ -2229,7 +2229,7 @@ vnam <- "X_1"
 cat(norm_int(x1 = x1,x2 = x2,verso = NULL,mm = mm,ss = ss,vnam = "X_1",mu = "\\mu_1",sigma = "\\sigma_1"))
 ```
 inoltre
-```{r}
+```{r 2021-86}
 x1 <- 9
 x2 <- 10
 mm <- 10
@@ -2249,7 +2249,7 @@ P\Big(\{9<X_1<11\}\cap\{9<X_2<10\}\Big)=P\Big(\{9<X_1<11\}\Big)P\Big(\{9<X_2<10\
 ::: {.sol data-latex=""}
 $$Y=X_1-X_2\sim N(10-10,2+3)$$
 
-```{r}
+```{r 2021-87}
 x0 <- -1
 x2 <- 10
 mm <- 0
@@ -2293,7 +2293,7 @@ incidenti sia minore di 40?
 
 ::: {.sol data-latex=""}
 $E(X_i)=0.1$, $V(X_i)=0.1$ e quindi
-```{r}
+```{r 2021-88}
 x0 <- 40
 x2 <- 40
 mm <- 36.5
@@ -2346,7 +2346,7 @@ a 1300.00€.
 `r punti_p(nex = T)` Determinare un intervallo di confidenza al 95%
 per l'importo medio annuale speso per la ricerca industriale. 
 
-```{r}
+```{r 2021-89}
 cat(idc(sd = 1300,xm = 2750,alpha = .05,n = 16,dist_ = "t"))
 ```
 
@@ -2359,7 +2359,7 @@ quello dell'anno precedente contro l'alternativa di una
 diminuzione dell'investimento in ricerca industriale.
 
 ::: {.sol data-latex=""}
-```{r}
+```{r 2021-90}
 s <- 1200
 n <- 16
 muh <- 2750
@@ -2374,7 +2374,7 @@ cat(ztest_mu(muh = muh,s = s,n = n,mu0 = mu0,h1 = h1))
 
 ### Esercizio 6
 
-```{r}
+```{r 2021-91}
 
 set.seed(5)
 set.seed(34)
@@ -2402,7 +2402,7 @@ Si osservano le seguenti statistiche, $\sum_{i=1}^{15}x_i=`r sum(x)`$, $\sum_{i=
 `r punti_p(nex = T)` Stimare il modello di regressione dove $Y$ viene spiegata da $X$
 
 ::: {.sol data-latex=""}
-```{r}
+```{r 2021-92}
 cat(calcolo_beta())
 ```
 :::
@@ -2411,7 +2411,7 @@ cat(calcolo_beta())
 `r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
 
 ::: {.sol data-latex=""}
-```{r}
+```{r 2021-93}
 cat(R2())
 ```
 :::

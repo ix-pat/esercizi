@@ -12,7 +12,7 @@ i1 <- NULL; i2 <- NULL
 ```
 
 
-```{r}
+```{r 04-tlc-16}
 if (html) cat('')
 ```
   
@@ -39,7 +39,7 @@ $V(X_{i})=0.1$. Calcolare la probabilità che il collo superi il peso di
 <!-- #               \sim N(128;\ 6.4)                                  -->
 <!-- # \end{eqnarray*} -->
 
-```{r, results='asis'}
+```{r 04-tlc-1,, results='asis'}
 x1 <- 132
 mm <- 64*2
 ss <- 64*0.1
@@ -69,7 +69,7 @@ confezioni sia compreso tra $1.9$kg e $2.1$kg.
 <!--               \sim  N(2;\ 0.0015625)                           -->
 <!-- \end{eqnarray*} -->
 
-```{r, results='asis'}
+```{r 04-tlc-2,, results='asis'}
 x1 <- 1.9
 x2 <- 2.1
 mm <- 2
@@ -94,7 +94,7 @@ probabilità che la somma delle 100 estrazioni sia compresa tra 195 e
 210.
 
 :::{.sol data-latex=""}
-```{r, results='asis'}
+```{r 04-tlc-3,, results='asis'}
 urn <- c(-2,2,3,3,4)
 cat(stat_(urn,semp = T))
 cat(tlc("somma",x1 = 195,x2 = 210,verso = NULL,mu = mean(urn),s2 = s2c(urn),n = 100))
@@ -113,7 +113,7 @@ Si effettuano 100 estrazioni con reimmissione (ECR). Calcolare la
 probabilità che la media nelle 100 estrazioni sia maggiore di 2.2.
 
 :::{.sol data-latex=""}
-```{r, results='asis'}
+```{r 04-tlc-4,, results='asis'}
 urn <- c(-2,2,3,3,4)
 cat(stat_(urn,semp = T))
 cat(tlc("media",x1 = 2.2,verso = ">",mu = mean(urn),s2 = s2c(urn),n = 100))
@@ -142,7 +142,7 @@ Si ripete l'esperimento $n=81$ volte. Qual è la probabilità
 maggiore di 90?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 04-tlc-5,,results='asis'}
 S_1 <- c(-1,1,2)
 S_2 <- c(0,1)
 num1 <- c(1,1,1)
@@ -182,7 +182,7 @@ media dei risultati degli 81 esperimenti sia $A$ e $B$?
 \end{eqnarray*}
   
 
-```{r,results='asis'}
+```{r 04-tlc-6,,results='asis'}
 S_1 <- c(-1,1,2)
 S_2 <- c(0,1)
 num1 <- c(1,1,1)
@@ -216,7 +216,7 @@ Qual è la probabilità (approssimata) che che la media dei risultati
     dei 92 esperimenti sia compresa tra 1 e 1.4?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 04-tlc-7,,results='asis'}
 S_1 <- c(-1,1,2)
 S_2 <- c(0,1)
 num1 <- c(1,2,1)
@@ -252,7 +252,7 @@ V(X_{i})      &=& \pi (1-\pi) = 0.24
 \end{eqnarray*}
 
 
-```{r, results='asis'}
+```{r 04-tlc-8,, results='asis'}
 cat(tlc("somma",x1 = 55,x2 = 70,verso = NULL,mu = .6,n = 100))
 ```
 :::
@@ -280,7 +280,7 @@ E(X_{i})      &=& \pi = 0.6                                \\
 V(X_{i})      &=& \pi (1-\pi) = 0.24                      
 \end{eqnarray*}
 
-```{r, results='asis'}
+```{r 04-tlc-9,, results='asis'}
 cat(tlc("prop",x1 = 0.6,x2 = 0.65,verso = NULL,mu = .6,n = 81))
 ```
 :::
@@ -308,7 +308,7 @@ Qual è la probabilità (approssimata) che che la proporzione di numeri
 maggiori di 0 negli 81 esperimenti sia maggiore di 0.68?
 
 :::{.sol data-latex=""}
-```{r,results='asis'}
+```{r 04-tlc-10,,results='asis'}
 S_1 <- c(-1,1,2)
 S_2 <- c(0,1)
 num1 <- c(1,1,1)
@@ -332,7 +332,7 @@ V(Y) &=& \pi\ (1-\pi)
 
 Per il TLC si ha
 
-```{r,results='asis'}
+```{r 04-tlc-11,,results='asis'}
 cat(tlc("prop",x1 = .68,verso = ">",mu = 2/3,n = 81))
 ```
 :::
@@ -359,7 +359,7 @@ E(X_{i})    &=& \lambda = \frac{\#\ \mbox{problemi semestre}}
 V(X_{i})    &=& \lambda = 1.5                                      
 \end{eqnarray*}
 
-```{r, results='asis'}
+```{r 04-tlc-12,, results='asis'}
 #cat(norm_int(x1 = 75,x2 = 80,verso = NULL,mm = 78,ss = 78,vnam = "S_n",mu = "n\\lambda",sigma = "\\sqrt{n\\lambda}"))
 tlc(tipo = "pois_somma",x1 = 75,x2 = 80,verso = NULL,mu = 1.5,n = 52 )
 ```
@@ -381,7 +381,7 @@ X_{i}    &\sim& \mbox{Poisson}(\lambda) \sim \mbox{Poisson}(1.5)  \\
 E(X_{i})    &=& \lambda = 1.5                                  \\
 V(X_{i})    &=& \lambda = 1.5                                  \\
 \end{eqnarray*}
-```{r, results='asis'}
+```{r 04-tlc-13,, results='asis'}
 #cat(norm_int(x1 = 1.4,x2 = 2,verso = NULL,mm = 1.5,ss = 1.5/49,vnam = "\\bar X",mu = "\\lambda",sigma = "\\sqrt{\\lambda/n}"))
 tlc(tipo = "pois_somma",x1 = 1.4,x2 = 2,verso = NULL,mu = 1.5,n = 49 )
 ```
@@ -406,7 +406,7 @@ E(X_{i})    &=& \lambda = 2.3                                       \\
 V(X_{i})    &=& \lambda = 2.3                                       \\
 \end{eqnarray*}
 
-```{r, results='asis'}
+```{r 04-tlc-14,, results='asis'}
 #cat(norm_int(x1 = 100,verso = "<",mm = 119.6,ss = 119.6,vnam = "S_n",mu = "n\\lambda",sigma = "\\sqrt{n\\lambda}"))
 tlc(tipo = "pois_somma",x1 = 100,verso = "<",mu = 2.3,n = 52)
 ```
@@ -438,7 +438,7 @@ E(X_i) &=& \pi = 0.6065                                                         
 V(X_i) &=& \pi\ (1-\pi) = 0.6065 (1 - 0.6065) = 0.2387               
 \end{eqnarray*}
 
-```{r, results='asis'}
+```{r 04-tlc-15,, results='asis'}
 #cat(norm_int(x1 = 0.7,verso = ">",mm = 0.6065,ss = 0.6065*(1-0.6065)/80,vnam = "\\hat\\pi",mu = "\\pi",sigma = "\\sqrt{\\pi(1-\\pi)/n}"))
 tlc(tipo = "prop",x1 = 0.7,verso = ">",mu = .6065,n = 80)
 ```

@@ -1,0 +1,25 @@
+
+<!-- Inserisci questo script nel tuo file R Markdown -->
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Funzione per alternare la visibilità
+  function toggleSolution() {
+    var elements = document.querySelectorAll('.sol');
+    elements.forEach(function(el) {
+      if (el.style.display === 'none' || el.style.display === '') {
+        el.style.display = 'block';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+  }
+
+  // Aggiungi il pulsante di toggle
+  var button = document.createElement('button');
+  button.innerHTML = 'Mostra/Nascondi Soluzioni';
+  button.onclick = toggleSolution;
+
+  // Puoi aggiungere il pulsante dove preferisci, qui lo aggiungiamo all'inizio del body
+  document.body.insertBefore(button, document.body.firstChild);
+});
+</script>

@@ -51,6 +51,16 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
   // Funzione per alternare la visibilità di un singolo blocco sol
@@ -163,7 +173,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="http://frederic.economia.unimore.it/">Statistica Home</a></li>
 
 <li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Eserciziario</a></li>
 <li class="chapter" data-level="" data-path="avvertenza.html"><a href="avvertenza.html"><i class="fa fa-check"></i>Avvertenza</a></li>
+<li class="chapter" data-level="" data-path="introduzione.html"><a href="introduzione.html"><i class="fa fa-check"></i>Introduzione</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html"><i class="fa fa-check"></i>Esercizi di Statistica Descrittiva</a>
 <ul>
 <li class="chapter" data-level="" data-path="esercizi-di-statistica-descrittiva.html"><a href="esercizi-di-statistica-descrittiva.html#versione-senza-contesto"><i class="fa fa-check"></i>Versione senza contesto</a>
@@ -236,8 +248,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-2-1"><i class="fa fa-check"></i>Esercizio 2</a></li>
 <li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-3-1"><i class="fa fa-check"></i>Esercizio 3</a></li>
 <li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-4-1"><i class="fa fa-check"></i>Esercizio 4</a></li>
-<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-1-2"><i class="fa fa-check"></i>Esercizio 1</a></li>
-<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-indipendenza.html"><a href="test-del-chi-quadro-per-indipendenza.html#esercizio-2-2"><i class="fa fa-check"></i>Esercizio 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html"><i class="fa fa-check"></i>Test del Chi-quadro per conformità</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html#esercizio-1-2"><i class="fa fa-check"></i>Esercizio 1</a></li>
+<li class="chapter" data-level="" data-path="test-del-chi-quadro-per-conformità.html"><a href="test-del-chi-quadro-per-conformità.html#esercizio-2-2"><i class="fa fa-check"></i>Esercizio 2</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="esericizi-sulla-regressione.html"><a href="esericizi-sulla-regressione.html"><i class="fa fa-check"></i>Esericizi sulla Regressione</a>
 <ul>
@@ -698,7 +713,7 @@ conclusioni.</p>
 <p><span class="math inline">\(z_{0.1}=1.2816\)</span>; <span class="math inline">\(z_{0.05}=1.6449\)</span>; <span class="math inline">\(z_{0.01}=2.3263\)</span>; <span class="math inline">\(z_{0.001}=3.0902\)</span></p>
 <p>Siccome <span class="math inline">\(1.6449&lt;z_\text{obs}=2.0616&lt;2.3263\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> al 5%,</p>
 <p><span class="math inline">\(0.01&lt;p_\text{value}&lt;0.05\)</span>, <em>significativo</em> <span class="math inline">\(\fbox{*}\)</span>.</p>
-<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-2,-1.png" width="672" /></p>
 <p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
 <p><span class="math display">\[ p_{\text{value}} = P(Z&gt;2.06)=0.019625 \]</span></p>
 <p><span class="math display">\[
@@ -754,7 +769,7 @@ conclusioni.</p>
 <p><span class="math inline">\(z_{0.1}=-1.2816\)</span>; <span class="math inline">\(z_{0.05}=-1.6449\)</span>; <span class="math inline">\(z_{0.01}=-2.3263\)</span>; <span class="math inline">\(z_{0.001}=-3.0902\)</span></p>
 <p>Siccome <span class="math inline">\(-3.0902&lt;z_\text{obs}=-1.5492&lt;-2.3263\)</span>, indecisione sul rifiuto di <span class="math inline">\(H_0\)</span> al 10%,</p>
 <p><span class="math inline">\(0.05&lt;p_\text{value}&lt;0.1\)</span>, <em>marginalmente significativo</em> <span class="math inline">\(\fbox{.}\)</span>.</p>
-<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-4,-1.png" width="672" /></p>
 <p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
 <p><span class="math display">\[ p_{\text{value}} = P(Z&lt;-1.55)=0.060668 \]</span></p>
 <p><span class="math display">\[
@@ -812,7 +827,7 @@ anziché <span class="math inline">\(\alpha\)</span></p>
 <p><span class="math inline">\(z_{0.05}=1.6449\)</span>; <span class="math inline">\(z_{0.025}=1.96\)</span>; <span class="math inline">\(z_{0.005}=2.5758\)</span>; <span class="math inline">\(z_{0.0005}=3.2905\)</span></p>
 <p>Siccome <span class="math inline">\(1.96&lt;|z_\text{obs}|=2.0328&lt;2.5758\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> al 5%,</p>
 <p><span class="math inline">\(0.01&lt;p_\text{value}&lt;0.05\)</span>, <em>significativo</em> <span class="math inline">\(\fbox{*}\)</span>.</p>
-<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-6,-1.png" width="672" /></p>
 <p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
 <p><span class="math display">\[ p_{\text{value}} = P(|Z|&gt;|2.03|)=2P(Z&gt;2.03)=0.042074 \]</span></p>
 <p><span class="math display">\[
@@ -871,7 +886,7 @@ conclusioni.</p>
 <p><span class="math inline">\(t_{20-1;0.1}=-1.3277\)</span>; <span class="math inline">\(t_{20-1;0.05}=-1.7291\)</span>; <span class="math inline">\(t_{20-1;0.01}=-2.5395\)</span>; <span class="math inline">\(t_{20-1;0.001}=-3.5794\)</span></p>
 <p>Siccome <span class="math inline">\(-1.7291&lt;t_\text{obs}=-2.6729&lt;-1.3277\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> all’1%,</p>
 <p><span class="math inline">\(0.001&lt;p_\text{value}&lt;0.01\)</span>, <em>molto significativo</em> <span class="math inline">\(\fbox{**}\)</span>.</p>
-<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-8,-1.png" width="672" /></p>
 <p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
 <p><span class="math display">\[ p_{\text{value}} = P(T_{20-1}&lt;-2.67)=0.007521 \]</span></p>
 <p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
@@ -928,7 +943,7 @@ conclusioni.</p>
 <p><span class="math inline">\(t_{30-1;0.1}=1.3114\)</span>; <span class="math inline">\(t_{30-1;0.05}=1.6991\)</span>; <span class="math inline">\(t_{30-1;0.01}=2.462\)</span>; <span class="math inline">\(t_{30-1;0.001}=3.3962\)</span></p>
 <p>Siccome <span class="math inline">\(1.6991&lt;t_\text{obs}=1.7951&lt;2.462\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> al 5%,</p>
 <p><span class="math inline">\(0.01&lt;p_\text{value}&lt;0.05\)</span>, <em>significativo</em> <span class="math inline">\(\fbox{*}\)</span>.</p>
-<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-10,-1.png" width="672" /></p>
 <p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
 <p><span class="math display">\[ p_{\text{value}} = P(T_{30-1}&gt;1.8)=0.041537 \]</span></p>
 <p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
@@ -987,7 +1002,7 @@ anziché <span class="math inline">\(\alpha\)</span></p>
 <p><span class="math inline">\(t_{26-1;0.05}=1.7081\)</span>; <span class="math inline">\(t_{26-1;0.025}=2.0595\)</span>; <span class="math inline">\(t_{26-1;0.005}=2.7874\)</span>; <span class="math inline">\(t_{26-1;0.0005}=3.7251\)</span></p>
 <p>Siccome <span class="math inline">\(2.0595&lt;|t_\text{obs}|=2.5&lt;2.7874\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> al 5%,</p>
 <p><span class="math inline">\(0.01&lt;p_\text{value}&lt;0.05\)</span>, <em>significativo</em> <span class="math inline">\(\fbox{*}\)</span>.</p>
-<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-12,-1.png" width="672" /></p>
 <p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
 <p><span class="math display">\[ p_{\text{value}} = P(|T_{26-1}|&gt;|2.5|)=2P(T_{26-1}&gt;2.5)=0.019343 \]</span></p>
 <p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
@@ -1038,7 +1053,7 @@ Test Binomiale per <span class="math inline">\(n\)</span> grande: <span class="m
 <p><span class="math display">\[ p_{\text{value}} = P(Z&gt;1.05)=0.147254 \]</span></p>
 <p><span class="math display">\[
 0.1 &lt; p_\text{value}= 0.147254 \leq 1
-\]</span><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+\]</span><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-21-1.png" width="672" /></p>
 <p><strong>Non</strong> rifiuto <span class="math inline">\(H_0\)</span> a <strong>nessun</strong>
 livello di significatività,</p>
 <p><span class="math inline">\(p_\text{value}&gt;0.1\)</span>,
@@ -1082,7 +1097,7 @@ Test Binomiale per <span class="math inline">\(n\)</span> grande: <span class="m
 <p><span class="math display">\[ p_{\text{value}} = P(|Z|&gt;|-1.26|)=2P(Z&gt;1.26)=0.205903 \]</span></p>
 <p><span class="math display">\[
 0.1 &lt; p_\text{value}= 0.205903 \leq 1
-\]</span><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+\]</span><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-23-1.png" width="672" /></p>
 <p><strong>Non</strong> rifiuto <span class="math inline">\(H_0\)</span> a <strong>nessun</strong>
 livello di significatività,</p>
 <p><span class="math inline">\(p_\text{value}&gt;0.1\)</span>,
@@ -1130,7 +1145,7 @@ gruppi.</p>
 <p><span class="math inline">\(t_{30-2;0.1}=1.3125\)</span>; <span class="math inline">\(t_{30-2;0.05}=1.7011\)</span>; <span class="math inline">\(t_{30-2;0.01}=2.4671\)</span>; <span class="math inline">\(t_{30-2;0.001}=3.4082\)</span></p>
 <p>Siccome <span class="math inline">\(2.4671&lt;t_\text{obs}=2.4706&lt;3.4082\)</span>, quindi <strong>rifiuto</strong> <span class="math inline">\(H_0\)</span> all’1%,</p>
 <p><span class="math inline">\(0.001&lt;p_\text{value}&lt;0.01\)</span>, <em>molto significativo</em> <span class="math inline">\(\fbox{**}\)</span>.</p>
-<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-13,-1.png" width="672" /></p>
 <p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
 <p><span class="math display">\[ p_{\text{value}} = P(T_{30-2}&gt;2.47)=0.009921 \]</span></p>
 <p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
@@ -1164,7 +1179,7 @@ gruppi.</p>
 <p><span class="math inline">\(t_{33-2;0.1}=1.3095\)</span>; <span class="math inline">\(t_{33-2;0.05}=1.6955\)</span>; <span class="math inline">\(t_{33-2;0.01}=2.4528\)</span>; <span class="math inline">\(t_{33-2;0.001}=3.3749\)</span></p>
 <p>Siccome <span class="math inline">\(1.3095&lt;t_\text{obs}=1.3944&lt;1.6955\)</span>, indecisione sul rifiuto di <span class="math inline">\(H_0\)</span> al 10%,</p>
 <p><span class="math inline">\(0.05&lt;p_\text{value}&lt;0.1\)</span>, <em>marginalmente significativo</em> <span class="math inline">\(\fbox{.}\)</span>.</p>
-<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-14,-1.png" width="672" /></p>
 <p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
 <p><span class="math display">\[ p_{\text{value}} = P(T_{33-2}&gt;1.39)=0.086563 \]</span></p>
 <p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
@@ -1200,7 +1215,7 @@ anziché <span class="math inline">\(\alpha\)</span></p>
 <p><span class="math inline">\(t_{33-2;0.05}=1.6955\)</span>; <span class="math inline">\(t_{33-2;0.025}=2.0395\)</span>; <span class="math inline">\(t_{33-2;0.005}=2.744\)</span>; <span class="math inline">\(t_{33-2;0.0005}=3.6335\)</span></p>
 <p>Siccome <span class="math inline">\(1.6955&lt;|t_\text{obs}|=1.9846&lt;2.0395\)</span>, indecisione sul rifiuto di <span class="math inline">\(H_0\)</span> al 10%,</p>
 <p><span class="math inline">\(0.05&lt;p_\text{value}&lt;0.1\)</span>, <em>marginalmente significativo</em> <span class="math inline">\(\fbox{.}\)</span>.</p>
-<p><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-15,-1.png" width="672" /></p>
 <p>Il <span class="math inline">\(p_{\text{value}}\)</span> è</p>
 <p><span class="math display">\[ p_{\text{value}} = P(|T_{33-2}|&gt;|1.98|)=2P(T_{33-2}&gt;1.98)=0.056100 \]</span></p>
 <p>Attenzione il calcolo del <span class="math inline">\(p_\text{value}\)</span> con la <span class="math inline">\(T\)</span> è puramente illustrativo e non può essere riprodotto senza una calcolatrice statistica adeguata.<span class="math display">\[
@@ -1246,7 +1261,7 @@ il tipo di test da utilizzare, e le conclusioni.</p>
 <p><span class="math display">\[ p_{\text{value}} = P(Z&gt;4)=0.000032 \]</span></p>
 <p><span class="math display">\[
 0 &lt; p_\text{value}= 0.000032 \leq 0.001
-\]</span><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+\]</span><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-16,-1.png" width="672" /></p>
 <p><strong>Rifiuto</strong> <span class="math inline">\(H_0\)</span> sotto all’1‰,</p>
 <p><span class="math inline">\(p_\text{value}&lt;0.001\)</span>, <em>estremamente significativo</em> <span class="math inline">\(\fbox{***}\)</span>.</p>
 </div>
@@ -1277,7 +1292,7 @@ il tipo di test da utilizzare, e le conclusioni.</p>
 <p><span class="math display">\[ p_{\text{value}} = P(Z&gt;2.89)=0.001946 \]</span></p>
 <p><span class="math display">\[
 0.001 &lt; p_\text{value}= 0.001946 \leq 0.01
-\]</span><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+\]</span><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-17,-1.png" width="672" /></p>
 <p><strong>Rifiuto</strong> <span class="math inline">\(H_0\)</span> all’1%,</p>
 <p><span class="math inline">\(0.001&lt;p_\text{value}&lt;0.01\)</span>, <em>molto significativo</em> <span class="math inline">\(\fbox{**}\)</span>.</p>
 </div>
@@ -1308,7 +1323,7 @@ il tipo di test da utilizzare, e le conclusioni.</p>
 <p><span class="math display">\[ p_{\text{value}} = P(|Z|&gt;|2.74|)=2P(Z&gt;2.74)=0.006170 \]</span></p>
 <p><span class="math display">\[
 0.001 &lt; p_\text{value}= 0.006170 \leq 0.01
-\]</span><img src="Esami_passati_con_soluzioni_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+\]</span><img src="Esami_passati_con_soluzioni_files/figure-html/05-test-18,-1.png" width="672" /></p>
 <p><strong>Rifiuto</strong> <span class="math inline">\(H_0\)</span> all’1%,</p>
 <p><span class="math inline">\(0.001&lt;p_\text{value}&lt;0.01\)</span>, <em>molto significativo</em> <span class="math inline">\(\fbox{**}\)</span>.</p>
 </div>
