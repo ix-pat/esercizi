@@ -1,13 +1,13 @@
 --- 
 title: "Eserciziario di Statistica"
-subtitle: "CLEAM AA 23/24"
+subtitle: "CLEAM AA 24/25"
 author: "Patrizio Frederic"
 date: "Aggiornato al `r format(Sys.Date(),'%d-%m-%Y')`"
 documentclass: book
 site: bookdown::bookdown_site
 biblio-style: apalike
 link-citations: yes
-description: "Appunti sparsi"
+description: "Esercizi sparsi"
 geometry: "left=2.5cm, right=2.5cm, top=4.5cm, bottom=4.5cm, showframe=false, showcrop=true"
 fontsize: 11pt
 output:

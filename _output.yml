@@ -4,7 +4,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="http://frederic.economia.unimore.it/">Statistica Home</a></li>
+        <li><a href="/">Statistica Home</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     download: ["pdf"]
