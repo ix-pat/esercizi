@@ -517,7 +517,7 @@ drop fuzzy shadow]
 \makeatother
 \subtitle{CLEAM AA 24/25}
 \author{Patrizio Frederic}
-\date{Aggiornato al 04-02-2025}
+\date{Aggiornato al 05-03-2025}
 
 \begin{document}
 \maketitle
@@ -563,7 +563,7 @@ di esercitazione.
 
 Patrizio Frederic
 
-Bologna, il 04/02/2025.
+Bologna, il 05/03/2025.
 
 \part{Esercizi per argomento}
 
@@ -573,22 +573,27 @@ Bologna, il 04/02/2025.
 
 \subsection{Variante A}\label{variante-a}
 
-Sono stati analizzati 383 individui per investigare su fenomeno-x. É riportata qui di seguito la distribuzione in classi espressa in frequenza relativa.
+Sono stati analizzati 2500 individui per investigare su fenomeno-x. É riportata qui di seguito la distribuzione in classi espressa in frequenza relativa.
 
 \begin{tabular}{rrr}
 \toprule
 $[\text{x}_j,$ & $\text{x}_{j+1})$ & $f_j$\\
 \midrule
-0.0 & 3.1 & 0.1880\\
-3.1 & 4.1 & 0.1932\\
-4.1 & 5.2 & 0.1854\\
-5.2 & 6.7 & 0.2141\\
-6.7 & 13.0 & 0.2193\\
+0 & 3 & 0.2012\\
+3 & 4 & 0.1764\\
+4 & 5 & 0.1976\\
+5 & 8 & 0.3236\\
+8 & 20 & 0.1012\\
  &  & 1.0000\\
 \bottomrule
 \end{tabular}
 
-NA. Disegnare l'istogramma di densità percentuale.
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Disegnare l'istogramma di densità percentuale.
+\end{enumerate}
 
 \begin{sol}
 
@@ -612,12 +617,12 @@ si consiglia di mettere i dati in tabella:
 \toprule
 $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 \midrule
-0.0 & 3.1 & 72 & 0.1880 & 3.1 & 6.064 & 0.1880\\
-3.1 & 4.1 & 74 & 0.1932 & 1.0 & 19.321 & 0.3812\\
-4.1 & 5.2 & 71 & 0.1854 & 1.1 & 16.853 & 0.5666\\
-5.2 & 6.7 & 82 & 0.2141 & 1.5 & 14.273 & 0.7807\\
-6.7 & 13.0 & 84 & 0.2193 & 6.3 & 3.481 & 1.0000\\
- &  & 383 & 1.0000 & 13.0 &  & \\
+0 & 3 & 503 & 0.2012 & 3 & 6.7067 & 0.2012\\
+3 & 4 & 441 & 0.1764 & 1 & 17.6400 & 0.3776\\
+4 & 5 & 494 & 0.1976 & 1 & 19.7600 & 0.5752\\
+5 & 8 & 809 & 0.3236 & 3 & 10.7867 & 0.8988\\
+8 & 20 & 253 & 0.1012 & 12 & 0.8433 & 1.0000\\
+ &  & 2500 & 1.0000 & 20 &  & \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -637,10 +642,10 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 \begin{sol}
 
 \begin{eqnarray*}
-  p &=&  0.65 , \text{essendo }F_{ 4 }= 0.7807  > 0.65  \Rightarrow j_{ 0.65 }= 4 \\
+  p &=&  0.65 , \text{essendo }F_{ 4 }= 0.8988  > 0.65  \Rightarrow j_{ 0.65 }= 4 \\
   x_{ 0.65 } &=& x_{\text{inf}; 4 } + \frac{ { 0.65 } - F_{ 3 }} {f_{ 4 }} \cdot b_{ 4 } \\
-            &=&  5.2  + \frac {{ 0.65 } -  0.5666 } { 0.2141 } \cdot  1.5  \\
-            &=&  5.784 
+            &=&  5  + \frac {{ 0.65 } -  0.5752 } { 0.3236 } \cdot  3  \\
+            &=&  5.693 
 \end{eqnarray*}
 
 \begin{center}\includegraphics{Esami_passati_con_soluzioni_files/figure-latex/6-1} \end{center}
@@ -652,18 +657,24 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 \setcounter{enumi}{2}
 \tightlist
 \item
-  Qual è il numero di individui con fenomeno-x superiore a 5.2?
+  Qual è il numero di individui con fenomeno-x superiore a 5?
 \end{enumerate}
 
 \begin{sol}
 \begin{eqnarray*}
-  \#(X>5.2) &=&  (f_4+f_5)\times n\\
-            &=& (0.2141+0.2141)\times 383\\
-            &=& 166,\text{ o alternativamente}\\
+  \#(X>5) &=&  (f_4+f_5)\times n\\
+            &=& (0.3236+0.1012)\times 2500\\
+            &=& 1062,\text{ o alternativamente}\\
             &=& (1-F_3)\times n\\
-            &=& (1-0.5666)\times 383\\
-            &=& 166
+            &=& (1-0.5752)\times 2500\\
+            &=& 1062
 \end{eqnarray*}
+\begin{eqnarray*}
+     \%(X> 5.2 ) &=& ( 8 - 5.2 )\times h_{ 4 }+ f_{ 5 }\times 100 \\
+              &=& ( 2.8 )\times 10.79 + ( 0.1012 )\times 100 \\
+              &=&  0.4032 \times(100)\\
+     \#(X> 5.2 ) &\approx& 1008 
+         \end{eqnarray*}
 
 \end{sol}
 
@@ -8099,7 +8110,7 @@ Calcolare il residuo per il quarto dato.
 \hat y_i &=&\hat\beta_0+\hat\beta_1 x_i=\\ 
 &=& 0.02957 + 0.8942 \times 5.1551 = 4.639 \\ 
 \hat \varepsilon_i &=& y_i-\hat y_i\\ 
-&=& 4.691 - 4.639 = 0.05188  
+&=& 4.691 - 4.639 = 0.05186  
 \end{eqnarray*}
 
 \end{sol}
@@ -8494,7 +8505,7 @@ sui quali è stato rilevato il reddito mensile \(X\) (in migliaia di euro), e il
 
 \begin{align*}
 \bar x&=4.126 &\hat \sigma_X&=2.6036, &x_{(0)}&=0.0052,  &x_{(n)}&=9.5485,\\
-\bar y&=3.5692 &\hat \sigma_Y&=2.6833, &y_{(0)}&=0.0718,  &y_{(n)}&=11.008,\\
+\bar y&=3.5691 &\hat \sigma_Y&=2.6833, &y_{(0)}&=0.0718,  &y_{(n)}&=11.008,\\
 \text{cov}(X,Y)&=5.8726.
 \end{align*}
 
@@ -10579,8 +10590,8 @@ a cui è stato chiesto il reddito (\(X\)) e la percezione della perdita del pote
 Qui di seguito le statistiche bivariate
 
 \begin{align*}
-  \sum_{i=1}^n x_i &= 122.7104 &\sum_{i=1}^n x_i^2 &= 157.1627 &\sum_{i=1}^n x_i y_i &= 78.8935\\
-  \sum_{i=1}^n y_i &= 110.4191 & \sum_{i=1}^n y_i^2 &= 83.8076 &
+  \sum_{i=1}^n x_i &= 122.7102 &\sum_{i=1}^n x_i^2 &= 157.1624 &\sum_{i=1}^n x_i y_i &= 78.8937\\
+  \sum_{i=1}^n y_i &= 110.4192 & \sum_{i=1}^n y_i^2 &= 83.8077 &
 \end{align*}
 
 6.a \textbf{(Punti 14/101 \(\rightarrow\) 4.3/31)} Stimare la previsione per \(x=1.0\) nel modello di regressione dove \(Y\) viene spiegata da \(X\).
@@ -10622,11 +10633,11 @@ il modello in cui \(W\) viene spiegata da \(X\), quanto varranno \(\beta_0'\) e 
   &=& 7.3613\\
   \sum x_iw_i&=&\sum x_i\cdot 10\cdot y_i\\
   &=& 10\sum x_i y_i\\
-  &=& 788.9347\\
+  &=& 788.9371\\
   cov(x,w)&=&\sum x_iw_i-\bar w\cdot\bar x\\
   &=&10\sum x_i y_i - 10 \cdot\bar y\cdot\bar x\\
   &=&10 cov(x,y)\\
-  &=& -0.7625\\
+  &=& -0.7624\\
   \hat\beta'_1&=&\frac{10\cdot cov(x,y)}{\hat\sigma_X^2}\\
   &=&-2.0143\\
   \hat\beta_0'&=& \bar w -\hat\beta'_1\bar x\\
@@ -10831,8 +10842,8 @@ a cui è stato chiesto il reddito (\(X\)) e la percezione della perdita del pote
 Qui di seguito le statistiche bivariate
 
 \begin{align*}
-  \sum_{i=1}^n x_i &= 109.6215 &\sum_{i=1}^n x_i^2 &= 134.2163 &\sum_{i=1}^n x_i y_i &= 71.3993\\
-  \sum_{i=1}^n y_i &= 112.7446 & \sum_{i=1}^n y_i^2 &= 87.1782 &
+  \sum_{i=1}^n x_i &= 109.6214 &\sum_{i=1}^n x_i^2 &= 134.2159 &\sum_{i=1}^n x_i y_i &= 71.3992\\
+  \sum_{i=1}^n y_i &= 112.7445 & \sum_{i=1}^n y_i^2 &= 87.1782 &
 \end{align*}
 
 6.a \textbf{(Punti 14/101 \(\rightarrow\) 4.3/31)} Stimare la previsione per \(x=1.4\) nel modello di regressione dove \(Y\) viene spiegata da \(X\).
@@ -11468,8 +11479,8 @@ il numero di abitanti \(X\), espresso in migliaia di persone, e il numero di ese
 Qui di seguito le statistiche bivariate
 
 \begin{align*}
-  \sum_{i=1}^n x_i &= 741.5 &\sum_{i=1}^n x_i^2 &= 11366.33 &\sum_{i=1}^n x_i y_i &= 7568.707\\
-  \sum_{i=1}^n y_i &= 483.933 & \sum_{i=1}^n y_i^2 &= 5757.607 &
+  \sum_{i=1}^n x_i &= 741.5 &\sum_{i=1}^n x_i^2 &= 11366.33 &\sum_{i=1}^n x_i y_i &= 7568.704\\
+  \sum_{i=1}^n y_i &= 483.933 & \sum_{i=1}^n y_i^2 &= 5757.604 &
 \end{align*}
 
 6.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Stimare la previsione per \(x=16\) nel modello di regressione dove \(Y\) viene spiegata da \(X\).
@@ -11734,8 +11745,8 @@ il numero di abitanti \(X\), espresso in migliaia di persone, e il numero di ese
 Qui di seguito le statistiche bivariate
 
 \begin{align*}
-  \sum_{i=1}^n x_i &= 724 &\sum_{i=1}^n x_i^2 &= 10924.84 &\sum_{i=1}^n x_i y_i &= 7070.542\\
-  \sum_{i=1}^n y_i &= 455.063 & \sum_{i=1}^n y_i^2 &= 4962.846 &
+  \sum_{i=1}^n x_i &= 724 &\sum_{i=1}^n x_i^2 &= 10924.84 &\sum_{i=1}^n x_i y_i &= 7070.543\\
+  \sum_{i=1}^n y_i &= 455.063 & \sum_{i=1}^n y_i^2 &= 4962.848 &
 \end{align*}
 
 6.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Questi sono alcuni dei dati osservati
@@ -14041,8 +14052,8 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 In uno studio sull'adeguamento alle direttive europee sul green si sono analizzate 150 aziende, sono stati analizzati l'investimento in green (\(X\) espresso in decine migliaia di euro/anno) e i risparmi globali \(Y\) (espresso in decine migliaia di euro/anno). Qui di seguito le statistiche:
 
 \begin{align*}
-  \sum_{i=1}^n x_i &= 530.452 &\sum_{i=1}^n x_i^2 &= 2196.221 &\sum_{i=1}^n x_i y_i &= 5970.851\\
-  \sum_{i=1}^n y_i &= 1627.872 & \sum_{i=1}^n y_i^2 &= 17854.072 &
+  \sum_{i=1}^n x_i &= 530.452 &\sum_{i=1}^n x_i^2 &= 2196.217 &\sum_{i=1}^n x_i y_i &= 5970.846\\
+  \sum_{i=1}^n y_i &= 1627.872 & \sum_{i=1}^n y_i^2 &= 17854.071 &
 \end{align*}
 
 6.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Stimare la previsione per \(x=1.5\) nel modello di regressione dove \(Y\) viene spiegata da \(X\).
@@ -14486,8 +14497,8 @@ ed è risultato \(p_\text{value}=0.009683\). Possiamo concludere che la moneta s
 \subsection{Esercizio 5}\label{esercizio-5-23}
 
 In uno studio sull'efficacia dell'investimento pubblicitario sono stati rilevati, per \(n=50\) aziende si sono rilevati l'incremento di spesa in
-pubblicità (\(X\)) e l'incremento di utile (\(Y\)) nell'ultimo quinquennio. Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=690.2238\), \(\sum_{i=1}^{50}y_i=360.9573\),
-\(\sum_{i=1}^{50}x_i^2=13373.9618\), \(\sum_{i=1}^{50}y_i^2=3864.9015\) e \(\sum_{i=1}^{50}x_iy_i=6692.1269\).
+pubblicità (\(X\)) e l'incremento di utile (\(Y\)) nell'ultimo quinquennio. Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=690.2239\), \(\sum_{i=1}^{50}y_i=360.9573\),
+\(\sum_{i=1}^{50}x_i^2=13373.9607\), \(\sum_{i=1}^{50}y_i^2=3864.8997\) e \(\sum_{i=1}^{50}x_iy_i=6692.1265\).
 
 5.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Stimare il modello di regressione dove \(Y\) viene spiegata da \(X\).
 
@@ -14766,8 +14777,8 @@ Il chi oss è 2.855 , il chi-teorico, 5.991 rifiuto: no
 \subsection{Esercizio 6}\label{esercizio-6-23}
 
 In uno studio sull'efficacia dell'investimento pubblicitario sono stati rilevati, per \(n=50\) aziende si sono rilevati l'incremento di spesa in
-pubblicità (\(X\)) e l'incremento di utile (\(Y\)) nell'ultimo quinquennio. Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=690.2238\), \(\sum_{i=1}^{50}y_i=471.0875\),
-\(\sum_{i=1}^{50}x_i^2=13373.9618\), \(\sum_{i=1}^{50}y_i^2=6656.468\) e \(\sum_{i=1}^{50}x_iy_i=7933.2368\).
+pubblicità (\(X\)) e l'incremento di utile (\(Y\)) nell'ultimo quinquennio. Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=690.2239\), \(\sum_{i=1}^{50}y_i=471.0877\),
+\(\sum_{i=1}^{50}x_i^2=13373.9607\), \(\sum_{i=1}^{50}y_i^2=6656.473\) e \(\sum_{i=1}^{50}x_iy_i=7933.2391\).
 
 6.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Stimare il modello di regressione dove \(Y\) viene spiegata da \(X\).
 
@@ -15054,8 +15065,8 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 \subsection{Esercizio 6}\label{esercizio-6-24}
 
 In uno studio sull'efficacia dell'investimento pubblicitario sono stati rilevati, per \(n=50\) aziende si sono rilevati l'incremento di spesa in
-pubblicità (\(X\)) e l'incremento di utile (\(Y\)) nell'ultimo quinquennio. Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=690.2238\), \(\sum_{i=1}^{50}y_i=364.8125\),
-\(\sum_{i=1}^{50}x_i^2=13373.9618\), \(\sum_{i=1}^{50}y_i^2=3754.8705\) e \(\sum_{i=1}^{50}x_iy_i=6811.1526\).
+pubblicità (\(X\)) e l'incremento di utile (\(Y\)) nell'ultimo quinquennio. Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=690.2239\), \(\sum_{i=1}^{50}y_i=364.8125\),
+\(\sum_{i=1}^{50}x_i^2=13373.9607\), \(\sum_{i=1}^{50}y_i^2=3754.8735\) e \(\sum_{i=1}^{50}x_iy_i=6811.1537\).
 
 6.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Stimare il modello di regressione dove \(Y\) viene spiegata da \(X\).
 
@@ -15342,8 +15353,8 @@ livello di significatività,
 
 In uno studio sull'efficacia del marketing sul web si sono analizzate 50 aziende
 sulle quali è stato misurata l'incremento percentuale annuo medio di investimento in marketing
-web (\(X\)) la l'incremento percentuale medio di utile (\(Y\)). Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=40.0409\), \(\sum_{i=1}^{50}y_i=116.137\),
-\(\sum_{i=1}^{50}x_i^2=41.5874\), \(\sum_{i=1}^{50}y_i^2=308.6014\) e \(\sum_{i=1}^{50}x_iy_i=110.6843\).
+web (\(X\)) la l'incremento percentuale medio di utile (\(Y\)). Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=40.041\), \(\sum_{i=1}^{50}y_i=116.137\),
+\(\sum_{i=1}^{50}x_i^2=41.5873\), \(\sum_{i=1}^{50}y_i^2=308.6013\) e \(\sum_{i=1}^{50}x_iy_i=110.684\).
 
 6.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Stimare il modello di regressione dove \(Y\) viene spiegata da \(X\) e interpretare
 i coefficienti \(\hat\beta_0\) e \(\hat\beta_1\)
@@ -15649,8 +15660,8 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 
 In uno studio sull'efficacia del marketing sul web si sono analizzate 50 aziende
 sulle quali è stato misurata l'incremento percentuale annuo medio di investimento in marketing
-web (\(X\)) la l'incremento percentuale in altre campagne di marketing (\(Y\)). Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=36.2477\), \(\sum_{i=1}^{50}y_i=65.1958\),
-\(\sum_{i=1}^{50}x_i^2=33.0426\), \(\sum_{i=1}^{50}y_i^2=121.2577\) e \(\sum_{i=1}^{50}x_iy_i=34.106\).
+web (\(X\)) la l'incremento percentuale in altre campagne di marketing (\(Y\)). Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=36.248\), \(\sum_{i=1}^{50}y_i=65.1957\),
+\(\sum_{i=1}^{50}x_i^2=33.0429\), \(\sum_{i=1}^{50}y_i^2=121.257\) e \(\sum_{i=1}^{50}x_iy_i=34.1064\).
 
 6.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Stimare il modello di regressione dove \(Y\) viene spiegata da \(X\) e interpretare
 i coefficienti \(\hat\beta_0\) e \(\hat\beta_1\)
@@ -18637,7 +18648,7 @@ Si osservano le seguenti statistiche:
 \hat y_i &=&\hat\beta_0+\hat\beta_1 x_i=\\ 
 &=& 9.341 + (-1.0151) \times 1.66 = 7.656 \\ 
 \hat \varepsilon_i &=& y_i-\hat y_i\\ 
-&=& 7.007 - 7.656 = -0.6492  
+&=& 7.007 - 7.656 = -0.6493  
 \end{eqnarray*}
 
 \end{sol}
@@ -19582,7 +19593,7 @@ In uno studio sull'uso delle nuove tecnologie, in un campione di \(n=50\) indivi
 \hat y_i &=&\hat\beta_0+\hat\beta_1 x_i=\\ 
 &=& 9.341 + (-1.0151) \times 1.66 = 7.656 \\ 
 \hat \varepsilon_i &=& y_i-\hat y_i\\ 
-&=& 7.007 - 7.656 = -0.6492  
+&=& 7.007 - 7.656 = -0.6493  
 \end{eqnarray*}
 
 \end{sol}

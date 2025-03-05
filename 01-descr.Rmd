@@ -6,7 +6,7 @@ editor_options:
 ```{r , include=FALSE}
 source("intro.R")
 s2=1
- 
+i2 <- 1
 
 ```
 
@@ -31,13 +31,14 @@ if (html) cat('')
 ```{r 1}
 # Basic settings
 set.seed(3)   # per ottenere sempre la stessa simulazione
-n <- 383      # ampiezza campionaria
+n <- 2500      # ampiezza campionaria
 a <- 5
 b <- 1
 k <- 4
 L <- 1
 samp <- (rgamma(n,a,b))*L
-brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,3,4,5,8,20)
 k <- length(brk)-1
 br1  <- brk[-(k+1)]
 br2  <- brk[-1]
@@ -48,7 +49,7 @@ ls2e(stat_base(samp,brk))
 Sono stati analizzati `r n` individui per investigare su `r nomex`. É riportata qui di seguito la distribuzione in classi espressa in frequenza relativa.
 
 ```{r 2}
-kable((dat3[1:(k+1),c(1:2,4)]),booktabs=T,escape = F,linesep="")
+kable((dat3[1:(k+1),c(1:2,4)]),booktabs=T,escape = F,linesep="",digits = 4)
 ```
 
 `r item(T)` Disegnare l'istogramma di densità percentuale.
@@ -92,17 +93,20 @@ text((max(brk)+Q.int(p))/2,2.5,paste((1-p)*100,"%"),cex=3)
 ```
 :::
 
-`r item()` Qual è il numero di individui con `r nomex` superiore a 5.2?
+`r item()` Qual è il numero di individui con `r nomex` superiore a 5?
 
 :::{.sol data-latex=""}
 \begin{eqnarray*}
-  \#(X>5.2) &=&  (f_4+f_5)\times n\\
-            &=& (`r dat2$fj[4]`+`r dat2$fj[4]`)\times `r n`\\
+  \#(X>5) &=&  (f_4+f_5)\times n\\
+            &=& (`r dat2$fj[4]`+`r dat2$fj[5]`)\times `r n`\\
             &=& `r sum(dat2$fj[4:5])*n`,\text{ o alternativamente}\\
             &=& (1-F_3)\times n\\
             &=& (1-`r dat2$Fj[3]`)\times `r n`\\
             &=& `r (1-dat2$Fj[3])*n`
 \end{eqnarray*}
+```{r}
+F_print(5.2,">")
+```
 :::  
 
 `r item()`   Analizzare la relazione tra media, mediana e moda alla luce del istogramma di densità.
