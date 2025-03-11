@@ -196,6 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html"><i class="fa fa-check"></i>Esercizi di probabilità</a>
 <ul>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#estrazioni-con-e-senza-reintroduzione"><i class="fa fa-check"></i>Estrazioni con e senza reintroduzione</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#due-urne"><i class="fa fa-check"></i>Due urne</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#valigetta"><i class="fa fa-check"></i>Valigetta</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urna"><i class="fa fa-check"></i>Urna</a></li>
@@ -206,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#scatola-e-biglietti"><i class="fa fa-check"></i>Scatola e biglietti</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urna-con-colori-e-lettere-diverse"><i class="fa fa-check"></i>Urna con colori e lettere diverse</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urne-che-portano-ad-altre-urne"><i class="fa fa-check"></i>Urne che portano ad altre urne</a></li>
-<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#estrazioni-con-e-senza-reintroduzione"><i class="fa fa-check"></i>Estrazioni con e senza reintroduzione</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#estrazioni-con-e-senza-reintroduzione-continua"><i class="fa fa-check"></i>Estrazioni con e senza reintroduzione (continua)</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità.html"><a href="esercizi-di-probabilità.html#urne-e-palline-numerate"><i class="fa fa-check"></i>Urne e palline numerate</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html"><i class="fa fa-check"></i>Esercizi Di Probabilità e Variabili Casuali</a>
@@ -645,6 +646,100 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="button-container">
 
 </div>
+<div id="estrazioni-con-e-senza-reintroduzione" class="section level2 hasAnchor">
+<h2>Estrazioni con e senza reintroduzione<a href="esercizi-di-probabilità.html#estrazioni-con-e-senza-reintroduzione" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un’urna contiene 3 bussolotti, due bianchi e uno nero.</p>
+<p>1.a Si estrae <strong>2 volte CON REINTRODUZONE</strong> calcolare la probabilità che
+la prima estrazione sia bianca e la seconda nera.</p>
+<div class="sol">
+<p>Indichiamo con</p>
+<ul>
+<li><span class="math inline">\(E_1\)</span> l’evento: esce bianco dall’estrazione 1</li>
+<li><span class="math inline">\(E_2\)</span> l’evento: esce bianco dall’estrazione 2</li>
+</ul>
+<p>l’evento <span class="math inline">\(E=\)</span><em>“prima bianco e poi nero”</em> si scompone in</p>
+<p><span class="math display">\[
+E=E_1\cap\bar E_2
+\]</span></p>
+<p>ovvero <span class="math inline">\(E\)</span> è vero se <span class="math inline">\(E_1\)</span> è vero ed <span class="math inline">\(E_2\)</span> è falso. Siccome le estrazioni sono
+<strong>con reintroduzione</strong> allora le estrazioni sono indipendenti tra di loro e dunque</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    P(E_1 \cup \bar E_1)
+&amp;=&amp; P(E_1)P(\bar E_2)\\
+&amp;=&amp; \frac{2}{3} \frac{1}{3}
+=  \frac{2}{9}
+=  0.22222.
+\end{eqnarray*}\]</span></p>
+</div>
+<p>1.b Si estrae <strong>2 volte CON REINTRODUZONE</strong> calcolare la probabilità di avere
+una bianca e una nera, non importa l’ordine.</p>
+<div class="sol">
+<p>Indichiamo con</p>
+<ul>
+<li><span class="math inline">\(E_1\)</span> l’evento: esce bianco dall’estrazione 1</li>
+<li><span class="math inline">\(E_2\)</span> l’evento: esce bianco dall’estrazione 2</li>
+</ul>
+<p>l’evento <span class="math inline">\(F=\)</span><em>“una bianca e una nera”</em> si scompone in</p>
+<p><span class="math display">\[
+F=(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+\]</span></p>
+<p>ovvero <span class="math inline">\(F\)</span> è vero se <span class="math inline">\(E_1\)</span> è vero ed <span class="math inline">\(E_2\)</span> è falso OPPURE se <span class="math inline">\(E_1\)</span> è falso ed <span class="math inline">\(E_2\)</span> è vero.
+Siccome le estrazioni sono <strong>con reintroduzione</strong> allora le estrazioni sono indipendenti
+tra di loro e dunque</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    P(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+&amp;=&amp; P(E_1)P(\bar E_2)+P(\bar E_1)P(E_2)\\
+&amp;=&amp; \frac{2}{3} \frac{1}{3} + \frac{1}{3} \frac{2}{3}
+=  \frac{4}{9}
+=  0.44444.
+\end{eqnarray*}\]</span></p>
+</div>
+<p>1.c Si estrae <strong>2 volte SENZA REINTRODUZONE</strong> calcolare la probabilità che
+la prima estrazione sia bianca e la seconda nera.</p>
+<div class="sol">
+<p>Indichiamo con</p>
+<ul>
+<li><span class="math inline">\(E_1\)</span> l’evento: esce bianco dall’estrazione 1</li>
+<li><span class="math inline">\(E_2\)</span> l’evento: esce bianco dall’estrazione 2</li>
+</ul>
+<p>l’evento <span class="math inline">\(E=\)</span><em>“prima bianco e poi nero”</em> si scompone in</p>
+<p><span class="math display">\[
+E=E_1\cap\bar E_2
+\]</span></p>
+<p>ovvero <span class="math inline">\(E\)</span> è vero se <span class="math inline">\(E_1\)</span> è vero ed <span class="math inline">\(E_2\)</span> è falso. Siccome le estrazioni sono
+<strong>senza reintroduzione</strong> allora le estrazioni <strong>NON</strong> sono indipendenti tra di loro e dunque</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    P(E_1 \cup \bar E_1)
+&amp;=&amp; P(E_1)P(\bar E_2|E_1)\\
+&amp;=&amp; \frac{2}{3} \frac{1}{2}
+=  \frac{2}{6}
+=  0.33333.
+\end{eqnarray*}\]</span></p>
+</div>
+<p>1.d Si estrae <strong>2 volte SENZA REINTRODUZONE</strong> calcolare la probabilità di avere
+una bianca e una nera, non importa l’ordine.</p>
+<div class="sol">
+<p>Indichiamo con</p>
+<ul>
+<li><span class="math inline">\(E_1\)</span> l’evento: esce bianco dall’estrazione 1</li>
+<li><span class="math inline">\(E_2\)</span> l’evento: esce bianco dall’estrazione 2</li>
+</ul>
+<p>l’evento <span class="math inline">\(F=\)</span><em>“una bianca e una nera”</em> si scompone in</p>
+<p><span class="math display">\[
+F=(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+\]</span></p>
+<p>ovvero <span class="math inline">\(F\)</span> è vero se <span class="math inline">\(E_1\)</span> è vero ed <span class="math inline">\(E_2\)</span> è falso OPPURE se <span class="math inline">\(E_1\)</span> è falso ed <span class="math inline">\(E_2\)</span> è vero.
+Siccome le estrazioni sono <strong>senza reintroduzione</strong> allora le estrazioni <strong>NON</strong> sono indipendenti
+tra di loro e dunque</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    P(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+&amp;=&amp; P(E_1)P(\bar E_2|E_1)+P(\bar E_1)P(E_2|\bar E_1)\\
+&amp;=&amp; \frac{2}{3} \frac{1}{2} + \frac{1}{3} \frac{2}{2}
+=  \frac{2}{3}
+=  0.66667.
+\end{eqnarray*}\]</span></p>
+</div>
+</div>
 <div id="due-urne" class="section level2 hasAnchor">
 <h2>Due urne<a href="esercizi-di-probabilità.html#due-urne" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Le scatole <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> contengono biglietti numerati.
@@ -653,7 +748,7 @@ con il numero 1 e tre biglietti con il numero 0.
 La scatola <span class="math inline">\(B\)</span> contiene tre biglietti contrassegnati
 con il numero 1 e due con il numero 0.
 Si effettua una estrazione da ognuna delle due scatole.</p>
-<p>1.k Calcolare la probabilità di ottenere due biglietti
+<p>1.a Calcolare la probabilità di ottenere due biglietti
 con il numero 1.</p>
 <div class="sol">
 <p>Indichiamo con</p>
@@ -671,7 +766,7 @@ indipendenti e quindi</p>
 &amp;=&amp; \frac{1}{4} \times \frac{3}{5} = \frac{3}{20}.
 \end{eqnarray*}\]</span></p>
 </div>
-<p>1.l La probabilità che almeno uno dei biglietti sia
+<p>1.b La probabilità che almeno uno dei biglietti sia
 contrassegnato con il numero 1.</p>
 <div class="sol">
 <p>Si applica la regola dell’unione per eventi qualunque e si ha</p>
@@ -712,7 +807,7 @@ di considerare tutti gli eventi possibili, l’evento <em>almeno una estrazione 
 =  \frac{7}{10}  .
 \end{eqnarray*}\]</span></p>
 </div>
-<p>1.a La probabilità che la somma dei numeri riportati sui
+<p>1.c La probabilità che la somma dei numeri riportati sui
 biglietti estratti sia 1.</p>
 <div class="sol">
 <p>L’evento la somma dei due biglietti è 1” può
@@ -1523,7 +1618,7 @@ P(C\cap N)=\frac1{12}\neq 0
 <li><strong>se</strong> esce Bianca si estrae da un’urna che ha 1 pallina marcata con A e 1 pallina marcata con B</li>
 </ul>
 <p></p>
-<p>1.b Qual è la probabilità di osservare una pallina marcata con A?</p>
+<p>1.a Qual è la probabilità di osservare una pallina marcata con A?</p>
 <div class="sol">
 <p>Anzitutto osserviamo che
 <span class="math display">\[\begin{eqnarray*}
@@ -1543,7 +1638,7 @@ P(C\cap N)=\frac1{12}\neq 0
    &amp;=&amp; 0.66667
 \end{eqnarray*}\]</span></p>
 </div>
-<p>1.a Sapendo che è uscita una pallina marcata con A, qual è la probabilità che all’inizio del gioco sia stata estratta la pallina Rossa?</p>
+<p>1.b Sapendo che è uscita una pallina marcata con A, qual è la probabilità che all’inizio del gioco sia stata estratta la pallina Rossa?</p>
 <div class="sol">
 <p><span class="math display">\[\begin{eqnarray*}
   P(R|A)  &amp;=&amp;  \frac{P(A\cap R)}{P(A)}\\
@@ -1557,8 +1652,8 @@ P(C\cap N)=\frac1{12}\neq 0
 
 </div>
 </div>
-<div id="estrazioni-con-e-senza-reintroduzione" class="section level2 hasAnchor">
-<h2>Estrazioni con e senza reintroduzione<a href="esercizi-di-probabilità.html#estrazioni-con-e-senza-reintroduzione" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estrazioni-con-e-senza-reintroduzione-continua" class="section level2 hasAnchor">
+<h2>Estrazioni con e senza reintroduzione (continua)<a href="esercizi-di-probabilità.html#estrazioni-con-e-senza-reintroduzione-continua" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Un’urna contiene 3 palline Rosse, 2 Bianche e 5 Verdi,</p>
 <p>1.a si estrae 3 volte <strong>con</strong> reintroduzione.
 Calcolare la probabilità di aver 3 colori diversi</p>
@@ -1626,7 +1721,7 @@ P(R)P(B|R)P(V|R\cap B)&amp;=&amp;P(R)P(V|R)P(B|R\cap V)\\
 e una pallina col numero <span class="math inline">\(\mbox{+1}\)</span>.
 L’urna <span class="math inline">\(B\)</span> contiene una pallina col numero <span class="math inline">\(\mbox{0}\)</span>, una col numero <span class="math inline">\(\mbox{+1}\)</span>
 e una col numero <span class="math inline">\(\mbox{+2}\)</span>.</p>
-<p>1.b Sia <span class="math inline">\(S\)</span> consideri la somma dei numeri estratti, calcolare la probabilità che
+<p>1.a Sia <span class="math inline">\(S\)</span> consideri la somma dei numeri estratti, calcolare la probabilità che
 <span class="math inline">\(S=0\)</span>.</p>
 <div class="sol">
 Si consideri la tabella
@@ -1747,7 +1842,7 @@ Gli eventi che portano la somma ad essere zero sono due e quindi:</p>
 P(S=0)=\frac 1{12}+\frac 2{12}=\frac 16
 \]</span></p>
 </div>
-<p>1.a Calcolare la probabilità che dall’urna <span class="math inline">\(A\)</span> sia uscito <span class="math inline">\(\mbox{+1}\)</span>, <strong>dato</strong> che
+<p>1.b Calcolare la probabilità che dall’urna <span class="math inline">\(A\)</span> sia uscito <span class="math inline">\(\mbox{+1}\)</span>, <strong>dato</strong> che
 la somma fa 1</p>
 <div class="sol">
 <p>Anzitutto notiamo che
@@ -1786,42 +1881,42 @@ P(S=1|A=\mbox{+1})=\frac{P(S=1\cap A=\mbox{+1})}{P(S=1)}=\frac{\frac{1}{12}}{\fr
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Esami_passati_con_soluzioni.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Esami_passati_con_soluzioni.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

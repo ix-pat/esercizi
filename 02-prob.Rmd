@@ -6,8 +6,8 @@ options(digits=5)
 s2=1
 n <-1
 i1 <- 1
-
-
+i2 <- 1
+item
 ```
 
 
@@ -23,6 +23,121 @@ if (html) cat('')
 
 <div class="button-container"></div>
 
+## Estrazioni con e senza reintroduzione
+
+Un'urna contiene 3 bussolotti, due bianchi e uno nero.
+
+`r item(T)` Si estrae **2 volte CON REINTRODUZONE** calcolare la probabilità che
+la prima estrazione sia bianca e la seconda nera.
+
+:::{.sol data-latex=""}
+Indichiamo con
+
+- $E_1$ l'evento: esce bianco dall'estrazione 1
+- $E_2$ l'evento: esce bianco dall'estrazione 2
+
+l'evento $E=$_"prima bianco e poi nero"_ si scompone in
+
+$$
+E=E_1\cap\bar E_2
+$$
+
+ovvero $E$ è vero se $E_1$ è vero ed $E_2$ è falso. Siccome le estrazioni sono
+**con reintroduzione** allora le estrazioni sono indipendenti tra di loro e dunque
+
+\begin{eqnarray*}
+    P(E_1 \cup \bar E_1)
+&=& P(E_1)P(\bar E_2)\\
+&=& \frac{2}{3} \frac{1}{3}
+ =  \frac{2}{9}
+ =  `r 2/9`.
+\end{eqnarray*}
+:::
+
+`r item()` Si estrae **2 volte CON REINTRODUZONE** calcolare la probabilità di avere
+una bianca e una nera, non importa l'ordine.
+
+:::{.sol data-latex=""}
+Indichiamo con
+
+- $E_1$ l'evento: esce bianco dall'estrazione 1
+- $E_2$ l'evento: esce bianco dall'estrazione 2
+
+l'evento $F=$_"una bianca e una nera"_ si scompone in
+
+$$
+F=(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+$$
+
+ovvero $F$ è vero se $E_1$ è vero ed $E_2$ è falso OPPURE se $E_1$ è falso ed $E_2$ è vero. 
+Siccome le estrazioni sono **con reintroduzione** allora le estrazioni sono indipendenti 
+tra di loro e dunque
+
+\begin{eqnarray*}
+    P(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+&=& P(E_1)P(\bar E_2)+P(\bar E_1)P(E_2)\\
+&=& \frac{2}{3} \frac{1}{3} + \frac{1}{3} \frac{2}{3} 
+ =  \frac{4}{9}
+ =  `r 4/9`.
+\end{eqnarray*}
+:::
+
+`r item()` Si estrae **2 volte SENZA REINTRODUZONE** calcolare la probabilità che
+la prima estrazione sia bianca e la seconda nera.
+
+:::{.sol data-latex=""}
+Indichiamo con
+
+- $E_1$ l'evento: esce bianco dall'estrazione 1
+- $E_2$ l'evento: esce bianco dall'estrazione 2
+
+l'evento $E=$_"prima bianco e poi nero"_ si scompone in
+
+$$
+E=E_1\cap\bar E_2
+$$
+
+ovvero $E$ è vero se $E_1$ è vero ed $E_2$ è falso. Siccome le estrazioni sono
+**senza reintroduzione** allora le estrazioni **NON** sono indipendenti tra di loro e dunque
+
+\begin{eqnarray*}
+    P(E_1 \cup \bar E_1)
+&=& P(E_1)P(\bar E_2|E_1)\\
+&=& \frac{2}{3} \frac{1}{2}
+ =  \frac{2}{6}
+ =  `r 2/6`.
+\end{eqnarray*}
+:::
+
+`r item()` Si estrae **2 volte SENZA REINTRODUZONE** calcolare la probabilità di avere
+una bianca e una nera, non importa l'ordine.
+
+:::{.sol data-latex=""}
+Indichiamo con
+
+- $E_1$ l'evento: esce bianco dall'estrazione 1
+- $E_2$ l'evento: esce bianco dall'estrazione 2
+
+l'evento $F=$_"una bianca e una nera"_ si scompone in
+
+$$
+F=(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+$$
+
+ovvero $F$ è vero se $E_1$ è vero ed $E_2$ è falso OPPURE se $E_1$ è falso ed $E_2$ è vero. 
+Siccome le estrazioni sono **senza reintroduzione** allora le estrazioni **NON** sono indipendenti 
+tra di loro e dunque
+
+\begin{eqnarray*}
+    P(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+&=& P(E_1)P(\bar E_2|E_1)+P(\bar E_1)P(E_2|\bar E_1)\\
+&=& \frac{2}{3} \frac{1}{2} + \frac{1}{3} \frac{2}{2} 
+ =  \frac{2}{3}
+ =  `r 2/3`.
+\end{eqnarray*}
+:::
+
+
 ## Due urne
 
 Le scatole $A$ e $B$ contengono biglietti numerati.
@@ -32,7 +147,7 @@ La scatola $B$ contiene tre biglietti contrassegnati
 con il numero 1 e due con il numero 0.
 Si effettua una estrazione da ognuna delle due scatole.
 
-`r item()`  Calcolare la probabilità di ottenere due biglietti
+`r item(T)`  Calcolare la probabilità di ottenere due biglietti
 con il numero 1.
 
 :::{.sol data-latex=""}
@@ -106,7 +221,7 @@ _incompatibili_
 \end{eqnarray*}
 :::
 
-`r item(T)`  La probabilità che la somma dei numeri riportati sui
+`r item()`  La probabilità che la somma dei numeri riportati sui
 biglietti estratti sia 1.
 
 :::{.sol data-latex=""}
@@ -867,7 +982,7 @@ Si consideri il seguente gioco: si estrae una dall'urna $U$ che contiene 2 palli
 
 \rm
 
-`r i2 <- 1;item()` Qual è la probabilità di osservare una pallina marcata con A?
+`r i2 <- 1;item(T)` Qual è la probabilità di osservare una pallina marcata con A?
 
 :::{.sol data-latex=""}
 Anzitutto osserviamo che
@@ -893,7 +1008,7 @@ e quindi
 \end{eqnarray*}
 :::
 
-`r item(T)` Sapendo che è uscita una pallina marcata con A, qual è la probabilità che all'inizio del gioco sia stata estratta la pallina Rossa?
+`r item()` Sapendo che è uscita una pallina marcata con A, qual è la probabilità che all'inizio del gioco sia stata estratta la pallina Rossa?
 
 :::{.sol data-latex=""}
 \begin{eqnarray*}
@@ -909,7 +1024,7 @@ e quindi
 
 <div class="button-container"></div>
 
-## Estrazioni con e senza reintroduzione
+## Estrazioni con e senza reintroduzione (continua)
 
 Un'urna contiene 3 palline Rosse, 2 Bianche e 5 Verdi, 
 
@@ -990,7 +1105,7 @@ e una pallina col numero $\mbox{+1}$.
 L'urna $B$ contiene una pallina col numero $\mbox{0}$, una col numero $\mbox{+1}$
 e una col numero $\mbox{+2}$.
 
-`r i2 <- 1;item()` Sia $S$ consideri la somma dei numeri estratti, calcolare la probabilità che
+`r item(T)` Sia $S$ consideri la somma dei numeri estratti, calcolare la probabilità che
 $S=0$.
 
 :::{.sol data-latex=""}
@@ -1028,7 +1143,7 @@ P(S=0)=\frac 1{12}+\frac 2{12}=\frac 16
 \]
 :::
 
-`r item(T)` Calcolare la probabilità che dall'urna $A$ sia uscito $\mbox{+1}$, __dato__ che
+`r item()` Calcolare la probabilità che dall'urna $A$ sia uscito $\mbox{+1}$, __dato__ che
 la somma fa 1
 
 :::{.sol data-latex=""}

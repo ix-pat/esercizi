@@ -517,7 +517,7 @@ drop fuzzy shadow]
 \makeatother
 \subtitle{CLEAM AA 24/25}
 \author{Patrizio Frederic}
-\date{Aggiornato al 05-03-2025}
+\date{Aggiornato al 10-03-2025}
 
 \begin{document}
 \maketitle
@@ -563,7 +563,7 @@ di esercitazione.
 
 Patrizio Frederic
 
-Bologna, il 05/03/2025.
+Bologna, il 10/03/2025.
 
 \part{Esercizi per argomento}
 
@@ -1887,6 +1887,144 @@ presenta una variabilità inferiore.
 
 \chapter{Esercizi di probabilità}\label{esercizi-di-probabilituxe0}
 
+\section{Estrazioni con e senza reintroduzione}\label{estrazioni-con-e-senza-reintroduzione}
+
+Un'urna contiene 3 bussolotti, due bianchi e uno nero.
+
+1.a Si estrae \textbf{2 volte CON REINTRODUZONE} calcolare la probabilità che
+la prima estrazione sia bianca e la seconda nera.
+
+\begin{sol}
+Indichiamo con
+
+\begin{itemize}
+\tightlist
+\item
+  \(E_1\) l'evento: esce bianco dall'estrazione 1
+\item
+  \(E_2\) l'evento: esce bianco dall'estrazione 2
+\end{itemize}
+
+l'evento \(E=\)\emph{``prima bianco e poi nero''} si scompone in
+
+\[
+E=E_1\cap\bar E_2
+\]
+
+ovvero \(E\) è vero se \(E_1\) è vero ed \(E_2\) è falso. Siccome le estrazioni sono
+\textbf{con reintroduzione} allora le estrazioni sono indipendenti tra di loro e dunque
+
+\begin{eqnarray*}
+    P(E_1 \cup \bar E_1)
+&=& P(E_1)P(\bar E_2)\\
+&=& \frac{2}{3} \frac{1}{3}
+ =  \frac{2}{9}
+ =  0.22222.
+\end{eqnarray*}
+
+\end{sol}
+
+1.b Si estrae \textbf{2 volte CON REINTRODUZONE} calcolare la probabilità di avere
+una bianca e una nera, non importa l'ordine.
+
+\begin{sol}
+Indichiamo con
+
+\begin{itemize}
+\tightlist
+\item
+  \(E_1\) l'evento: esce bianco dall'estrazione 1
+\item
+  \(E_2\) l'evento: esce bianco dall'estrazione 2
+\end{itemize}
+
+l'evento \(F=\)\emph{``una bianca e una nera''} si scompone in
+
+\[
+F=(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+\]
+
+ovvero \(F\) è vero se \(E_1\) è vero ed \(E_2\) è falso OPPURE se \(E_1\) è falso ed \(E_2\) è vero.
+Siccome le estrazioni sono \textbf{con reintroduzione} allora le estrazioni sono indipendenti
+tra di loro e dunque
+
+\begin{eqnarray*}
+    P(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+&=& P(E_1)P(\bar E_2)+P(\bar E_1)P(E_2)\\
+&=& \frac{2}{3} \frac{1}{3} + \frac{1}{3} \frac{2}{3} 
+ =  \frac{4}{9}
+ =  0.44444.
+\end{eqnarray*}
+
+\end{sol}
+
+1.c Si estrae \textbf{2 volte SENZA REINTRODUZONE} calcolare la probabilità che
+la prima estrazione sia bianca e la seconda nera.
+
+\begin{sol}
+Indichiamo con
+
+\begin{itemize}
+\tightlist
+\item
+  \(E_1\) l'evento: esce bianco dall'estrazione 1
+\item
+  \(E_2\) l'evento: esce bianco dall'estrazione 2
+\end{itemize}
+
+l'evento \(E=\)\emph{``prima bianco e poi nero''} si scompone in
+
+\[
+E=E_1\cap\bar E_2
+\]
+
+ovvero \(E\) è vero se \(E_1\) è vero ed \(E_2\) è falso. Siccome le estrazioni sono
+\textbf{senza reintroduzione} allora le estrazioni \textbf{NON} sono indipendenti tra di loro e dunque
+
+\begin{eqnarray*}
+    P(E_1 \cup \bar E_1)
+&=& P(E_1)P(\bar E_2|E_1)\\
+&=& \frac{2}{3} \frac{1}{2}
+ =  \frac{2}{6}
+ =  0.33333.
+\end{eqnarray*}
+
+\end{sol}
+
+1.d Si estrae \textbf{2 volte SENZA REINTRODUZONE} calcolare la probabilità di avere
+una bianca e una nera, non importa l'ordine.
+
+\begin{sol}
+Indichiamo con
+
+\begin{itemize}
+\tightlist
+\item
+  \(E_1\) l'evento: esce bianco dall'estrazione 1
+\item
+  \(E_2\) l'evento: esce bianco dall'estrazione 2
+\end{itemize}
+
+l'evento \(F=\)\emph{``una bianca e una nera''} si scompone in
+
+\[
+F=(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+\]
+
+ovvero \(F\) è vero se \(E_1\) è vero ed \(E_2\) è falso OPPURE se \(E_1\) è falso ed \(E_2\) è vero.
+Siccome le estrazioni sono \textbf{senza reintroduzione} allora le estrazioni \textbf{NON} sono indipendenti
+tra di loro e dunque
+
+\begin{eqnarray*}
+    P(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+&=& P(E_1)P(\bar E_2|E_1)+P(\bar E_1)P(E_2|\bar E_1)\\
+&=& \frac{2}{3} \frac{1}{2} + \frac{1}{3} \frac{2}{2} 
+ =  \frac{2}{3}
+ =  0.66667.
+\end{eqnarray*}
+
+\end{sol}
+
 \section{Due urne}\label{due-urne}
 
 Le scatole \(A\) e \(B\) contengono biglietti numerati.
@@ -1896,7 +2034,7 @@ La scatola \(B\) contiene tre biglietti contrassegnati
 con il numero 1 e due con il numero 0.
 Si effettua una estrazione da ognuna delle due scatole.
 
-1.k Calcolare la probabilità di ottenere due biglietti
+1.a Calcolare la probabilità di ottenere due biglietti
 con il numero 1.
 
 \begin{sol}
@@ -1925,7 +2063,7 @@ indipendenti e quindi
 
 \end{sol}
 
-1.l La probabilità che almeno uno dei biglietti sia
+1.b La probabilità che almeno uno dei biglietti sia
 contrassegnato con il numero 1.
 
 \begin{sol}
@@ -1980,7 +2118,7 @@ L'evento C, \emph{almeno uno dei biglietti sia contrassegnato con il numero 1} �
 
 \end{sol}
 
-1.a La probabilità che la somma dei numeri riportati sui
+1.c La probabilità che la somma dei numeri riportati sui
 biglietti estratti sia 1.
 
 \begin{sol}
@@ -2765,7 +2903,7 @@ Si consideri il seguente gioco: si estrae una dall'urna \(U\) che contiene 2 pal
 
 \rm
 
-1.b Qual è la probabilità di osservare una pallina marcata con A?
+1.a Qual è la probabilità di osservare una pallina marcata con A?
 
 \begin{sol}
 Anzitutto osserviamo che
@@ -2792,7 +2930,7 @@ e quindi
 
 \end{sol}
 
-1.a Sapendo che è uscita una pallina marcata con A, qual è la probabilità che all'inizio del gioco sia stata estratta la pallina Rossa?
+1.b Sapendo che è uscita una pallina marcata con A, qual è la probabilità che all'inizio del gioco sia stata estratta la pallina Rossa?
 
 \begin{sol}
 \begin{eqnarray*}
@@ -2805,7 +2943,7 @@ e quindi
 
 \end{sol}
 
-\section{Estrazioni con e senza reintroduzione}\label{estrazioni-con-e-senza-reintroduzione}
+\section{Estrazioni con e senza reintroduzione (continua)}\label{estrazioni-con-e-senza-reintroduzione-continua}
 
 Un'urna contiene 3 palline Rosse, 2 Bianche e 5 Verdi,
 
@@ -2887,7 +3025,7 @@ e una pallina col numero \(\mbox{+1}\).
 L'urna \(B\) contiene una pallina col numero \(\mbox{0}\), una col numero \(\mbox{+1}\)
 e una col numero \(\mbox{+2}\).
 
-1.b Sia \(S\) consideri la somma dei numeri estratti, calcolare la probabilità che
+1.a Sia \(S\) consideri la somma dei numeri estratti, calcolare la probabilità che
 \(S=0\).
 
 \begin{sol}
@@ -2914,7 +3052,7 @@ P(S=0)=\frac 1{12}+\frac 2{12}=\frac 16
 
 \end{sol}
 
-1.a Calcolare la probabilità che dall'urna \(A\) sia uscito \(\mbox{+1}\), \textbf{dato} che
+1.b Calcolare la probabilità che dall'urna \(A\) sia uscito \(\mbox{+1}\), \textbf{dato} che
 la somma fa 1
 
 \begin{sol}
