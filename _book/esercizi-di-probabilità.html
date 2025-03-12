@@ -664,7 +664,7 @@ E=E_1\cap\bar E_2
 <p>ovvero <span class="math inline">\(E\)</span> è vero se <span class="math inline">\(E_1\)</span> è vero ed <span class="math inline">\(E_2\)</span> è falso. Siccome le estrazioni sono
 <strong>con reintroduzione</strong> allora le estrazioni sono indipendenti tra di loro e dunque</p>
 <p><span class="math display">\[\begin{eqnarray*}
-    P(E_1 \cup \bar E_1)
+    P(E_1 \cap \bar E_2)
 &amp;=&amp; P(E_1)P(\bar E_2)\\
 &amp;=&amp; \frac{2}{3} \frac{1}{3}
 =  \frac{2}{9}
@@ -687,7 +687,7 @@ F=(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
 Siccome le estrazioni sono <strong>con reintroduzione</strong> allora le estrazioni sono indipendenti
 tra di loro e dunque</p>
 <p><span class="math display">\[\begin{eqnarray*}
-    P(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+    P\big((E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)\big)
 &amp;=&amp; P(E_1)P(\bar E_2)+P(\bar E_1)P(E_2)\\
 &amp;=&amp; \frac{2}{3} \frac{1}{3} + \frac{1}{3} \frac{2}{3}
 =  \frac{4}{9}
@@ -709,7 +709,7 @@ E=E_1\cap\bar E_2
 <p>ovvero <span class="math inline">\(E\)</span> è vero se <span class="math inline">\(E_1\)</span> è vero ed <span class="math inline">\(E_2\)</span> è falso. Siccome le estrazioni sono
 <strong>senza reintroduzione</strong> allora le estrazioni <strong>NON</strong> sono indipendenti tra di loro e dunque</p>
 <p><span class="math display">\[\begin{eqnarray*}
-    P(E_1 \cup \bar E_1)
+    P(E_1 \cap \bar E_2)
 &amp;=&amp; P(E_1)P(\bar E_2|E_1)\\
 &amp;=&amp; \frac{2}{3} \frac{1}{2}
 =  \frac{2}{6}
@@ -732,7 +732,7 @@ F=(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
 Siccome le estrazioni sono <strong>senza reintroduzione</strong> allora le estrazioni <strong>NON</strong> sono indipendenti
 tra di loro e dunque</p>
 <p><span class="math display">\[\begin{eqnarray*}
-    P(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+    P\big((E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)\big)
 &amp;=&amp; P(E_1)P(\bar E_2|E_1)+P(\bar E_1)P(E_2|\bar E_1)\\
 &amp;=&amp; \frac{2}{3} \frac{1}{2} + \frac{1}{3} \frac{2}{2}
 =  \frac{2}{3}

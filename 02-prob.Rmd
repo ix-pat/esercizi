@@ -46,7 +46,7 @@ ovvero $E$ è vero se $E_1$ è vero ed $E_2$ è falso. Siccome le estrazioni son
 **con reintroduzione** allora le estrazioni sono indipendenti tra di loro e dunque
 
 \begin{eqnarray*}
-    P(E_1 \cup \bar E_1)
+    P(E_1 \cap \bar E_2)
 &=& P(E_1)P(\bar E_2)\\
 &=& \frac{2}{3} \frac{1}{3}
  =  \frac{2}{9}
@@ -74,7 +74,7 @@ Siccome le estrazioni sono **con reintroduzione** allora le estrazioni sono indi
 tra di loro e dunque
 
 \begin{eqnarray*}
-    P(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+    P\big((E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)\big)
 &=& P(E_1)P(\bar E_2)+P(\bar E_1)P(E_2)\\
 &=& \frac{2}{3} \frac{1}{3} + \frac{1}{3} \frac{2}{3} 
  =  \frac{4}{9}
@@ -101,7 +101,7 @@ ovvero $E$ è vero se $E_1$ è vero ed $E_2$ è falso. Siccome le estrazioni son
 **senza reintroduzione** allora le estrazioni **NON** sono indipendenti tra di loro e dunque
 
 \begin{eqnarray*}
-    P(E_1 \cup \bar E_1)
+    P(E_1 \cap \bar E_2)
 &=& P(E_1)P(\bar E_2|E_1)\\
 &=& \frac{2}{3} \frac{1}{2}
  =  \frac{2}{6}
@@ -129,7 +129,7 @@ Siccome le estrazioni sono **senza reintroduzione** allora le estrazioni **NON**
 tra di loro e dunque
 
 \begin{eqnarray*}
-    P(E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)
+    P\big((E_1\cap\bar E_2)\cup(\bar E_1\cap E_2)\big)
 &=& P(E_1)P(\bar E_2|E_1)+P(\bar E_1)P(E_2|\bar E_1)\\
 &=& \frac{2}{3} \frac{1}{2} + \frac{1}{3} \frac{2}{2} 
  =  \frac{2}{3}
