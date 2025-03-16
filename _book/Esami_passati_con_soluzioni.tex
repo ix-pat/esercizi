@@ -517,7 +517,7 @@ drop fuzzy shadow]
 \makeatother
 \subtitle{CLEAM AA 24/25}
 \author{Patrizio Frederic}
-\date{Aggiornato al 12-03-2025}
+\date{Aggiornato al 16-03-2025}
 
 \begin{document}
 \maketitle
@@ -563,7 +563,7 @@ di esercitazione.
 
 Patrizio Frederic
 
-Bologna, il 12/03/2025.
+Bologna, il 16/03/2025.
 
 \part{Esercizi per argomento}
 
@@ -3075,142 +3075,66 @@ P(S=1|A=\mbox{+1})=\frac{P(S=1\cap A=\mbox{+1})}{P(S=1)}=\frac{\frac{1}{12}}{\fr
 
 \chapter{Esercizi Di Probabilità e Variabili Casuali}\label{esercizi-di-probabilituxe0-e-variabili-casuali}
 
-\section{Esercizio 1}\label{esercizio-1}
+\section{Binomiale 1}\label{binomiale-1}
 
-Il numero di veicoli al casello autostradale \(C\) è la \textbf{somma} del numero di veicoli che provengono dalla strada \(S_1\) e dalla strada \(S_2\). All'ora di punta di un giorno feriale, il numero di veicoli \(X_1\) sulla strada \(S_1\) è descritto da un Poisson di parametro 4.3, \(X_1\sim\text{Pois}(4.3)\), mentre il numero di veicoli \(X_2\) sulla strada \(S_2\) è descritto da un Poisson di parametro 2.1, \(X_2\sim\text{Pois}(2.1)\), \(X_1\) e \(X_2\) sono assunte indipendenti.
+Un'urna contiene in totale \textbf{10 sfere} di diversi colori, così suddivise:
 
-1.a (\textbf{Punti 14}) Calcolare la probabilità di avere al massimo 2 automobili al casello \(C\).
+\begin{itemize}
+\tightlist
+\item
+  \textbf{3 bianche}\\
+\item
+  \textbf{2 gialle}\\
+\item
+  \textbf{4 rosse}\\
+\item
+  \textbf{1 blu}
+\end{itemize}
+
+Si eseguono \textbf{5 estrazioni con reinserimento}.
+
+1.a Qual è la probabilità di ottenere esattamente \textbf{1} sfera rossa nelle 5 estrazioni?
 
 \begin{sol}
-\(X_1\sim\text{Pois}(4.3)\) e \(X_2\sim\text{Pois}(2.1)\) e quindi
-
+Sia \(X\) la VC che conta il numero di Rosse in 5 estrazioni
 \[
-X=X_1+X_2\sim\text{Pois}(4.3+2.1)
+X\sim\text{Binom}(n=5;\pi=0.4)
 \]
-
-per cui
-
+\normalsize 
 \begin{eqnarray*}
-P(X\le 2) &=& P(X=0\ \cup X=1 \ \cup X=2) \\
-          &=& P(X=0)+P(X=1)+P(X=2)\\
-          &=& \frac{6.4^0}{0!}e^{-6.4}+\frac{6.4^1}{1!}e^{-6.4}+\frac{6.4^2}{2!}e^{-6.4}\\
-          &=& 0.0017+0.0106+0.034\\
-          &=& 0.0463
-\end{eqnarray*}
+      P( X = 1 ) &=& \binom{ 5 }{ 1 } 0.4 ^{ 1 }(1- 0.4 )^{ 5 - 1 } \\                 &=& 5 \times 0.4 ^{ 1 }(1- 0.4 )^{ 4 } \\                 &=& 0.2592 
+   \end{eqnarray*}
+\normalsize 
 
 \end{sol}
 
-1.b (\textbf{Punti 3}) Qual è la varianza della VC che conta il
-numero di automobili al casello \(C\)?
+1.b Qual è la probabilità di ottenere al massimo \textbf{2} sfere rosse nelle 5 estrazioni?
 
 \begin{sol}
-Se
-\[X=X_1+X_2\sim\text{Pois}(6.4)\]
-
-Allora
-\[
-V(X)=6.4
-\]
-
-\end{sol}
-
-1.c (\textbf{Punti 3}) Se \(X\sim\text{Binom}(15,0.3)\), qual è il supporto di \(X\)?
-
-\begin{sol}
-Se Se \(X\sim\text{Binom}(15,0.3)\), il suo supporto è
-\[S_X=\{0,1,2,...,15\}\]
-
-\end{sol}
-
-1.d (\textbf{Punti 2}) Se \(X\sim N(0,1)\) e \(Y\sim \chi^2_5\),
-\(X\) e \(Y\) indipendenti, come si distribuisce
-\[W=\frac X {\sqrt{Y/5}} ~~~?\]
-
-\begin{sol}
-Se \(X\sim N(0,1)\) e \(Y\sim \chi^2_5\),
-\(X\) e \(Y\) indipendenti, allora
-\[W=\frac X {\sqrt{Y/5}} \sim t_5\]
-
-\end{sol}
-
-\section{Esercizio 2}\label{esercizio-2}
-
-Un portafoglio finanziario è composto da due titoli. Il rendimento del titolo \(A\) è descritto da una normale \(X_A\sim N(0.6,(0.55)^2)\), il rendimento del titolo \(A\) è descritto da una normale \(X_B\sim N(0.8,(0.85)^2)\), \(X_A\) e \(X_B\) sono considerate indipendenti. Il rendimento del portafoglio è dunque la somma dei rendimenti
-\[
-X=X_A+X_B
-\]
-
-1.a (\textbf{Punti 14}) Calcolare la probabilità di avere un rendimento negativo.
-
-\begin{sol}
-\(X_A\sim N(0.6,(0.55)^2)\) e \(X_B\sim N(0.8,(0.85)^2)\) sono indipendenti e quindi:
-
-\[
-X=X_A+X_B\sim N(0.6+0.8,(0.55)^2+(0.85)^2)\sim N(1.4,1.025)
-\]
-
-per cui
-
+\normalsize 
 \begin{eqnarray*}
-      P( X   <   0 ) 
-        &=& P\left(  \frac { X  -  \mu }{ \sigma }  <  \frac { 0  -  1.4 }{\sqrt{ 1.025 }} \right)  \\
-                 &=& P\left(  Z   <   -1.38 \right) \\    
-                 &=&  1-\Phi( 1.38 ) \\ &=&  0.0838 
-      \end{eqnarray*}
+      P( X \leq 2 ) &=& \binom{ 5 }{ 0 } 0.4 ^{ 0 }(1- 0.4 )^{ 5 - 0 }+\binom{ 5 }{ 1 } 0.4 ^{ 1 }(1- 0.4 )^{ 5 - 1 }+\binom{ 5 }{ 2 } 0.4 ^{ 2 }(1- 0.4 )^{ 5 - 2 } \\                 &=& 0.0778+0.2592+0.3456 \\                 &=& 0.6826 
+   \end{eqnarray*}
+\normalsize 
 
 \end{sol}
 
-1.b (\textbf{Punti 3}) Sotto ipotesi di indipendenza tra gli anni, qual è la probabilità che il portafoglio abbia rendimento negativo per 3 anni di seguito?
+1.c Qual è la probabilità di ottenere almeno \textbf{3} sfere rosse nelle 5 estrazioni?
 
 \begin{sol}
-Sia \(N_i\) l'evento:
-\[
-N_i = \text{il portafoglio è negativo nell'anno $i$}, \ i=1,...,3
-\]
-sia \(E\) l'evento
-\[
-E=\text{rendimento negativo 3 anni di seguito}
-\]
-è immediato che
-\[
-E=N_1\cap N_2\cap N_3 
-\]
-e dunque
+\normalsize 
 \begin{eqnarray*}
-P(E)&=&P(N_1\cap N_2\cap N_3 )\\
-    &=&P(N_1)P(N_2)P(N_3)\\
-    &=& 0.0838\times 0.0838\times 0.0838\\
-    &=& 0.0838^3\\
-    &=& 0.0006
-\end{eqnarray*}
+      P( X \geq 3 ) &=& 1-P( X < 3 ) \\                 &=& 1-\left( \binom{ 5 }{ 0 } 0.4 ^{ 0 }(1- 0.4 )^{ 5 - 0 }+\binom{ 5 }{ 1 } 0.4 ^{ 1 }(1- 0.4 )^{ 5 - 1 }+\binom{ 5 }{ 2 } 0.4 ^{ 2 }(1- 0.4 )^{ 5 - 2 } \right)\\                 &=& 1-( 0.0778+0.2592+0.3456 )\\                 &=& 1- 0.6826 \\                 &=&   0.3174 
+   \end{eqnarray*}
+\normalsize 
 
 \end{sol}
 
-1.c (\textbf{Punti 3}) Se \(X\sim\text{Pois}(15.3)\), qual è la varianza di \(X\)?
-
-\begin{sol}
-Se Se \(X\sim\text{Pois}(\lambda=15.3)\), allora
-\[V(X)=\lambda=15.3\]
-
-\end{sol}
-
-1.d (\textbf{Punti 2}) Se \(X_1\sim N(0,1)\), \(X_2\sim N(0,1)\) e \(X_2\sim N(0,1)\)
-\(X_1\), \(X_2\) e \(X_3\) indipendenti, come si distribuisce
-\[W=X_1^2+X_2^2+X_3^2 ~~~?\]
-
-\begin{sol}
-Se \(X_1\sim N(0,1)\), \(X_2\sim N(0,1)\) e \(X_2\sim N(0,1)\)
-\(X_1\), \(X_2\) e \(X_3\) indipendenti, allora\\
-\[W=X_1^2+X_2^2+X_3^2\sim \chi_3^2\]
-(si distribuisce come un chi quadro con 3 gradi di libertà)
-
-\end{sol}
-
-\section{Esercizio 3}\label{esercizio-3}
+\section{Binomiale 2}\label{binomiale-2}
 
 L'urna \(A\) contiene 3 bussolotti rossi e 7 blu. Si estrae \(n=6\) volte con reintroduzione
 
-1.a (\textbf{Punti 14}) Qual è la probabilità di avere almeno 2 bussolotti rossi su 6 estrazioni?
+1.a Qual è la probabilità di avere almeno 2 bussolotti rossi su 6 estrazioni?
 
 \begin{sol}
 Sia \(X\) la VC che conta il numero di bussolotti rossi in 6 estrazioni con reintroduzione,
@@ -3232,7 +3156,7 @@ P(X\ge 2)&=& 1- P(X<2)\\
 
 \end{sol}
 
-1.b (\textbf{Punti 3}) Quali sono valore atteso e varianza della VC che conta il numero di palline Rosse su 6 estrazioni con reintroduzione dall'urna \(A\)?
+1.b Quali sono valore atteso e varianza della VC che conta il numero di palline Rosse su 6 estrazioni con reintroduzione dall'urna \(A\)?
 
 \begin{sol}
 Sia \(X\) la VC che conta il numero di bussolotti rossi in 6 estrazioni con reintroduzione,
@@ -3248,7 +3172,7 @@ E quindi
 
 \end{sol}
 
-1.c (\textbf{Punti 3}) Se \(X\sim N(\mu_X,\sigma_X^2)\) e \(Y\sim N(\mu_Y,\sigma_Y^2)\), come si distribuisce
+1.c Se \(X\sim N(\mu_X,\sigma_X^2)\) e \(Y\sim N(\mu_Y,\sigma_Y^2)\), come si distribuisce
 \[W=X-Y ~~~?\]
 
 \begin{sol}
@@ -3260,7 +3184,7 @@ Se \(X\sim N(\mu_X,\sigma_X^2)\), \(Y\sim N(\mu_Y,\sigma_Y^2)\), allora
 
 \end{sol}
 
-1.d (\textbf{Punti 2}) Si lancia una moneta perfetta (\(P(T)=P(C)=\frac 12\)).
+1.d Si lancia una moneta perfetta (\(P(T)=P(C)=\frac 12\)).
 Se esce Testa di estrae 1 volta con dall'urna \(A\) che contiene contiene 3 bussolotti rossi e 7 blu.
 Se esce Croce di estrae 1 volta con dall'urna \(B\) che contiene contiene 2 bussolotti rossi e 8 blu.
 Qual è la probabilità che alla fine dell'esperimento esca un bussolotto rosso?
@@ -3291,11 +3215,179 @@ P(\mbox{Rosso})&=&P((T~\cap~\mbox{Rosso})~\cup~ (C~\cap~\mbox{Rosso}))\\
 
 \end{sol}
 
-\section{Esercizio 4}\label{esercizio-4}
+\section{Poisson 1}\label{poisson-1}
+
+In uno stabilimento industriale che produce \textbf{fogli di alluminio per imballaggi}, la presenza di \textbf{micro-difetti superficiali} è un aspetto critico del controllo qualità. L'azienda ha stimato che, in media, si verificano \textbf{2.3 micro-difetti} per ogni metro quadrato di lamiera prodotta.
+
+Si consideri un controllo su un'area di \textbf{1 m²} di lamiera. Il numero di difetti osservati in questa area segue una \textbf{distribuzione di Poisson} con parametro \(\lambda = 2.3\).
+
+1.a Qual è la probabilità che in \textbf{1 m²} di lamiera ci sia esattamente \textbf{1} difetto?
+
+\begin{sol}
+Sia \(X\) la VC che conta il numero di difetti ogni m²
+\[
+X\sim\text{Pois}(\lambda=2.3)
+\]
+\begin{eqnarray*}
+   P( X = 1 )  &=& \frac{ 2.3 ^{ 1 }}{ 1 !}e^{- 2.3 }\\                 &=& 2.3 \times 0.1003 \\                 &=& 0.2306 
+\end{eqnarray*}
+
+\end{sol}
+
+1.b Qual è la probabilità che in \textbf{1 m²} di lamiera ci siano al massimo \textbf{2} difetti?
+
+\begin{sol}
+\begin{eqnarray*}
+   P( X \leq 2 ) &=& \frac{ 2.3 ^{ 0 }}{ 0 !}e^{- 2.3 }+\frac{ 2.3 ^{ 1 }}{ 1 !}e^{- 2.3 }+\frac{ 2.3 ^{ 2 }}{ 2 !}e^{- 2.3 } \\                 &=& 0.1003+0.2306+0.2652 \\                 &=& 0.5961 
+\end{eqnarray*}
+
+\end{sol}
+
+1.c Qual è la probabilità che in \textbf{1 m²} di lamiera ci siano almeno \textbf{3} difetti?
+
+\begin{sol}
+\begin{eqnarray*}
+   P( X \geq 3 ) &=& 1-P( X < 3 ) \\                 &=& 1-\left( \frac{ 2.3 ^{ 0 }}{ 0 !}e^{- 2.3 }+\frac{ 2.3 ^{ 1 }}{ 1 !}e^{- 2.3 }+\frac{ 2.3 ^{ 2 }}{ 2 !}e^{- 2.3 } \right)\\                 &=& 1-( 0.1003+0.2306+0.2652 )\\                 &=& 1- 0.5961 \\                 &=&   0.4039 
+\end{eqnarray*}
+
+\end{sol}
+
+\section{Poisson 2}\label{poisson-2}
+
+Il numero di veicoli al casello autostradale \(C\) è la \textbf{somma} del numero di veicoli che provengono dalla strada \(S_1\) e dalla strada \(S_2\). All'ora di punta di un giorno feriale, il numero di veicoli \(X_1\) sulla strada \(S_1\) è descritto da un Poisson di parametro 4.3, \(X_1\sim\text{Pois}(4.3)\), mentre il numero di veicoli \(X_2\) sulla strada \(S_2\) è descritto da un Poisson di parametro 2.1, \(X_2\sim\text{Pois}(2.1)\), \(X_1\) e \(X_2\) sono assunte indipendenti.
+
+1.a Calcolare la probabilità di avere al massimo 2 automobili al casello \(C\).
+
+\begin{sol}
+\(X_1\sim\text{Pois}(4.3)\) e \(X_2\sim\text{Pois}(2.1)\) e quindi
+
+\[
+X=X_1+X_2\sim\text{Pois}(4.3+2.1)
+\]
+
+per cui
+
+\begin{eqnarray*}
+P(X\le 2) &=& P(X=0\ \cup X=1 \ \cup X=2) \\
+          &=& P(X=0)+P(X=1)+P(X=2)\\
+          &=& \frac{6.4^0}{0!}e^{-6.4}+\frac{6.4^1}{1!}e^{-6.4}+\frac{6.4^2}{2!}e^{-6.4}\\
+          &=& 0.0017+0.0106+0.034\\
+          &=& 0.0463
+\end{eqnarray*}
+
+\end{sol}
+
+1.b Qual è la varianza della VC che conta il
+numero di automobili al casello \(C\)?
+
+\begin{sol}
+Se
+\[X=X_1+X_2\sim\text{Pois}(6.4)\]
+
+Allora
+\[
+V(X)=6.4
+\]
+
+\end{sol}
+
+1.c Se \(X\sim\text{Binom}(15,0.3)\), qual è il supporto di \(X\)?
+
+\begin{sol}
+Se Se \(X\sim\text{Binom}(15,0.3)\), il suo supporto è
+\[S_X=\{0,1,2,...,15\}\]
+
+\end{sol}
+
+1.d Se \(X\sim N(0,1)\) e \(Y\sim \chi^2_5\),
+\(X\) e \(Y\) indipendenti, come si distribuisce
+\[W=\frac X {\sqrt{Y/5}} ~~~?\]
+
+\begin{sol}
+Se \(X\sim N(0,1)\) e \(Y\sim \chi^2_5\),
+\(X\) e \(Y\) indipendenti, allora
+\[W=\frac X {\sqrt{Y/5}} \sim t_5\]
+
+\end{sol}
+
+\section{Normale}\label{normale}
+
+Un portafoglio finanziario è composto da due titoli. Il rendimento del titolo \(A\) è descritto da una normale \(X_A\sim N(0.6,(0.55)^2)\), il rendimento del titolo \(A\) è descritto da una normale \(X_B\sim N(0.8,(0.85)^2)\), \(X_A\) e \(X_B\) sono considerate indipendenti. Il rendimento del portafoglio è dunque la somma dei rendimenti
+\[
+X=X_A+X_B
+\]
+
+1.a Calcolare la probabilità di avere un rendimento negativo.
+
+\begin{sol}
+\(X_A\sim N(0.6,(0.55)^2)\) e \(X_B\sim N(0.8,(0.85)^2)\) sono indipendenti e quindi:
+
+\[
+X=X_A+X_B\sim N(0.6+0.8,(0.55)^2+(0.85)^2)\sim N(1.4,1.025)
+\]
+
+per cui
+
+\begin{eqnarray*}
+      P( X   <   0 ) 
+        &=& P\left(  \frac { X  -  \mu }{ \sigma }  <  \frac { 0  -  1.4 }{\sqrt{ 1.025 }} \right)  \\
+                 &=& P\left(  Z   <   -1.38 \right) \\    
+                 &=&  1-\Phi( 1.38 ) \\ &=&  0.0838 
+      \end{eqnarray*}
+
+\end{sol}
+
+1.b Sotto ipotesi di indipendenza tra gli anni, qual è la probabilità che il portafoglio abbia rendimento negativo per 3 anni di seguito?
+
+\begin{sol}
+Sia \(N_i\) l'evento:
+\[
+N_i = \text{il portafoglio è negativo nell'anno $i$}, \ i=1,...,3
+\]
+sia \(E\) l'evento
+\[
+E=\text{rendimento negativo 3 anni di seguito}
+\]
+è immediato che
+\[
+E=N_1\cap N_2\cap N_3 
+\]
+e dunque
+\begin{eqnarray*}
+P(E)&=&P(N_1\cap N_2\cap N_3 )\\
+    &=&P(N_1)P(N_2)P(N_3)\\
+    &=& 0.0838\times 0.0838\times 0.0838\\
+    &=& 0.0838^3\\
+    &=& 0.0006
+\end{eqnarray*}
+
+\end{sol}
+
+1.c Se \(X\sim\text{Pois}(15.3)\), qual è la varianza di \(X\)?
+
+\begin{sol}
+Se Se \(X\sim\text{Pois}(\lambda=15.3)\), allora
+\[V(X)=\lambda=15.3\]
+
+\end{sol}
+
+1.d Se \(X_1\sim N(0,1)\), \(X_2\sim N(0,1)\) e \(X_2\sim N(0,1)\)
+\(X_1\), \(X_2\) e \(X_3\) indipendenti, come si distribuisce
+\[W=X_1^2+X_2^2+X_3^2 ~~~?\]
+
+\begin{sol}
+Se \(X_1\sim N(0,1)\), \(X_2\sim N(0,1)\) e \(X_2\sim N(0,1)\)
+\(X_1\), \(X_2\) e \(X_3\) indipendenti, allora\\
+\[W=X_1^2+X_2^2+X_3^2\sim \chi_3^2\]
+(si distribuisce come un chi quadro con 3 gradi di libertà)
+
+\end{sol}
+
+\section{Estrazioni senza reitroduzione}\label{estrazioni-senza-reitroduzione}
 
 L'urna \(U\) contiene tre palline bianche, tre palline rosse e tre palline nere.
 
-1.a (\textbf{Punti 14}) Si estrae \(n=2\) volte \textbf{senza} reintroduzione. Qual è la probabilità di ottenere due colori diversi in 2 estrazioni? (esempio: prima bianco poi rosso \emph{oppure} prima nero poi bianco oppure\ldots)
+1.a Si estrae \(n=2\) volte \textbf{senza} reintroduzione. Qual è la probabilità di ottenere due colori diversi in 2 estrazioni? (esempio: prima bianco poi rosso \emph{oppure} prima nero poi bianco oppure\ldots)
 
 \begin{sol}
 L'evento
@@ -3324,7 +3416,7 @@ P(E)&=& P(B_1\cap R_2)+P(R_1\cap B_2)+\\
 
 \end{sol}
 
-1.b (\textbf{Punti 3}) Si ricompone l'urna \(U\) e si estrae una volta, si assegna
+1.b Si ricompone l'urna \(U\) e si estrae una volta, si assegna
 
 \begin{itemize}
 \tightlist
@@ -3353,14 +3445,14 @@ V(X)&=& 1^2\cdot\frac 13 +2^2\cdot\frac 13 +3^2\cdot\frac 13 - 2^2=0.6667
 
 \end{sol}
 
-1.c (\textbf{Punti 3}) La varianza di una VC \(X\) può essere zero?
+1.c La varianza di una VC \(X\) può essere zero?
 
 \begin{sol}
 Sì, se e solo se \(X\) assume un valore costante \(x\) per certo, \(P(X=x)=1\)
 
 \end{sol}
 
-1.d (\textbf{Punti 2}) Se \(X\sim\text{Bin}(10;0.3)\) e \(Y\sim\text{Pois}(3.23)\),
+1.d Se \(X\sim\text{Bin}(10;0.3)\) e \(Y\sim\text{Pois}(3.23)\),
 \(X\) e \(Y\) indipendenti, quanto vale \(V(X-Y)\)?
 
 \begin{sol}
@@ -5188,7 +5280,7 @@ Il \(p_{\text{value}}\) è
 
 \chapter{Test del Chi-quadro per indipendenza}\label{test-del-chi-quadro-per-indipendenza}
 
-\section{Esercizio 1}\label{esercizio-1-1}
+\section{Esercizio 1}\label{esercizio-1}
 
 In uno studio sulle preferenze di gusti di gelato è stato chiesto ad un campione di 200 persone, divise tra 100 uomini e 100 donne, di esprimere la propria preferenza tra quattro gusti di gelato (Cioccolato, Fragola, Vaniglia e Limone).
 
@@ -5282,7 +5374,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la distribuzione \(\chi^2\) è 
 
 \end{sol}
 
-\section{Esercizio 2}\label{esercizio-2-1}
+\section{Esercizio 2}\label{esercizio-2}
 
 In uno studio sulle preferenze di bevande è stato chiesto ad un campione di 180 persone di esprimere la propria preferenza tra tre tipi di bevande (Acqua, Succo d'arancia e Bibita gassata). Le persone sono state suddivise in due gruppi, chi mangia regolarmente frutta e chi no.
 
@@ -5378,7 +5470,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la distribuzione \(\chi^2\) è 
 
 \end{sol}
 
-\section{Esercizio 3}\label{esercizio-3-1}
+\section{Esercizio 3}\label{esercizio-3}
 
 In uno studio sulle opinioni riguardo al tema del ``Matrimonio tra persone dello stesso sesso'' è stato chiesto ad un campione di 180 persone di esprimere la propria opinione scegliendo tra tre possibilità (Sostenitore, Neutrale, Contrario). Le persone sono state suddivise in due gruppi, ``Elettori di Destra'' e ``Elettori di Sinistra''.
 
@@ -5474,7 +5566,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la distribuzione \(\chi^2\) è 
 
 \end{sol}
 
-\section{Esercizio 4}\label{esercizio-4-1}
+\section{Esercizio 4}\label{esercizio-4}
 
 In uno studio sociologico sulle preferenze di attività ricreative è stato chiesto ad un campione di 270 persone di esprimere la propria preferenza tra tre tipi di attività (Sport, Lettura e Arte). Le persone sono state suddivise in tre gruppi, ``Giovani'', ``Adulti'' e ``Anziani''.
 
@@ -5575,7 +5667,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la distribuzione \(\chi^2\) è 
 
 \chapter{Test del Chi-quadro per conformità}\label{test-del-chi-quadro-per-conformituxe0}
 
-\section{Esercizio 1}\label{esercizio-1-2}
+\section{Esercizio 1}\label{esercizio-1-1}
 
 L'Associazione Bar dell'Emilia Romagna ha condotto un'indagine sulle preferenze delle bevande dei clienti dei bar della regione. Durante una settimana, sono stati intervistati 250 clienti di vari bar della zona. L'associazione è interessata a capire se le preferenze dei clienti per le bevande differiscono dalla media nazionale.
 
@@ -5657,7 +5749,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la distribuzione \(\chi^2\) è 
 
 \end{sol}
 
-\section{Esercizio 2}\label{esercizio-2-2}
+\section{Esercizio 2}\label{esercizio-2-1}
 
 L'Associazione dei Ristoranti dell'Emilia Romagna ha condotto un'indagine sulle preferenze culinarie dei clienti dei ristoranti della regione. Durante una settimana, sono stati intervistati 300 clienti di vari ristoranti. L'associazione è interessata a capire se le preferenze dei clienti per le tipologie di cucina offerte differiscono dalla media nazionale.
 
@@ -6086,7 +6178,7 @@ Un software professionale restituisce un output del genere
 ## F-statistic:   56 on 1 and 49 DF,  p-value: 0.00000000119
 \end{verbatim}
 
-\section{Esercizio 1}\label{esercizio-1-3}
+\section{Esercizio 1}\label{esercizio-1-2}
 
 Si sono raccolti i seguenti valori per la variabile indipendente
 \(X\), indice delle importazioni, e la variabile dipendente \(Y\),
@@ -6375,7 +6467,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 
 \end{sol}
 
-\section{Esercizio 2}\label{esercizio-2-3}
+\section{Esercizio 2}\label{esercizio-2-2}
 
 Nella tabella seguente sono riportati i valori del seguente
 esperimento: numero di ore dopo l'assunzione di un dato farmaco
@@ -6614,7 +6706,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 
 \end{sol}
 
-\section{Esercizio 3}\label{esercizio-3-2}
+\section{Esercizio 3}\label{esercizio-3-1}
 
 L'incasso settimanale di un negozio sia rappresentato dalla
 variabile (casuale) \(X\) (in migliaia di euro).
@@ -6842,7 +6934,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 
 \end{sol}
 
-\section{Esercizio 4}\label{esercizio-4-2}
+\section{Esercizio 4}\label{esercizio-4-1}
 
 Si esaminano 15 aziende e si rileva, per ognuna di esse,
 il numero di addetti (\(X\)) e il fatturato (\(Y\) in unità
@@ -7569,7 +7661,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 
 \section{Prova di Statistica 2021/06/11-1}\label{prova-di-statistica-20210611-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-4}
+\subsection{Esercizio 1}\label{esercizio-1-3}
 
 Su un campione di \(350\) aziende è stato rilevato l'utile del 2020, espresso in centinaia di migliaia euro;
 qui di seguito l'istogramma di densità percentuale.
@@ -7661,7 +7753,7 @@ mentre
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-4}
+\subsection{Esercizio 2}\label{esercizio-2-3}
 
 Nel supermercato \(S\) ci sono 4 casse \(C_1\), \(C_2\), \(C_3\) e \(C_4\). A mezzogiorno il numero di persone in fila ogni cassa è descritto da un Poisson di parametro 0.5, \(C_i\sim\text{Pois}(0.5),~i=1,...,4\). Si assume l'indipendenza tra le variabili.
 
@@ -7726,7 +7818,7 @@ P(A\cap B)=P(A)P(B),
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-3}
+\subsection{Esercizio 3}\label{esercizio-3-2}
 
 3.a \textbf{(Punti 14/100 \(\rightarrow\) 4.34/31)} Un'urna contiene \(4\) bussolotti Rossi, \(3\) bussolotti Blu e \(5\) bussolotti Gialli. Si estrae 60 volte con reintroduzione; qual è la probabilità che il numero di rossi in 60 estrazioni sia maggiore di 21?
 
@@ -7751,7 +7843,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-3}
+\subsection{Esercizio 4}\label{esercizio-4-2}
 
 4.a \textbf{(Punti 3/100 \(\rightarrow\) 0.93/31)} Sia \(h\) uno stimatore per theta, tale che
 \[
@@ -7909,7 +8001,7 @@ Significa che è privo di unità di misura.
 
 \section{Prova di Statistica 2021/06/11-2}\label{prova-di-statistica-20210611-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-5}
+\subsection{Esercizio 1}\label{esercizio-1-4}
 
 Sono state registrate le temperature del comune \(C\) per \(n=200\) giorni. Qui di seguito l'istogramma di densità percentuale.
 
@@ -7992,7 +8084,7 @@ Per definizione
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-5}
+\subsection{Esercizio 2}\label{esercizio-2-4}
 
 Il flusso giornaliero d'acqua in entrata nella vasca \(V\) è descritto da una variabile casuale normale \(X_E\sim N(5.1,1.1)\), il flusso giornaliero in uscita è descritto da una variabile casuale normale \(X_U\sim N(6.2,0.5)\).
 
@@ -8065,7 +8157,7 @@ Y=Z^2\sim\chi_1^2
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-4}
+\subsection{Esercizio 3}\label{esercizio-3-3}
 
 3.a \textbf{(Punti 14/100 \(\rightarrow\) 4.34/31)} Un'urna contiene \(4\) bussolotti numerati con \(\fbox{−1}\), \(3\) numerati con \(\fbox{0}\) e \(4\) numerati con \(\fbox{+1}\). Si estrae 60 volte con reintroduzione; qual è la probabilità che la media delle 60 estrazioni sia minore di 0.1?
 
@@ -8096,7 +8188,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-4}
+\subsection{Esercizio 4}\label{esercizio-4-3}
 
 4.a \textbf{(Punti 3/100 \(\rightarrow\) 0.93/31)} Sia \(h\) uno stimatore per \(\theta\), tale che
 \[
@@ -8279,7 +8371,7 @@ La coppia \((x_i,y_i)\) è considerata \emph{punto influente} se il suo residuo 
 
 \section{Prova di Statistica 2021/06/30-1}\label{prova-di-statistica-20210630-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-6}
+\subsection{Esercizio 1}\label{esercizio-1-5}
 
 Su un campione di \(350\) aziende è stato rilevato il costo in spese legali (espresso in migliaia di euro). Qui di seguito i dati in classi e le frequenze cumulate:
 
@@ -8360,7 +8452,7 @@ La mediana \(x_{0.5}\) è il minimante
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-6}
+\subsection{Esercizio 2}\label{esercizio-2-5}
 
 L'urna \(A\) contiene 4 palline numerate: \(\fbox{-1},\fbox{0},\fbox{0},\fbox{+1}\).
 
@@ -8469,7 +8561,7 @@ Y=(Z_1^2+...+Z_6^2)\sim\chi_6^2
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-5}
+\subsection{Esercizio 3}\label{esercizio-3-4}
 
 3.a \textbf{(Punti 14/101 \(\rightarrow\) 4.3/31)} Si lancia un dado perfetto, si vince se esce un numero maggiore o uguale a 5.
 Si gioca \(n=64\) volte, qual è la probabilità di vincere più di 23 volte su 64 giocate?
@@ -8506,7 +8598,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-5}
+\subsection{Esercizio 4}\label{esercizio-4-4}
 
 4.a \textbf{(Punti 3/101 \(\rightarrow\) 0.92/31)} Sia \(h\) uno stimatore per \(\theta\), tale che
 \begin{eqnarray*}
@@ -8710,7 +8802,7 @@ quindi
 
 \section{Prova di Statistica 2021/06/30-2}\label{prova-di-statistica-20210630-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-7}
+\subsection{Esercizio 1}\label{esercizio-1-6}
 
 Su un campione di \(12\) famiglie della provincia \(Q\) è stato rilevato il reddito mensile, qui di seguito i dati \textbf{non ordinati} espressi in migliaia di euro al mese.
 
@@ -8773,7 +8865,7 @@ siccome \(\bar x>x_{0.5}\) allora l'istogramma avrà una coda lunga a dx.
 
 1.c \textbf{(Punti 2/100 \(\rightarrow\) 0.62/31)} Cosa significa che la media aritmetica gode della proprietà di linearità?
 
-\subsection{Esercizio 2}\label{esercizio-2-7}
+\subsection{Esercizio 2}\label{esercizio-2-6}
 
 Si consideri un'urna così formata,
 \[
@@ -8846,7 +8938,7 @@ T=\frac{Z}{\sqrt{\frac{Y}{n-1}}}\sim t_{n-1}
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-6}
+\subsection{Esercizio 3}\label{esercizio-3-5}
 
 3.a \textbf{(Punti 14/100 \(\rightarrow\) 4.34/31)} Un'urna contiene un numero imprecisato di palline numerate. Si conoscono solo
 la media \(\mu=12.3\) e la standard deviation \(\sigma=1.1\) dei numeri delle sfere.
@@ -8887,7 +8979,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-6}
+\subsection{Esercizio 4}\label{esercizio-4-5}
 
 4.a \textbf{(Punti 3/100 \(\rightarrow\) 0.93/31)} Sia \(h\) uno stimatore per \(\theta\), tale che
 \begin{eqnarray*}
@@ -9134,7 +9226,7 @@ Linear Estimators: stimatori lineari).
 
 \section{Prova di Statistica 2021/07/22-1}\label{prova-di-statistica-20210722-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-8}
+\subsection{Esercizio 1}\label{esercizio-1-7}
 
 Su un campione di \(350\) aziende è stato rilevato il costo annuo in gas metano (espresso in migliaia di euro). Qui di seguito l'istogramma di densità:
 
@@ -9221,7 +9313,7 @@ e quindi
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-8}
+\subsection{Esercizio 2}\label{esercizio-2-7}
 
 In una stazione ci sono 3 binari. Ogni ora il numero di persone che transita su ogni
 binario è descritto da una Poisson. In particolare
@@ -9318,7 +9410,7 @@ Come si distribuisce,
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-7}
+\subsection{Esercizio 3}\label{esercizio-3-6}
 
 3.a \textbf{(Punti 14/100 \(\rightarrow\) 4.34/31)} Un'urna contiene 4 palline numerate
 \[\fbox{-1},\fbox{0},\fbox{2},\fbox{3}\]
@@ -9358,7 +9450,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-7}
+\subsection{Esercizio 4}\label{esercizio-4-6}
 
 4.a \textbf{(Punti 3/100 \(\rightarrow\) 0.93/31)} Se \(h\) è uno stimatore tale che la sua distorsione va a zero per \(n\) che tende all'infinito:
 \[
@@ -9568,7 +9660,7 @@ r_{XW}=r_{XY}=0.9538
 
 \section{Prova di Statistica 2021/07/22-2}\label{prova-di-statistica-20210722-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-9}
+\subsection{Esercizio 1}\label{esercizio-1-8}
 
 Su un campione di \(350\) aziende è stato rilevato il costo annuo in gas metano (espresso in migliaia di euro). Qui di seguito i dati e le frequenze percentuali
 
@@ -9629,7 +9721,7 @@ Per definizione
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-9}
+\subsection{Esercizio 2}\label{esercizio-2-8}
 
 Ci sono due urne:
 
@@ -9729,7 +9821,7 @@ X=\sum_{i=1}^n Y_i
 \]
 come si distribuisce \(X\)?
 
-\subsection{Esercizio 3}\label{esercizio-3-8}
+\subsection{Esercizio 3}\label{esercizio-3-7}
 
 3.a \textbf{(Punti 14/100 \(\rightarrow\) 4.34/31)} Un'urna contiene 150 di palline numerate.
 
@@ -9774,7 +9866,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-8}
+\subsection{Esercizio 4}\label{esercizio-4-7}
 
 4.a \textbf{(Punti 3/100 \(\rightarrow\) 0.93/31)} Sia \(\hat\sigma^2\) lo stimatore di massima verosimiglianza per il parametro \(\sigma^2\) della normale. \(\hat\sigma^2\) è corretto? Quanto vale la sua distorsione?
 
@@ -9916,7 +10008,7 @@ quanto vale il rapporto
 
 \section{Prova di Statistica 2021/09/06-1}\label{prova-di-statistica-20210906-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-10}
+\subsection{Esercizio 1}\label{esercizio-1-9}
 
 Su un campione di \(155\) aziende è bilancio annuo (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze percentuali:
 
@@ -9975,7 +10067,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $f_{j\%}$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ &
 
 1.d \textbf{(Punti 2/106 \(\rightarrow\) 0.58/31)} La varianza dei dati è pari a \(\sigma^2=36.8775\). Nell'ipotesi che tutte le aziende aumentassero il loro bilancio di 10 mila ero, quanto varrebbe la varianza dei così trasformati?
 
-\subsection{Esercizio 2}\label{esercizio-2-10}
+\subsection{Esercizio 2}\label{esercizio-2-9}
 
 Siano \(X_1\sim N(10,2)\) e sia \(X_2\sim N(10,3)\). Posto \(A=\{X_1<11\}\), \(B=\{X_1>9\}\), e \(C=\{9<X_2<10\}\)
 
@@ -10048,7 +10140,7 @@ F(x)   &=&  P(X\le x)\\
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-9}
+\subsection{Esercizio 3}\label{esercizio-3-8}
 
 3.a \textbf{(Punti 2/106 \(\rightarrow\) 0.58/31)} Enunciare il teorema centrale del limite per la somma.
 
@@ -10077,7 +10169,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-9}
+\subsection{Esercizio 4}\label{esercizio-4-8}
 
 4.a \textbf{(Punti 3/106 \(\rightarrow\) 0.88/31)} Siano \(h_1\) e \(h_2\) due stimatori corretti per \(\theta\), cosa significa che \(h_1\) è più efficiente di \(h_2\)?
 
@@ -10237,7 +10329,7 @@ Il modello \textbf{non} si adatta bene ai dati.
 
 \section{Prova di Statistica 2022/06/16-1}\label{prova-di-statistica-20220616-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-11}
+\subsection{Esercizio 1}\label{esercizio-1-10}
 
 Su un campione di \(250\) famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
@@ -10307,7 +10399,7 @@ Invariata
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-11}
+\subsection{Esercizio 2}\label{esercizio-2-10}
 
 Siano \(X\sim N(102,1.5)\) e sia \(Y\sim N(50,3.5)\), \(X\) e \(Y\) indipendenti. Posto \(A=\{X>100\}\), \(B=\{X<102\}\), e \(C=\{47<Y\le 53\}\).
 
@@ -10364,7 +10456,7 @@ F(b)-F(a) = P(a<X\le b)
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-10}
+\subsection{Esercizio 3}\label{esercizio-3-9}
 
 3.a \textbf{(Punti 14/101 \(\rightarrow\) 4.3/31)} Ogni giorno un impianto di produzione confeziona 1000 lotti. In media il 10 di questi lotti sono fallati, con una deviazione standard pari a 0.3. Dopo 300 giorni di produzione qual è la probabilità che il numero di lotti fallati sia maggiore di 3100?
 
@@ -10390,7 +10482,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-10}
+\subsection{Esercizio 4}\label{esercizio-4-9}
 
 4.a \textbf{(Punti 3/101 \(\rightarrow\) 0.92/31)} Sia \(\hat \lambda\) lo stimatore di massima verosimiglianza di \(\lambda\) del modello di Poisson.
 \begin{eqnarray*}
@@ -10533,7 +10625,7 @@ Il modello si adatta bene ai dati.
 
 \section{Prova di Statistica 2022/06/16-2}\label{prova-di-statistica-20220616-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-12}
+\subsection{Esercizio 1}\label{esercizio-1-11}
 
 Su un campione di \(250\) famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito i dati raccolti in classe e le densità di frequenza percentuali
 
@@ -10599,7 +10691,7 @@ Se ogni famiglia aumentasse la sua spesa del 5\%, quanto varrebbe varianza dei d
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-12}
+\subsection{Esercizio 2}\label{esercizio-2-11}
 
 Siano \(X\sim \text{Pois}(1.5)\) e sia \(Y\sim \text{Pois}(1.5)\), \(X\) e \(Y\) indipendenti. Posto \(A=\{X<2\}\) e \(B=\{Y\ge 2\}\)
 
@@ -10634,7 +10726,7 @@ Siano \(X\sim \text{Pois}(1.5)\) e sia \(Y\sim \text{Pois}(1.5)\), \(X\) e \(Y\)
 
 2.c \textbf{(Punti 2/101 \(\rightarrow\) 0.61/31)} Se \(X\) è una VC con valore atteso \(E(X)=0.5\) e \(V(X)=1.2\), posto \(Y=X^2\) è vero che \(E(Y)=E^2(X)\)?
 
-\subsection{Esercizio 3}\label{esercizio-3-11}
+\subsection{Esercizio 3}\label{esercizio-3-10}
 
 3.a \textbf{(Punti 14/101 \(\rightarrow\) 4.3/31)} Si lancia un dado perfetto 100 volte. Qual è la probabilità che la proporzione di volte che si osserva la faccia sei (⚅) sia maggiore di 0.2?
 
@@ -10658,7 +10750,7 @@ allora:\begin{eqnarray*}
                  &=&  1-\Phi( 0.89 ) \\ &=&  0.1867 
       \end{eqnarray*}
 
-\subsection{Esercizio 4}\label{esercizio-4-11}
+\subsection{Esercizio 4}\label{esercizio-4-10}
 
 4.a \textbf{(Punti 3/101 \(\rightarrow\) 0.92/31)} Sia \(\hat \mu\) lo stimatore di massima verosimiglianza di \(\mu\) del modello Normale.
 \begin{eqnarray*}
@@ -10787,7 +10879,7 @@ il modello in cui \(W\) viene spiegata da \(X\), quanto varranno \(\beta_0'\) e 
 
 \section{Prova di Statistica 2022/06/16-3}\label{prova-di-statistica-20220616-3}
 
-\subsection{Esercizio 1}\label{esercizio-1-13}
+\subsection{Esercizio 1}\label{esercizio-1-12}
 
 Su un campione di \(250\) famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito i dati raccolti in classe e le frequenze assolute
 
@@ -10844,7 +10936,7 @@ Se ogni famiglia aumentasse la sua spesa del 10\%, quanto varrebbe \emph{standar
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-13}
+\subsection{Esercizio 2}\label{esercizio-2-12}
 
 Siano \(X\sim \text{Binom}(5,0.4)\) e sia \(Y\sim \text{Binom}(2,0.4)\), \(X\) e \(Y\) indipendenti. Posto \(W=X+Y\)
 
@@ -10877,7 +10969,7 @@ Siano \(X\sim \text{Binom}(5,0.4)\) e sia \(Y\sim \text{Binom}(2,0.4)\), \(X\) e
 
 2.c \textbf{(Punti 2/101 \(\rightarrow\) 0.61/31)} Se \(A\) e \(B\) sono due eventi diversi dal vuoto, è possibile che \(P(A)+P(B)>1\)?
 
-\subsection{Esercizio 3}\label{esercizio-3-12}
+\subsection{Esercizio 3}\label{esercizio-3-11}
 
 3.a \textbf{(Punti 14/101 \(\rightarrow\) 4.3/31)} Un'urna contiene 3 palline bianche, 2 nere e 5 blu. Si estrae 200 volte con reimmissione.
 Calcolare la probabilità che il numero di palline nere sia maggiore di 50.
@@ -10901,7 +10993,7 @@ allora:\begin{eqnarray*}
                  &=&  1-\Phi( 1.77 ) \\ &=&  0.0384 
       \end{eqnarray*}
 
-\subsection{Esercizio 4}\label{esercizio-4-12}
+\subsection{Esercizio 4}\label{esercizio-4-11}
 
 4.a \textbf{(Punti 3/101 \(\rightarrow\) 0.92/31)} Sia \(\hat \lambda\) lo stimatore di massima verosimiglianza di \(\lambda\) del modello Poisson.
 \begin{eqnarray*}
@@ -11041,7 +11133,7 @@ quanto varranno \(\beta_0'\) e \(\beta_1'\)?
 
 \section{Prova di Statistica 2022/07/01-1}\label{prova-di-statistica-20220701-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-14}
+\subsection{Esercizio 1}\label{esercizio-1-13}
 
 Su un campione di \(220\) imprese energivore della provincia di Bologna è stato
 rilevata la spesa in investimenti green, espressa in migliaia di euro. Qui di seguito i dati raccolti in classi
@@ -11114,7 +11206,7 @@ Calcolare la media globale delle \(220 + 150 = 370\) aziende delle due province.
 &=& 12.1027
 \end{eqnarray*}
 
-\subsection{Esercizio 2}\label{esercizio-2-14}
+\subsection{Esercizio 2}\label{esercizio-2-13}
 
 Siano \(X\sim N(10,1)\) e sia \(Y\sim N(10,1)\), \(X\) e \(Y\) indipendenti. Posto \(A=\{X>8\}\), \(B=\{X>11\}\), e \(C=\{9<Y\le 10\}\).
 
@@ -11176,7 +11268,7 @@ P(A\cap B)\ne P(A)P(B)
 2.d \textbf{(Punti 2/106 \(\rightarrow\) 0.58/31)} Se \(F\) è la funzione di ripartizione della VA \(X\),
 quali sono il valore massimo e quello minimo che \(F\) può assumere?
 
-\subsection{Esercizio 3}\label{esercizio-3-13}
+\subsection{Esercizio 3}\label{esercizio-3-12}
 
 3.a \textbf{(Punti 14/106 \(\rightarrow\) 4.09/31)} Ogni giorno il centralino di un servizio di assistenza riceve in media 26.34 telefonate con una deviazione standard pari a 1.3 telefonate.
 
@@ -11203,7 +11295,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-13}
+\subsection{Esercizio 4}\label{esercizio-4-12}
 
 4.a \textbf{(Punti 3/106 \(\rightarrow\) 0.88/31)} Sia \(\hat \lambda\) lo stimatore di massima verosimiglianza di \(\lambda\) del modello di Poisson: \(\hat\lambda =  \frac 1n\sum_{i=1}^nx_i\)
 Scrivere lo Standard Error di \(\hat \lambda\).
@@ -11380,7 +11472,7 @@ il modello in cui \(W\) viene spiegata da \(X\), quanto varranno \(\beta_0'\) e 
 
 \section{Prova di Statistica 2022/07/01-2}\label{prova-di-statistica-20220701-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-15}
+\subsection{Esercizio 1}\label{esercizio-1-14}
 
 Su un campione di \(220\) imprese energivora della provincia di Bologna è stato
 rilevata la spesa in investimenti green, espressa in migliaia di euro. Qui di seguito i dati raccolti in classi
@@ -11438,7 +11530,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 1.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} La varianza della spesa è pari a \(Var=17.997\).
 Se ogni azienda aumentasse la sua spesa del 15\%, quanto varrebbe varianza dei dati così trasformati?
 
-\subsection{Esercizio 2}\label{esercizio-2-15}
+\subsection{Esercizio 2}\label{esercizio-2-14}
 
 Una rotatoria incrocia due strade, una che porta da nord a sud e una che porta da est ad ovest.
 
@@ -11493,7 +11585,7 @@ il supporto di \(X+Y\) è \(\{2, 3, 4, 5, 6, 7\}\).
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-14}
+\subsection{Esercizio 3}\label{esercizio-3-13}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 10 palline numerate da 1 a 10.
 Si vince se il numero estratto è divisibile per tre, altrimenti si perde.
@@ -11525,7 +11617,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-14}
+\subsection{Esercizio 4}\label{esercizio-4-13}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Siano \(h_1\) e \(h_2\) due stimatori per \(\theta\), tali che
 
@@ -11662,7 +11754,7 @@ il modello in cui \(W\) viene spiegata da \(V\), quanto varranno \(\beta_0'\) e 
 
 \section{Prova di Statistica 2022/07/01-3}\label{prova-di-statistica-20220701-3}
 
-\subsection{Esercizio 1}\label{esercizio-1-16}
+\subsection{Esercizio 1}\label{esercizio-1-15}
 
 Su un campione di \(220\) imprese energivora della provincia di Bologna è stato
 rilevata la spesa in investimenti green, espressa in migliaia di euro. Qui di seguito i dati raccolti in classi
@@ -11726,7 +11818,7 @@ compresa tra il 25-esimo percentile e 15 mila euro?
 1.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} La varianza della spesa è pari a \(Var=17.075\).
 Se ogni azienda aumentasse la sua spesa di 10 mila euro, quanto varrebbe la media e la varianza dei dati così trasformati?
 
-\subsection{Esercizio 2}\label{esercizio-2-16}
+\subsection{Esercizio 2}\label{esercizio-2-15}
 
 Una moneta perfetta viene lanciata 5 volte, se esce almeno 3 volte testa si estrae da un'urna che contiene
 un biglietto vincente ed uno perdente, altrimenti si estrae da un'urna che contine due biglietti vincenti e tre perdenti.
@@ -11766,7 +11858,7 @@ Qual è il supporto di \(X\times Y\)?
 \{-4,-2,-1,0\}
 \]
 
-\subsection{Esercizio 3}\label{esercizio-3-15}
+\subsection{Esercizio 3}\label{esercizio-3-14}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Il supermercato \emph{S} vende, in media ogni giorno, 102.3 kg di pasta, con una deviazione standard di 10.2. Dopo 60 giorni di apertura, qual è la probabilità che il totale di pasta venduta sia maggiore di 6700 kg?
 
@@ -11787,7 +11879,7 @@ allora:\begin{eqnarray*}
                  &=&  1-\Phi( 7.11 ) \\ &=&  0 
       \end{eqnarray*}
 
-\subsection{Esercizio 4}\label{esercizio-4-15}
+\subsection{Esercizio 4}\label{esercizio-4-14}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Siano \(h_1\) e \(h_2\) due stimatori per \(\theta\), tali che
 
@@ -11947,7 +12039,7 @@ Calcolare il residuo per \(x=16.4\) nel modello di regressione dove \(Y\) è spi
 
 \section{Prova di Statistica 2022/07/27-1}\label{prova-di-statistica-20220727-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-17}
+\subsection{Esercizio 1}\label{esercizio-1-16}
 
 Su un campione di \(220\) imprese della provincia di Milano è stato
 rilevato il bilancio, espresso in migliaia di euro, del 2020. Qui di seguito i dati raccolti in classi
@@ -12022,7 +12114,7 @@ La funzione \(g\) è minimizzata nel valore della mediana.
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-17}
+\subsection{Esercizio 2}\label{esercizio-2-16}
 
 Siano \(X\sim N(5,1/2)\) e sia \(Y\sim N(5,1/2)\), \(X\) e \(Y\) indipendenti. Posto \(A=\{X>6\}\), \(B=\{Y<4\}\).
 
@@ -12089,7 +12181,7 @@ funzione di ripartizione \(F(x)\) di \(X\), per \(x\) compreso tra \(-1\) e \(2.
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-16}
+\subsection{Esercizio 3}\label{esercizio-3-15}
 
 3.a \textbf{(Punti 14/106 \(\rightarrow\) 4.09/31)} Un'urna contiene tre palline, una Rossa, una Blue e una Nera. Si vince
 se esce Rossa. Si ripete il gioco per \(144\) volte. Qual è la probabilità che la
@@ -12115,7 +12207,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-16}
+\subsection{Esercizio 4}\label{esercizio-4-15}
 
 4.a \textbf{(Punti 3/106 \(\rightarrow\) 0.88/31)} Sia \(\hat \lambda\) lo stimatore di massima verosimiglianza di \(\lambda\) del modello di Poisson: \(\hat\lambda =  \frac 1n\sum_{i=1}^nx_i\)
 Scrivere la Varianza di \(\hat \lambda\).
@@ -12322,7 +12414,7 @@ quadrati per \(\beta_0\) e \(\beta_1\) sono corretti?
 
 \texttt{r}
 
-\subsection{Esercizio 1}\label{esercizio-1-18}
+\subsection{Esercizio 1}\label{esercizio-1-17}
 
 Su un campione di \(220\) imprese della provincia di Milano è stato
 rilevato il bilancio, espresso in migliaia di euro, del 2020. Qui di seguito i dati raccolti in classi
@@ -12387,7 +12479,7 @@ percentile e 3.5 mila euro?
 \[g(x)=(x_1-x)^2+...+(x_n-x)^2.\]
 Per quale valore di \(x\), \(g(x)\) è minima?
 
-\subsection{Esercizio 2}\label{esercizio-2-18}
+\subsection{Esercizio 2}\label{esercizio-2-17}
 
 In una strada, in prossimità di un dato incrocio, ci sono 3 corsie.
 In orario di punta, il numero di automobili che impegna la corsia sinistra è descritto
@@ -12433,7 +12525,7 @@ Qual è il supporto di \(X-Y\)?
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-17}
+\subsection{Esercizio 3}\label{esercizio-3-16}
 
 3.a \textbf{(Punti 14/106 \(\rightarrow\) 4.09/31)} Un'urna contiene 4 palline numerate da 1 a 4.
 Si estrae 100 volte con reinserimento e si fa la media dei 100 numeri
@@ -12467,7 +12559,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-17}
+\subsection{Esercizio 4}\label{esercizio-4-16}
 
 4.a \textbf{(Punti 3/106 \(\rightarrow\) 0.88/31)} Siano \(h_1\) e \(h_2\) due stimatori per \(\theta\), tali che
 
@@ -12617,7 +12709,7 @@ Scrivere il suo Standard Error teorico.
 
 \texttt{r}
 
-\subsection{Esercizio 1}\label{esercizio-1-19}
+\subsection{Esercizio 1}\label{esercizio-1-18}
 
 Su un campione di \(220\) imprese della provincia di Milano è stato
 rilevato il bilancio, espresso in migliaia di euro, del 2020. Qui di seguito i dati raccolti in classi
@@ -12695,7 +12787,7 @@ percentile?
 e posto \(y_i=-x_i, \forall i\), quanto varrà \(\sigma_Y\), la standard deviation dei dati così
 trasformati?
 
-\subsection{Esercizio 2}\label{esercizio-2-19}
+\subsection{Esercizio 2}\label{esercizio-2-18}
 
 Una moneta perfetta viene lanciata 2 volte, se esce almeno 1 volta testa si estrae da un'urna che contiene un biglietto vincente ed uno perdente, altrimenti si estrae da un'urna che contiene due biglietti vincenti e tre perdenti.
 
@@ -12734,7 +12826,7 @@ Qual è il supporto di \(X\times Y\)?
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-18}
+\subsection{Esercizio 3}\label{esercizio-3-17}
 
 3.a \textbf{(Punti 14/101 \(\rightarrow\) 4.3/31)} Il supermercato \emph{S} accoglie, in media ogni giorno, 3.242 mila persone, con una
 deviazione standard di 0.5 mila persone. Dopo 60 giorni di apertura, qual è la probabilità che il
@@ -12757,7 +12849,7 @@ allora:\begin{eqnarray*}
                  &=&  1-\Phi( 7.87 ) \\ &=&  0 
       \end{eqnarray*}
 
-\subsection{Esercizio 4}\label{esercizio-4-18}
+\subsection{Esercizio 4}\label{esercizio-4-17}
 
 4.a \textbf{(Punti 3/101 \(\rightarrow\) 0.92/31)} Sia \(h\) uno stimatore per \(\theta\), tale che
 
@@ -12908,7 +13000,7 @@ Scrivere il suo Standard Error stimato.
 
 \section{Prova di Statistica 2023/01/11-1}\label{prova-di-statistica-20230111-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-20}
+\subsection{Esercizio 1}\label{esercizio-1-19}
 
 Su un campione di \(160\) famiglie della provincia di Modena è stato rilevato l'investimento annuo in prodotti finanziari (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze assolute:
 
@@ -12965,7 +13057,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$\\
 1.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} La spesa media è pari a \(\bar x=3.0676\), mentre la SD è pari a \(SD=1.3653\).
 Se ogni famiglia aumentasse il proprio investimento di 0.5 mila euro, quanto varrebbero la media e la SD dei dati così trasformati?
 
-\subsection{Esercizio 2}\label{esercizio-2-20}
+\subsection{Esercizio 2}\label{esercizio-2-19}
 
 2.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Siano \(X\sim N(10,1.5)\) e sia \(Y\sim N(10,0.5)\), \(X\) e \(Y\) indipendenti. Posto \(A=\{8<X<10\}\), \(B=\{Y<11\}\).
 Quanto vale \(P(A\cup B)\)?
@@ -13011,7 +13103,7 @@ Quanto vale \(P(A\cup B)\)?
 
 2.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Sia \(X\) una VC e sia \(F\) la sua funzione di ripartizione. Cosa significa dire che \(F\) è continua a destra?
 
-\subsection{Esercizio 3}\label{esercizio-3-19}
+\subsection{Esercizio 3}\label{esercizio-3-18}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 4 palline numerate: \(\fbox{0}\), \(\fbox{0}\), \(\fbox{0}\) e \(\fbox{1}\). Si estrae 100 volte con reinserimento. Qual è la probabilità che la proporzione di palline timbrate con 1 nelle 100 estrazioni sia maggiore di 0.27?
 
@@ -13042,7 +13134,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-19}
+\subsection{Esercizio 4}\label{esercizio-4-18}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(\hat \lambda\) lo stimatore di massima verosimiglianza di \(\lambda\) del modello di Poisson.
 \begin{eqnarray*}
@@ -13180,7 +13272,7 @@ a cui è stato chiesto il reddito annuo (\(X\) espressa in scala di comodo) e la
 
 \section{Prova di Statistica 2023/01/11-2}\label{prova-di-statistica-20230111-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-21}
+\subsection{Esercizio 1}\label{esercizio-1-20}
 
 Su un campione di \(160\) famiglie della provincia di Modena è stato rilevato l'investimento annuo in prodotti obbligazionari (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze percentuali:
 
@@ -13241,7 +13333,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$\\
 1.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} La spesa media è pari a \(\bar x=6.9001\), mentre la SD è pari a \(SD=1.5027\).
 Se ogni famiglia aumentasse il proprio investimento del 2 percento, quanto varrebbero la media e la SD dei dati così trasformati?
 
-\subsection{Esercizio 2}\label{esercizio-2-21}
+\subsection{Esercizio 2}\label{esercizio-2-20}
 
 2.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} I clienti in fila nell'ora di punta alla cassa di un supermercato sono distribuiti come una Poisson di parametro 2.5 (\(X\sim\text{Pois}(\lambda=2.5)\)). Qual è la probabilità di trovare almeno 2 clienti in coda (\(X\ge 2\))?
 
@@ -13275,7 +13367,7 @@ Se ogni famiglia aumentasse il proprio investimento del 2 percento, quanto varre
 
 2.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Sia \(X\) una VC e sia \(F\) la sua funzione di ripartizione. Cosa significa dire che \(F\) è crescente?
 
-\subsection{Esercizio 3}\label{esercizio-3-20}
+\subsection{Esercizio 3}\label{esercizio-3-19}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 4 palline numerate con \(\fbox{0}\), \(\fbox{3}\), \(\fbox{4}\) e \(\fbox{6}\). Si estrae 100 volte con reinserimento. Qual è la probabilità che la somme delle 100 estrazioni sia maggiore di 310?
 
@@ -13303,7 +13395,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-20}
+\subsection{Esercizio 4}\label{esercizio-4-19}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(\hat \pi\) lo stimatore di massima verosimiglianza di \(\pi\) del modello Binomiale.
 \begin{eqnarray*}
@@ -13417,7 +13509,7 @@ Il modello si adatta bene ai dati.
 
 \section{Prova di Statistica 2023/01/11-3}\label{prova-di-statistica-20230111-3}
 
-\subsection{Esercizio 1}\label{esercizio-1-22}
+\subsection{Esercizio 1}\label{esercizio-1-21}
 
 Su un campione di \(160\) famiglie della provincia di Modena è stato rilevato l'investimento annuo in prodotti finanziari (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
@@ -13474,7 +13566,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$\\
 1.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} La spesa media è pari a \(\bar x=4.9926\), mentre la SD è pari a \(SD=1.5124\).
 Se ogni famiglia diminuisse il proprio investimento del 2\%, quanto varrebbero la media e la SD dei dati così trasformati?
 
-\subsection{Esercizio 2}\label{esercizio-2-22}
+\subsection{Esercizio 2}\label{esercizio-2-21}
 
 2.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 20 palline: 8 bianche e 12 nere, si estrae con reintroduzione 5 volte.
 Qual è la probabilità avere un numero di palline bianche maggiore o uguale a 2 su 5 estrazioni?
@@ -13505,7 +13597,7 @@ Qual è la probabilità avere un numero di palline bianche maggiore o uguale a 2
 
 2.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Sia \(X\) una VC e sia \(F\) la sua funzione di ripartizione. Quanto valgono \(\lim_{x\to-\infty}F(x)\) e \(\lim_{x\to+\infty}F(x)\)?
 
-\subsection{Esercizio 3}\label{esercizio-3-21}
+\subsection{Esercizio 3}\label{esercizio-3-20}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 4 palline numerate: \(\fbox{0}\), \(\fbox{1}\), \(\fbox{4}\) e \(\fbox{6}\). Si estrae 100 volte con reinserimento. Qual è la probabilità che la media delle 100 estrazioni sia maggiore di 2.8?
 
@@ -13536,7 +13628,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-21}
+\subsection{Esercizio 4}\label{esercizio-4-20}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Siano \(\hat \mu\) e \(\hat\sigma^2\) gli stimatori di massima verosimiglianza di \(\mu\) e \(\sigma^2\) del modello di Normale.
 \begin{eqnarray*}
@@ -13678,7 +13770,7 @@ Il modello si adatta bene ai dati.
 
 \section{Prova di Statistica 2023/02/16-1}\label{prova-di-statistica-20230216-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-23}
+\subsection{Esercizio 1}\label{esercizio-1-22}
 
 Su un campione di \(200\) imprese della provincia di Modena è stato rilevato l'utile dell'ultimo trimestre (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze assolute:
 
@@ -13735,7 +13827,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 
 1.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Qual è la proprietà di associatività della media aritmetica?
 
-\subsection{Esercizio 2}\label{esercizio-2-23}
+\subsection{Esercizio 2}\label{esercizio-2-22}
 
 2.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Siano \(X\sim N(1,1.5)\) e sia \(Y\sim N(1,0.5)\), \(X\) e \(Y\) indipendenti. Posto \(A=\{-2<X<1\}\), \(B=\{Y<1\}\).
 Quanto vale \(P(A\cap B)\)?
@@ -13781,7 +13873,7 @@ P(E) &=& P(R_1\cap R_2 \cap R_3) + P(B_1\cap B_2 \cap B_3) + P(N_1\cap N_2 \cap 
 
 2.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Se \(X\) è \(Y\) sono due VC, tali che \(V(X)=\sigma_X^2\) e \(Y=\sigma_Y^2\), quanto vale \(V(X-Y)\)?
 
-\subsection{Esercizio 3}\label{esercizio-3-22}
+\subsection{Esercizio 3}\label{esercizio-3-21}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 4 palline numerate: \(\fbox{0}\), \(\fbox{1}\), \(\fbox{2}\) e \(\fbox{3}\). Si estrae 100 volte con reinserimento. Qual è la probabilità che la media delle 100 estrazioni sia maggiore di 1.6?
 
@@ -13812,7 +13904,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-22}
+\subsection{Esercizio 4}\label{esercizio-4-21}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(\hat \lambda\) lo stimatore di massima verosimiglianza di \(\lambda\) del modello di Poisson.
 \begin{eqnarray*}
@@ -13974,7 +14066,7 @@ Il modello si adatta bene ai dati.
 
 \section{Prova di Statistica 2023/02/16-2}\label{prova-di-statistica-20230216-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-24}
+\subsection{Esercizio 1}\label{esercizio-1-23}
 
 Su un campione di \(400\) imprese della provincia di Modena è stato rilevato l'utile dell'ultimo trimestre (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze assolute:
 
@@ -14037,7 +14129,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 
 1.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Qual è la proprietà di linearità della media aritmetica?
 
-\subsection{Esercizio 2}\label{esercizio-2-24}
+\subsection{Esercizio 2}\label{esercizio-2-23}
 
 2.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Il numero di telefonate in arrivo nell'ora di punta di un centralino è distribuito come una Poisson di parametro 3.1 (\(X\sim\text{Pois}(\lambda=3.1)\)). Qual è la probabilità di trovare al massimo 3 telefonate (\(X\le 3\))?
 
@@ -14067,7 +14159,7 @@ P(E)  &=& P(R_1)P( R_2|R_1) P( R_3|R_1\cap R_2)\\
 
 2.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Siano \(A\) e \(B\) due eventi diversi dal vuoto tali che \(A\cap B=\emptyset\), motivare perché \(A\) e \(B\) non possono essere indipendenti.
 
-\subsection{Esercizio 3}\label{esercizio-3-23}
+\subsection{Esercizio 3}\label{esercizio-3-22}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 2 palline numerate con \(\fbox{0}\), 3 numerate con \(\fbox{1}\) e 2 numerate con \(\fbox{2}\). Si estrae 100 volte con reinserimento. Qual è la probabilità che la somma delle 100 estrazioni sia compresa tra 80 e 120?
 
@@ -14099,7 +14191,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-23}
+\subsection{Esercizio 4}\label{esercizio-4-22}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(\hat \pi\) lo stimatore di massima verosimiglianza di \(\pi\) del modello Binomiale.
 \begin{eqnarray*}
@@ -14235,7 +14327,7 @@ Il modello si adatta bene ai dati.
 
 \section{Prova di Statistica 2023/02/16-3}\label{prova-di-statistica-20230216-3}
 
-\subsection{Esercizio 1}\label{esercizio-1-25}
+\subsection{Esercizio 1}\label{esercizio-1-24}
 
 Su un campione di \(50\) imprese della provincia di Modena è stato rilevato l'utile dell'ultimo trimestre (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
@@ -14297,7 +14389,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-25}
+\subsection{Esercizio 2}\label{esercizio-2-24}
 
 2.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Si lancia una moneta perfetta 8 volte. Qual è la probabilità di avere un numero di volte Testa maggiore o uguale a 6 su 8 lanci?
 
@@ -14340,7 +14432,7 @@ X\mathop\sim_a N(n,n)
 
 2.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Sia \(X\sim N(10,1)\) e sia \(F\) la sua funzione di ripartizione. Disegnare approssimativamente \(F(x)\) per \(x\) che varia tra 6 e 14.
 
-\subsection{Esercizio 3}\label{esercizio-3-24}
+\subsection{Esercizio 3}\label{esercizio-3-23}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna conteni tre palline rosse, due bianche e una nera. Si estrae \(n=100\) volte con reintroduzione. Qual è la probabilità che la proporzione di palline rosse sia minore di 0.45?
 
@@ -14364,7 +14456,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-24}
+\subsection{Esercizio 4}\label{esercizio-4-23}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Siano \(\hat \mu\) e \(\hat\sigma^2\) gli stimatori di massima verosimiglianza di \(\mu\) e \(\sigma^2\) del modello di Normale.
 \begin{eqnarray*}
@@ -14501,7 +14593,7 @@ Il modello \textbf{non} si adatta bene ai dati.
 
 \section{Prova di Statistica 2023/06/08-1}\label{prova-di-statistica-20230608-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-26}
+\subsection{Esercizio 1}\label{esercizio-1-25}
 
 Su un campione di \(160\) famiglie della provincia di Modena è stata rilevata la spesa annua dedicata alle vacanze, espressa in migliaia di euro. Qui di seguito la distribuzione delle frequenze assolute:
 
@@ -14559,7 +14651,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 
 1.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Cosa significa che la media aritmetica rende zero la somma degli scarti?
 
-\subsection{Esercizio 2}\label{esercizio-2-26}
+\subsection{Esercizio 2}\label{esercizio-2-25}
 
 Siano \(X_A\sim \text{Pois}(1.5)\) e sia \(X_B\sim \text{Pois}(1.5)\), \(X_A\) e \(X_B\) indipendenti. Posto \(A=\{X_A\le 1\}\) e \(B=\{X_B>2\}\)
 
@@ -14586,7 +14678,7 @@ Siano \(X_A\sim \text{Pois}(1.5)\) e sia \(X_B\sim \text{Pois}(1.5)\), \(X_A\) e
 
 2.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Sia \(X\sim\text{Ber}(\pi=0.4)\). Disegnare la sua funzione di ripartizione.
 
-\subsection{Esercizio 3}\label{esercizio-3-25}
+\subsection{Esercizio 3}\label{esercizio-3-24}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 3 palline Rosse, 3 Bianche e 4 Blu. Si estrae senza reintroduzione per \(n=81\) volte.
 Calcolare la probabilità che la proporzione di palline Blu sia maggiore di 0.3.
@@ -14611,7 +14703,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-25}
+\subsection{Esercizio 4}\label{esercizio-4-24}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Siano \(\hat \mu\) e \(\hat\sigma^2\) gli stimatori di massima verosimiglianza di \(\mu\) e \(\sigma^2\) del modello di Normale.
 \begin{eqnarray*}
@@ -14717,7 +14809,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 
 \section{Prova di Statistica 2023/06/08-2}\label{prova-di-statistica-20230608-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-27}
+\subsection{Esercizio 1}\label{esercizio-1-26}
 
 Su un campione di \(160\) famiglie della provincia di Modena è stata rilevata la spesa annua dedicata alle vacanze, espressa in migliaia di euro. Qui di seguito la distribuzione delle frequenze assolute:
 
@@ -14774,7 +14866,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 
 1.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Cosa significa che la media aritmetica gode della proprietà di linearità?
 
-\subsection{Esercizio 2}\label{esercizio-2-27}
+\subsection{Esercizio 2}\label{esercizio-2-26}
 
 Siano \(X_A\sim N(1.5,1.5)\) e sia \(X_B\sim N(1.5,1.5)\), \(X_A\) e \(X_B\) indipendenti. Posto \(A=\{X_A\le 1\}\) e \(B=\{X_B>2\}\)
 
@@ -14816,7 +14908,7 @@ Siano \(X_A\sim N(1.5,1.5)\) e sia \(X_B\sim N(1.5,1.5)\), \(X_A\) e \(X_B\) ind
 
 2.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Se \(A\) e \(B\) sono due eventi tali che \(A\cap B=\emptyset\), \(A\) e \(B\) possono essere indipendenti? Perché?
 
-\subsection{Esercizio 3}\label{esercizio-3-26}
+\subsection{Esercizio 3}\label{esercizio-3-25}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 3 palline col numero \(\fbox{0}\), 3 col numero \(\fbox{1}\) e 4 col numero \(\fbox{2}\). Si estrae senza reintroduzione per \(n=81\) volte.
 Calcolare la probabilità che la somma dei risultati sia maggiore di 80.
@@ -14841,7 +14933,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-26}
+\subsection{Esercizio 4}\label{esercizio-4-25}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sono stati estratti \(n=10\) valori da una Poisson di parametro \(\lambda\) incognito e si è ottenuta un media pari a \(\bar x=3.4\). Ricavare \(\widehat{SE(\hat\lambda)}\) lo Standard Error stimato \(\hat\lambda\) di massima verosimiglianza.
 
@@ -14979,7 +15071,7 @@ w_i = \beta_0'+\beta_1'x_i+\epsilon_i'
 
 \section{Prova di Statistica 2023/06/08-3}\label{prova-di-statistica-20230608-3}
 
-\subsection{Esercizio 1}\label{esercizio-1-28}
+\subsection{Esercizio 1}\label{esercizio-1-27}
 
 Su un campione di \(160\) famiglie della provincia di Modena è stata rilevata la spesa annua dedicata alle vacanze, espressa in migliaia di euro. Qui di seguito la distribuzione delle frequenze cumulate:
 
@@ -15038,7 +15130,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 
 1.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Cosa significa che la media aritmetica goe della proprietà di linearità?
 
-\subsection{Esercizio 2}\label{esercizio-2-28}
+\subsection{Esercizio 2}\label{esercizio-2-27}
 
 Sia \(X\sim\text{Binom}(5,0.5)\) e sia \(y\sim\text{Binom}(5,0.4)\), \(X\) e \(Y\) indipendenti, posto \(A=\{X\le 1\}\) e \(B=\{Y\ge 2\}\)
 
@@ -15078,7 +15170,7 @@ Sia \(X\sim\text{Binom}(5,0.5)\) e sia \(y\sim\text{Binom}(5,0.4)\), \(X\) e \(Y
 
 2.d \textbf{(Punti 2/103 \(\rightarrow\) 0.6/31)} Siano \(A\) e \(B\) due eventi tali che \(P(A)=0.6\) e \(P(B)=0.5\). \(A\) e \(B\) possono essere incompatibili? Perché?
 
-\subsection{Esercizio 3}\label{esercizio-3-27}
+\subsection{Esercizio 3}\label{esercizio-3-26}
 
 3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 3 palline col numero \(\fbox{0}\), 4 col numero \(\fbox{1}\) e 3 col numero \(\fbox{2}\). Si estrae senza reintroduzione per \(n=81\) volte.
 Calcolare la probabilità che la media dei risultati sia minore di 0.9.
@@ -15103,7 +15195,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-27}
+\subsection{Esercizio 4}\label{esercizio-4-26}
 
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sono stati estratti \(n=10\) valori da una Bernoulli di parametro \(\pi\) incognito e si è ottenuti 4 successi in 10 estrazioni. Ricavare, \(\widehat{SE(\hat\pi)}\) lo Standard Error stimato di \(\hat\pi\) di massima verosimiglianza.
 
@@ -15261,7 +15353,7 @@ y_i = \beta_0'+\beta_1'w_i+\epsilon_i'
 
 \section{Prova di Statistica 2023/06/27-1}\label{prova-di-statistica-20230627-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-29}
+\subsection{Esercizio 1}\label{esercizio-1-28}
 
 Su un campione di \(250\) famiglie della provincia di Modena è stato rilevata la spesa mensile in telecomunicazioni (in euro), qui di seguito
 la distribuzione delle frequenze relative:
@@ -15323,7 +15415,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 1.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} La spesa media è pari a \(\bar x=70.6296\) e la standard deviation \(\hat\sigma=56.9043\), se tutte le famiglie risparmiassero
 il 10\%, come cambierebbero la media e la standard deviation?
 
-\subsection{Esercizio 2}\label{esercizio-2-29}
+\subsection{Esercizio 2}\label{esercizio-2-28}
 
 Un impresa di soccorso stradale ha due centralini, il numero di telefonate orarie in arrivo
 al centralino \(A\) è distribuito come una Poisson \(X\sim\text{Pois}(2.2)\), mentre
@@ -15369,7 +15461,7 @@ motivare la risposta.
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-28}
+\subsection{Esercizio 3}\label{esercizio-3-27}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Una catena di montaggio a ciclo continuo produce ogni giorno un numero di pezzi variabile, con una media pari a
 \(\mu=1.2\) mila pezzi al giorno e una varianza di \(\sigma^2=9.1\).
@@ -15396,7 +15488,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-28}
+\subsection{Esercizio 4}\label{esercizio-4-27}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} Siano \(\hat \mu\) e \(\hat\sigma^2\) gli stimatori di massima verosimiglianza di \(\mu\) e \(\sigma^2\) del modello di Normale.
 \begin{eqnarray*}
@@ -15547,7 +15639,7 @@ calcolarla per questo caso.
 
 \section{Prova di Statistica 2023/06/27-2}\label{prova-di-statistica-20230627-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-30}
+\subsection{Esercizio 1}\label{esercizio-1-29}
 
 Su un campione di \(250\) piccole imprese della provincia di Modena è stato rilevata la spesa mensile in telecomunicazioni (in euro), qui di seguito
 la distribuzione delle frequenze assolute:
@@ -15614,7 +15706,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 1.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} La spesa media è pari a \(\bar x=180.6032\) e varianza \(\hat\sigma^2=3061.3555\), se tutte le famiglie aumentassero
 del 10\% la loro spesa, come cambierebbero la media e la varianza?
 
-\subsection{Esercizio 2}\label{esercizio-2-30}
+\subsection{Esercizio 2}\label{esercizio-2-29}
 
 Si lancia una moneta perfetta \(n=6\) volte. Sia \(X\) la variabile casuale che conta
 il numero di volte che esce \emph{Testa} su 6 lanci e si considerino gli insiemi \(A=\{X\le 1\}\) e \(B=\{X\ge 5\}\).
@@ -15670,7 +15762,7 @@ di \(X-Y\)?
 
 2.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} Se \(A\) e \(B\) sono due eventi \emph{non} indipendenti come si può scrivere \(P(A\cap B)\)?
 
-\subsection{Esercizio 3}\label{esercizio-3-29}
+\subsection{Esercizio 3}\label{esercizio-3-28}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Una catena di montaggio a ciclo continuo produce ogni giorno un numero di pezzi variabile, con una media pari a
 \(\mu=1.3\) mila pezzi al giorno e una varianza di \(\sigma^2=8.1\).
@@ -15697,7 +15789,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-29}
+\subsection{Esercizio 4}\label{esercizio-4-28}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)}Sia \(\hat \lambda\) lo stimatore di massima verosimiglianza di \(\lambda\) del modello di Poisson:
 \[\hat\lambda =  \frac 1n\sum_{i=1}^nx_i\]
@@ -15853,7 +15945,7 @@ i coefficienti \(\hat\beta_0\) e \(\hat\beta_1\)
 
 \section{Prova di Statistica 2023/06/27-3}\label{prova-di-statistica-20230627-3}
 
-\subsection{Esercizio 1}\label{esercizio-1-31}
+\subsection{Esercizio 1}\label{esercizio-1-30}
 
 Su un campione di \(200\) piccole imprese della provincia di Modena è stato rilevata la spesa mensile in telecomunicazioni (in euro), qui di seguito
 la divisione in classi e le densità percentuali
@@ -15921,7 +16013,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 
 1.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} Scrivere la proprietà di associatività della media aritmetica.
 
-\subsection{Esercizio 2}\label{esercizio-2-31}
+\subsection{Esercizio 2}\label{esercizio-2-30}
 
 Sia \(X\sim N(2,1)\) e sia \(Y\sim\text{Pois}(2.9)\), si considerino gli insiemi
 \(A=\{X>2.5\}\) e \(B=\{Y\geq 3\}\).
@@ -15964,7 +16056,7 @@ di \(X-Y\)?
 
 2.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} Se due eventi \(A\ne\emptyset\) e \(B\ne\emptyset\) non sono indipendenti allora sono necessariamente incompatibili? Motivare la risposta.
 
-\subsection{Esercizio 3}\label{esercizio-3-30}
+\subsection{Esercizio 3}\label{esercizio-3-29}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Una catena di montaggio a ciclo continuo produce un pezzo al giorno e la proporzione di pezzi fallati è pari
 a \(\pi=0.15\).
@@ -15991,7 +16083,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-30}
+\subsection{Esercizio 4}\label{esercizio-4-29}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)}Sia \(\hat \lambda\) lo stimatore di massima verosimiglianza di \(\lambda\) del modello di Poisson:
 \[\hat\lambda =  \frac 1n\sum_{i=1}^nx_i\]
@@ -16159,7 +16251,7 @@ Il modello si adatta bene ai dati.
 
 \section{Prova di Statistica 2023/07/23-1}\label{prova-di-statistica-20230723-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-32}
+\subsection{Esercizio 1}\label{esercizio-1-31}
 
 Su un campione di \(180\) di piccole e medie aziende della provincia di Modena è stato rilevato l'utile netto (espresso in centinaia di migliaia di euro) durante il periodo del covid. Qui di seguito la distribuzione delle frequenze assolute:
 
@@ -16227,7 +16319,7 @@ f(x)=(x_1-x)^2+(x_2-x)^2+(x_3-x)^2
 \]
 \(f\) è minima?
 
-\subsection{Esercizio 2}\label{esercizio-2-32}
+\subsection{Esercizio 2}\label{esercizio-2-31}
 
 Il numero di automobili in fila al semaforo \(A\) in orario di punta è distribuito come una
 Poisson di parametro \(\lambda_A=2.2\) (\(X_A\sim \text{Pois}(2.2)\)).
@@ -16298,7 +16390,7 @@ P(A|B) &=& \frac {P(A)P(B|A)}{P(B)}\\
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-31}
+\subsection{Esercizio 3}\label{esercizio-3-30}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna contiene le seguenti palline numerate \{3,5,7,11\}. Si estrae con reintroduzione per \(n=81\) volte.
 Calcolare la probabilità che la media delle palline estratte sia inferiore a 6.
@@ -16330,7 +16422,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-31}
+\subsection{Esercizio 4}\label{esercizio-4-30}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} Siano \(\hat \mu\) e \(\hat\sigma^2\) gli stimatori di massima verosimiglianza di \(\mu\) e \(\sigma^2\) del modello di Normale.
 \begin{eqnarray*}
@@ -16493,7 +16585,7 @@ V(\hat\beta_{1}) &=& \frac{\sigma_{\varepsilon}^{2}} {n \hat{\sigma}^{2}_{X}} \\
 
 \section{Prova di Statistica 2023/07/23-2}\label{prova-di-statistica-20230723-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-33}
+\subsection{Esercizio 1}\label{esercizio-1-32}
 
 Su un campione di \(200\) famiglie della provincia di Modena è stata rilevata la quantità mensile di ore dedicate all'utilizzo di servizi di streaming. Di seguito è riportata la distribuzione delle frequenze percentuali:
 
@@ -16569,7 +16661,7 @@ f(x)=|x_1-x|+|x_2-x|+|x_3-x|
 \]
 \(f\) è minima?
 
-\subsection{Esercizio 2}\label{esercizio-2-33}
+\subsection{Esercizio 2}\label{esercizio-2-32}
 
 Siano \(X\) e \(Y\) due variabili casuali che rappresentano rispettivamente il tempo di manutenzione per due tipi di macchinari diversi in un'azienda manifatturiera. Si sa che \(X\sim N(15,1.5)\) e \(Y\sim N(12,1.5)\). L'azienda ha definito due eventi \(A=\{X< 14\}\) e \(B=\{Y<13\}\)
 Si suppone inoltre che i tempi di manutenzione dei due macchinari siano indipendenti tra loro.
@@ -16636,7 +16728,7 @@ Y=Z_1^2+Z_2^2+Z_3^3~~~?
 
 2.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} Se \(A\) e \(B\) sono due eventi tali che \(A\cap B\ne\emptyset\), \(A\) e \(B\) sono indipendenti? (scegliere tra \emph{sempre, mai, dipende} e motivare la risposta)
 
-\subsection{Esercizio 3}\label{esercizio-3-32}
+\subsection{Esercizio 3}\label{esercizio-3-31}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna contiene le seguenti palline numerate \{3,4,5,6,7,11\}. Si vine se esce un numero pari. Si estrae con reintroduzione per \(n=81\) volte.
 Calcolare la probabilità di vincere più di 30 volte.
@@ -16662,7 +16754,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-32}
+\subsection{Esercizio 4}\label{esercizio-4-31}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} Sia \(\hat \beta_1\) lo stimatore dei minimi quadrati di \(\beta_1\) del modello di regressione lineare.
 \begin{eqnarray*}
@@ -16808,7 +16900,7 @@ V(\hat\beta_{0}) &=& \sigma_{\varepsilon}^{2} \left( \frac{1} {n}  +  \frac{\bar
 
 \section{Prova di Statistica 2023/07/23-3}\label{prova-di-statistica-20230723-3}
 
-\subsection{Esercizio 1}\label{esercizio-1-34}
+\subsection{Esercizio 1}\label{esercizio-1-33}
 
 Su un campione di \(200\) individui è stata rilevata la spesa mensile in euro per abbigliamento. Di seguito sono riportate la densità percentuali:
 
@@ -16882,7 +16974,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$ & $F_j$\\
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-34}
+\subsection{Esercizio 2}\label{esercizio-2-33}
 
 Supponiamo di avere due urne, urna A e urna B, contenenti palline di due colori: rosse e blu.
 Nell'urna A, ci sono 10 palline di cui 4 rosse e 6 blu. Nell'urna B, ci sono 20 palline di cui 8 rosse e 12 blu.
@@ -16937,7 +17029,7 @@ Definiamo gli eventi:
 
 2.c \textbf{(Punti 2/91 \(\rightarrow\) 0.68/31)} Siano \(A\) e \(B\) due eventi tali che \(P(A)=0.3\) e \(P(B)=0.3\). \(A\) e \(B\) possono essere incompatibili? (scegliere tra \emph{sempre, mai, dipende} e motivare la risposta)
 
-\subsection{Esercizio 3}\label{esercizio-3-33}
+\subsection{Esercizio 3}\label{esercizio-3-32}
 
 3.a \textbf{(Punti 14/91 \(\rightarrow\) 4.77/31)} Un'urna contiene le seguenti palline numerate \{3,4,5,6,7,12\}. Si vine se esce un numero pari. Si estrae con reintroduzione per \(n=81\) volte.
 Calcolare la probabilità che la \textbf{proporzione} di vincite sia minore più di 0.55.
@@ -16963,7 +17055,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-33}
+\subsection{Esercizio 4}\label{esercizio-4-32}
 
 4.a \textbf{(Punti 3/91 \(\rightarrow\) 1.02/31)} Sia \(\hat \beta_0\) lo stimatore dei minimi quadrati di \(\beta_0\) del modello di regressione lineare.
 \begin{eqnarray*}
@@ -17115,7 +17207,7 @@ Si osservano le seguenti statistiche, \(\sum_{i=1}^{50}x_i=524\), \(\sum_{i=1}^{
 
 \section{Prova di Statistica 2024/06/03-1}\label{prova-di-statistica-20240603-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-35}
+\subsection{Esercizio 1}\label{esercizio-1-34}
 
 Su un campione di \(160\) famiglie della provincia di Milano è stato rilevata la spesa annua per le vacanze (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
@@ -17174,7 +17266,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$\\
 1.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} La spesa media è pari a \(\bar x=3.4838\), mentre la SD è pari a \(SD=3.9497\).
 Se ogni famiglia spendesse 2 mila euro in più all'anno, quanto varrebbero la media e la SD dei dati trasformati?
 
-\subsection{Esercizio 2}\label{esercizio-2-35}
+\subsection{Esercizio 2}\label{esercizio-2-34}
 
 2.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Si lancia una moneta perfetta 4 volte. Sia \(X\) la variabile casuale che conta il numero di Teste su 4 lanci. Calcolare la probabilità che \(X\leq 2\).
 
@@ -17208,7 +17300,7 @@ Se \(A\) e \(B\) fossero incompatibili, allora \(A\cap B=\emptyset\) allora \(P(
 
 2.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} Cosa significa che la funzione di ripartizione è continua a destra?
 
-\subsection{Esercizio 3}\label{esercizio-3-34}
+\subsection{Esercizio 3}\label{esercizio-3-33}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna 3 premi da \(\mbox{0}\) euro, 2 premi da \(\mbox{1}\) euro e un premio da \(\mbox{2}\) euro.
 Si estrae 100 volte con reintroduzione.
@@ -17241,7 +17333,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-34}
+\subsection{Esercizio 4}\label{esercizio-4-33}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} (\textbf{Punti 3}) Si consideri il modello normale \(X\sim N(\mu,\sigma^2)\). Sia \(\hat\mu\) lo stimatore di massima verosimiglianza per \(\mu\)
 
@@ -17380,7 +17472,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 
 \section{Prova di Statistica 2024/06/03-2}\label{prova-di-statistica-20240603-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-36}
+\subsection{Esercizio 1}\label{esercizio-1-35}
 
 Su un campione di \(160\) famiglie della provincia di Milano è stato rilevata la spesa annua per le vacanze (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze relative:
 
@@ -17446,7 +17538,7 @@ Se ogni famiglia aumentasse la propria spesa del 2\%, quanto varrebbero la media
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-36}
+\subsection{Esercizio 2}\label{esercizio-2-35}
 
 2.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Sia \(X\) numero settimanale di pratiche inevase dall'ufficio provinciale, si assume \(X\sim\text{Pois}(3.5)\). Calcolare la probabilità che \(X\geq 3\).
 
@@ -17474,7 +17566,7 @@ P(a<X\leq b)
 \]
 in termini di \(F\).
 
-\subsection{Esercizio 3}\label{esercizio-3-35}
+\subsection{Esercizio 3}\label{esercizio-3-34}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna 4 premi da \(\mbox{0}\) euro, 3 premi da \(\mbox{1}\) euro e 2 premi da \(\mbox{2}\) euro.
 Si estrae 50 volte con reintroduzione.
@@ -17507,7 +17599,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-35}
+\subsection{Esercizio 4}\label{esercizio-4-34}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} (\textbf{Punti 3}) Si consideri il modello di Bernoulli \(X\sim\text{Ber}(\pi)\). Sia \(\hat\pi\) lo stimatore di massima verosimiglianza per \(\pi\)
 
@@ -17648,7 +17740,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 
 \section{Prova di Statistica 2024/06/03-3}\label{prova-di-statistica-20240603-3}
 
-\subsection{Esercizio 1}\label{esercizio-1-37}
+\subsection{Esercizio 1}\label{esercizio-1-36}
 
 Su un campione di \(160\) famiglie della provincia di Milano è stato rilevata la spesa annua per le vacanze (espresso in migliaia di euro). Qui di seguito la distribuzione delle densità percentuali:
 
@@ -17705,7 +17797,7 @@ Se ogni famiglia diminuisse la propria spesa del 2\%, quanto varrebbero la media
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-37}
+\subsection{Esercizio 2}\label{esercizio-2-36}
 
 2.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Sia \(X\sim N(5,2)\) sia \(A=\{X>4\}\) e \(B=\{X<6\}\). Calcolare \(P(A\cap B)\).
 
@@ -17736,7 +17828,7 @@ Se ogni famiglia diminuisse la propria spesa del 2\%, quanto varrebbero la media
 
 2.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} Sia \(X\) una variabile casuale e sia \(F\) la sua funzione di ripartizione. Cosa significa che \(F\) è una funzione crescente?
 
-\subsection{Esercizio 3}\label{esercizio-3-36}
+\subsection{Esercizio 3}\label{esercizio-3-35}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna 4 premi da \(\mbox{0}\) euro, 2 premi da \(\mbox{1}\) euro.
 Si estrae 50 volte con reintroduzione.
@@ -17763,7 +17855,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-36}
+\subsection{Esercizio 4}\label{esercizio-4-35}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} (\textbf{Punti 3}) Si consideri il modello binomiale \(X\sim\text{Pois}(\lambda)\). Sia \(\hat\lambda\) lo stimatore di massima verosimiglianza per \(\mu\)
 
@@ -17895,7 +17987,7 @@ Si osservano le seguenti statistiche:
 
 \section{Prova di Statistica 2024/06/21-1}\label{prova-di-statistica-20240621-1}
 
-\subsection{Esercizio 1}\label{esercizio-1-38}
+\subsection{Esercizio 1}\label{esercizio-1-37}
 
 Su un campione di \(250\) famiglie dell'Emilia-Romagna sono stati rilevati i consumi annui in beni tecnologici (dati espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
@@ -17954,7 +18046,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$\\
 1.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} La spesa media è pari a \(\bar x=3.5222\), mentre la SD è pari a \(SD=4.2267\).
 Se ogni famiglia spendesse 2 mila euro in più all'anno, quanto varrebbero la media e la SD dei dati trasformati?
 
-\subsection{Esercizio 2}\label{esercizio-2-38}
+\subsection{Esercizio 2}\label{esercizio-2-37}
 
 2.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Si consideri un'urna che ha una pallina bianche e due nere. Si estrae 4 volte con reinserimento. Sia \(X\) la variabile casuale che conta il numero di bianche su 4 estrazioni. Calcolare la probabilità che \(X\leq 2\).
 
@@ -17987,7 +18079,7 @@ Se \(P(B|A)=P(A\cap B)/P(A)\) e \(P(B|A)=P(A\cap B)/P(A)=1\) se e solo se \(P(A\
 
 2.d \textbf{(Punti 2/105 \(\rightarrow\) 0.59/31)} Sia \(X\) una Bernoulli di parametro \(\pi\), \(X\sim\text{Ber}(\pi)\) e sia \(F\) la sua funzione di ripartizione. Se \(F(0)=0.6\), quanto vale \(\pi\)?
 
-\subsection{Esercizio 3}\label{esercizio-3-37}
+\subsection{Esercizio 3}\label{esercizio-3-36}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna contiene 6 premi da \(\mbox{0}\) euro, 3 premi da \(\mbox{1}\) euro e un premio da \(\mbox{2}\) euro.
 Si estrae 100 volte con reintroduzione.
@@ -18020,7 +18112,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-37}
+\subsection{Esercizio 4}\label{esercizio-4-36}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} (\textbf{Punti 3}) Si consideri il modello normale \(X\sim N(\mu,\sigma^2)\). Sia \(\hat\mu\) lo stimatore di massima verosimiglianza per \(\mu\)
 
@@ -18214,7 +18306,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 
 \section{Prova di Statistica 2024/06/21-2}\label{prova-di-statistica-20240621-2}
 
-\subsection{Esercizio 1}\label{esercizio-1-39}
+\subsection{Esercizio 1}\label{esercizio-1-38}
 
 Su un campione di \(160\) famiglie dell'Emilia-Romagna sono stati rilevati i consumi annui in beni tecnologici (dai espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze relative:
 
@@ -18298,7 +18390,7 @@ Dove:
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-39}
+\subsection{Esercizio 2}\label{esercizio-2-38}
 
 2.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Sia \(X\) il numero di telefonate in arrivo ad un centralino di emergenza, si assume \(X\sim\text{Pois}(1.2)\). Calcolare la probabilità che \(X\geq 2\).
 
@@ -18344,7 +18436,7 @@ Disegnare le sua funzione di ripartizione, \(F(x)\), nell'intervallo \(-2\leq x\
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-38}
+\subsection{Esercizio 3}\label{esercizio-3-37}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna 4 premi da \(\mbox{0}\) euro, 1 premio da \(\mbox{2}\) euro.
 Si estrae 50 volte con reintroduzione.
@@ -18378,7 +18470,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-38}
+\subsection{Esercizio 4}\label{esercizio-4-37}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} (\textbf{Punti 3}) Si consideri il modello di Bernoulli \(X\sim\text{Ber}(\pi)\). Sia \(\hat\pi\) lo stimatore di massima verosimiglianza per \(\pi\)
 
@@ -18520,7 +18612,7 @@ Attenzione il calcolo del \(p_\text{value}\) con la \(T\) è puramente illustrat
 
 \section{Prova di Statistica 2024/06/21-3}\label{prova-di-statistica-20240621-3}
 
-\subsection{Esercizio 1}\label{esercizio-1-40}
+\subsection{Esercizio 1}\label{esercizio-1-39}
 
 Su un campione di \(160\) famiglie dell'Emilia-Romagna sono stati rilevati i consumi annui in beni tecnologici (dai espressi in migliaia di euro). Qui di seguito la distribuzione delle densità percentuali:
 
@@ -18578,7 +18670,7 @@ Se ogni famiglia diminuisse la propria spesa del 2\%, quanto varrebbero la media
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-40}
+\subsection{Esercizio 2}\label{esercizio-2-39}
 
 2.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Sia \(X\sim N(6,0.5)\) e sia \(Y\sim N(6,0.5)\), \(X\) e \(Y\) indipendenti sia \(A=\{X>5\}\) e \(B=\{Y<7\}\).
 Calcolare \(P(A\cup B)\).
@@ -18647,7 +18739,7 @@ P(A \cup B)    &=&  P(A) + P(B) - P(A\cap B)\\
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-39}
+\subsection{Esercizio 3}\label{esercizio-3-38}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna 3 premi da \(\mbox{0}\) euro, un premio da \(\mbox{1}\) euro.
 Si estrae 100 volte con reintroduzione.
@@ -18674,7 +18766,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-39}
+\subsection{Esercizio 4}\label{esercizio-4-38}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} (\textbf{Punti 3}) Si consideri il modello binomiale \(X\sim\text{Pois}(\lambda)\). Sia \(\hat\lambda\) lo stimatore di massima verosimiglianza per \(\mu\)
 
@@ -18808,7 +18900,7 @@ dove la \(X\) è spiegata dalla \(Y\).
 
 \section{Prova di Statistica 24/07/06 -1}\label{prova-di-statistica-240706--1}
 
-\subsection{Esercizio 1}\label{esercizio-1-41}
+\subsection{Esercizio 1}\label{esercizio-1-40}
 
 Su un campione di \(150\) di piccole e medie imprese dell'Emilia-Romagna sono stati rilevati gli investimenti in infrastrutture tecnologiche (dati espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
 
@@ -18869,7 +18961,7 @@ $[\text{x}_j,$ & $\text{x}_{j+1})$ & $n_j$ & $f_j$ & $b_j$ & $h_j$\\
 \sum_{i=1}^n (x_i-\bar x)=~~?
 \]
 
-\subsection{Esercizio 2}\label{esercizio-2-41}
+\subsection{Esercizio 2}\label{esercizio-2-40}
 
 2.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Si consideri un'urna che ha una pallina bianche, due nere e due verdi. Si estrae 5 volte con reinserimento. Sia \(X\) la variabile casuale che conta il numero di bianche su 5 estrazioni. Calcolare la probabilità che \(X\leq 1\).
 
@@ -18914,7 +19006,7 @@ Disegnare le sua funzione di ripartizione, \(F(x)\), nell'intervallo \(-2\leq x\
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-40}
+\subsection{Esercizio 3}\label{esercizio-3-39}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna contiene 4 palline col numero \(\mbox{-1}\) e 6 col \(\mbox{1}\).
 Si estrae 100 volte con reintroduzione.
@@ -18947,7 +19039,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-40}
+\subsection{Esercizio 4}\label{esercizio-4-39}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} Si consideri il modello normale \(X\sim N(\mu,\sigma^2)\). Sia \(\hat\mu\) lo stimatore di massima verosimiglianza per \(\mu\)
 
@@ -19130,7 +19222,7 @@ Calcolo:
 
 \section{Prova di Statistica 24/07/06 -2}\label{prova-di-statistica-240706--2}
 
-\subsection{Esercizio 1}\label{esercizio-1-42}
+\subsection{Esercizio 1}\label{esercizio-1-41}
 
 Su un campione di \(200\) di piccole e medie imprese dell'Emilia-Romagna sono stati rilevati gli investimenti in infrastrutture tecnologiche (dati espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze assolute:
 
@@ -19213,7 +19305,7 @@ Dove:
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-42}
+\subsection{Esercizio 2}\label{esercizio-2-41}
 
 2.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Sia \(X\) il numero di telefonate in arrivo ad un centralino di emergenza, si assume \(X\sim\text{Pois}(1.3)\). Calcolare la probabilità che \(X\geq 1\).
 
@@ -19257,7 +19349,7 @@ Disegnare le sua funzione di ripartizione, \(F(x)\), nell'intervallo \(-2\leq x\
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-41}
+\subsection{Esercizio 3}\label{esercizio-3-40}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna contiene 2 palline col numero \(\mbox{-2}\), e 2 palline col numero \(\mbox{-1}\) e 6 palline col numero \(\mbox{+2}\).
 Si estrae 50 volte con reintroduzione.
@@ -19284,7 +19376,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-41}
+\subsection{Esercizio 4}\label{esercizio-4-40}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} Si consideri il modello di Bernoulli \(X\sim\text{Ber}(\pi)\). Sia \(\hat\pi\) lo stimatore di massima verosimiglianza per \(\pi\)
 
@@ -19426,7 +19518,7 @@ Si osservano le seguenti statistiche:
 
 \section{Prova di Statistica 24/07/06 -3}\label{prova-di-statistica-240706--3}
 
-\subsection{Esercizio 1}\label{esercizio-1-43}
+\subsection{Esercizio 1}\label{esercizio-1-42}
 
 Su un campione di \(200\) di piccole e medie imprese dell'Emilia-Romagna sono stati rilevati gli investimenti in infrastrutture tecnologiche (dati espressi in migliaia di euro). Qui di seguito la distribuzione delle densità percentuali:
 
@@ -19501,7 +19593,7 @@ ricavare media aritmetica e varianza delle \(\{y_1,...,y_n\}\).
 
 \end{sol}
 
-\subsection{Esercizio 2}\label{esercizio-2-43}
+\subsection{Esercizio 2}\label{esercizio-2-42}
 
 2.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Sia \(X\sim N(1,1.5)\) e sia \(Y\sim N(-1,1.5)\), \(X\) e \(Y\) indipendenti sia \(A=\{X>0\}\) e \(B=\{Y<0\}\).
 Calcolare \(P(A\cup B)\).
@@ -19562,7 +19654,7 @@ P(W<1|W>-1)=\frac{P(-1<W<1)}{P(W>-1)}=\frac{0.7518}{0.8759}=0.8583
 
 \end{sol}
 
-\subsection{Esercizio 3}\label{esercizio-3-42}
+\subsection{Esercizio 3}\label{esercizio-3-41}
 
 3.a \textbf{(Punti 14/105 \(\rightarrow\) 4.13/31)} Un'urna contiene 2 palline col numero \(\mbox{-2}\), e 2 palline col numero \(\mbox{-1}\) e 6 palline col numero \(\mbox{+2}\).
 Si estrae 150 volte con reintroduzione.
@@ -19595,7 +19687,7 @@ allora:\begin{eqnarray*}
 
 \end{sol}
 
-\subsection{Esercizio 4}\label{esercizio-4-42}
+\subsection{Esercizio 4}\label{esercizio-4-41}
 
 4.a \textbf{(Punti 3/105 \(\rightarrow\) 0.89/31)} Si consideri il modello di Poisson \(X\sim\text{Pois}(\lambda)\). Sia \(\hat\lambda\) lo stimatore di massima verosimiglianza per \(\mu\)
 
