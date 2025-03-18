@@ -1736,7 +1736,7 @@ Calcolo:
 <!-- ``` -->
 <!-- ::: -->
 
-<div style="page-break-before: always;" />
+
 
 
 ## Prova di Statistica 24/07/06 -2
@@ -2012,7 +2012,7 @@ spline_pat(x,es,df1 = 5,df2 = 5)
 <!-- ``` -->
 <!-- ::: -->
 
-<div style="page-break-before: always;" />
+
 
 
 ## Prova di Statistica 24/07/06 -3
