@@ -662,4 +662,10 @@ Per acquisire elementi informativi, viene selezionato un campione casuale di **8
 
 `r item(T)` Costruire le distribuzioni condizionate di $X$ a $\pi$.  Determinare, per ciascuna delle due ipotesi, la probabilità di osservare 5 malfunzionamenti su 8 valvole.
 
-`r item()`
+:::{.sol data-latex=""}
+
+Soluzione
+
+:::
+
+`r item()` Costruire la distribuzione 

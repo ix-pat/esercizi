@@ -1895,7 +1895,7 @@ pb <- 1-pnorm(2,1.5,sqrt(1.5))
 
 ### Esercizio 3
 
-`r punti_p(nex = T)` Un'urna contiene 3 palline col numero $\fbox{0}$, 3 col numero $\fbox{1}$ e 4 col numero $\fbox{2}$. Si estrae senza reintroduzione per $n=81$ volte.
+`r punti_p(nex = T)` Un'urna contiene 3 palline col numero $\fbox{0}$, 3 col numero $\fbox{1}$ e 4 col numero $\fbox{2}$. Si estrae con reintroduzione per $n=81$ volte.
 Calcolare la probabilità che la somma dei risultati sia maggiore di 80.
 
 :::{.sol data-latex=""}
@@ -2154,7 +2154,7 @@ pb <- pbinom(2,5,.4,lower.tail = F)
 
 ### Esercizio 3
 
-`r punti_p(nex = T)` Un'urna contiene 3 palline col numero $\fbox{0}$, 4 col numero $\fbox{1}$ e 3 col numero $\fbox{2}$. Si estrae senza reintroduzione per $n=81$ volte.
+`r punti_p(nex = T)` Un'urna contiene 3 palline col numero $\fbox{0}$, 4 col numero $\fbox{1}$ e 3 col numero $\fbox{2}$. Si estrae con reintroduzione per $n=81$ volte.
 Calcolare la probabilità che la media dei risultati sia minore di 0.9.
 
 :::{.sol data-latex=""}
