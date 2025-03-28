@@ -517,7 +517,7 @@ drop fuzzy shadow]
 \makeatother
 \subtitle{CLEAM AA 24/25}
 \author{Patrizio Frederic}
-\date{Aggiornato al 18-03-2025}
+\date{Aggiornato al 28-03-2025}
 
 \begin{document}
 \maketitle
@@ -563,7 +563,7 @@ di esercitazione.
 
 Patrizio Frederic
 
-Bologna, il 18/03/2025.
+Bologna, il 28/03/2025.
 
 \part{Esercizi per argomento}
 
@@ -3390,29 +3390,54 @@ L'urna \(U\) contiene tre palline bianche, tre palline rosse e tre palline nere.
 1.a Si estrae \(n=2\) volte \textbf{senza} reintroduzione. Qual è la probabilità di ottenere due colori diversi in 2 estrazioni? (esempio: prima bianco poi rosso \emph{oppure} prima nero poi bianco oppure\ldots)
 
 \begin{sol}
+\textbf{Soluzione diretta}
+
 L'evento
 \[E=\text{due colori diversi in 2 estrazioni}\]
 
-l'evento complementare di \(E\) è \(\bar E\) due palline di uguale colore, ed è dato da
 \begin{eqnarray*}
-\bar E&=& (B_1\cap R_2)\cup(R_1\cap B_2)\cup\\
-& &(B_1\cap N_2)\cup (B_1\cap R_2)\cup\\
-& &(R_1\cap N_2)\cup (N_1\cap R_2)
+E&=& (B_1\cap R_2)\cup(B_1\cap N_2)\cup\\
+& &(R_1\cap B_2)\cup (R_1\cap N_2)\cup\\
+& &(N_1\cap B_2)\cup (N_1\cap R_2)
 \end{eqnarray*}
+
 e quindi
 
 \begin{eqnarray*}
-P(E)&=& P(B_1\cap R_2)+P(R_1\cap B_2)+\\
-& &P(B_1\cap N_2)+ P(N_1\cap B_2)+\\
-& &P(R_1\cap N_2)+ P(N_1\cap R_2)\\
-&=&P(B_1)P(R_2|B_1)+P(R_1)P(B_2|R_1)+\\
-&&P(B_1)P(N_2|B_1)+P(N_1)P(B_2|N_1)+\\
-&&P(R_1)P(N_2|R_1)+P(R_1)P(B_2|N_1)\\
-&=& \frac 39\frac 28+ \frac 39\frac 28+\\
-&&  \frac 39\frac 28+ \frac 39\frac 28+\\
-&&  \frac 39\frac 28+ \frac 39\frac 28\\
-&=&4\cdot\frac 16=0.6667
+P(E)&=& P(B_1\cap R_2)+P(B_1\cap N_2)+\\
+    & & P(R_1\cap B_2)+ P(R_1\cap N_2)+\\
+    & & P(N_1\cap B_2)+ P(N_1\cap R_2)\\
+    &=& P(B_1)P(R_2|B_1)+P(B_1)P(R_2|B_1)+\\
+    & & P(R_1)P(B_2|R_1)+P(R_1)P(R_2|R_1)+\\
+    & & P(N_1)P(B_2|N_1)+P(N_1)P(R_2|N_1)\\
+    &=& \frac 39\frac 38+ \frac 39\frac 38+\\
+    & & \frac 39\frac 38+ \frac 39\frac 38+\\
+    & & \frac 39\frac 38+ \frac 39\frac 38\\
+&=& 6\cdot \frac 39\frac 38 = \frac 34 
 \end{eqnarray*}
+
+\textbf{Soluzione complementare}
+
+l'evento complementare di \(E\) è \(\bar E\) due palline di uguale colore, ed è dato da
+
+\begin{eqnarray*}
+\bar E&=& (B_1\cap B_2)\cup(R_1\cap R_2)\cup (N_1\cap N_2)
+\end{eqnarray*}
+
+da cui:
+
+\begin{eqnarray*}
+P(\bar E)&=& P(B_1\cap B_2)+P(R_1\cap R_2)+P(N_1\cap N_2)\\
+&=& P(B_1)P(B_2|B_1)+P(R_1)P(R_2|R_1)+P(N_1)P(N_2|N_1)\\
+&=& \frac 39\frac 28 + \frac 39\frac 28 + \frac 39\frac 28 \\
+&=& \frac 14
+\end{eqnarray*}
+
+e quindi:
+
+\[
+P(E)=1-P(\bar E)=1- \frac 14=\frac 34
+\]
 
 \end{sol}
 
@@ -3463,7 +3488,7 @@ V(X-Y)=V(X)+V(Y)=n\pi(1-\pi)+\lambda=10\times 0.3(1-0.3)+3.23=5.33
 
 \end{sol}
 
-\section{Esercizio sul Teorema di Bayes}\label{esercizio-sul-teorema-di-bayes}
+\section{Esercizio sul Teorema di Bayes (palline vincenti)}\label{esercizio-sul-teorema-di-bayes-palline-vincenti}
 
 Michele esegue la seguente sequenza di estrazioni:
 
@@ -3660,6 +3685,29 @@ Tot & 1 & 1 & 1 & 1\\
 \end{tabular}
 
 \end{sol}
+
+\section{Esercizio sul Teorema di Bayes (Esperti)}\label{esercizio-sul-teorema-di-bayes-esperti}
+
+Due ingegneri, \textbf{Mario} e \textbf{Sergio}, hanno appena terminato l'ispezione di un nuovo impianto per la produzione di \textbf{valvole industriali}. Al termine della visita, forniscono valutazioni discordanti circa la frequenza con cui, nel processo produttivo, si verificano malfunzionamenti.
+
+\begin{itemize}
+\tightlist
+\item
+  Mario, ingegnere \textbf{senior} con lunga esperienza sul campo, ritiene che la probabilità che una valvola presenti un malfunzionamento sia pari a \(\pi_M = 0.1\).
+\item
+  Sergio, \textbf{neolaureato} al primo incarico operativo, sostiene che tale probabilità sia invece pari a \(\pi_S = 0.5\).
+\end{itemize}
+
+Il decision maker, pur tenendo conto di entrambe le opinioni, attribuisce maggiore credibilità a quella di Mario, assegnando probabilità soggettive:
+\[
+P(\pi_M) = 0.9,\quad P(\pi_S) = 0.1
+\]
+
+Per acquisire elementi informativi, viene selezionato un campione casuale di \textbf{8 valvole}. Tra queste, \textbf{5 presentano malfunzionamenti}.
+
+1.a Costruire le distribuzioni condizionate di \(X\) a \(\pi\). Determinare, per ciascuna delle due ipotesi, la probabilità di osservare 5 malfunzionamenti su 8 valvole.
+
+1.b
 
 \chapter{Esercizi sul TLC}\label{esercizi-sul-tlc}
 
@@ -14680,7 +14728,7 @@ Siano \(X_A\sim \text{Pois}(1.5)\) e sia \(X_B\sim \text{Pois}(1.5)\), \(X_A\) e
 
 \subsection{Esercizio 3}\label{esercizio-3-24}
 
-3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 3 palline Rosse, 3 Bianche e 4 Blu. Si estrae senza reintroduzione per \(n=81\) volte.
+3.a \textbf{(Punti 14/103 \(\rightarrow\) 4.21/31)} Un'urna contiene 3 palline Rosse, 3 Bianche e 4 Blu. Si estrae con reintroduzione per \(n=81\) volte.
 Calcolare la probabilità che la proporzione di palline Blu sia maggiore di 0.3.
 
 \begin{sol}
@@ -14914,7 +14962,8 @@ Siano \(X_A\sim N(1.5,1.5)\) e sia \(X_B\sim N(1.5,1.5)\), \(X_A\) e \(X_B\) ind
 Calcolare la probabilità che la somma dei risultati sia maggiore di 80.
 
 \begin{sol}
-\[ \mu = 0 \cdot 0.3+1 \cdot 0.3+2 \cdot 0.4 = 1.1 \]\[ \sigma^2 =( 0^2 \cdot 1+1^2 \cdot 1+2^2 \cdot 1 )-( 1.1 )^2= -4 \]\textbf{Teorema del Limite Centrale (somma VC qualunque)}
+\begin{eqnarray*}
+ \mu &=&  0  \cdot 0.3+ 1  \cdot 0.3+ 2  \cdot 0.4 = 1.1 \\ \sigma^2 &=&(  0 ^2 \cdot 0.3+ 1 ^2 \cdot 0.3+ 2 ^2 \cdot 0.4 )-( 1.1 )^2= 0.69 \end{eqnarray*}\textbf{Teorema del Limite Centrale (somma VC qualunque)}
 
 Siano \(X_1\),\ldots,\(X_n\), \(n=81\) VC IID, tc \(E(X_i)=\mu=1.1\) e \(V(X_i)=\sigma^2=0.69,\forall i\), posto:
 \[
@@ -15176,7 +15225,8 @@ Sia \(X\sim\text{Binom}(5,0.5)\) e sia \(y\sim\text{Binom}(5,0.4)\), \(X\) e \(Y
 Calcolare la probabilità che la media dei risultati sia minore di 0.9.
 
 \begin{sol}
-\[ \mu = 0 \cdot 0.3+1 \cdot 0.4+2 \cdot 0.3 = 1 \]\[ \sigma^2 =( 0^2 \cdot 1+1^2 \cdot 1+2^2 \cdot 1 )-( 1 )^2= -4 \]\textbf{Teorema del Limite Centrale (media VC qualunque)}
+\begin{eqnarray*}
+ \mu &=&  0  \cdot 0.3+ 1  \cdot 0.4+ 2  \cdot 0.3 = 1 \\ \sigma^2 &=&(  0 ^2 \cdot 0.3+ 1 ^2 \cdot 0.4+ 2 ^2 \cdot 0.3 )-( 1 )^2= 0.6 \end{eqnarray*}\textbf{Teorema del Limite Centrale (media VC qualunque)}
 
 Siano \(X_1\),\ldots,\(X_n\), \(n=81\) VC IID, tc \(E(X_i)=\mu=1\) e \(V(X_i)=\sigma^2=0.6,\forall i\), posto:
 \[

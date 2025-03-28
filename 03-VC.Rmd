@@ -354,29 +354,56 @@ L'urna $U$ contiene tre palline bianche, tre palline rosse e tre palline nere.
 `r i2 <- 1;item(T)` Si estrae $n=2$ volte __senza__ reintroduzione. Qual è la probabilità di ottenere due colori diversi in 2 estrazioni? (esempio: prima bianco poi rosso _oppure_ prima nero poi bianco oppure...)  
 
 :::{.sol data-latex=""}
+**Soluzione diretta**
+
 L'evento 
 \[E=\text{due colori diversi in 2 estrazioni}\]
 
-l'evento complementare di $E$ è $\bar E$ due palline di uguale colore, ed è dato da
 \begin{eqnarray*}
-\bar E&=& (B_1\cap R_2)\cup(R_1\cap B_2)\cup\\
-& &(B_1\cap N_2)\cup (B_1\cap R_2)\cup\\
-& &(R_1\cap N_2)\cup (N_1\cap R_2)
+E&=& (B_1\cap R_2)\cup(B_1\cap N_2)\cup\\
+& &(R_1\cap B_2)\cup (R_1\cap N_2)\cup\\
+& &(N_1\cap B_2)\cup (N_1\cap R_2)
 \end{eqnarray*}
+
 e quindi
 
 \begin{eqnarray*}
-P(E)&=& P(B_1\cap R_2)+P(R_1\cap B_2)+\\
-& &P(B_1\cap N_2)+ P(N_1\cap B_2)+\\
-& &P(R_1\cap N_2)+ P(N_1\cap R_2)\\
-&=&P(B_1)P(R_2|B_1)+P(R_1)P(B_2|R_1)+\\
-&&P(B_1)P(N_2|B_1)+P(N_1)P(B_2|N_1)+\\
-&&P(R_1)P(N_2|R_1)+P(R_1)P(B_2|N_1)\\
-&=& \frac 39\frac 28+ \frac 39\frac 28+\\
-&&  \frac 39\frac 28+ \frac 39\frac 28+\\
-&&  \frac 39\frac 28+ \frac 39\frac 28\\
-&=&4\cdot\frac 16=`r 4/6`
+P(E)&=& P(B_1\cap R_2)+P(B_1\cap N_2)+\\
+    & & P(R_1\cap B_2)+ P(R_1\cap N_2)+\\
+    & & P(N_1\cap B_2)+ P(N_1\cap R_2)\\
+    &=& P(B_1)P(R_2|B_1)+P(B_1)P(R_2|B_1)+\\
+    & & P(R_1)P(B_2|R_1)+P(R_1)P(R_2|R_1)+\\
+    & & P(N_1)P(B_2|N_1)+P(N_1)P(R_2|N_1)\\
+    &=& \frac 39\frac 38+ \frac 39\frac 38+\\
+    & & \frac 39\frac 38+ \frac 39\frac 38+\\
+    & & \frac 39\frac 38+ \frac 39\frac 38\\
+&=& 6\cdot \frac 39\frac 38 = \frac 34 
 \end{eqnarray*}
+
+**Soluzione complementare**
+
+l'evento complementare di $E$ è $\bar E$ due palline di uguale colore, ed è dato da
+
+\begin{eqnarray*}
+\bar E&=& (B_1\cap B_2)\cup(R_1\cap R_2)\cup (N_1\cap N_2)
+\end{eqnarray*}
+
+da cui:
+
+\begin{eqnarray*}
+P(\bar E)&=& P(B_1\cap B_2)+P(R_1\cap R_2)+P(N_1\cap N_2)\\
+&=& P(B_1)P(B_2|B_1)+P(R_1)P(R_2|R_1)+P(N_1)P(N_2|N_1)\\
+&=& \frac 39\frac 28 + \frac 39\frac 28 + \frac 39\frac 28 \\
+&=& \frac 14
+\end{eqnarray*}
+
+e quindi:
+
+$$
+P(E)=1-P(\bar E)=1- \frac 14=\frac 34
+$$
+
+
 :::
 
 `r item()` Si ricompone l'urna $U$ e si estrae una volta, si assegna 
@@ -421,7 +448,7 @@ V(X-Y)=V(X)+V(Y)=n\pi(1-\pi)+\lambda=10\times 0.3(1-0.3)+3.23=`r 10*.3*.7+3.23`
 
 <div class="button-container"></div>
 
-## Esercizio sul Teorema di Bayes
+## Esercizio sul Teorema di Bayes (palline vincenti)
 
 ```{r 03-VC-8}
 
@@ -619,3 +646,20 @@ kable(TTX,row.names = T,booktabs = T, escape = F,linesep = "", digits = 4)
 
 <!-- `r item()` Ottenuto $X=2$ costruire la probabilità aggiornata di  -->
 
+## Esercizio sul Teorema di Bayes (Esperti)
+
+Due ingegneri, **Mario** e **Sergio**, hanno appena terminato l’ispezione di un nuovo impianto per la produzione di **valvole industriali**. Al termine della visita, forniscono valutazioni discordanti circa la frequenza con cui, nel processo produttivo, si verificano malfunzionamenti.
+
+- Mario, ingegnere **senior** con lunga esperienza sul campo, ritiene che la probabilità che una valvola presenti un malfunzionamento sia pari a \( \pi_M = 0.1 \).
+- Sergio, **neolaureato** al primo incarico operativo, sostiene che tale probabilità sia invece pari a \( \pi_S = 0.5 \).
+
+Il decision maker, pur tenendo conto di entrambe le opinioni, attribuisce maggiore credibilità a quella di Mario, assegnando probabilità soggettive:
+\[
+P(\pi_M) = 0.9,\quad P(\pi_S) = 0.1
+\]
+
+Per acquisire elementi informativi, viene selezionato un campione casuale di **8 valvole**. Tra queste, **5 presentano malfunzionamenti**.
+
+`r item(T)` Costruire le distribuzioni condizionate di $X$ a $\pi$.  Determinare, per ciascuna delle due ipotesi, la probabilità di osservare 5 malfunzionamenti su 8 valvole.
+
+`r item()`

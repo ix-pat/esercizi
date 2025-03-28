@@ -218,7 +218,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#poisson-2"><i class="fa fa-check"></i>Poisson 2</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#normale"><i class="fa fa-check"></i>Normale</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#estrazioni-senza-reitroduzione"><i class="fa fa-check"></i>Estrazioni senza reitroduzione</a></li>
-<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes"><i class="fa fa-check"></i>Esercizio sul Teorema di Bayes</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes-palline-vincenti"><i class="fa fa-check"></i>Esercizio sul Teorema di Bayes (palline vincenti)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes-esperti"><i class="fa fa-check"></i>Esercizio sul Teorema di Bayes (Esperti)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html"><i class="fa fa-check"></i>Esercizi sul TLC</a>
 <ul>
@@ -912,27 +913,43 @@ P(E)&amp;=&amp;P(N_1\cap N_2\cap N_3 )\\
 <p>L’urna <span class="math inline">\(U\)</span> contiene tre palline bianche, tre palline rosse e tre palline nere.</p>
 <p>1.a Si estrae <span class="math inline">\(n=2\)</span> volte <strong>senza</strong> reintroduzione. Qual è la probabilità di ottenere due colori diversi in 2 estrazioni? (esempio: prima bianco poi rosso <em>oppure</em> prima nero poi bianco oppure…)</p>
 <div class="sol">
+<p><strong>Soluzione diretta</strong></p>
 <p>L’evento
 <span class="math display">\[E=\text{due colori diversi in 2 estrazioni}\]</span></p>
-<p>l’evento complementare di <span class="math inline">\(E\)</span> è <span class="math inline">\(\bar E\)</span> due palline di uguale colore, ed è dato da
-<span class="math display">\[\begin{eqnarray*}
-\bar E&amp;=&amp; (B_1\cap R_2)\cup(R_1\cap B_2)\cup\\
-&amp; &amp;(B_1\cap N_2)\cup (B_1\cap R_2)\cup\\
-&amp; &amp;(R_1\cap N_2)\cup (N_1\cap R_2)
-\end{eqnarray*}\]</span>
-e quindi</p>
 <p><span class="math display">\[\begin{eqnarray*}
-P(E)&amp;=&amp; P(B_1\cap R_2)+P(R_1\cap B_2)+\\
-&amp; &amp;P(B_1\cap N_2)+ P(N_1\cap B_2)+\\
-&amp; &amp;P(R_1\cap N_2)+ P(N_1\cap R_2)\\
-&amp;=&amp;P(B_1)P(R_2|B_1)+P(R_1)P(B_2|R_1)+\\
-&amp;&amp;P(B_1)P(N_2|B_1)+P(N_1)P(B_2|N_1)+\\
-&amp;&amp;P(R_1)P(N_2|R_1)+P(R_1)P(B_2|N_1)\\
-&amp;=&amp; \frac 39\frac 28+ \frac 39\frac 28+\\
-&amp;&amp;  \frac 39\frac 28+ \frac 39\frac 28+\\
-&amp;&amp;  \frac 39\frac 28+ \frac 39\frac 28\\
-&amp;=&amp;4\cdot\frac 16=0.6667
+E&amp;=&amp; (B_1\cap R_2)\cup(B_1\cap N_2)\cup\\
+&amp; &amp;(R_1\cap B_2)\cup (R_1\cap N_2)\cup\\
+&amp; &amp;(N_1\cap B_2)\cup (N_1\cap R_2)
 \end{eqnarray*}\]</span></p>
+<p>e quindi</p>
+<p><span class="math display">\[\begin{eqnarray*}
+P(E)&amp;=&amp; P(B_1\cap R_2)+P(B_1\cap N_2)+\\
+    &amp; &amp; P(R_1\cap B_2)+ P(R_1\cap N_2)+\\
+    &amp; &amp; P(N_1\cap B_2)+ P(N_1\cap R_2)\\
+    &amp;=&amp; P(B_1)P(R_2|B_1)+P(B_1)P(R_2|B_1)+\\
+    &amp; &amp; P(R_1)P(B_2|R_1)+P(R_1)P(R_2|R_1)+\\
+    &amp; &amp; P(N_1)P(B_2|N_1)+P(N_1)P(R_2|N_1)\\
+    &amp;=&amp; \frac 39\frac 38+ \frac 39\frac 38+\\
+    &amp; &amp; \frac 39\frac 38+ \frac 39\frac 38+\\
+    &amp; &amp; \frac 39\frac 38+ \frac 39\frac 38\\
+&amp;=&amp; 6\cdot \frac 39\frac 38 = \frac 34
+\end{eqnarray*}\]</span></p>
+<p><strong>Soluzione complementare</strong></p>
+<p>l’evento complementare di <span class="math inline">\(E\)</span> è <span class="math inline">\(\bar E\)</span> due palline di uguale colore, ed è dato da</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\bar E&amp;=&amp; (B_1\cap B_2)\cup(R_1\cap R_2)\cup (N_1\cap N_2)
+\end{eqnarray*}\]</span></p>
+<p>da cui:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+P(\bar E)&amp;=&amp; P(B_1\cap B_2)+P(R_1\cap R_2)+P(N_1\cap N_2)\\
+&amp;=&amp; P(B_1)P(B_2|B_1)+P(R_1)P(R_2|R_1)+P(N_1)P(N_2|N_1)\\
+&amp;=&amp; \frac 39\frac 28 + \frac 39\frac 28 + \frac 39\frac 28 \\
+&amp;=&amp; \frac 14
+\end{eqnarray*}\]</span></p>
+<p>e quindi:</p>
+<p><span class="math display">\[
+P(E)=1-P(\bar E)=1- \frac 14=\frac 34
+\]</span></p>
 </div>
 <p>1.b Si ricompone l’urna <span class="math inline">\(U\)</span> e si estrae una volta, si assegna</p>
 <ul>
@@ -970,8 +987,8 @@ V(X-Y)=V(X)+V(Y)=n\pi(1-\pi)+\lambda=10\times 0.3(1-0.3)+3.23=5.33
 
 </div>
 </div>
-<div id="esercizio-sul-teorema-di-bayes" class="section level2 hasAnchor">
-<h2>Esercizio sul Teorema di Bayes<a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="esercizio-sul-teorema-di-bayes-palline-vincenti" class="section level2 hasAnchor">
+<h2>Esercizio sul Teorema di Bayes (palline vincenti)<a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes-palline-vincenti" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Michele esegue la seguente sequenza di estrazioni:</p>
 <ul>
 <li>si estrae da un’urna <span class="math inline">\(U_1\)</span> che contiene 5 palline etichettate da 1 a 5</li>
@@ -1271,6 +1288,21 @@ tavola doppia entrata dove mettiamo <span class="math inline">\(\pi\)</span> per
 </table>
 </div>
 <!-- 1.g  Ottenuto $X=2$ costruire la probabilità aggiornata di  -->
+</div>
+<div id="esercizio-sul-teorema-di-bayes-esperti" class="section level2 hasAnchor">
+<h2>Esercizio sul Teorema di Bayes (Esperti)<a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes-esperti" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Due ingegneri, <strong>Mario</strong> e <strong>Sergio</strong>, hanno appena terminato l’ispezione di un nuovo impianto per la produzione di <strong>valvole industriali</strong>. Al termine della visita, forniscono valutazioni discordanti circa la frequenza con cui, nel processo produttivo, si verificano malfunzionamenti.</p>
+<ul>
+<li>Mario, ingegnere <strong>senior</strong> con lunga esperienza sul campo, ritiene che la probabilità che una valvola presenti un malfunzionamento sia pari a <span class="math inline">\(\pi_M = 0.1\)</span>.</li>
+<li>Sergio, <strong>neolaureato</strong> al primo incarico operativo, sostiene che tale probabilità sia invece pari a <span class="math inline">\(\pi_S = 0.5\)</span>.</li>
+</ul>
+<p>Il decision maker, pur tenendo conto di entrambe le opinioni, attribuisce maggiore credibilità a quella di Mario, assegnando probabilità soggettive:
+<span class="math display">\[
+P(\pi_M) = 0.9,\quad P(\pi_S) = 0.1
+\]</span></p>
+<p>Per acquisire elementi informativi, viene selezionato un campione casuale di <strong>8 valvole</strong>. Tra queste, <strong>5 presentano malfunzionamenti</strong>.</p>
+<p>1.a Costruire le distribuzioni condizionate di <span class="math inline">\(X\)</span> a <span class="math inline">\(\pi\)</span>. Determinare, per ciascuna delle due ipotesi, la probabilità di osservare 5 malfunzionamenti su 8 valvole.</p>
+<p>1.b</p>
 
 </div>
 </div>

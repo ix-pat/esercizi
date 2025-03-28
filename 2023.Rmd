@@ -1685,7 +1685,7 @@ pb <- 1-ppois(2,1.5)
 
 ### Esercizio 3
 
-`r punti_p(nex = T)` Un'urna contiene 3 palline Rosse, 3 Bianche e 4 Blu. Si estrae senza reintroduzione per $n=81$ volte.
+`r punti_p(nex = T)` Un'urna contiene 3 palline Rosse, 3 Bianche e 4 Blu. Si estrae con reintroduzione per $n=81$ volte.
 Calcolare la probabilità che la proporzione di palline Blu sia maggiore di 0.3.
 
 :::{.sol data-latex=""}
@@ -1900,8 +1900,7 @@ Calcolare la probabilità che la somma dei risultati sia maggiore di 80.
 
 :::{.sol data-latex=""}
 ```{r 2023-43,,results='asis'}
-cat(media_(0:2,p=c(.3,.3,.4)))
-cat(var_(0:2,p=c(.3,.3,.4)))
+stat_(0:2,p = c(.3,.3,.4))
 cat(tlc(tipo = "somma",x1 = 80,verso = ">",mu = 1.1,n = 81,s2 = .69))
 ```
 :::
@@ -2160,8 +2159,7 @@ Calcolare la probabilità che la media dei risultati sia minore di 0.9.
 
 :::{.sol data-latex=""}
 ```{r 2023-51,,results='asis'}
-cat(media_(0:2,p=c(.3,.4,.3)))
-cat(var_(0:2,p=c(.3,.4,.3)))
+stat_(0:2,p=c(.3,.4,.3))
 cat(tlc(tipo = "media",x1 = 0.9,verso = "<",mu = 1,n = 81,s2 = .6))
 ```
 :::

@@ -218,7 +218,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#poisson-2"><i class="fa fa-check"></i>Poisson 2</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#normale"><i class="fa fa-check"></i>Normale</a></li>
 <li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#estrazioni-senza-reitroduzione"><i class="fa fa-check"></i>Estrazioni senza reitroduzione</a></li>
-<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes"><i class="fa fa-check"></i>Esercizio sul Teorema di Bayes</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes-palline-vincenti"><i class="fa fa-check"></i>Esercizio sul Teorema di Bayes (palline vincenti)</a></li>
+<li class="chapter" data-level="" data-path="esercizi-di-probabilità-e-variabili-casuali.html"><a href="esercizi-di-probabilità-e-variabili-casuali.html#esercizio-sul-teorema-di-bayes-esperti"><i class="fa fa-check"></i>Esercizio sul Teorema di Bayes (Esperti)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="esercizi-sul-tlc.html"><a href="esercizi-sul-tlc.html"><i class="fa fa-check"></i>Esercizi sul TLC</a>
 <ul>
@@ -3527,7 +3528,7 @@ Il modello <strong>non</strong> si adatta bene ai dati.</p>
 </div>
 <div id="esercizio-3-24" class="section level3 hasAnchor">
 <h3>Esercizio 3<a href="anno-2023.html#esercizio-3-24" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>3.a <strong>(Punti 14/103 <span class="math inline">\(\rightarrow\)</span> 4.21/31)</strong> Un’urna contiene 3 palline Rosse, 3 Bianche e 4 Blu. Si estrae senza reintroduzione per <span class="math inline">\(n=81\)</span> volte.
+<p>3.a <strong>(Punti 14/103 <span class="math inline">\(\rightarrow\)</span> 4.21/31)</strong> Un’urna contiene 3 palline Rosse, 3 Bianche e 4 Blu. Si estrae con reintroduzione per <span class="math inline">\(n=81\)</span> volte.
 Calcolare la probabilità che la proporzione di palline Blu sia maggiore di 0.3.</p>
 <div class="sol">
 <p><strong>Teorema del Limite Centrale (proporzione)</strong></p>
@@ -3896,7 +3897,8 @@ Test su un coefficiente di regressione: <span class="math inline">\(\Rightarrow\
 <p>3.a <strong>(Punti 14/103 <span class="math inline">\(\rightarrow\)</span> 4.21/31)</strong> Un’urna contiene 3 palline col numero <span class="math inline">\(\fbox{0}\)</span>, 3 col numero <span class="math inline">\(\fbox{1}\)</span> e 4 col numero <span class="math inline">\(\fbox{2}\)</span>. Si estrae senza reintroduzione per <span class="math inline">\(n=81\)</span> volte.
 Calcolare la probabilità che la somma dei risultati sia maggiore di 80.</p>
 <div class="sol">
-<p><span class="math display">\[ \mu = 0 \cdot 0.3+1 \cdot 0.3+2 \cdot 0.4 = 1.1 \]</span><span class="math display">\[ \sigma^2 =( 0^2 \cdot 1+1^2 \cdot 1+2^2 \cdot 1 )-( 1.1 )^2= -4 \]</span><strong>Teorema del Limite Centrale (somma VC qualunque)</strong></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mu &amp;=&amp;  0  \cdot 0.3+ 1  \cdot 0.3+ 2  \cdot 0.4 = 1.1 \\ \sigma^2 &amp;=&amp;(  0 ^2 \cdot 0.3+ 1 ^2 \cdot 0.3+ 2 ^2 \cdot 0.4 )-( 1.1 )^2= 0.69 \end{eqnarray*}\]</span><strong>Teorema del Limite Centrale (somma VC qualunque)</strong></p>
 <p>Siano <span class="math inline">\(X_1\)</span>,…,<span class="math inline">\(X_n\)</span>, <span class="math inline">\(n=81\)</span> VC IID, tc <span class="math inline">\(E(X_i)=\mu=1.1\)</span> e <span class="math inline">\(V(X_i)=\sigma^2=0.69,\forall i\)</span>, posto:
 <span class="math display">\[
       S_n = X_1 + ... + X_n
@@ -4490,7 +4492,8 @@ w_i = \beta_0&#39;+\beta_1&#39;x_i+\epsilon_i&#39;
 <p>3.a <strong>(Punti 14/103 <span class="math inline">\(\rightarrow\)</span> 4.21/31)</strong> Un’urna contiene 3 palline col numero <span class="math inline">\(\fbox{0}\)</span>, 4 col numero <span class="math inline">\(\fbox{1}\)</span> e 3 col numero <span class="math inline">\(\fbox{2}\)</span>. Si estrae senza reintroduzione per <span class="math inline">\(n=81\)</span> volte.
 Calcolare la probabilità che la media dei risultati sia minore di 0.9.</p>
 <div class="sol">
-<p><span class="math display">\[ \mu = 0 \cdot 0.3+1 \cdot 0.4+2 \cdot 0.3 = 1 \]</span><span class="math display">\[ \sigma^2 =( 0^2 \cdot 1+1^2 \cdot 1+2^2 \cdot 1 )-( 1 )^2= -4 \]</span><strong>Teorema del Limite Centrale (media VC qualunque)</strong></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mu &amp;=&amp;  0  \cdot 0.3+ 1  \cdot 0.4+ 2  \cdot 0.3 = 1 \\ \sigma^2 &amp;=&amp;(  0 ^2 \cdot 0.3+ 1 ^2 \cdot 0.4+ 2 ^2 \cdot 0.3 )-( 1 )^2= 0.6 \end{eqnarray*}\]</span><strong>Teorema del Limite Centrale (media VC qualunque)</strong></p>
 <p>Siano <span class="math inline">\(X_1\)</span>,…,<span class="math inline">\(X_n\)</span>, <span class="math inline">\(n=81\)</span> VC IID, tc <span class="math inline">\(E(X_i)=\mu=1\)</span> e <span class="math inline">\(V(X_i)=\sigma^2=0.6,\forall i\)</span>, posto:
 <span class="math display">\[
       \bar X=\frac{S_n}n =\frac{X_1 + ... + X_n}n
