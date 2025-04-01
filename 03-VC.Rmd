@@ -457,8 +457,7 @@ V(X-Y)=V(X)+V(Y)=n\pi(1-\pi)+\lambda=10\times 0.3(1-0.3)+3.23=`r 10*.3*.7+3.23`
 
 Michele esegue la seguente sequenza di estrazioni:
 
-- si estrae da un'urna $U_1$ che contiene 5 palline etichettate da 1 a 5
-- Se il numero uscito è
+- si estrae da un'urna $U_1$ che contiene 5 palline etichettate nel seguente modo:
   -  1 allora si fissa $\pi=0$
   -  2 allora si fissa  $\pi=0.25$
   -  3 allora si fissa  $\pi=0.50$
@@ -650,7 +649,7 @@ kable(TTX,row.names = T,booktabs = T, escape = F,linesep = "", digits = 4)
 
 Due ingegneri, **Mario** e **Sergio**, hanno appena terminato l’ispezione di un nuovo impianto per la produzione di **valvole industriali**. Al termine della visita, forniscono valutazioni discordanti circa la frequenza con cui, nel processo produttivo, si verificano malfunzionamenti.
 
-- Mario, ingegnere **senior** con lunga esperienza sul campo, ritiene che la probabilità che una valvola presenti un malfunzionamento sia pari a \( \pi_M = 0.1 \).
+- Mario, ingegnere **senior** con lunga esperienza sul campo, ritiene che la probabilità che ci sia un malfunzionamento sia pari a \( \pi_M = 0.1 \).
 - Sergio, **neolaureato** al primo incarico operativo, sostiene che tale probabilità sia invece pari a \( \pi_S = 0.5 \).
 
 Il decision maker, pur tenendo conto di entrambe le opinioni, attribuisce maggiore credibilità a quella di Mario, assegnando probabilità soggettive:
@@ -658,14 +657,58 @@ Il decision maker, pur tenendo conto di entrambe le opinioni, attribuisce maggio
 P(\pi_M) = 0.9,\quad P(\pi_S) = 0.1
 \]
 
-Per acquisire elementi informativi, viene selezionato un campione casuale di **8 valvole**. Tra queste, **5 presentano malfunzionamenti**.
+Il processo sarà testo 8 volte prima di essere messo in produzione.
 
-`r item(T)` Costruire le distribuzioni condizionate di $X$ a $\pi$.  Determinare, per ciascuna delle due ipotesi, la probabilità di osservare 5 malfunzionamenti su 8 valvole.
+`r item(T)` Costruire le distribuzioni condizionate di $X$ a $\pi_M$ e $\pi_S$.  Determinare, per ciascuna delle due ipotesi, la probabilità di osservare 5 malfunzionamenti su 8 prove.
 
 :::{.sol data-latex=""}
 
-Soluzione
+Nell'ipotesi $\pi=\pi_M=0.1$ avremo
+
+$$
+(X|\pi=0.1)\sim\text{Binom}(n=8;\pi=0.1)
+$$
+\begin{eqnarray*}
+      P( X = 5 |\pi=0.1) &=& \binom{ 8 }{ 5 } 0.1 ^{ 5 }(1- 0.1 )^{ 8 - 5 }  \\               
+      &=& 56 \times 0.1 ^{ 5 }(1- 0.1 )^{ 3 } \\                 
+      &=& 0.0004
+\end{eqnarray*}
+Mentre nell'ipotesi $\pi=\pi_S=0.5$ avremmo
+
+$$
+(X|\pi=0.5)\sim\text{Binom}(n=8;\pi=0.5)
+$$
+
+\begin{eqnarray*}
+      P(X = 5|\pi=0.5) &=& \binom{ 8 }{ 5 } 0.5 ^{ 5 }(1- 0.5 )^{ 8 - 5 } \\                 
+      &=& 56 \times 0.5 ^{ 5 }(1- 0.5 )^{ 3 } \\                 
+      &=& 0.2188 
+\end{eqnarray*}
+:::
+
+`r item()` Calcolare la probabilità di osservare 5 malfunzionamenti in 8 prove.
+
+:::{.sol data-latex=""}
+Dal teorema delle probabilità totali
+\begin{eqnarray*}
+  P(X=5) &=& P(\pi_M)P(X=5|\pi_M) + P(\pi_S)P(X=5|\pi_S)\\
+         &=& 0.9\cdot`r p(dbinom(5,8,.1))`+0.1\cdot`r p(dbinom(5,8,.5))`\\
+         &=& `r p(.9*dbinom(5,8,.1)+.1*dbinom(5,8,.5))`
+\end{eqnarray*}
 
 :::
 
-`r item()` Costruire la distribuzione 
+`r item()` Il processo viene replicato **8** volte e si sono presentati **5**  malfunzionamenti. Costruire le distribuzioni di $\pi_M$ e di $\pi_S$ dato $X=5$
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+P(\pi_M|X=5) &=& \frac{P(\pi_M)P(X=5|\pi_M)}{P(\pi_M)P(X=5|\pi_M) + P(\pi_S)P(X=5|\pi_S)}\\
+               &=& \frac{0.9\cdot`r p(dbinom(5,8,.1))`}{0.9\cdot`r p(dbinom(5,8,.1))`+0.1\cdot`r p(dbinom(5,8,.1))`}\\
+               &=& \frac{`r p(.9*dbinom(5,8,.1))`}{`r p(.9*dbinom(5,8,.1)+.1*dbinom(5,8,.5))`}\\
+               &=& `r p(.9*dbinom(5,8,.1)/(.9*dbinom(5,8,.1)+.1*dbinom(5,8,.5)))`\\
+P(\pi_S|X=5)   &=& \frac{P(\pi_S)P(X=5|\pi_S)}{P(\pi_M)P(X=5|\pi_M) + P(\pi_S)P(X=5|\pi_S)}\\
+               &=& \frac{0.1\cdot`r p(dbinom(5,8,.5))`}{0.9\cdot`r p(dbinom(5,8,.1))`+0.1\cdot`r p(dbinom(5,8,.1))`}\\
+               &=& \frac{`r p(.1*dbinom(5,8,.5))`}{`r p(.9*dbinom(5,8,.1)+.1*dbinom(5,8,.5))`}\\
+               &=& `r p(.1*dbinom(5,8,.5)/(.9*dbinom(5,8,.1)+.1*dbinom(5,8,.5)))`
+\end{eqnarray*}
+:::
