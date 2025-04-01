@@ -1,0 +1,512 @@
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,3,5,7,13)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 250      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,3,5,7,13)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+histp()
+axis(1,brk)
+axis(2)
+curve(dgamma(a,a,b)*L*100,add=T)
+curve(dgamma(x,a,b)*L*100,add=T)
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 250      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,2,4,5,6,13)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+histp()
+axis(1,brk)
+axis(2)
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 250      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,2,3,4,6,13)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+histp()
+axis(1,brk)
+axis(2)
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 250      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,2,3,4,6,20)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+tabl(dat3[1:(k+1),c(1:7)])
+histp()
+axis(1,brk,las=2)
+axis(2)
+h.int(x1 = 0,x2 = Q.int(p),col=4,density=10)
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 250      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,2,3,4,7,20)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+histp()
+axis(1,brk)
+axis(2)
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 250      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,2,3,4,5,6,20)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+histp()
+axis(1,brk)
+axis(2)
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 2500      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,2,3,4,5,6,20)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+histp()
+axis(1,brk)
+axis(2)
+curve(dgamma(x,a,b)*L*100,add=T)
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 2500      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,3,4,6,20)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+histp()
+axis(1,brk)
+axis(2)
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 2500      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,3,4,8,20)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+histp()
+axis(1,brk)
+axis(2)
+F_print(5.2,">")
+dat2$fj[4:5]
+# Basic settings
+set.seed(3)   # per ottenere sempre la stessa simulazione
+n <- 2500      # ampiezza campionaria
+a <- 5
+b <- 1
+k <- 4
+L <- 1
+samp <- (rgamma(n,a,b))*L
+# brk  <- round(c(qgamma((0:k)/(k+1),a,b)*L,ceiling( max(samp))),1)
+brk <- c(0,3,4,5,8,20)
+k <- length(brk)-1
+br1  <- brk[-(k+1)]
+br2  <- brk[-1]
+nomex <- "fenomeno-x"
+ls2e(stat_base(samp,brk))
+histp()
+axis(1,brk)
+axis(2)
+install.packages(c("bit", "bslib", "cli", "cpp11", "curl", "data.table", "doBy", "httr2", "jsonlite", "openssl", "processx", "ps", "purrr", "quantreg", "R6", "readxl", "renv", "reticulate", "rsconnect", "sessioninfo", "shinyAce", "shinyWidgets", "terra", "tinytex", "units", "xfun", "xml2", "zip"))
+69.12*2
+source("intro.R")
+item
+exists("pippo")
+exists("i2")
+exists("i1")
+400/5
+80*8
+80*8+2
+390*3
+source("~/OneDrive/Stat/esempio-vc.R")
+source("~/OneDrive/Stat/esempio-vc.R")
+#source(src_("stat-base.R"))        # crea il data set e la tabella dat3
+ls2e(stat_base(samp = samp,brk = brk))     # crea il data set e la tabella dat3
+dat2$hj <- dat2$hj/100
+k <- 9
+prob()
+axis(1,brk+.5,(brk+.5)*10)
+axis(2)
+segments(brk[1:(k-1)],dat2$Fj[1:(k-1)],brk[2:k],dat2$Fj[1:(k-1)])
+Prob <- function (axes = F, ...)
+{
+br1 <- brk[-(k + 1)]
+br2 <- brk[-1]
+if (!exists("nomex"))
+nomex <- ""
+plot(range(brk), range(c(0, dat2$hj), na.rm = T), type = "n",
+axes = F, xlab = nomex, ylab = "Prob")
+segments(brk[1:(k-1)],dat2$Fj[1:(k-1)],brk[2:k],dat2$Fj[1:(k-1)])
+if (axes) {
+datp <- round(dat2, 4)
+axis(1, brk)
+axis(2, las = 2)
+#    segments(br1[1] - 1, datp$hj, br1, datp$hj, lty = 2, col = "grey40")
+}
+}
+Prob()
+Prob <- function (axes = F, ...)
+{
+br1 <- brk[-(k + 1)]
+br2 <- brk[-1]
+if (!exists("nomex"))
+nomex <- ""
+plot(range(brk), c(0,1), type = "n",
+axes = F, xlab = nomex, ylab = "Prob")
+segments(brk[1:(k-1)],dat2$Fj[1:(k-1)],brk[2:k],dat2$Fj[1:(k-1)])
+if (axes) {
+datp <- round(dat2, 4)
+axis(1, brk)
+axis(2, las = 2)
+#    segments(br1[1] - 1, datp$hj, br1, datp$hj, lty = 2, col = "grey40")
+}
+}
+Prob()
+axis(1,brk)
+axis(1,brk+.5)
+Prob()
+axis(1,brk+.5)
+Prob <- function (axes = F, ...)
+{
+br1 <- brk[-(k + 1)]+.5
+br2 <- brk[-1]+.5
+if (!exists("nomex"))
+nomex <- ""
+plot(range(brk), c(0,1), type = "n",
+axes = F, xlab = nomex, ylab = "Prob")
+segments(brk[1:(k-1)],dat2$Fj[1:(k-1)],brk[2:k],dat2$Fj[1:(k-1)])
+if (axes) {
+datp <- round(dat2, 4)
+axis(1, brk)
+axis(2, las = 2)
+#    segments(br1[1] - 1, datp$hj, br1, datp$hj, lty = 2, col = "grey40")
+}
+}
+Prob()
+axis(1,brk+.5)
+br1 <- brk[-(k + 1)]+.5
+br1
+br2 <- brk[-1]+.5
+br2
+br1 <- brk[-(k + 1)]+.5
+br2 <- brk[-1]+.5
+plot(range(brk), c(0,1), type = "n",
+axes = F, xlab = nomex, ylab = "Prob")
+segments(br1,dat2$Fj[1:(k-1)],br2,dat2$Fj[1:(k-1)])
+datp <- round(dat2, 4)
+axis(1, brk)
+axis(2, las = 2)
+dat2$Fj[1:(k-1)]
+segments(br1,dat2$Fj[1:k],br2,dat2$Fj[1:k])
+plot(range(brk), c(0,1), type = "n",
+axes = F, xlab = nomex, ylab = "Prob")
+segments(br1,dat2$Fj[1:k],br2,dat2$Fj[1:k])
+axis(1, brk+.5)
+install.packages("igraph")
+install.packages(c("nloptr", "quantreg", "RcppTOML", "reticulate", "units", "xml2"))
+a <- c(1,1,1)+.1
+sum(a)
+prod(a)
+a <- c(1,1,1)+.9
+sum(a)
+prod(a)
+a <- c(1,1,1)+.5
+sum(a);prod(a)
+a <- c(1,1,1)+.55
+sum(a);prod(a)
+a <- c(1,1,1)+.6
+sum(a);prod(a)
+a <- c(1,1,1)+.7
+sum(a);prod(a)
+a <- c(1,1,1)+.75
+sum(a);prod(a)
+a <- c(1,1,1)+.74
+sum(a);prod(a)
+a <- c(1,1,1)+.73
+sum(a);prod(a)
+a <- c(1,1,1)+.735
+sum(a);prod(a)
+a <- c(1,1,1)+.732
+sum(a);prod(a)
+library(pat.book)
+bin_dis(1,5,.4,"=")
+bin_dis
+bin_dis(1,5,.4,sing = T)
+bin_dis(2,5,.4)
+bin_dis(3,5,.4,"\\geq")
+bin_dis(3,5,.4,"\\geq",comp = T)
+pois_dis(x1 = 1,ll = 2.3,sing = T)
+pois_dis(x1 = 3,ll = 2.3,verso = "\ge")
+shiny::runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+(-1)^0:1
+(-1)^(0:1)
+(-1)^(1:0)
+segments(input$n0,(-1)^(1:0)*1.96*sigma,n,(-1)^(1:0)*1.96*sigma)
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+sigma <- 2
+(-1)^(1:0)*1.96*sigma
+(-1)^(1:0)*1.96*sigma
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+input <- list(n0=30,pi_val=.5)
+colori <- colorRampPalette(c("white", "blue", "yellow"))(100)
+tracce <- reactiveValues(lista = list())
+x <- rbinom(input$n, 1, input$pi_val)
+y <- cumsum(x) / (1:input$n)
+tick_seq <- function(n) {
+by <- if (n <= 10) 1 else if (n <= 20) 2 else if (n <= 50) 5 else if (n <= 100) 10 else if (n <= 200) 20 else if (n <= 500) 50 else 100
+c(1, seq(by, n, by = by))
+}
+n_seq <- seq(1, input$n, length.out = 500)
+x_seq <- seq(0, 1, length.out = 500)
+pi <- input$pi_val
+outer(x_seq, n_seq, Vectorize(function(x, n) {
+mu <- pi
+sigma <- sqrt(pi * (1 - pi) / n)
+d <- dnorm(x, mean = mu, sd = sigma)
+Znorm <- pnorm(1, mean = mu, sd = sigma) - pnorm(0, mean = mu, sd = sigma)
+d / Znorm * (x >= 0 & x <= 1)
+}))
+layout(matrix(c(1, if (input$mostra_normale && input$n >= 30) 2 else 0), nrow = 1), widths = c(3, 1))
+par(mar = c(5, 4, 4, 1))
+n_seq <- seq(1, input$n, length.out = 500,mostra_normale=T)
+input <- list(n0=30,pi_val=.5,mostra_normale=T)
+Zmat <-    outer(x_seq, n_seq, Vectorize(function(x, n) {
+mu <- pi
+sigma <- sqrt(pi * (1 - pi) / n)
+d <- dnorm(x, mean = mu, sd = sigma)
+Znorm <- pnorm(1, mean = mu, sd = sigma) - pnorm(0, mean = mu, sd = sigma)
+d / Znorm * (x >= 0 & x <= 1)
+}))
+layout(matrix(c(1, if (input$mostra_normale && input$n >= 30) 2 else 0), nrow = 1), widths = c(3, 1))
+par(mar = c(5, 4, 4, 1))
+# Plot principale
+plot(c(1, input$n), c(0, 1), type = "n", axes = FALSE,
+xlab = "n", ylab = expression(S[n]/n),
+main = expression(paste("Convergenza di ", frac(S[n], n), " → ", pi)))
+n_seq <- seq(1, input$n, length.out = 500)
+x_seq <- seq(0, 1, length.out = 500)
+image(x = n_seq, y = x_seq, z = t(Zmat()), col = colori, add = TRUE)
+Zmat
+image(x = n_seq, y = x_seq, z = t(Zmat), col = colori, add = TRUE)
+abline(v = input$n0, lty = 3)
+sigma <- sqrt(mu * (1 - mu) / input$n0)
+mu <- input$pi_val
+sigma <- sqrt(mu * (1 - mu) / input$n0)
+sigma
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+layout(matrix(c(1, if (input$mostra_normale && input$n >= 30) 2 else 0), nrow = 1), widths = c(3, 1))
+par(mar = c(5, 4, 4, 1))
+layout(matrix(c(1, if (input$mostra_normale && input$n >= 30) 2 else 0), nrow = 1), widths = c(3, 1))
+par(mar = c(5, 4, 4, 1))
+ylab <- if (input$scala_relativa) expression(S[n]/n) else expression(S[n])
+ic95 <- function(n, pi) {
+se <- sqrt(n * pi * (1 - pi))
+lo <- ref_y - 1.96 * if (input$scala_relativa) se / n else se
+hi <- ref_y + 1.96 * if (input$scala_relativa) se / n else se
+c(lo, hi)
+}
+# Plot principale
+plot(c(1, input$n), ylim, type = "n", axes = FALSE,
+xlab = "n", ylab = ylab,
+main = if (input$scala_relativa)
+expression(paste("Convergenza di ", frac(S[n], n), " → ", pi))
+else
+expression(paste("Crescita di ", S[n], " con ", E[S[n]] == n %.% pi)))
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+system.time(a<-1)
+a
+cat(system.time(a<-2))
+2
+a
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+axis(2,
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN/app1.R')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+rm(list=ls())
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+tracce <- list(lista=list())
+tracce
+tracce$lista
+tracce$lista[1] <- 1:10
+tracce$lista[[1]] <- 1:10
+tracce$lista
+tracce$lista[[2]] <- 11:20
+tracce$lista
+runApp('~/OneDrive/Stat/App/LFGN')
+tracce <- list(lista=list())
+tracce$lista[[1]]
+n_tracce <- length(tracce$lista)
+n_tracce
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp()
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
+runApp('~/OneDrive/Stat/App/LFGN')
