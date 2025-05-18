@@ -20,7 +20,7 @@ if (html) cat('')
 
 ## Un campione, IdC e test per $\mu$, $\sigma$ nota (z test).
 
-`r item_start()` Un'indagine in 17 aziende, che producono lo stesso prodotto,
+`r item_start(num=F)` Un'indagine in 17 aziende, che producono lo stesso prodotto,
 ha rilevato che il costo per unità è pari a euro 30.00
 in media con una deviazione standard pari a euro 1.50.
 
@@ -33,7 +33,7 @@ idc(xm = 30,sd = 1.50,alpha = 0.01,n = 17,dist_ = "t",mus = "\\hat\\mu",ss = "S"
 ```
 :::
 
-`r item_()` L'indagine dell'anno precedente, condotta
+`r item_(num=F)` L'indagine dell'anno precedente, condotta
 su un campione molto più numeroso, mostrava un costo medio
 pari a euro 29.00 con una deviazione standard pari a 2.00 euro.
 Verificare l'ipotesi che il costo medio del prodotto osservato
@@ -53,7 +53,7 @@ cat(res,sep="\n")
 
 ------------------------------------------
 
-`r item_next()` Un'indagine in 15 aziende, che producono lo stesso prodotto,
+`r item_next(num=F)` Un'indagine in 15 aziende, che producono lo stesso prodotto,
 ha rilevato che il costo per unità è pari a euro 25.00
 in media con una deviazione standard pari a euro 2.00.
 
@@ -66,7 +66,7 @@ idc(xm = 25,sd = 2.00,alpha = 0.05,n = 15,dist_ = "t",mus = "\\hat\\mu",ss = "S"
 ```
 :::
 
-`r item_()` L'indagine dell'anno precedente, condotta
+`r item_(num=F)` L'indagine dell'anno precedente, condotta
 su un campione molto più numeroso, mostrava un costo medio
 pari a euro 26.00 con una deviazione standard pari a 2.50 euro.
 Verificare l'ipotesi che il costo medio del prodotto osservato
@@ -84,7 +84,7 @@ ztest_mu(muh = 25,s = 2.50,n = 15,mu0 = 26,h1 = "<")
 
 ------------------------------------------
 
-`r item_next()` Un'indagine in 20 aziende, che producono lo stesso prodotto,
+`r item_next(num=F)` Un'indagine in 20 aziende, che producono lo stesso prodotto,
 ha rilevato che il costo per unità è pari a euro 28.00
 in media con una deviazione standard pari a euro 1.80.
 
@@ -97,7 +97,7 @@ idc(xm = 28,sd = 1.80,alpha = 0.05,n = 20,dist_ = "t",mus = "\\hat\\mu",ss = "S"
 ```
 :::
 
-`r item_()` L'indagine dell'anno precedente, condotta
+`r item_(num=F)` L'indagine dell'anno precedente, condotta
 su un campione molto più numeroso, mostrava un costo medio
 pari a euro 27.00 con una deviazione standard pari a 2.20 euro.
 Verificare l'ipotesi che il costo medio del prodotto osservato
@@ -119,7 +119,7 @@ cat(res,sep="\n")
 ## Un campione, IdC e test per $\mu$, $\sigma$ incognita (t test).
 
 
-`r item_next()` Sia $X$ l'età dei parlamentari italiani.
+`r item_next(num=F)` Sia $X$ l'età dei parlamentari italiani.
 Si sceglie un campione di 20 parlamentari italiani e si ottiene una
 media di 48.5 anni con una deviazione standard pari a 10.6 anni.
 
@@ -132,7 +132,7 @@ idc(xm = 48.5,sd = 10.6,alpha = 0.05,n = 20,dist_ = "t",mus = "\\hat\\mu",ss = "
 ```
 :::
 
-`r item_()` è noto che l'età media dei politici europei
+`r item_(num=F)` è noto che l'età media dei politici europei
 è di 55 anni.
 Verificare l'ipotesi
 che l'età media dei politici italiani sia uguale a quella
@@ -150,7 +150,7 @@ cat(res,sep="\n")
 
 ------------------------------------------
 
-`r item_next()` Sia \(X\) il reddito annuale dei manager italiani.
+`r item_next(num=F)` Sia \(X\) il reddito annuale dei manager italiani.
 Si sceglie un campione di 30 manager italiani e si ottiene una
 media di 85 mila euro con una deviazione standard pari a 15 mila euro.
 
@@ -163,7 +163,7 @@ idc(xm = 85,sd = 15,alpha = 0.01,n = 30,dist_ = "t",mus = "\\hat\\mu",ss = "S")
 ```
 :::
 
-`r item_()` è noto che il reddito medio annuale dei manager europei
+`r item_(num=F)` è noto che il reddito medio annuale dei manager europei
 è di 80 mila euro.
 Verificare l'ipotesi
 che il reddito medio annuale dei manager italiani sia uguale a quello
@@ -181,7 +181,7 @@ cat(res,sep="\n")
 
 ------------------------------------------
 
-`r item_next()` Per accertare lo stato di preparazione dei dipendenti di una
+`r item_next(num=F)` Per accertare lo stato di preparazione dei dipendenti di una
 struttura pubblica si è estratto un campione di 26 impiegati.
 A ogni impiegato è stato somministrato un test, con
 punteggio da 0 a 100, per accertare il suo grado di competenza, $X$.
@@ -197,7 +197,7 @@ idc(xm = 78,sd = 12,alpha = 0.05,n = 26,dist_ = "t",mus = "\\hat\\mu",ss = "S")
 ```
 :::
 
-`r item_()` Si supponga che il punteggio medio del test in un ampio
+`r item_(num=F)` Si supponga che il punteggio medio del test in un ampio
 studio sulla popolazione di impiegati, sia pari a 72.
 Con un livello di significatività uguale a 0.01 si può
 ritenere che il valore medio osservato nel campione sia
@@ -216,7 +216,7 @@ cat(res,sep="\n")
 ## Un campione, IdC e test per $\pi$ (z test).
 
 
-`r item_next()` Su un campione di \( n = 100 \) abitanti del quartiere _R_ è stato chiesto se siano favorevoli o meno all'introduzione di una nuova pista ciclabile. Lo studio ha riportato che 70 persone su 100 (il 70% del campione) è favorevole.
+`r item_next(num=F)` Su un campione di \( n = 100 \) abitanti del quartiere _R_ è stato chiesto se siano favorevoli o meno all'introduzione di una nuova pista ciclabile. Lo studio ha riportato che 70 persone su 100 (il 70% del campione) è favorevole.
 
 
 Costruire un intervallo di confidenza al 95% per \(\pi\) la quota di persone del quartiere _R_ favorevole alla nuova pista ciclabile.
@@ -228,7 +228,7 @@ idc(xm = 70,alpha = .05,n = 100,dist_ = "z")
 :::
 
 
-`r item_()` Un'indagine molto più ampia condotta su tutta la città ha mostrato che
+`r item_(num=F)` Un'indagine molto più ampia condotta su tutta la città ha mostrato che
 la percentuale di favorevoli alla pista ciclabile è del 65%. Testare l'ipotesi che nel quartiere _R_ la quota di favorevoli sia uguale a quella cittadina contro l'alternativa che sia minore.
 
 :::{.sol data-latex=""}
@@ -245,7 +245,7 @@ ztest_pi(sn = sn,n = n,p0 = p0,h1 = h1)
 
 ------------------------------------------
 
-`r item_next()` Su un campione di \( n = 120 \) startup tecnologiche italiane, è stato chiesto se abbiano implementato misure di cybersecurity avanzate. Lo studio ha riportato che 84 startup su 120 (il 70% del campione) hanno implementato queste misure.
+`r item_next(num=F)` Su un campione di \( n = 120 \) startup tecnologiche italiane, è stato chiesto se abbiano implementato misure di cybersecurity avanzate. Lo studio ha riportato che 84 startup su 120 (il 70% del campione) hanno implementato queste misure.
 
 Costruire un intervallo di confidenza al 99% per \(\pi\), la quota di startup italiane che hanno implementato misure di cybersecurity avanzate.
 
@@ -256,7 +256,7 @@ cat(idc(xm = 84,alpha = .01,n = 120,dist_ = "z"))
 :::
 
 
-`r item_()` Un'indagine molto più ampia condotta su startup europee ha mostrato che la percentuale di startup con misure di cybersecurity avanzate è del 75%. Testare l'ipotesi che in Italia la quota di startup con misure di cybersecurity avanzate sia uguale a quella europea contro l'alternativa che sia diversa.
+`r item_(num=F)` Un'indagine molto più ampia condotta su startup europee ha mostrato che la percentuale di startup con misure di cybersecurity avanzate è del 75%. Testare l'ipotesi che in Italia la quota di startup con misure di cybersecurity avanzate sia uguale a quella europea contro l'alternativa che sia diversa.
 
 :::{.sol data-latex=""}
 ```{r 05-test-23}
@@ -273,7 +273,7 @@ ztest_pi(sn = sn,n = n,p0 = p0,h1 = h1)
 
 ## t-Test a due campioni
 
-`r item_next()`  In uno studio sull'efficacia della pubblicità
+`r item_next(num=F)`  In uno studio sull'efficacia della pubblicità
 si è proceduto facendo vedere lo spot $A$ ad un campione di 10
 individui (gruppo $A$) e lo spot $B$ ad un secondo campione di 20
 individui (gruppo $B$).
@@ -296,7 +296,7 @@ ttest_2c_et(mu1 = 95,mu2 = 92,s1h = 3.4,s2h = 1.9,n1 = 10,n2 = 20,h1 = ">",a = "
 
 ------------------------------------------
 
-`r item_next()` In uno studio sull'efficacia di due metodi di insegnamento della matematica, si è proceduto facendo seguire il metodo \(A\) ad un campione di 15 studenti (gruppo \(A\)) e il metodo \(B\) ad un secondo campione di 18 studenti (gruppo \(B\)). Si è quindi misurata la prestazione degli studenti con un test finale. La prestazione media del gruppo \(A\) risulta pari a 78 con una deviazione standard pari a 8.3, mentre la prestazione media del gruppo \(B\) risulta pari a 74 con una deviazione standard pari a 7.5. Verificare l'ipotesi che la prestazione media dei due metodi di insegnamento sia uguale, contro l'alternativa che il metodo \(A\) produca prestazioni mediamente migliori di quello \(B\). Si assuma l'ipotesi di eterogeneità delle varianze dei due gruppi, anche se i numeri non sembrano giustificarla.
+`r item_next(num=F)` In uno studio sull'efficacia di due metodi di insegnamento della matematica, si è proceduto facendo seguire il metodo \(A\) ad un campione di 15 studenti (gruppo \(A\)) e il metodo \(B\) ad un secondo campione di 18 studenti (gruppo \(B\)). Si è quindi misurata la prestazione degli studenti con un test finale. La prestazione media del gruppo \(A\) risulta pari a 78 con una deviazione standard pari a 8.3, mentre la prestazione media del gruppo \(B\) risulta pari a 74 con una deviazione standard pari a 7.5. Verificare l'ipotesi che la prestazione media dei due metodi di insegnamento sia uguale, contro l'alternativa che il metodo \(A\) produca prestazioni mediamente migliori di quello \(B\). Si assuma l'ipotesi di eterogeneità delle varianze dei due gruppi, anche se i numeri non sembrano giustificarla.
 
 :::{.sol data-latex=""}
 ```{r 05-test-14,,results='asis'}
@@ -306,7 +306,7 @@ ttest_2c_et(mu1 = 78,mu2 = 74,s1h = 8.3,s2h = 7.5,n1 = 15,n2 = 18,h1 = ">",a = "
 
 ------------------------------------------
 
-`r item_next()` In uno studio sulla produttività dei lavoratori, si è proceduto confrontando i lavoratori del Nord e del Sud. Si è quindi misurata la produttività media con un'opportuna scala. La produttività media del gruppo Nord risulta pari a 85 con una deviazione standard pari a 7.2, mentre la produttività media del gruppo Sud risulta pari a 80 con una deviazione standard pari a 6.8. Verificare l'ipotesi che la produttività media dei due gruppi sia uguale, contro l'alternativa che le due produttività medie siano diverse. Si assuma l'ipotesi di omogeneità delle varianze dei due gruppi.
+`r item_next(num=F)` In uno studio sulla produttività dei lavoratori, si è proceduto confrontando 15 lavoratori del Nord e 18 del Sud. Si è quindi misurata la produttività media con un'opportuna scala. La produttività media del gruppo Nord risulta pari a 85 con una deviazione standard pari a 7.2, mentre la produttività media del gruppo Sud risulta pari a 80 con una deviazione standard pari a 6.8. Verificare l'ipotesi che la produttività media dei due gruppi sia uguale, contro l'alternativa che le due produttività medie siano diverse. Si assuma l'ipotesi di omogeneità delle varianze dei due gruppi.
 
 :::{.sol data-latex=""}
 ```{r 05-test-15,,results='asis'}
@@ -317,7 +317,7 @@ ttest_2c_om(mu1 = 85,mu2 = 80,s1h = 7.2,s2h = 6.8,n1 = 15,n2 = 18,h1 = "\\neq",a
 
 ## Due campioni: proporzione 
 
-`r item_next()`  Per verificare se ci sia differenza di genere sulla
+`r item_next(num=F)`  Per verificare se ci sia differenza di genere sulla
 riforma costituzionale del governo Meloni, si è condotta una
 indagine su 120 donne e 120 uomini.
 Dalle interviste è emerso che 60 dei 120 uomini si siano
@@ -337,7 +337,7 @@ ztest_2c_pi(s1 = 60,s2 = 30,n1 = 120,n2 = 120,h1 = ">",a = "U",b = "D")
 
 ------------------------------------------
 
-`r item_next()` Per verificare se ci sia differenza nella soddisfazione lavorativa tra dipendenti a tempo pieno e part-time, si è condotta un'indagine su 100 dipendenti a tempo pieno e 100 dipendenti part-time. Dalle interviste è emerso che 70 dei 100 dipendenti a tempo pieno si siano dichiarati soddisfatti, mentre 50 dei 100 dipendenti part-time si siano dichiarati soddisfatti. Verificare l'ipotesi che non ci sia differenza nella soddisfazione lavorativa tra dipendenti a tempo pieno e part-time, contro l'alternativa che i dipendenti part-time siano meno soddisfatti. Specificare l'ipotesi nulla e l'ipotesi alternativa, il tipo di test da utilizzare, e le conclusioni.
+`r item_next(num=F)` Per verificare se ci sia differenza nella soddisfazione lavorativa tra dipendenti a tempo pieno e part-time, si è condotta un'indagine su 100 dipendenti a tempo pieno e 100 dipendenti part-time. Dalle interviste è emerso che 70 dei 100 dipendenti a tempo pieno si siano dichiarati soddisfatti, mentre 50 dei 100 dipendenti part-time si siano dichiarati soddisfatti. Verificare l'ipotesi che non ci sia differenza nella soddisfazione lavorativa tra dipendenti a tempo pieno e part-time, contro l'alternativa che i dipendenti part-time siano meno soddisfatti. Specificare l'ipotesi nulla e l'ipotesi alternativa, il tipo di test da utilizzare, e le conclusioni.
 
 :::{.sol data-latex=""}
 ```{r 05-test-17,,results='asis'}
@@ -347,7 +347,7 @@ ztest_2c_pi(s1 = 70,s2 = 50,n1 = 100,n2 = 100,h1 = ">",a = "Tempo Pieno",b = "Pa
 
 ------------------------------------------
 
-`r item_next()` Per verificare se ci sia differenza nella preferenza per il lavoro remoto tra dipendenti di aziende tecnologiche e dipendenti di aziende manifatturiere, si è condotta un'indagine su 90 dipendenti di aziende tecnologiche e 90 dipendenti di aziende manifatturiere. Dalle interviste è emerso che 63 dei 90 dipendenti di aziende tecnologiche preferiscono il lavoro remoto, mentre 45 dei 90 dipendenti di aziende manifatturiere preferiscono il lavoro remoto. Verificare l'ipotesi che non ci sia differenza nella preferenza per il lavoro remoto tra i due gruppi, contro l'alternativa che ci sia una differenza significativa. Specificare l'ipotesi nulla e l'ipotesi alternativa, il tipo di test da utilizzare, e le conclusioni.
+`r item_next(num=F)` Per verificare se ci sia differenza nella preferenza per il lavoro remoto tra dipendenti di aziende tecnologiche e dipendenti di aziende manifatturiere, si è condotta un'indagine su 90 dipendenti di aziende tecnologiche e 90 dipendenti di aziende manifatturiere. Dalle interviste è emerso che 63 dei 90 dipendenti di aziende tecnologiche preferiscono il lavoro remoto, mentre 45 dei 90 dipendenti di aziende manifatturiere preferiscono il lavoro remoto. Verificare l'ipotesi che non ci sia differenza nella preferenza per il lavoro remoto tra i due gruppi, contro l'alternativa che ci sia una differenza significativa. Specificare l'ipotesi nulla e l'ipotesi alternativa, il tipo di test da utilizzare, e le conclusioni.
 
 :::{.sol data-latex=""}
 ```{r 05-test-18,,results='asis'}
