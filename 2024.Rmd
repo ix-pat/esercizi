@@ -194,6 +194,12 @@ residuo(x = x[3],y = y[3])
 
 `r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
 
+:::{.sol data-latex=""}
+```{r  ,results='asis'}
+R2(adatto = F)
+```
+:::
+
 
 `r punti_p()` Definire i punti influenti.
 
@@ -405,7 +411,7 @@ residuo(x = x[3],y = y[3])
 
 :::{.sol data-latex=""}
 ```{r 2024-7,,results='asis'}
-R2()
+R2(percent = F)
 ```
 :::
 
@@ -836,7 +842,7 @@ residuo(x = x[3],y = y[3])
 
 :::{.sol data-latex=""}
 ```{r 2024-14,,results='asis'}
-R2()
+R2(adatto = F)
 ```
 :::
 
@@ -880,9 +886,9 @@ Calcolando il valore:
 ```{r 2024-79}
 sigma_X <- 0.8
 beta_1 <- 1.2
-r <- 0.75
+rr <- 0.75
 
-sigma_Y <- (r * sigma_X) / beta_1
+sigma_Y <- (rr * sigma_X) / beta_1
 
 ```
 
@@ -979,7 +985,7 @@ histp(T)
 
 :::{.sol data-latex=""}
 ```{r 2024-86}
-F_print(x = Q.int(.25),verso = ">")
+F_print(x = .25,verso = ">",perc1 = T)
 ```
 :::  
 
@@ -1144,7 +1150,7 @@ residuo(x = x[3],y = y[3])
 
 :::{.sol data-latex=""}
 ```{r 2024-18,,results='asis'}
-R2()
+R2(percent = F)
 ```
 :::
 
@@ -1232,7 +1238,7 @@ draw_dist(dist = H.int,z1 = 4,z2 = 10)
 
 :::{.sol data-latex=""}
 ```{r 2024-96}
-F_print(x = Q.int(.55),verso = ">")
+F_print(x = .55,verso = ">",perc1 = T)
 ```
 :::  
 
@@ -1508,7 +1514,7 @@ histp(T)
 
 :::{.sol data-latex=""}
 ```{r 2024-107}
-F_print(x = Q.int(.15),x2 = Q.int(.85),verso = "alt")
+F_print(x = .15,x2 = .85,verso = "alt",perc1 = T,perc2 = T)
 ```
 :::  
 
@@ -1805,7 +1811,7 @@ histp(T)
 
 :::{.sol data-latex=""}
 ```{r 2024-117}
-F_print(x = Q.int(.25),x2 = Q.int(.75),verso = "alt")
+F_print(x = .25,x2 = .75,verso = "alt",perc1 = T,perc2 = T)
 invisible(round_all(2))
 ```
 :::  
@@ -2066,9 +2072,9 @@ draw_dist(dist = H.int,z1 = Q.int(.30),z2 = 7,col=ablue,border = T,lwd=2)
 `r punti_p()` Qual è la percentuale di imprese che investe tra il 30-esimo percentile $x_{0.30}$ e 7? 
 
 :::{.sol data-latex=""}
-$$
-\%(x_{0.30}<X<7) = (F(7)-F(x_{0.30}))\times 100 = (`r F.int(7)`- 0.30)\times 100=`r F.int(7)- 0.30`\times 100
-$$
+```{r}
+F_print(x = .30,verso = "",x2 = 7,perc1 = T)
+```
 :::  
 
 `r punti_p()` La media è pari a $\bar x=`r 5`$, senza disegnare l'istogramma, che forma distributiva dobbiamo aspettarci?

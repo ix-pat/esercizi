@@ -309,7 +309,7 @@ cat(calcolo_beta())
 ::: {.sol data-latex=""}
 ```{r 2021-6,,results='asis'}
 options(digits = 4)
-cat(R2())
+R2(adatto = F)
 ```
 :::
 
@@ -649,7 +649,9 @@ cat(residuo(x[4],y[4]))
   `r punti_p()` Il modello si adatta bene ai dati?
 
 ::: {.sol data-latex=""}
-Il modello spiega il $r^2\times100=(`r r`)^2\times 100=`r r^2*100`\%>75\%$ della viarbilità totale di $Y$. Sì, il modello spiega bene i dati.
+```{r}
+R2(percent = F)
+```
 :::
 
   `r punti_p()` Discutere il diagramma dei residui
@@ -1401,11 +1403,9 @@ cat(calcolo_beta())
 `r punti_p()` Calcolare la percentuale di varianza spiegata dal modello.
 
 ::: {.sol data-latex=""}
-Ricaviamo $R^2$
-$$
-R^2=\left(\frac{`r cv`}{`r sc(x)`\cdot `r sc(y)`}\right)^2=`r r`^2=`r r^2`
-$$
-Il modello si adatta molto bene ai dati, spiegando il `r r^2*100`% (>75%) della variabilità totale della Y. 
+```{r}
+R2(adatto = F)
+```
 :::
 
 
@@ -1768,9 +1768,9 @@ cat(calcolo_beta(inv = T))
   `r punti_p()` I due modelli si adattano bene ai dati?
 
 ::: {.sol data-latex=""}
-$$
-r^2=(`r r`)^2=`r r^2`>0.75
-$$
+```{r}
+R2(percent = F)
+```
 
 Sì, i modelli si adattano bene
 :::
@@ -2412,7 +2412,7 @@ cat(calcolo_beta())
 
 ::: {.sol data-latex=""}
 ```{r 2021-93}
-cat(R2())
+R2(adatto = F)
 ```
 :::
 

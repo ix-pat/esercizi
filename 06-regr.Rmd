@@ -94,21 +94,33 @@ vb0 <- se2 * (1/n+mx^2/(n*vx))
 vb1 <- se2 / (n*vx) 
 
 ls2e(regr(x,y))
+#calcolo_beta()
+sum_x <- format(sum(x  ),nsmall = 2,scientific = F,big.mark = "~")
+sum_y <- format(sum(y  ),nsmall = 2,scientific = F,big.mark = "~")
+sum_x2<- format(sum(x^2),nsmall = 2,scientific = F,big.mark = "~")
+sum_y2<- format(sum(y^2),nsmall = 2,scientific = F,big.mark = "~")
+sum_xy<- format(sum(x*y),nsmall = 2,scientific = F,big.mark = "~")
 ```
 
- Tutta l'informazione sul modello di regressione lineare semplice è contenuta nelle
+Tutta l'informazione sul modello di regressione lineare semplice è contenuta nelle
 seguenti statistiche
-\[\sum_{i=1}^n x_i=      `r format(sum(x  ),nsmall = 2,scientific = F,big.mark = "~")`,
-~~\sum_{i=1}^n y_i=      `r format(sum(y  ),nsmall = 2,scientific = F,big.mark = "~")`,
-~~\sum_{i=1}^n x_i^2=    `r format(sum(x^2),nsmall = 2,scientific = F,big.mark = "~")`,
-~~\sum_{i=1}^ny_i^2=     `r format(sum(y^2),nsmall = 2,scientific = F,big.mark = "~")`,
-~~ \sum_{i=1}^n x_i y_i= `r format(sum(y*x),nsmall = 2,scientific = F,big.mark = "~")`\]
-o, equivalentemente, le medie
-\[\frac{1}{51}\sum_{i=1}^n x_i=      `r format(mean(x  ),nsmall = 4,scientific = F,big.mark = "~")`,
-~~\frac{1}{51}\sum_{i=1}^n y_i=      `r format(mean(y  ),nsmall = 4,scientific = F,big.mark = "~")`,
-~~\frac{1}{51}\sum_{i=1}^n x_i^2=    `r format(mean(x^2),nsmall = 4,scientific = F,big.mark = "~")`,
-~~\frac{1}{51}\sum_{i=1}^ny_i^2=     `r format(mean(y^2),nsmall = 4,scientific = F,big.mark = "~")`,
-~~ \frac{1}{51}\sum_{i=1}^n x_i y_i= `r format(mean(y*x),nsmall = 4,scientific = F,big.mark = "~")`\]
+$$
+\sum_{i=1}^n x_i=        `r sum_x`,
+~~\sum_{i=1}^n y_i=      `r sum_y`,\\
+~~\sum_{i=1}^n x_i^2=    `r sum_x2`,
+~~\sum_{i=1}^ny_i^2=     `r sum_y2`,\\
+\sum_{i=1}^n x_i y_i= `r sum_xy`
+$$
+
+da cui ricaviamo tutte le altre statistiche di interesse
+<!-- o, equivalentemente, le medie -->
+<!-- $$ -->
+<!-- \frac{1}{n}\sum_{i=1}^n x_i= \frac{`r sum_x`}{51}=  `r format(mean(x  ),nsmall = 4,scientific = F,big.mark = "~")`, -->
+<!-- ~~\frac{1}{n}\sum_{i=1}^n y_i= \frac{`r sum_y`}{51}=  `r format(mean(y  ),nsmall = 4,scientific = F,big.mark = "~")`,\\ -->
+<!-- ~~\frac{1}{n}\sum_{i=1}^n x_i^2= \frac{`r sum_x2`}{51}=  `r format(mean(x^2),nsmall = 4,scientific = F,big.mark = "~")`, -->
+<!-- ~~\frac{1}{n}\sum_{i=1}^n y_i^2= \frac{`r sum_y2`}{51}=  `r format(mean(y^2),nsmall = 4,scientific = F,big.mark = "~")`,\\ -->
+<!-- \frac{1}{n}\sum_{i=1}^n x_iy_i= \frac{`r sum_xy`}{51}=  `r format(mean(y*x),nsmall = 4,scientific = F,big.mark = "~")` -->
+<!-- $$ -->
 
 
 \begin{alignat*}{3}
@@ -137,7 +149,48 @@ S_\varepsilon & = \sqrt{\frac{n}{n-2}}\hat\sigma_\varepsilon = `r sqrt(se2)`\\
 #   add_lines( x= reg$pov, y= reg$est)
 #   
 
-plot(dat[,2],dat[,3],xlab="Tasso di povertà",ylab="Tasso di natalità 15-17",axes=F,xlim=c(0,25),ylim=c(0,40),pch=16,col="blue2")
+if (html){
+  yhat <- b0 + b1 * df$poverty_rate
+library(plotly)
+
+# Supponendo che df sia il tuo data frame e b0, b1 siano i coefficienti della regressione
+yhat <- b0 + b1 * df$poverty_rate
+residui <- df$birth_rate - yhat
+
+# Crea il grafico
+fig <- plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+               type = "scatter", mode = "markers",
+               name = "Osservati") %>%
+
+  # Aggiungi la retta di regressione
+  add_trace(x = df$poverty_rate, y = yhat,
+            type = "scatter", mode = "lines",
+            line = list(color = "darkred", width = 1),
+            name = "Retta") %>%
+
+  # Aggiungi le previsioni come crocette grigie sottili
+  add_trace(x = df$poverty_rate, y = yhat,
+            type = "scatter", mode = "markers",
+            marker = list(symbol = "cross", size = 6, color = "grey"),
+            name = "Previsioni") %>%
+
+  # Aggiungi le linee dei residui
+  add_segments(x = df$poverty_rate, xend = df$poverty_rate,
+               y = df$birth_rate, yend = yhat,
+               line = list(color = "lightgrey", dash = "dot"),
+               name = "Residui", showlegend = FALSE) %>%
+
+  # Layout del grafico
+  layout(
+    title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+    xaxis = list(title = "Tasso di povertà"),
+    yaxis = list(title = "Tasso di natalità 15-17")
+  )
+
+fig
+
+} else {
+plot(df$poverty_rate,df$birth_rate,xlab="Tasso di povertà",ylab="Tasso di natalità 15-17",axes=F,xlim=c(0,25),ylim=c(0,40),pch=16,col="blue2")
 axis(1,pos = 0)
 axis(2,pos = 0)
 
@@ -147,6 +200,7 @@ segments(0,b0,1,b0,lty=2)
 segments(1,b0,1,b0+b1,lty=2)
 text(1.1,4.5,expression(beta[1]==1.37),pos=4)
 axis(1,1,pos=0)
+}
 ```
 
 ______________________________

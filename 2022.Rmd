@@ -82,7 +82,9 @@ histp(T)
 `r punti_p()` Quante famiglie hanno una spesa superiore al 75-esimo percentile?
 
 :::{.sol data-latex=""}
-$$\%(X>x_{0.75})=25\% , \rightarrow `r n`\times 0.25=`r n*.25` $$
+```{r}
+F_print(.75,verso = ">",perc1 = T)
+```
 :::
 
 `r punti_p()` Che relazione dobbiamo aspettarci tra media e mediana?
@@ -288,7 +290,7 @@ cat(previsione(1.5))
 
 :::{.sol data-latex=""}
 ```{r 2022-16}
-cat(R2())
+R2(adatto = F)
 ```
 :::
 
@@ -351,7 +353,10 @@ cat(percentile())
 
 :::{.sol data-latex=""}
 $$
-`r n`\times 0.25=`r n*.25`
+```{r}
+F_print(.25,verso = "",x2 = 3.5,perc1 = T)
+```
+
 $$
 :::
 
@@ -503,7 +508,7 @@ cat(previsione(1.0))
 
 :::{.sol data-latex=""}
 ```{r 2022-25}
-cat(R2())
+R2(percent = F)
 ```
 :::
 
@@ -595,7 +600,10 @@ options(digits = 4)
 `r punti_p()` Qual è la percentuale di famiglie con spesa superiore al 25-esimo percentile?
 
 :::{.sol data-latex=""}
-$$n\cdot 0.75=`r 0.75*n`$$
+```{r}
+F_print(.25,verso = "",x2 = 3.5,perc1 = T)
+```
+
 :::
 `r punti_p()` La spesa media è pari a $\bar x=`r mean(samp)`$, che forma ci dobbiamo aspettare dell'istogramma di densità?
 
@@ -744,7 +752,7 @@ cat(previsione(1.0))
 
 :::{.sol data-latex=""}
 ```{r 2022-36}
-cat(R2())
+R2()
 ```
 :::
 
@@ -839,14 +847,9 @@ la classe modale è la classe $3$ essendo la classe con densità $h_{`r pmod`}=`
 `r punti_p()` Quante imprese hanno una spesa compresa tra 15 mila euro e il 75-esimo percentile?
 
 :::{.sol data-latex=""}
-
-\begin{eqnarray*}
-F(15)&=&`r F.int(15)`\\
-F(x_{0.75})&=&.75\\
-\%(15<X<x_{0.75})&=&`r .75-F.int(15)`\\
-n(15<X<x_{0.75})&=&`r (.75-F.int(15))*n`
-\end{eqnarray*}
-
+```{r}
+F_print(.75,"",15,perc1 = T)
+```
 :::
 
 `r punti_p()`  La spesa media è pari a $\bar x=`r mean(samp)`$ mila euro, 
@@ -1067,7 +1070,7 @@ e calcolare la Total Sum of Squares (TSS), la Explained Sum of Squares (ESS) e l
 
 :::{.sol data-latex=""}
 ```{r 2022-51}
-cat(R2())
+TSS()
 ```
 :::
 
@@ -1144,9 +1147,9 @@ histp(T)
 `r punti_p()` Quante aziende hanno una spesa compresa tra il 25-esimo percentile e 15 mila euro?
 
 :::{.sol data-latex=""}
-$$
-221(0.434-0.25)=`r  221*(.434-.25)`
-$$
+```{r}
+F_print(x = .25,verso = "",x2 = 15,perc1 = T)
+```
 :::
 
 `r punti_p()` Che relazione dobbiamo attenderci tra media, mediana e moda?
@@ -1409,14 +1412,9 @@ histp(T)
 compresa tra il 25-esimo percentile e 15 mila euro?
 
 :::{.sol data-latex=""}
-\begin{eqnarray*}
-  \%(X<15) &=&  F_3+(15-13)\times h_4\\
-  &=& `r dat2$Fj[3]`\times 100+2\times `r dat2$hj[4]`\\
-  &=& `r dat2$Fj[3]*100+2*dat2$hj[4]`\\
-  \%(X<x_{0.25}) &=&  25\%\\
-  \%(x_{0.25}<X<15)&=& `r dat2$Fj[3]*100+2*dat2$hj[4]`-25\\
-  &=& `r dat2$Fj[3]*100+2*dat2$hj[4]-25`
-\end{eqnarray*}
+```{r}
+F_print(.25,verso = "",x2 = 15,perc1 = T)
+```
 :::
 
 `r punti_p()` Che relazione dobbiamo attenderci tra media, mediana e moda?
@@ -1968,7 +1966,9 @@ axis(1,brk)
 percentile e 3.5 mila euro?
 
 :::{.sol data-latex=""}
-$$\#(x_{0.25}<X<0)=n(F(3.5)-0.25)=`r n`(`r F.int(3.5)`-0.25)=`r n*(F.int(3.5)-0.25)`$$
+```{r}
+F_print(.25,verso = "",x2 = 3.5,perc1 = T)
+```
 :::
 
 `r punti_p()` Che relazione dobbiamo attenderci tra media, mediana e moda?
@@ -2239,20 +2239,9 @@ cat(percentile())
 percentile?
 
 :::{.sol data-latex=""}
-\begin{eqnarray*}
-  F(x_{0.75}) &=&  0.75\\
-  F(-1) &=& f_1+4h_2/100\\
-  &=& `r dat2$fj[1]`+4\times `r dat2$hj[2]`/100\\
-  &=& `r dat2$fj[1]+4*dat2$hj[2]/100`\\
-  \%(-1<X<x_{0.75}) &=& (F(x_{0.75})-F(x_{-1}))\times 100\\
-  &=& (`r .75-F.int(-1)`)\times 100 \%\\
-  \#(-1<X<x_{0.75}) &=& n\%(-1<X<x_{0.75})/100 \\
-  &=& `r n*(.75-F.int(-1))`
-\end{eqnarray*}
-  
-$$
-\#(-1<X<x_{0.75})=n\%(-1<X<x_{0.75})/100=n/100(75-F(-1))
-$$
+```{r}
+F_print(.25,verso = "",x2 = 3.5,perc1 = T)
+```
 :::
 
 `r punti_p()` Che relazione dobbiamo attenderci tra media, mediana e moda?
@@ -2440,7 +2429,7 @@ cat(residuo(2.1,9.3))
 
 :::{.sol data-latex=""}
 ```{r 2022-112}
-cat(R2())
+R2(adatto = F)
 ```
 :::
 

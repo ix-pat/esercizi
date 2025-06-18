@@ -492,7 +492,7 @@ cat(previsione(1.5))
 
 :::{.sol data-latex=""}
 ```{r 2023-9,,results='asis'}
-cat(R2())
+R2(percent = F)
 ```
 :::
 
@@ -756,7 +756,7 @@ cat(previsione(1.5))
 
 :::{.sol data-latex=""}
 ```{r 2023-132}
-cat(R2())
+R2()
 ```
 :::
 
@@ -1018,7 +1018,7 @@ cat(previsione(3.5))
 
 :::{.sol data-latex=""}
 ```{r 2023-142}
-cat(R2())
+R2(adatto = F)
 ```
 :::
 
@@ -1275,7 +1275,7 @@ cat(previsione(1.5))
 
 :::{.sol data-latex=""}
 ```{r 2023-24,,results='asis'}
-cat(R2())
+R2(percent = F)
 ```
 :::
 
@@ -1569,7 +1569,7 @@ cat(previsione(x = 1.5))
 
 :::{.sol data-latex=""}
 ```{r 2023-31,,results='asis'}
-cat(R2())
+R2()
 ```
 :::
 
@@ -1747,7 +1747,7 @@ cat(calcolo_beta())
 
 :::{.sol data-latex=""}
 ```{r 2023-37,,results='asis'}
-cat(R2())
+R2(adatto = F)
 ```
 :::
 
@@ -1997,7 +1997,7 @@ cat(calcolo_beta())
 
 :::{.sol data-latex=""}
 ```{r 2023-46,,results='asis'}
-cat(R2())
+R2(percent = F)
 ```
 :::
 
@@ -2251,7 +2251,7 @@ cat(calcolo_beta())
 
 :::{.sol data-latex=""}
 ```{r 2023-55,,results='asis'}
-cat(R2())
+R2(adatto = F)
 ```
 :::
 
@@ -3001,7 +3001,7 @@ cat(residuo(x[2],y[2]))
 
 :::{.sol data-latex=""}
 ```{r 2023-83,,results='asis'}
-cat(R2())
+R2(percent = F)
 ```
 :::
 :::
@@ -3262,7 +3262,7 @@ cat(previsione(12))
 
 :::{.sol data-latex=""}
 ```{r 2023-90,,results='asis'}
-cat(R2())
+R2(adatto = F)
 ```
 :::
 
@@ -3331,7 +3331,6 @@ h.int(30,50,density=20)
 :::{.sol data-latex=""}
 
 ```{r 2023-92,,results='asis'}
-cat(percentile())
 cat(F_print(30,verso = ">"))
 ```
 :::
@@ -3503,7 +3502,7 @@ cat(residuo(x = x[3],y = y[3]))
 
 :::{.sol data-latex=""}
 ```{r 2023-97,,results='asis'}
-cat(R2())
+R2(percent = F)
 ```
 :::
 
