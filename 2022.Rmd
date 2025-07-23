@@ -677,7 +677,7 @@ cat(tlc("somma",x1 = 50,verso = ">",mu = .2,n = 200))
 Dimostrare le consistenza di $\hat\lambda$ in almeno tre passaggi.
 
 
-`r punti_p()` Siano $h$ uno stimatore per $\theta$, cosa significa dire che $h$ è asintoticamente corretto?
+`r punti_p()` Siano $\hat\theta$ uno stimatore per $\theta$, cosa significa dire che $\hat\theta$ è asintoticamente corretto?
 
 `r punti_p()` Definire la probabilità di significatività.
 
@@ -861,13 +861,11 @@ histp(T)
 `r punti_p()` La spesa media in investimenti green su `r n` aziende modenesi è pari a $\bar x=`r mean(samp)`$ mila euro, mentre la spesa media  in investimenti green della provincia di Reggio, su un campione di 150 aziende è pari a $12.22$ mila euro.
 Calcolare la media globale delle $`r n` + 150 = `r n+150`$ aziende delle due province.
 
-:::{,sol}
-
+:::{.sol data-latex=""}
 \begin{eqnarray*}
 \bar x_T&=&\frac{`r n`\times`r mean(samp)`+150\times12.22}{`r n`+150}\\
 &=& `r (n*mean(samp)+150*12.22)/(n+150)`
 \end{eqnarray*}
-
 :::
 
 
@@ -970,8 +968,8 @@ cat(tlc("somma",x1 = x1,x2 = x2,verso = NULL,mu = ex,s2 = vx,n = n))
 `r punti_p(nex = T)` Sia $\hat \lambda$ lo stimatore di massima verosimiglianza di $\lambda$ del modello di Poisson: $\hat\lambda =  \frac 1n\sum_{i=1}^nx_i$
 Scrivere lo Standard Error di $\hat \lambda$.
 
-`r punti_p()` Se $h$ è uno stimatore per $\theta$ tale che
-$E(h)\ne \theta$ e che $\lim_ {n\to +\infty}E(h)=\theta$ di quale proprietà gode $h$?
+`r punti_p()` Se $\hat\theta$ è uno stimatore per $\theta$ tale che
+$E(\hat\theta)\ne \theta$ e che $\lim_ {n\to +\infty}E(\hat\theta)=\theta$ di quale proprietà gode $\hat\theta$?
 
 `r punti_p()` Definire gli errori di primo e di secondo tipo di un test statistico e le relative probabilità.
 
@@ -1503,7 +1501,7 @@ $$
 
 Quale dei due stimatori è più efficiente?
 
-`r punti_p()` Se uno stimatore $h$ per $\theta$ è tale che $\lim_{n\to\infty}V(h)=0$, di quali proprietà gode $h$?
+`r punti_p()` Se uno stimatore $\hat\theta$ per $\theta$ è tale che $\lim_{n\to\infty}V(\hat\theta)=0$, di quali proprietà gode $\hat\theta$?
 
 `r punti_p()` Un intervallo di confidenza per $\theta$ al 95% è più ampio o meno ampio di uno al 99%? Perché?
 
@@ -1799,8 +1797,8 @@ cat(tlc(tipo = "prop",x1 = x1,verso = verso,mu = 1/3,n = n))
 `r punti_p(nex = T)` Sia $\hat \lambda$ lo stimatore di massima verosimiglianza di $\lambda$ del modello di Poisson: $\hat\lambda =  \frac 1n\sum_{i=1}^nx_i$
 Scrivere la Varianza di $\hat \lambda$.
 
-`r punti_p()` Se $h$ è uno stimatore per $\theta$ tale che
-$E(h)\ne \theta$ e che $\lim_ {n\to +\infty}V(h)=0$ di quale proprietà gode $h$?
+`r punti_p()` Se $\hat\theta$ è uno stimatore per $\theta$ tale che
+$E(\hat\theta)\ne \theta$ e che $\lim_ {n\to +\infty}V(\hat\theta)=0$ di quale proprietà gode $\hat\theta$?
 
 `r punti_p()` Definire gli errori di primo e di secondo 
 tipo di un test statistico e le relative probabilità.
@@ -2323,13 +2321,13 @@ tlc("somma",225,verso = ">",mu = ex,s2 = vx,n = n)
 
 ### Esercizio 4
   
-`r punti_p(nex = T)` Sia $h$ uno stimatore per $\theta$, tale che
+`r punti_p(nex = T)` Sia $\hat\theta$ uno stimatore per $\theta$, tale che
 
 $$
-MSE(h) =  \theta+\frac{\theta}{n^2}
+MSE(\hat\theta) =  \theta+\frac{\theta}{n^2}
 $$
 
-Lo stimatore $h$ è consistente?
+Lo stimatore $\hat\theta$ è consistente?
 
 `r punti_p()` Sia $\hat\theta$ lo stimatore di massima verosimiglianza 
 per $\theta$. Qual è la distribuzione asintotica di $\hat\theta$?

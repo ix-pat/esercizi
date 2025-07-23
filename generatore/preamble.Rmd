@@ -82,14 +82,16 @@ anagrafica <- function(seed = NULL,new.page=F,cod.comp = NULL) {
   cat("}\n")
   cat("\\pagestyle{firstpage}\n")
 }
+
 punti_p <- function(start=F,nex=F,num=F){
   tot <- sum(unlist(punti))
   it <- ifelse(start,item_start(num),item_(num))
   it <- ifelse(nex,item_next(num),it)
   ptt <- punti[[i1]][i2]
   ptt_30 <- format(round(ptt/tot*31,1),nsmall=1)
-  sep <- ifelse(html," ","\\hspace{.1em}")
-  if(html) paste(it,"(pt",sep,ptt,"/",tot," → ",ptt_30,"/31)",sep="") else paste(it,"(pt",sep,ptt_30,"/31)",sep="")
+  if (!html) {p1 <- paste("**",it,"**(*pt\\hspace{.1em}",ptt_30,"/31*)",sep="")} else {
+              p1 <- paste("**",it,"**(pt ",ptt_30,"/31→",ptt,"/",tot ,")",sep="")}  
+  return(p1)
 }
 
 par(bg="transparent")

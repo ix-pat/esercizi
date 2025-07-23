@@ -1059,32 +1059,32 @@ allora:<span class="math display">\[\begin{eqnarray*}
 </div>
 <div id="esercizio-4-2" class="section level3 hasAnchor">
 <h3>Esercizio 4<a href="anno-2021.html#esercizio-4-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>4.a <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Sia <span class="math inline">\(h\)</span> uno stimatore per theta, tale che
+<p>4.a <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Sia <span class="math inline">\(\hat\theta\)</span> uno stimatore per theta, tale che
 <span class="math display">\[
-E(h)=\theta+\frac\theta {\sqrt{ n}}
+E(\hat\theta)=\theta+\frac\theta {\sqrt{ n}}
 \]</span>
-<span class="math inline">\(h\)</span> è corretto? <span class="math inline">\(h\)</span> è asintoticamente corretto?</p>
+<span class="math inline">\(\hat\theta\)</span> è corretto? <span class="math inline">\(\hat\theta\)</span> è asintoticamente corretto?</p>
 <div class="sol">
-<p><span class="math inline">\(h\)</span> <strong>non è corretto</strong>, infatti
+<p><span class="math inline">\(\hat\theta\)</span> <strong>non è corretto</strong>, infatti
 <span class="math display">\[
-E(h)=\theta+\frac\theta {\sqrt{ n}}\neq\theta
+E(\hat\theta)=\theta+\frac\theta {\sqrt{ n}}\neq\theta
 \]</span>
-<span class="math inline">\(h\)</span> <strong>è asintoticamente corretto</strong>, infatti
+<span class="math inline">\(\hat\theta\)</span> <strong>è asintoticamente corretto</strong>, infatti
 <span class="math display">\[
-\lim_{n\to\infty}E(h)=\lim_{n\to\infty}\left(\theta+\frac\theta {\sqrt{ n}}\right)=\theta+0=\theta
+\lim_{n\to\infty}E(\hat\theta)=\lim_{n\to\infty}\left(\theta+\frac\theta {\sqrt{ n}}\right)=\theta+0=\theta
 \]</span></p>
 </div>
-<p>4.b <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Siano <span class="math inline">\(h_1\)</span> e <span class="math inline">\(h_2\)</span> due stimatori per <span class="math inline">\(\theta\)</span>, tali che:
+<p>4.b <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Siano <span class="math inline">\(\hat\theta_1\)</span> e <span class="math inline">\(\hat\theta_2\)</span> due stimatori per <span class="math inline">\(\theta\)</span>, tali che:
 <span class="math display">\[\begin{eqnarray*}
-MSE(h_1) &amp;=&amp;   \frac\theta n\\
-MSE(h_2) &amp;=&amp;   \frac{2\theta} n
+MSE(\hat\theta_1) &amp;=&amp;   \frac\theta n\\
+MSE(\hat\theta_2) &amp;=&amp;   \frac{2\theta} n
 \end{eqnarray*}\]</span>
 Quale dei due stimatori è più efficiente? Perché?</p>
 <div class="sol">
-<p><span class="math inline">\(h_1\)</span> <strong>è più efficiente</strong> di <span class="math inline">\(h_2\)</span>, infatti
+<p><span class="math inline">\(\hat\theta_1\)</span> <strong>è più efficiente</strong> di <span class="math inline">\(\hat\theta_2\)</span>, infatti
 <span class="math display">\[\begin{eqnarray*}
-MSE(h_1) &amp;=&amp;   \frac\theta n\\
-MSE(h_2) &amp;=&amp;   \frac{2\theta} n =2\cdot MSE(h_1)&gt;MSE(h_1)
+MSE(\hat\theta_1) &amp;=&amp;   \frac\theta n\\
+MSE(\hat\theta_2) &amp;=&amp;   \frac{2\theta} n =2\cdot MSE(\hat\theta_1)&gt;MSE(\hat\theta_1)
 \end{eqnarray*}\]</span></p>
 </div>
 <p>4.c <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Si sono osservati due gruppi di dati quantitativi e si è osservato, <span class="math inline">\(\hat\mu_1=10.2\)</span> e <span class="math inline">\(\hat\mu_2=15.6\)</span>. Posto a test
@@ -1496,15 +1496,15 @@ allora:<span class="math display">\[\begin{eqnarray*}
 </div>
 <div id="esercizio-4-3" class="section level3 hasAnchor">
 <h3>Esercizio 4<a href="anno-2021.html#esercizio-4-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>4.a <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Sia <span class="math inline">\(h\)</span> uno stimatore per <span class="math inline">\(\theta\)</span>, tale che
+<p>4.a <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Sia <span class="math inline">\(\hat\theta\)</span> uno stimatore per <span class="math inline">\(\theta\)</span>, tale che
 <span class="math display">\[
-MSE(h)=\frac\theta {\sqrt{ n}}+\frac1n
+MSE(\hat\theta)=\frac\theta {\sqrt{ n}}+\frac1n
 \]</span>
-<span class="math inline">\(h\)</span> è consistente? Perché?</p>
+<span class="math inline">\(\hat\theta\)</span> è consistente? Perché?</p>
 <div class="sol">
 <p>Sì, è <em>consistente</em>, infatti
 <span class="math display">\[
-\lim_{n\to\infty}MSE(h)=\lim_{n\to\infty}\left(\frac\theta {\sqrt{ n}}+\frac1n\right)=0
+\lim_{n\to\infty}MSE(\hat\theta)=\lim_{n\to\infty}\left(\frac\theta {\sqrt{ n}}+\frac1n\right)=0
 \]</span></p>
 </div>
 <p>4.b <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Siano <span class="math inline">\(X_1,...,X_n\)</span> <span class="math inline">\(n\)</span> VC IID, replicazioni di <span class="math inline">\(X\sim \mathscr{L}(\theta)\)</span> e sia <span class="math inline">\(\hat\theta\)</span> lo stimatore di massima verosimiglianza per <span class="math inline">\(\theta\)</span>,
@@ -2038,26 +2038,26 @@ allora:<span class="math display">\[\begin{eqnarray*}
 </div>
 <div id="esercizio-4-4" class="section level3 hasAnchor">
 <h3>Esercizio 4<a href="anno-2021.html#esercizio-4-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>4.a <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Sia <span class="math inline">\(h\)</span> uno stimatore per <span class="math inline">\(\theta\)</span>, tale che
+<p>4.a <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Sia <span class="math inline">\(\hat\theta\)</span> uno stimatore per <span class="math inline">\(\theta\)</span>, tale che
 <span class="math display">\[\begin{eqnarray*}
-E(h)&amp;=&amp;\theta+\frac\theta {\sqrt{ n}}\\
-V(h)&amp;=&amp;\frac{\theta^2}{\sqrt n}
+E(\hat\theta)&amp;=&amp;\theta+\frac\theta {\sqrt{ n}}\\
+V(\hat\theta)&amp;=&amp;\frac{\theta^2}{\sqrt n}
 \end{eqnarray*}\]</span>
-<span class="math inline">\(h\)</span> è consistente?</p>
+<span class="math inline">\(\hat\theta\)</span> è consistente?</p>
 <div class="sol">
 <p>Uno stimatore è consistente se
 <span class="math display">\[
-\lim_{n\to\infty} MSE(h)=0
+\lim_{n\to\infty} MSE(\hat\theta)=0
 \]</span>
 Essendo
 <span class="math display">\[\begin{eqnarray*}
-MSE(h)&amp;=&amp;V(h)+B^2(h)\\
-&amp;=&amp;V(h)+|E(h)-\theta|^2\\
+MSE(\hat\theta)&amp;=&amp;V(\hat\theta)+B^2(\hat\theta)\\
+&amp;=&amp;V(\hat\theta)+|E(\hat\theta)-\theta|^2\\
 &amp;=&amp;\frac{\theta^2}{\sqrt n}+\left|\theta+\frac\theta {\sqrt{ n}}-\theta\right|^2\\
 &amp;=&amp;\frac{\theta^2}{\sqrt n}+\frac{\theta^2} { n}\\
 \lim_{n\to\infty} \left(\frac{\theta^2}{\sqrt n}+\frac{\theta^2} { n}\right)&amp;=&amp;0
 \end{eqnarray*}\]</span>
-Quindi sì, <span class="math inline">\(h\)</span> è consistente.</p>
+Quindi sì, <span class="math inline">\(\hat\theta\)</span> è consistente.</p>
 </div>
 <p>4.b <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Definire la funzione di verosimiglianza.</p>
 <div class="sol">
@@ -2532,16 +2532,16 @@ allora:<span class="math display">\[\begin{eqnarray*}
 </div>
 <div id="esercizio-4-5" class="section level3 hasAnchor">
 <h3>Esercizio 4<a href="anno-2021.html#esercizio-4-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>4.a <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Sia <span class="math inline">\(h\)</span> uno stimatore per <span class="math inline">\(\theta\)</span>, tale che
+<p>4.a <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Sia <span class="math inline">\(\hat\theta\)</span> uno stimatore per <span class="math inline">\(\theta\)</span>, tale che
 <span class="math display">\[\begin{eqnarray*}
-E(h)&amp;=&amp;\theta+\frac\theta {n^2},\\
-V(h)&amp;=&amp;\frac{\sqrt\theta}{ n}.
+E(\hat\theta)&amp;=&amp;\theta+\frac\theta {n^2},\\
+V(\hat\theta)&amp;=&amp;\frac{\sqrt\theta}{ n}.
 \end{eqnarray*}\]</span>
-Ricavare <span class="math inline">\(MSE(h)\)</span>, il Mean Squared Error di <span class="math inline">\(h\)</span>.</p>
+Ricavare <span class="math inline">\(MSE(\hat\theta)\)</span>, il Mean Squared Error di <span class="math inline">\(\hat\theta\)</span>.</p>
 <div class="sol">
 <p><span class="math display">\[\begin{eqnarray*}
-MSE(h)&amp;=&amp;V(h)+B^2(h)\\
-&amp;=&amp;V(h)+|E(h)-\theta|^2\\
+MSE(\hat\theta)&amp;=&amp;V(\hat\theta)+B^2(\hat\theta)\\
+&amp;=&amp;V(\hat\theta)+|E(\hat\theta)-\theta|^2\\
 &amp;=&amp;\frac{\sqrt\theta}{ n}+\left|\theta+\frac\theta {n^2}-\theta\right|^2\\
 &amp;=&amp;\frac{\sqrt\theta}{ n}+\frac{\theta^2} { n^4}\\
 \end{eqnarray*}\]</span></p>
@@ -3433,18 +3433,18 @@ allora:<span class="math display">\[\begin{eqnarray*}
 </div>
 <div id="esercizio-4-6" class="section level3 hasAnchor">
 <h3>Esercizio 4<a href="anno-2021.html#esercizio-4-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>4.a <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Se <span class="math inline">\(h\)</span> è uno stimatore tale che la sua distorsione va a zero per <span class="math inline">\(n\)</span> che tende all’infinito:
+<p>4.a <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Se <span class="math inline">\(\hat\theta\)</span> è uno stimatore tale che la sua distorsione va a zero per <span class="math inline">\(n\)</span> che tende all’infinito:
 <span class="math display">\[
-\lim_{n\to \infty}B(h)=0
+\lim_{n\to \infty}B(\hat\theta)=0
 \]</span>
-di quale proprietà gode <span class="math inline">\(h\)</span>?</p>
+di quale proprietà gode <span class="math inline">\(\hat\theta\)</span>?</p>
 <div class="sol">
 <p>Osserviamo che
 <span class="math display">\[\begin{align*}
-B(h) &amp;= E(h)-\theta&amp;\text{e quindi}\\
-\lim_{n\to\infty}B(h)&amp;=0\\
-\lim_{n\to\infty}(E(h)-\theta)&amp;=0 &amp;\text{se e solo se}\\
-\lim_{n\to\infty}E(h)&amp;=\theta &amp;\text{cioè $h$ è asintoticamente corretto}
+B(\hat\theta) &amp;= E(\hat\theta)-\theta&amp;\text{e quindi}\\
+\lim_{n\to\infty}B(\hat\theta)&amp;=0\\
+\lim_{n\to\infty}(E(\hat\theta)-\theta)&amp;=0 &amp;\text{se e solo se}\\
+\lim_{n\to\infty}E(\hat\theta)&amp;=\theta &amp;\text{cioè $\hat\theta$ è asintoticamente corretto}
 \end{align*}\]</span></p>
 </div>
 <p>4.b <strong>(Punti 3/96 <span class="math inline">\(\rightarrow\)</span> 1/31)</strong> Definire la funzione di verosimiglianza della Bernoulli.</p>
@@ -4688,7 +4688,7 @@ allora:<span class="math display">\[\begin{eqnarray*}
 </div>
 <div id="esercizio-4-8" class="section level3 hasAnchor">
 <h3>Esercizio 4<a href="anno-2021.html#esercizio-4-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>4.a <strong>(Punti 3/103 <span class="math inline">\(\rightarrow\)</span> 0.9/31)</strong> Siano <span class="math inline">\(h_1\)</span> e <span class="math inline">\(h_2\)</span> due stimatori corretti per <span class="math inline">\(\theta\)</span>, cosa significa che <span class="math inline">\(h_1\)</span> è più efficiente di <span class="math inline">\(h_2\)</span>?</p>
+<p>4.a <strong>(Punti 3/103 <span class="math inline">\(\rightarrow\)</span> 0.9/31)</strong> Siano <span class="math inline">\(\hat\theta_1\)</span> e <span class="math inline">\(\hat\theta_2\)</span> due stimatori corretti per <span class="math inline">\(\theta\)</span>, cosa significa che <span class="math inline">\(\hat\theta_1\)</span> è più efficiente di <span class="math inline">\(\hat\theta_2\)</span>?</p>
 <p>4.b <strong>(Punti 3/103 <span class="math inline">\(\rightarrow\)</span> 0.9/31)</strong> Definire la funzione di verosimiglianza della Poisson.</p>
 <p>4.c <strong>(Punti 3/103 <span class="math inline">\(\rightarrow\)</span> 0.9/31)</strong> Una moneta, che non sappiamo se è perfetta oppure no, viene lanciata 40 volte.
 Posto <span class="math inline">\(\pi\)</span> la probabilità che la moneta mostri testa, si è testato

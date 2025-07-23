@@ -7968,36 +7968,36 @@ allora:\begin{eqnarray*}
 
 \subsection{Esercizio 4}\label{esercizio-4-2}
 
-4.a \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Sia \(h\) uno stimatore per theta, tale che
+4.a \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Sia \(\hat\theta\) uno stimatore per theta, tale che
 \[
-E(h)=\theta+\frac\theta {\sqrt{ n}}
+E(\hat\theta)=\theta+\frac\theta {\sqrt{ n}}
 \]
-\(h\) è corretto? \(h\) è asintoticamente corretto?
+\(\hat\theta\) è corretto? \(\hat\theta\) è asintoticamente corretto?
 
 \begin{sol}
-\(h\) \textbf{non è corretto}, infatti
+\(\hat\theta\) \textbf{non è corretto}, infatti
 \[
-E(h)=\theta+\frac\theta {\sqrt{ n}}\neq\theta
+E(\hat\theta)=\theta+\frac\theta {\sqrt{ n}}\neq\theta
 \]
-\(h\) \textbf{è asintoticamente corretto}, infatti
+\(\hat\theta\) \textbf{è asintoticamente corretto}, infatti
 \[
-\lim_{n\to\infty}E(h)=\lim_{n\to\infty}\left(\theta+\frac\theta {\sqrt{ n}}\right)=\theta+0=\theta
+\lim_{n\to\infty}E(\hat\theta)=\lim_{n\to\infty}\left(\theta+\frac\theta {\sqrt{ n}}\right)=\theta+0=\theta
 \]
 
 \end{sol}
 
-4.b \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Siano \(h_1\) e \(h_2\) due stimatori per \(\theta\), tali che:
+4.b \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Siano \(\hat\theta_1\) e \(\hat\theta_2\) due stimatori per \(\theta\), tali che:
 \begin{eqnarray*}
-MSE(h_1) &=&   \frac\theta n\\
-MSE(h_2) &=&   \frac{2\theta} n
+MSE(\hat\theta_1) &=&   \frac\theta n\\
+MSE(\hat\theta_2) &=&   \frac{2\theta} n
 \end{eqnarray*}
 Quale dei due stimatori è più efficiente? Perché?
 
 \begin{sol}
-\(h_1\) \textbf{è più efficiente} di \(h_2\), infatti
+\(\hat\theta_1\) \textbf{è più efficiente} di \(\hat\theta_2\), infatti
 \begin{eqnarray*}
-MSE(h_1) &=&   \frac\theta n\\
-MSE(h_2) &=&   \frac{2\theta} n =2\cdot MSE(h_1)>MSE(h_1)
+MSE(\hat\theta_1) &=&   \frac\theta n\\
+MSE(\hat\theta_2) &=&   \frac{2\theta} n =2\cdot MSE(\hat\theta_1)>MSE(\hat\theta_1)
 \end{eqnarray*}
 
 \end{sol}
@@ -8314,16 +8314,16 @@ allora:\begin{eqnarray*}
 
 \subsection{Esercizio 4}\label{esercizio-4-3}
 
-4.a \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Sia \(h\) uno stimatore per \(\theta\), tale che
+4.a \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\), tale che
 \[
-MSE(h)=\frac\theta {\sqrt{ n}}+\frac1n
+MSE(\hat\theta)=\frac\theta {\sqrt{ n}}+\frac1n
 \]
-\(h\) è consistente? Perché?
+\(\hat\theta\) è consistente? Perché?
 
 \begin{sol}
 Sì, è \emph{consistente}, infatti
 \[
-\lim_{n\to\infty}MSE(h)=\lim_{n\to\infty}\left(\frac\theta {\sqrt{ n}}+\frac1n\right)=0
+\lim_{n\to\infty}MSE(\hat\theta)=\lim_{n\to\infty}\left(\frac\theta {\sqrt{ n}}+\frac1n\right)=0
 \]
 
 \end{sol}
@@ -8729,27 +8729,27 @@ allora:\begin{eqnarray*}
 
 \subsection{Esercizio 4}\label{esercizio-4-4}
 
-4.a \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Sia \(h\) uno stimatore per \(\theta\), tale che
+4.a \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\), tale che
 \begin{eqnarray*}
-E(h)&=&\theta+\frac\theta {\sqrt{ n}}\\
-V(h)&=&\frac{\theta^2}{\sqrt n}
+E(\hat\theta)&=&\theta+\frac\theta {\sqrt{ n}}\\
+V(\hat\theta)&=&\frac{\theta^2}{\sqrt n}
 \end{eqnarray*}
-\(h\) è consistente?
+\(\hat\theta\) è consistente?
 
 \begin{sol}
 Uno stimatore è consistente se
 \[
-\lim_{n\to\infty} MSE(h)=0
+\lim_{n\to\infty} MSE(\hat\theta)=0
 \]
 Essendo
 \begin{eqnarray*}
-MSE(h)&=&V(h)+B^2(h)\\
-&=&V(h)+|E(h)-\theta|^2\\
+MSE(\hat\theta)&=&V(\hat\theta)+B^2(\hat\theta)\\
+&=&V(\hat\theta)+|E(\hat\theta)-\theta|^2\\
 &=&\frac{\theta^2}{\sqrt n}+\left|\theta+\frac\theta {\sqrt{ n}}-\theta\right|^2\\
 &=&\frac{\theta^2}{\sqrt n}+\frac{\theta^2} { n}\\
 \lim_{n\to\infty} \left(\frac{\theta^2}{\sqrt n}+\frac{\theta^2} { n}\right)&=&0
 \end{eqnarray*}
-Quindi sì, \(h\) è consistente.
+Quindi sì, \(\hat\theta\) è consistente.
 
 \end{sol}
 
@@ -9110,17 +9110,17 @@ allora:\begin{eqnarray*}
 
 \subsection{Esercizio 4}\label{esercizio-4-5}
 
-4.a \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Sia \(h\) uno stimatore per \(\theta\), tale che
+4.a \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\), tale che
 \begin{eqnarray*}
-E(h)&=&\theta+\frac\theta {n^2},\\
-V(h)&=&\frac{\sqrt\theta}{ n}.
+E(\hat\theta)&=&\theta+\frac\theta {n^2},\\
+V(\hat\theta)&=&\frac{\sqrt\theta}{ n}.
 \end{eqnarray*}
-Ricavare \(MSE(h)\), il Mean Squared Error di \(h\).
+Ricavare \(MSE(\hat\theta)\), il Mean Squared Error di \(\hat\theta\).
 
 \begin{sol}
 \begin{eqnarray*}
-MSE(h)&=&V(h)+B^2(h)\\
-&=&V(h)+|E(h)-\theta|^2\\
+MSE(\hat\theta)&=&V(\hat\theta)+B^2(\hat\theta)\\
+&=&V(\hat\theta)+|E(\hat\theta)-\theta|^2\\
 &=&\frac{\sqrt\theta}{ n}+\left|\theta+\frac\theta {n^2}-\theta\right|^2\\
 &=&\frac{\sqrt\theta}{ n}+\frac{\theta^2} { n^4}\\
 \end{eqnarray*}
@@ -9581,19 +9581,19 @@ allora:\begin{eqnarray*}
 
 \subsection{Esercizio 4}\label{esercizio-4-6}
 
-4.a \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Se \(h\) è uno stimatore tale che la sua distorsione va a zero per \(n\) che tende all'infinito:
+4.a \textbf{(Punti 3/96 \(\rightarrow\) 1/31)} Se \(\hat\theta\) è uno stimatore tale che la sua distorsione va a zero per \(n\) che tende all'infinito:
 \[
-\lim_{n\to \infty}B(h)=0
+\lim_{n\to \infty}B(\hat\theta)=0
 \]
-di quale proprietà gode \(h\)?
+di quale proprietà gode \(\hat\theta\)?
 
 \begin{sol}
 Osserviamo che
 \begin{align*}
-B(h) &= E(h)-\theta&\text{e quindi}\\
-\lim_{n\to\infty}B(h)&=0\\
-\lim_{n\to\infty}(E(h)-\theta)&=0 &\text{se e solo se}\\
-\lim_{n\to\infty}E(h)&=\theta &\text{cioè $h$ è asintoticamente corretto}
+B(\hat\theta) &= E(\hat\theta)-\theta&\text{e quindi}\\
+\lim_{n\to\infty}B(\hat\theta)&=0\\
+\lim_{n\to\infty}(E(\hat\theta)-\theta)&=0 &\text{se e solo se}\\
+\lim_{n\to\infty}E(\hat\theta)&=\theta &\text{cioè $\hat\theta$ è asintoticamente corretto}
 \end{align*}
 
 \end{sol}
@@ -10303,7 +10303,7 @@ allora:\begin{eqnarray*}
 
 \subsection{Esercizio 4}\label{esercizio-4-8}
 
-4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Siano \(h_1\) e \(h_2\) due stimatori corretti per \(\theta\), cosa significa che \(h_1\) è più efficiente di \(h_2\)?
+4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Siano \(\hat\theta_1\) e \(\hat\theta_2\) due stimatori corretti per \(\theta\), cosa significa che \(\hat\theta_1\) è più efficiente di \(\hat\theta_2\)?
 
 4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Definire la funzione di verosimiglianza della Poisson.
 
@@ -11162,7 +11162,7 @@ allora:\begin{eqnarray*}
 \end{eqnarray*}
 Dimostrare le consistenza di \(\hat\lambda\) in almeno tre passaggi.
 
-4.b \textbf{(Punti 3/99 \(\rightarrow\) 0.9/31)} Siano \(h\) uno stimatore per \(\theta\), cosa significa dire che \(h\) è asintoticamente corretto?
+4.b \textbf{(Punti 3/99 \(\rightarrow\) 0.9/31)} Siano \(\hat\theta\) uno stimatore per \(\theta\), cosa significa dire che \(\hat\theta\) è asintoticamente corretto?
 
 4.c \textbf{(Punti 3/99 \(\rightarrow\) 0.9/31)} Definire la probabilità di significatività.
 
@@ -11473,8 +11473,8 @@ allora:\begin{eqnarray*}
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(\hat \lambda\) lo stimatore di massima verosimiglianza di \(\lambda\) del modello di Poisson: \(\hat\lambda =  \frac 1n\sum_{i=1}^nx_i\)
 Scrivere lo Standard Error di \(\hat \lambda\).
 
-4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Se \(h\) è uno stimatore per \(\theta\) tale che
-\(E(h)\ne \theta\) e che \(\lim_ {n\to +\infty}E(h)=\theta\) di quale proprietà gode \(h\)?
+4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Se \(\hat\theta\) è uno stimatore per \(\theta\) tale che
+\(E(\hat\theta)\ne \theta\) e che \(\lim_ {n\to +\infty}E(\hat\theta)=\theta\) di quale proprietà gode \(\hat\theta\)?
 
 4.c \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Definire gli errori di primo e di secondo tipo di un test statistico e le relative probabilità.
 
@@ -12087,7 +12087,7 @@ MSE(h_1) =  \frac{\theta}{n^2}, \qquad MSE(h_2) =  \frac{\theta}{n^3}
 
 Quale dei due stimatori è più efficiente?
 
-4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Se uno stimatore \(h\) per \(\theta\) è tale che \(\lim_{n\to\infty}V(h)=0\), di quali proprietà gode \(h\)?
+4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Se uno stimatore \(\hat\theta\) per \(\theta\) è tale che \(\lim_{n\to\infty}V(\hat\theta)=0\), di quali proprietà gode \(\hat\theta\)?
 
 4.c \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Un intervallo di confidenza per \(\theta\) al 95\% è più ampio o meno ampio di uno al 99\%? Perché?
 
@@ -12410,8 +12410,8 @@ allora:\begin{eqnarray*}
 4.a \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(\hat \lambda\) lo stimatore di massima verosimiglianza di \(\lambda\) del modello di Poisson: \(\hat\lambda =  \frac 1n\sum_{i=1}^nx_i\)
 Scrivere la Varianza di \(\hat \lambda\).
 
-4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Se \(h\) è uno stimatore per \(\theta\) tale che
-\(E(h)\ne \theta\) e che \(\lim_ {n\to +\infty}V(h)=0\) di quale proprietà gode \(h\)?
+4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Se \(\hat\theta\) è uno stimatore per \(\theta\) tale che
+\(E(\hat\theta)\ne \theta\) e che \(\lim_ {n\to +\infty}V(\hat\theta)=0\) di quale proprietà gode \(\hat\theta\)?
 
 4.c \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Definire gli errori di primo e di secondo
 tipo di un test statistico e le relative probabilità.
@@ -13062,13 +13062,13 @@ allora:\begin{eqnarray*}
 
 \subsection{Esercizio 4}\label{esercizio-4-17}
 
-4.a \textbf{(Punti 3/99 \(\rightarrow\) 0.9/31)} Sia \(h\) uno stimatore per \(\theta\), tale che
+4.a \textbf{(Punti 3/99 \(\rightarrow\) 0.9/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\), tale che
 
 \[
-MSE(h) =  \theta+\frac{\theta}{n^2}
+MSE(\hat\theta) =  \theta+\frac{\theta}{n^2}
 \]
 
-Lo stimatore \(h\) è consistente?
+Lo stimatore \(\hat\theta\) è consistente?
 
 4.b \textbf{(Punti 3/99 \(\rightarrow\) 0.9/31)} Sia \(\hat\theta\) lo stimatore di massima verosimiglianza
 per \(\theta\). Qual è la distribuzione asintotica di \(\hat\theta\)?
@@ -13354,7 +13354,7 @@ allora:\begin{eqnarray*}
 \end{eqnarray*}
 Ricavare il suo \(MSE\) (Mean Squared Error).
 
-4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Si \(h\) uno stimatore per \(\theta\) tale che \(E(h)=\theta\). Di quale proprietà gode \(h\)?
+4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Si \(\hat\theta\) uno stimatore per \(\theta\) tale che \(E(\hat\theta)=\theta\). Di quale proprietà gode \(\hat\theta\)?
 
 4.c \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Definire la potenza di un test.
 
@@ -13615,7 +13615,7 @@ allora:\begin{eqnarray*}
 \end{eqnarray*}
 Ricavare il suo \(MSE\) (Mean Squared Error).
 
-4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Si \(h\) uno stimatore per \(\theta\) tale che \(E(h)=\theta\) e \(\lim_{n\to\infty} V(h)=0\). Di quale proprietà gode \(h\)?
+4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Si \(\hat\theta\) uno stimatore per \(\theta\) tale che \(E(\hat\theta)=\theta\) e \(\lim_{n\to\infty} V(\hat\theta)=0\). Di quale proprietà gode \(\hat\theta\)?
 
 4.c \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Definire la significatività di un test.
 
@@ -13850,7 +13850,7 @@ allora:\begin{eqnarray*}
 \end{eqnarray*}
 Ricavare il \(MSE\) (Mean Squared Error) di \(\hat\mu\).
 
-4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Si \(h\) uno stimatore per \(\theta\) tale che \(E(h)\ne\theta\), ma che \(\lim_{n\to\infty}E(h)=\theta\). Di quale proprietà gode \(h\)?
+4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Si \(\hat\theta\) uno stimatore per \(\theta\) tale che \(E(\hat\theta)\ne\theta\), ma che \(\lim_{n\to\infty}E(\hat\theta)=\theta\). Di quale proprietà gode \(\hat\theta\)?
 
 4.c \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Quali sono gli errori di primo e secondo tipo?
 
@@ -14130,7 +14130,7 @@ allora:\begin{eqnarray*}
 \end{eqnarray*}
 Ricavare la sua varianza e metterla in relazione con il suo MSE.
 
-4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Sia \(h\) uno stimatore per \(\theta\). Cosa significa dire che \(h\) è consistente?
+4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\). Cosa significa dire che \(\hat\theta\) è consistente?
 
 4.c \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Siano \(T_1\) e \(T_2\) due test per lo stesso sistema d'ipotesi e con probabilità di errore di secondo tipo pari a, \(\beta_1=0.2\) e \(\beta_2=0.3\), rispettivamente. A parità di significatività, quale dei due è più potente? Perché?
 
@@ -14418,7 +14418,7 @@ allora:\begin{eqnarray*}
 \end{eqnarray*}
 Ricavare la sua varianza e metterla in relazione con il suo \(MSE\) (Mean Squared Error).
 
-4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Sia \(h\) uno stimatore per \(\theta\). Cosa significa dire che \(h\) è consistente?
+4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\). Cosa significa dire che \(\hat\theta\) è consistente?
 
 4.c \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Definire la significatività e la potenza di un test.
 
@@ -15164,7 +15164,7 @@ allora:\begin{eqnarray*}
 
 4.a \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Sono stati estratti \(n=10\) valori da una Poisson di parametro \(\lambda\) incognito e si è ottenuta un media pari a \(\bar x=3.4\). Ricavare \(\widehat{SE(\hat\lambda)}\) lo Standard Error stimato \(\hat\lambda\) di massima verosimiglianza.
 
-4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Sia \(h\) uno stimatore per \(\theta\). Cosa significa dire che \(h\) è consistente?
+4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\). Cosa significa dire che \(\hat\theta\) è consistente?
 
 4.c \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Siano \(T_1\) e \(T_2\) due test per lo stesso sistema d'ipotesi e con probabilità di errore di secondo tipo pari a, \(\beta_1=0.02\) e \(\beta_2=0.3\), rispettivamente. A parità di significatività, quale dei due è più potente? Perché?
 
@@ -15429,7 +15429,7 @@ allora:\begin{eqnarray*}
 
 4.a \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Sono stati estratti \(n=10\) valori da una Bernoulli di parametro \(\pi\) incognito e si è ottenuti 4 successi in 10 estrazioni. Ricavare, \(\widehat{SE(\hat\pi)}\) lo Standard Error stimato di \(\hat\pi\) di massima verosimiglianza.
 
-4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Sia \(h\) uno stimatore per \(\theta\). Cosa significa dire che \(h\) è corretto asintoticamente?
+4.b \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\). Cosa significa dire che \(\hat\theta\) è corretto asintoticamente?
 
 4.c \textbf{(Punti 3/101 \(\rightarrow\) 0.9/31)} Definire gli errori di primo e di secondo tipo e le relative probabilità.
 
@@ -15727,9 +15727,9 @@ allora:\begin{eqnarray*}
 \end{eqnarray*}
 Come si distribuisce \(\hat\mu\)?
 
-4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(h\) uno stimatore per \(\theta\) tale che
-\[V(h)=\frac\theta {\sqrt{n}};~~~~E(h)=\theta\frac{n+2}{n}\]
-di quali proprietà gode \(h\)?
+4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\) tale che
+\[V(\hat\theta)=\frac\theta {\sqrt{n}};~~~~E(\hat\theta)=\theta\frac{n+2}{n}\]
+di quali proprietà gode \(\hat\theta\)?
 
 4.c \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Definire il p-value e descrivere la sua interpretazione.
 
@@ -16026,9 +16026,9 @@ allora:\begin{eqnarray*}
 \[\hat\lambda =  \frac 1n\sum_{i=1}^nx_i\]
 Scrivere la distribuzione asintotica di \(\hat \lambda\).
 
-4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(h\) uno stimatore per \(\theta\) tale che
-\[V(h)=2\frac\theta {\sqrt{n}};~~~~E(h)=\theta\frac{n+2}{n-1}\]
-\(h\) è corretto? Si può correggere?
+4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\) tale che
+\[V(\hat\theta)=2\frac\theta {\sqrt{n}};~~~~E(\hat\theta)=\theta\frac{n+2}{n-1}\]
+\(\hat\theta\) è corretto? Si può correggere?
 
 4.c \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Definire la significatività di un test statistico.
 
@@ -16320,9 +16320,9 @@ allora:\begin{eqnarray*}
 \[\hat\lambda =  \frac 1n\sum_{i=1}^nx_i\]
 Scrivere la distribuzione asintotica di \(\hat \lambda\).
 
-4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} 4.c \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(h\) uno stimatore per \(\theta\) tale che
-\[V(h)=2\frac\theta {\sqrt{n}};~~~~E(h)=\theta\frac{n+2}{n-1}\]
-scrive il Mean Squared Error di \(h\) (\(MSE(h)\)).
+4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} 4.c \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\) tale che
+\[V(\hat\theta)=2\frac\theta {\sqrt{n}};~~~~E(\hat\theta)=\theta\frac{n+2}{n-1}\]
+scrive il Mean Squared Error di \(\hat\theta\) (\(MSE(\hat\theta)\)).
 
 4.d \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Definire la potenza di un test statistico.
 
@@ -19294,7 +19294,7 @@ Estratti \(n=25\) dati si è ottenuto \(\sum_{i=1}^n x_i = 45\) e \(\sum_{i=1}^n
 
 \end{sol}
 
-4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(h\) uno stimatore per \(\theta\), cosa significa che \(h\) è consistente?
+4.b \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Sia \(\hat\theta\) uno stimatore per \(\theta\), cosa significa che \(h\) è consistente?
 
 4.c \textbf{(Punti 3/103 \(\rightarrow\) 0.9/31)} Definire la significatività e la potenza di un test.
 

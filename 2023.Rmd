@@ -150,7 +150,7 @@ cat(tlc("prop",.27,verso = ">",mu = mm,s2 = ss,n=n))
 \end{eqnarray*}
 Ricavare il suo $MSE$ (Mean Squared Error). 
 
-`r punti_p()` Si $h$ uno stimatore per $\theta$ tale che $E(h)=\theta$. Di quale proprietà gode $h$? 
+`r punti_p()` Si $\hat\theta$ uno stimatore per $\theta$ tale che $E(\hat\theta)=\theta$. Di quale proprietà gode $\hat\theta$? 
 
 `r punti_p()` Definire la potenza di un test. 
 
@@ -418,7 +418,7 @@ cat(tlc(tipo = "somma",x1 = 310,verso = ">",mu = mm,s2 = ss,n = n))
 \end{eqnarray*}
 Ricavare il suo $MSE$ (Mean Squared Error). 
 
-`r punti_p()` Si $h$ uno stimatore per $\theta$ tale che $E(h)=\theta$ e $\lim_{n\to\infty} V(h)=0$. Di quale proprietà gode $h$? 
+`r punti_p()` Si $\hat\theta$ uno stimatore per $\theta$ tale che $E(\hat\theta)=\theta$ e $\lim_{n\to\infty} V(\hat\theta)=0$. Di quale proprietà gode $\hat\theta$? 
 
 `r punti_p()` Definire la significatività di un test. 
 
@@ -667,7 +667,7 @@ cat(tlc("media",2.8,NUll,verso = ">",mu = mm,s2 = ss,n = n))
 \end{eqnarray*}
 Ricavare il $MSE$ (Mean Squared Error) di $\hat\mu$. 
 
-`r punti_p()` Si $h$ uno stimatore per $\theta$ tale che $E(h)\ne\theta$, ma che $\lim_{n\to\infty}E(h)=\theta$. Di quale proprietà gode $h$? 
+`r punti_p()` Si $\hat\theta$ uno stimatore per $\theta$ tale che $E(\hat\theta)\ne\theta$, ma che $\lim_{n\to\infty}E(\hat\theta)=\theta$. Di quale proprietà gode $\hat\theta$? 
 
 `r punti_p()` Quali sono gli errori di primo e secondo tipo? 
 
@@ -948,7 +948,7 @@ cat(tlc("media",x1 = 1.6,NULL,">",mu = mm,s2 = ss,n = n))
 \end{eqnarray*}
 Ricavare la sua varianza e metterla in relazione con il suo MSE.
 
-`r punti_p()` Sia $h$ uno stimatore per $\theta$. Cosa significa dire che $h$ è consistente?
+`r punti_p()` Sia $\hat\theta$ uno stimatore per $\theta$. Cosa significa dire che $\hat\theta$ è consistente?
 
 `r punti_p()` Siano $T_1$ e $T_2$ due test per lo stesso sistema d'ipotesi e con probabilità di errore di secondo tipo pari a, $\beta_1=0.2$ e $\beta_2=0.3$, rispettivamente. A parità di significatività, quale dei due è più potente? Perché?
 
@@ -1189,7 +1189,7 @@ tlc(tipo = "somma",80,120,NULL,mu = mm,ss,n = n)
 \end{eqnarray*}
 Ricavare la sua varianza e metterla in relazione con il suo $MSE$ (Mean Squared Error).
 
-`r punti_p()` Sia $h$ uno stimatore per $\theta$. Cosa significa dire che $h$ è consistente?
+`r punti_p()` Sia $\hat\theta$ uno stimatore per $\theta$. Cosa significa dire che $\hat\theta$ è consistente?
 
 `r punti_p()` Definire la significatività e la potenza di un test.
 
@@ -1911,7 +1911,7 @@ cat(tlc(tipo = "somma",x1 = 80,verso = ">",mu = 1.1,n = 81,s2 = .69))
 
 `r punti_p(nex = T)` Sono stati estratti $n=10$ valori da una Poisson di parametro $\lambda$ incognito e si è ottenuta un media pari a $\bar x=3.4$. Ricavare $\widehat{SE(\hat\lambda)}$ lo Standard Error stimato $\hat\lambda$ di massima verosimiglianza.
 
-`r punti_p()` Sia $h$ uno stimatore per $\theta$. Cosa significa dire che $h$ è consistente?
+`r punti_p()` Sia $\hat\theta$ uno stimatore per $\theta$. Cosa significa dire che $\hat\theta$ è consistente?
 
 `r punti_p()` Siano $T_1$ e $T_2$ due test per lo stesso sistema d'ipotesi e con probabilità di errore di secondo tipo pari a, $\beta_1=0.02$ e $\beta_2=0.3$, rispettivamente. A parità di significatività, quale dei due è più potente? Perché?
 
@@ -2170,7 +2170,7 @@ cat(tlc(tipo = "media",x1 = 0.9,verso = "<",mu = 1,n = 81,s2 = .6))
 
 `r punti_p(nex = T)` Sono stati estratti $n=10$ valori da una Bernoulli di parametro $\pi$ incognito e si è ottenuti 4 successi in 10 estrazioni. Ricavare, $\widehat{SE(\hat\pi)}$ lo Standard Error stimato di $\hat\pi$ di massima verosimiglianza.
 
-`r punti_p()` Sia $h$ uno stimatore per $\theta$. Cosa significa dire che $h$ è corretto asintoticamente?
+`r punti_p()` Sia $\hat\theta$ uno stimatore per $\theta$. Cosa significa dire che $\hat\theta$ è corretto asintoticamente?
 
 `r punti_p()` Definire gli errori di primo e di secondo tipo e le relative probabilità.
 
@@ -2431,9 +2431,9 @@ cat(tlc(tipo = "somma",x1 = 400,verso = "<",mu = 1.2,s2 = 9.1,n = 365))
 \end{eqnarray*}
 Come si distribuisce $\hat\mu$?
 
-`r punti_p()` Sia $h$ uno stimatore per $\theta$ tale che 
-\[V(h)=\frac\theta {\sqrt{n}};~~~~E(h)=\theta\frac{n+2}{n}\]
-di quali proprietà gode $h$?
+`r punti_p()` Sia $\hat\theta$ uno stimatore per $\theta$ tale che 
+\[V(\hat\theta)=\frac\theta {\sqrt{n}};~~~~E(\hat\theta)=\theta\frac{n+2}{n}\]
+di quali proprietà gode $\hat\theta$?
 
 `r punti_p()` Definire il p-value e descrivere la sua interpretazione.
 
@@ -2678,9 +2678,9 @@ cat(tlc(tipo = "media",x1 = 1.2,verso = "<",mu = 1.3,s2 = 8.1,n = 365))
 \[\hat\lambda =  \frac 1n\sum_{i=1}^nx_i\]
 Scrivere la distribuzione asintotica di $\hat \lambda$.
 
-`r punti_p()` Sia $h$ uno stimatore per $\theta$ tale che 
-\[V(h)=2\frac\theta {\sqrt{n}};~~~~E(h)=\theta\frac{n+2}{n-1}\]
-$h$ è corretto? Si può correggere?
+`r punti_p()` Sia $\hat\theta$ uno stimatore per $\theta$ tale che 
+\[V(\hat\theta)=2\frac\theta {\sqrt{n}};~~~~E(\hat\theta)=\theta\frac{n+2}{n-1}\]
+$\hat\theta$ è corretto? Si può correggere?
 
 `r punti_p()` Definire la significatività di un test statistico.
 
@@ -2916,9 +2916,9 @@ cat(tlc(tipo = "somma",x1 = 60,verso = ">",mu = .15,n = 365))
 \[\hat\lambda =  \frac 1n\sum_{i=1}^nx_i\]
 Scrivere la distribuzione asintotica di $\hat \lambda$.
 
-`r punti_p()` `r punti_p()` Sia $h$ uno stimatore per $\theta$ tale che 
-\[V(h)=2\frac\theta {\sqrt{n}};~~~~E(h)=\theta\frac{n+2}{n-1}\]
-scrive il Mean Squared Error di $h$ ($MSE(h)$).
+`r punti_p()` `r punti_p()` Sia $\hat\theta$ uno stimatore per $\theta$ tale che 
+\[V(\hat\theta)=2\frac\theta {\sqrt{n}};~~~~E(\hat\theta)=\theta\frac{n+2}{n-1}\]
+scrive il Mean Squared Error di $\hat\theta$ ($MSE(\hat\theta)$).
 
 `r punti_p()` Definire la potenza di un test statistico.
 

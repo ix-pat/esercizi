@@ -1622,7 +1622,7 @@ Estratti $n=25$ dati si è ottenuto $\sum_{i=1}^n x_i = 45$ e $\sum_{i=1}^n x_i^
   \widehat{SE(\hat\mu)} &=& \frac{`r sqrt(25/24)*sqrt(105/25-(42/25)^2)`}{\sqrt{25}}=`r sqrt(25/24)*sqrt(105/25-(42/25)^2)/5`\\
 \end{eqnarray*}
 :::
-`r punti_p()` Sia $h$ uno stimatore per $\theta$, cosa significa che $h$ è consistente?
+`r punti_p()` Sia $\hat\theta$ uno stimatore per $\theta$, cosa significa che $h$ è consistente?
 
 `r punti_p()` Definire la significatività e la potenza di un test.
 

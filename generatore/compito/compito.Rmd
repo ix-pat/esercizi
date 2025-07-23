@@ -43,15 +43,16 @@ if (html){
     fig.width = 4,
     warning = FALSE,
     message = FALSE,
-    results = 'asis'
+    results = 'asis',
+    global.par = TRUE,
+    fig.align = "center"
   )
   knitr::knit_hooks$set(
     par = function(before, options, envir) {
-      if (before) par(cex = .1)
+      if (before) par(cex = .5)
     }
   )
-  par(cex = .1)
-  knitr::opts_chunk$set(par = TRUE,fig.align = "center")
+  par(cex=.5)
 }
 options(digits=4,nsmall=4,knitr.kable.NA = '',scipen = 1000000,dev.args = list(bg = 'transparent'))
 library(knitr)
@@ -59,8 +60,9 @@ library(xtable)
 library(kableExtra)
 library(colorspace)
 library(xaringan)
+# solo generatore
 library(pat.book)
-#source("pat-book.R")
+# fine solo generatore
 cex <- .8
 
 
@@ -80,14 +82,16 @@ anagrafica <- function(seed = NULL,new.page=F,cod.comp = NULL) {
   cat("}\n")
   cat("\\pagestyle{firstpage}\n")
 }
+
 punti_p <- function(start=F,nex=F,num=F){
   tot <- sum(unlist(punti))
   it <- ifelse(start,item_start(num),item_(num))
   it <- ifelse(nex,item_next(num),it)
   ptt <- punti[[i1]][i2]
   ptt_30 <- format(round(ptt/tot*31,1),nsmall=1)
-  sep <- ifelse(html," ","\\hspace{.1em}")
-  if(html) paste(it,"(pt",sep,ptt,"/",tot," → ",ptt_30,"/31)",sep="") else paste(it,"(pt",sep,ptt_30,"/31)",sep="")
+  if (!html) {p1 <- paste("**",it,"**(*pt\\hspace{.1em}",ptt_30,"/31*)",sep="")} else {
+              p1 <- paste("**",it,"**(pt ",ptt_30,"/31→",ptt,"/",tot ,")",sep="")}  
+  return(p1)
 }
 
 par(bg="transparent")
@@ -104,12 +108,12 @@ anagrafica(new.page = F,cod.comp = cod.comp(x = "",i2 = 14))
 
 ```{r setup-punti, echo=FALSE}
 punti <- list(
-  e1 = c(13, 4, 2, 2),
-  e2 = c(13, 4, 2, 2),
-  e3 = c(13),
-  e4 = c(3, 3, 3, 3),
-  e5 = c(3, 10),
-  e6 = c(13, 4, 2, 2, 2)
+   e1 = c(13, 4, 2, 2),
+   e2 = c(13, 4, 2, 2),
+   e3 = c(13),
+   e4 = c(3, 3, 3, 3),
+   e5 = c(3, 10),
+   e6 = c(13, 4, 2, 2, 2)
 )
 ```
 
@@ -118,56 +122,60 @@ punti <- list(
 ### Esercizio 1 
 
 
-```{r 2022-17a}
 
+
+```{r 2024-93}
 
 # Basic settings
-set.seed(12)   # per ottenere sempre la stessa simulazione
-n <- 250      # ampiezza campionaria
-nomex <- "Spesa"
+set.seed(1)   # per ottenere sempre la stessa simulazione
+n <- 160      # ampiezza campionaria
 
-brk  <- c(0,3, 5,10,20)
-nnn  <- c( 20,110,100, 50)
+brk  <- c(0,1.5,3,8,20)
+nnn  <- c( 50,100,110, 20)
 nnn  <- round(nnn/sum(nnn)*n)
+nomex <- "Investimento"
 
 samp <- genera_dati(brk = brk,nnn=nnn,n=n)
-ls2e(stat_base(samp,brk))
+  
+ls2e(x = stat_base(samp,brk))
 ```
 
-Su un campione di $`r n`$ famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito i dati raccolti in classe e le densità di frequenza percentuali
+Su un campione di $`r n`$ famiglie dell'Emilia-Romagna sono stati rilevati i consumi annui in beni tecnologici (dai espressi in migliaia di euro). Qui di seguito la distribuzione delle densità percentuali:
 
-```{r 2022-18}
+```{r 2024-94}
 kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
   kable_styling(full_width = F, latex_options = "HOLD_position")
+
 ```
 
-`r punti_p(start=T)` Calcolare il valore approssimato della mediana.
+`r punti_p(start=T)`  Calcolare il valore approssimativo della mediana. 
 
 :::{.sol data-latex=""}
-```{r 2022-19}
-kable(dat3[,c(1:2,12,3:7)],booktabs=T,escape = F,linesep="") %>%
-  kable_styling(full_width = F, latex_options = "HOLD_position")
-
-cat(percentile())
-```
-:::
-
-`r punti_p()` Quante famiglie hanno una spesa inferiore al 25-esimo percentile?
-
-:::{.sol data-latex=""}
-```{r}
-F_print(.25,verso = "",x2 = 3.5,perc1 = T)
+```{r 2024-95}
+percentile()
+histp(T)
+draw_dist(dist = H.int,z1 = 4,z2 = 10)
 ```
 :::
 
-`r punti_p()` La spesa media è pari a $\bar x=`r mean(samp)`$, che forma ci dobbiamo aspettare dell'istogramma di densità?
-
-`r punti_p()` La varianza della spesa è pari a $Var=`r var(samp)`$.
-Se ogni famiglia aumentasse la sua spesa del 5%, quanto varrebbe varianza dei dati così trasformati?
+`r punti_p()` Qual è la percentuale di famiglie spendono più del 55-esimo percentile $x_{0.55}$? 
 
 :::{.sol data-latex=""}
-$$`r 1.05^2*var(samp)`$$
-:::
+```{r 2024-96}
+F_print(x = .55,verso = ">",perc1 = T)
+```
+:::  
+
+`r punti_p()` La media è pari a $\bar x=`r p(mean(samp),2)`$, senza disegnare l'istogramma, che forma distributiva dobbiamo aspettarci?
+
+`r punti_p()` La spesa media è pari a $`r mean(samp)`$, mentre la varianza è pari a $`r s2c(samp)`$.
+Se ogni famiglia diminuisse la propria spesa del 2%, quanto varrebbero la media e la varianza dei dati così trasformati?
+
+:::{.sol data-latex=""}
+\[
+\bar y = `r 0.98*mean(samp)`\qquad \sigma^2 = `r (0.98)^2*s2c(samp)`
+\]
+:::  
 
 
 
@@ -175,109 +183,58 @@ $$`r 1.05^2*var(samp)`$$
 
 ### Esercizio 2 
 
-  
-```{r 2021-47}
-s1 <- 0.55
-s2 <- 0.85
+
+`r punti_p(nex=T)` Si consideri un'urna che ha 5 palline bianche, 5 nere e 5 verdi. Si estrae 3 volte **con**  reinserimento. Sia $X$ la variabile casuale che conta il numero di bianche su 3 estrazioni. Calcolare la probabilità che $X\leq 1$.
+
+:::{.sol data-latex=""}
+```{r}
+bin_dis(1,3,5/15)
 ```
+:::  
 
-Il flusso giornaliero d'acqua in entrata nella vasca $V$ è descritto da una variabile casuale normale $X_E\sim N(5.1,1.1)$, il flusso giornaliero in uscita è descritto da una variabile casuale normale $X_U\sim N(6.2,0.5)$.
+`r punti_p()` Si consideri un'urna che ha 5 palline bianche, 5 nere e 5 verdi. Si estrae 3 volte **senza**  reinserimento. Sia $X$ la variabile casuale che conta il numero di bianche su 3 estrazioni. Calcolare la probabilità che $X\leq 1$.
 
-La variazione di livello nella vasca è dunque data da:
-$$
-X_L=X_E-X_U.
-$$
-`r punti_p(nex = T)` Calcolare la probabilità che la variazione di livello sia negativa ($X_L<0$).
-
-::: {.sol data-latex=""}
-La variazione di livello nella vasca si distribuisce
-$$
-X_L=X_E-X_U\sim N(5.1-6.2;1.1+0.5)
-$$
-E quindi
-
-```{r 2021-48}
-vnam<-"X_L"
-mm <- 5.1-6.2
-ss <- 1.1+0.5
-x0 <- 0
-
-
-```
-
-```{r 2021-9,,results='asis'}
-cat(norm_int(x1 = 0,verso = "<",mm = mm,ss = ss,vnam = "X_L"))
-```
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+  B_i &=& \text{Bianca all'estrazione $i$}\\
+  \bar B_i &=& \text{Non Bianca all'estrazione $i$}\\
+  P(X\le 1) &=&  P(X=0) + P(X=1)\\
+   &=& P(\bar B_1\cap\bar B_2\cap\bar B_3)+\\
+   &+&P(B_1\cap\bar B_2 \cap \bar B_3)+P(\bar B_1\cap B_2 \cap \bar B_3)+P(\bar B_1\cap\bar B_2 \cap B_3)\\
+   &=& \frac {10}{15}\frac {9}{14}\frac {8}{13}+3\cdot\frac {5}{15}\frac {10}{14}\frac {9}{13}\\
+  &=& `r prod((10:8)/(15:13)) + 3* prod(c(5,(10:7))/(15:13))`
+\end{eqnarray*}
 :::
 
+`r punti_p()` Sia $X$ una VC definita su $S_X=\{0,1,2,3\}$, posto $Y=2X$ ricavare $S_Y$.
 
-`r punti_p()` Nell'ipotesi di indipendenza tra i giorni, calcolare la probabilità di avere esattamente _due_ giorni su _cinque_ con livello negativo.  `r pp <- pnorm(0,mm,sqrt(ss))`
-
-::: {.sol data-latex=""}
-Posto
+`r punti_p()` Sia $X$ una VC, e siano $P(X\leq 1)=0.1$, $P(X> 2)=0.1$. Calcolare
 $$
-\pi = P(X_L=0)=`r pnorm(0,mm,sqrt(ss))`
+P(X>2|X>1)
 $$
-la VC $X$ che conta il numero di giorni con livello negativo in 5 giorni
-$$
-X\sim\text{Binom}(5,`r pp`)
-$$
-e quindi 
 
-```{r 2021-49}
-bin_dis(2,5,pp,sing=T)
-```
-
-:::
-
-
-`r punti_p()` Se $P(A)=0.6$ e $P(B)=0.8$, $A$ e $B$ possono essere incompatibili?
-
-::: {.sol data-latex=""}
-No, perché se fossero incompatibili allora
-$$
-P(A\cup B)=P(A)+P(B)=0.6+0.8=1.4>1
-$$
-che è impossibile.
-:::
-
-
-`r punti_p()` Se $X\sim N(\mu_X,\sigma^2_X)$ come si distribuisce 
-  $$Y=\left(\frac{X-\mu_X}{\sigma_X}\right)^2 ~~~?$$
-  
-::: {.sol data-latex=""}
-Anzitutto osserviamo che
-$$
-Z=\frac{X-\mu_X}{\sigma_X}\sim N(0,1)
-$$
-Poi che
-$$
-Y=Z^2\sim\chi_1^2
-$$
-:::
-
-
+:::{.sol data-latex=""}
+\begin{eqnarray}
+  P(X>2|X>1) &=&  \frac{P({X>2}\cap {X>1})}{P(X> 1)}\\
+             &=&  \frac{P({X>2})}{P(X> 1)}\\
+             &=&   \frac{0.1}{1-0.1}\\
+             &=& `r .1/.9`
+\end{eqnarray}
+:::  
 
 
 
 
 ### Esercizio 3 
 
-
-
-
-`r punti_p(nex=T)` Un'urna 4 premi da $\mbox{0}$ euro, 2 premi da $\mbox{1}$ euro.
-Si estrae 50 volte con reintroduzione. 
-
-Qual è la probabilità che la la vincita totale sia maggiore di 50?
+`r punti_p(nex=T)` Un'urna contiene 2 palline numerate con $\fbox{0}$, 6 numerate con $\fbox{1}$ e 2 numerate con $\fbox{2}$. Si estrae 100 volte con reinserimento. Qual è la probabilità che la proporzione di palline col numero $\fbox{1}$ sia minore di 0.55?
 
 :::{.sol data-latex=""}
-
-```{r 2024-65}
-n <- 50
-mx <- 2/6
-
-tlc("somma",50,verso = ">",mu = mx,n = n)
+$$
+\pi = P(\text{estrarre $\fbox{1}$})=\frac {6}{10}=0.6
+$$
+```{r}
+tlc(tipo = "prop",x1 = 0.55,verso = "<",mu = .6,n = 100)
 ```
 :::
 
@@ -287,30 +244,21 @@ tlc("somma",50,verso = ">",mu = mx,n = n)
 ### Esercizio 4 
 
   
-`r punti_p(nex = T)` Sia $\hat \pi$ lo stimatore di massima verosimiglianza di $\pi$ del modello Binomiale.
-\begin{eqnarray*}
-  \hat\pi &=&  \frac 1n\sum_{i=1}^nx_i\\
-\end{eqnarray*}
-Ricavare la sua varianza e metterla in relazione con il suo $MSE$ (Mean Squared Error).
+`r punti_p(nex = T)` Siano $h_1$ e $h_2$ due stimatori per $\theta$, tali che
 
-`r punti_p()` Sia $h$ uno stimatore per $\theta$. Cosa significa dire che $h$ è consistente?
+$$
+  MSE(h_1) =  \frac{\theta}{n^2}, \qquad  MSE(h_2) =  \frac{\theta}{n}
+$$
 
-`r punti_p()` Definire la significatività e la potenza di un test.
+Quale dei due stimatori è più efficiente?
 
-`r punti_p()` In uno studio sull'effetto del titolo di studio sulla percezione del benessere, su un gruppo di 238 intervistati è stato chiesto il titolo di studio (basso: "al massimo le scuole medie inferiori", medio: "Diploma di scuola superiore", alto: "almeno il Diploma di Laurea") e la percezione del proprio benessere (basso, medio, alto). Qui di seguito i dati:
+`r punti_p()` Siano $T_1$ e $T_2$ due test statistici per la stessa $H_0$ e con la stessa significatività $\alpha$. Cosa significa dire che $T_1$ e più potente di $T_2$?
 
-```{r 2023-149}
+`r punti_p()` Definire la probabilità di significatività osservata.
 
-x <- matrix(c(18,21,20,26,35,38,35,30,15),3)
-dimnames(x)<-list(redimento=c("basso","medio","alto"),reddito=c("basso","medio","alto"))
-kable(x,booktabs=T,escape = F,linesep="") %>%
-  kable_styling(full_width = F, latex_options = "HOLD_position")%>%
-  kable_paper("striped", full_width = F) %>%
-  pack_rows("Titolo di studio", 1, 3) %>%
-  add_header_above(c(" " = 1, "Benessere" = 3))
-```
+`r punti_p()` Se in un test statistico che utilizza la statistica test _t_ con 10 gradi di libertà $t_\text{obs}=1.4$, il $p_\text{value}$ sarà maggiore o minore di 0.05? Perché?
 
-Si è testata l'indipendenza tra il titolo di studio e la percezione del benessere e il test ha restituito $p_\text{value}=0.04$. Possiamo dire che titolo di studio e benessere sono indipendenti? Perché?
+
 
 
 
@@ -320,32 +268,31 @@ Si è testata l'indipendenza tra il titolo di studio e la percezione del benesse
 ### Esercizio 5 
 
 
-```{r 2023-159}
-n1 <- 35
-muh <- 68
-sdh <- 5
-mu0 <- 71
-```
+Nel comune $A$ si è condotta un'intervista per conoscere l'opinione
+dei cittadini sulla presenza di un inceneritore. Sono state intervistate
+25 persone a cui è stato chiesto di esprimete l'opinione in una scala da zero a 100.
+È risultato un punteggio medio pari a $\hat\mu_A=72.1$ con una standard deviation 
+$\hat\sigma_A=3.4$
 
-`r punti_p(nex = T)` In uno studio sui redditi, nel comune $A$ si è rilevato il reddito di $n=`r n1`$ individui e si è osservata una media pari $`r muh`$ mila euro con una standard deviation pari a $`r sdh`$ mila euro.
-Costruire un intervallo di confidenza al 95% per il reddito medio $\mu$.
+`r punti_p(nex = T)` Costruire un intervallo di confidenza al 95%
+per la proporzione dei favorevoli in popolazione.
 
 :::{.sol data-latex=""}
-```{r 2023-28,,results='asis'}
-options(digits = 4)
-res <- idc(xm = muh,sd = sdh,alpha = .05,n = n1,dist_ = "t",mus = mu0,ss = "S")
-cat(res)
+```{r 2023-70,,results='asis'}
+cat(idc(xm = 72.1,sd = 3.4,n = 25,alpha = .05,dist_ = "t"))
 ```
 :::
 
-`r punti_p()` Un'indagine analoga, svolta sull'intera regione, ha mostrato un reddito medio pari a $\mu_0=`r mu0`$. Testare l'ipotesi che nel comune $A$ il reddito medio sia uguale a quello regionale contro l'alternativa che sia __diverso__.
+`r punti_p()` Nel comune $B$ si è condotta un'intervista analoga. 
+Sono state intervistate 23 persone si è osservata una media pari $\mu_B=69.6$ e una deviazione standard $\hat\sigma_B=3.3$.
+Sotto ipotesi di omogeneità testare l'ipotesi che le medie dei due comuni siano uguali contro l'alternativa che siano diverse
 
 :::{.sol data-latex=""}
-```{r 2023-29,,results='asis'}
-res <- ttest_mu(muh = muh,sh = sdh,n = n1,mu0 = mu0,h1 = "\\neq")
-cat(res)
+```{r 2023-71,,results='asis'}
+cat(ttest_2c_om(mu1 = 72.1,mu2 = 69.6,s1h =3.4,s2h = 3.3,n1 = 25,n2 = 24,h1 = "\\neq",a = "A",b = "B" ))
 ```
 :::
+
 
 
 
@@ -355,72 +302,60 @@ cat(res)
 ### Esercizio 6 
 
 
-```{r 2024-121}
-set.seed(42)
-n <- 40
-sig <- .25
-x <- round(runif(n = n, min = 0, max = 10), 2) 
-y <- round(10 - (0.7 * x )^2 + rnorm(n, 0, sig), 2) 
-ls2e(regr(x, y, semp = TRUE, ax = 2))
+```{r 2022-100}
+
+set.seed(666)
+n <- 15
+x <- sort(sample(seq(0,4,by=.1),n))
+
+eps <- rnorm(n,0,1)
+y <- round(5+x + eps,1)
+
+RGX <-regr(x,y)
+ls2e(RGX)
 ```
 
-In uno studio sulla relazione tra tempo libero e stress, in un campione di \(n=`r n`\) individui, sono state analizzate le ore settimanali dedicate al tempo libero (in ore, \(X\)) e i livelli di stress misurati (su una scala da 1 a 10, \(Y\)).
+Sono stati analizzati `r n` comuni della provincia di Bologna e su ogni comune è stato rilevato
+il PIL pro capite del comune $X$, espresso in decine di migliaia di euro e un valore di percezione di
+qualità della vita $Y$ (espresso su opportuna scala).
 
-Si osservano le seguenti statistiche:
-$\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
-$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+Qui di seguito le statistiche bivariate
 
+\begin{align*}
+  \sum_{i=1}^n x_i &= `r sum(x)` &\sum_{i=1}^n x_i^2 &= `r sum(x^2)` &\sum_{i=1}^n x_i y_i &= `r sum(x*y)`\\
+  \sum_{i=1}^n y_i &= `r sum(y)` & \sum_{i=1}^n y_i^2 &= `r sum(y^2)` &
+\end{align*}
 
-`r punti_p(nex=T)` Si è osservato $x_4=`r x[4]`$ e $y_4=`r round(y[4],2)`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=4$.
+`r punti_p(nex = T)` Stimare la previsione per $x=1.6$ nel modello di regressione dove $Y$ viene spiegata da $X$.
 
 :::{.sol data-latex=""}
-```{r 2024-31,,results='asis'}
-calcolo_beta()
-residuo(x = x[4],y = y[4])
+```{r 2022-101}
+cat(calcolo_beta())
+cat(previsione(1.6))
 ```
 :::
 
-`r punti_p()` Scomporre la Total Sum of Squares.
+`r punti_p()` Calcolare numericamente $RSS$:
+$$
+RSS=\sum_{i=1}^n \hat\epsilon_i^2
+$$
 
 :::{.sol data-latex=""}
-```{r 2024-32,,results='asis'}
-TSS()
-```
+$$RSS=n(1-r^2)\hat\sigma_Y^2=`r n*(1-r^2)*vy`$$
 :::
 
-`r punti_p()` Interpretare il diagramma dei residui.
+`r punti_p()` Gli stimatori $\hat\beta_0$ e $\hat\beta_1$ sono consistenti? 
+Perché?
 
-```{r 2024-33,, fig.width=5, fig.height=3.5}
-par(mar=c(4,4,0,2),cex=.8)
-plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
-axis(1, cex=1)
-axis(2, cex=1)
-abline(h=0, lty=2)
-```
+`r punti_p()` Se in un modello di regressione con 11 dati, 
+il residuo studentizzato del dato $i$ è $\tilde \epsilon_i=1.23$, cosa possiamo concludere?
 
-:::{.sol data-latex=""}
-```{r 2024-34,,results='asis'}
-plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
-axis(1, cex=1)
-axis(2, cex=1)
-abline(h=0, lty=2)
-spline_pat(x,es,df1 = 5,df2 = 5)
-```
-:::
-
-`r punti_p()` Cosa significa che $r$ è invariante ai cambiamenti di scala?
-
-`r punti_p()` Se in un modello di regressione $r^2=0$ significa che non c'è relazione tra $X$ ed $Y$?
-
-<!-- `r punti_p()` Testare l'ipotesi che $\beta_0$ sia uguale a 12, contro l'alternativa che sia maggiore per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.). -->
-
-<!-- :::{.sol data-latex=""} -->
-<!-- ```{r 2024-122} -->
-<!-- ttest_beta(0,12.5,h1 = ">",SE = T) -->
-<!-- ``` -->
-<!-- ::: -->
+`r punti_p()` Sia $\hat\beta_1$ lo stimatore dei minimi quadrati per $\beta_1$.
+Scrivere il suo Standard Error teorico.
 
 
 
+
+<div class="button-container"></div>
 
 

@@ -10,7 +10,7 @@ source("../punti.R")
 #### ESTRAE TESTO ####
 
 anni  <- c(
-  "2021",
+#  "2021",
   "2022",
   "2023",
   "2024",
@@ -209,8 +209,9 @@ rmarkdown::render(
   output_format = "html_document",
   clean = T, 
   output_file = "compito/compito.html",
-  envir = globalenv()
+  envir = globalenv(),
+  output_options = list(pandoc_args = c("--metadata", paste0("title= Prova del ",format(Sys.time(), "%d/%m/%Y"))))
 )
 
-# system("mv compito.Rmd compito/")
+system("mv compito.Rmd compito/")
 system("rm compito/compito.tex")

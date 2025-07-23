@@ -191,35 +191,35 @@ cat(tlc(tipo = "somma",x1 = 21,verso = ">",mu = 1/3,n = 60))
 
 ### Esercizio 4
 
-`r punti_p(nex = T)` Sia $h$ uno stimatore per theta, tale che
+`r punti_p(nex = T)` Sia $\hat\theta$ uno stimatore per theta, tale che
 $$
-E(h)=\theta+\frac\theta {\sqrt{ n}}
+E(\hat\theta)=\theta+\frac\theta {\sqrt{ n}}
 $$
-$h$ è corretto? $h$ è asintoticamente corretto?
+$\hat\theta$ è corretto? $\hat\theta$ è asintoticamente corretto?
 
 ::: {.sol data-latex=""}
-$h$ **non è corretto**, infatti
+$\hat\theta$ **non è corretto**, infatti
 $$
-E(h)=\theta+\frac\theta {\sqrt{ n}}\neq\theta
+E(\hat\theta)=\theta+\frac\theta {\sqrt{ n}}\neq\theta
 $$
-$h$ **è asintoticamente corretto**, infatti
+$\hat\theta$ **è asintoticamente corretto**, infatti
 $$
-\lim_{n\to\infty}E(h)=\lim_{n\to\infty}\left(\theta+\frac\theta {\sqrt{ n}}\right)=\theta+0=\theta
+\lim_{n\to\infty}E(\hat\theta)=\lim_{n\to\infty}\left(\theta+\frac\theta {\sqrt{ n}}\right)=\theta+0=\theta
 $$
 :::
 
-`r punti_p()` Siano $h_1$ e $h_2$ due stimatori per $\theta$, tali che:
+`r punti_p()` Siano $\hat\theta_1$ e $\hat\theta_2$ due stimatori per $\theta$, tali che:
 \begin{eqnarray*}
-MSE(h_1) &=&   \frac\theta n\\
-MSE(h_2) &=&   \frac{2\theta} n
+MSE(\hat\theta_1) &=&   \frac\theta n\\
+MSE(\hat\theta_2) &=&   \frac{2\theta} n
 \end{eqnarray*}
 Quale dei due stimatori è più efficiente? Perché?
 
 ::: {.sol data-latex=""}
-$h_1$ **è più efficiente** di $h_2$, infatti
+$\hat\theta_1$ **è più efficiente** di $\hat\theta_2$, infatti
 \begin{eqnarray*}
-MSE(h_1) &=&   \frac\theta n\\
-MSE(h_2) &=&   \frac{2\theta} n =2\cdot MSE(h_1)>MSE(h_1)
+MSE(\hat\theta_1) &=&   \frac\theta n\\
+MSE(\hat\theta_2) &=&   \frac{2\theta} n =2\cdot MSE(\hat\theta_1)>MSE(\hat\theta_1)
 \end{eqnarray*}
 :::
 
@@ -521,16 +521,16 @@ cat(tlc(tipo = "media",x1 = .1,verso = "<",mu = mean(urn),s2 = s2c(urn),n = 60))
 
 ### Esercizio 4
   
-`r punti_p(nex = T)` Sia $h$ uno stimatore per $\theta$, tale che
+`r punti_p(nex = T)` Sia $\hat\theta$ uno stimatore per $\theta$, tale che
 $$
-MSE(h)=\frac\theta {\sqrt{ n}}+\frac1n
+MSE(\hat\theta)=\frac\theta {\sqrt{ n}}+\frac1n
 $$
-$h$ è consistente? Perché?
+$\hat\theta$ è consistente? Perché?
 
 ::: {.sol data-latex=""}
 Sì, è _consistente_, infatti
 $$
-\lim_{n\to\infty}MSE(h)=\lim_{n\to\infty}\left(\frac\theta {\sqrt{ n}}+\frac1n\right)=0
+\lim_{n\to\infty}MSE(\hat\theta)=\lim_{n\to\infty}\left(\frac\theta {\sqrt{ n}}+\frac1n\right)=0
 $$
 :::
 
@@ -863,27 +863,27 @@ cat(tlc("somma",x1 = 23,verso = ">",mu = 1/3,n = 64))
 
 ### Esercizio 4
   
-`r punti_p(nex = T)` Sia $h$ uno stimatore per $\theta$, tale che
+`r punti_p(nex = T)` Sia $\hat\theta$ uno stimatore per $\theta$, tale che
 \begin{eqnarray*}
-E(h)&=&\theta+\frac\theta {\sqrt{ n}}\\
-V(h)&=&\frac{\theta^2}{\sqrt n}
+E(\hat\theta)&=&\theta+\frac\theta {\sqrt{ n}}\\
+V(\hat\theta)&=&\frac{\theta^2}{\sqrt n}
 \end{eqnarray*}
-$h$ è consistente?
+$\hat\theta$ è consistente?
 
 ::: {.sol data-latex=""}
 Uno stimatore è consistente se
 $$
-\lim_{n\to\infty} MSE(h)=0
+\lim_{n\to\infty} MSE(\hat\theta)=0
 $$
 Essendo
 \begin{eqnarray*}
-MSE(h)&=&V(h)+B^2(h)\\
-&=&V(h)+|E(h)-\theta|^2\\
+MSE(\hat\theta)&=&V(\hat\theta)+B^2(\hat\theta)\\
+&=&V(\hat\theta)+|E(\hat\theta)-\theta|^2\\
 &=&\frac{\theta^2}{\sqrt n}+\left|\theta+\frac\theta {\sqrt{ n}}-\theta\right|^2\\
 &=&\frac{\theta^2}{\sqrt n}+\frac{\theta^2} { n}\\
 \lim_{n\to\infty} \left(\frac{\theta^2}{\sqrt n}+\frac{\theta^2} { n}\right)&=&0
 \end{eqnarray*}
-Quindi sì, $h$ è consistente.
+Quindi sì, $\hat\theta$ è consistente.
 :::
 
 `r punti_p()` Definire la funzione di verosimiglianza.
@@ -1272,17 +1272,17 @@ cat(tlc(tipo = "media",x1 = x1,x2 = x2,verso = NULL,n = 81,mu = mm,s2 = 1.1^2))
 
 ### Esercizio 4
   
-`r punti_p(nex = T)` Sia $h$ uno stimatore per $\theta$, tale che
+`r punti_p(nex = T)` Sia $\hat\theta$ uno stimatore per $\theta$, tale che
 \begin{eqnarray*}
-E(h)&=&\theta+\frac\theta {n^2},\\
-V(h)&=&\frac{\sqrt\theta}{ n}.
+E(\hat\theta)&=&\theta+\frac\theta {n^2},\\
+V(\hat\theta)&=&\frac{\sqrt\theta}{ n}.
 \end{eqnarray*}
-Ricavare $MSE(h)$, il Mean Squared Error di $h$. 
+Ricavare $MSE(\hat\theta)$, il Mean Squared Error di $\hat\theta$. 
 
 ::: {.sol data-latex=""}
 \begin{eqnarray*}
-MSE(h)&=&V(h)+B^2(h)\\
-&=&V(h)+|E(h)-\theta|^2\\
+MSE(\hat\theta)&=&V(\hat\theta)+B^2(\hat\theta)\\
+&=&V(\hat\theta)+|E(\hat\theta)-\theta|^2\\
 &=&\frac{\sqrt\theta}{ n}+\left|\theta+\frac\theta {n^2}-\theta\right|^2\\
 &=&\frac{\sqrt\theta}{ n}+\frac{\theta^2} { n^4}\\
 \end{eqnarray*}
@@ -1643,19 +1643,19 @@ cat(tlc(tipo = "media",x1 = x1,x2 = x2,verso = NULL,mu = mu,s2 = s2,n = 64))
 
 ### Esercizio 4
   
-`r punti_p(nex = T)` Se $h$ è uno stimatore tale che la sua distorsione va a zero per $n$ che tende all'infinito:
+`r punti_p(nex = T)` Se $\hat\theta$ è uno stimatore tale che la sua distorsione va a zero per $n$ che tende all'infinito:
 $$
-\lim_{n\to \infty}B(h)=0
+\lim_{n\to \infty}B(\hat\theta)=0
 $$
-di quale proprietà gode $h$?
+di quale proprietà gode $\hat\theta$?
 
 ::: {.sol data-latex=""}
 Osserviamo che
 \begin{align*}
-B(h) &= E(h)-\theta&\text{e quindi}\\
-\lim_{n\to\infty}B(h)&=0\\
-\lim_{n\to\infty}(E(h)-\theta)&=0 &\text{se e solo se}\\
-\lim_{n\to\infty}E(h)&=\theta &\text{cioè $h$ è asintoticamente corretto}
+B(\hat\theta) &= E(\hat\theta)-\theta&\text{e quindi}\\
+\lim_{n\to\infty}B(\hat\theta)&=0\\
+\lim_{n\to\infty}(E(\hat\theta)-\theta)&=0 &\text{se e solo se}\\
+\lim_{n\to\infty}E(\hat\theta)&=\theta &\text{cioè $\hat\theta$ è asintoticamente corretto}
 \end{align*}
 :::
 
@@ -2283,7 +2283,7 @@ cat(tlc(tipo = "somma",x1 = x0,mu = mm,s2 = ss,n = 365,verso = "<"))
 
 ### Esercizio 4
   
-`r punti_p(nex = T)` Siano $h_1$ e $h_2$ due stimatori corretti per $\theta$, cosa significa che $h_1$ è più efficiente di $h_2$? 
+`r punti_p(nex = T)` Siano $\hat\theta_1$ e $\hat\theta_2$ due stimatori corretti per $\theta$, cosa significa che $\hat\theta_1$ è più efficiente di $\hat\theta_2$? 
 
 `r punti_p()` Definire la funzione di verosimiglianza della Poisson. 
 
