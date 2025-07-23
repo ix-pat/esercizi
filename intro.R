@@ -49,7 +49,7 @@ punti_p <- function(start=F,nex=F,num=F){
   it <- ifelse(start,item_start(num),item_(num))
   it <- ifelse(nex,item_next(num),it)
   ptt <- punti[[i1]][i2]
-  ptt_30 <- round(ptt/tot*31,2)
+  ptt_30 <- round(ptt/tot*31,1)
   paste(it,"**(Punti ",ptt,"/",tot," $\\rightarrow$ ",ptt_30,"/31)**",sep="")
 }
 # 

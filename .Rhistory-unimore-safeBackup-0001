@@ -1,0 +1,512 @@
+# aggiunta della retta
+p <- p %>%
+add_trace(x = xx, y = yy, type = "scatter", mode = "lines",
+line = list(color = "red", width = 2), name = "Retta")
+# aggiunta delle annotazioni
+p <- p %>%
+layout(
+annotations = list(
+list(
+x = mean(xx), y = b0 + b1 * mean(xx),
+text = TeX(paste0("\\( y = ", round(b0,2), " + ", round(b1,2), "x \\)")),
+showarrow = FALSE,
+xanchor = "left",
+font = list(size = 12)
+),
+list(
+x = 0.5, y = b0,
+text = TeX(paste0("\\( \\beta_0 = ", round(b0, 2), " \\)")),
+showarrow = FALSE,
+font = list(size = 12)
+),
+list(
+x = 1.1, y = b0 + b1,
+text = TeX(paste0("\\( \\beta_1 = ", round(b1, 2), " \\)")),
+showarrow = TRUE,
+ax = 0, ay = -40,
+arrowhead = 2,
+font = list(size = 12)
+)
+)
+)
+p
+# Crea un grafico di dispersione interattivo
+p <- plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers", name = "Stati") %>%
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+p
+# aggiunta della retta
+p <- p %>%
+add_trace(x = xx, y = yy, type = "scatter", mode = "lines",
+line = list(color = "red", width = 2), name = "Retta")
+p
+# Crea un grafico di dispersione interattivo
+# Previsioni puntuali
+yhat <- b0 + b1 * df$poverty_rate
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+marker = list(color = 'blue'),
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 7, color = "darkred"),
+name = "Previsioni") %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+marker = list(color = 'blue'),
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 1, color = "black"),
+name = "Previsioni") %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+if (html){
+library(plotly)
+# Crea un grafico di dispersione interattivo
+# Previsioni puntuali
+yhat <- b0 + b1 * df$poverty_rate
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+marker = list(color = 'blue'),
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 1, color = "black"),
+name = "Previsioni") %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+} else {
+plot(x,y,axes=F,title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",xlab="Tasso di povertà",ylab="Tasso di natalità 15-17")
+axis(1)
+axis(2)
+}
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+marker = list(color = 'blue'),
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 1, color = "black"),
+name = "Previsioni") %>%
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="line",color ="darkred")%>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+marker = list(color = 'blue'),
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 1, color = "black"),
+name = "Previsioni") %>%
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="line",color ="darkred",line = list(color = "darkred", width = 2), name = "Retta", inherit = FALSE) %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+marker = list(color = 'blue'),
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 1, color = "black"),
+name = "Previsioni") %>%
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="line",line = list(color = "darkred", width = 2), name = "Retta", inherit = FALSE) %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+marker = list(color = 'blue'),
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 7, color = "grey"),
+name = "Previsioni") %>%
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="line",line = list(color = "darkred", width = 2), name = "Retta", inherit = FALSE) %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 7, color = "grey"),
+name = "Previsioni") %>%
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="line",line = list(color = "darkred", width = 2), name = "Retta", inherit = FALSE) %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="line",line = list(color = "darkred", width = 2), name = "Retta", inherit = FALSE) %>%
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 7, color = "grey"),
+name = "Previsioni") %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="line",line = list(color = "darkred", width = 1), name = "Retta", inherit = FALSE) %>%
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 7, color = "grey"),
+name = "Previsioni") %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="line",line = list(color = "darkred", width = 1), name = "Retta", inherit = FALSE) %>%
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 7, color = "grey"),
+name = "Previsioni") %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="lines",line = list(color = "darkred", width = 1), name = "Retta", inherit = FALSE) %>%
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "x", size = 7, color = "grey"),
+name = "Previsioni") %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="lines",line = list(color = "darkred", width = 1), name = "Retta", inherit = FALSE) %>%
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "cross", size = 7, color = "grey"),
+name = "Previsioni") %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="lines",line = list(color = "darkred", width = 1), name = "Retta", inherit = FALSE) %>%
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "cross", size = 6, color = "grey"),
+name = "Previsioni") %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="lines",line = list(color = "darkred", width = 1), name = "Retta", inherit = FALSE) %>%
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "cross", size = 6, color = "grey"),
+name = "Previsioni") %>%
+add_segments(x = df$poverty_rate, xend = df$poverty_rate,
+y = df$birth_rate, yend = yhat,
+line = list(color = "lightgrey", dash = "dot"),
+name = "Residui", showlegend = FALSE) %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+#reg <- data.frame(pov = df$poverty_rate, est = b0+b1*df$poverty_rate)
+# Crea un grafico di dispersione interattivo
+# plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state, type = "scatter", mode = "markers") %>%
+#   layout(title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+#          xaxis = list(title = "Tasso di povertà"),
+#          yaxis = list(title = "Tasso di natalità")) %>%
+#   add_lines( x= reg$pov, y= reg$est)
+#
+if (html){
+yhat <- b0 + b1 * df$poverty_rate
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="lines",line = list(color = "darkred", width = 1), name = "Retta", inherit = FALSE) %>%
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "cross", size = 6, color = "grey",width=1),
+name = "Previsioni") %>%
+add_segments(x = df$poverty_rate, xend = df$poverty_rate,
+y = df$birth_rate, yend = yhat,
+line = list(color = "lightgrey", dash = "dot"),
+name = "Residui", showlegend = FALSE) %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+} else {
+plot(df$poverty_rate,df$birth_rate,xlab="Tasso di povertà",ylab="Tasso di natalità 15-17",axes=F,xlim=c(0,25),ylim=c(0,40),pch=16,col="blue2")
+axis(1,pos = 0)
+axis(2,pos = 0)
+abline(b0,b1,col="red3",lwd=2)
+axis(2,at=b0,labels = expression(beta[0]==4.27),col.axis=2,las=1,pos=0)
+segments(0,b0,1,b0,lty=2)
+segments(1,b0,1,b0+b1,lty=2)
+text(1.1,4.5,expression(beta[1]==1.37),pos=4)
+axis(1,1,pos=0)
+}
+#reg <- data.frame(pov = df$poverty_rate, est = b0+b1*df$poverty_rate)
+# Crea un grafico di dispersione interattivo
+# plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state, type = "scatter", mode = "markers") %>%
+#   layout(title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+#          xaxis = list(title = "Tasso di povertà"),
+#          yaxis = list(title = "Tasso di natalità")) %>%
+#   add_lines( x= reg$pov, y= reg$est)
+#
+if (html){
+yhat <- b0 + b1 * df$poverty_rate
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="lines",line = list(color = "darkred", width = 1), name = "Retta", inherit = FALSE) %>%
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "cross", size = 6, color = "grey",width=.5),
+name = "Previsioni") %>%
+add_segments(x = df$poverty_rate, xend = df$poverty_rate,
+y = df$birth_rate, yend = yhat,
+line = list(color = "lightgrey", dash = "dot"),
+name = "Residui", showlegend = FALSE) %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+} else {
+plot(df$poverty_rate,df$birth_rate,xlab="Tasso di povertà",ylab="Tasso di natalità 15-17",axes=F,xlim=c(0,25),ylim=c(0,40),pch=16,col="blue2")
+axis(1,pos = 0)
+axis(2,pos = 0)
+abline(b0,b1,col="red3",lwd=2)
+axis(2,at=b0,labels = expression(beta[0]==4.27),col.axis=2,las=1,pos=0)
+segments(0,b0,1,b0,lty=2)
+segments(1,b0,1,b0+b1,lty=2)
+text(1.1,4.5,expression(beta[1]==1.37),pos=4)
+axis(1,1,pos=0)
+}
+#reg <- data.frame(pov = df$poverty_rate, est = b0+b1*df$poverty_rate)
+# Crea un grafico di dispersione interattivo
+# plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state, type = "scatter", mode = "markers") %>%
+#   layout(title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+#          xaxis = list(title = "Tasso di povertà"),
+#          yaxis = list(title = "Tasso di natalità")) %>%
+#   add_lines( x= reg$pov, y= reg$est)
+#
+if (html){
+yhat <- b0 + b1 * df$poverty_rate
+# Plot
+plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# aggiungi crocette per le previsioni
+add_trace(x = df$poverty_rate, y = yhat,type =  "scatter",mode="lines",line = list(color = "darkred", width = 1), name = "Retta", inherit = FALSE) %>%
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "cross", size = 6, line=list(color = "grey",width=.5)),
+name = "Previsioni") %>%
+add_segments(x = df$poverty_rate, xend = df$poverty_rate,
+y = df$birth_rate, yend = yhat,
+line = list(color = "lightgrey", dash = "dot"),
+name = "Residui", showlegend = FALSE) %>%
+# titolo e assi
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+} else {
+plot(df$poverty_rate,df$birth_rate,xlab="Tasso di povertà",ylab="Tasso di natalità 15-17",axes=F,xlim=c(0,25),ylim=c(0,40),pch=16,col="blue2")
+axis(1,pos = 0)
+axis(2,pos = 0)
+abline(b0,b1,col="red3",lwd=2)
+axis(2,at=b0,labels = expression(beta[0]==4.27),col.axis=2,las=1,pos=0)
+segments(0,b0,1,b0,lty=2)
+segments(1,b0,1,b0+b1,lty=2)
+text(1.1,4.5,expression(beta[1]==1.37),pos=4)
+axis(1,1,pos=0)
+}
+calcolo_beta(T)
+#reg <- data.frame(pov = df$poverty_rate, est = b0+b1*df$poverty_rate)
+# Crea un grafico di dispersione interattivo
+# plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state, type = "scatter", mode = "markers") %>%
+#   layout(title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+#          xaxis = list(title = "Tasso di povertà"),
+#          yaxis = list(title = "Tasso di natalità")) %>%
+#   add_lines( x= reg$pov, y= reg$est)
+#
+if (html){
+yhat <- b0 + b1 * df$poverty_rate
+library(plotly)
+# Supponendo che df sia il tuo data frame e b0, b1 siano i coefficienti della regressione
+yhat <- b0 + b1 * df$poverty_rate
+residui <- df$birth_rate - yhat
+# Crea il grafico
+fig <- plot_ly(df, x = ~poverty_rate, y = ~birth_rate, text = ~state,
+type = "scatter", mode = "markers",
+name = "Osservati") %>%
+# Aggiungi la retta di regressione
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "lines",
+line = list(color = "darkred", width = 1),
+name = "Retta") %>%
+# Aggiungi le previsioni come crocette grigie sottili
+add_trace(x = df$poverty_rate, y = yhat,
+type = "scatter", mode = "markers",
+marker = list(symbol = "cross", size = 6, color = "grey"),
+name = "Previsioni") %>%
+# Aggiungi le linee dei residui
+add_segments(x = df$poverty_rate, xend = df$poverty_rate,
+y = df$birth_rate, yend = yhat,
+line = list(color = "lightgrey", dash = "dot"),
+name = "Residui", showlegend = FALSE) %>%
+# Layout del grafico
+layout(
+title = "Tasso di povertà e natalità per gli stati degli Stati Uniti (anno 2002)",
+xaxis = list(title = "Tasso di povertà"),
+yaxis = list(title = "Tasso di natalità 15-17")
+)
+fig
+} else {
+plot(df$poverty_rate,df$birth_rate,xlab="Tasso di povertà",ylab="Tasso di natalità 15-17",axes=F,xlim=c(0,25),ylim=c(0,40),pch=16,col="blue2")
+axis(1,pos = 0)
+axis(2,pos = 0)
+abline(b0,b1,col="red3",lwd=2)
+axis(2,at=b0,labels = expression(beta[0]==4.27),col.axis=2,las=1,pos=0)
+segments(0,b0,1,b0,lty=2)
+segments(1,b0,1,b0+b1,lty=2)
+text(1.1,4.5,expression(beta[1]==1.37),pos=4)
+axis(1,1,pos=0)
+}
+set.seed(90)
+n <- 50
+x <- round(runif(n = n,min = 8,20),0) # Anni di studio
+y <- round(abs(-1.1*x + rnorm(n, 0, 5)) + 30) # Reddito annuo in migliaia di euro
+ls2e(regr(x, y,semp = T,ax = 0))
+calcolo_beta()
+residuo(x = x[3],y = y[3])
+R2()
+ttest_beta(0,35,h1 = "<",SE = T)
+set.seed(9)
+n <- 25
+sig <- 2
+x <- round(runif(n = n,min = 0,20),2) # reddito
+y <- round(0.9+0.2*x+rnorm(n,0,sig),2) # Reddito annuo in migliaia di euro
+ls2e(regr(x, y,semp = T,ax = 2))
+calcolo_beta()
+residuo(x = x[3],y = y[3])
+R2()
+ttest_beta(1,0,SE = T)
+set.seed(9)
+n <- 25
+sig <- 2
+x <- round(runif(n = n,min = 0,20),2) # reddito
+y <- round(0.9+0.2*x+rnorm(n,0,sig),2) # Reddito annuo in migliaia di euro
+ls2e(regr(x, y,semp = T,ax = 2))
+calcolo_beta()
+residuo(x = x[3],y = y[3])
+R2()
+r
+r^2

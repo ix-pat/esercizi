@@ -1,0 +1,104 @@
+---
+editor_options:
+  chunk_output_type: console
+date: " "
+output:
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    keep_tex: true
+    toc: false
+    includes:
+      in_header: preamble.tex
+    number_sections: false
+  pdf_document:
+    toc: false
+    toc_depth: '6'
+  html_document:
+    css: sol.css
+    toc: true
+    toc_depth: 6
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+      df_print: paged
+fontsize: 10pt
+geometry: top=2cm,bottom=1.5cm,left=1.5cm,right=1.5cm
+---
+
+```{r setup, echo=FALSE}
+html <- knitr::is_html_output()
+if (html){
+  knitr::opts_chunk$set(
+    echo = FALSE,
+    fig.height = 2.5*3,
+    fig.width = 4*3,
+    warning = FALSE,
+    message = FALSE,
+    results = 'asis'
+  )
+} else {
+  knitr::opts_chunk$set(
+    echo = FALSE,
+    fig.height = 2.5,
+    fig.width = 4,
+    warning = FALSE,
+    message = FALSE,
+    results = 'asis',
+    global.par = TRUE,
+    fig.align = "center"
+  )
+  knitr::knit_hooks$set(
+    par = function(before, options, envir) {
+      if (before) par(cex = .5)
+    }
+  )
+  par(cex=.5)
+}
+options(digits=4,nsmall=4,knitr.kable.NA = '',scipen = 1000000,dev.args = list(bg = 'transparent'))
+library(knitr)
+library(xtable)
+library(kableExtra)
+library(colorspace)
+library(xaringan)
+# solo generatore
+library(pat.book)
+# fine solo generatore
+cex <- .8
+
+
+
+anagrafica <- function(seed = NULL,new.page=F,cod.comp = NULL) { 
+  if (!is.null(seed)) set.seed(seed)
+  if (is.null(cod.comp)) cod.comp <- paste0(sample(c(0:9, LETTERS), 15), collapse = "")
+
+  if (html) cat("# Prova di Statistica (CLEAM)\n\n")
+  if (new.page)cat("\\newpage\n")
+  cat("\\vspace*{-1.4cm}\n\\anagrafica{}\n\n")
+  cat("\\thispagestyle{fancy}\n")
+  cat("\\fancypagestyle{firstpage}{%\n")
+  cat("  \\lhead{\\textbf{Prova di Statistica (CLEAM)}}\n") 
+  cat(paste0("  \\rhead{\\texttt{", cod.comp, "}}\n"))
+  cat("  \\cfoot{} % Rimuove il numero di pagina\n")
+  cat("}\n")
+  cat("\\pagestyle{firstpage}\n")
+}
+punti_p <- function(start=F,nex=F,num=F){
+  tot <- sum(unlist(punti))
+  it <- ifelse(start,item_start(num),item_(num))
+  it <- ifelse(nex,item_next(num),it)
+  ptt <- punti[[i1]][i2]
+  ptt_30 <- format(round(ptt/tot*31,1),nsmall=1)
+  sep <- ifelse(html," ","\\hspace{.1em}")
+  if(html) paste(it,"(pt",sep,ptt,"/",tot," → ",ptt_30,"/31)",sep="") else paste(it,"(pt",sep,ptt_30,"/31)",sep="")
+}
+
+par(bg="transparent")
+cod.comp <- function(x,i1 = 1, i2 = 13){ paste0(c(sample(c(0:9,LETTERS),i1),x,sample(c(0:9,LETTERS),i2)),collapse = "")}
+```
+
+
+<div class="button-container"></div>
+
+```{r preparazione}
+anagrafica(new.page = F,cod.comp = cod.comp(x = "",i2 = 14))
+```

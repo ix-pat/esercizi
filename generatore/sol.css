@@ -1,0 +1,32 @@
+
+:root {
+  --iblue: rgba(6,72,122,1);
+  --ired: rgba(171,41,46);
+}
+
+.sol {
+/*  display: none; */
+  padding: 10px;
+  border: 1px solid var(--iblue);
+  border-radius: 1px;
+  padding-top: 0px;
+  margin-bottom: 10px;
+}
+.sol::before {
+  content: " Soluzione";
+  color: white ;
+  background:  var(--iblue);
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-right: -10px;
+  margin-left: -10px; */
+  padding: .25em;
+  padding-left: .5em;
+}
+
+.tit {
+  display: none; 
+}

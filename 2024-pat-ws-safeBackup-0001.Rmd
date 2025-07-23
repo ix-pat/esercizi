@@ -1,0 +1,2264 @@
+
+```{r 2024-38}
+rm(list = rm())
+source("intro.R")
+if (html) cat('')
+```
+  
+# Anno 2024
+
+```{r 2024-39}
+source("punti.R")
+punti_list <- punti_2024
+compito <- 0
+```
+
+
+<div class="button-container"></div>
+
+## Prova di Statistica 2024/06/03-1
+
+### Esercizio 1
+
+```{r 2024-40}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
+```{r 2024-41}
+
+# Basic settings
+set.seed(1)   # per ottenere sempre la stessa simulazione
+n <- 160      # ampiezza campionaria
+
+brk  <- c(0,1.5,3,8,20)
+nnn  <- c( 200,100,100, 50)
+nnn  <- round(nnn/sum(nnn)*n)
+nomex <- "Investimento"
+
+samp <- genera_dati(brk = brk,nnn=nnn,n=n)
+  
+ls2e(x = stat_base(samp,brk))
+```
+
+Su un campione di $`r n`$ famiglie della provincia di Milano è stato rilevata la spesa annua per le vacanze (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
+
+```{r 2024-42}
+kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+```
+
+`r punti_p(start=T)`  Disegnare l'istogramma di densità percentuale. 
+
+:::{.sol data-latex=""}
+```{r 2024-43}
+kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+histp(T)
+```
+:::
+
+`r punti_p()` Quante famiglie spendono meno di 5 mila euro all'anno? 
+
+:::{.sol data-latex=""}
+```{r 2024-44}
+F_print(x = 5,verso = "<")
+```
+:::  
+
+
+`r punti_p()` Che relazione dobbiamo aspettarci tra media,  mediana e moda? 
+
+`r punti_p()` La spesa media è pari a $\bar x=`r mean(samp)`$, mentre la SD è pari a $SD=`r sd(samp)`$.
+Se ogni famiglia spendesse 2 mila euro in più all'anno, quanto varrebbero la media e la SD dei dati trasformati?
+
+### Esercizio 2 
+
+
+`r punti_p(nex=T)`  Si lancia una moneta perfetta 4 volte. Sia $X$ la variabile casuale che conta il numero di Teste su 4 lanci. Calcolare la probabilità che $X\leq 2$.
+
+:::{.sol data-latex=""}
+```{r 2024-1,,results='asis'}
+bin_dis(x1 = 2,n = 4,pp = .5)
+```
+:::  
+
+`r punti_p()` Sia lancia una seconda moneta perfetta 3 volte. Sia $Y$ la variabile casuale che conta il numero di Teste su 3 lanci. Calcolare la probabilità che $X+Y=3$.
+
+:::{.sol data-latex=""}
+Siccome $X+Y\sim\text{Binom(4+3,0.5)}$, allora
+```{r 2024-2,,results='asis'}
+bin_dis(x1 = 3,n = 7,pp = .5,sing = T,vnam = "X+Y")
+```
+:::  
+
+`r punti_p()` Se $P(A)=0.4$ e $P(B)=0.8$, $A$ e $B$ possono essere incompatibili? Perché?
+
+:::{.sol data-latex=""}
+Se $A$ e $B$ fossero incompatibili, allora $A\cap B=\emptyset$ allora $P(A\cup B)=P(A)+P(B)$, ma essendo $0.4+0.8=1.2>1$ allora $A\cap B\neq\emptyset$
+:::
+
+`r punti_p()` Cosa significa che la funzione di ripartizione è continua a destra?
+
+### Esercizio 3 
+
+
+
+`r punti_p(nex=T)` Un'urna 3 premi da $\mbox{0}$ euro, 2 premi da $\mbox{1}$ euro e un premio da $\mbox{2}$ euro.
+Si estrae 100 volte con reintroduzione. 
+Qual è la probabilità di vincere più di 60 euro?
+
+:::{.sol data-latex=""}
+
+```{r 2024-45}
+n <- 100
+mx <- sum(0:2*c(3,2,1)/6)
+vx <- sum((0:2)^2*c(3,2,1)/6)-mx^2
+stat_(rep(0:2,times=c(3,2,1)),semp = T)
+tlc("somma",60,verso = ">",mu = mx,s2 = vx,n = n)
+```
+:::
+
+### Esercizio 4 
+
+
+  
+`r punti_p(nex=T)` (**Punti 3**) Si consideri il modello normale $X\sim N(\mu,\sigma^2)$. Sia $\hat\mu$ lo stimatore di massima verosimiglianza per $\mu$
+
+$$
+  \hat\mu = \frac 1n \sum_{i=1}^n X_i
+$$
+
+Dimostrare la consistenza di $\hat\mu$.
+
+`r punti_p()` Definire lo Standard Error di uno stimatore.
+
+`r punti_p()` Definire la significatività di un test.
+
+```{r 2024-46}
+tabella <- matrix(c(45, 35, 20, 25, 30, 45, 10, 15, 25), nrow = 3, ncol = 3, byrow = TRUE)
+n <- sum(tabella)
+pval <- format(chisq.test(t(tabella))$p.value, digits = 4, nsmall = 4)
+
+```
+
+`r punti_p()` Un sociologo sta conducendo uno studio sull'associazione tra il livello di istruzione e il comportamento di voto. Ha somministrato un questionario a `r n` partecipanti, chiedendo loro di indicare il proprio livello di istruzione (Basso, Medio, Alto) e il comportamento di voto (Regolarmente, Occasionalmente, Mai). L'obiettivo è determinare se c'è un'associazione significativa tra il livello di istruzione e il comportamento di voto.
+
+```{r 2024-47}
+
+# Assegnazione dei nomi alle righe e alle colonne
+rownames(tabella) <- c("Basso", "Medio", "Alto")
+colnames(tabella) <- c("Regolarmente", "Occasionalmente", "Mai")
+
+tabl(t(tabella)) %>%
+  kable_styling(full_width = F) %>%
+  kable_paper(full_width = F) %>%
+  pack_rows("Comportamento di Voto", 1, 3) %>%
+  add_header_above(c(" " = 1, "Livello di Istruzione" = 3))
+
+# dat_print <- chi_print(dat = tabella,nome_x =  c("Basso", "Medio", "Alto"),nome_y =  c("Regolarmente", "Occasionalmente", "Mai"))[[2]]
+# tabl(dat_print, digits = 4) %>%
+#   column_spec(column = 1, bold = T)
+
+```
+
+Eseguito il test del $\chi^2$ per verificare l'indipendenza tra il livello di istruzione e il comportamento di voto, il sociologo ottiene un $p_\text{value}=`r pval`$. Quali conclusioni può trarne?
+
+
+### Esercizio 5
+
+
+```{r 2024-48}
+set.seed(9)
+n <- 50
+x <- round(runif(n = n,min = 8,20),0) # Anni di studio
+y <- round(abs(2.1*x + rnorm(n, 0, 5)) + 12) # Reddito annuo in migliaia di euro
+ls2e(regr(x, y,semp = T,ax = 0))
+```
+
+In uno studio sul reddito, in un campione di \(n=`r n`\) individui, sono stati analizzati il livello di istruzione (in anni di studio, \(X\)) e il reddito annuale (in migliaia di euro, \(Y\)). 
+Si osservano le seguenti statistiche:
+, $\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
+$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+
+
+`r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
+
+:::{.sol data-latex=""}
+```{r 2024-3,,results='asis'}
+calcolo_beta()
+residuo(x = x[3],y = y[3])
+```
+:::
+
+`r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
+
+:::{.sol data-latex=""}
+```{r  ,results='asis'}
+R2(adatto = F)
+```
+:::
+
+
+`r punti_p()` Definire i punti influenti.
+
+`r punti_p()` Se in un modello di regressione $r=-1$ cosa significa?
+
+`r punti_p()` Se in un modello di regressione $r=0.55$, $\hat\sigma_X=0.9$ e $\hat\beta_1=1.5$, quanto varrà
+$\hat\sigma_Y$, la standard deviation di $Y$?
+
+`r punti_p()` Testare l'ipotesi che $\beta_1$ sia uguale a zero, contro l'alternativa che sia diverso per diversi livelli di significatività e dare una valutazione approssimativa del $p$-value (ad esempio il $p$-value è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
+
+:::{.sol data-latex=""}
+```{r 2024-49}
+ttest_beta(1,0,SE = T)
+```
+:::
+
+
+
+
+## Prova di Statistica 2024/06/03-2
+
+
+### Esercizio 1
+
+```{r 2024-50}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
+```{r 2024-51}
+
+# Basic settings
+set.seed(1)   # per ottenere sempre la stessa simulazione
+n <- 160      # ampiezza campionaria
+
+brk  <- c(0,1.5,3,8,20)
+nnn  <- c( 10,100,110, 50)
+nnn  <- round(nnn/sum(nnn)*n)
+nomex <- "Investimento"
+
+samp <- genera_dati(brk = brk,nnn=nnn,n=n)
+  
+ls2e(x = stat_base(samp,brk))
+```
+
+Su un campione di $`r n`$ famiglie della provincia di Milano è stato rilevata la spesa annua per le vacanze (espresso in migliaia di euro). Qui di seguito la distribuzione delle frequenze relative:
+
+```{r 2024-52}
+kable(dat3[,c(1,2,4)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+```
+
+`r punti_p(start=T)`  Individuare l'intervallo modale. 
+
+:::{.sol data-latex=""}
+```{r 2024-53}
+kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+histp(T)
+```
+:::
+
+`r punti_p()` Quante famiglie investono più di 4 mila euro all'anno? 
+
+:::{.sol data-latex=""}
+```{r 2024-54}
+F_print(x = 4,verso = ">")
+```
+:::  
+
+`r punti_p()` Che relazione dobbiamo aspettarci tra media,  mediana e moda? 
+
+`r punti_p()` La spesa media è pari a $`r mean(samp)`$, mentre la varianza è pari a $`r s2c(samp)`$.
+Se ogni famiglia aumentasse la propria spesa del 2%, quanto varrebbero la media e la varianza dei dati così trasformati?
+
+:::{.sol data-latex=""}
+\[
+\bar y = `r 1.02*mean(samp)`\qquad \sigma^2 = `r (1.02)^2*s2c(samp)`
+\]
+:::  
+
+
+
+### Esercizio 2 
+
+
+`r punti_p(nex=T)`  Sia $X$ numero settimanale di pratiche inevase dall'ufficio provinciale, si assume $X\sim\text{Pois}(3.5)$. Calcolare la probabilità che $X\geq 3$.
+
+:::{.sol data-latex=""}
+```{r 2024-4,,results='asis'}
+pois_dis(x1 = 3,ll = 3.5,verso = "\\geq")
+```
+:::  
+
+`r punti_p()` Sia $Y$ numero settimanale di pratiche inevase dall'ufficio comunale, si assume $Y\sim\text{Pois}(2)$ e si assume $X$ indipendente da $Y$. Calcolare la probabilità che $X+Y=5$.
+
+:::{.sol data-latex=""}
+```{r 2024-5,,results='asis'}
+pois_dis(x1 = 5,ll = 3.5+2,sing = T)
+```
+:::  
+
+`r punti_p()` Se $P(A)=0.4$ e $P(B)=0.4$, $A$ e $B$ possono essere incompatibili? Perché?
+
+`r punti_p()` Sia $X$ una variabile casuale e sia $F$ la sa funzione di ripartizione. Siano $a$ e $b$ due numeri reali, $a<b$, esprimere
+\[
+P(a<X\leq b)
+\]
+in termini di $F$.
+
+### Esercizio 3 
+
+
+
+`r punti_p(nex=T)` Un'urna 4 premi da $\mbox{0}$ euro, 3 premi da $\mbox{1}$ euro e 2 premi da $\mbox{2}$ euro.
+Si estrae 50 volte con reintroduzione. 
+Qual è la probabilità che la media delle vincite ottenute sia minore di 0.6 euro?
+
+:::{.sol data-latex=""}
+```{r 2024-55}
+n <- 50
+mx <- sum(0:2*4:2/9)
+vx <- sum((0:2)^2*4:2/9)-mx^2
+urn <- c(0,0,0,0,1,1,1,2,2)
+stat_(urn,semp = T)
+tlc("media",0.6,verso = "<",mu = mx,s2 = vx,n = n)
+```
+:::
+
+### Esercizio 4 
+
+
+  
+`r punti_p(nex=T)` (**Punti 3**) Si consideri il modello di Bernoulli $X\sim\text{Ber}(\pi)$. Sia $\hat\pi$ lo stimatore di massima verosimiglianza per $\pi$
+
+$$
+  \hat\pi = \frac 1n \sum_{i=1}^n X_i
+$$
+
+Dimostrare la consistenza di $\hat\pi$.
+
+`r punti_p()` Che differenza c'è tra lo Standard Error di uno stimatore e la Deviazione Standard del campione?
+
+`r punti_p()` Definire la potenza di un test.
+
+```{r 2024-56}
+tabella <- matrix(c(30, 20, 10, 40, 35, 25), nrow = 3, ncol = 2, byrow = TRUE)
+n <- sum(tabella)
+pval <- format(chisq.test(tabella)$p.value, digits = 4, nsmall = 4)
+
+# Assegnazione dei nomi alle righe e alle colonne
+rownames(tabella) <- c("Basso", "Medio", "Alto")
+colnames(tabella) <- c("Sì", "No")
+```
+
+`r punti_p()` Un economista sta conducendo uno studio sull'associazione tra il livello di istruzione e il possesso di una casa. Ha somministrato un questionario a `r n` partecipanti, chiedendo loro di indicare il proprio livello di istruzione (Basso, Medio, Alto) e se possiedono una casa (Sì, No). L'obiettivo è determinare se c'è un'associazione significativa tra il livello di istruzione e il possesso di una casa.
+
+```{r 2024-57}
+tabella <- matrix(c(30, 20, 10, 40, 35, 25), nrow = 3, ncol = 2, byrow = TRUE)
+n <- sum(tabella)
+pval <- format(chisq.test(t(tabella))$p.value, digits = 4, nsmall = 4)
+
+# Assegnazione dei nomi alle righe e alle colonne
+rownames(tabella) <- c("Basso", "Medio", "Alto")
+colnames(tabella) <- c("Sì", "No")
+
+tabl(t(tabella)) %>%
+  kable_styling(full_width = F) %>%
+  kable_paper(full_width = F) %>%
+  pack_rows("Possesso \n di Casa", 1, 2) %>%
+  add_header_above(c(" " = 1, "Livello di Istruzione" = 3))
+
+# t_p <- chi_print(dat = tabella,nome_y =  c("Basso", "Medio", "Alto"),nome_x =  c("Sì","No"))[[2]]
+# tabl(t_p, digits = 4) %>%
+#   column_spec(column = 1, bold = T)
+
+```
+
+Eseguito il test del $\chi^2$ per verificare l'indipendenza tra il livello di istruzione e il possesso di una casa, l'economista ottiene un $p_\text{value}=`r pval`$. Quali conclusioni può trarne?
+
+### Esercizio 5
+
+
+```{r 2024-58}
+set.seed(90)
+n <- 50
+x <- round(runif(n = n,min = 8,20),0) # Anni di studio
+y <- round(abs(-1.1*x + rnorm(n, 0, 5)) + 30) # Reddito annuo in migliaia di euro
+ls2e(regr(x, y,semp = T,ax = 0))
+```
+
+In uno studio sul reddito, in un campione di \(n=`r n`\) individui, sono stati analizzati il livello di istruzione (in anni di studio, \(X\)) e la propensione a credere in teorie del complotto (in opportuna scala, \(Y\)). 
+Si osservano le seguenti statistiche:
+, $\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
+$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+
+
+`r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
+
+:::{.sol data-latex=""}
+```{r 2024-6,,results='asis'}
+calcolo_beta()
+residuo(x = x[3],y = y[3])
+```
+:::
+
+`r punti_p()` Il modello si adatta bene ai dati?
+
+:::{.sol data-latex=""}
+```{r 2024-7,,results='asis'}
+R2(percent = F)
+```
+:::
+
+`r punti_p()` Definire i punti di leva.
+
+`r punti_p()` Se in un modello di regressione $r=+1$ cosa significa?
+
+`r punti_p()` Se in un modello di regressione $r<0$ è possibile che $\hat\beta_1>0$? Perché?
+
+`r punti_p()` Testare l'ipotesi che $\beta_0$ sia uguale a 35, contro l'alternativa che sia minore per diversi livelli di significatività e dare una valutazione approssimativa del $p$-value (ad esempio il $p$-value è minore di 0.0005, compreso tra 0.05 e  0.01, ecc.).
+
+:::{.sol data-latex=""}
+```{r 2024-59}
+ttest_beta(0,35,h1 = "<",SE = T)
+```
+:::
+
+
+
+
+## Prova di Statistica 2024/06/03-3
+
+
+
+### Esercizio 1
+
+```{r 2024-60}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
+```{r 2024-61}
+
+# Basic settings
+set.seed(1)   # per ottenere sempre la stessa simulazione
+n <- 160      # ampiezza campionaria
+
+brk  <- c(0,1.5,3,8,20)
+nnn  <- c( 50,100,110, 50)
+nnn  <- round(nnn/sum(nnn)*n)
+nomex <- "Investimento"
+
+samp <- genera_dati(brk = brk,nnn=nnn,n=n)
+  
+ls2e(x = stat_base(samp,brk))
+```
+
+Su un campione di $`r n`$ famiglie della provincia di Milano è stato rilevata la spesa annua per le vacanze (espresso in migliaia di euro). Qui di seguito la distribuzione delle densità percentuali:
+
+```{r 2024-62}
+kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+```
+
+`r punti_p(start=T)`  Calcolare il valore approssimativo della mediana. 
+
+:::{.sol data-latex=""}
+```{r 2024-63}
+percentile()
+histp(T)
+draw_dist(dist = H.int,z1 = 4,z2 = 10)
+```
+:::
+
+`r punti_p()` Quante famiglie spendono tra 4 mila e 10 mila euro l'anno? 
+
+:::{.sol data-latex=""}
+```{r 2024-64}
+F_print(x = 4,x2 = 10,verso = F)
+```
+:::  
+
+
+`r punti_p()` Che relazione dobbiamo aspettarci tra media,  mediana e moda? 
+
+`r punti_p()` La spesa media è pari a $`r mean(samp)`$, mentre la varianza è pari a $`r s2c(samp)`$.
+Se ogni famiglia diminuisse la propria spesa del 2%, quanto varrebbero la media e la varianza dei dati così trasformati?
+
+:::{.sol data-latex=""}
+\[
+\bar y = `r 0.98*mean(samp)`\qquad \sigma^2 = `r (0.98)^2*s2c(samp)`
+\]
+:::  
+
+
+### Esercizio 2 
+
+
+`r punti_p(nex=T)`  Sia $X\sim N(5,2)$ sia $A=\{X>4\}$ e $B=\{X<6\}$. Calcolare $P(A\cap B)$.
+
+:::{.sol data-latex=""}
+```{r 2024-8,,results='asis'}
+norm_int(x1 = 4,x2 = 6,verso = NULL,5,2)
+```
+:::  
+
+`r punti_p()` Sia $Y\sim N(3,1)$, $X$ e $Y$ indipendenti, posto $W=X-Y$, calcolare $P(W<0)$.
+
+:::{.sol data-latex=""}
+```{r 2024-9,,results='asis'}
+norm_int(x1 = 0,verso = "<",mm = 5-3,ss = 2+1)
+```
+:::  
+
+`r punti_p()` Se $P(A)=0.4$ e $P(B)=0.6$, in che relazione sono $A$ e $B$?
+
+
+`r punti_p()` Sia $X$ una variabile casuale e sia $F$ la sua funzione di ripartizione. Cosa significa che $F$ è una funzione crescente?
+
+
+### Esercizio 3 
+
+
+
+`r punti_p(nex=T)` Un'urna 4 premi da $\mbox{0}$ euro, 2 premi da $\mbox{1}$ euro.
+Si estrae 50 volte con reintroduzione. 
+
+Qual è la probabilità che la la vincita totale sia maggiore di 50?
+
+:::{.sol data-latex=""}
+
+```{r 2024-65}
+n <- 50
+mx <- 2/6
+
+tlc("somma",50,verso = ">",mu = mx,n = n)
+```
+:::
+
+### Esercizio 4 
+
+
+  
+`r punti_p(nex=T)` (**Punti 3**) Si consideri il modello binomiale $X\sim\text{Pois}(\lambda)$. Sia $\hat\lambda$ lo stimatore di massima verosimiglianza per $\mu$
+
+$$
+  \hat\lambda = \frac 1n \sum_{i=1}^n X_i
+$$
+
+Dimostrare la consistenza di $\hat\lambda$.
+
+`r punti_p()` Che differenza c'è tra lo Standard Error di uno stimatore e la Deviazione Standard di popolazione?
+
+`r punti_p()` Definire gli errori di primo e di secondo tipo.
+
+
+```{r 2024-66}
+# Definizione dei dati osservati
+observed <- c(5, 8, 12, 7, 6, 4, 3)
+total <- sum(observed)
+lambda <- sum((0:(length(observed) - 1)) * observed) / total
+expected <- dpois(0:(length(observed) - 1), lambda) * total
+chisq_result <- chisq.test(observed, p = expected / sum(expected))
+pval_poisson <- format(chisq_result$p.value, digits = 4, nsmall = 4)
+```
+
+
+`r punti_p()` Un biologo sta studiando il numero di cellule di una certa specie osservate in campioni di terreno. Ha raccolto dati sul numero di cellule in `r total` campioni. I dati osservati sono riportati nella tabella seguente. L'obiettivo è determinare se i dati seguono una distribuzione di Poisson.
+
+```{r 2024-67}
+# Definizione dei dati osservati
+observed <- c(5, 8, 12, 7, 6, 4, 3)
+total <- sum(observed)
+lambda <- sum((0:(length(observed) - 1)) * observed) / total
+expected <- dpois(0:(length(observed) - 1), lambda) * total
+chisq_result <- chisq.test(observed, p = expected / sum(expected))
+pval_poisson <- format(chisq_result$p.value, digits = 4, nsmall = 4)
+
+# Creazione della tabella
+dati <- data.frame(
+  Numero = 0:(length(observed) - 1),
+  Osservati = observed,
+  Attesi = round(expected, 2)
+)
+
+
+ kable(dati) %>%
+   kable_styling(full_width = F, latex_options = "HOLD_position")
+
+```
+
+Eseguito il test del $\chi^2$ per verificare la conformità dei dati alla distribuzione di Poisson, il biologo ottiene un $p_\text{value}=`r pval_poisson`$. Il modello Poisson è adeguato?
+
+### Esercizio 5
+
+
+`r punti_p(nex=T)` (**Punti 12**) In un'indagine sull'opinione sul reddito di inclusione sono stati intervistate 150 persone che vivono al nord e 180 che vivono al sud: 60 su 150 che vivono al nord sono favorevoli al reddito di cittadinanza mentre 95 su 180 che vivono al sud sono favorevoli. 
+
+Testare l'ipotesi che la proporzione di persone favorevoli al reddito di cittadinanza che vivono al sud sia uguale a quelle di quelli che vivono al nord, contro l'alternativa che siano diverse.
+
+`r punti_p()` Calcolare e discutere il $p$-value del test precedente.
+
+:::{.sol data-latex=""}
+```{r 2024-68}
+s1 <- 60
+n1 <- 150
+s2 <- 95
+n2 <- 180
+h1 <- "\\neq"
+alpha <- 0.01
+a <- "N"
+b<- "S"
+um <- ""
+ztest_2c_pi(s1 = s1,s2 = s2,n1 = n1,n2 = n2,h1 = h1,a = a,b = b)
+```
+:::
+
+
+### Esercizio 6
+
+
+```{r 2024-69}
+set.seed(12)
+n <- 50
+x <- round(runif(n = n,min = 8,20),0) # Anni di studio
+y <- round(abs(1.1*x + rnorm(n, 0, 2.25)) + 0) # Reddito annuo in migliaia di euro
+ls2e(regr(x, y,semp = T,ax = 0))
+```
+
+In uno studio sul reddito, in un campione di \(n=`r n`\) individui, sono stati analizzati il livello di istruzione (in anni di studio, \(X\)) e il numero di libri letti l'anno (\(Y\)).
+Si osservano le seguenti statistiche:
+, $\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
+$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+
+
+`r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
+
+:::{.sol data-latex=""}
+```{r 2024-10,,results='asis'}
+calcolo_beta()
+residuo(x = x[3],y = y[3])
+```
+:::
+
+
+`r punti_p()` Dare un'interpretazione dei parametri di regressione stimati.
+
+`r punti_p()` Definire gli outliers.
+
+`r punti_p()` Se in un modello di regressione $r=0$ cosa significa?
+
+`r punti_p()` Se in un modello di regressione $r=0.55$, $\hat\sigma_Y=0.9$ e $\hat\beta_1=1.5$, quanto varrà
+$\hat\sigma_X$, la standard deviation di $X$?
+
+
+## Prova di Statistica 2024/06/21-1
+
+
+
+
+### Esercizio 1
+
+```{r 2024-70}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
+```{r 2024-71}
+
+# Basic settings
+set.seed(1)   # per ottenere sempre la stessa simulazione
+n <- 250      # ampiezza campionaria
+
+brk  <- c(0,1.5,3,8,20)
+nnn  <- c( 200,100,80, 50)
+nnn  <- round(nnn/sum(nnn)*n)
+nomex <- "Investimento"
+
+samp <- genera_dati(brk = brk,nnn=nnn,n=n)
+  
+ls2e(x = stat_base(samp,brk))
+```
+
+Su un campione di $`r n`$ famiglie dell'Emilia-Romagna sono stati rilevati i consumi annui in beni tecnologici (dati espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
+
+```{r 2024-72}
+kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+```
+
+`r punti_p(start=T)`  Disegnare l'istogramma di densità percentuale. 
+
+:::{.sol data-latex=""}
+```{r 2024-73}
+kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+histp(T)
+```
+:::
+
+`r punti_p()` Quante famiglie spendono meno di 5 mila euro all'anno? 
+
+:::{.sol data-latex=""}
+```{r 2024-74}
+F_print(x = 5,verso = "<")
+```
+:::  
+
+
+`r punti_p()` Che relazione dobbiamo aspettarci tra media,  mediana e moda? 
+
+`r punti_p()` La spesa media è pari a $\bar x=`r mean(samp)`$, mentre la SD è pari a $SD=`r sd(samp)`$.
+Se ogni famiglia spendesse 2 mila euro in più all'anno, quanto varrebbero la media e la SD dei dati trasformati?
+
+### Esercizio 2 
+
+
+`r punti_p(nex=T)`  Si consideri un'urna che ha una pallina bianche e due nere. Si estrae 4 volte con reinserimento. Sia $X$ la variabile casuale che conta il numero di bianche su 4 estrazioni. Calcolare la probabilità che $X\leq 2$.
+
+:::{.sol data-latex=""}
+```{r 2024-11,,results='asis'}
+bin_dis(x1 = 2,n = 4,pp = 1/3,comp = F)
+```
+:::  
+
+`r punti_p()` Sia $X$ la VC del punto precedente e sia $Y\sim N(0,1)$, $X$ ed $Y$ indipendenti. Considerato $A=\{X\leq 2\}$, $B=\{Y<1\}$, calcolare $P(A\cup B)$.
+
+:::{.sol data-latex=""}
+```{r 2024-12,,results='asis'}
+pa <- pbinom(2,4,1/3)
+pb <- pnorm(1)
+p_aub(pa,pb)
+```
+:::  
+
+
+`r punti_p()` Se $A$ e $B$, sono due eventi tali che $P(B|A)=1$, determinare $A\cap B$.
+
+:::{.sol data-latex=""}
+Se $P(B|A)=P(A\cap B)/P(A)$ e $P(B|A)=P(A\cap B)/P(A)=1$ se e solo se $P(A\cap B)=P(A)$ e quindi $A\cap B = A$.
+:::
+
+`r punti_p()` Sia $X$ una Bernoulli di parametro $\pi$, $X\sim\text{Ber}(\pi)$ e sia $F$ la sua funzione di ripartizione. Se $F(0)=0.6$, quanto vale $\pi$?
+
+### Esercizio 3 
+
+
+
+`r punti_p(nex=T)` Un'urna contiene 6 premi da $\mbox{0}$ euro, 3 premi da $\mbox{1}$ euro e un premio da $\mbox{2}$ euro.
+Si estrae 100 volte con reintroduzione. 
+Qual è la probabilità di vincere più di 55 euro?
+
+:::{.sol data-latex=""}
+
+```{r 2024-75}
+n <- 100
+mx <- sum(0:2*c(6,3,1)/10)
+vx <- sum((0:2)^2*c(6,3,1)/10)-mx^2
+stat_(rep(0:2,times=c(6,3,1)),semp = T)
+tlc("somma",55,verso = ">",mu = mx,s2 = vx,n = n)
+```
+:::
+
+### Esercizio 4 
+
+
+  
+`r punti_p(nex=T)` (**Punti 3**) Si consideri il modello normale $X\sim N(\mu,\sigma^2)$. Sia $\hat\mu$ lo stimatore di massima verosimiglianza per $\mu$
+
+$$
+  \hat\mu = \frac 1n \sum_{i=1}^n X_i
+$$
+
+Ricavare il suo _Standard Error_ teorico e quello stimato.
+
+`r punti_p()` Se $\hat\theta$ è lo stimatore di massima verosimiglianza 
+per $\theta$, con $E(\hat\theta)=\theta$ e $V(\hat\theta)=I^{-1}(\theta)$. 
+Com'è distribuito asintoticamente $\hat\theta$?
+
+`r punti_p()` Definire la significatività di un test.
+
+```{r 2024-76}
+tabella <- matrix(c(15, 20, 25, 25, 30, 25, 35, 30, 15), nrow = 3, ncol = 3, byrow = TRUE)
+n <- sum(tabella)
+pval <- format(chisq.test(t(tabella))$p.value, digits = 4, nsmall = 4)
+```
+
+`r punti_p()` Un nutrizionista sta conducendo uno studio sull'associazione tra il tipo di dieta e lo stato di salute. Ha somministrato un questionario a `r n` partecipanti, chiedendo loro di indicare il proprio stato di salute  Ottimo, Buono, Scarso e il tipo di dieta seguito (Vegano, Vegetariano, Onnivoro). L'obiettivo è determinare se c'è un'associazione tra il tipo di dieta e lo stato di salute.
+
+```{r 2024-77}
+
+# Assegnazione dei nomi alle righe e alle colonne
+colnames(tabella) <-  c("Ottimo", "Buono", "Scarso")
+rownames(tabella) <- c("Vegano", "Vegetariano", "Onnivoro")
+
+tabl((tabella)) %>%
+  kable_styling(full_width = F) %>%
+  kable_paper(full_width = F) %>%
+  pack_rows("Tipo di Dieta", 1, 3) %>%
+  add_header_above(c(" " = 1, "Stato di Salute" = 3))
+
+
+```
+
+Eseguito il test del $\chi^2$ per verificare l'indipendenza tra il livello di istruzione e il comportamento di voto, il sociologo ottiene un $p_\text{value}=`r pval`$. Quali conclusioni può trarne?
+
+
+### Esercizio 5
+
+
+```{r 2024-78}
+set.seed(9)
+n <- 25
+sig <- 2
+x <- round(runif(n = n,min = 0,20),2) # reddito
+y <- round(0.9+0.2*x+rnorm(n,0,sig),2) # Reddito annuo in migliaia di euro
+ls2e(regr(x, y,semp = T,ax = 2))
+```
+
+In uno studio sui consumi, in un campione di \(n=`r n`\) individui, sono stati analizzati il reddito  (in migliaia di euro, \(X\)) e il consumo (in migliaia di euro, \(Y\)).
+
+Si osservano le seguenti statistiche:
+$\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
+$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+
+
+`r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
+
+:::{.sol data-latex=""}
+```{r 2024-13,,results='asis'}
+calcolo_beta()
+residuo(x = x[3],y = y[3])
+```
+:::
+
+`r punti_p()` Qual è la percentuale di varianza spiegata dal modello?
+
+:::{.sol data-latex=""}
+```{r 2024-14,,results='asis'}
+R2(adatto = F)
+```
+:::
+
+
+`r punti_p()` perché la previsione per $x=`r round(mx)`$ è più affidabile di quella per $x=`r round(10*mx)`$.
+
+`r punti_p()` Se in un modello di regressione $r=-1$ cosa significa?
+
+`r punti_p()` Se in un modello di regressione $r=0.75$, $\hat\sigma_X=0.8$ e $\hat\beta_1=1.2$, calcolare
+$\hat\alpha_1$, la stima del coefficiente angolare del modello
+
+$$
+X_i = \alpha_0+\alpha_1 Y_i + \delta_i, \qquad E(\delta_i)=0; V(\delta_i)=\sigma_\delta^2
+$$
+
+dove la $X$ è spiegata dalla $Y$.
+
+:::{.sol data-latex=""}
+Per trovare la stima del coefficiente angolare \(\hat\alpha_1\), possiamo usare la relazione tra il coefficiente di correlazione \(r\), la deviazione standard di \(X\) (\(\hat\sigma_X\)) e la stima del coefficiente di regressione \(\hat\beta_1\).
+
+La formula per il coefficiente di regressione \(\hat\beta_1\) in termini di \(r\), \(\hat\sigma_X\) e \(\hat\sigma_Y\) è:
+
+\[
+\hat\beta_1 = r \cdot \frac{\hat\sigma_X}{\hat\sigma_Y}
+\]
+
+Dove \(\hat\sigma_Y\) è la deviazione standard di \(Y\). Dato che abbiamo \(\hat\beta_1 = 1.2\), \(r = 0.75\) e \(\hat\sigma_X = 0.8\), possiamo isolare \(\hat\sigma_Y\) nella formula:
+
+\[
+1.2 = 0.75 \cdot \frac{0.8}{\hat\sigma_Y}
+\]
+
+Da cui:
+
+\[
+\hat\sigma_Y = 0.75 \cdot 0.8 / 1.2
+\]
+
+Calcolando il valore:
+
+```{r 2024-79}
+sigma_X <- 0.8
+beta_1 <- 1.2
+rr <- 0.75
+
+sigma_Y <- (rr * sigma_X) / beta_1
+
+```
+
+\[
+\hat\sigma_Y \approx `r sigma_Y`
+\]
+
+Ora possiamo trovare \(\hat\alpha_1\) usando il valore di \(\hat\sigma_Y\):
+
+
+```{r 2024-80}
+alpha_1 <- r * (sigma_X / sigma_Y)
+```
+
+\begin{eqnarray*}
+   \hat\alpha_1 &=& r \cdot \frac{\hat\sigma_X}{\hat\sigma_Y}\\
+               &\approx& `r alpha_1`
+\end{eqnarray*}
+  
+
+Pertanto, la stima del coefficiente angolare \(\hat\alpha_1\) è approssimativamente `r alpha_1`.
+:::
+
+
+`r punti_p()` Testare l'ipotesi che $\beta_1$ sia uguale a zero, contro l'alternativa che sia diverso per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
+
+:::{.sol data-latex=""}
+```{r 2024-81}
+ttest_beta(1,0,SE = T)
+```
+:::
+
+
+
+
+## Prova di Statistica 2024/06/21-2
+
+
+
+
+### Esercizio 1
+
+```{r 2024-82}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
+```{r 2024-83}
+
+# Basic settings
+set.seed(10)   # per ottenere sempre la stessa simulazione
+n <- 160      # ampiezza campionaria
+
+brk  <- c(0,1.5,3,5,20)
+nnn  <- c( 30,100,110, 50)
+nnn  <- round(nnn/sum(nnn)*n)
+nomex <- "Investimento"
+
+samp <- genera_dati(brk = brk,nnn=nnn,n=n,rand = F)
+  
+ls2e(x = stat_base(samp,brk))
+
+n_ER <- n 
+n_L <- n_ER + 20 
+n_V <- n_ER - 10 
+set.seed(10) 
+x_ER <- mean(samp) 
+x_L <- mean(samp) + rnorm(1, 0, sd(samp))
+x_V <- mean(samp) + rnorm(1, 0, sd(samp))
+# Calcolo della media aggregata
+x_agg <- (n_ER * x_ER + n_L * x_L + n_V * x_V) / (n_ER + n_L + n_V)
+
+```
+
+Su un campione di $`r n`$ famiglie dell'Emilia-Romagna sono stati rilevati i consumi annui in beni tecnologici (dai espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze relative:
+
+```{r 2024-84}
+kable(dat3[,c(1,2,4)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+```
+
+`r punti_p(start=T)`  Individuare l'intervallo modale. 
+
+:::{.sol data-latex=""}
+```{r 2024-85}
+kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+histp(T)
+```
+:::
+
+`r punti_p()` Quante famiglie spendono più del 25-esimo percentile $x_{0.25}$? 
+
+:::{.sol data-latex=""}
+```{r 2024-86}
+F_print(x = .25,verso = ">",perc1 = T)
+```
+:::  
+
+`r punti_p()` La media è pari a $\bar x=`r p(mean(samp),2)`$, senza disegnare l'istogramma, che forma distributiva dobbiamo aspettarci?
+
+`r punti_p()` `r round_all(2)`La spesa media della regione Emilia-Romagna, calcolata su `r n_ER` famiglie è pari $\bar x_{ER}=`r x_ER`$, quella della Lombardia, calcolata su `r n_L` famiglie è pari $\bar x_{L}=`r x_L`$, mentre quella del Veneto,  calcolata su `r n_V` famiglie è pari $\bar x_{V}=`r x_V`$. Qual è la spesa media complessiva delle tre regioni?
+
+:::{.sol data-latex=""}
+Per trovare la spesa media delle tre regioni aggregate, dobbiamo considerare sia le medie delle singole regioni sia il numero di famiglie su cui sono state calcolate. La formula per la media aggregata \(\bar{x}_{agg}\) è:
+
+\begin{eqnarray*}
+\bar{x}_{agg}    &=&  \frac{n_{ER} \bar{x}_{ER} + n_{L} \bar{x}_{L} + n_{V} \bar{x}_{V}}{n_{ER} + n_{L} + n_{V}}\\
+&=& \frac{`r n_ER`\cdot`r x_ER`+`r n_L`\cdot`r x_L`+`r n_V`\cdot`r x_V`}{`r n_ER`+`r n_L`+`r n_V`}\\
+&=& `r x_agg`
+\end{eqnarray*}
+  
+
+Dove:
+
+- \(n_{ER}\) è il numero di famiglie in Emilia-Romagna
+- \(n_{L}\) è il numero di famiglie in Lombardia
+- \(n_{V}\) è il numero di famiglie in Veneto
+- \(\bar{x}_{ER}\), \(\bar{x}_{L}\), \(\bar{x}_{V}\) sono le spese medie delle rispettive regioni
+
+:::  
+
+
+
+### Esercizio 2 
+
+
+`r punti_p(nex=T)`  Sia $X$ il numero di telefonate in arrivo ad un centralino di emergenza, si assume $X\sim\text{Pois}(1.2)$. Calcolare la probabilità che $X\geq 2$.
+
+:::{.sol data-latex=""}
+```{r 2024-15,,results='asis'}
+pois_dis(x1 = 2,ll = 1.2,verso = "\\geq")
+```
+:::  
+
+`r punti_p()` Siano $X\sim\text{Pois}(1.2)$ e $Y\sim\text{Binom}(n=2,\pi=0.5)$, $X$ e $Y$ indipendenti, posto $A=\{X\geq 2\}$, $B=\{Y=0\}$, calcolare $P(A\cup B)$.
+
+:::{.sol data-latex=""}
+```{r 2024-16,,results='asis'}
+pa <- 1-sum(dpois(0:1,1.2))
+pb <- .5^2
+```
+\begin{eqnarray*}
+  P(A) &=&  `r pa`\\
+  P(B) &=& 0.5^2 = `r pb`
+\end{eqnarray*}
+  
+```{r 2024-87}
+p_aub(pa = pa,pb = pb)
+```
+:::  
+
+`r punti_p()` Se $A$ e $B$ sono due eventi diversi da $\emptyset$, se
+$P(A|B)=0$ in che relazione sono $A$ e $B$?
+
+
+`r punti_p()` Sia $X$ una variabile casuale con supporto $S_X=c\{-1,0,2\}$ e con funzione di probabilità
+$$
+f(x)=\begin{cases}
+\frac 25, &\text{ se $x=-1$}\\
+\frac 25, &\text{ se $x=\phantom{-} 0$}\\
+\frac 15, &\text{ se $x=\phantom{-} 2$}\\
+\end{cases}
+$$
+Disegnare le sua funzione di ripartizione, $F(x)$, nell'intervallo $-2\leq x\leq 3$.
+
+:::{.sol data-latex=""}
+```{r 2024-88}
+x <- c(-2,-1,0,2,3)
+px <- c(0,c(2,2,1)/5,0)
+plot(x,pbinom(x,2,.5),type="n",ylab="F(x)",axes = F)
+axis(1,x)
+axis(2,cumsum(px),las=2)
+segments(x[1:4],cumsum(px)[1:4],x[2:5],cumsum(px)[1:4])
+segments(x[2:4],cumsum(px)[1:3],x[2:4],cumsum(px)[2:4],lty=2)
+points(x[2:4],cumsum(px)[1:3])
+points(x[2:4],cumsum(px)[2:4],pch=16)
+```
+:::
+
+### Esercizio 3 
+
+
+
+`r punti_p(nex=T)` Un'urna 4 premi da $\mbox{0}$ euro, 1 premio da $\mbox{2}$ euro.
+Si estrae 50 volte con reintroduzione. 
+Qual è la probabilità che la proporzione di premi da 2 euro sia compresa tra 0.20 e 0.23.
+
+:::{.sol data-latex=""}
+```{r 2024-89}
+n <- 50
+mx <- sum(0:2*4:2/9)
+vx <- sum((0:2)^2*4:2/9)-mx^2
+urn <- c(0,0,0,0,1,1,1,2,2)
+stat_(urn,semp = T)
+tlc("prop",1/5,x2 = .23,verso = NULL,mu = 1/5,n = n)
+```
+:::
+
+### Esercizio 4 
+
+
+  
+`r punti_p(nex=T)` (**Punti 3**) Si consideri il modello di Bernoulli $X\sim\text{Ber}(\pi)$. Sia $\hat\pi$ lo stimatore di massima verosimiglianza per $\pi$
+
+$$
+  \hat\pi = \frac 1n \sum_{i=1}^n X_i
+$$
+
+Ricavare il suo _Standard Error_ teorico e quello stimato.
+
+`r punti_p()` Cosa significa che lo stimatore di massima verosimiglianza è invariante alle trasformazioni monotone invertibili?
+
+`r punti_p()` Siano $T_1$ e $T_2$ due test per lo stesso sistema di ipotesi con la stessa significatività $\alpha$, sia $\beta_1=0.23$ la probabilità di errore di secondo tipo del test $T_1$ e $\beta_2=0.18$ la probabilità di errore di secondo tipo del test $T_2$. Quale dei due test è più potente?
+
+`r punti_p()`  In un'indagine sull'opinione sul reddito di inclusione sono stati intervistate 150 persone che vivono al nord e 180 che vivono al sud: 60 su 150 che vivono al nord sono favorevoli al reddito di cittadinanza mentre 95 su 180 che vivono al sud sono favorevoli. 
+Messo a test
+
+$$
+\begin{cases}
+   H_0: \pi_\text{N} = \pi_\text{S} \\
+   H_1: \pi_\text{N} \neq \pi_\text{S} 
+\end{cases}
+$$
+
+è risultato  $p_{\text{value}} =0.0206$. Cosa possiamo concludere?
+
+
+### Esercizio 5
+
+
+```{r 2024-90}
+set.seed(9)
+n <- 50
+x <- round(runif(n = n,min = 8,20),0) # Anni di studio
+y <- round(100 -.2*x^2.5 + rnorm(n, 0, 20),2) # Reddito annuo in migliaia di euro
+y <- (y - min(y))/(max(y)-min(y))*10
+ls2e(regr(x, y,semp = T,ax = 0))
+```
+
+In uno studio sul reddito, in un campione di \(n=`r n`\) individui, sono stati analizzati il livello di istruzione (in anni di studio, \(X\)) e la propensione a credere in teorie del complotto (in opportuna scala, \(Y\)). 
+
+Si osservano le seguenti statistiche:
+$\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
+$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+
+
+`r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
+
+:::{.sol data-latex=""}
+```{r 2024-17,,results='asis'}
+calcolo_beta()
+residuo(x = x[3],y = y[3])
+```
+:::
+
+`r punti_p()` Il modello si adatta bene ai dati?
+
+:::{.sol data-latex=""}
+```{r 2024-18,,results='asis'}
+R2(percent = F)
+```
+:::
+
+`r punti_p()` Interpretare il diagramma dei residui.
+
+```{r 2024-19,, fig.width=5, fig.height=3.5}
+par(mar=c(4,4,0,2),cex=.8)
+plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
+axis(1, cex=1)
+axis(2, cex=1)
+abline(h=0, lty=2)
+```
+
+:::{.sol data-latex=""}
+```{r 2024-20,,results='asis'}
+plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
+axis(1, cex=1)
+axis(2, cex=1)
+abline(h=0, lty=2)
+spline_pat(x,es,df1 = 5,df2 = 4)
+```
+:::
+
+`r punti_p()` Se in un modello di regressione $r^2=1$ cosa significa?
+
+`r punti_p()` Se in un modello di regressione $r<0$ che segno avrà $\hat\beta_1$? Perché?
+
+`r punti_p()` Testare l'ipotesi che $\beta_0$ sia uguale a 16.4, contro l'alternativa che sia minore per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
+
+:::{.sol data-latex=""}
+```{r 2024-91}
+ttest_beta(0,16.4,h1 = "<",SE = T)
+```
+:::
+
+
+
+
+## Prova di Statistica 2024/06/21-3
+
+
+
+
+### Esercizio 1
+
+```{r 2024-92}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
+```{r 2024-93}
+
+# Basic settings
+set.seed(1)   # per ottenere sempre la stessa simulazione
+n <- 160      # ampiezza campionaria
+
+brk  <- c(0,1.5,3,8,20)
+nnn  <- c( 50,100,110, 20)
+nnn  <- round(nnn/sum(nnn)*n)
+nomex <- "Investimento"
+
+samp <- genera_dati(brk = brk,nnn=nnn,n=n)
+  
+ls2e(x = stat_base(samp,brk))
+```
+
+Su un campione di $`r n`$ famiglie dell'Emilia-Romagna sono stati rilevati i consumi annui in beni tecnologici (dai espressi in migliaia di euro). Qui di seguito la distribuzione delle densità percentuali:
+
+```{r 2024-94}
+kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+```
+
+`r punti_p(start=T)`  Calcolare il valore approssimativo della mediana. 
+
+:::{.sol data-latex=""}
+```{r 2024-95}
+percentile()
+histp(T)
+draw_dist(dist = H.int,z1 = 4,z2 = 10)
+```
+:::
+
+`r punti_p()` Qual è la percentuale di famiglie spendono più del 55-esimo percentile $x_{0.55}$? 
+
+:::{.sol data-latex=""}
+```{r 2024-96}
+F_print(x = .55,verso = ">",perc1 = T)
+```
+:::  
+
+`r punti_p()` La media è pari a $\bar x=`r p(mean(samp),2)`$, senza disegnare l'istogramma, che forma distributiva dobbiamo aspettarci?
+
+`r punti_p()` La spesa media è pari a $`r mean(samp)`$, mentre la varianza è pari a $`r s2c(samp)`$.
+Se ogni famiglia diminuisse la propria spesa del 2%, quanto varrebbero la media e la varianza dei dati così trasformati?
+
+:::{.sol data-latex=""}
+\[
+\bar y = `r 0.98*mean(samp)`\qquad \sigma^2 = `r (0.98)^2*s2c(samp)`
+\]
+:::  
+
+
+### Esercizio 2 
+
+
+`r punti_p(nex=T)`  Sia $X\sim N(6,0.5)$ e sia $Y\sim N(6,0.5)$, $X$ e $Y$ indipendenti sia $A=\{X>5\}$ e $B=\{Y<7\}$. 
+Calcolare $P(A\cup B)$.
+
+:::{.sol data-latex=""}
+```{r 2024-21,,results='asis'}
+norm_int(x1 =  5,verso = ">",mm =  6,ss = 0.5,vnam = "X")
+norm_int(x1 = 7,verso = "<",mm = 6,ss = 0.5,vnam = "Y")
+zx <- round((5-6)/sqrt(0.5),2)
+zy <- round((7-6)/sqrt(0.5),2)
+pa <- pnorm(zx,lower.tail = F)
+pb <- pnorm(zy,lower.tail = T)
+p_aub(pa,pb)
+```
+:::  
+
+`r punti_p()` , posto $W=X-Y$, calcolare $P(W<1|W>-1)$.
+
+:::{.sol data-latex=""}
+```{r 2024-22,,results='asis'}
+pab <- pnorm(1)-pnorm(-1)
+pb  <- pnorm(-1,lower.tail = F)
+```
+$$ 
+P(W<1|W>-1)=\frac{P(-1<W<1)}{P(W>-1)}=\frac{`r pab`}{`r pb`}=`r pab/pb`
+$$
+:::  
+
+`r punti_p()` Se $P(A)=0.4$ e $P(B)=0.7$, è possibile che $A\cap B=\emptyset$? Perché?
+
+:::{.sol data-latex=""}
+No perché se fosse $A\cap B=\emptyset$, allora
+\begin{eqnarray*}
+P(A \cup B)    &=&  P(A) + P(B) - P(A\cap B)\\
+               &=&  P(A) + P(B) - P(\emptyset)\\
+               &=&  P(A) + P(B) - 0 \\
+               &=&  0.4 + 0.7\\
+               &=& 1.3 > 1 \qquad\text{impossibile}
+\end{eqnarray*}
+  
+:::
+
+`r punti_p()` Sia $X\sim\text{Binom}(n=2,\pi=0.5)$ e sia $F$ la sua funzione di ripartizione. Disegnare $F(x)$ nell'intervallo $-1\leq x\leq 3$
+
+:::{.sol data-latex=""}
+```{r 2024-97}
+bin_dis(x1 = 0,n = 2,pp = .5)
+bin_dis(x1 = 1,n = 2,pp = .5)
+bin_dis(x1 = 2,n = 2,pp = .5)
+x <- (-1):3
+px <- dbinom(x,2,.5)
+plot(x,pbinom(x,2,.5),type="n",ylab="F(x)",axes = F)
+axis(1,x)
+axis(2,cumsum(px),las=2)
+segments(x[1:4],cumsum(px)[1:4],x[2:5],cumsum(px)[1:4])
+segments(x[2:4],cumsum(px)[1:3],x[2:4],cumsum(px)[2:4],lty=2)
+points(x[2:4],cumsum(px)[1:3])
+points(x[2:4],cumsum(px)[2:4],pch=16)
+```
+:::
+
+### Esercizio 3 
+
+
+
+`r punti_p(nex=T)` Un'urna 3 premi da $\mbox{0}$ euro, un premio da $\mbox{1}$ euro.
+Si estrae 100 volte con reintroduzione. 
+
+Qual è la probabilità che la la vincita totale sia maggiore di 30?
+
+:::{.sol data-latex=""}
+
+```{r 2024-98}
+n <- 100
+mx <- 1/4
+
+tlc("somma",30,verso = ">",mu = mx,n = n)
+```
+:::
+
+### Esercizio 4 
+
+
+  
+`r punti_p(nex=T)` (**Punti 3**) Si consideri il modello binomiale $X\sim\text{Pois}(\lambda)$. Sia $\hat\lambda$ lo stimatore di massima verosimiglianza per $\mu$
+
+$$
+  \hat\lambda = \frac 1n \sum_{i=1}^n X_i
+$$
+
+Ricavare il suo _Standard Error_ teorico e quello stimato.
+
+`r punti_p()` Che differenza c'è tra lo Standard Error di uno stimatore e la Deviazione Standard di popolazione?
+
+`r punti_p()` Definire gli errori di primo e di secondo tipo e le relative probabilità.
+
+```{r 2024-99}
+# Definizione dei dati osservati
+observed <- c(13, 5, 10, 10, 8, 7, 4)
+total <- sum(observed)
+lambda <- sum((0:(length(observed) - 1)) * observed) / total
+expected <- dpois(0:(length(observed) - 1), lambda) * total
+chisq_result <- chisq.test(observed, p = expected / sum(expected))
+pval_poisson <- format(chisq_result$p.value, digits = 4, nsmall = 4)
+```
+
+`r punti_p()` Un economista sta studiando il numero di piccole imprese che aprono ogni mese in una certa regione. Ha raccolto dati sul numero di nuove imprese in `r total` mesi. I dati osservati sono riportati nella tabella seguente. L'obiettivo è determinare se i dati seguono una distribuzione di Poisson.
+
+```{r 2024-100}
+# Definizione dei dati osservati
+
+# Creazione della tabella
+dati <- data.frame(
+  Numero = 0:(length(observed) - 1),
+  Osservati = observed,
+  Attesi = round(expected, 2)
+)
+
+
+kable(t(dati)) %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+```
+
+Eseguito il test del $\chi^2$ per verificare la conformità dei dati alla distribuzione di Poisson, il biologo ottiene un $p_\text{value}=`r pval_poisson`$. Il modello Poisson è adeguato?
+
+### Esercizio 5
+
+
+```{r 2024-101}
+s1 <- 1.1
+n1 <- 18
+mu1 <- 1.8
+mu2 <- 0.8
+s2 <- 0.9
+n2 <- 21
+h1 <- "\\neq"
+alpha <- 0.01
+a <- "$N$"
+b<- "$S$"
+```
+
+`r punti_p(nex=T)`  In un'indagine sui consumi in beni alimentari sono stati intervistati 13 nuclei familiari al Nord d'Italia e 15 al Sud.
+Per le $n_N=`r n1`$ famiglie del nord si è osservato un consumo medio pari a $\mu_N=`r mu1`$ mila euro con una deviazione standard pari a $\hat\sigma_N=`r s1`$ mila euro, mentre per le $n_S=`r n2`$ famiglie del sud si è osservato un consumo medio pari a $\mu_S=`r mu2`$ mila euro con una deviazione standard pari a $\hat\sigma_S=`r s2`$ mila euro.
+
+Sotto ipotesi di omogeneità, testare l'ipotesi che il consumo medio sia uguale tra nord e sud, contro l'alternativa che sia maggiore al nord,
+per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
+
+
+:::{.sol data-latex=""}
+```{r 2024-102}
+ttest_2c_om(mu1 = mu1,mu2 = mu2,s1h = s1,s2h = s2,n1 = n1,n2 = n2,h1 = ">",a = a,b = b,um = "mila euro")
+```
+:::
+
+
+### Esercizio 6
+
+
+```{r 2024-103}
+set.seed(9)
+n <- 50
+x <- round(runif(n = n,min = 0,8),2) # Anni di studio
+y <- round(10 -.2*x^2 + rnorm(n, 0, 1.5),2) # Reddito annuo in migliaia di euro
+y <- (y - min(y))/(max(y)-min(y))*10
+ls2e(regr(x, y,semp = T,ax = 0))
+```
+
+In uno studio sull'uso delle nuove tecnologie, in un campione di \(n=`r n`\) individui, sono stati analizzati il tempo passato sui social (in ore al giorno, \(X\)) e il numero di libri letti in un anno  \(Y\). 
+Si osservano le seguenti statistiche: 
+$\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
+$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+
+
+`r punti_p(nex=T)`  Si è osservato $x_3=`r p(x[3])`$ e $y_3=`r p(y[3])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=3$.
+
+:::{.sol data-latex=""}
+```{r 2024-23,,results='asis'}
+calcolo_beta()
+residuo(x = x[3],y = y[3])
+```
+:::
+
+
+`r punti_p()` Dare un'interpretazione dei parametri di regressione stimati.
+
+`r punti_p()` Definire i punti di leva e indicare una misura per misurarli.
+
+`r punti_p()` Se in un modello di regressione $r^2=0$ cosa significa?
+
+`r punti_p()` Se in un modello di regressione $r=0.55$, $\hat\sigma_Y=0.9$ e $\hat\beta_1=1.5$,  calcolare
+$\hat\alpha_1$, la stima del coefficiente angolare del modello
+
+$$
+X_i = \alpha_0+\alpha_1 Y_i + \delta_i, \qquad E(\delta_i)=0; V(\delta_i)=\sigma_\delta^2
+$$
+
+dove la $X$ è spiegata dalla $Y$.
+
+
+
+
+## Prova di Statistica 24/07/06 -1
+
+```{r 240706-1}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
+
+### Esercizio 1
+```{r 2024-104}
+# Basic settings
+set.seed(1)   # per ottenere sempre la stessa simulazione
+n <- 150      # ampiezza campionaria
+
+brk  <- c(0,2,4,8,16)
+nnn  <- c( 50,100,50, 50)
+nnn  <- round(nnn/sum(nnn)*n)
+nomex <- "Investimento"
+
+samp <- genera_dati(brk = brk,nnn=nnn,n=n)
+  
+ls2e(x = stat_base(samp,brk))
+```
+
+Su un campione di $`r n`$ di piccole e medie imprese dell'Emilia-Romagna sono stati rilevati gli investimenti in infrastrutture tecnologiche (dati espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze cumulate:
+
+```{r 2024-105}
+kable(dat3[,c(1,2,7)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+i2 <- 0
+```
+
+`r punti_p(start=T)` Disegnare l'istogramma di densità percentuale. 
+
+:::{.sol data-latex=""}
+```{r 2024-106}
+kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+histp(T)
+```
+:::
+
+`r punti_p()` Quante imprese investono tra $x_{0.15}$ il 15-esimo e $x_{0.85}$ l'85-esimo percentile? 
+
+:::{.sol data-latex=""}
+```{r 2024-107}
+F_print(x = .15,x2 = .85,verso = "alt",perc1 = T,perc2 = T)
+```
+:::  
+
+
+`r punti_p()` Che relazione dobbiamo aspettarci tra media,  mediana e moda? 
+
+`r punti_p()` Siano $x_1,...,x_n$, $n$ dati e $\bar x=\frac 1n \sum_{i=1}^n x_i$ la loro media aritmetica. Quanto vale
+
+$$
+\sum_{i=1}^n (x_i-\bar x)=~~?
+$$
+
+### Esercizio 2 
+
+`r punti_p(nex=T)` Si consideri un'urna che ha una pallina bianche, due nere e due verdi. Si estrae 5 volte con reinserimento. Sia $X$ la variabile casuale che conta il numero di bianche su 5 estrazioni. Calcolare la probabilità che $X\leq 1$.
+
+:::{.sol data-latex=""}
+```{r 2024-24,,results='asis'}
+bin_dis(x1 = 1,n = 5,pp = 1/5,comp = F)
+```
+:::  
+
+`r punti_p()` Sia $X$ la VC del punto precedente. Considerato $A=\{X\leq 1\}$, $B=\{X\leq 2\}$, calcolare $P(A|B)$.
+
+:::{.sol data-latex=""}
+```{r 2024-25,,results='asis'}
+pa <- pbinom(1,5,1/5)
+pb <- pbinom(2,5,1/5)
+pab <- pa
+```
+
+\begin{eqnarray*}
+  P(B) &=&  `r pb`\\
+  P(A\cap B) &=& P( \{X \leq 1\} \cap \{X \leq 2\})\\
+             &=& P(  X \leq 1)\\
+             &=& `r pab`\\
+  P(A|B)     &=& \frac{P(A\cap B)}{P(B)}\\
+             &=& \frac{`r pab`}{`r pb`}\\
+             &=& `r pab/pb`
+\end{eqnarray*}
+:::  
+
+
+`r punti_p()` Se $A$ e $B$, sono due eventi tali che $P(A)=0.2$, $P(B)=0.6$, e $P(A\cap B)=0.18$, $A$ e $B$ sono indipendenti? Perché?
+
+`r punti_p()` Sia $X$ una variabile casuale con supporto $S_X=c\{-1,+1\}$ e con funzione di probabilità
+$$
+f(x)=\begin{cases}
+\frac 25, &\text{ se $x=-1$}\\
+\frac 35, &\text{ se $x=+1$}
+\end{cases}
+$$
+Disegnare le sua funzione di ripartizione, $F(x)$, nell'intervallo $-2\leq x\leq 2$.
+
+:::{.sol data-latex=""}
+```{r 2024-108}
+x <- c(-2,-1,1,2)
+px <- c(0,c(2,3)/5,0)
+kk <- length(px)
+plot(x,pbinom(x,2,.5),type="n",ylab="F(x)",axes = F)
+axis(1,x)
+axis(2,cumsum(px),las=2)
+segments(x[1:(kk-1)],cumsum(px)[1:(kk-1)],x[2:kk],cumsum(px)[1:(kk-1)])
+segments(x[2:kk],cumsum(px)[1:(kk-1)],x[2:kk],cumsum(px)[2:4],lty=2)
+points(x[2:(kk-1)],cumsum(px)[1:(kk-2)])
+points(x[2:(kk-1)],cumsum(px)[2:(kk-1)],pch=16)
+```
+:::
+
+### Esercizio 3 
+
+`r punti_p(nex=T)` Un'urna contiene 4 palline col numero $\mbox{-1}$ e 6 col $\mbox{1}$.
+Si estrae 100 volte con reintroduzione. 
+Qual è la probabilità che la somma sia maggiore di 25?
+
+:::{.sol data-latex=""}
+
+```{r 2024-109}
+n <- 100
+mx <- sum(-1*.4+1*.6)
+vx <- sum(.4+.6)-mx^2
+stat_(rep(c(-1,1),times=c(4,6)),semp = T)
+tlc("somma",25,verso = ">",mu = mx,s2 = vx,n = n)
+```
+:::
+
+### Esercizio 4 
+
+
+`r punti_p(nex=T)` Si consideri il modello normale $X\sim N(\mu,\sigma^2)$. Sia $\hat\mu$ lo stimatore di massima verosimiglianza per $\mu$
+
+$$
+  \hat\mu = \frac 1n \sum_{i=1}^n X_i
+$$
+
+Estratti $n=25$ dati si è ottenuto $\sum_{i=1}^n x_i = 45$ e $\sum_{i=1}^n x_i^2 = 105$. Ricavare il suo _Standard Error_ teorico e quello stimato.
+
+:::{.sol data-latex=""}
+\begin{eqnarray*}
+  \hat\mu  &=&\frac{45}{25}=`r 42/25`\\
+  \hat\sigma &=&\sqrt{\frac 1{25}105-`r 42/25`^2}=`r sqrt(105/25-(42/25)^2)`\\
+  S &=&\sqrt{\frac{n}{n-1}}\hat\sigma=`r sqrt(25/24)*sqrt(105/25-(42/25)^2)`\\
+  SE(\hat\mu) &=&  \frac{\sigma}{\sqrt{n}}\\
+  \widehat{SE(\hat\mu)} &=& \frac{S}{\sqrt{n}}\\
+  \widehat{SE(\hat\mu)} &=& \frac{`r sqrt(25/24)*sqrt(105/25-(42/25)^2)`}{\sqrt{25}}=`r sqrt(25/24)*sqrt(105/25-(42/25)^2)/5`\\
+\end{eqnarray*}
+:::
+`r punti_p()` Sia $h$ uno stimatore per $\theta$, cosa significa che $h$ è consistente?
+
+`r punti_p()` Definire la significatività e la potenza di un test.
+
+```{r 2024-110}
+# Creazione della tabella con i dati
+tabella_aziendale <- matrix(c(30, 15, 20, 20, 25, 40, 45, 30, 35), nrow = 3, ncol = 3, byrow = TRUE)
+n_aziendale <- sum(tabella_aziendale)
+pval  <- format(chisq.test(t(tabella_aziendale))$p.value, digits = 4, nsmall = 4)
+```
+
+`r punti_p()` Un responsabile delle risorse umane sta conducendo uno studio sull'associazione tra il tipo di formazione ricevuta e la performance lavorativa. Ha somministrato un questionario a `r n_aziendale` dipendenti, chiedendo loro di indicare la propria performance lavorativa (Alta, Media, Bassa) e il tipo di formazione ricevuta (Tecnica, Manageriale, Soft Skills). L'obiettivo è determinare se c'è un'associazione tra il tipo di formazione ricevuta e la performance lavorativa.
+
+```{r 2024-111}
+
+# Assegnazione dei nomi alle righe e alle colonne
+colnames(tabella_aziendale) <-  c("Alta", "Media", "Bassa")
+rownames(tabella_aziendale) <- c("Tecnica", "Manageriale", "Soft Skills")
+
+tabl(tabella_aziendale) %>%
+  kable_styling(full_width = F) %>%
+  kable_paper(full_width = F) %>%
+  pack_rows("Tipo di Formazione", 1, 3) %>%
+  add_header_above(c(" " = 1, "Performance Lavorativa" = 3))
+```
+
+Eseguito il test del $\chi^2$ per verificare l'indipendenza tra il livello di istruzione e il comportamento di voto, il sociologo ottiene un $p_\text{value}=`r pval`$. Quali conclusioni può trarne?
+
+### Esercizio 5
+
+
+`r punti_p(nex=T)` Sia \(X\) il reddito annuale dei manager italiani.
+Si sceglie un campione di 30 manager italiani e si ottiene una
+media di 85 mila euro con una deviazione standard pari a 15 mila euro.
+
+Determinare un intervallo di confidenza al 95\% per
+il reddito medio annuale dei manager italiani.
+
+:::{.sol data-latex=""}
+```{r 2024-26,,results='asis'}
+idc(xm = 85,sd = 15,alpha = 0.05,n = 30,dist_ = "t",mus = "\\hat\\mu",ss = "S")
+```
+:::
+
+`r punti_p()` È noto che il reddito medio annuale dei manager europei
+è di 80 mila euro.
+Verificare l'ipotesi
+che il reddito medio annuale dei manager italiani sia uguale a quello
+dei manager europei contro l'alternativa che sia maggiore, per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
+
+:::{.sol data-latex=""}
+```{r 2024-27,,results='asis'}
+ttest_mu(muh = 85,sh = 15,n = 30,mu0 = 80,h1 = ">")
+```
+:::
+
+
+### Esercizio 6
+
+```{r 2024-112}
+set.seed(42)
+n <- 30
+sig <- 1.5
+x <- round(runif(n = n, min = 10, max = 50), 2) # sales in thousands of units
+y <- round(1.2 + 0.5 * x + rnorm(n, 0, sig), 2) # annual profit in thousands of euros
+ls2e(regr(x, y, semp = TRUE, ax = 2))
+```
+
+
+In uno studio sulla formazione aziendale, in un campione di \(n=`r n`\) dipendenti, sono state analizzate le ore di formazione (in ore, \(X\)) e il punteggio di performance (in opportuna, \(Y\)).
+
+Si osservano le seguenti statistiche:
+$\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
+$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+
+
+`r punti_p(nex=T)` Si è osservato $x_7=`r p(x[7])`$ e $y_7=`r p(y[7])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=7$.
+
+:::{.sol data-latex=""}
+```{r 2024-28,,results='asis'}
+calcolo_beta()
+residuo(x = x[7],y = y[7])
+```
+:::
+
+`r punti_p()` Dare un'interpretazione dei parametri di regressione stimati.
+
+`r punti_p()` Perché la previsione per $x=`r round(mx)`$ è più affidabile di quella per $x=`r round(10*mx)`$?
+
+`r punti_p()` Cosa significa che $r$ è un numero puro?
+
+`r punti_p()` Se in un modello di regressione \(r=0.65\), \(\hat\sigma_X=1.1\) e \(\hat\sigma_Y=0.9\), calcolare \(\hat\beta_1\).
+
+:::{.sol data-latex=""}
+Per calcolare \(\hat\beta_1\) in un modello di regressione, si usa la formula:
+
+\[
+\hat\beta_1 = r \frac{\hat\sigma_Y}{\hat\sigma_X}
+\]
+
+Dati:
+- \(r = 0.65\)
+- \(\hat\sigma_X = 1.1\)
+- \(\hat\sigma_Y = 0.9\)
+
+Calcolo:
+
+\[
+\hat\beta_1 = 0.65 \times \frac{0.9}{1.1} = 0.65 \times 0.8182 = 0.532
+\]
+:::
+
+<!-- `r punti_p()` Testare l'ipotesi che $\beta_1$ sia uguale a zero, contro l'alternativa che sia diverso per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.). -->
+
+<!-- :::{.sol data-latex=""} -->
+<!-- ```{r 2024-113} -->
+<!-- ttest_beta(1,0,SE = T) -->
+<!-- ``` -->
+<!-- ::: -->
+
+
+
+## Prova di Statistica 24/07/06 -2
+
+```{r 240706-2}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
+
+
+
+### Esercizio 1
+```{r 2024-114}
+# Basic settings
+set.seed(10)   # per ottenere sempre la stessa simulazione
+n <- 200      # ampiezza campionaria
+
+brk  <- c(0,2,4,8,16)
+nnn  <- c( 30,100,110, 50)
+brk <- 16-rev(brk)
+nnn <- rev(nnn)
+nnn  <- round(nnn/sum(nnn)*n)
+nomex <- "Investimento"
+
+samp <- genera_dati(brk = brk,nnn=nnn,n=n,rand = F)
+  
+ls2e(x = stat_base(samp,brk))
+
+n_ER <- n 
+n_L <- n_ER + 15 
+n_V <- n_ER -  5 
+set.seed(10) 
+x_ER <- mean(samp) 
+x_L <- mean(samp) + rnorm(1, 0, sd(samp))
+x_V <- mean(samp) + rnorm(1, 0, sd(samp))
+# Calcolo della media aggregata
+x_agg <- (n_ER * x_ER + n_L * x_L + n_V * x_V) / (n_ER + n_L + n_V)
+
+```
+
+Su un campione di $`r n`$ di piccole e medie imprese dell'Emilia-Romagna sono stati rilevati gli investimenti in infrastrutture tecnologiche (dati espressi in migliaia di euro). Qui di seguito la distribuzione delle frequenze assolute:
+
+```{r 2024-115}
+kable(dat3[,c(1,2,3)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+i2 <- 0
+```
+
+`r punti_p(start=T)` Individuare l'intervallo modale. 
+
+:::{.sol data-latex=""}
+```{r 2024-116}
+kable(dat3[,1:6],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+histp(T)
+```
+:::
+
+`r punti_p()` Quante imprese investono tra $x_{0.25}$ il 25-esimo e $x_{0.75}$ il 75-esimo percentile? 
+
+:::{.sol data-latex=""}
+```{r 2024-117}
+F_print(x = .25,x2 = .75,verso = "alt",perc1 = T,perc2 = T)
+invisible(round_all(2))
+```
+:::  
+
+`r punti_p()` La media è pari a $\bar x=`r p(mean(samp),2)`$, senza disegnare l'istogramma, che forma distributiva dobbiamo aspettarci?
+
+`r punti_p()` La spesa media della regione Emilia-Romagna, calcolata su `r n_ER` famiglie è pari $\bar x_{ER}=`r x_ER`$, quella della Lombardia, calcolata su `r n_L` famiglie è pari $\bar x_{L}=`r x_L`$, mentre quella del Veneto,  calcolata su `r n_V` famiglie è pari $\bar x_{V}=`r x_V`$. Qual è la spesa media complessiva delle tre regioni?
+
+:::{.sol data-latex=""}
+Per trovare la spesa media delle tre regioni aggregate, dobbiamo considerare sia le medie delle singole regioni sia il numero di famiglie su cui sono state calcolate. La formula per la media aggregata \(\bar{x}_{agg}\) è:
+
+\begin{eqnarray*}
+\bar{x}_{agg}    &=&  \frac{n_{ER} \bar{x}_{ER} + n_{L} \bar{x}_{L} + n_{V} \bar{x}_{V}}{n_{ER} + n_{L} + n_{V}}\\
+&=& \frac{`r n_ER`\cdot`r x_ER`+`r n_L`\cdot`r x_L`+`r n_V`\cdot`r x_V`}{`r n_ER`+`r n_L`+`r n_V`}\\
+&=& `r x_agg`
+\end{eqnarray*}
+  
+
+Dove:
+
+- \(n_{ER}\) è il numero di famiglie in Emilia-Romagna
+- \(n_{L}\) è il numero di famiglie in Lombardia
+- \(n_{V}\) è il numero di famiglie in Veneto
+- \(\bar{x}_{ER}\), \(\bar{x}_{L}\), \(\bar{x}_{V}\) sono le spese medie delle rispettive regioni
+
+:::  
+
+
+
+### Esercizio 2 
+
+
+`r punti_p(nex=T)` Sia $X$ il numero di telefonate in arrivo ad un centralino di emergenza, si assume $X\sim\text{Pois}(1.3)$. Calcolare la probabilità che $X\geq 1$.
+
+:::{.sol data-latex=""}
+```{r 2024-29,,results='asis'}
+pois_dis(x1 = 1,ll = 1.3,verso = "\\geq")
+```
+:::  
+
+`r punti_p()` Sia $X\sim\text{Pois}(1.3)$, posto $A=\{X\geq 2\}$, $B=\{X\geq 1\}$, calcolare $P(A|B)$.
+
+:::{.sol data-latex=""}
+```{r 2024-118}
+pa <- 1-ppois(1,1.3)
+pb <- 1-ppois(0,1.3)
+pab <- pa
+```
+
+\begin{eqnarray*}
+  P(B) &=&  `r pb`\\
+  P(A\cap B) &=& P( \{X \geq 1\} \cap \{X \geq 2\})\\
+             &=& P(  X \geq 2)\\
+             &=& `r pab`\\
+  P(A|B)     &=& \frac{P(A\cap B)}{P(B)}\\
+             &=& \frac{`r pab`}{`r pb`}\\
+             &=& `r pab/pb`
+\end{eqnarray*}
+:::  
+
+`r punti_p()` Se $A$ e $B$, sono due eventi tali che $P(A)=0.2$, $P(B)=0.6$, e $P(A\cup B)=0.8$, $A$ e $B$ sono indipendenti? Perché?
+
+
+`r punti_p()` Sia $X$ una variabile casuale con supporto $S_X=\{-1,0,1\}$ e con funzione di probabilità
+$$
+f(x)=\begin{cases}
+\frac 13, &\text{ se $x=-1$}\\
+\frac 13, &\text{ se $x=\phantom{-} 0$}\\
+\frac 13, &\text{ se $x=+ 1$}\\
+\end{cases}
+$$
+Disegnare le sua funzione di ripartizione, $F(x)$, nell'intervallo $-2\leq x\leq 3$.
+
+:::{.sol data-latex=""}
+```{r 2024-119}
+x <- c(-1,0,1)
+px <- c(1,1,1)/3
+plot_FdR(x,px,-2,3)
+```
+:::
+
+### Esercizio 3 
+
+`r punti_p(nex=T)` Un'urna contiene 2 palline col numero $\mbox{-2}$, e 2 palline col numero $\mbox{-1}$ e 6 palline col numero $\mbox{+2}$.
+Si estrae 50 volte con reintroduzione. 
+Qual è la probabilità che la proporzione di palline maggiori di zero sia compresa tra 0.65 e 0.70?
+
+:::{.sol data-latex=""}
+```{r 2024-120}
+n <- 50
+mx <- sum(0:2*4:2/9)
+vx <- sum((0:2)^2*4:2/9)-mx^2
+urn <- c(0,0,0,0,1,1,1,2,2)
+
+tlc("prop",x1 = .65,x2 = .70,verso = NULL,mu = .6,n = n)
+```
+:::
+
+### Esercizio 4 
+
+
+  
+`r punti_p(nex=T)` Si consideri il modello di Bernoulli $X\sim\text{Ber}(\pi)$. Sia $\hat\pi$ lo stimatore di massima verosimiglianza per $\pi$
+
+$$
+  \hat\pi = \frac 1n \sum_{i=1}^n X_i
+$$
+
+
+Estratti $n=25$ dati si è ottenuto $\sum_{i=1}^n x_i = 15$. Ricavare il suo _Standard Error_ teorico e quello stimato.
+
+
+`r punti_p()` Siano $h_1$ e $h_2$ due stimatori per $\theta$, cosa significa che $h_1$ è più efficiente di $h_2$?
+
+`r punti_p()` Siano $T_1$ e $T_2$ due test per lo stesso sistema di ipotesi con la stessa significatività $\alpha$, siano $\beta_1$ la probabilità di errore di secondo tipo del test $T_1$ e $\beta_2$ la probabilità di errore di secondo tipo del test $T_2$. Cosa significa dire che $T_1$ è più potente di $T_2$?
+
+`r punti_p()`  In un'indagine sull'opinione sull'autonomia differenziata sono stati intervistate 180 persone che vivono al nord e 130 che vivono al sud: 108 su 180 che vivono al nord sono favorevoli al reddito di cittadinanza mentre 55 su 130 che vivono al sud sono favorevoli. 
+Messo a test
+
+$$
+\begin{cases}
+   H_0: \pi_\text{N} = \pi_\text{S} \\
+   H_1: \pi_\text{N} > \pi_\text{S} 
+\end{cases}
+$$
+
+è risultato  $p_{\text{value}} =0.001041$. Possiamo concludere che al nord siano più propensi all'autonomia che al sud? Perché?
+
+
+### Esercizio 5
+
+`r punti_p(nex=T)` In uno studio sull'efficacia di due metodi di insegnamento della matematica, si è proceduto facendo seguire il metodo \(A\) ad un campione di 15 studenti (gruppo \(A\)) e il metodo \(B\) ad un secondo campione di 18 studenti (gruppo \(B\)). Si è quindi misurata la prestazione degli studenti con un test finale. La prestazione media del gruppo \(A\) risulta pari a 78 con una deviazione standard pari a 8.3, mentre la prestazione media del gruppo \(B\) risulta pari a 74 con una deviazione standard pari a 7.5. Sotto ipotesi di eterogeneità verificare l'ipotesi che la prestazione media dei due metodi di insegnamento sia uguale, contro l'alternativa che il metodo \(A\) produca prestazioni mediamente migliori di quello \(B\), per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.).
+
+:::{.sol data-latex=""}
+```{r 2024-30,,results='asis'}
+ttest_2c_et(mu1 = 78,mu2 = 74,s1h = 8.3,s2h = 7.5,n1 = 15,n2 = 18,h1 = ">",a = "A",b = "B")
+```
+:::
+
+### Esercizio 6
+
+```{r 2024-121}
+set.seed(42)
+n <- 40
+sig <- .25
+x <- round(runif(n = n, min = 0, max = 10), 2) 
+y <- round(10 - (0.7 * x )^2 + rnorm(n, 0, sig), 2) 
+ls2e(regr(x, y, semp = TRUE, ax = 2))
+```
+
+In uno studio sulla relazione tra tempo libero e stress, in un campione di \(n=`r n`\) individui, sono state analizzate le ore settimanali dedicate al tempo libero (in ore, \(X\)) e i livelli di stress misurati (su una scala da 1 a 10, \(Y\)).
+
+Si osservano le seguenti statistiche:
+$\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
+$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+
+
+`r punti_p(nex=T)` Si è osservato $x_4=`r x[4]`$ e $y_4=`r round(y[4],2)`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=4$.
+
+:::{.sol data-latex=""}
+```{r 2024-31,,results='asis'}
+calcolo_beta()
+residuo(x = x[4],y = y[4])
+```
+:::
+
+`r punti_p()` Scomporre la Total Sum of Squares.
+
+:::{.sol data-latex=""}
+```{r 2024-32,,results='asis'}
+TSS()
+```
+:::
+
+`r punti_p()` Interpretare il diagramma dei residui.
+
+```{r 2024-33,, fig.width=5, fig.height=3.5}
+par(mar=c(4,4,0,2),cex=.8)
+plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
+axis(1, cex=1)
+axis(2, cex=1)
+abline(h=0, lty=2)
+```
+
+:::{.sol data-latex=""}
+```{r 2024-34,,results='asis'}
+plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
+axis(1, cex=1)
+axis(2, cex=1)
+abline(h=0, lty=2)
+spline_pat(x,es,df1 = 5,df2 = 5)
+```
+:::
+
+`r punti_p()` Cosa significa che $r$ è invariante ai cambiamenti di scala?
+
+`r punti_p()` Se in un modello di regressione $r^2=0$ significa che non c'è relazione tra $X$ ed $Y$?
+
+<!-- `r punti_p()` Testare l'ipotesi che $\beta_0$ sia uguale a 12, contro l'alternativa che sia maggiore per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.). -->
+
+<!-- :::{.sol data-latex=""} -->
+<!-- ```{r 2024-122} -->
+<!-- ttest_beta(0,12.5,h1 = ">",SE = T) -->
+<!-- ``` -->
+<!-- ::: -->
+
+
+
+
+## Prova di Statistica 24/07/06-3
+
+```{r 240706-3}
+compito <- compito + 1
+punti <- punti_list[[compito]]
+```
+
+
+### Esercizio 1
+```{r 2024-123}
+
+
+# Basic settings
+set.seed(1)   # per ottenere sempre la stessa simulazione
+n <- 200      # ampiezza campionaria
+
+brk  <- c(0,3,4.5,5.5,7,10)
+nnn  <- c(5,20,35,20,5)
+nnn  <- round(nnn/sum(nnn)*n)
+nomex <- "Investimento"
+
+samp <- genera_dati(brk = brk,hhh = nnn,n=n)
+  
+ls2e(x = stat_base(samp,brk))
+```
+
+Su un campione di $`r n`$ di piccole e medie imprese dell'Emilia-Romagna sono stati rilevati gli investimenti in infrastrutture tecnologiche (dati espressi in migliaia di euro).  Qui di seguito la distribuzione delle densità percentuali:
+
+```{r 2024-124}
+kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+```
+
+`r punti_p(start=T)` Calcolare il valore approssimativo della mediana. 
+
+:::{.sol data-latex=""}
+```{r 2024-125}
+kable(dat3[,c(1:7)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+percentile()
+histp(T)
+draw_dist(dist = H.int,z1 = Q.int(.30),z2 = 7,col=ablue,border = T,lwd=2)
+```
+:::
+
+`r punti_p()` Qual è la percentuale di imprese che investe tra il 30-esimo percentile $x_{0.30}$ e 7? 
+
+:::{.sol data-latex=""}
+```{r}
+F_print(x = .30,verso = "",x2 = 7,perc1 = T)
+```
+:::  
+
+`r punti_p()` La media è pari a $\bar x=`r 5`$, senza disegnare l'istogramma, che forma distributiva dobbiamo aspettarci?
+
+`r punti_p()` Se $\{x_1,...,x_n\}$ è una serie di dati con media aritmetica $\bar x=\frac 1n\sum_i x_i$ e varianza $\sigma_X^2=\frac 1n\sum_i(x-\bar x)^2$. Posto
+$$
+y_i = 1-x_i,~~\forall i=1,...,n
+$$
+ricavare media aritmetica e varianza delle $\{y_1,...,y_n\}$.
+
+:::{.sol data-latex=""}
+$$
+\bar y = 1-\bar x;~~~~\sigma_Y^2=(-1)^2\sigma_X^2
+$$
+
+:::  
+
+
+### Esercizio 2 
+
+
+`r punti_p(nex=T)` Sia $X\sim N(1,1.5)$ e sia $Y\sim N(-1,1.5)$, $X$ e $Y$ indipendenti sia $A=\{X>0\}$ e $B=\{Y<0\}$. 
+Calcolare $P(A\cup B)$.
+
+:::{.sol data-latex=""}
+```{r 2024-35,,results='asis'}
+norm_int(x1 =  0,verso = ">",mm =  1,ss = 1.5,vnam = "X")
+norm_int(x1 = 0,verso = "<",mm = -1,ss = 1.5,vnam = "Y")
+zx <- round((0-1)/sqrt(1.5),2)
+zy <- round((0+1)/sqrt(1.5),2)
+pa <- pnorm(zx,lower.tail = F)
+pb <- pnorm(zy,lower.tail = T)
+p_aub(pa,pb)
+```
+:::  
+
+`r punti_p()` , posto $W=(X+Y)/2$, calcolare $P(W<1|W>-1)$.
+
+:::{.sol data-latex=""}
+```{r 2024-36,,results='asis'}
+pab <- pnorm(1,0,sqrt(3/4))-pnorm(-1,0,sqrt(3/4))
+pb  <- pnorm(-1,0,sqrt(3/4),lower.tail = F)
+```
+
+$$
+W\sim N(+1-1,(1/2)^2(1.5+1.5))
+$$
+
+$$ 
+P(W<1|W>-1)=\frac{P(-1<W<1)}{P(W>-1)}=\frac{`r pab`}{`r pb`}=`r pab/pb`
+$$
+:::  
+
+`r punti_p()` Se $A\neq\emptyset$ e $B\neq\emptyset$, sono due eventi tali che $P(A)=0.2$, $P(B)=0.6$, e $P(A\cup B)=0.6$, $A$ e $B$ sono indipendenti? Perché?
+
+
+`r punti_p()` Sia $X\sim\text{Binom}(n=2,\pi=0.5)$ e sia $F$ la sua funzione di ripartizione. Disegnare $F(x)$ nell'intervallo $-1\leq x\leq 3$
+
+:::{.sol data-latex=""}
+```{r 2024-126}
+bin_dis(x1 = 0,n = 2,pp = .5)
+bin_dis(x1 = 1,n = 2,pp = .5)
+bin_dis(x1 = 2,n = 2,pp = .5)
+x <- (-1):3
+px <- dbinom(x,2,.5)
+plot(x,pbinom(x,2,.5),type="n",ylab="F(x)",axes = F)
+axis(1,x)
+axis(2,cumsum(px),las=2)
+segments(x[1:4],cumsum(px)[1:4],x[2:5],cumsum(px)[1:4])
+segments(x[2:4],cumsum(px)[1:3],x[2:4],cumsum(px)[2:4],lty=2)
+points(x[2:4],cumsum(px)[1:3])
+points(x[2:4],cumsum(px)[2:4],pch=16)
+```
+:::
+
+### Esercizio 3 
+
+
+
+`r punti_p(nex=T)` Un'urna contiene 2 palline col numero $\mbox{-2}$, e 2 palline col numero $\mbox{-1}$ e 6 palline col numero $\mbox{+2}$.
+Si estrae 150 volte con reintroduzione. 
+Qual è la probabilità che la somma sia minore di 80?
+
+:::{.sol data-latex=""}
+```{r 2024-127}
+n <- 150
+xx <- rep(c(-2,-1,2),times=c(2,2,6))
+mx <- mean(xx)
+vx <- s2c(xx)
+stat_(xx,semp = T)
+tlc("somma",x1 = 80,verso = "<",mu = mx,n = n,s2 = vx)
+```
+:::
+
+
+### Esercizio 4 
+
+`r punti_p(nex=T)` Si consideri il modello di Poisson $X\sim\text{Pois}(\lambda)$. Sia $\hat\lambda$ lo stimatore di massima verosimiglianza per $\mu$
+
+$$
+  \hat\lambda = \frac 1n \sum_{i=1}^n X_i
+$$
+
+Estratti $n=25$ dati si è osservato $\sum_{i=1}^nx_i=54$. Ricavare il suo _Standard Error_ teorico e quello stimato.
+
+:::{.sol data-latex=""}
+Dato il modello binomiale \(X \sim \text{Pois}(\lambda)\) e \(\hat\lambda = \frac{1}{n} \sum_{i=1}^n X_i\), con \(n = 25\) e \(\sum_{i=1}^n x_i = 54\):
+
+Standard Error Teorico
+\[
+SE(\hat\lambda) = \sqrt{\frac{\lambda}{n}}
+\]
+
+Standard Error Stimato
+\[
+\hat\lambda = \frac{54}{25} = 2.16
+\]
+\[
+SE(\hat\lambda) = \sqrt{\frac{2.16}{25}} = \sqrt{0.0864} \approx 0.294
+\]
+:::
+
+`r punti_p()` Cosa significa che uno stimatore è asintoticamente corretto?
+
+`r punti_p()` Definire la significatività e la potenza di un test.
+
+`r punti_p()`L'Associazione dei Commercianti della Toscana ha condotto un'indagine sulle preferenze dei metodi di pagamento tra i clienti dei negozi della regione. Durante una settimana, sono stati intervistati 350 clienti di vari negozi. L'associazione è interessata a capire se le preferenze dei clienti per i metodi di pagamento differiscono dalla media nazionale.
+
+Qui di seguito è riportata la tabella delle preferenze dei clienti dei negozi della Toscana e le percentuali nazionali:
+
+```{r 2024-128}
+X <- c("Contanti", "Carta di Credito", "Carta di Debito", "Bonifico Bancario", "Pagamento Mobile")
+
+Y <- c("Dati Associazione", "Media Nazionale")
+ntot <- 350
+Freq_0 <- c(100, 120, 50, 30, 50)/sum(c(100, 120, 50, 30, 50))*100
+Freq_c <- c(110, 130, 40, 35, 35)
+Freq_c <- round(Freq_c/sum(Freq_c)*ntot)
+
+chi_print_conf(Freq_c = Freq_c,Freq_0 = Freq_0,X,Y)
+```
+
+Eseguito il test del $\chi^2$ per verificare la conformità delle due distribuzioni si ottiene un $p_\text{value}=0.0667$. Le due distribuzioni possono essere considerate uguali?
+
+### Esercizio 5
+
+`r punti_p(nex=T)` Su un campione di \( n = 120 \) startup tecnologiche italiane, è stato chiesto se abbiano implementato misure di cybersecurity avanzate. Lo studio ha riportato che 84 startup su 120 (il 70% del campione) hanno implementato queste misure.
+
+Costruire un intervallo di confidenza al 95% per \(\pi\), la quota di startup italiane che hanno implementato misure di cybersecurity avanzate.
+
+:::{.sol data-latex=""}
+```{r 2024-129}
+idc(xm = 84,alpha = .05,n = 120,dist_ = "z")
+```
+:::
+
+`r punti_p()` Un'indagine molto più ampia condotta su startup europee ha mostrato che la percentuale di startup con misure di cybersecurity avanzate è del 80%. Testare l'ipotesi che in Italia la quota di startup con misure di cybersecurity avanzate sia uguale a quella europea contro l'alternativa che sia minore. Risolvere col $p_\text{value}$ e confrontarlo per $\alpha=0.1,0.05,0.01,0.001$.
+
+:::{.sol data-latex=""}
+```{r 2024-130}
+sn <- 84
+n  <- 120
+p0 <- 0.80
+h1 <- "<"
+ztest_pi(sn = sn,n = n,p0 = p0,h1 = h1)
+```
+:::
+
+
+### Esercizio 6
+
+
+```{r 2024-131}
+set.seed(9)
+n <- 50
+x <- round(runif(n = n,min = 0,8),2) # Anni di studio
+y <- round(10 -.2*x^2 + rnorm(n, 0, 1.5),2) # Reddito annuo in migliaia di euro
+y <- (y - min(y))/(max(y)-min(y))*10
+ls2e(regr(x, y,semp = T,ax = 0))
+```
+
+In uno studio sull'uso delle nuove tecnologie, in un campione di \(n=`r n`\) individui, sono stati analizzati il tempo passato sui social (in ore al giorno, \(X\)) e il numero di libri letti in un anno  \(Y\). 
+
+`r punti_p(nex=T)` Si è osservato $x_5=`r p(x[5])`$ e $y_5=`r p(y[5])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=5$.
+
+:::{.sol data-latex=""}
+```{r 2024-37,,results='asis'}
+calcolo_beta()
+residuo(x = x[3],y = y[3])
+```
+:::
+
+
+`r punti_p()` Dare un'interpretazione dei parametri di regressione stimati.
+
+`r punti_p()` Definire i punti di leva e indicare una misura per misurarli.
+
+`r punti_p()` Se in un modello di regressione $r=-1$, cosa significa?
+
+`r punti_p()` Se in un modello di regressione $r=0.55$, $\hat\sigma_Y=0.9$ e $\hat\sigma_X=1.9$, calcolare $\hat\beta_1$ e
+$\hat\alpha_1$, gli stimatori stima del coefficiente angolare dei modelli:
+
+\begin{eqnarray*}
+Y_i &=& \beta_0+\beta_1 Y_i + \varepsilon_i, \qquad E(\varepsilon_i)=0; V(\varepsilon_i)=\sigma_\varepsilon^2\\
+X_i &=& \alpha_0+\alpha_1 Y_i + \delta_i, \qquad E(\delta_i)=0; V(\delta_i)=\sigma_\delta^2.
+\end{eqnarray*}

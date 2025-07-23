@@ -337,14 +337,8 @@ Significa che è privo di unità di misura.
 ## Prova di Statistica 2021/06/11-2
 
 ```{r 2021-43}
-
-
-
 source("intro.R")
 fig.def(2.5,3.5)
-
-
-
 ```
 
 ### Esercizio 1
@@ -681,14 +675,8 @@ $$|\tilde \varepsilon_i|>t_{n-2,0.05} $$
 ## Prova di Statistica 2021/06/30-1
 
 ```{r 2021-54}
-
-
-
 source("intro.R")
 fig.def(2.5,3.5)
-
-
-
 ```
 
 ### Esercizio 1
@@ -1806,14 +1794,8 @@ $$
 ## Prova di Statistica 2021/07/22-2
 
 ```{r 2021-75}
-
-
-
 source("intro.R")
 fig.def(2.5,3.5)
-
-
-
 ```
 
 ### Esercizio 1
@@ -2144,14 +2126,8 @@ $$
 ## Prova di Statistica 2021/09/06-1
 
 ```{r 2021-81}
-#
-
-
 source("intro.R")
 fig.def(2.5,3.5)
-
-
-
 ```
 
 ### Esercizio 1

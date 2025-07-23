@@ -3600,7 +3600,7 @@ Definiamo gli eventi:
 - $A=$ "l'estrazione dall'urna A dà al massimo una pallina rossa (1 pallina rossa o meno)".
 - $B=$ "L'estrazione dall'urna B dà come risultato almeno 4 palline blu (4 o più palline blu)".
 
-**(Punti 14)** Calcola la probabilità che almeno uno dei due eventi sia vero, ovvero la probabilità di $A \cup B$.
+`r punti_p(nex = T)` Calcola la probabilità che almeno uno dei due eventi sia vero, ovvero la probabilità di $A \cup B$.
 
 :::{.sol data-latex=""}
 ```{r 2023-100,,results='asis'}
@@ -3616,7 +3616,7 @@ pb <- sum(dbinom(4:5,5,2/3))
 \end{eqnarray*}
 :::
 
-`r punti_p(nex = T)` Qual è la probabilità di avere **esattamente** uno solo due eventi sia vera?
+`r punti_p()` Qual è la probabilità di avere **esattamente** uno solo due eventi sia vera?
 
 :::{.sol data-latex=""}
 \begin{eqnarray*}

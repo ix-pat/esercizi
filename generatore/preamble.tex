@@ -1,0 +1,64 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{xfrac}
+\usepackage{stackrel}
+\usepackage{cancel}
+\usepackage{tikz}  % per \foreach
+\usepackage{layout}
+\usepackage{array}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{comment}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{multirow}
+
+% \usepackage{draftwatermark}
+% 
+% \SetWatermarkText{FAC-SIMILE}
+% \SetWatermarkScale{1}
+% \SetWatermarkColor[gray]{0.95}
+% \SetWatermarkAngle{45}
+
+\pagestyle{fancy} % Imposta lo stile fancy come predefinito
+
+% Definisci uno stile di pagina senza numeri
+\fancypagestyle{senzanumero}{%
+  \fancyhf{} % Pulisce intestazione e piè di pagina
+}
+
+
+\fancyhf{}
+\lhead{\textbf{Compito di Statistica (CLEAM)}}
+\cfoot{\thepage}
+\usepackage{etoolbox}
+\excludecomment{sol} 
+\definecolor{mygray}{gray}{0.6}
+
+%\pagestyle{empty}
+
+\newcommand{\quadratini}[1]{%
+  \foreach \i in {1,...,#1}{%
+    \fcolorbox{mygray}{white}{\phantom{\huge A}}%
+    \hspace{0.5em}%
+  }%
+}
+
+\newcommand{\anagrafica}{%
+ % \vspace{-14cm}
+  {\sffamily % font sans-serif attivo
+  {Compilare in Stampatello}\\[0.5em]
+  \begin{tabular}{>{\sffamily}r l}
+    COGNOME: & \quadratini{18} \\[0.5em]
+    NOME: & \quadratini{18} \\[0.5em]
+    Matricola: & \quadratini{8} \\[0.5em]
+    %Codice: & \texttt{#1} \\
+  \end{tabular}\\
+  \vspace{-.5cm}
+  \noindent\rule{\textwidth}{0.4pt}
+  } % chiusura \sffamily
+}

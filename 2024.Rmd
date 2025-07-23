@@ -2258,6 +2258,11 @@ ls2e(regr(x, y,semp = T,ax = 0))
 
 In uno studio sull'uso delle nuove tecnologie, in un campione di \(n=`r n`\) individui, sono stati analizzati il tempo passato sui social (in ore al giorno, \(X\)) e il numero di libri letti in un anno  \(Y\). 
 
+Si osservano le seguenti statistiche:
+$\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
+$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+
+
 `r punti_p(nex=T)` Si è osservato $x_5=`r p(x[5])`$ e $y_5=`r p(y[5])`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=5$.
 
 :::{.sol data-latex=""}

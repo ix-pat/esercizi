@@ -1,0 +1,426 @@
+---
+editor_options:
+  chunk_output_type: console
+date: " "
+output:
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    keep_tex: true
+    toc: false
+    includes:
+      in_header: preamble.tex
+    number_sections: false
+  pdf_document:
+    toc: false
+    toc_depth: '6'
+  html_document:
+    css: sol.css
+    toc: true
+    toc_depth: 6
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+      df_print: paged
+fontsize: 10pt
+geometry: top=2cm,bottom=1.5cm,left=1.5cm,right=1.5cm
+---
+
+```{r setup, echo=FALSE}
+html <- knitr::is_html_output()
+if (html){
+  knitr::opts_chunk$set(
+    echo = FALSE,
+    fig.height = 2.5*3,
+    fig.width = 4*3,
+    warning = FALSE,
+    message = FALSE,
+    results = 'asis'
+  )
+} else {
+  knitr::opts_chunk$set(
+    echo = FALSE,
+    fig.height = 2.5,
+    fig.width = 4,
+    warning = FALSE,
+    message = FALSE,
+    results = 'asis'
+  )
+  knitr::knit_hooks$set(
+    par = function(before, options, envir) {
+      if (before) par(cex = .1)
+    }
+  )
+  par(cex = .1)
+  knitr::opts_chunk$set(par = TRUE,fig.align = "center")
+}
+options(digits=4,nsmall=4,knitr.kable.NA = '',scipen = 1000000,dev.args = list(bg = 'transparent'))
+library(knitr)
+library(xtable)
+library(kableExtra)
+library(colorspace)
+library(xaringan)
+library(pat.book)
+#source("pat-book.R")
+cex <- .8
+
+
+
+anagrafica <- function(seed = NULL,new.page=F,cod.comp = NULL) { 
+  if (!is.null(seed)) set.seed(seed)
+  if (is.null(cod.comp)) cod.comp <- paste0(sample(c(0:9, LETTERS), 15), collapse = "")
+
+  if (html) cat("# Prova di Statistica (CLEAM)\n\n")
+  if (new.page)cat("\\newpage\n")
+  cat("\\vspace*{-1.4cm}\n\\anagrafica{}\n\n")
+  cat("\\thispagestyle{fancy}\n")
+  cat("\\fancypagestyle{firstpage}{%\n")
+  cat("  \\lhead{\\textbf{Prova di Statistica (CLEAM)}}\n") 
+  cat(paste0("  \\rhead{\\texttt{", cod.comp, "}}\n"))
+  cat("  \\cfoot{} % Rimuove il numero di pagina\n")
+  cat("}\n")
+  cat("\\pagestyle{firstpage}\n")
+}
+punti_p <- function(start=F,nex=F,num=F){
+  tot <- sum(unlist(punti))
+  it <- ifelse(start,item_start(num),item_(num))
+  it <- ifelse(nex,item_next(num),it)
+  ptt <- punti[[i1]][i2]
+  ptt_30 <- format(round(ptt/tot*31,1),nsmall=1)
+  sep <- ifelse(html," ","\\hspace{.1em}")
+  if(html) paste(it,"(pt",sep,ptt,"/",tot," → ",ptt_30,"/31)",sep="") else paste(it,"(pt",sep,ptt_30,"/31)",sep="")
+}
+
+par(bg="transparent")
+cod.comp <- function(x,i1 = 1, i2 = 13){ paste0(c(sample(c(0:9,LETTERS),i1),x,sample(c(0:9,LETTERS),i2)),collapse = "")}
+```
+
+
+<div class="button-container"></div>
+
+```{r preparazione}
+anagrafica(new.page = F,cod.comp = cod.comp(x = "",i2 = 14))
+```
+
+
+```{r setup-punti, echo=FALSE}
+punti <- list(
+  e1 = c(13, 4, 2, 2),
+  e2 = c(13, 4, 2, 2),
+  e3 = c(13),
+  e4 = c(3, 3, 3, 3),
+  e5 = c(3, 10),
+  e6 = c(13, 4, 2, 2, 2)
+)
+```
+
+
+
+### Esercizio 1 
+
+
+```{r 2022-17a}
+
+
+# Basic settings
+set.seed(12)   # per ottenere sempre la stessa simulazione
+n <- 250      # ampiezza campionaria
+nomex <- "Spesa"
+
+brk  <- c(0,3, 5,10,20)
+nnn  <- c( 20,110,100, 50)
+nnn  <- round(nnn/sum(nnn)*n)
+
+samp <- genera_dati(brk = brk,nnn=nnn,n=n)
+ls2e(stat_base(samp,brk))
+```
+
+Su un campione di $`r n`$ famiglie della provincia di Ferrara è stato rilevata la spesa in generi alimentari (espresso in migliaia di euro). Qui di seguito i dati raccolti in classe e le densità di frequenza percentuali
+
+```{r 2022-18}
+kable(dat3[,c(1,2,6)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+```
+
+`r punti_p(start=T)` Calcolare il valore approssimato della mediana.
+
+:::{.sol data-latex=""}
+```{r 2022-19}
+kable(dat3[,c(1:2,12,3:7)],booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")
+
+cat(percentile())
+```
+:::
+
+`r punti_p()` Quante famiglie hanno una spesa inferiore al 25-esimo percentile?
+
+:::{.sol data-latex=""}
+```{r}
+F_print(.25,verso = "",x2 = 3.5,perc1 = T)
+```
+:::
+
+`r punti_p()` La spesa media è pari a $\bar x=`r mean(samp)`$, che forma ci dobbiamo aspettare dell'istogramma di densità?
+
+`r punti_p()` La varianza della spesa è pari a $Var=`r var(samp)`$.
+Se ogni famiglia aumentasse la sua spesa del 5%, quanto varrebbe varianza dei dati così trasformati?
+
+:::{.sol data-latex=""}
+$$`r 1.05^2*var(samp)`$$
+:::
+
+
+
+
+
+### Esercizio 2 
+
+  
+```{r 2021-47}
+s1 <- 0.55
+s2 <- 0.85
+```
+
+Il flusso giornaliero d'acqua in entrata nella vasca $V$ è descritto da una variabile casuale normale $X_E\sim N(5.1,1.1)$, il flusso giornaliero in uscita è descritto da una variabile casuale normale $X_U\sim N(6.2,0.5)$.
+
+La variazione di livello nella vasca è dunque data da:
+$$
+X_L=X_E-X_U.
+$$
+`r punti_p(nex = T)` Calcolare la probabilità che la variazione di livello sia negativa ($X_L<0$).
+
+::: {.sol data-latex=""}
+La variazione di livello nella vasca si distribuisce
+$$
+X_L=X_E-X_U\sim N(5.1-6.2;1.1+0.5)
+$$
+E quindi
+
+```{r 2021-48}
+vnam<-"X_L"
+mm <- 5.1-6.2
+ss <- 1.1+0.5
+x0 <- 0
+
+
+```
+
+```{r 2021-9,,results='asis'}
+cat(norm_int(x1 = 0,verso = "<",mm = mm,ss = ss,vnam = "X_L"))
+```
+:::
+
+
+`r punti_p()` Nell'ipotesi di indipendenza tra i giorni, calcolare la probabilità di avere esattamente _due_ giorni su _cinque_ con livello negativo.  `r pp <- pnorm(0,mm,sqrt(ss))`
+
+::: {.sol data-latex=""}
+Posto
+$$
+\pi = P(X_L=0)=`r pnorm(0,mm,sqrt(ss))`
+$$
+la VC $X$ che conta il numero di giorni con livello negativo in 5 giorni
+$$
+X\sim\text{Binom}(5,`r pp`)
+$$
+e quindi 
+
+```{r 2021-49}
+bin_dis(2,5,pp,sing=T)
+```
+
+:::
+
+
+`r punti_p()` Se $P(A)=0.6$ e $P(B)=0.8$, $A$ e $B$ possono essere incompatibili?
+
+::: {.sol data-latex=""}
+No, perché se fossero incompatibili allora
+$$
+P(A\cup B)=P(A)+P(B)=0.6+0.8=1.4>1
+$$
+che è impossibile.
+:::
+
+
+`r punti_p()` Se $X\sim N(\mu_X,\sigma^2_X)$ come si distribuisce 
+  $$Y=\left(\frac{X-\mu_X}{\sigma_X}\right)^2 ~~~?$$
+  
+::: {.sol data-latex=""}
+Anzitutto osserviamo che
+$$
+Z=\frac{X-\mu_X}{\sigma_X}\sim N(0,1)
+$$
+Poi che
+$$
+Y=Z^2\sim\chi_1^2
+$$
+:::
+
+
+
+
+
+
+### Esercizio 3 
+
+
+
+
+`r punti_p(nex=T)` Un'urna 4 premi da $\mbox{0}$ euro, 2 premi da $\mbox{1}$ euro.
+Si estrae 50 volte con reintroduzione. 
+
+Qual è la probabilità che la la vincita totale sia maggiore di 50?
+
+:::{.sol data-latex=""}
+
+```{r 2024-65}
+n <- 50
+mx <- 2/6
+
+tlc("somma",50,verso = ">",mu = mx,n = n)
+```
+:::
+
+
+
+
+### Esercizio 4 
+
+  
+`r punti_p(nex = T)` Sia $\hat \pi$ lo stimatore di massima verosimiglianza di $\pi$ del modello Binomiale.
+\begin{eqnarray*}
+  \hat\pi &=&  \frac 1n\sum_{i=1}^nx_i\\
+\end{eqnarray*}
+Ricavare la sua varianza e metterla in relazione con il suo $MSE$ (Mean Squared Error).
+
+`r punti_p()` Sia $h$ uno stimatore per $\theta$. Cosa significa dire che $h$ è consistente?
+
+`r punti_p()` Definire la significatività e la potenza di un test.
+
+`r punti_p()` In uno studio sull'effetto del titolo di studio sulla percezione del benessere, su un gruppo di 238 intervistati è stato chiesto il titolo di studio (basso: "al massimo le scuole medie inferiori", medio: "Diploma di scuola superiore", alto: "almeno il Diploma di Laurea") e la percezione del proprio benessere (basso, medio, alto). Qui di seguito i dati:
+
+```{r 2023-149}
+
+x <- matrix(c(18,21,20,26,35,38,35,30,15),3)
+dimnames(x)<-list(redimento=c("basso","medio","alto"),reddito=c("basso","medio","alto"))
+kable(x,booktabs=T,escape = F,linesep="") %>%
+  kable_styling(full_width = F, latex_options = "HOLD_position")%>%
+  kable_paper("striped", full_width = F) %>%
+  pack_rows("Titolo di studio", 1, 3) %>%
+  add_header_above(c(" " = 1, "Benessere" = 3))
+```
+
+Si è testata l'indipendenza tra il titolo di studio e la percezione del benessere e il test ha restituito $p_\text{value}=0.04$. Possiamo dire che titolo di studio e benessere sono indipendenti? Perché?
+
+
+
+
+
+
+### Esercizio 5 
+
+
+```{r 2023-159}
+n1 <- 35
+muh <- 68
+sdh <- 5
+mu0 <- 71
+```
+
+`r punti_p(nex = T)` In uno studio sui redditi, nel comune $A$ si è rilevato il reddito di $n=`r n1`$ individui e si è osservata una media pari $`r muh`$ mila euro con una standard deviation pari a $`r sdh`$ mila euro.
+Costruire un intervallo di confidenza al 95% per il reddito medio $\mu$.
+
+:::{.sol data-latex=""}
+```{r 2023-28,,results='asis'}
+options(digits = 4)
+res <- idc(xm = muh,sd = sdh,alpha = .05,n = n1,dist_ = "t",mus = mu0,ss = "S")
+cat(res)
+```
+:::
+
+`r punti_p()` Un'indagine analoga, svolta sull'intera regione, ha mostrato un reddito medio pari a $\mu_0=`r mu0`$. Testare l'ipotesi che nel comune $A$ il reddito medio sia uguale a quello regionale contro l'alternativa che sia __diverso__.
+
+:::{.sol data-latex=""}
+```{r 2023-29,,results='asis'}
+res <- ttest_mu(muh = muh,sh = sdh,n = n1,mu0 = mu0,h1 = "\\neq")
+cat(res)
+```
+:::
+
+
+
+
+
+
+### Esercizio 6 
+
+
+```{r 2024-121}
+set.seed(42)
+n <- 40
+sig <- .25
+x <- round(runif(n = n, min = 0, max = 10), 2) 
+y <- round(10 - (0.7 * x )^2 + rnorm(n, 0, sig), 2) 
+ls2e(regr(x, y, semp = TRUE, ax = 2))
+```
+
+In uno studio sulla relazione tra tempo libero e stress, in un campione di \(n=`r n`\) individui, sono state analizzate le ore settimanali dedicate al tempo libero (in ore, \(X\)) e i livelli di stress misurati (su una scala da 1 a 10, \(Y\)).
+
+Si osservano le seguenti statistiche:
+$\sum_{i=1}^{`r n`}x_i=`r sumx`$, $\sum_{i=1}^{`r n`}y_i=`r sumy`$,
+$\sum_{i=1}^{`r n`}x_i^2=`r sumx2`$, $\sum_{i=1}^{`r n`}y_i^2=`r sumy2`$ e $\sum_{i=1}^{`r n`}x_iy_i=`r sumxy`$.
+
+
+`r punti_p(nex=T)` Si è osservato $x_4=`r x[4]`$ e $y_4=`r round(y[4],2)`$, stimare il modello di regressione dove $Y$ viene spiegata da $X$ e calcolare il residuo per il punto $i=4$.
+
+:::{.sol data-latex=""}
+```{r 2024-31,,results='asis'}
+calcolo_beta()
+residuo(x = x[4],y = y[4])
+```
+:::
+
+`r punti_p()` Scomporre la Total Sum of Squares.
+
+:::{.sol data-latex=""}
+```{r 2024-32,,results='asis'}
+TSS()
+```
+:::
+
+`r punti_p()` Interpretare il diagramma dei residui.
+
+```{r 2024-33,, fig.width=5, fig.height=3.5}
+par(mar=c(4,4,0,2),cex=.8)
+plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
+axis(1, cex=1)
+axis(2, cex=1)
+abline(h=0, lty=2)
+```
+
+:::{.sol data-latex=""}
+```{r 2024-34,,results='asis'}
+plot(x, es, ylab=expression(hat(epsilon)), pch=16, cex=.5, axes=F)
+axis(1, cex=1)
+axis(2, cex=1)
+abline(h=0, lty=2)
+spline_pat(x,es,df1 = 5,df2 = 5)
+```
+:::
+
+`r punti_p()` Cosa significa che $r$ è invariante ai cambiamenti di scala?
+
+`r punti_p()` Se in un modello di regressione $r^2=0$ significa che non c'è relazione tra $X$ ed $Y$?
+
+<!-- `r punti_p()` Testare l'ipotesi che $\beta_0$ sia uguale a 12, contro l'alternativa che sia maggiore per $\alpha=0.1,0.05,0.01,0.001$ e dare una valutazione approssimativa del $p_\text{value}$ (ad esempio il $p_\text{value}$ è minore di 0.001, compreso tra 0.05 e tra 0.01, ecc.). -->
+
+<!-- :::{.sol data-latex=""} -->
+<!-- ```{r 2024-122} -->
+<!-- ttest_beta(0,12.5,h1 = ">",SE = T) -->
+<!-- ``` -->
+<!-- ::: -->
+
+
+
+
+

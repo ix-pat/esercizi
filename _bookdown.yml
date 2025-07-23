@@ -16,7 +16,8 @@ rmd_files: [
  "2021.Rmd",
  "2022.Rmd" ,
  "2023.Rmd",
- "2024.Rmd"
+ "2024.Rmd",
+ "2025.Rmd"
 ]
 language:
   ui:

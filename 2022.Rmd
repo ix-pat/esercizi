@@ -352,12 +352,9 @@ cat(percentile())
 `r punti_p()` Quante famiglie hanno una spesa inferiore al 25-esimo percentile?
 
 :::{.sol data-latex=""}
-$$
 ```{r}
 F_print(.25,verso = "",x2 = 3.5,perc1 = T)
 ```
-
-$$
 :::
 
 `r punti_p()` La spesa media è pari a $\bar x=`r mean(samp)`$, che forma ci dobbiamo aspettare dell'istogramma di densità?
